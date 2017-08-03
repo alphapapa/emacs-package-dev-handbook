@@ -1,3 +1,5 @@
+
+
 * The Emacs Package Developer's Handbook                              :Emacs:
 
 After developing some little Emacs packages for a year or so, I began to notice how I'd forget little things that I learned, and then I'd have to go hunting for that information again.  I also noticed how there are some issues for which there doesn't seem to be a "best practice" or "Standard Operating Procedure" to refer to.
@@ -13,6 +15,9 @@ So this is intended to be a place to collect and organize information related to
     - [[#pattern-matching][Pattern Matching]]
      - [[#articles][Articles]]
       - [[#pattern-matching-in-emacs-lisp--wilfred-hughesblog][Pattern Matching in Emacs Lisp – Wilfred Hughes::Blog]]
+    - [[#packaging][Packaging]]
+     - [[#autoloads][Autoloads]]
+      - [[#autoloading-macro-generated-functions][Autoloading macro-generated functions]]
 
 ** Emacs Lisp                                                        :elisp:
 
@@ -62,6 +67,9 @@ Can anyone clear up what the intended behaviour is?
 #+END_QUOTE
 
 * Code
+:PROPERTIES:
+:TOC:      ignore
+:END:
 
 This section contains code used to add to and update this document.
 
