@@ -14,9 +14,12 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 *Note:* The primary sections are listed at the top of the page in the horizontal bar.
 
 * Contents                                                         :noexport:
+:PROPERTIES:
+:TOC:      this
+:END:
   - [[#emacs-lisp][Emacs Lisp]]
    - [[#buffers][Buffers]]
-   - [[#checkerslinters][Checkers/linters]]
+   - [[#checkers--linters][Checkers / linters]]
    - [[#editing][Editing]]
    - [[#general][General]]
    - [[#packaging][Packaging]]
@@ -45,7 +48,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 :ID:       6858c112-9756-43b4-a2e3-fa00a71e9367
 :END:
 
-** Checkers/linters                                       :linters:checkers:
+** Checkers / linters                                     :linters:checkers:
 
 *** TODO Flycheck-package
 
@@ -152,6 +155,37 @@ should be used instead. What confuses me is [[http://stackoverflow.com/a/3880510
 Can anyone clear up what the intended behaviour is?
 #+END_QUOTE
 
+***** Articles                                                 :articles:
+
+****** [[https://www.lunaryorn.com/posts/autoloads-in-emacs-lisp][Autoloads in Emacs Lisp | Sebastian Wiesner]]
+:PROPERTIES:
+:archive.is: http://archive.is/UZHhS
+:END:
+**** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Lexical-Binding.html][Lexical binding]]                                     :lexical_binding:
+:PROPERTIES:
+:ID:       7247be4d-4f66-43ff-bb70-1b4a7458611b
+:END:
+
+You should always use lexical binding by setting the header at the top of the file.
+
+***** Articles                                                 :articles:
+
+****** [[https://yoo2080.wordpress.com/2013/09/11/emacs-lisp-lexical-binding-gotchas-and-related-best-practices/][Emacs Lisp lexical binding gotchas and related best practices | Yoo Box]]
+:PROPERTIES:
+:archive.is: http://archive.is/0nfB4
+:END:
+
+****** [[https://emacs.stackexchange.com/questions/2129/why-is-let-faster-with-lexical-scope][elisp - Why is `let' faster with lexical scope? - Emacs Stack Exchange]]
+:PROPERTIES:
+:archive.is: http://archive.is/LUtfZ
+:END:
+
+Sebastian Wiesner provides a detailed explanation.
+
+*** Reference                                                   :reference:
+
+**** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.html][Package headers and structure]]
+
 *** Tools                                                           :tools:
 
 **** Package installation/management             :installation:management:
@@ -168,7 +202,6 @@ Can anyone clear up what the intended behaviour is?
 :END:
 
 Developed by the current maintainer of Emacs, himself, John Wiegley.
-
 ** Pattern matching                         :destructuring:pattern_matching:
 :PROPERTIES:
 :TOC:      ignore-children
