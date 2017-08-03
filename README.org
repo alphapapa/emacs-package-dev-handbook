@@ -81,12 +81,29 @@ This package, by Damien Cassou and Matus Goljer, helps navigation by redefining 
 
 *** Libraries                                                   :libraries:
 
+**** [[https://www.gnu.org/software/emacs/manual/html_node/cl/index.html][Common Lisp Extensions]] (=cl-lib=)
+
+This is the built-in =cl-lib= package which implements Common Lisp functions and control structures for Emacs Lisp.
+
 **** [[https://github.com/magnars/dash.el][dash.el]]                                                        :dash:
 :PROPERTIES:
 :ID:       e85e4252-ea03-4473-b52f-9393e7527fad
 :END:
 
 Dash is a powerful general-purpose library that provides many useful functions and macros.
+
+**** [[https://github.com/emacs-mirror/emacs/blob/master/lisp/emacs-lisp/subr-x.el][subr-x]]                                :built_in:strings:flow_control:
+
+#+BEGIN_QUOTE
+Less commonly used functions that complement basic APIs, often implemented in C code (like hash-tables and strings), and are not eligible for inclusion in subr.el.
+#+END_QUOTE
+
+This is a built-in package that provides several useful functions and macros, such as =thread-first= / =last=, =if-let= / =when-let=, hash-table functions, and string functions.  It's easy to forget about this, since:
+
+#+BEGIN_QUOTE
+Do not document these functions in the lispref.  http://lists.gnu.org/archive/html/emacs-devel/2014-01/msg01006.html
+#+END_QUOTE
+
 
 *** Tools                                                           :tools:
 
