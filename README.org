@@ -13,7 +13,7 @@ After developing some little Emacs packages for a year or so, I began to notice 
 
 So this is intended to be a place to collect and organize information related to Emacs package development.  Built with Emacs, by Emacs package developers, for Emacs package developers.
 
-You can read this Org file directly, or you can read the [[https://alphapapa.github.io/emacs-package-dev-handbook/][HTML version]].
+You can read this Org file directly on the [[https://github.com/alphapapa/emacs-package-dev-handbook][repository]], or you can read the [[https://alphapapa.github.io/emacs-package-dev-handbook/][HTML version]].
 
 * Contents                                                         :noexport:
 :PROPERTIES:
@@ -26,6 +26,7 @@ You can read this Org file directly, or you can read the [[https://alphapapa.git
   - [[#people][People]]
    - [[#damien-cassou][Damien Cassou]]
    - [[#john-wiegley][John Wiegley]]
+  - [[#contributions][Contributions]]
 * Emacs Lisp                                                          :elisp:
 
 ** Editing                                                         :editing:
@@ -157,6 +158,10 @@ John is the current Emacs maintainer.
 
 **** [[id:540617fd-d4ff-47df-89da-6c48c8f27785][use-package: A use-package declaration for simplifying your .emacs]]
 
+* Contributions
+
+Yes, please!  Please send pull requests and file issues on the [[https://github.com/alphapapa/emacs-package-dev-handbook][GitHub repo]].  This is intended to be a community project.
+
 * Code                                                             :noexport:
 :PROPERTIES:
 :TOC:      ignore
@@ -182,3 +187,16 @@ This bookmarklet should provide a way to get the URL:
 *** TODO Insert new entry at point
 
 Maybe use capture templates and refile?
+
+** Table of Contents
+
+Currently using =[[https://github.com/alphapapa/org-make-toc][org-make-toc]]=, which is uploaded but unfinished and unpackaged.
+
+#+BEGIN_SRC elisp
+  (-when-let* ((tree (cddr (org-element-parse-buffer 'headline)))
+               (tree (org-make-toc--remove-ignored-entries tree))
+               (tree (org-make-toc--remove-higher-level-than-toc tree))
+               (list (org-make-toc--tree-to-list tree))
+               (pos (org-find-property "TOC" "this")))
+    (org-make-toc--replace-entry-contents pos list))
+#+END_SRC
