@@ -37,14 +37,32 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 
 *** Tools                                                           :tools:
 
-**** [[https://github.com/IvanMalison/multi-line][multi-line: multi-line everything from function invocations and definitions to array and map literals in a wide variety of languages]] :formatting:
-
 **** [[https://emacs.cafe/emacs/package/2017/08/01/beginend.html][beginend.el]] :navigation:
 :PROPERTIES:
 :ID:       a32ed391-8ce6-46b7-9367-8117829ce2e7
 :END:
 
 This package, by Damien Cassou and Matus Goljer, helps navigation by redefining the ~M-<~ and ~M->~ keys do, depending on the major-mode.
+
+**** [[https://github.com/magnars/expand-region.el][expand-region.el: Increase selected region by semantic units]] :selection:region:
+:PROPERTIES:
+:ID:       88b496f4-8230-474e-b2ee-d8e4e8ca30d0
+:END:
+
+**** [[https://github.com/IvanMalison/multi-line][multi-line: multi-line everything from function invocations and definitions to array and map literals in a wide variety of languages]] :formatting:
+
+**** [[https://github.com/magnars/multiple-cursors.el][multiple-cursors.el: Multiple cursors]]             :selection:editing:
+:PROPERTIES:
+:ID:       deefcbc5-0c37-4936-a820-df99ae31a401
+:END:
+** General
+*** [[https://github.com/magnars/dash.el][dash.el]]                                                          :dash:
+:PROPERTIES:
+:ID:       e85e4252-ea03-4473-b52f-9393e7527fad
+:END:
+
+Dash is a powerful general-purpose library that provides many useful functions and macros.
+
 
 ** Packaging                                                     :packaging:
 :PROPERTIES:
@@ -133,6 +151,29 @@ Dash is a powerful library, and one of its features is powerful destructuring wi
 
 A powerful, Racket-style pattern-matching library.
 
+** String manipulation                                             :strings:
+
+*** Libraries                                                   :libraries:
+
+**** [[https://github.com/magnars/s.el][s.el: The long lost Emacs string manipulation library]]
+
+** Testing                                                         :testing:
+
+*** Libraries                                                   :libraries:
+
+**** [[https://github.com/ecukes/ecukes][ecukes: Cucumber for Emacs]]
+
+** Version control                                         :version_control:
+
+*** Packages                                                     :packages:
+
+**** [[https://github.com/magit/magit][Magit]]                                                           :git:
+:PROPERTIES:
+:ID:       43daf455-caeb-4399-b1bb-15a10603018b
+:END:
+
+One of the "killer apps" for Emacs--and for git!
+
 * People                                                             :people:
 :PROPERTIES:
 :TOC:      2
@@ -157,8 +198,30 @@ John is the current Emacs maintainer.
 
 *** Packages
 
-**** [[id:540617fd-d4ff-47df-89da-6c48c8f27785][use-package: A use-package declaration for simplifying your .emacs]]
+**** [[id:540617fd-d4ff-47df-89da-6c48c8f27785][use-package]]
 
+** Jonas Bernoulli
+
+Jonas is a prolific Emacs package developer and maintainer.  You could spend hours on his GitHub repo.
+
++ [[https://github.com/tarsius][GitHub]]
+
+*** Packages
+
+**** [[id:43daf455-caeb-4399-b1bb-15a10603018b][Magit]]
+
+** Magnar Sveen
+
++  [[https://github.com/magnars][GitHub]]
+
+
+*** Packages
+
+**** [[id:e85e4252-ea03-4473-b52f-9393e7527fad][dash.el]]
+
+**** [[id:88b496f4-8230-474e-b2ee-d8e4e8ca30d0][expand-region.el]]
+**** [[id:deefcbc5-0c37-4936-a820-df99ae31a401][multiple-cursors.el]]
+**** [[*%5B%5Bhttps://github.com/magnars/s.el%5D%5Bs.el:%20The%20long%20lost%20Emacs%20string%20manipulation%20library%5D%5D][s.el]]
 * Contributions
 
 Yes, please!  Please send pull requests and file issues on the [[https://github.com/alphapapa/emacs-package-dev-handbook][GitHub repo]].  This is intended to be a community project.
@@ -208,4 +271,5 @@ I love Emacs and Org mode.  This makes it so easy to make the document...alive! 
 
 # Local Variables:
 # after-save-hook: (lambda nil (when (org-html-export-to-html) (rename-file "README.html" "index.html" t)))
+# org-export-with-properties: ("GitHub" "archive.is")
 # End:

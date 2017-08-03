@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-08-03 Thu 12:01 -->
+<!-- 2017-08-03 Thu 12:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -243,53 +243,83 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgeefcffa">1. Emacs Lisp&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a>
+<li><a href="#org8986811">1. Emacs Lisp&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a>
 <ul>
-<li><a href="#org01d423c">1.1. Editing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="editing">editing</span></span></a>
+<li><a href="#org2c313d2">1.1. Editing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="editing">editing</span></span></a>
 <ul>
-<li><a href="#orgc0b810c">1.1.1. Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a></li>
+<li><a href="#org396bfcc">1.1.1. Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a></li>
 </ul>
 </li>
-<li><a href="#org8135905">1.2. Packaging&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packaging">packaging</span></span></a>
+<li><a href="#org6320bb2">1.2. General</a>
 <ul>
-<li><a href="#orgb77e8cc">1.2.1. Best practices&#xa0;&#xa0;&#xa0;<span class="tag"><span class="best_practices">best_practices</span></span></a></li>
-<li><a href="#org6775946">1.2.2. Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a></li>
+<li><a href="#org129e151">1.2.1. dash.el&#xa0;&#xa0;&#xa0;<span class="tag"><span class="dash">dash</span></span></a></li>
 </ul>
 </li>
-<li><a href="#orgddf427a">1.3. Pattern-matching&#xa0;&#xa0;&#xa0;<span class="tag"><span class="destructuring">destructuring</span>&#xa0;<span class="pattern_matching">pattern_matching</span></span></a>
+<li><a href="#orgd320bf5">1.3. Packaging&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packaging">packaging</span></span></a>
 <ul>
-<li><a href="#org013de89">1.3.1. Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span></a></li>
-<li><a href="#org74e6803">1.3.2. Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a></li>
+<li><a href="#org6598e6d">1.3.1. Best practices&#xa0;&#xa0;&#xa0;<span class="tag"><span class="best_practices">best_practices</span></span></a></li>
+<li><a href="#orged8614a">1.3.2. Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a></li>
+</ul>
+</li>
+<li><a href="#orgb34ffbb">1.4. Pattern-matching&#xa0;&#xa0;&#xa0;<span class="tag"><span class="destructuring">destructuring</span>&#xa0;<span class="pattern_matching">pattern_matching</span></span></a>
+<ul>
+<li><a href="#org389aa4c">1.4.1. Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span></a></li>
+<li><a href="#orgb37ffcf">1.4.2. Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a></li>
+</ul>
+</li>
+<li><a href="#org3c8e696">1.5. String manipulation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="strings">strings</span></span></a>
+<ul>
+<li><a href="#orgd212d2b">1.5.1. Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a></li>
+</ul>
+</li>
+<li><a href="#orgbedb748">1.6. Testing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="testing">testing</span></span></a>
+<ul>
+<li><a href="#orgdf9fd5e">1.6.1. Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a></li>
+</ul>
+</li>
+<li><a href="#orge4b3c42">1.7. Version control&#xa0;&#xa0;&#xa0;<span class="tag"><span class="version_control">version_control</span></span></a>
+<ul>
+<li><a href="#orgcb71f9d">1.7.1. Packages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packages">packages</span></span></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgdf2fe82">2. People&#xa0;&#xa0;&#xa0;<span class="tag"><span class="people">people</span></span></a>
+<li><a href="#org7c71163">2. People&#xa0;&#xa0;&#xa0;<span class="tag"><span class="people">people</span></span></a>
 <ul>
-<li><a href="#orgc7d937e">2.1. Damien Cassou</a>
+<li><a href="#org6e6a466">2.1. Damien Cassou</a>
 <ul>
-<li><a href="#org6c5dcfe">2.1.1. Packages</a></li>
+<li><a href="#orgbf21102">2.1.1. Packages</a></li>
 </ul>
 </li>
-<li><a href="#org43bd0b0">2.2. John Wiegley</a>
+<li><a href="#orgaa0f501">2.2. John Wiegley</a>
 <ul>
-<li><a href="#org7dbce62">2.2.1. Packages</a></li>
+<li><a href="#org006e490">2.2.1. Packages</a></li>
+</ul>
+</li>
+<li><a href="#org58d593d">2.3. Jonas Bernoulli</a>
+<ul>
+<li><a href="#orgf426ec5">2.3.1. Packages</a></li>
+</ul>
+</li>
+<li><a href="#org2805d81">2.4. Magnar Sveen</a>
+<ul>
+<li><a href="#orgf1a91da">2.4.1. Packages</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org2a602c0">3. Contributions</a></li>
-<li><a href="#org5445b62">4. Code</a>
+<li><a href="#org85ea0cc">3. Contributions</a></li>
+<li><a href="#org9c758d0">4. Code</a>
 <ul>
-<li><a href="#org2af5436">4.1. <span class="todo TODO">TODO</span> Automate adding new links and summaries</a>
+<li><a href="#org06a677d">4.1. <span class="todo TODO">TODO</span> Automate adding new links and summaries</a>
 <ul>
-<li><a href="#orgbcc7125">4.1.1. <span class="todo TODO">TODO</span> Get summary of page</a></li>
-<li><a href="#org0999550">4.1.2. <span class="todo TODO">TODO</span> Get archive.is link for page</a></li>
-<li><a href="#org91422cd">4.1.3. <span class="todo TODO">TODO</span> Insert new entry at point</a></li>
+<li><a href="#org464da53">4.1.1. <span class="todo TODO">TODO</span> Get summary of page</a></li>
+<li><a href="#orgc1e526b">4.1.2. <span class="todo TODO">TODO</span> Get archive.is link for page</a></li>
+<li><a href="#org3295e06">4.1.3. <span class="todo TODO">TODO</span> Insert new entry at point</a></li>
 </ul>
 </li>
-<li><a href="#orgafb77bd">4.2. Table of Contents</a></li>
-<li><a href="#org36b5173">4.3. Config</a></li>
+<li><a href="#org036f553">4.2. Table of Contents</a></li>
+<li><a href="#org93262ba">4.3. Config</a></li>
 </ul>
 </li>
 </ul>
@@ -313,36 +343,55 @@ You can read this Org file directly on the <a href="https://github.com/alphapapa
 <b>Note:</b> The primary sections are listed at the top of the page in the horizontal bar.
 </p>
 
-<div id="outline-container-orgeefcffa" class="outline-2">
-<h2 id="orgeefcffa"><span class="section-number-2">1</span> Emacs Lisp&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h2>
+<div id="outline-container-org8986811" class="outline-2">
+<h2 id="org8986811"><span class="section-number-2">1</span> Emacs Lisp&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-org01d423c" class="outline-3">
-<h3 id="org01d423c"><span class="section-number-3">1.1</span> Editing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="editing">editing</span></span></h3>
+</div><div id="outline-container-org2c313d2" class="outline-3">
+<h3 id="org2c313d2"><span class="section-number-3">1.1</span> Editing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="editing">editing</span></span></h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
 
-<div id="outline-container-orgc0b810c" class="outline-4">
-<h4 id="orgc0b810c"><span class="section-number-4">1.1.1</span> Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
+<div id="outline-container-org396bfcc" class="outline-4">
+<h4 id="org396bfcc"><span class="section-number-4">1.1.1</span> Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
 <div class="outline-text-4" id="text-1-1-1">
-</div><ol class="org-ol"><li><a id="org50eff2a"></a><a href="https://github.com/IvanMalison/multi-line">multi-line: multi-line everything from function invocations and definitions to array and map literals in a wide variety of languages</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="formatting">formatting</span></span><br /></li>
-
-<li><a id="org0eda07e"></a><a id="ID-a32ed391-8ce6-46b7-9367-8117829ce2e7"></a><a href="https://emacs.cafe/emacs/package/2017/08/01/beginend.html">beginend.el</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="navigation">navigation</span></span><br /><div class="outline-text-5" id="text-1-1-1-2">
+</div><ol class="org-ol"><li><a id="org03faf65"></a><a id="ID-a32ed391-8ce6-46b7-9367-8117829ce2e7"></a><a href="https://emacs.cafe/emacs/package/2017/08/01/beginend.html">beginend.el</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="navigation">navigation</span></span><br /><div class="outline-text-5" id="text-1-1-1-1">
 <p>
 This package, by Damien Cassou and Matus Goljer, helps navigation by redefining the <code>M-&lt;</code> and <code>M-&gt;</code> keys do, depending on the major-mode.
 </p>
+</div></li>
+
+<li><a id="org6ee567b"></a><a id="ID-88b496f4-8230-474e-b2ee-d8e4e8ca30d0"></a><a href="https://github.com/magnars/expand-region.el">expand-region.el: Increase selected region by semantic units</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="selection">selection</span>&#xa0;<span class="region">region</span></span><br /><div class="outline-text-5" id="text-1-1-1-2">
+</div></li>
+
+<li><a id="org048d830"></a><a href="https://github.com/IvanMalison/multi-line">multi-line: multi-line everything from function invocations and definitions to array and map literals in a wide variety of languages</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="formatting">formatting</span></span><br /></li>
+
+<li><a id="org5cefa3b"></a><a id="ID-deefcbc5-0c37-4936-a820-df99ae31a401"></a><a href="https://github.com/magnars/multiple-cursors.el">multiple-cursors.el: Multiple cursors</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="selection">selection</span>&#xa0;<span class="editing">editing</span></span><br /><div class="outline-text-5" id="text-1-1-1-4">
 </div></li></ol>
 </div>
 </div>
-
-<div id="outline-container-org8135905" class="outline-3">
-<h3 id="org8135905"><span class="section-number-3">1.2</span> Packaging&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packaging">packaging</span></span></h3>
+<div id="outline-container-org6320bb2" class="outline-3">
+<h3 id="org6320bb2"><span class="section-number-3">1.2</span> General</h3>
 <div class="outline-text-3" id="text-1-2">
+</div><div id="outline-container-org129e151" class="outline-4">
+<h4 id="org129e151"><a id="ID-e85e4252-ea03-4473-b52f-9393e7527fad"></a><span class="section-number-4">1.2.1</span> <a href="https://github.com/magnars/dash.el">dash.el</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="dash">dash</span></span></h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+Dash is a powerful general-purpose library that provides many useful functions and macros.
+</p>
+</div>
+</div>
 </div>
 
-<div id="outline-container-orgb77e8cc" class="outline-4">
-<h4 id="orgb77e8cc"><span class="section-number-4">1.2.1</span> Best practices&#xa0;&#xa0;&#xa0;<span class="tag"><span class="best_practices">best_practices</span></span></h4>
-<div class="outline-text-4" id="text-1-2-1">
-</div><ol class="org-ol"><li><a id="org8923887"></a>Autoloads&#xa0;&#xa0;&#xa0;<span class="tag"><span class="autoloads">autoloads</span></span><br /><ol class="org-ol"><li><a id="orge433e68"></a><span class="todo TODO">TODO</span> Autoloading macro-generated functions<br /><div class="outline-text-6" id="text-1-2-1-1-1">
+
+<div id="outline-container-orgd320bf5" class="outline-3">
+<h3 id="orgd320bf5"><span class="section-number-3">1.3</span> Packaging&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packaging">packaging</span></span></h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+
+<div id="outline-container-org6598e6d" class="outline-4">
+<h4 id="org6598e6d"><span class="section-number-4">1.3.1</span> Best practices&#xa0;&#xa0;&#xa0;<span class="tag"><span class="best_practices">best_practices</span></span></h4>
+<div class="outline-text-4" id="text-1-3-1">
+</div><ol class="org-ol"><li><a id="org9f19b53"></a>Autoloads&#xa0;&#xa0;&#xa0;<span class="tag"><span class="autoloads">autoloads</span></span><br /><ol class="org-ol"><li><a id="org7b17ff1"></a><span class="todo TODO">TODO</span> Autoloading macro-generated functions<br /><div class="outline-text-6" id="text-1-3-1-1-1">
 <p>
 This may actually be a bug, or at least an unanswered question.
 </p>
@@ -379,12 +428,12 @@ Can anyone clear up what the intended behaviour is?
 </div></li></ol></li></ol>
 </div>
 
-<div id="outline-container-org6775946" class="outline-4">
-<h4 id="org6775946"><span class="section-number-4">1.2.2</span> Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
-<div class="outline-text-4" id="text-1-2-2">
-</div><ol class="org-ol"><li><a id="org8eac21e"></a>Package installation/management&#xa0;&#xa0;&#xa0;<span class="tag"><span class="installation">installation</span>&#xa0;<span class="management">management</span></span><br /><ol class="org-ol"><li><a id="org1883f68"></a><a href="https://github.com/raxod502/straight.el">straight.el: Next-generation, purely functional package manager for the Emacs hacker</a><br /></li>
+<div id="outline-container-orged8614a" class="outline-4">
+<h4 id="orged8614a"><span class="section-number-4">1.3.2</span> Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
+<div class="outline-text-4" id="text-1-3-2">
+</div><ol class="org-ol"><li><a id="org35a81ea"></a>Package installation/management&#xa0;&#xa0;&#xa0;<span class="tag"><span class="installation">installation</span>&#xa0;<span class="management">management</span></span><br /><ol class="org-ol"><li><a id="org396de7f"></a><a href="https://github.com/raxod502/straight.el">straight.el: Next-generation, purely functional package manager for the Emacs hacker</a><br /></li>
 
-<li><a id="org769bd5d"></a><a id="ID-540617fd-d4ff-47df-89da-6c48c8f27785"></a><a href="https://github.com/jwiegley/use-package">use-package: A use-package declaration for simplifying your .emacs</a><br /><div class="outline-text-6" id="text-1-2-2-1-2">
+<li><a id="orgbd0218a"></a><a id="ID-540617fd-d4ff-47df-89da-6c48c8f27785"></a><a href="https://github.com/jwiegley/use-package">use-package: A use-package declaration for simplifying your .emacs</a><br /><div class="outline-text-6" id="text-1-3-2-1-2">
 <p>
 Developed by the current maintainer of Emacs, himself, John Wiegley.
 </p>
@@ -392,15 +441,19 @@ Developed by the current maintainer of Emacs, himself, John Wiegley.
 </div>
 </div>
 
-<div id="outline-container-orgddf427a" class="outline-3">
-<h3 id="orgddf427a"><span class="section-number-3">1.3</span> Pattern-matching&#xa0;&#xa0;&#xa0;<span class="tag"><span class="destructuring">destructuring</span>&#xa0;<span class="pattern_matching">pattern_matching</span></span></h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-orgb34ffbb" class="outline-3">
+<h3 id="orgb34ffbb"><span class="section-number-3">1.4</span> Pattern-matching&#xa0;&#xa0;&#xa0;<span class="tag"><span class="destructuring">destructuring</span>&#xa0;<span class="pattern_matching">pattern_matching</span></span></h3>
+<div class="outline-text-3" id="text-1-4">
 </div>
 
-<div id="outline-container-org013de89" class="outline-4">
-<h4 id="org013de89"><span class="section-number-4">1.3.1</span> Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span></h4>
-<div class="outline-text-4" id="text-1-3-1">
-</div><ol class="org-ol"><li><a id="orgefd1dc7"></a><a href="http://www.wilfred.me.uk/blog/2017/03/19/pattern-matching-in-emacs-lisp/">Pattern Matching in Emacs Lisp – Wilfred Hughes::Blog</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pcase">pcase</span>&#xa0;<span class="shadchen">shadchen</span>&#xa0;<span class="cl">cl</span>&#xa0;<span class="dash">dash</span></span><br /><div class="outline-text-5" id="text-1-3-1-1">
+<div id="outline-container-org389aa4c" class="outline-4">
+<h4 id="org389aa4c"><span class="section-number-4">1.4.1</span> Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span></h4>
+<div class="outline-text-4" id="text-1-4-1">
+</div><ol class="org-ol"><li><a id="org7420edf"></a><a href="http://www.wilfred.me.uk/blog/2017/03/19/pattern-matching-in-emacs-lisp/">Pattern Matching in Emacs Lisp – Wilfred Hughes::Blog</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pcase">pcase</span>&#xa0;<span class="shadchen">shadchen</span>&#xa0;<span class="cl">cl</span>&#xa0;<span class="dash">dash</span></span><br /><div class="outline-text-5" id="text-1-4-1-1">
+<pre class="example">
+archive.is: http://archive.is/J4DqY
+</pre>
+
 <blockquote>
 <p>
 Pattern matching is invaluable in elisp. Lists are ubiquitous, and a small amount of pattern matching can often replace a ton of verbose list fiddling.
@@ -417,58 +470,95 @@ For the sake of this post, we'll consider both pattern matching and destructurin
 </div></li></ol>
 </div>
 
-<div id="outline-container-org74e6803" class="outline-4">
-<h4 id="org74e6803"><span class="section-number-4">1.3.2</span> Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
-<div class="outline-text-4" id="text-1-3-2">
-</div><ol class="org-ol"><li><a id="org0aee57b"></a><a href="https://github.com/magnars/dash.el">dash.el</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="dash">dash</span></span><br /><div class="outline-text-5" id="text-1-3-2-1">
+<div id="outline-container-orgb37ffcf" class="outline-4">
+<h4 id="orgb37ffcf"><span class="section-number-4">1.4.2</span> Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
+<div class="outline-text-4" id="text-1-4-2">
+</div><ol class="org-ol"><li><a id="orga56d769"></a><a href="https://github.com/magnars/dash.el">dash.el</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="dash">dash</span></span><br /><div class="outline-text-5" id="text-1-4-2-1">
 <p>
 Dash is a powerful library, and one of its features is powerful destructuring with its <code>-let</code> macro, and several others that work the same way.
 </p>
 </div></li>
 
-<li><a id="org7702c3a"></a><a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Pattern-matching-case-statement.html">pcase</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span>&#xa0;<span class="pcase">pcase</span></span><br /><div class="outline-text-5" id="text-1-3-2-2">
+<li><a id="orgbcdc437"></a><a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Pattern-matching-case-statement.html">pcase</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span>&#xa0;<span class="pcase">pcase</span></span><br /><div class="outline-text-5" id="text-1-4-2-2">
 <p>
 <code>pcase</code> is built-in to Emacs.  Its syntax can be confusing, but it is very powerful.
 </p>
 </div>
 
-<ol class="org-ol"><li><a id="org01c35dd"></a>Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span><br /><ol class="org-ol"><li><a id="org3a22274"></a><a href="http://newartisans.com/2016/01/pattern-matching-with-pcase/">Emacs: Pattern Matching with pcase - Lost in Technopolis</a><br /><div class="outline-text-7" id="text-1-3-2-2-1-1">
+<ol class="org-ol"><li><a id="org8980cd7"></a>Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span><br /><ol class="org-ol"><li><a id="orgef59bf3"></a><a href="http://newartisans.com/2016/01/pattern-matching-with-pcase/">Emacs: Pattern Matching with pcase - Lost in Technopolis</a><br /><div class="outline-text-7" id="text-1-4-2-2-1-1">
+<pre class="example">
+archive.is: http://archive.is/FAzd8
+</pre>
 </div></li></ol></li></ol></li>
 
-<li><a id="org47bfc3e"></a><a href="https://github.com/VincentToups/shadchen-el">shadchen-el</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shadchen">shadchen</span>&#xa0;<span class="el">el</span></span><br /><div class="outline-text-5" id="text-1-3-2-3">
+<li><a id="orgd93bda1"></a><a href="https://github.com/VincentToups/shadchen-el">shadchen-el</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shadchen">shadchen</span>&#xa0;<span class="el">el</span></span><br /><div class="outline-text-5" id="text-1-4-2-3">
 <p>
 A powerful, Racket-style pattern-matching library.
 </p>
 </div></li></ol>
 </div>
 </div>
+
+<div id="outline-container-org3c8e696" class="outline-3">
+<h3 id="org3c8e696"><span class="section-number-3">1.5</span> String manipulation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="strings">strings</span></span></h3>
+<div class="outline-text-3" id="text-1-5">
+</div><div id="outline-container-orgd212d2b" class="outline-4">
+<h4 id="orgd212d2b"><span class="section-number-4">1.5.1</span> Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
+<div class="outline-text-4" id="text-1-5-1">
+</div><ol class="org-ol"><li><a id="orgcafe446"></a><a href="https://github.com/magnars/s.el">s.el: The long lost Emacs string manipulation library</a><br /></li></ol>
+</div>
 </div>
 
-<div id="outline-container-orgdf2fe82" class="outline-2">
-<h2 id="orgdf2fe82"><span class="section-number-2">2</span> People&#xa0;&#xa0;&#xa0;<span class="tag"><span class="people">people</span></span></h2>
+<div id="outline-container-orgbedb748" class="outline-3">
+<h3 id="orgbedb748"><span class="section-number-3">1.6</span> Testing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="testing">testing</span></span></h3>
+<div class="outline-text-3" id="text-1-6">
+</div><div id="outline-container-orgdf9fd5e" class="outline-4">
+<h4 id="orgdf9fd5e"><span class="section-number-4">1.6.1</span> Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
+<div class="outline-text-4" id="text-1-6-1">
+</div><ol class="org-ol"><li><a id="orgc6d32e8"></a><a href="https://github.com/ecukes/ecukes">ecukes: Cucumber for Emacs</a><br /></li></ol>
+</div>
+</div>
+
+<div id="outline-container-orge4b3c42" class="outline-3">
+<h3 id="orge4b3c42"><span class="section-number-3">1.7</span> Version control&#xa0;&#xa0;&#xa0;<span class="tag"><span class="version_control">version_control</span></span></h3>
+<div class="outline-text-3" id="text-1-7">
+</div><div id="outline-container-orgcb71f9d" class="outline-4">
+<h4 id="orgcb71f9d"><span class="section-number-4">1.7.1</span> Packages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packages">packages</span></span></h4>
+<div class="outline-text-4" id="text-1-7-1">
+</div><ol class="org-ol"><li><a id="org834eeea"></a><a id="ID-43daf455-caeb-4399-b1bb-15a10603018b"></a><a href="https://github.com/magit/magit">Magit</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span><br /><div class="outline-text-5" id="text-1-7-1-1">
+<p>
+One of the "killer apps" for Emacs&#x2013;and for git!
+</p>
+</div></li></ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7c71163" class="outline-2">
+<h2 id="org7c71163"><span class="section-number-2">2</span> People&#xa0;&#xa0;&#xa0;<span class="tag"><span class="people">people</span></span></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 The Emacs community is so full of brilliant, generous people that I can't keep track of them all!  I will surely miss many, and I will add them in no particular order, but merely as I come across them again and again.
 </p>
 </div>
 
-<div id="outline-container-orgc7d937e" class="outline-3">
-<h3 id="orgc7d937e"><span class="section-number-3">2.1</span> Damien Cassou</h3>
+<div id="outline-container-org6e6a466" class="outline-3">
+<h3 id="org6e6a466"><span class="section-number-3">2.1</span> Damien Cassou</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li><a href="https://github.com/DamienCassou">GitHub</a></li>
 </ul>
 </div>
 
-<div id="outline-container-org6c5dcfe" class="outline-4">
-<h4 id="org6c5dcfe"><span class="section-number-4">2.1.1</span> Packages</h4>
+<div id="outline-container-orgbf21102" class="outline-4">
+<h4 id="orgbf21102"><span class="section-number-4">2.1.1</span> Packages</h4>
 <div class="outline-text-4" id="text-2-1-1">
-</div><ol class="org-ol"><li><a id="orga45de1a"></a><a href="#org0eda07e">beginend.el</a><br /></li></ol>
+</div><ol class="org-ol"><li><a id="orge50ddd0"></a><a href="#org03faf65">beginend.el</a><br /></li></ol>
 </div>
 </div>
 
-<div id="outline-container-org43bd0b0" class="outline-3">
-<h3 id="org43bd0b0"><span class="section-number-3">2.2</span> John Wiegley</h3>
+<div id="outline-container-orgaa0f501" class="outline-3">
+<h3 id="orgaa0f501"><span class="section-number-3">2.2</span> John Wiegley</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 John is the current Emacs maintainer.
@@ -480,16 +570,54 @@ John is the current Emacs maintainer.
 </ul>
 </div>
 
-<div id="outline-container-org7dbce62" class="outline-4">
-<h4 id="org7dbce62"><span class="section-number-4">2.2.1</span> Packages</h4>
+<div id="outline-container-org006e490" class="outline-4">
+<h4 id="org006e490"><span class="section-number-4">2.2.1</span> Packages</h4>
 <div class="outline-text-4" id="text-2-2-1">
-</div><ol class="org-ol"><li><a id="org3538e13"></a><a href="#org769bd5d">use-package: A use-package declaration for simplifying your .emacs</a><br /></li></ol>
-</div>
+</div><ol class="org-ol"><li><a id="orge214c7d"></a><a href="#orgbd0218a">use-package</a><br /></li></ol>
 </div>
 </div>
 
-<div id="outline-container-org2a602c0" class="outline-2">
-<h2 id="org2a602c0"><span class="section-number-2">3</span> Contributions</h2>
+<div id="outline-container-org58d593d" class="outline-3">
+<h3 id="org58d593d"><span class="section-number-3">2.3</span> Jonas Bernoulli</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Jonas is a prolific Emacs package developer and maintainer.  You could spend hours on his GitHub repo.
+</p>
+
+<ul class="org-ul">
+<li><a href="https://github.com/tarsius">GitHub</a></li>
+</ul>
+</div>
+
+<div id="outline-container-orgf426ec5" class="outline-4">
+<h4 id="orgf426ec5"><span class="section-number-4">2.3.1</span> Packages</h4>
+<div class="outline-text-4" id="text-2-3-1">
+</div><ol class="org-ol"><li><a id="org04208a9"></a><a href="#org834eeea">Magit</a><br /></li></ol>
+</div>
+</div>
+
+<div id="outline-container-org2805d81" class="outline-3">
+<h3 id="org2805d81"><span class="section-number-3">2.4</span> Magnar Sveen</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li><a href="https://github.com/magnars">GitHub</a></li>
+</ul>
+</div>
+
+
+<div id="outline-container-orgf1a91da" class="outline-4">
+<h4 id="orgf1a91da"><span class="section-number-4">2.4.1</span> Packages</h4>
+<div class="outline-text-4" id="text-2-4-1">
+</div><ol class="org-ol"><li><a id="org755d27a"></a><a href="#org129e151">dash.el</a><br /></li>
+
+<li><a id="org7ea2f1e"></a><a href="#org6ee567b">expand-region.el</a><br /></li>
+<li><a id="org449e640"></a><a href="#org5cefa3b">multiple-cursors.el</a><br /></li>
+<li><a id="org6df5c81"></a><a href="#orgcafe446">s.el</a><br /></li></ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org85ea0cc" class="outline-2">
+<h2 id="org85ea0cc"><span class="section-number-2">3</span> Contributions</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Yes, please!  Please send pull requests and file issues on the <a href="https://github.com/alphapapa/emacs-package-dev-handbook">GitHub repo</a>.  This is intended to be a community project.
@@ -497,23 +625,23 @@ Yes, please!  Please send pull requests and file issues on the <a href="https://
 </div>
 </div>
 
-<div id="outline-container-org5445b62" class="outline-2">
-<h2 id="org5445b62"><span class="section-number-2">4</span> Code</h2>
+<div id="outline-container-org9c758d0" class="outline-2">
+<h2 id="org9c758d0"><span class="section-number-2">4</span> Code</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 This section contains code used to add to and update this document.
 </p>
 </div>
 
-<div id="outline-container-org2af5436" class="outline-3">
-<h3 id="org2af5436"><span class="section-number-3">4.1</span> <span class="todo TODO">TODO</span> Automate adding new links and summaries</h3>
+<div id="outline-container-org06a677d" class="outline-3">
+<h3 id="org06a677d"><span class="section-number-3">4.1</span> <span class="todo TODO">TODO</span> Automate adding new links and summaries</h3>
 <div class="outline-text-3" id="text-4-1">
-</div><div id="outline-container-orgbcc7125" class="outline-4">
-<h4 id="orgbcc7125"><span class="section-number-4">4.1.1</span> <span class="todo TODO">TODO</span> Get summary of page</h4>
+</div><div id="outline-container-org464da53" class="outline-4">
+<h4 id="org464da53"><span class="section-number-4">4.1.1</span> <span class="todo TODO">TODO</span> Get summary of page</h4>
 </div>
 
-<div id="outline-container-org0999550" class="outline-4">
-<h4 id="org0999550"><a id="ID-a0e9486f-24f0-47a6-8f21-50bcc7ac2ca0"></a><span class="section-number-4">4.1.2</span> <span class="todo TODO">TODO</span> Get archive.is link for page</h4>
+<div id="outline-container-orgc1e526b" class="outline-4">
+<h4 id="orgc1e526b"><a id="ID-a0e9486f-24f0-47a6-8f21-50bcc7ac2ca0"></a><span class="section-number-4">4.1.2</span> <span class="todo TODO">TODO</span> Get archive.is link for page</h4>
 <div class="outline-text-4" id="text-4-1-2">
 <p>
 This bookmarklet should provide a way to get the URL:
@@ -526,8 +654,8 @@ This bookmarklet should provide a way to get the URL:
 </div>
 </div>
 
-<div id="outline-container-org91422cd" class="outline-4">
-<h4 id="org91422cd"><span class="section-number-4">4.1.3</span> <span class="todo TODO">TODO</span> Insert new entry at point</h4>
+<div id="outline-container-org3295e06" class="outline-4">
+<h4 id="org3295e06"><span class="section-number-4">4.1.3</span> <span class="todo TODO">TODO</span> Insert new entry at point</h4>
 <div class="outline-text-4" id="text-4-1-3">
 <p>
 Maybe use capture templates and refile?
@@ -536,8 +664,8 @@ Maybe use capture templates and refile?
 </div>
 </div>
 
-<div id="outline-container-orgafb77bd" class="outline-3">
-<h3 id="orgafb77bd"><span class="section-number-3">4.2</span> Table of Contents</h3>
+<div id="outline-container-org036f553" class="outline-3">
+<h3 id="org036f553"><span class="section-number-3">4.2</span> Table of Contents</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 Currently using <code>[[https://github.com/alphapapa/org-make-toc][org-make-toc]]</code>, which is uploaded but unfinished and unpackaged.
@@ -555,8 +683,8 @@ Currently using <code>[[https://github.com/alphapapa/org-make-toc][org-make-toc]
 </div>
 </div>
 
-<div id="outline-container-org36b5173" class="outline-3">
-<h3 id="org36b5173"><span class="section-number-3">4.3</span> Config</h3>
+<div id="outline-container-org93262ba" class="outline-3">
+<h3 id="org93262ba"><span class="section-number-3">4.3</span> Config</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 I love Emacs and Org mode.  This makes it so easy to make the document&#x2026;alive!  And automated!  Beautiful.
@@ -567,7 +695,7 @@ I love Emacs and Org mode.  This makes it so easy to make the document&#x2026;al
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2017-08-03 Thu 12:01</p>
+<p class="date">Created: 2017-08-03 Thu 12:25</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
