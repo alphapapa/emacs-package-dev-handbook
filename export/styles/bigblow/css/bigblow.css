@@ -118,6 +118,17 @@ b {
     color: #000000;
 }
 
+blockquote {
+    /* Use #EAEAEA for background-color of border with src code block's name */
+    background-color: #fdf6e3;
+    border: 1px solid #DEDEDE;
+    color: #444444;
+    line-height: 1.14em;
+    overflow: auto;
+    /* overflow-x: auto; */
+    padding: 0px 10px 0px 10px;
+}
+
 i {
     color: #1A1A1A;
 }
@@ -171,13 +182,13 @@ h6 {
     text-decoration: line-through;
 }
 
-    h3.DONEheader {
-        border-bottom: 1px solid #DDDDDD;
-    }
+h3.DONEheader {
+    border-bottom: 1px solid #DDDDDD;
+}
 
-    h4.DONEheader {
-        border-bottom: 1px dotted #DDDDDD;
-    }
+h4.DONEheader {
+    border-bottom: 1px dotted #DDDDDD;
+}
 
 .outline-text-2, .outline-text-3, .outline-text-4, .outline-text-5,
 .outline-3 > ul, /* for HTML export of Beamer slides */
@@ -204,18 +215,19 @@ dd {
 
 pre {
     /* Use #EAEAEA for background-color of border with src code block's name */
-    background-color: #F8F8FF;
+    background-color: #fdf6e3;
     border: 1px solid #DEDEDE;
     color: #444444;
     font-family: monospace;
     line-height: 1.14em;
     overflow: auto;
     /* overflow-x: auto; */
-    padding: 10px;
+    padding: 10px 10px 10px 10px !important;
+
 }
 
 code {
-    background-color: #F8F8FF;
+    background-color: #fdf6e3;
     border: 1px solid #DEDEDE;
     color: #444444;
     font-family: monospace;
@@ -269,29 +281,29 @@ a:focus {
     width: 188px;
 }
 
-    #search input {
-        border: 0 none;
-        color: #666666;
-        float: left;
-        font-family: Arial,Helvetica,sans-serif;
-        font-size: 11px;
-        font-weight: normal;
-        margin: 0;
-        padding: 2px 4px;
-        width: 160px;
-    }
+#search input {
+    border: 0 none;
+    color: #666666;
+    float: left;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    margin: 0;
+    padding: 2px 4px;
+    width: 160px;
+}
 
-    #search button {
-        background: url("../images/search-glass.png") no-repeat scroll 0 50% transparent;
-        border: 0 none;
-        cursor: pointer;
-        display: block;
-        float: right;
-        height: 18px;
-        margin: 0;
-        text-indent: -999em;
-        width: 14px;
-    }
+#search button {
+    background: url("../images/search-glass.png") no-repeat scroll 0 50% transparent;
+    border: 0 none;
+    cursor: pointer;
+    display: block;
+    float: right;
+    height: 18px;
+    margin: 0;
+    text-indent: -999em;
+    width: 14px;
+}
 
 table {
     border-collapse: collapse;
@@ -299,9 +311,9 @@ table {
     margin-left: auto;
 }
 
-    table td {
-        padding: 3px 5px;
-    }
+table td {
+    padding: 3px 5px;
+}
 
 table, th, td
 {
