@@ -762,6 +762,10 @@ p.verse {
     cursor: pointer;
 }
 
+.title {
+    margin-bottom: 0px;
+}
+
 /* This is for the sake of Emacs. */
 /* Local Variables: */
 /* eval: (when (locate-library "rainbow-mode") (require 'rainbow-mode) (rainbow-mode)) */
