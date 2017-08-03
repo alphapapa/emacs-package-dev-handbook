@@ -27,6 +27,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
    - [[#damien-cassou][Damien Cassou]]
    - [[#john-wiegley][John Wiegley]]
   - [[#contributions][Contributions]]
+  - [[#code][Code]]
 * Emacs Lisp                                                          :elisp:
 
 ** Editing                                                         :editing:
@@ -38,7 +39,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 
 **** [[https://github.com/IvanMalison/multi-line][multi-line: multi-line everything from function invocations and definitions to array and map literals in a wide variety of languages]] :formatting:
 
-**** [[https://emacs.cafe/emacs/package/2017/08/01/beginend.html][beginend.el]]                                              :navigation:
+**** [[https://emacs.cafe/emacs/package/2017/08/01/beginend.html][beginend.el]] :navigation:
 :PROPERTIES:
 :ID:       a32ed391-8ce6-46b7-9367-8117829ce2e7
 :END:
@@ -117,7 +118,7 @@ For the sake of this post, we'll consider both pattern matching and destructurin
 
 Dash is a powerful library, and one of its features is powerful destructuring with its ~-let~ macro, and several others that work the same way.
 
-**** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Pattern-matching-case-statement.html][pcase]]                                                      :built_in:
+**** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Pattern-matching-case-statement.html][pcase]] :built_in:
 
 ~pcase~ is built-in to Emacs.  Its syntax can be confusing, but it is very powerful.
 
@@ -162,9 +163,9 @@ John is the current Emacs maintainer.
 
 Yes, please!  Please send pull requests and file issues on the [[https://github.com/alphapapa/emacs-package-dev-handbook][GitHub repo]].  This is intended to be a community project.
 
-* Code                                                             :noexport:
+* Code
 :PROPERTIES:
-:TOC:      ignore
+:TOC:      0
 :END:
 
 This section contains code used to add to and update this document.
