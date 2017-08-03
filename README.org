@@ -78,14 +78,21 @@ This package, by Damien Cassou and Matus Goljer, helps navigation by redefining 
 :PROPERTIES:
 :ID:       e806d7f3-43e9-4260-aae4-479efbd41653
 :END:
-** General
-*** [[https://github.com/magnars/dash.el][dash.el]]                                                          :dash:
+
+** General                                                         :general:
+
+*** Libraries                                                   :libraries:
+
+**** [[https://github.com/magnars/dash.el][dash.el]]                                                        :dash:
 :PROPERTIES:
 :ID:       e85e4252-ea03-4473-b52f-9393e7527fad
 :END:
 
 Dash is a powerful general-purpose library that provides many useful functions and macros.
-*** [[https://github.com/phillord/lentic][lentic: Create views of the same content in two buffers]]
+
+*** Tools                                                           :tools:
+
+**** [[https://github.com/phillord/lentic][lentic: Create views of the same content in two buffers]]
 :PROPERTIES:
 :ID:       0c220bc9-7173-4b0f-8955-e10ab6db640f
 :END:
@@ -190,6 +197,7 @@ A powerful, Racket-style pattern-matching library.
 **** [[https://github.com/phillord/assess][assess: Test support functions]]
 
 **** [[https://github.com/ecukes/ecukes][ecukes: Cucumber for Emacs]]
+
 ** Version control                                         :version_control:
 
 *** Packages                                                     :packages:
