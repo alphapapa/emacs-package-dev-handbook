@@ -5,9 +5,7 @@
 
 # TODO: Fix this link, something in here: http://orgmode.org/manual/Images-in-HTML-export.html#Images-in-HTML-export
 
-#+BEGIN_HTML
-<a href=https://alphapapa.github.io/dont-tread-on-emacs/><img src="dont-tread-on-emacs-150.png" align="right"></a>
-#+END_HTML
+#+HTML: <a href=https://alphapapa.github.io/dont-tread-on-emacs/><img src="dont-tread-on-emacs-150.png" align="right"></a>
 
 After developing some little Emacs packages for a year or so, I began to notice how I'd forget little things that I learned, and then I'd have to go hunting for that information again.  I also noticed how there are some issues for which there doesn't seem to be a "best practice" or "Standard Operating Procedure" to refer to.
 
