@@ -1,0 +1,36 @@
+
+
+* The Emacs Package Developer's Handbook                              :Emacs:
+
+After developing some little Emacs packages for a year or so, I began to notice how I'd forget little things that I learned, and then I'd have to go hunting for that information again.  I also noticed how there are some issues for which there doesn't seem to be a "best practice" or "Standard Operating Procedure" to refer to.
+
+So this is intended to be a place to collect and organize information related to Emacs package development.  Built with Emacs, by Emacs package developers, for Emacs package developers.
+
+** Contents
+:PROPERTIES:
+:TOC:      this
+:END:
+
+   - [[#emacs-lisp][Emacs Lisp]]
+    - [[#pattern-matching][Pattern Matching]]
+     - [[#articles][Articles]]
+      - [[#pattern-matching-in-emacs-lisp--wilfred-hughesblog][Pattern Matching in Emacs Lisp – Wilfred Hughes::Blog]]
+
+** Emacs Lisp                                                        :elisp:
+
+*** Pattern Matching                                        :destructuring:
+
+**** Articles                                                   :articles:
+
+***** [[http://www.wilfred.me.uk/blog/2017/03/19/pattern-matching-in-emacs-lisp/][Pattern Matching in Emacs Lisp – Wilfred Hughes::Blog]] :pcase:shadchen:cl:dash:
+:PROPERTIES:
+:archive.is: http://archive.is/J4DqY
+:END:
+
+#+BEGIN_QUOTE
+Pattern matching is invaluable in elisp. Lists are ubiquitous, and a small amount of pattern matching can often replace a ton of verbose list fiddling.
+
+Since this is Lisp, we have lots of choices! In this post, we'll compare [[https://www.gnu.org/software/emacs/manual/cl.html][cl.el]], [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Pattern-matching-case-statement.html][pcase.el]], [[https://github.com/magnars/dash.el][dash.el]], and [[https://github.com/VincentToups/shadchen-el][shadchen]], so you can choose the best fit for your project. We'll look at the most common use cases, and end with some recommendations.
+
+For the sake of this post, we'll consider both pattern matching and destructuring, as they're closely related concepts.
+#+END_QUOTE
