@@ -1,4 +1,4 @@
-
+#+OPTIONS: broken-links:t
 
 * The Emacs Package Developer's Handbook                              :Emacs:
 
@@ -6,7 +6,9 @@ After developing some little Emacs packages for a year or so, I began to notice 
 
 So this is intended to be a place to collect and organize information related to Emacs package development.  Built with Emacs, by Emacs package developers, for Emacs package developers.
 
-** Contents
+You can read this Org file directly, or you can read the [[https://alphapapa.github.io/emacs-package-dev-handbook/][HTML version]].
+
+** Contents                                                       :noexport:
 :PROPERTIES:
 :TOC:      this
 :END:
@@ -87,7 +89,7 @@ should be used instead. What confuses me is [[http://stackoverflow.com/a/3880510
 Can anyone clear up what the intended behaviour is?
 #+END_QUOTE
 
-* Code
+* Code                                                             :noexport:
 :PROPERTIES:
 :TOC:      ignore
 :END:
