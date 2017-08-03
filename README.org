@@ -19,10 +19,11 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 :END:
   - [[#emacs-lisp][Emacs Lisp]]
    - [[#buffers][Buffers]]
+   - [[#checkerslinters][Checkers/linters]]
    - [[#editing][Editing]]
    - [[#general][General]]
    - [[#packaging][Packaging]]
-   - [[#pattern-matching][Pattern-matching]]
+   - [[#pattern-matching][Pattern matching]]
    - [[#string-manipulation][String manipulation]]
    - [[#testing][Testing]]
    - [[#version-control][Version control]]
@@ -46,6 +47,10 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 :PROPERTIES:
 :ID:       6858c112-9756-43b4-a2e3-fa00a71e9367
 :END:
+
+** Checkers/linters                                       :linters:checkers:
+
+*** TODO Flycheck-package
 
 ** Editing                                                         :editing:
 :PROPERTIES:
@@ -116,7 +121,6 @@ Do not document these functions in the lispref.  http://lists.gnu.org/archive/ht
 :PROPERTIES:
 :ID:       0c220bc9-7173-4b0f-8955-e10ab6db640f
 :END:
-
 ** Packaging                                                     :packaging:
 :PROPERTIES:
 :TOC:      ignore-children
@@ -167,7 +171,7 @@ Can anyone clear up what the intended behaviour is?
 
 Developed by the current maintainer of Emacs, himself, John Wiegley.
 
-** Pattern-matching                         :destructuring:pattern_matching:
+** Pattern matching                         :destructuring:pattern_matching:
 :PROPERTIES:
 :TOC:      ignore-children
 :END:
