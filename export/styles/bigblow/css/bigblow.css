@@ -226,6 +226,10 @@ pre {
 
 }
 
+pre.src {
+    background-color: #002b36 !important;
+}
+
 code {
     background-color: #fdf6e3;
     border: 1px solid #DEDEDE;
