@@ -12,9 +12,11 @@ You can read this Org file directly, or you can read the [[https://alphapapa.git
 :PROPERTIES:
 :TOC:      this
 :END:
-   - [[#emacs-lisp][Emacs Lisp]]
-    - [[#pattern-matching][Pattern-matching]]
-    - [[#packaging][Packaging]]
+
+  - [[#emacs-lisp][Emacs Lisp]]
+   - [[#pattern-matching][Pattern-matching]]
+   - [[#editing][Editing]]
+   - [[#packaging][Packaging]]
 
 * Emacs Lisp                                                          :elisp:
 
@@ -60,6 +62,9 @@ Dash is a powerful library, and one of its features is powerful destructuring wi
 A powerful, Racket-style pattern-matching library.
 
 ** Editing                                                         :editing:
+:PROPERTIES:
+:TOC:      ignore-children
+:END:
 
 *** Tools                                                           :tools:
 
