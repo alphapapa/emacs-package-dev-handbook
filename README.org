@@ -89,7 +89,7 @@ This package, by Damien Cassou and Matus Goljer, helps navigation by redefining 
 
 *** Libraries                                                   :libraries:
 
-**** [[https://www.gnu.org/software/emacs/manual/html_node/cl/index.html][Common Lisp Extensions]] (=cl-lib=)
+**** [[https://www.gnu.org/software/emacs/manual/html_node/cl/index.html][Common Lisp Extensions]] (=cl-lib=)                            :built_in:
 
 This is the built-in =cl-lib= package which implements Common Lisp functions and control structures for Emacs Lisp.
 
