@@ -34,3 +34,24 @@ Since this is Lisp, we have lots of choices! In this post, we'll compare [[https
 
 For the sake of this post, we'll consider both pattern matching and destructuring, as they're closely related concepts.
 #+END_QUOTE
+
+* Code
+
+This section contains code used to add to and update this document.
+
+** TODO Automate adding new links and summaries
+
+*** TODO Get summary of page
+
+*** TODO Get archive.is link for page
+
+This bookmarklet should provide a way to get the URL:
+
+#+BEGIN_SRC javascript
+  javascript:void(open('https://archive.today/?run=1&url='+encodeURIComponent(document.location)))
+#+END_SRC
+
+*** TODO Insert new entry at point
+
+Maybe use capture templates and refile?
+
