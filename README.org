@@ -21,14 +21,19 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 :END:
   - [[#emacs-lisp][Emacs Lisp]]
    - [[#editing][Editing]]
+   - [[#general][General]]
    - [[#packaging][Packaging]]
    - [[#pattern-matching][Pattern-matching]]
+   - [[#string-manipulation][String manipulation]]
+   - [[#testing][Testing]]
+   - [[#version-control][Version control]]
   - [[#people][People]]
-   - [[#damien-cassou][Damien Cassou]]
-   - [[#john-wiegley][John Wiegley]]
   - [[#contributions][Contributions]]
   - [[#code][Code]]
 * Emacs Lisp                                                          :elisp:
+:PROPERTIES:
+:TOC:      2
+:END:
 
 ** Editing                                                         :editing:
 :PROPERTIES:
@@ -176,7 +181,7 @@ One of the "killer apps" for Emacs--and for git!
 
 * People                                                             :people:
 :PROPERTIES:
-:TOC:      2
+:TOC: ignore-children
 :END:
 
 The Emacs community is so full of brilliant, generous people that I can't keep track of them all!  I will surely miss many, and I will add them in no particular order, but merely as I come across them again and again.
@@ -256,7 +261,7 @@ Maybe use capture templates and refile?
 
 Currently using =[[https://github.com/alphapapa/org-make-toc][org-make-toc]]=, which is uploaded but unfinished and unpackaged.
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :results silent
   (-when-let* ((tree (cddr (org-element-parse-buffer 'headline)))
                (tree (org-make-toc--remove-ignored-entries tree))
                (tree (org-make-toc--remove-higher-level-than-toc tree))
@@ -270,6 +275,8 @@ Currently using =[[https://github.com/alphapapa/org-make-toc][org-make-toc]]=, w
 I love Emacs and Org mode.  This makes it so easy to make the document...alive!  And automated!  Beautiful.
 
 # Local Variables:
+# eval: (require 'org-make-toc)
+# before-save-hook: (lambda nil (org-make-toc-make-toc))
 # after-save-hook: (lambda nil (when (org-html-export-to-html) (rename-file "README.html" "index.html" t)))
 # org-export-with-properties: ()
 # End:
