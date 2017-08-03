@@ -23,7 +23,9 @@ You can read this Org file directly, or you can read the [[https://alphapapa.git
    - [[#editing][Editing]]
    - [[#packaging][Packaging]]
    - [[#pattern-matching][Pattern-matching]]
-
+  - [[#people][People]]
+   - [[#damien-cassou][Damien Cassou]]
+   - [[#john-wiegley][John Wiegley]]
 * Emacs Lisp                                                          :elisp:
 
 ** Editing                                                         :editing:
@@ -34,6 +36,13 @@ You can read this Org file directly, or you can read the [[https://alphapapa.git
 *** Tools                                                           :tools:
 
 **** [[https://github.com/IvanMalison/multi-line][multi-line: multi-line everything from function invocations and definitions to array and map literals in a wide variety of languages]] :formatting:
+
+**** [[https://emacs.cafe/emacs/package/2017/08/01/beginend.html][beginend.el]]                                              :navigation:
+:PROPERTIES:
+:ID:       a32ed391-8ce6-46b7-9367-8117829ce2e7
+:END:
+
+This package, by Damien Cassou and Matus Goljer, helps navigation by redefining the ~M-<~ and ~M->~ keys do, depending on the major-mode.
 
 ** Packaging                                                     :packaging:
 :PROPERTIES:
@@ -75,6 +84,9 @@ Can anyone clear up what the intended behaviour is?
 ***** [[https://github.com/raxod502/straight.el][straight.el: Next-generation, purely functional package manager for the Emacs hacker]]
 
 ***** [[https://github.com/jwiegley/use-package][use-package: A use-package declaration for simplifying your .emacs]]
+:PROPERTIES:
+:ID:       540617fd-d4ff-47df-89da-6c48c8f27785
+:END:
 
 Developed by the current maintainer of Emacs, himself, John Wiegley.
 
@@ -118,6 +130,32 @@ Dash is a powerful library, and one of its features is powerful destructuring wi
 **** [[https://github.com/VincentToups/shadchen-el][shadchen-el]]
 
 A powerful, Racket-style pattern-matching library.
+
+* People                                                             :people:
+:PROPERTIES:
+:TOC:      2
+:END:
+
+The Emacs community is so full of brilliant, generous people that I can't keep track of them all!  I will surely miss many, and I will add them in no particular order, but merely as I come across them again and again.
+
+** Damien Cassou
+
++  [[https://github.com/DamienCassou][GitHub]]
+
+*** Packages
+
+**** [[id:a32ed391-8ce6-46b7-9367-8117829ce2e7][beginend.el]]
+
+** John Wiegley
+
+John is the current Emacs maintainer.
+
++  [[http://newartisans.com/][Blog]]
++  [[https://github.com/jwiegley][GitHub]]
+
+*** Packages
+
+**** [[id:540617fd-d4ff-47df-89da-6c48c8f27785][use-package: A use-package declaration for simplifying your .emacs]]
 
 * Code                                                             :noexport:
 :PROPERTIES:
