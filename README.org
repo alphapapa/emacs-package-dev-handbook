@@ -12,7 +12,6 @@ You can read this Org file directly, or you can read the [[https://alphapapa.git
 :PROPERTIES:
 :TOC:      this
 :END:
-
   - [[#emacs-lisp][Emacs Lisp]]
    - [[#editing][Editing]]
    - [[#packaging][Packaging]]
@@ -34,9 +33,11 @@ You can read this Org file directly, or you can read the [[https://alphapapa.git
 :TOC:      ignore-children
 :END:
 
-*** Autoloads                                                   :autoloads:
+*** Best practices                                         :best_practices:
 
-**** TODO Autoloading macro-generated functions
+**** Autoloads                                                 :autoloads:
+
+***** TODO Autoloading macro-generated functions
 
 This may actually be a bug, or at least an unanswered question.
 
