@@ -114,11 +114,11 @@ For the sake of this post, we'll consider both pattern matching and destructurin
 
 *** Libraries                                                   :libraries:
 
-**** [[https://github.com/magnars/dash.el][dash.el]]
+**** [[https://github.com/magnars/dash.el][dash.el]] :dash:
 
 Dash is a powerful library, and one of its features is powerful destructuring with its ~-let~ macro, and several others that work the same way.
 
-**** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Pattern-matching-case-statement.html][pcase]] :built_in:
+**** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Pattern-matching-case-statement.html][pcase]]                                                :built_in:pcase:
 
 ~pcase~ is built-in to Emacs.  Its syntax can be confusing, but it is very powerful.
 
@@ -129,7 +129,7 @@ Dash is a powerful library, and one of its features is powerful destructuring wi
 :archive.is: http://archive.is/FAzd8
 :END:
 
-**** [[https://github.com/VincentToups/shadchen-el][shadchen-el]]
+**** [[https://github.com/VincentToups/shadchen-el][shadchen-el]]                                             :shadchen:el:
 
 A powerful, Racket-style pattern-matching library.
 
@@ -201,3 +201,11 @@ Currently using =[[https://github.com/alphapapa/org-make-toc][org-make-toc]]=, w
                (pos (org-find-property "TOC" "this")))
     (org-make-toc--replace-entry-contents pos list))
 #+END_SRC
+
+** Config
+
+I love Emacs and Org mode.  This makes it so easy to make the document...alive!  And automated!  Beautiful.
+
+# Local Variables:
+# after-save-hook: (lambda nil (when (org-html-export-to-html) (rename-file "README.html" "index.html" t)))
+# End:
