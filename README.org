@@ -26,6 +26,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
    - [[#string-manipulation][String manipulation]]
    - [[#testing][Testing]]
    - [[#version-control][Version control]]
+  - [[#blogs][Blogs]]
   - [[#people][People]]
   - [[#contributions][Contributions]]
   - [[#code][Code]]
@@ -53,13 +54,17 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 
 *** Tools                                                           :tools:
 
+**** [[https://github.com/Malabarba/aggressive-indent-mode][aggressive-indent-mode: minor mode that keeps your code always indented]] :formatting:indentation:parentheses:
+:PROPERTIES:
+:ID:       4dc7c607-a116-4c39-b063-fe34bd20cccf
+:END:
+
 **** [[https://emacs.cafe/emacs/package/2017/08/01/beginend.html][beginend.el]] :navigation:
 :PROPERTIES:
 :ID:       a32ed391-8ce6-46b7-9367-8117829ce2e7
 :END:
 
 This package, by Damien Cassou and Matus Goljer, helps navigation by redefining the ~M-<~ and ~M->~ keys do, depending on the major-mode.
-
 **** [[https://github.com/magnars/expand-region.el][expand-region.el: Increase selected region by semantic units]] :selection:region:
 :PROPERTIES:
 :ID:       88b496f4-8230-474e-b2ee-d8e4e8ca30d0
@@ -149,6 +154,10 @@ Can anyone clear up what the intended behaviour is?
 
 **** Package installation/management             :installation:management:
 
+***** [[https://github.com/Malabarba/paradox][paradox: modernizing Emacs' Package Menu. With package ratings, usage statistics, customizability, and more.]]
+:PROPERTIES:
+:ID:       2c31eae6-eeba-433f-bc26-9465d5aa8537
+:END:
 ***** [[https://github.com/raxod502/straight.el][straight.el: Next-generation, purely functional package manager for the Emacs hacker]]
 
 ***** [[https://github.com/jwiegley/use-package][use-package: A use-package declaration for simplifying your .emacs]]
@@ -198,6 +207,37 @@ Dash is a powerful library, and one of its features is powerful destructuring wi
 **** [[https://github.com/VincentToups/shadchen-el][shadchen-el]]                                             :shadchen:el:
 
 A powerful, Racket-style pattern-matching library.
+
+*** Tools                                                           :tools:
+
+**** let-alist                                             :alists:macros:
+
+#+BEGIN_QUOTE
+let-alist is the best thing to happen to associative lists since the invention of the cons cell. This little macro lets you easily access the contents of an alist, concisely and efficiently, without having to specify them preemptively. It comes built-in with 25.1, and is also available on GNU Elpa for older Emacsen.
+#+END_QUOTE
+
+[[http://endlessparentheses.com/new-on-elpa-and-in-emacs-25-1-let-alist.html][Example]]:
+
+#+BEGIN_SRC elisp
+  (defun sx-question-list--print-info (question-data)
+    "DOC"
+    (let-alist question-data
+      (list
+       question-data
+       (vector
+        (int-to-string .score)
+        (int-to-string .answer_count)
+        .title " "
+        .owner.display_name
+        .last_activity_date sx-question-list-ago-string
+        " " .tags))))
+#+END_SRC
+
+***** Articles                                                 :articles:
+
+****** [[http://endlessparentheses.com/new-on-elpa-and-in-emacs-25-1-let-alist.html][New on Elpa and in Emacs 25.1: let-alist · Endless Parentheses]]
+
+Here Artur introduces the macro and gives examples.
 
 ** String manipulation                                             :strings:
 
@@ -281,7 +321,18 @@ Call this macro from an Org source block and you'll get a results block showing 
 :END:
 
 One of the "killer apps" for Emacs--and for git!
+* Blogs                                                               :blogs:
+:PROPERTIES:
+:TOC:      0
+:END:
 
+** [[http://planet.emacsen.org/][Planet Emacsen]]
+
+This is the main community aggregator.  You can find just about everyone's Emacs-related blog posts here.
+
+** [[id:53c0b780-7d67-47a5-ad30-090526e2018f][Artur Malabarba's /Endless Parentheses/]]
+
+** [[id:12c7b803-9af2-4010-bca4-06304fbb69c7][Sacha Chua's /Living an Awesome Life/]]
 * People                                                             :people:
 :PROPERTIES:
 :TOC: ignore-children
@@ -289,6 +340,25 @@ One of the "killer apps" for Emacs--and for git!
 
 The Emacs community is so full of brilliant, generous people that I can't keep track of them all!  I will surely miss many, and I will add them in no particular order, but merely as I come across them again and again.
 
+** Artur Malabarba
+:PROPERTIES:
+:ID:       53c0b780-7d67-47a5-ad30-090526e2018f
+:END:
+
+Another prolific Emacs contributor, package developer, and blogger.
+
++  [[http://endlessparentheses.com/new-on-elpa-and-in-emacs-25-1-let-alist.html][Blog: /Endless Parentheses/]]
++  [[https://github.com/Malabarba][GitHub]]
+
+
+*** Packages
+:PROPERTIES:
+:ID:       ae5465ac-9fda-4c1a-9900-4fd1eeb173da
+:END:
+
+**** [[id:4dc7c607-a116-4c39-b063-fe34bd20cccf][aggressive-indent-mode]]
+
+**** [[id:2c31eae6-eeba-433f-bc26-9465d5aa8537][paradox]]
 ** Damien Cassou
 
 +  [[https://github.com/DamienCassou][GitHub]]
@@ -354,6 +424,17 @@ Jonas is a prolific Emacs package developer and maintainer.  You could spend hou
 **** [[id:0c220bc9-7173-4b0f-8955-e10ab6db640f][lentic: Create views of the same content in two buffers]]
 
 **** [[id:6858c112-9756-43b4-a2e3-fa00a71e9367][m-buffer-el]]
+
+** Sacha Chua
+:PROPERTIES:
+:ID:       12c7b803-9af2-4010-bca4-06304fbb69c7
+:END:
+
+Sacha could easily be nominated the official Emacs ambassador, were there to be one.  Her contributions to the Emacs and Org-mode communities are innumerable.  One of her greatest recent contributions is her weekly [[http://sachachua.com/blog/category/geek/emacs/emacs-news/][Emacs news]] posts that serve as a digest of everything that happened in the Emacs world over the past week.
+
++  [[http://sachachua.com/blog/][Blog: /Living an Awesome Life/]]
++  [[http://github.com/sachac/][GitHub]]
+
 * Contributions
 
 Yes, please!  Please send pull requests and file issues on the [[https://github.com/alphapapa/emacs-package-dev-handbook][GitHub repo]].  This is intended to be a community project.
