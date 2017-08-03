@@ -256,6 +256,11 @@ Here Artur introduces the macro and gives examples.
 
 **** [[https://github.com/phillord/assess][assess: Test support functions]]
 
+**** [[https://github.com/jorgenschaefer/emacs-buttercup][buttercup: Behavior-Driven Emacs Lisp Testing]]
+:PROPERTIES:
+:ID:       108f5eb6-7307-4d4b-aaf1-dd2a8bb65a58
+:END:
+
 **** [[https://github.com/ecukes/ecukes][ecukes: Cucumber for Emacs]]
 
 **** [[https://www.gnu.org/software/emacs/manual/html_node/ert/][Emacs Lisp Regression Testing]] (ERT)                        :built_in:
@@ -369,6 +374,7 @@ Another prolific Emacs contributor, package developer, and blogger.
 **** [[id:4dc7c607-a116-4c39-b063-fe34bd20cccf][aggressive-indent-mode]]
 
 **** [[id:2c31eae6-eeba-433f-bc26-9465d5aa8537][paradox]]
+
 ** Damien Cassou
 
 +  [[https://github.com/DamienCassou][GitHub]]
@@ -398,6 +404,18 @@ Jonas is a prolific Emacs package developer and maintainer.  You could spend hou
 
 **** [[id:43daf455-caeb-4399-b1bb-15a10603018b][Magit]]
 
+** Jorgen Schäfer
+
+*** Packages                                                     :packages:
+
+**** [[id:108f5eb6-7307-4d4b-aaf1-dd2a8bb65a58][buttercup: Behavior-Driven Emacs Lisp Testing]]
+
+**** [[https://github.com/jorgenschaefer/circe][Circe, a Client for IRC in Emacs]]
+
+**** [[https://github.com/jorgenschaefer/elpy][elpy: Emacs Python Development Environment]]
+
+**** [[https://github.com/jorgenschaefer/pyvenv][pyvenv: Python virtual environment interface]]
+
 ** Magnar Sveen
 
 +  [[https://github.com/magnars][GitHub]]
@@ -408,7 +426,9 @@ Jonas is a prolific Emacs package developer and maintainer.  You could spend hou
 **** [[id:e85e4252-ea03-4473-b52f-9393e7527fad][dash.el]]
 
 **** [[id:88b496f4-8230-474e-b2ee-d8e4e8ca30d0][expand-region.el]]
+
 **** [[id:deefcbc5-0c37-4936-a820-df99ae31a401][multiple-cursors.el]]
+
 **** [[*%5B%5Bhttps://github.com/magnars/s.el%5D%5Bs.el:%20The%20long%20lost%20Emacs%20string%20manipulation%20library%5D%5D][s.el]]
 
 ** Matus Goljer
