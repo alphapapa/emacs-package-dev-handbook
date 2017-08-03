@@ -200,6 +200,60 @@ A powerful, Racket-style pattern-matching library.
 
 This is the standard, built-in Emacs testing library, used by core code and third-party packages alike.
 
+*** Tools                                                    :tools:
+
+**** bench macro                                                  :macros:
+
+From Phil Lord's [[http://phillord.github.io/m-buffer-el/#sec-5-1-2][m-buffer-el]]:
+
+#+BEGIN_SRC elisp
+  (defmacro bench (&rest body)
+    (declare (indent defun))
+    `(format "%e"
+             (car
+              (benchmark-run-compiled
+                  1000000
+                (progn
+                  ,@body)))))
+
+  ;; Use like this:
+  (bench
+    (current-buffer)
+    (point))
+#+END_SRC
+
+**** elp-profile macro                                            :macros:
+
+Call this macro from an Org source block and you'll get a results block showing which 20 functions were called the most times, how long they took to run, etc.  Set =prefixes= to a list of strings matching the prefixes of the functions you want to instrument.
+
+#+BEGIN_SRC elisp
+  (defmacro elp-profile (times &rest body)
+    (declare (indent defun))
+    `(let ((prefixes '("string-" "s-" "buffer-" "append" "delq" "map"
+                       "list" "car" "save-" "outline-" "delete-dups"
+                       "sort" "line-" "nth" "concat" "char-to-string"
+                       "rx-" "goto-" "when" "search-" "re-"))
+           output)
+       (dolist (prefix prefixes)
+         (elp-instrument-package prefix))
+       (dotimes (x ,times)
+         ,@body)
+       (elp-results)
+       (elp-restore-all)
+       (point-min)
+       (forward-line 20)
+       (delete-region (point) (point-max))
+       (setq output (buffer-substring-no-properties (point-min) (point-max)))
+       (kill-buffer)
+       (delete-window)
+       output))
+
+  ;; Use like this:
+  (elp-profile 10
+    (goto-char (point-min))
+    (search-forward "something"))
+#+END_SRC
+
 ** Version control                                         :version_control:
 
 *** Packages                                                     :packages:
