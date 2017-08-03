@@ -196,6 +196,10 @@ A powerful, Racket-style pattern-matching library.
 
 **** [[https://github.com/ecukes/ecukes][ecukes: Cucumber for Emacs]]
 
+**** [[https://www.gnu.org/software/emacs/manual/html_node/ert/][Emacs Lisp Regression Testing]] (ERT)                        :built_in:
+
+This is the standard, built-in Emacs testing library, used by core code and third-party packages alike.
+
 ** Version control                                         :version_control:
 
 *** Packages                                                     :packages:
