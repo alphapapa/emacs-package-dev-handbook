@@ -13,6 +13,8 @@ So this is intended to be a place to collect and organize information related to
 
 You can read this Org file directly on the [[https://github.com/alphapapa/emacs-package-dev-handbook][repository]], or you can read the [[https://alphapapa.github.io/emacs-package-dev-handbook/][HTML version]].
 
+*Note:* The primary sections are listed at the top of the page in the horizontal bar.
+
 * Contents                                                         :noexport:
 :PROPERTIES:
 :TOC:      this
