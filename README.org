@@ -14,52 +14,11 @@ You can read this Org file directly, or you can read the [[https://alphapapa.git
 :END:
 
   - [[#emacs-lisp][Emacs Lisp]]
-   - [[#pattern-matching][Pattern-matching]]
    - [[#editing][Editing]]
    - [[#packaging][Packaging]]
+   - [[#pattern-matching][Pattern-matching]]
 
 * Emacs Lisp                                                          :elisp:
-
-** Pattern-matching                         :destructuring:pattern_matching:
-:PROPERTIES:
-:TOC:      ignore-children
-:END:
-
-*** Articles                                                     :articles:
-
-**** [[http://www.wilfred.me.uk/blog/2017/03/19/pattern-matching-in-emacs-lisp/][Pattern Matching in Emacs Lisp – Wilfred Hughes::Blog]] :pcase:shadchen:cl:dash:
-:PROPERTIES:
-:archive.is: http://archive.is/J4DqY
-:END:
-
-#+BEGIN_QUOTE
-Pattern matching is invaluable in elisp. Lists are ubiquitous, and a small amount of pattern matching can often replace a ton of verbose list fiddling.
-
-Since this is Lisp, we have lots of choices! In this post, we'll compare [[https://www.gnu.org/software/emacs/manual/cl.html][cl.el]], [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Pattern-matching-case-statement.html][pcase.el]], [[https://github.com/magnars/dash.el][dash.el]], and [[https://github.com/VincentToups/shadchen-el][shadchen]], so you can choose the best fit for your project. We'll look at the most common use cases, and end with some recommendations.
-
-For the sake of this post, we'll consider both pattern matching and destructuring, as they're closely related concepts.
-#+END_QUOTE
-
-*** Libraries                                                   :libraries:
-
-**** [[https://github.com/magnars/dash.el][dash.el]]
-
-Dash is a powerful library, and one of its features is powerful destructuring with its ~-let~ macro, and several others that work the same way.
-
-**** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Pattern-matching-case-statement.html][pcase]]                                                      :built_in:
-
-~pcase~ is built-in to Emacs.  Its syntax can be confusing, but it is very powerful.
-
-***** Articles                                                 :articles:
-
-****** [[http://newartisans.com/2016/01/pattern-matching-with-pcase/][Emacs: Pattern Matching with pcase - Lost in Technopolis]]
-:PROPERTIES:
-:archive.is: http://archive.is/FAzd8
-:END:
-
-**** [[https://github.com/VincentToups/shadchen-el][shadchen-el]]
-
-A powerful, Racket-style pattern-matching library.
 
 ** Editing                                                         :editing:
 :PROPERTIES:
@@ -110,6 +69,47 @@ Can anyone clear up what the intended behaviour is?
 ***** [[https://github.com/jwiegley/use-package][use-package: A use-package declaration for simplifying your .emacs]]
 
 Developed by the current maintainer of Emacs, himself, John Wiegley.
+
+** Pattern-matching                         :destructuring:pattern_matching:
+:PROPERTIES:
+:TOC:      ignore-children
+:END:
+
+*** Articles                                                     :articles:
+
+**** [[http://www.wilfred.me.uk/blog/2017/03/19/pattern-matching-in-emacs-lisp/][Pattern Matching in Emacs Lisp – Wilfred Hughes::Blog]] :pcase:shadchen:cl:dash:
+:PROPERTIES:
+:archive.is: http://archive.is/J4DqY
+:END:
+
+#+BEGIN_QUOTE
+Pattern matching is invaluable in elisp. Lists are ubiquitous, and a small amount of pattern matching can often replace a ton of verbose list fiddling.
+
+Since this is Lisp, we have lots of choices! In this post, we'll compare [[https://www.gnu.org/software/emacs/manual/cl.html][cl.el]], [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Pattern-matching-case-statement.html][pcase.el]], [[https://github.com/magnars/dash.el][dash.el]], and [[https://github.com/VincentToups/shadchen-el][shadchen]], so you can choose the best fit for your project. We'll look at the most common use cases, and end with some recommendations.
+
+For the sake of this post, we'll consider both pattern matching and destructuring, as they're closely related concepts.
+#+END_QUOTE
+
+*** Libraries                                                   :libraries:
+
+**** [[https://github.com/magnars/dash.el][dash.el]]
+
+Dash is a powerful library, and one of its features is powerful destructuring with its ~-let~ macro, and several others that work the same way.
+
+**** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Pattern-matching-case-statement.html][pcase]]                                                      :built_in:
+
+~pcase~ is built-in to Emacs.  Its syntax can be confusing, but it is very powerful.
+
+***** Articles                                                 :articles:
+
+****** [[http://newartisans.com/2016/01/pattern-matching-with-pcase/][Emacs: Pattern Matching with pcase - Lost in Technopolis]]
+:PROPERTIES:
+:archive.is: http://archive.is/FAzd8
+:END:
+
+**** [[https://github.com/VincentToups/shadchen-el][shadchen-el]]
+
+A powerful, Racket-style pattern-matching library.
 
 * Code                                                             :noexport:
 :PROPERTIES:

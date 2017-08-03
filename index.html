@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-08-03 Thu 09:22 -->
+<!-- 2017-08-03 Thu 09:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -237,18 +237,23 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org58f0fbe">1. Emacs Lisp&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a>
+<li><a href="#org95cb36a">1. Emacs Lisp&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a>
 <ul>
-<li><a href="#orgde9b072">1.1. Pattern-matching&#xa0;&#xa0;&#xa0;<span class="tag"><span class="destructuring">destructuring</span>&#xa0;<span class="pattern_matching">pattern_matching</span></span></a>
+<li><a href="#org66c877b">1.1. Editing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="editing">editing</span></span></a>
 <ul>
-<li><a href="#org8c3f475">1.1.1. Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span></a></li>
-<li><a href="#org3046f8e">1.1.2. Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a></li>
+<li><a href="#org4190ee7">1.1.1. Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a></li>
 </ul>
 </li>
-<li><a href="#org26d5625">1.2. Packaging&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packaging">packaging</span></span></a>
+<li><a href="#org527564f">1.2. Packaging&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packaging">packaging</span></span></a>
 <ul>
-<li><a href="#orgc260b70">1.2.1. Autoloads&#xa0;&#xa0;&#xa0;<span class="tag"><span class="autoloads">autoloads</span></span></a></li>
-<li><a href="#org2e3c262">1.2.2. Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a></li>
+<li><a href="#org58c3118">1.2.1. Autoloads&#xa0;&#xa0;&#xa0;<span class="tag"><span class="autoloads">autoloads</span></span></a></li>
+<li><a href="#org0feb075">1.2.2. Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a></li>
+</ul>
+</li>
+<li><a href="#orgdda8a6b">1.3. Pattern-matching&#xa0;&#xa0;&#xa0;<span class="tag"><span class="destructuring">destructuring</span>&#xa0;<span class="pattern_matching">pattern_matching</span></span></a>
+<ul>
+<li><a href="#orga9a0b6e">1.3.1. Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span></a></li>
+<li><a href="#orgd2020e3">1.3.2. Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a></li>
 </ul>
 </li>
 </ul>
@@ -268,69 +273,30 @@ So this is intended to be a place to collect and organize information related to
 You can read this Org file directly, or you can read the <a href="https://alphapapa.github.io/emacs-package-dev-handbook/">HTML version</a>.
 </p>
 
-<div id="outline-container-org58f0fbe" class="outline-2">
-<h2 id="org58f0fbe"><span class="section-number-2">1</span> Emacs Lisp&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h2>
+<div id="outline-container-org95cb36a" class="outline-2">
+<h2 id="org95cb36a"><span class="section-number-2">1</span> Emacs Lisp&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-orgde9b072" class="outline-3">
-<h3 id="orgde9b072"><span class="section-number-3">1.1</span> Pattern-matching&#xa0;&#xa0;&#xa0;<span class="tag"><span class="destructuring">destructuring</span>&#xa0;<span class="pattern_matching">pattern_matching</span></span></h3>
+</div><div id="outline-container-org66c877b" class="outline-3">
+<h3 id="org66c877b"><span class="section-number-3">1.1</span> Editing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="editing">editing</span></span></h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
 
-<div id="outline-container-org8c3f475" class="outline-4">
-<h4 id="org8c3f475"><span class="section-number-4">1.1.1</span> Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span></h4>
+<div id="outline-container-org4190ee7" class="outline-4">
+<h4 id="org4190ee7"><span class="section-number-4">1.1.1</span> Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
 <div class="outline-text-4" id="text-1-1-1">
-</div><ol class="org-ol"><li><a id="orgef7a743"></a><a href="http://www.wilfred.me.uk/blog/2017/03/19/pattern-matching-in-emacs-lisp/">Pattern Matching in Emacs Lisp – Wilfred Hughes::Blog</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pcase">pcase</span>&#xa0;<span class="shadchen">shadchen</span>&#xa0;<span class="cl">cl</span>&#xa0;<span class="dash">dash</span></span><br /><div class="outline-text-5" id="text-1-1-1-1">
-<blockquote>
-<p>
-Pattern matching is invaluable in elisp. Lists are ubiquitous, and a small amount of pattern matching can often replace a ton of verbose list fiddling.
-</p>
-
-<p>
-Since this is Lisp, we have lots of choices! In this post, we'll compare <a href="https://www.gnu.org/software/emacs/manual/cl.html">cl.el</a>, <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Pattern-matching-case-statement.html">pcase.el</a>, <a href="https://github.com/magnars/dash.el">dash.el</a>, and <a href="https://github.com/VincentToups/shadchen-el">shadchen</a>, so you can choose the best fit for your project. We'll look at the most common use cases, and end with some recommendations.
-</p>
-
-<p>
-For the sake of this post, we'll consider both pattern matching and destructuring, as they're closely related concepts.
-</p>
-</blockquote>
-</div></li></ol>
-</div>
-
-<div id="outline-container-org3046f8e" class="outline-4">
-<h4 id="org3046f8e"><span class="section-number-4">1.1.2</span> Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
-<div class="outline-text-4" id="text-1-1-2">
-</div><ol class="org-ol"><li><a id="orgfc9c976"></a><a href="https://github.com/magnars/dash.el">dash.el</a><br /><div class="outline-text-5" id="text-1-1-2-1">
-<p>
-Dash is a powerful library, and one of its features is powerful destructuring with its <code>-let</code> macro, and several others that work the same way.
-</p>
-</div></li>
-
-<li><a id="orgcebc0f4"></a><a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Pattern-matching-case-statement.html">pcase</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span></span><br /><div class="outline-text-5" id="text-1-1-2-2">
-<p>
-<code>pcase</code> is built-in to Emacs.  Its syntax can be confusing, but it is very powerful.
-</p>
-</div>
-
-<ol class="org-ol"><li><a id="orgc16b635"></a>Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span><br /><ol class="org-ol"><li><a id="orgecc8538"></a><a href="http://newartisans.com/2016/01/pattern-matching-with-pcase/">Emacs: Pattern Matching with pcase - Lost in Technopolis</a><br /><div class="outline-text-7" id="text-1-1-2-2-1-1">
-</div></li></ol></li></ol></li>
-
-<li><a id="orgf532f3d"></a><a href="https://github.com/VincentToups/shadchen-el">shadchen-el</a><br /><div class="outline-text-5" id="text-1-1-2-3">
-<p>
-A powerful, Racket-style pattern-matching library.
-</p>
-</div></li></ol>
+</div><ol class="org-ol"><li><a id="org966cbf9"></a><a href="https://github.com/IvanMalison/multi-line">multi-line: multi-line everything from function invocations and definitions to array and map literals in a wide variety of languages</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="formatting">formatting</span></span><br /></li></ol>
 </div>
 </div>
 
-<div id="outline-container-org26d5625" class="outline-3">
-<h3 id="org26d5625"><span class="section-number-3">1.2</span> Packaging&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packaging">packaging</span></span></h3>
+<div id="outline-container-org527564f" class="outline-3">
+<h3 id="org527564f"><span class="section-number-3">1.2</span> Packaging&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packaging">packaging</span></span></h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
 
-<div id="outline-container-orgc260b70" class="outline-4">
-<h4 id="orgc260b70"><span class="section-number-4">1.2.1</span> Autoloads&#xa0;&#xa0;&#xa0;<span class="tag"><span class="autoloads">autoloads</span></span></h4>
+<div id="outline-container-org58c3118" class="outline-4">
+<h4 id="org58c3118"><span class="section-number-4">1.2.1</span> Autoloads&#xa0;&#xa0;&#xa0;<span class="tag"><span class="autoloads">autoloads</span></span></h4>
 <div class="outline-text-4" id="text-1-2-1">
-</div><ol class="org-ol"><li><a id="orge3cd17d"></a><span class="todo TODO">TODO</span> Autoloading macro-generated functions<br /><div class="outline-text-5" id="text-1-2-1-1">
+</div><ol class="org-ol"><li><a id="org62e4ef4"></a><span class="todo TODO">TODO</span> Autoloading macro-generated functions<br /><div class="outline-text-5" id="text-1-2-1-1">
 <p>
 This may actually be a bug, or at least an unanswered question.
 </p>
@@ -367,23 +333,74 @@ Can anyone clear up what the intended behaviour is?
 </div></li></ol>
 </div>
 
-<div id="outline-container-org2e3c262" class="outline-4">
-<h4 id="org2e3c262"><span class="section-number-4">1.2.2</span> Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
+<div id="outline-container-org0feb075" class="outline-4">
+<h4 id="org0feb075"><span class="section-number-4">1.2.2</span> Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
 <div class="outline-text-4" id="text-1-2-2">
-</div><ol class="org-ol"><li><a id="org9c339ae"></a>Package installation/management&#xa0;&#xa0;&#xa0;<span class="tag"><span class="installation">installation</span>&#xa0;<span class="management">management</span></span><br /><ol class="org-ol"><li><a id="org6d8d829"></a><a href="https://github.com/raxod502/straight.el">straight.el: Next-generation, purely functional package manager for the Emacs hacker</a><br /></li>
+</div><ol class="org-ol"><li><a id="org407d87d"></a>Package installation/management&#xa0;&#xa0;&#xa0;<span class="tag"><span class="installation">installation</span>&#xa0;<span class="management">management</span></span><br /><ol class="org-ol"><li><a id="org52b7878"></a><a href="https://github.com/raxod502/straight.el">straight.el: Next-generation, purely functional package manager for the Emacs hacker</a><br /></li>
 
-<li><a id="orgcb7f972"></a><a href="https://github.com/jwiegley/use-package">use-package: A use-package declaration for simplifying your .emacs</a><br /><div class="outline-text-6" id="text-1-2-2-1-2">
+<li><a id="org78e8558"></a><a href="https://github.com/jwiegley/use-package">use-package: A use-package declaration for simplifying your .emacs</a><br /><div class="outline-text-6" id="text-1-2-2-1-2">
 <p>
 Developed by the current maintainer of Emacs, himself, John Wiegley.
 </p>
 </div></li></ol></li></ol>
 </div>
 </div>
+
+<div id="outline-container-orgdda8a6b" class="outline-3">
+<h3 id="orgdda8a6b"><span class="section-number-3">1.3</span> Pattern-matching&#xa0;&#xa0;&#xa0;<span class="tag"><span class="destructuring">destructuring</span>&#xa0;<span class="pattern_matching">pattern_matching</span></span></h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+
+<div id="outline-container-orga9a0b6e" class="outline-4">
+<h4 id="orga9a0b6e"><span class="section-number-4">1.3.1</span> Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span></h4>
+<div class="outline-text-4" id="text-1-3-1">
+</div><ol class="org-ol"><li><a id="org82435cf"></a><a href="http://www.wilfred.me.uk/blog/2017/03/19/pattern-matching-in-emacs-lisp/">Pattern Matching in Emacs Lisp – Wilfred Hughes::Blog</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pcase">pcase</span>&#xa0;<span class="shadchen">shadchen</span>&#xa0;<span class="cl">cl</span>&#xa0;<span class="dash">dash</span></span><br /><div class="outline-text-5" id="text-1-3-1-1">
+<blockquote>
+<p>
+Pattern matching is invaluable in elisp. Lists are ubiquitous, and a small amount of pattern matching can often replace a ton of verbose list fiddling.
+</p>
+
+<p>
+Since this is Lisp, we have lots of choices! In this post, we'll compare <a href="https://www.gnu.org/software/emacs/manual/cl.html">cl.el</a>, <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Pattern-matching-case-statement.html">pcase.el</a>, <a href="https://github.com/magnars/dash.el">dash.el</a>, and <a href="https://github.com/VincentToups/shadchen-el">shadchen</a>, so you can choose the best fit for your project. We'll look at the most common use cases, and end with some recommendations.
+</p>
+
+<p>
+For the sake of this post, we'll consider both pattern matching and destructuring, as they're closely related concepts.
+</p>
+</blockquote>
+</div></li></ol>
+</div>
+
+<div id="outline-container-orgd2020e3" class="outline-4">
+<h4 id="orgd2020e3"><span class="section-number-4">1.3.2</span> Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
+<div class="outline-text-4" id="text-1-3-2">
+</div><ol class="org-ol"><li><a id="orgbe68b55"></a><a href="https://github.com/magnars/dash.el">dash.el</a><br /><div class="outline-text-5" id="text-1-3-2-1">
+<p>
+Dash is a powerful library, and one of its features is powerful destructuring with its <code>-let</code> macro, and several others that work the same way.
+</p>
+</div></li>
+
+<li><a id="orgf72bf76"></a><a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Pattern-matching-case-statement.html">pcase</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span></span><br /><div class="outline-text-5" id="text-1-3-2-2">
+<p>
+<code>pcase</code> is built-in to Emacs.  Its syntax can be confusing, but it is very powerful.
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="orga760d8c"></a>Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span><br /><ol class="org-ol"><li><a id="org7b8e520"></a><a href="http://newartisans.com/2016/01/pattern-matching-with-pcase/">Emacs: Pattern Matching with pcase - Lost in Technopolis</a><br /><div class="outline-text-7" id="text-1-3-2-2-1-1">
+</div></li></ol></li></ol></li>
+
+<li><a id="orge731a20"></a><a href="https://github.com/VincentToups/shadchen-el">shadchen-el</a><br /><div class="outline-text-5" id="text-1-3-2-3">
+<p>
+A powerful, Racket-style pattern-matching library.
+</p>
+</div></li></ol>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2017-08-03 Thu 09:22</p>
+<p class="date">Created: 2017-08-03 Thu 09:38</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
