@@ -10,18 +10,15 @@ So this is intended to be a place to collect and organize information related to
 :PROPERTIES:
 :TOC:      this
 :END:
-
    - [[#emacs-lisp][Emacs Lisp]]
-    - [[#pattern-matching][Pattern Matching]]
-     - [[#articles][Articles]]
-      - [[#pattern-matching-in-emacs-lisp--wilfred-hughesblog][Pattern Matching in Emacs Lisp – Wilfred Hughes::Blog]]
+    - [[#pattern-matching][Pattern-matching]]
     - [[#packaging][Packaging]]
-     - [[#autoloads][Autoloads]]
-      - [[#autoloading-macro-generated-functions][Autoloading macro-generated functions]]
-
 ** Emacs Lisp                                                        :elisp:
 
 *** Pattern-matching                       :destructuring:pattern_matching:
+:PROPERTIES:
+:TOC:      ignore-children
+:END:
 
 **** Articles                                                   :articles:
 
@@ -60,6 +57,9 @@ Dash is a powerful library, and one of its features is powerful destructuring wi
 A powerful, Racket-style pattern-matching library.
 
 *** Packaging
+:PROPERTIES:
+:TOC:      ignore-children
+:END:
 
 **** Autoloads
 
