@@ -1,6 +1,7 @@
 #+TITLE: The Emacs Package Developer's Handbook
 #+OPTIONS: broken-links:t
 #+TAGS: Emacs
+#+SETUPFILE: export/setup/theme-readtheorg-local.setup
 
 After developing some little Emacs packages for a year or so, I began to notice how I'd forget little things that I learned, and then I'd have to go hunting for that information again.  I also noticed how there are some issues for which there doesn't seem to be a "best practice" or "Standard Operating Procedure" to refer to.
 
