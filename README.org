@@ -259,16 +259,7 @@ Maybe use capture templates and refile?
 
 ** Table of Contents
 
-Currently using =[[https://github.com/alphapapa/org-make-toc][org-make-toc]]=, which is uploaded but unfinished and unpackaged.
-
-#+BEGIN_SRC elisp :results silent
-  (-when-let* ((tree (cddr (org-element-parse-buffer 'headline)))
-               (tree (org-make-toc--remove-ignored-entries tree))
-               (tree (org-make-toc--remove-higher-level-than-toc tree))
-               (list (org-make-toc--tree-to-list tree))
-               (pos (org-find-property "TOC" "this")))
-    (org-make-toc--replace-entry-contents pos list))
-#+END_SRC
+Currently using [[https://github.com/alphapapa/org-make-toc][org-make-toc]], which is uploaded but unfinished and unpackaged.
 
 ** Config
 
