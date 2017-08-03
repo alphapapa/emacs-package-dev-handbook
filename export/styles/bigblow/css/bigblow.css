@@ -442,8 +442,9 @@ img {
 }
 
 .todo, .done {
-    margin: 10px 0;
-    padding: 0px 2px;
+    //margin: 5px;
+    font-size: 80%;
+    padding: 3px;
 }
 
 .NEW {
@@ -454,9 +455,15 @@ img {
 }
 
 .TODO {
-    background-color: #FED5D7;
-    border: 1px solid #FC5158;
-    color: #FC5158;
+    background-color: seagreen;
+    //    border: 1px solid #FC5158;
+    color: white;
+}
+
+.UNDERWAY {
+    background-color: seagreen;
+    //border: 1px solid green;
+    color: lawngreen;
 }
 
 .STRT, .STARTED {
@@ -478,9 +485,9 @@ img {
 }
 
 .DONE, .CANX, .CANCELED {
-    background-color: #F2F2EE;
-    border: 1px solid #969696;
-    color: #969696;
+    background-color: #969696;
+    border: 1px solid #F2F2EE;
+    color: #F2F2EE;
 }
 
 .tag span {
