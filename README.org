@@ -72,8 +72,9 @@ This package, by Damien Cassou and Matus Goljer, helps navigation by redefining 
 :ID:       88b496f4-8230-474e-b2ee-d8e4e8ca30d0
 :END:
 
-**** [[https://github.com/IvanMalison/multi-line][multi-line: multi-line everything from function invocations and definitions to array and map literals in a wide variety of languages]] :formatting:
+**** [[https://github.com/emacs-helm/helm-navi][helm-navi: Navigate file sections and language keywords using Helm]] :navigation:
 
+**** [[https://github.com/IvanMalison/multi-line][multi-line: multi-line everything from function invocations and definitions to array and map literals in a wide variety of languages]] :formatting:
 **** [[https://github.com/magnars/multiple-cursors.el][multiple-cursors.el: Multiple cursors]]             :selection:editing:
 :PROPERTIES:
 :ID:       deefcbc5-0c37-4936-a820-df99ae31a401
