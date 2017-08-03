@@ -21,7 +21,7 @@ So this is intended to be a place to collect and organize information related to
 
 ** Emacs Lisp                                                        :elisp:
 
-*** Pattern Matching                                        :destructuring:
+*** Pattern-matching                       :destructuring:pattern_matching:
 
 **** Articles                                                   :articles:
 
@@ -37,6 +37,27 @@ Since this is Lisp, we have lots of choices! In this post, we'll compare [[https
 
 For the sake of this post, we'll consider both pattern matching and destructuring, as they're closely related concepts.
 #+END_QUOTE
+
+**** Libraries                                                 :libraries:
+
+***** [[https://github.com/magnars/dash.el][dash.el]]
+
+Dash is a powerful library, and one of its features is powerful destructuring with its ~-let~ macro, and several others that work the same way.
+
+***** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Pattern-matching-case-statement.html][pcase]]                                                    :built_in:
+
+~pcase~ is built-in to Emacs.  Its syntax can be confusing, but it is very powerful.
+
+****** Articles                                               :articles:
+
+******* [[http://newartisans.com/2016/01/pattern-matching-with-pcase/][Emacs: Pattern Matching with pcase - Lost in Technopolis]]
+:PROPERTIES:
+:archive.is: http://archive.is/FAzd8
+:END:
+
+***** [[https://github.com/VincentToups/shadchen-el][shadchen-el]]
+
+A powerful, Racket-style pattern-matching library.
 
 *** Packaging
 
