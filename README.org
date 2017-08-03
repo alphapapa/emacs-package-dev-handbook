@@ -20,6 +20,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 :TOC:      this
 :END:
   - [[#emacs-lisp][Emacs Lisp]]
+   - [[#buffers][Buffers]]
    - [[#editing][Editing]]
    - [[#general][General]]
    - [[#packaging][Packaging]]
@@ -33,6 +34,18 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 * Emacs Lisp                                                          :elisp:
 :PROPERTIES:
 :TOC:      2
+:END:
+
+** Buffers                                                         :buffers:
+
+*** Libraries                                                   :libraries:
+:PROPERTIES:
+:ID:       523aa766-36a3-4827-a114-6babf72edc6b
+:END:
+
+**** [[https://github.com/phillord/m-buffer-el][m-buffer-el: List Oriented Buffer Operations]]
+:PROPERTIES:
+:ID:       6858c112-9756-43b4-a2e3-fa00a71e9367
 :END:
 
 ** Editing                                                         :editing:
@@ -60,6 +73,11 @@ This package, by Damien Cassou and Matus Goljer, helps navigation by redefining 
 :PROPERTIES:
 :ID:       deefcbc5-0c37-4936-a820-df99ae31a401
 :END:
+
+**** [[https://github.com/Fuco1/smartparens][smartparens: Minor mode  that deals with parens pairs and tries to be smart about it]] :navigation:editing:parentheses:
+:PROPERTIES:
+:ID:       e806d7f3-43e9-4260-aae4-479efbd41653
+:END:
 ** General
 *** [[https://github.com/magnars/dash.el][dash.el]]                                                          :dash:
 :PROPERTIES:
@@ -67,7 +85,10 @@ This package, by Damien Cassou and Matus Goljer, helps navigation by redefining 
 :END:
 
 Dash is a powerful general-purpose library that provides many useful functions and macros.
-
+*** [[https://github.com/phillord/lentic][lentic: Create views of the same content in two buffers]]
+:PROPERTIES:
+:ID:       0c220bc9-7173-4b0f-8955-e10ab6db640f
+:END:
 
 ** Packaging                                                     :packaging:
 :PROPERTIES:
@@ -166,8 +187,9 @@ A powerful, Racket-style pattern-matching library.
 
 *** Libraries                                                   :libraries:
 
-**** [[https://github.com/ecukes/ecukes][ecukes: Cucumber for Emacs]]
+**** [[https://github.com/phillord/assess][assess: Test support functions]]
 
+**** [[https://github.com/ecukes/ecukes][ecukes: Cucumber for Emacs]]
 ** Version control                                         :version_control:
 
 *** Packages                                                     :packages:
@@ -227,6 +249,30 @@ Jonas is a prolific Emacs package developer and maintainer.  You could spend hou
 **** [[id:88b496f4-8230-474e-b2ee-d8e4e8ca30d0][expand-region.el]]
 **** [[id:deefcbc5-0c37-4936-a820-df99ae31a401][multiple-cursors.el]]
 **** [[*%5B%5Bhttps://github.com/magnars/s.el%5D%5Bs.el:%20The%20long%20lost%20Emacs%20string%20manipulation%20library%5D%5D][s.el]]
+
+** Matus Goljer
+
++ [[https://github.com/Fuco1/][GitHub]]
+
+
+*** Packages
+
+**** [[*%5B%5Bhttps://github.com/magnars/dash.el%5D%5Bdash.el%5D%5D][dash.el]]
+:PROPERTIES:
+:ID:       827c9455-2747-4514-8d71-4558eff5a263
+:END:
+
+**** [[id:e806d7f3-43e9-4260-aae4-479efbd41653][smartparens]]
+
+** Phil Lord
+
++ [[https://github.com/phillord][GitHub]]
+
+*** Packages
+
+**** [[id:0c220bc9-7173-4b0f-8955-e10ab6db640f][lentic: Create views of the same content in two buffers]]
+
+**** [[id:6858c112-9756-43b4-a2e3-fa00a71e9367][m-buffer-el]]
 * Contributions
 
 Yes, please!  Please send pull requests and file issues on the [[https://github.com/alphapapa/emacs-package-dev-handbook][GitHub repo]].  This is intended to be a community project.
