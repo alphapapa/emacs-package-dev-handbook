@@ -1,6 +1,6 @@
+#+TITLE: The Emacs Package Developer's Handbook
 #+OPTIONS: broken-links:t
-
-* The Emacs Package Developer's Handbook                              :Emacs:
+#+TAGS: Emacs
 
 After developing some little Emacs packages for a year or so, I began to notice how I'd forget little things that I learned, and then I'd have to go hunting for that information again.  I also noticed how there are some issues for which there doesn't seem to be a "best practice" or "Standard Operating Procedure" to refer to.
 
@@ -8,23 +8,23 @@ So this is intended to be a place to collect and organize information related to
 
 You can read this Org file directly, or you can read the [[https://alphapapa.github.io/emacs-package-dev-handbook/][HTML version]].
 
-** Contents                                                       :noexport:
+* Contents                                                         :noexport:
 :PROPERTIES:
 :TOC:      this
 :END:
    - [[#emacs-lisp][Emacs Lisp]]
     - [[#pattern-matching][Pattern-matching]]
     - [[#packaging][Packaging]]
-** Emacs Lisp                                                        :elisp:
+* Emacs Lisp                                                          :elisp:
 
-*** Pattern-matching                       :destructuring:pattern_matching:
+** Pattern-matching                         :destructuring:pattern_matching:
 :PROPERTIES:
 :TOC:      ignore-children
 :END:
 
-**** Articles                                                   :articles:
+*** Articles                                                     :articles:
 
-***** [[http://www.wilfred.me.uk/blog/2017/03/19/pattern-matching-in-emacs-lisp/][Pattern Matching in Emacs Lisp – Wilfred Hughes::Blog]] :pcase:shadchen:cl:dash:
+**** [[http://www.wilfred.me.uk/blog/2017/03/19/pattern-matching-in-emacs-lisp/][Pattern Matching in Emacs Lisp – Wilfred Hughes::Blog]] :pcase:shadchen:cl:dash:
 :PROPERTIES:
 :archive.is: http://archive.is/J4DqY
 :END:
@@ -37,35 +37,35 @@ Since this is Lisp, we have lots of choices! In this post, we'll compare [[https
 For the sake of this post, we'll consider both pattern matching and destructuring, as they're closely related concepts.
 #+END_QUOTE
 
-**** Libraries                                                 :libraries:
+*** Libraries                                                   :libraries:
 
-***** [[https://github.com/magnars/dash.el][dash.el]]
+**** [[https://github.com/magnars/dash.el][dash.el]]
 
 Dash is a powerful library, and one of its features is powerful destructuring with its ~-let~ macro, and several others that work the same way.
 
-***** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Pattern-matching-case-statement.html][pcase]]                                                    :built_in:
+**** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Pattern-matching-case-statement.html][pcase]]                                                      :built_in:
 
 ~pcase~ is built-in to Emacs.  Its syntax can be confusing, but it is very powerful.
 
-****** Articles                                               :articles:
+***** Articles                                                 :articles:
 
-******* [[http://newartisans.com/2016/01/pattern-matching-with-pcase/][Emacs: Pattern Matching with pcase - Lost in Technopolis]]
+****** [[http://newartisans.com/2016/01/pattern-matching-with-pcase/][Emacs: Pattern Matching with pcase - Lost in Technopolis]]
 :PROPERTIES:
 :archive.is: http://archive.is/FAzd8
 :END:
 
-***** [[https://github.com/VincentToups/shadchen-el][shadchen-el]]
+**** [[https://github.com/VincentToups/shadchen-el][shadchen-el]]
 
 A powerful, Racket-style pattern-matching library.
 
-*** Packaging
+** Packaging
 :PROPERTIES:
 :TOC:      ignore-children
 :END:
 
-**** Autoloads
+*** Autoloads
 
-***** TODO Autoloading macro-generated functions
+**** TODO Autoloading macro-generated functions
 
 This may actually be a bug, or at least an unanswered question.
 
