@@ -271,5 +271,5 @@ I love Emacs and Org mode.  This makes it so easy to make the document...alive! 
 
 # Local Variables:
 # after-save-hook: (lambda nil (when (org-html-export-to-html) (rename-file "README.html" "index.html" t)))
-# org-export-with-properties: ("GitHub" "archive.is")
+# org-export-with-properties: ()
 # End:
