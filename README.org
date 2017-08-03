@@ -58,12 +58,12 @@ Dash is a powerful library, and one of its features is powerful destructuring wi
 
 A powerful, Racket-style pattern-matching library.
 
-** Packaging
+** Packaging                                                     :packaging:
 :PROPERTIES:
 :TOC:      ignore-children
 :END:
 
-*** Autoloads
+*** Autoloads                                                   :autoloads:
 
 **** TODO Autoloading macro-generated functions
 
@@ -88,6 +88,16 @@ should be used instead. What confuses me is [[http://stackoverflow.com/a/3880510
 
 Can anyone clear up what the intended behaviour is?
 #+END_QUOTE
+
+*** Tools                                                           :tools:
+
+**** Package installation/management             :installation:management:
+
+***** [[https://github.com/raxod502/straight.el][straight.el: Next-generation, purely functional package manager for the Emacs hacker]]
+
+***** [[https://github.com/jwiegley/use-package][use-package: A use-package declaration for simplifying your .emacs]]
+
+Developed by the current maintainer of Emacs, himself, John Wiegley.
 
 * Code                                                             :noexport:
 :PROPERTIES:
