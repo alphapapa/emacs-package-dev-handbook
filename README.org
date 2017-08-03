@@ -30,6 +30,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
   - [[#blogs][Blogs]]
   - [[#people][People]]
   - [[#contributions][Contributions]]
+  - [[#tasks][Tasks]]
   - [[#code][Code]]
 * Emacs Lisp                                                          :elisp:
 :PROPERTIES:
@@ -501,6 +502,27 @@ Sacha could easily be nominated the official Emacs ambassador, were there to be 
 * Contributions
 
 Yes, please!  Please send pull requests and file issues on the [[https://github.com/alphapapa/emacs-package-dev-handbook][GitHub repo]].  This is intended to be a community project.
+
+* Tasks
+:PROPERTIES:
+:TOC:      ignore-children
+:END:
+
+** TODO Articles to add [0/13]
+
+*** TODO [[https://www.lunaryorn.com/posts/read-and-write-files-in-emacs-lisp][Read and write files in Emacs Lisp]] (5 min read)
+*** TODO [[https://www.lunaryorn.com/posts/a-future-for-concurrency-in-emacs-lisp][A Future For Concurrency In Emacs Lisp]] (6 min read)
+*** TODO [[https://www.lunaryorn.com/posts/a-blast-from-the-past-the-tale-of-concurrency-in-emacs][A Blast From The Past: The Tale Of Concurrency In Emacs]] (7 min read)
+*** TODO [[https://www.lunaryorn.com/posts/I-wished-gnu-emacs-had][I wished GNU Emacs had…]] (2 min read)
+*** TODO [[https://www.lunaryorn.com/posts/reproduce-bugs-in-emacs-Q][Reproduce bugs in emacs -Q]] (4 min read)
+*** TODO [[https://www.lunaryorn.com/posts/use-package-el-really][Why package.el?]] (1 min read)
+*** TODO [[https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package][My Emacs Configuration with use-package]] (8 min read)
+*** TODO [[https://www.lunaryorn.com/posts/emacs-script-pitfalls][Emacs script pitfalls]] (13 min read)
+*** TODO [[https://www.lunaryorn.com/posts/autoloads-in-emacs-lisp][Autoloads in Emacs Lisp]] (5 min read)
+*** TODO [[https://www.lunaryorn.com/posts/advanced-syntactic-fontification][Advanced syntactic fontification]] (11 min read)
+*** TODO [[https://www.lunaryorn.com/posts/calling-python-from-haskell][Calling Python from Haskell]] (12 min read)
+*** TODO [[https://www.lunaryorn.com/posts/search-based-fontification-with-keywords][Search-based fontification with keywords]] (18 min read)
+*** TODO [[https://www.lunaryorn.com/posts/syntactic-fontification-in-emacs][Syntactic fontification in Emacs]] (10 min read)
 
 * Code
 :PROPERTIES:
