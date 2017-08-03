@@ -15,6 +15,7 @@ You can read this Org file directly, or you can read the [[https://alphapapa.git
    - [[#emacs-lisp][Emacs Lisp]]
     - [[#pattern-matching][Pattern-matching]]
     - [[#packaging][Packaging]]
+
 * Emacs Lisp                                                          :elisp:
 
 ** Pattern-matching                         :destructuring:pattern_matching:
@@ -57,6 +58,12 @@ Dash is a powerful library, and one of its features is powerful destructuring wi
 **** [[https://github.com/VincentToups/shadchen-el][shadchen-el]]
 
 A powerful, Racket-style pattern-matching library.
+
+** Editing                                                         :editing:
+
+*** Tools                                                           :tools:
+
+**** [[https://github.com/IvanMalison/multi-line][multi-line: multi-line everything from function invocations and definitions to array and map literals in a wide variety of languages]] :formatting:
 
 ** Packaging                                                     :packaging:
 :PROPERTIES:
