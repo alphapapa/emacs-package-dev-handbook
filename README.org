@@ -511,12 +511,13 @@ Seems to only work if run in a browser, with JavaScript.  But there's a [[https:
 
   (cl-defun emacs-package-dev-handbook-insert-archiveis-property (&optional url)
     "Set the \"archive.is\" property for entry at point to the archived URL.
-  Assumes heading on/before point is an Org link to a web page.  If
-  URL is given, archive that URL instead."
+   Assumes heading on/before point is an Org link to a web page. If
+   URL is given, archive that URL instead."
     (interactive)
     (when-let ((url (or url (save-excursion
                               (unless (org-at-heading-p)
                                 (org-back-to-heading))
+                              (line-beginning-position)
                               (when (re-search-forward org-bracket-link-regexp (line-end-position) 'noerror)
                                 (org-link-unescape (match-string-no-properties 1))))))
                (archive-url (emacs-package-dev-handbook--archiveis-capture url)))
