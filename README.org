@@ -334,9 +334,14 @@ One of the "killer apps" for Emacs--and for git!
 
 This is the main community aggregator.  You can find just about everyone's Emacs-related blog posts here.
 
+** Sacha Chua's [[http://sachachua.com/blog/category/geek/emacs/emacs-news/][/Emacs News/]]
+
+This is Sacha's weekly Emacs news digest.  Don't miss it!
+
 ** [[id:53c0b780-7d67-47a5-ad30-090526e2018f][Artur Malabarba's /Endless Parentheses/]]
 
 ** [[id:12c7b803-9af2-4010-bca4-06304fbb69c7][Sacha Chua's /Living an Awesome Life/]]
+
 * People                                                             :people:
 :PROPERTIES:
 :TOC: ignore-children
