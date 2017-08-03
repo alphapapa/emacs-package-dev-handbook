@@ -50,38 +50,38 @@ html, body {
     width: 100%;
 }
 
-    #tabs ul {
-        margin: 0;
-        padding: 0;
-    }
+#tabs ul {
+    margin: 0;
+    padding: 0;
+}
 
-    #tabs li {
-        float: left;
-        list-style-type: none;
-        margin: 0px 2px 0px 0px;
-        padding: 0px 0px 0px 0px;
-        white-space: nowrap;
-    }
+#tabs li {
+    float: left;
+    list-style-type: none;
+    margin: 0px 2px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    white-space: nowrap;
+}
 
-        #tabs li a {
-            color: #EEEEEE;
-            display: block;
-            font-size: 13px;
-            font-weight: bold;
-            margin: 0;
-            padding: 4px 10px 4px 10px;
-            text-decoration: none;
-        }
+#tabs li a {
+    color: #EEEEEE;
+    display: block;
+    font-size: 120%;
+    font-weight: bold;
+    margin: 0;
+    padding: 4px 10px 4px 10px;
+    text-decoration: none;
+}
 
-            #tabs li a:hover {
-                background: #759FCF;
-                color: #FFFFFF;
-            }
+#tabs li a:hover {
+    background: #759FCF;
+    color: #FFFFFF;
+}
 
-            #tabs li.ui-tabs-active a {
-                background: #FFFFFF;
-                color: #555555;
-            }
+#tabs li.ui-tabs-active a {
+    background: #FFFFFF;
+    color: #555555;
+}
 
 #content {
     clear: both;
@@ -109,7 +109,7 @@ html, body {
 
 body {
     color: #333333;
-    font: 13px/1.385 arial,helvetica,clean,sans-serif;
+    font-family: DejaVu Sans, sans-serif;
     margin: 0 .1em;
     padding: 0;
 }
@@ -140,7 +140,7 @@ h1, ul#tabs, h2, h3, h4, h5 {
 h1 {
     background-color: #0A3F69;
     color: #F8F8F8;
-    font-size: 24px;
+    font-size: 180%;
     margin: 0;
     padding: 9px 0px 0px 10px;
 }
@@ -148,7 +148,7 @@ h1 {
 h2 {
     border-bottom: 4px solid #67B3E3;
     color: #13679D;
-    font-size: 20px;
+    font-size: 160%;
 }
 
 h3, h4, h5, h6 {
@@ -157,18 +157,18 @@ h3, h4, h5, h6 {
 
 h3 {
     border-bottom: 1px solid #B5DAF1;
-    font-size: 16px;
+    font-size: 140%;
     margin-left: 25px;
 }
 
 h4 {
     border-bottom: 1px dotted #C9E3F5;
-    font-size: 14px;
+    font-size: 120%;
     margin-left: 60px;
 }
 
 h5 {
-    font-size: 1em;
+    font-size: 110%;
     margin-left: 87px;
 }
 
@@ -381,10 +381,10 @@ img {
     margin: 10px 0px;
 }
 
-    .inlinetask td {
-        padding: 2px 5px 0px 2px;
-        border: 0px;
-    }
+.inlinetask td {
+    padding: 2px 5px 0px 2px;
+    border: 0px;
+}
 
 .info {
     border: 1px solid;
@@ -490,19 +490,19 @@ img {
     border-radius: 10px;
 }
 
-    #right-panel-contents .tag span {
-        font-size: 100%;
-    }
+#right-panel-contents .tag span {
+    font-size: 100%;
+}
 
-    .tag span:hover {
-        background: #BABDB6;
-    }
+.tag span:hover {
+    background: #BABDB6;
+}
 
-    .tag .FLAGGED {
-        background-color: #EDC6C8;
-        border: 1px solid #EDC6C8;
-        color: #C15F4E;
-    }
+.tag .FLAGGED {
+    background-color: #EDC6C8;
+    border: 1px solid #EDC6C8;
+    color: #C15F4E;
+}
 
 .tag .selected {
     background-color: #FFEBC1;
@@ -522,10 +522,10 @@ span.todo {
     margin: -1px 3px 0px 0px;
 }
 
-    span.todo:hover {
-        background: #BABDB6;
-        color: #888888;
-    }
+span.todo:hover {
+    background: #BABDB6;
+    color: #888888;
+}
 
 span.todo .selected {
     background-color: #FFEBC1;
@@ -589,39 +589,39 @@ span.todo .selected {
     width: auto;
 }
 
-    #table-of-contents h2 {
-        display: none;
-    }
+#table-of-contents h2 {
+    display: none;
+}
 
-    #table-of-contents ul {
-        margin: 0;
-        padding: 0;
-    }
+#table-of-contents ul {
+    margin: 0;
+    padding: 0;
+}
 
-    #table-of-contents li {
-        list-style-type: none;
-        margin: 0;
-    }
+#table-of-contents li {
+    list-style-type: none;
+    margin: 0;
+}
 
-        #table-of-contents li li {
-            margin-left: 1.5em;
-        }
+#table-of-contents li li {
+    margin-left: 1.5em;
+}
 
-            #table-of-contents li li li {
-                font-size: 0.8em;
-            }
+#table-of-contents li li li {
+    //font-size: 0.8em;
+}
 
-    #table-of-contents a {
-        color: #606060;
-        font-size: 0.9em;
-        font-weight: normal;
-        text-decoration: none;
-    }
+#table-of-contents a {
+    color: #606060;
+    //font-size: 0.9em;
+    font-weight: normal;
+    text-decoration: none;
+}
 
-        #table-of-contents a:hover {
-            color: #C61A1A;
-            text-decoration: underline;
-        }
+#table-of-contents a:hover {
+    color: #C61A1A;
+    text-decoration: underline;
+}
 
 #minitoc {
     background-color: #FFFFDD;
@@ -636,7 +636,7 @@ span.todo .selected {
 
 #minitoc a {
     display: block;
-    font-size: 10px;
+    font-size: 100%;
     font-weight: normal;
 }
 
@@ -651,7 +651,7 @@ span.todo .selected {
 #minitoc h2 {
     margin: 3px 0px;
     border: none;
-    font-size: 11px;
+    font-size: 75%;
 }
 
 p.verse {
@@ -678,7 +678,7 @@ p.verse {
     cursor: pointer;
     display: none;
     font-family: verdana;
-    font-size: 11px;
+    //font-size: 11px;
     padding: 5px;
     position: fixed;                    /* this is the magic */
     right: 10px;
@@ -687,9 +687,9 @@ p.verse {
     z-index: 999;
 }
 
-    #toTop:hover {
-        text-decoration: underline;
-    }
+#toTop:hover {
+    text-decoration: underline;
+}
 
 #left-panel-wrapper {
     position: fixed;
@@ -764,6 +764,10 @@ p.verse {
 
 .title {
     margin-bottom: 0px;
+}
+
+ol li {
+    margin-top: 1em;
 }
 
 /* This is for the sake of Emacs. */
