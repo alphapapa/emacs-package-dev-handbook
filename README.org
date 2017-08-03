@@ -353,7 +353,7 @@ This is Sacha's weekly Emacs news digest.  Don't miss it!
 :TOC: ignore-children
 :END:
 
-The Emacs community is so full of brilliant, generous people that I can't keep track of them all!  I will surely miss many, and I will add them in no particular order, but merely as I come across them again and again.
+The Emacs community is so full of brilliant, generous people that I can't keep track of them all!  I will surely overlook many, and I will add them in no particular order, but merely as I come across them again and again.
 
 ** Artur Malabarba
 :PROPERTIES:
