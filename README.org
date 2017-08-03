@@ -1,5 +1,3 @@
-
-
 * The Emacs Package Developer's Handbook                              :Emacs:
 
 After developing some little Emacs packages for a year or so, I began to notice how I'd forget little things that I learned, and then I'd have to go hunting for that information again.  I also noticed how there are some issues for which there doesn't seem to be a "best practice" or "Standard Operating Procedure" to refer to.
@@ -35,6 +33,34 @@ Since this is Lisp, we have lots of choices! In this post, we'll compare [[https
 For the sake of this post, we'll consider both pattern matching and destructuring, as they're closely related concepts.
 #+END_QUOTE
 
+*** Packaging
+
+**** Autoloads
+
+***** TODO Autoloading macro-generated functions
+
+This may actually be a bug, or at least an unanswered question.
+
+[[https://www.reddit.com/r/emacs/comments/63u5yn/how_to_use_autoload_cookies_for_custom_defunlike/][How to use autoload cookies for custom defun-like macros? : emacs]]:
+
+#+BEGIN_QUOTE
+Say I have a macro =deffoo= that expands to some custom kind of =defun=, and I want to use an autoload cookie to autoload the result. According to the manual,
+
+#+BEGIN_EXAMPLE
+    ;;;###autoload (deffoo bar   ...)
+#+END_EXAMPLE
+
+copies the entire form to =autoloads.el=, and something like
+
+#+BEGIN_EXAMPLE
+    ;;;###autoload (autoload 'bar "this-file") (deffoo bar   ...)
+#+END_EXAMPLE
+
+should be used instead. What confuses me is [[http://stackoverflow.com/a/38805102][this StackOverflow comment]] by who appears to be Stefan Monnier, saying that Emacs /should/ expand the macro before generating the autoload, and that it's probably a bug when this does not happen.
+
+Can anyone clear up what the intended behaviour is?
+#+END_QUOTE
+
 * Code
 
 This section contains code used to add to and update this document.
@@ -44,6 +70,9 @@ This section contains code used to add to and update this document.
 *** TODO Get summary of page
 
 *** TODO Get archive.is link for page
+:PROPERTIES:
+:ID:       a0e9486f-24f0-47a6-8f21-50bcc7ac2ca0
+:END:
 
 This bookmarklet should provide a way to get the URL:
 
@@ -54,4 +83,3 @@ This bookmarklet should provide a way to get the URL:
 *** TODO Insert new entry at point
 
 Maybe use capture templates and refile?
-
