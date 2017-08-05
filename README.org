@@ -270,11 +270,14 @@ Dash is a powerful library, and one of its features is powerful destructuring wi
 
 ***** Articles                                                 :articles:
 
+****** [[https://www.emacswiki.org/emacs/PatternMatching][EmacsWiki: Pattern Matching]]                  :examples:EmacsWiki:
+
+There are /lots/ of examples here.
+
 ****** [[http://newartisans.com/2016/01/pattern-matching-with-pcase/][Emacs: Pattern Matching with pcase - Lost in Technopolis]]
 :PROPERTIES:
 :archive.is: http://archive.is/FAzd8
 :END:
-
 **** [[https://github.com/VincentToups/shadchen-el][shadchen-el]]                                             :shadchen:el:
 
 A powerful, Racket-style pattern-matching library.
@@ -585,6 +588,10 @@ Yes, please!  Please send pull requests and file issues on the [[https://github.
 ** TODO [[https://github.com/VincentToups/emacs-utils][Vincent Toups' projects]]
 
 He has a lot of interesting libraries on his repo, and some of them are /extensively/ documented.  An aspiring Emacs Lisp developer could learn a lot from his code.
+
+** TODO Add MELPA
+
+Mention @milkypostman, @purcell, @syohex, etc. Mention sandbox.
 
 * Code
 :PROPERTIES:
