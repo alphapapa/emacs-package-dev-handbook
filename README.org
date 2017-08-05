@@ -78,6 +78,11 @@ This package, by Damien Cassou and Matus Goljer, helps navigation by redefining 
 
 **** [[https://github.com/emacs-helm/helm-navi][helm-navi: Navigate file sections and language keywords using Helm]] :navigation:
 
+**** [[https://github.com/abo-abo/lispy][lispy: short and sweet LISP editing]]    :elisp:navigation:parentheses:
+:PROPERTIES:
+:ID:       ca3809ba-5900-4dfd-84a1-1ceecc048296
+:END:
+
 **** [[https://github.com/IvanMalison/multi-line][multi-line: multi-line everything from function invocations and definitions to array and map literals in a wide variety of languages]] :formatting:
 **** [[https://github.com/magnars/multiple-cursors.el][multiple-cursors.el: Multiple cursors]]             :selection:editing:
 :PROPERTIES:
@@ -414,6 +419,10 @@ This is Sacha's weekly Emacs news digest.  Don't miss it!
 
 One of the top Emacs blogs, frequently updated, and often highlights other interesting blog entries in the community.
 
+** [[id:a8a8dd9f-4113-4d4c-9882-ac59a4e86c0e][Oleh Krehel]]'s [[https://oremacs.com][/(or emacs/]]
+:PROPERTIES:
+:ID:       b6e88f95-8c4f-4d18-a7df-de0820d76291
+:END:
 ** [[id:12c7b803-9af2-4010-bca4-06304fbb69c7][Sacha Chua's /Living an Awesome Life/]]
 
 * People                                                             :people:
@@ -513,6 +522,21 @@ Jonas is a prolific Emacs package developer and maintainer.  You could spend hou
 
 **** [[id:e806d7f3-43e9-4260-aae4-479efbd41653][smartparens]]
 
+** Oleh Krehel
+:PROPERTIES:
+:ID:       a8a8dd9f-4113-4d4c-9882-ac59a4e86c0e
+:END:
+
+Oleh is a prolific package author, having contributed many very high-quality packages.  He also writes at [[id:b6e88f95-8c4f-4d18-a7df-de0820d76291][his blog]].
+
+*** Packages                                                     :packages:
+
+**** [[https://github.com/abo-abo/ace-window][ace-window: Quickly switch windows]]       :navigation:windows:buffers:
+
+**** [[https://github.com/abo-abo/avy][avy: Jump to things tree-style]]                           :navigation:
+**** [[https://github.com/abo-abo/hydra][hydra: make bindings that stick around]]                  :key_binding:
+**** [[id:ca3809ba-5900-4dfd-84a1-1ceecc048296][lispy: short and sweet LISP editing]]
+**** [[https://github.com/abo-abo/swiper][swiper: Ivy - a generic completion frontend, Swiper - isearch with an overview, and more. Oh, man!]] :navigation:
 ** Phil Lord
 
 + [[https://github.com/phillord][GitHub]]
