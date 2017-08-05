@@ -410,6 +410,10 @@ This is Sacha's weekly Emacs news digest.  Don't miss it!
 
 ** [[id:53c0b780-7d67-47a5-ad30-090526e2018f][Artur Malabarba's /Endless Parentheses/]]
 
+** [[http://irreal.org/blog/][Irreal]]
+
+One of the top Emacs blogs, frequently updated, and often highlights other interesting blog entries in the community.
+
 ** [[id:12c7b803-9af2-4010-bca4-06304fbb69c7][Sacha Chua's /Living an Awesome Life/]]
 
 * People                                                             :people:
