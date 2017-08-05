@@ -796,8 +796,3 @@ ul li {
 .org-ul > li {
     font-weight: bold;
 }
-
-/* This is for the sake of Emacs. */
-/* Local Variables: */
-/* eval: (when (locate-library "rainbow-mode") (require 'rainbow-mode) (rainbow-mode)) */
-/* End: */
