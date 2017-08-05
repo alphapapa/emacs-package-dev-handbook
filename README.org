@@ -185,7 +185,33 @@ Sebastian Wiesner provides a detailed explanation.
 
 *** Reference                                                   :reference:
 
-**** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.html][Package headers and structure]]
+**** Package headers and structure
+
+The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.html][Emacs manual]] gives this example:
+
+#+BEGIN_EXAMPLE
+  ;;; superfrobnicator.el --- Frobnicate and bifurcate flanges
+
+  ;; Copyright (C) 2011 Free Software Foundation, Inc.
+
+  ;; Author: J. R. Hacker <jrh@example.com>
+  ;; Version: 1.3
+  ;; Package-Requires: ((flange "1.0"))
+  ;; Keywords: multimedia, frobnicate
+  ;; URL: http://example.com/jrhacker/superfrobnicate
+
+  ...
+
+  ;;; Commentary:
+
+  ;; This package provides a minor mode to frobnicate and/or
+  ;; bifurcate any flanges you desire. To activate it, just type
+  ...
+
+  ;;;###autoload
+  (define-minor-mode superfrobnicator-mode
+  ...
+#+END_EXAMPLE
 
 *** Tools                                                           :tools:
 
