@@ -167,7 +167,11 @@ Can anyone clear up what the intended behaviour is?
 :ID:       7247be4d-4f66-43ff-bb70-1b4a7458611b
 :END:
 
-You should always use lexical binding by setting the header at the top of the file.
+You should always use lexical binding by setting the header in the first line of the file:
+
+#+BEGIN_EXAMPLE
+  ;;; filename.el --- File description  -*- lexical-binding: t; -*-
+#+END_EXAMPLE
 
 ***** Articles                                                 :articles:
 
@@ -187,10 +191,10 @@ Sebastian Wiesner provides a detailed explanation.
 
 **** Package headers and structure
 
-The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.html][Emacs manual]] gives this example:
+The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.html][Emacs manual]] gives this example (I've added the lexical-binding part):
 
 #+BEGIN_EXAMPLE
-  ;;; superfrobnicator.el --- Frobnicate and bifurcate flanges
+  ;;; superfrobnicator.el --- Frobnicate and bifurcate flanges  -*- lexical-binding: t; -*-
 
   ;; Copyright (C) 2011 Free Software Foundation, Inc.
 
