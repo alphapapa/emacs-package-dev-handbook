@@ -780,11 +780,20 @@ p.verse {
     margin-bottom: 0px;
 }
 
-ol li {
+ol li,
+ul li {
     margin-top: 1em;
 }
 
 .outline-4 > ol > li {
+    font-weight: bold;
+}
+
+.outline-4 > .org-ul {
+    margin-left: 5em;
+}
+
+.org-ul > li {
     font-weight: bold;
 }
 

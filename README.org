@@ -1,5 +1,5 @@
 #+TITLE: The Emacs Package Developer's Handbook
-#+OPTIONS: broken-links:t num:4
+#+OPTIONS: broken-links:t num:nil
 #+TAGS: Emacs
 #+SETUPFILE: export/setup/theme-bigblow-local.setup
 
