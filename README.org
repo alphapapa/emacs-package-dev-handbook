@@ -582,6 +582,10 @@ Yes, please!  Please send pull requests and file issues on the [[https://github.
 *** TODO [[https://www.lunaryorn.com/posts/search-based-fontification-with-keywords][Search-based fontification with keywords]] (18 min read)
 *** TODO [[https://www.lunaryorn.com/posts/syntactic-fontification-in-emacs][Syntactic fontification in Emacs]] (10 min read)
 
+** TODO [[https://github.com/VincentToups/emacs-utils][Vincent Toups' projects]]
+
+He has a lot of interesting libraries on his repo, and some of them are /extensively/ documented.  An aspiring Emacs Lisp developer could learn a lot from his code.
+
 * Code
 :PROPERTIES:
 :TOC:      0
