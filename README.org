@@ -272,7 +272,7 @@ A powerful, Racket-style pattern-matching library.
 
 *** Tools                                                           :tools:
 
-**** let-alist                                             :alists:macros:
+**** let-alist                               :alists:macros:destructuring:
 
 #+BEGIN_QUOTE
 let-alist is the best thing to happen to associative lists since the invention of the cons cell. This little macro lets you easily access the contents of an alist, concisely and efficiently, without having to specify them preemptively. It comes built-in with 25.1, and is also available on GNU Elpa for older Emacsen.
