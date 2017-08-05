@@ -192,6 +192,11 @@ You should always use lexical binding by setting the header in the first line of
 
 Sebastian Wiesner provides a detailed explanation.
 
+****** [[https://www.emacswiki.org/emacs/DynamicBindingVsLexicalBinding][Dynamic Binding Vs Lexical Binding]]
+:PROPERTIES:
+:archive.is: http://archive.is/2VtOU
+:END:
+
 *** Reference                                                   :reference:
 
 **** Package headers and structure
