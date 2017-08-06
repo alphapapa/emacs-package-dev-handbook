@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-08-05 Sat 21:53 -->
+<!-- 2017-08-05 Sat 21:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -244,157 +244,157 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7bacc57">Emacs Lisp&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a>
+<li><a href="#org885e192">Emacs Lisp&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a>
 <ul>
-<li><a href="#org910f89f">Buffers&#xa0;&#xa0;&#xa0;<span class="tag"><span class="buffers">buffers</span></span></a>
+<li><a href="#org65cffa6">Buffers&#xa0;&#xa0;&#xa0;<span class="tag"><span class="buffers">buffers</span></span></a>
 <ul>
-<li><a href="#org7e66ebd">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a></li>
+<li><a href="#orgc23e0fd">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a></li>
 </ul>
 </li>
-<li><a href="#org559f3ef">Checkers / linters&#xa0;&#xa0;&#xa0;<span class="tag"><span class="linters">linters</span>&#xa0;<span class="checkers">checkers</span></span></a>
+<li><a href="#orgb65209b">Checkers / linters&#xa0;&#xa0;&#xa0;<span class="tag"><span class="linters">linters</span>&#xa0;<span class="checkers">checkers</span></span></a>
 <ul>
-<li><a href="#org87df6ce"><span class="todo TODO">TODO</span> Flycheck-package</a></li>
+<li><a href="#org40c7709"><span class="todo TODO">TODO</span> Flycheck-package</a></li>
 </ul>
 </li>
-<li><a href="#orgf6db077">Editing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="editing">editing</span></span></a>
+<li><a href="#org46fdeed">Editing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="editing">editing</span></span></a>
 <ul>
-<li><a href="#org9de3116">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a></li>
+<li><a href="#orga603e7f">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a></li>
 </ul>
 </li>
-<li><a href="#org78dcb7d">General&#xa0;&#xa0;&#xa0;<span class="tag"><span class="general">general</span></span></a>
+<li><a href="#orgb2567e4">General&#xa0;&#xa0;&#xa0;<span class="tag"><span class="general">general</span></span></a>
 <ul>
-<li><a href="#org2535b42">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a></li>
-<li><a href="#org775e888">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a></li>
+<li><a href="#org0c45a55">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a></li>
+<li><a href="#org024d192">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a></li>
 </ul>
 </li>
-<li><a href="#org5f55306">Packaging&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packaging">packaging</span></span></a>
+<li><a href="#org74b94e2">Packaging&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packaging">packaging</span></span></a>
 <ul>
-<li><a href="#orgd3fb671">Best practices&#xa0;&#xa0;&#xa0;<span class="tag"><span class="best_practices">best_practices</span></span></a></li>
-<li><a href="#org62cc6af">Reference&#xa0;&#xa0;&#xa0;<span class="tag"><span class="reference">reference</span></span></a></li>
-<li><a href="#orgaaf0b48">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a></li>
+<li><a href="#org48f5421">Best practices&#xa0;&#xa0;&#xa0;<span class="tag"><span class="best_practices">best_practices</span></span></a></li>
+<li><a href="#org688086c">Reference&#xa0;&#xa0;&#xa0;<span class="tag"><span class="reference">reference</span></span></a></li>
+<li><a href="#org3d1123d">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a></li>
 </ul>
 </li>
-<li><a href="#org43b466c">Pattern matching&#xa0;&#xa0;&#xa0;<span class="tag"><span class="destructuring">destructuring</span>&#xa0;<span class="pattern_matching">pattern_matching</span></span></a>
+<li><a href="#org5897161">Pattern matching&#xa0;&#xa0;&#xa0;<span class="tag"><span class="destructuring">destructuring</span>&#xa0;<span class="pattern_matching">pattern_matching</span></span></a>
 <ul>
-<li><a href="#org268b817">Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span></a></li>
-<li><a href="#org33e111e">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a></li>
-<li><a href="#org5100517">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a></li>
+<li><a href="#orgc91782c">Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span></a></li>
+<li><a href="#org64105ee">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a></li>
+<li><a href="#org0eae60b">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a></li>
 </ul>
 </li>
-<li><a href="#org4ba63ab">String manipulation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="strings">strings</span></span></a>
+<li><a href="#org976229b">String manipulation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="strings">strings</span></span></a>
 <ul>
-<li><a href="#org4882a3c">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a></li>
+<li><a href="#orgd95af20">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a></li>
 </ul>
 </li>
-<li><a href="#org80a903f">Testing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="testing">testing</span></span></a>
+<li><a href="#orgc830139">Testing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="testing">testing</span></span></a>
 <ul>
-<li><a href="#org648f352">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a></li>
-<li><a href="#orgf1bb311">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a></li>
+<li><a href="#org40ad9eb">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a></li>
+<li><a href="#orga1c70fe">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a></li>
 </ul>
 </li>
-<li><a href="#orgd600f58">Version control&#xa0;&#xa0;&#xa0;<span class="tag"><span class="version_control">version_control</span></span></a>
+<li><a href="#org8083fe2">Version control&#xa0;&#xa0;&#xa0;<span class="tag"><span class="version_control">version_control</span></span></a>
 <ul>
-<li><a href="#org3c964a5">Packages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packages">packages</span></span></a></li>
+<li><a href="#orgf424f47">Packages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packages">packages</span></span></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org2910f7c">Blogs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="blogs">blogs</span></span></a>
+<li><a href="#orgd22257b">Blogs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="blogs">blogs</span></span></a>
 <ul>
-<li><a href="#org3c413f4">Planet Emacsen</a></li>
-<li><a href="#orge4ff44d">Sacha Chua's <i>Emacs News</i></a></li>
-<li><a href="#org0e9265a">Artur Malabarba's <i>Endless Parentheses</i></a></li>
-<li><a href="#orgef69207">Irreal</a></li>
-<li><a href="#orgb8cf49e">Oleh Krehel's <i>(or emacs</i></a></li>
-<li><a href="#org0eefaff">Sacha Chua's <i>Living an Awesome Life</i></a></li>
+<li><a href="#org49d8ffc">Planet Emacsen</a></li>
+<li><a href="#org5ded7d6">Sacha Chua's <i>Emacs News</i></a></li>
+<li><a href="#orgc3daae8">Artur Malabarba's <i>Endless Parentheses</i></a></li>
+<li><a href="#orgafdf278">Irreal</a></li>
+<li><a href="#org735482d">Oleh Krehel's <i>(or emacs</i></a></li>
+<li><a href="#orgc66736c">Sacha Chua's <i>Living an Awesome Life</i></a></li>
 </ul>
 </li>
-<li><a href="#org26e2c93">People&#xa0;&#xa0;&#xa0;<span class="tag"><span class="people">people</span></span></a>
+<li><a href="#org473b540">People&#xa0;&#xa0;&#xa0;<span class="tag"><span class="people">people</span></span></a>
 <ul>
-<li><a href="#org197c24a">Artur Malabarba</a>
+<li><a href="#orgda53156">Artur Malabarba</a>
 <ul>
-<li><a href="#org1082b89">Packages</a></li>
+<li><a href="#org2f3c3ad">Packages</a></li>
 </ul>
 </li>
-<li><a href="#orgac065bd">Damien Cassou</a>
+<li><a href="#org19553d1">Damien Cassou</a>
 <ul>
-<li><a href="#orgb72dca5">Packages</a></li>
+<li><a href="#org85f762c">Packages</a></li>
 </ul>
 </li>
-<li><a href="#org8d3f6c3">John Wiegley</a>
+<li><a href="#orgbdeed37">John Wiegley</a>
 <ul>
-<li><a href="#orgff35f69">Packages</a></li>
+<li><a href="#org4ba10ca">Packages</a></li>
 </ul>
 </li>
-<li><a href="#org7410372">Jonas Bernoulli</a>
+<li><a href="#orgf2826ef">Jonas Bernoulli</a>
 <ul>
-<li><a href="#orge8c3fd8">Packages</a></li>
+<li><a href="#orga929a36">Packages</a></li>
 </ul>
 </li>
-<li><a href="#org61a4af0">Jorgen Schäfer</a>
+<li><a href="#org534ba83">Jorgen Schäfer</a>
 <ul>
-<li><a href="#org5d1a5e7">Packages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packages">packages</span></span></a></li>
+<li><a href="#orgadf00f1">Packages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packages">packages</span></span></a></li>
 </ul>
 </li>
-<li><a href="#orga7d1283">Magnar Sveen</a>
+<li><a href="#org6da57a8">Magnar Sveen</a>
 <ul>
-<li><a href="#orge2fd5ec">Packages</a></li>
+<li><a href="#orgc327986">Packages</a></li>
 </ul>
 </li>
-<li><a href="#org402b018">Matus Goljer</a>
+<li><a href="#orgd035a83">Matus Goljer</a>
 <ul>
-<li><a href="#orge1ffa6b">Packages</a></li>
+<li><a href="#org2798a1d">Packages</a></li>
 </ul>
 </li>
-<li><a href="#org16cf2f1">Oleh Krehel</a>
+<li><a href="#orge1e1d5c">Oleh Krehel</a>
 <ul>
-<li><a href="#orge13e94b">Packages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packages">packages</span></span></a></li>
+<li><a href="#org43ce196">Packages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packages">packages</span></span></a></li>
 </ul>
 </li>
-<li><a href="#orgadd3ea6">Phil Lord</a>
+<li><a href="#orgc2e655d">Phil Lord</a>
 <ul>
-<li><a href="#orgd0c655a">Packages</a></li>
+<li><a href="#orgb60540c">Packages</a></li>
 </ul>
 </li>
-<li><a href="#org35081e9">Sacha Chua</a></li>
+<li><a href="#org3b82ea4">Sacha Chua</a></li>
 </ul>
 </li>
-<li><a href="#org17171b0">Contributions</a></li>
-<li><a href="#org9c4d673">Tasks</a>
+<li><a href="#org9077b12">Contributions</a></li>
+<li><a href="#orgd26d0d5">Tasks</a>
 <ul>
-<li><a href="#org5f96f85"><span class="todo TODO">TODO</span> Articles to add <code>[0/13]</code></a>
+<li><a href="#orgf201002"><span class="todo TODO">TODO</span> Articles to add <code>[0/13]</code></a>
 <ul>
-<li><a href="#org218dcaa"><span class="todo TODO">TODO</span> Read and write files in Emacs Lisp (5 min read)</a></li>
-<li><a href="#org7aaa7dc"><span class="todo TODO">TODO</span> A Future For Concurrency In Emacs Lisp (6 min read)</a></li>
-<li><a href="#org5289607"><span class="todo TODO">TODO</span> A Blast From The Past: The Tale Of Concurrency In Emacs (7 min read)</a></li>
-<li><a href="#org2b9f428"><span class="todo TODO">TODO</span> I wished GNU Emacs had… (2 min read)</a></li>
-<li><a href="#orga436b0a"><span class="todo TODO">TODO</span> Reproduce bugs in emacs -Q (4 min read)</a></li>
-<li><a href="#org57059de"><span class="todo TODO">TODO</span> Why package.el? (1 min read)</a></li>
-<li><a href="#orga723cf6"><span class="todo TODO">TODO</span> My Emacs Configuration with use-package (8 min read)</a></li>
-<li><a href="#org59450d4"><span class="todo TODO">TODO</span> Emacs script pitfalls (13 min read)</a></li>
-<li><a href="#orgb69e512"><span class="todo TODO">TODO</span> Autoloads in Emacs Lisp (5 min read)</a></li>
-<li><a href="#org0d94855"><span class="todo TODO">TODO</span> Advanced syntactic fontification (11 min read)</a></li>
-<li><a href="#orgc1aaee7"><span class="todo TODO">TODO</span> Calling Python from Haskell (12 min read)</a></li>
-<li><a href="#orgd893732"><span class="todo TODO">TODO</span> Search-based fontification with keywords (18 min read)</a></li>
-<li><a href="#orga01c686"><span class="todo TODO">TODO</span> Syntactic fontification in Emacs (10 min read)</a></li>
+<li><a href="#orge969db6"><span class="todo TODO">TODO</span> Read and write files in Emacs Lisp (5 min read)</a></li>
+<li><a href="#orgf00ba70"><span class="todo TODO">TODO</span> A Future For Concurrency In Emacs Lisp (6 min read)</a></li>
+<li><a href="#orgf2ac1b5"><span class="todo TODO">TODO</span> A Blast From The Past: The Tale Of Concurrency In Emacs (7 min read)</a></li>
+<li><a href="#org1628808"><span class="todo TODO">TODO</span> I wished GNU Emacs had… (2 min read)</a></li>
+<li><a href="#orge27133f"><span class="todo TODO">TODO</span> Reproduce bugs in emacs -Q (4 min read)</a></li>
+<li><a href="#org06e9c1c"><span class="todo TODO">TODO</span> Why package.el? (1 min read)</a></li>
+<li><a href="#org5a8f42a"><span class="todo TODO">TODO</span> My Emacs Configuration with use-package (8 min read)</a></li>
+<li><a href="#org3671a92"><span class="todo TODO">TODO</span> Emacs script pitfalls (13 min read)</a></li>
+<li><a href="#orgde2e350"><span class="todo TODO">TODO</span> Autoloads in Emacs Lisp (5 min read)</a></li>
+<li><a href="#org3d98fd8"><span class="todo TODO">TODO</span> Advanced syntactic fontification (11 min read)</a></li>
+<li><a href="#org0db839e"><span class="todo TODO">TODO</span> Calling Python from Haskell (12 min read)</a></li>
+<li><a href="#orgd9ce566"><span class="todo TODO">TODO</span> Search-based fontification with keywords (18 min read)</a></li>
+<li><a href="#org047d5cb"><span class="todo TODO">TODO</span> Syntactic fontification in Emacs (10 min read)</a></li>
 </ul>
 </li>
-<li><a href="#orgc99af33"><span class="todo TODO">TODO</span> Add Nic Ferrier</a></li>
-<li><a href="#orgd07a6c4"><span class="todo TODO">TODO</span> Vincent Toups' projects</a></li>
-<li><a href="#orgb67456a"><span class="todo TODO">TODO</span> Add MELPA</a></li>
+<li><a href="#orgf0c9d12"><span class="todo TODO">TODO</span> Add Nic Ferrier</a></li>
+<li><a href="#org801b95b"><span class="todo TODO">TODO</span> Vincent Toups' projects</a></li>
+<li><a href="#org5d5451a"><span class="todo TODO">TODO</span> Add MELPA</a></li>
 </ul>
 </li>
-<li><a href="#org22c02bb">Code</a>
+<li><a href="#org5e922e2">Code</a>
 <ul>
-<li><a href="#org8538bc8"><span class="todo UNDERWAY">UNDERWAY</span> Automate adding new links and summaries</a>
+<li><a href="#orged13265"><span class="todo UNDERWAY">UNDERWAY</span> Automate adding new links and summaries</a>
 <ul>
-<li><a href="#org60a2848"><span class="todo TODO">TODO</span> Get summary of page</a></li>
-<li><a href="#org190bd1f"><span class="done DONE">DONE</span> Get archive.is link for page</a></li>
-<li><a href="#orgceb55ed"><span class="todo TODO">TODO</span> Insert new entry at point</a></li>
+<li><a href="#org81664cd"><span class="todo TODO">TODO</span> Get summary of page</a></li>
+<li><a href="#org244509f"><span class="done DONE">DONE</span> Get archive.is link for page</a></li>
+<li><a href="#org9c3df13"><span class="todo TODO">TODO</span> Insert new entry at point</a></li>
 </ul>
 </li>
-<li><a href="#orgb4dd0b3">Table of Contents</a></li>
-<li><a href="#org214a12a">Config</a></li>
+<li><a href="#org79d31a5">Table of Contents</a></li>
+<li><a href="#orgdd42696">Config</a></li>
 </ul>
 </li>
 </ul>
@@ -418,84 +418,84 @@ You can read this Org file directly on the <a href="https://github.com/alphapapa
 <b>Note:</b> The primary sections are listed at the top of the page in the horizontal bar.
 </p>
 
-<div id="outline-container-org7bacc57" class="outline-2">
-<h2 id="org7bacc57">Emacs Lisp&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h2>
-<div class="outline-text-2" id="text-org7bacc57">
+<div id="outline-container-org885e192" class="outline-2">
+<h2 id="org885e192">Emacs Lisp&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h2>
+<div class="outline-text-2" id="text-org885e192">
 </div>
 
-<div id="outline-container-org910f89f" class="outline-3">
-<h3 id="org910f89f">Buffers&#xa0;&#xa0;&#xa0;<span class="tag"><span class="buffers">buffers</span></span></h3>
-<div class="outline-text-3" id="text-org910f89f">
-</div><div id="outline-container-org7e66ebd" class="outline-4">
-<h4 id="org7e66ebd"><a id="ID-523aa766-36a3-4827-a114-6babf72edc6b"></a>Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
-<div class="outline-text-4" id="text-org7e66ebd">
+<div id="outline-container-org65cffa6" class="outline-3">
+<h3 id="org65cffa6">Buffers&#xa0;&#xa0;&#xa0;<span class="tag"><span class="buffers">buffers</span></span></h3>
+<div class="outline-text-3" id="text-org65cffa6">
+</div><div id="outline-container-orgc23e0fd" class="outline-4">
+<h4 id="orgc23e0fd"><a id="ID-523aa766-36a3-4827-a114-6babf72edc6b"></a>Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
+<div class="outline-text-4" id="text-orgc23e0fd">
 </div>
 
-<ul class="org-ul"><li><a id="org5c095c5"></a><a id="ID-6858c112-9756-43b4-a2e3-fa00a71e9367"></a><a href="https://github.com/phillord/m-buffer-el">m-buffer-el: List Oriented Buffer Operations</a><br /><div class="outline-text-5" id="text-org5c095c5">
+<ul class="org-ul"><li><a id="orgcc5e352"></a><a id="ID-6858c112-9756-43b4-a2e3-fa00a71e9367"></a><a href="https://github.com/phillord/m-buffer-el">m-buffer-el: List Oriented Buffer Operations</a><br /><div class="outline-text-5" id="text-orgcc5e352">
 </div></li></ul>
 </div>
 </div>
 
-<div id="outline-container-org559f3ef" class="outline-3">
-<h3 id="org559f3ef">Checkers / linters&#xa0;&#xa0;&#xa0;<span class="tag"><span class="linters">linters</span>&#xa0;<span class="checkers">checkers</span></span></h3>
-<div class="outline-text-3" id="text-org559f3ef">
-</div><div id="outline-container-org87df6ce" class="outline-4">
-<h4 id="org87df6ce"><span class="todo TODO">TODO</span> Flycheck-package</h4>
+<div id="outline-container-orgb65209b" class="outline-3">
+<h3 id="orgb65209b">Checkers / linters&#xa0;&#xa0;&#xa0;<span class="tag"><span class="linters">linters</span>&#xa0;<span class="checkers">checkers</span></span></h3>
+<div class="outline-text-3" id="text-orgb65209b">
+</div><div id="outline-container-org40c7709" class="outline-4">
+<h4 id="org40c7709"><span class="todo TODO">TODO</span> Flycheck-package</h4>
 </div>
 </div>
 
-<div id="outline-container-orgf6db077" class="outline-3">
-<h3 id="orgf6db077">Editing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="editing">editing</span></span></h3>
-<div class="outline-text-3" id="text-orgf6db077">
+<div id="outline-container-org46fdeed" class="outline-3">
+<h3 id="org46fdeed">Editing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="editing">editing</span></span></h3>
+<div class="outline-text-3" id="text-org46fdeed">
 </div>
 
-<div id="outline-container-org9de3116" class="outline-4">
-<h4 id="org9de3116">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
-<div class="outline-text-4" id="text-org9de3116">
-</div><ul class="org-ul"><li><a id="org8d5799b"></a><a id="ID-4dc7c607-a116-4c39-b063-fe34bd20cccf"></a><a href="https://github.com/Malabarba/aggressive-indent-mode">aggressive-indent-mode: minor mode that keeps your code always indented</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="formatting">formatting</span>&#xa0;<span class="indentation">indentation</span>&#xa0;<span class="parentheses">parentheses</span></span><br /><div class="outline-text-5" id="text-org8d5799b">
+<div id="outline-container-orga603e7f" class="outline-4">
+<h4 id="orga603e7f">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
+<div class="outline-text-4" id="text-orga603e7f">
+</div><ul class="org-ul"><li><a id="org0fbe20d"></a><a id="ID-4dc7c607-a116-4c39-b063-fe34bd20cccf"></a><a href="https://github.com/Malabarba/aggressive-indent-mode">aggressive-indent-mode: minor mode that keeps your code always indented</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="formatting">formatting</span>&#xa0;<span class="indentation">indentation</span>&#xa0;<span class="parentheses">parentheses</span></span><br /><div class="outline-text-5" id="text-org0fbe20d">
 </div></li>
 
-<li><a id="org3a7d790"></a><a id="ID-a32ed391-8ce6-46b7-9367-8117829ce2e7"></a><a href="https://emacs.cafe/emacs/package/2017/08/01/beginend.html">beginend.el</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="navigation">navigation</span></span><br /><div class="outline-text-5" id="text-org3a7d790">
+<li><a id="org0ac2ecd"></a><a id="ID-a32ed391-8ce6-46b7-9367-8117829ce2e7"></a><a href="https://emacs.cafe/emacs/package/2017/08/01/beginend.html">beginend.el</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="navigation">navigation</span></span><br /><div class="outline-text-5" id="text-org0ac2ecd">
 <p>
 This package, by Damien Cassou and Matus Goljer, helps navigation by redefining the <code>M-&lt;</code> and <code>M-&gt;</code> keys do, depending on the major-mode.
 </p>
 </div></li>
-<li><a id="org132144b"></a><a id="ID-88b496f4-8230-474e-b2ee-d8e4e8ca30d0"></a><a href="https://github.com/magnars/expand-region.el">expand-region.el: Increase selected region by semantic units</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="selection">selection</span>&#xa0;<span class="region">region</span></span><br /><div class="outline-text-5" id="text-org132144b">
+<li><a id="orgaa578bb"></a><a id="ID-88b496f4-8230-474e-b2ee-d8e4e8ca30d0"></a><a href="https://github.com/magnars/expand-region.el">expand-region.el: Increase selected region by semantic units</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="selection">selection</span>&#xa0;<span class="region">region</span></span><br /><div class="outline-text-5" id="text-orgaa578bb">
 </div></li>
 
-<li><a id="org77f7ff5"></a><a href="https://github.com/emacs-helm/helm-navi">helm-navi: Navigate file sections and language keywords using Helm</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="navigation">navigation</span></span><br /></li>
+<li><a id="org60da191"></a><a href="https://github.com/emacs-helm/helm-navi">helm-navi: Navigate file sections and language keywords using Helm</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="navigation">navigation</span></span><br /></li>
 
-<li><a id="orgf010d3c"></a><a id="ID-ca3809ba-5900-4dfd-84a1-1ceecc048296"></a><a href="https://github.com/abo-abo/lispy">lispy: short and sweet LISP editing</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span>&#xa0;<span class="navigation">navigation</span>&#xa0;<span class="parentheses">parentheses</span></span><br /><div class="outline-text-5" id="text-orgf010d3c">
+<li><a id="org31c5dae"></a><a id="ID-ca3809ba-5900-4dfd-84a1-1ceecc048296"></a><a href="https://github.com/abo-abo/lispy">lispy: short and sweet LISP editing</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span>&#xa0;<span class="navigation">navigation</span>&#xa0;<span class="parentheses">parentheses</span></span><br /><div class="outline-text-5" id="text-org31c5dae">
 </div></li>
 
-<li><a id="orgb2a7788"></a><a href="https://github.com/IvanMalison/multi-line">multi-line: multi-line everything from function invocations and definitions to array and map literals in a wide variety of languages</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="formatting">formatting</span></span><br /></li>
-<li><a id="org9fa41ef"></a><a id="ID-deefcbc5-0c37-4936-a820-df99ae31a401"></a><a href="https://github.com/magnars/multiple-cursors.el">multiple-cursors.el: Multiple cursors</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="selection">selection</span>&#xa0;<span class="editing">editing</span></span><br /><div class="outline-text-5" id="text-org9fa41ef">
+<li><a id="orgf64f298"></a><a href="https://github.com/IvanMalison/multi-line">multi-line: multi-line everything from function invocations and definitions to array and map literals in a wide variety of languages</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="formatting">formatting</span></span><br /></li>
+<li><a id="org0e5251e"></a><a id="ID-deefcbc5-0c37-4936-a820-df99ae31a401"></a><a href="https://github.com/magnars/multiple-cursors.el">multiple-cursors.el: Multiple cursors</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="selection">selection</span>&#xa0;<span class="editing">editing</span></span><br /><div class="outline-text-5" id="text-org0e5251e">
 </div></li>
 
-<li><a id="orga463758"></a><a id="ID-e806d7f3-43e9-4260-aae4-479efbd41653"></a><a href="https://github.com/Fuco1/smartparens">smartparens: Minor mode  that deals with parens pairs and tries to be smart about it</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="navigation">navigation</span>&#xa0;<span class="editing">editing</span>&#xa0;<span class="parentheses">parentheses</span></span><br /><div class="outline-text-5" id="text-orga463758">
+<li><a id="org3abb43b"></a><a id="ID-e806d7f3-43e9-4260-aae4-479efbd41653"></a><a href="https://github.com/Fuco1/smartparens">smartparens: Minor mode  that deals with parens pairs and tries to be smart about it</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="navigation">navigation</span>&#xa0;<span class="editing">editing</span>&#xa0;<span class="parentheses">parentheses</span></span><br /><div class="outline-text-5" id="text-org3abb43b">
 </div></li></ul>
 </div>
 </div>
 
-<div id="outline-container-org78dcb7d" class="outline-3">
-<h3 id="org78dcb7d">General&#xa0;&#xa0;&#xa0;<span class="tag"><span class="general">general</span></span></h3>
-<div class="outline-text-3" id="text-org78dcb7d">
-</div><div id="outline-container-org2535b42" class="outline-4">
-<h4 id="org2535b42">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
-<div class="outline-text-4" id="text-org2535b42">
-</div><ul class="org-ul"><li><a id="org9e291d4"></a><a href="https://www.gnu.org/software/emacs/manual/html_node/cl/index.html">Common Lisp Extensions</a> (<code>cl-lib</code>)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span></span><br /><div class="outline-text-5" id="text-org9e291d4">
+<div id="outline-container-orgb2567e4" class="outline-3">
+<h3 id="orgb2567e4">General&#xa0;&#xa0;&#xa0;<span class="tag"><span class="general">general</span></span></h3>
+<div class="outline-text-3" id="text-orgb2567e4">
+</div><div id="outline-container-org0c45a55" class="outline-4">
+<h4 id="org0c45a55">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
+<div class="outline-text-4" id="text-org0c45a55">
+</div><ul class="org-ul"><li><a id="org6a5f5b1"></a><a href="https://www.gnu.org/software/emacs/manual/html_node/cl/index.html">Common Lisp Extensions</a> (<code>cl-lib</code>)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span></span><br /><div class="outline-text-5" id="text-org6a5f5b1">
 <p>
 This is the built-in <code>cl-lib</code> package which implements Common Lisp functions and control structures for Emacs Lisp.
 </p>
 </div></li>
 
-<li><a id="org9e79da4"></a><a id="ID-e85e4252-ea03-4473-b52f-9393e7527fad"></a><a href="https://github.com/magnars/dash.el">dash.el</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="dash">dash</span></span><br /><div class="outline-text-5" id="text-org9e79da4">
+<li><a id="org63b3628"></a><a id="ID-e85e4252-ea03-4473-b52f-9393e7527fad"></a><a href="https://github.com/magnars/dash.el">dash.el</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="dash">dash</span></span><br /><div class="outline-text-5" id="text-org63b3628">
 <p>
 Dash is a powerful general-purpose library that provides many useful functions and macros.
 </p>
 </div></li>
 
-<li><a id="orgd4bc779"></a><a href="https://github.com/emacs-mirror/emacs/blob/master/lisp/emacs-lisp/subr-x.el">subr-x</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span>&#xa0;<span class="strings">strings</span>&#xa0;<span class="flow_control">flow_control</span></span><br /><div class="outline-text-5" id="text-orgd4bc779">
+<li><a id="orge450664"></a><a href="https://github.com/emacs-mirror/emacs/blob/master/lisp/emacs-lisp/subr-x.el">subr-x</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span>&#xa0;<span class="strings">strings</span>&#xa0;<span class="flow_control">flow_control</span></span><br /><div class="outline-text-5" id="text-orge450664">
 <blockquote>
 <p>
 Less commonly used functions that complement basic APIs, often implemented in C code (like hash-tables and strings), and are not eligible for inclusion in subr.el.
@@ -515,22 +515,22 @@ Do not document these functions in the lispref.  <a href="http://lists.gnu.org/a
 </div>
 
 
-<div id="outline-container-org775e888" class="outline-4">
-<h4 id="org775e888">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
-<div class="outline-text-4" id="text-org775e888">
-</div><ul class="org-ul"><li><a id="org73ad8bc"></a><a id="ID-0c220bc9-7173-4b0f-8955-e10ab6db640f"></a><a href="https://github.com/phillord/lentic">lentic: Create views of the same content in two buffers</a><br /><div class="outline-text-5" id="text-org73ad8bc">
+<div id="outline-container-org024d192" class="outline-4">
+<h4 id="org024d192">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
+<div class="outline-text-4" id="text-org024d192">
+</div><ul class="org-ul"><li><a id="org1e2d443"></a><a id="ID-0c220bc9-7173-4b0f-8955-e10ab6db640f"></a><a href="https://github.com/phillord/lentic">lentic: Create views of the same content in two buffers</a><br /><div class="outline-text-5" id="text-org1e2d443">
 </div></li></ul>
 </div>
 </div>
-<div id="outline-container-org5f55306" class="outline-3">
-<h3 id="org5f55306">Packaging&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packaging">packaging</span></span></h3>
-<div class="outline-text-3" id="text-org5f55306">
+<div id="outline-container-org74b94e2" class="outline-3">
+<h3 id="org74b94e2">Packaging&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packaging">packaging</span></span></h3>
+<div class="outline-text-3" id="text-org74b94e2">
 </div>
 
-<div id="outline-container-orgd3fb671" class="outline-4">
-<h4 id="orgd3fb671">Best practices&#xa0;&#xa0;&#xa0;<span class="tag"><span class="best_practices">best_practices</span></span></h4>
-<div class="outline-text-4" id="text-orgd3fb671">
-</div><ul class="org-ul"><li><a id="org2682da8"></a>Autoloads&#xa0;&#xa0;&#xa0;<span class="tag"><span class="autoloads">autoloads</span></span><br /><ul class="org-ul"><li><a id="org8fa1677"></a><span class="todo TODO">TODO</span> Autoloading macro-generated functions<br /><div class="outline-text-6" id="text-org8fa1677">
+<div id="outline-container-org48f5421" class="outline-4">
+<h4 id="org48f5421">Best practices&#xa0;&#xa0;&#xa0;<span class="tag"><span class="best_practices">best_practices</span></span></h4>
+<div class="outline-text-4" id="text-org48f5421">
+</div><ul class="org-ul"><li><a id="orga0eb971"></a>Autoloads&#xa0;&#xa0;&#xa0;<span class="tag"><span class="autoloads">autoloads</span></span><br /><ul class="org-ul"><li><a id="org3351453"></a><span class="todo TODO">TODO</span> Autoloading macro-generated functions<br /><div class="outline-text-6" id="text-org3351453">
 <p>
 This may actually be a bug, or at least an unanswered question.
 </p>
@@ -566,9 +566,9 @@ Can anyone clear up what the intended behaviour is?
 </blockquote>
 </div></li>
 
-<li><a id="orgd27d492"></a>Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span><br /><ul class="org-ul"><li><a id="org1118110"></a><a href="https://www.lunaryorn.com/posts/autoloads-in-emacs-lisp">Autoloads in Emacs Lisp | Sebastian Wiesner</a><br /><div class="outline-text-7" id="text-org1118110">
+<li><a id="orgd5493a1"></a>Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span><br /><ul class="org-ul"><li><a id="org4b995fc"></a><a href="https://www.lunaryorn.com/posts/autoloads-in-emacs-lisp">Autoloads in Emacs Lisp | Sebastian Wiesner</a><br /><div class="outline-text-7" id="text-org4b995fc">
 </div></li></ul></li></ul></li>
-<li><a id="orgc5e6bf7"></a><a id="ID-7247be4d-4f66-43ff-bb70-1b4a7458611b"></a><a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Lexical-Binding.html">Lexical binding</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="lexical_binding">lexical_binding</span></span><br /><div class="outline-text-5" id="text-orgc5e6bf7">
+<li><a id="orgb849772"></a><a id="ID-7247be4d-4f66-43ff-bb70-1b4a7458611b"></a><a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Lexical-Binding.html">Lexical binding</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="lexical_binding">lexical_binding</span></span><br /><div class="outline-text-5" id="text-orgb849772">
 <p>
 You should always use lexical binding by setting the header in the first line of the file:
 </p>
@@ -578,23 +578,26 @@ You should always use lexical binding by setting the header in the first line of
 </pre>
 </div>
 
-<ul class="org-ul"><li><a id="orga18119e"></a>Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span><br /><ul class="org-ul"><li><a id="orgb1e6a5d"></a><a href="https://yoo2080.wordpress.com/2013/09/11/emacs-lisp-lexical-binding-gotchas-and-related-best-practices/">Emacs Lisp lexical binding gotchas and related best practices | Yoo Box</a><br /><div class="outline-text-7" id="text-orgb1e6a5d">
+<ul class="org-ul"><li><a id="orgc5ac8bc"></a>Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span><br /><ul class="org-ul"><li><a id="org7b51b0d"></a><a href="https://yoo2080.wordpress.com/2013/09/11/emacs-lisp-lexical-binding-gotchas-and-related-best-practices/">Emacs Lisp lexical binding gotchas and related best practices | Yoo Box</a><br /><div class="outline-text-7" id="text-org7b51b0d">
 </div></li>
 
-<li><a id="org8f46bb0"></a><a href="https://emacs.stackexchange.com/questions/2129/why-is-let-faster-with-lexical-scope">elisp - Why is `let' faster with lexical scope? - Emacs Stack Exchange</a><br /><div class="outline-text-7" id="text-org8f46bb0">
+<li><a id="org3712ab6"></a><a href="https://emacs.stackexchange.com/questions/2129/why-is-let-faster-with-lexical-scope">elisp - Why is `let' faster with lexical scope? - Emacs Stack Exchange</a><br /><div class="outline-text-7" id="text-org3712ab6">
 <p>
 Sebastian Wiesner provides a detailed explanation.
 </p>
 </div></li>
 
-<li><a id="orge0a7313"></a><a href="https://www.emacswiki.org/emacs/DynamicBindingVsLexicalBinding">Dynamic Binding Vs Lexical Binding</a><br /><div class="outline-text-7" id="text-orge0a7313">
+<li><a id="orgbf2dd4e"></a><a href="https://www.emacswiki.org/emacs/DynamicBindingVsLexicalBinding">EmacsWiki: Dynamic Binding Vs Lexical Binding</a><br /><div class="outline-text-7" id="text-orgbf2dd4e">
+<p>
+A lot of good examples and discussion.
+</p>
 </div></li></ul></li></ul></li></ul>
 </div>
 
-<div id="outline-container-org62cc6af" class="outline-4">
-<h4 id="org62cc6af">Reference&#xa0;&#xa0;&#xa0;<span class="tag"><span class="reference">reference</span></span></h4>
-<div class="outline-text-4" id="text-org62cc6af">
-</div><ul class="org-ul"><li><a id="org057a80e"></a>Package headers and structure<br /><div class="outline-text-5" id="text-org057a80e">
+<div id="outline-container-org688086c" class="outline-4">
+<h4 id="org688086c">Reference&#xa0;&#xa0;&#xa0;<span class="tag"><span class="reference">reference</span></span></h4>
+<div class="outline-text-4" id="text-org688086c">
+</div><ul class="org-ul"><li><a id="orgc548412"></a>Package headers and structure<br /><div class="outline-text-5" id="text-orgc548412">
 <p>
 The <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.html">Emacs manual</a> gives this example (I've added the lexical-binding part):
 </p>
@@ -625,29 +628,29 @@ The <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Pa
 </div></li></ul>
 </div>
 
-<div id="outline-container-orgaaf0b48" class="outline-4">
-<h4 id="orgaaf0b48">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
-<div class="outline-text-4" id="text-orgaaf0b48">
-</div><ul class="org-ul"><li><a id="orgc4f5302"></a>Package installation/management&#xa0;&#xa0;&#xa0;<span class="tag"><span class="installation">installation</span>&#xa0;<span class="management">management</span></span><br /><ul class="org-ul"><li><a id="org3641c59"></a><a id="ID-2c31eae6-eeba-433f-bc26-9465d5aa8537"></a><a href="https://github.com/Malabarba/paradox">paradox: modernizing Emacs' Package Menu. With package ratings, usage statistics, customizability, and more.</a><br /><div class="outline-text-6" id="text-org3641c59">
+<div id="outline-container-org3d1123d" class="outline-4">
+<h4 id="org3d1123d">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
+<div class="outline-text-4" id="text-org3d1123d">
+</div><ul class="org-ul"><li><a id="org0111187"></a>Package installation/management&#xa0;&#xa0;&#xa0;<span class="tag"><span class="installation">installation</span>&#xa0;<span class="management">management</span></span><br /><ul class="org-ul"><li><a id="org9b96733"></a><a id="ID-2c31eae6-eeba-433f-bc26-9465d5aa8537"></a><a href="https://github.com/Malabarba/paradox">paradox: modernizing Emacs' Package Menu. With package ratings, usage statistics, customizability, and more.</a><br /><div class="outline-text-6" id="text-org9b96733">
 </div></li>
-<li><a id="org088292c"></a><a href="https://github.com/raxod502/straight.el">straight.el: Next-generation, purely functional package manager for the Emacs hacker</a><br /></li>
+<li><a id="org057da54"></a><a href="https://github.com/raxod502/straight.el">straight.el: Next-generation, purely functional package manager for the Emacs hacker</a><br /></li>
 
-<li><a id="org343642d"></a><a id="ID-540617fd-d4ff-47df-89da-6c48c8f27785"></a><a href="https://github.com/jwiegley/use-package">use-package: A use-package declaration for simplifying your .emacs</a><br /><div class="outline-text-6" id="text-org343642d">
+<li><a id="org9c4b82e"></a><a id="ID-540617fd-d4ff-47df-89da-6c48c8f27785"></a><a href="https://github.com/jwiegley/use-package">use-package: A use-package declaration for simplifying your .emacs</a><br /><div class="outline-text-6" id="text-org9c4b82e">
 <p>
 Developed by the current maintainer of Emacs, himself, John Wiegley.
 </p>
 </div></li></ul></li></ul>
 </div>
 </div>
-<div id="outline-container-org43b466c" class="outline-3">
-<h3 id="org43b466c">Pattern matching&#xa0;&#xa0;&#xa0;<span class="tag"><span class="destructuring">destructuring</span>&#xa0;<span class="pattern_matching">pattern_matching</span></span></h3>
-<div class="outline-text-3" id="text-org43b466c">
+<div id="outline-container-org5897161" class="outline-3">
+<h3 id="org5897161">Pattern matching&#xa0;&#xa0;&#xa0;<span class="tag"><span class="destructuring">destructuring</span>&#xa0;<span class="pattern_matching">pattern_matching</span></span></h3>
+<div class="outline-text-3" id="text-org5897161">
 </div>
 
-<div id="outline-container-org268b817" class="outline-4">
-<h4 id="org268b817">Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span></h4>
-<div class="outline-text-4" id="text-org268b817">
-</div><ul class="org-ul"><li><a id="org4acd837"></a><a href="http://www.wilfred.me.uk/blog/2017/03/19/pattern-matching-in-emacs-lisp/">Pattern Matching in Emacs Lisp – Wilfred Hughes::Blog</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pcase">pcase</span>&#xa0;<span class="shadchen">shadchen</span>&#xa0;<span class="cl">cl</span>&#xa0;<span class="dash">dash</span></span><br /><div class="outline-text-5" id="text-org4acd837">
+<div id="outline-container-orgc91782c" class="outline-4">
+<h4 id="orgc91782c">Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span></h4>
+<div class="outline-text-4" id="text-orgc91782c">
+</div><ul class="org-ul"><li><a id="orgc1b5771"></a><a href="http://www.wilfred.me.uk/blog/2017/03/19/pattern-matching-in-emacs-lisp/">Pattern Matching in Emacs Lisp – Wilfred Hughes::Blog</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pcase">pcase</span>&#xa0;<span class="shadchen">shadchen</span>&#xa0;<span class="cl">cl</span>&#xa0;<span class="dash">dash</span></span><br /><div class="outline-text-5" id="text-orgc1b5771">
 <blockquote>
 <p>
 Pattern matching is invaluable in elisp. Lists are ubiquitous, and a small amount of pattern matching can often replace a ton of verbose list fiddling.
@@ -664,42 +667,42 @@ For the sake of this post, we'll consider both pattern matching and destructurin
 </div></li></ul>
 </div>
 
-<div id="outline-container-org33e111e" class="outline-4">
-<h4 id="org33e111e">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
-<div class="outline-text-4" id="text-org33e111e">
-</div><ul class="org-ul"><li><a id="org48719ce"></a><a href="https://github.com/magnars/dash.el">dash.el</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="dash">dash</span></span><br /><div class="outline-text-5" id="text-org48719ce">
+<div id="outline-container-org64105ee" class="outline-4">
+<h4 id="org64105ee">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
+<div class="outline-text-4" id="text-org64105ee">
+</div><ul class="org-ul"><li><a id="orgcfef7e2"></a><a href="https://github.com/magnars/dash.el">dash.el</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="dash">dash</span></span><br /><div class="outline-text-5" id="text-orgcfef7e2">
 <p>
 Dash is a powerful library, and one of its features is powerful destructuring with its <code>-let</code> macro, and several others that work the same way.
 </p>
 </div></li>
 
-<li><a id="orgdaf7238"></a><a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Pattern-matching-case-statement.html">pcase</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span>&#xa0;<span class="pcase">pcase</span></span><br /><div class="outline-text-5" id="text-orgdaf7238">
+<li><a id="org1e9f62f"></a><a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Pattern-matching-case-statement.html">pcase</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span>&#xa0;<span class="pcase">pcase</span></span><br /><div class="outline-text-5" id="text-org1e9f62f">
 <p>
 <code>pcase</code> is built-in to Emacs.  Its syntax can be confusing, but it is very powerful.
 </p>
 </div>
 
-<ul class="org-ul"><li><a id="orgd770a80"></a>Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span><br /><ul class="org-ul"><li><a id="org15c2f60"></a><a href="https://www.emacswiki.org/emacs/PatternMatching">EmacsWiki: Pattern Matching</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="examples">examples</span>&#xa0;<span class="EmacsWiki">EmacsWiki</span></span><br /><div class="outline-text-7" id="text-org15c2f60">
+<ul class="org-ul"><li><a id="org665244a"></a>Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span><br /><ul class="org-ul"><li><a id="org108902a"></a><a href="https://www.emacswiki.org/emacs/PatternMatching">EmacsWiki: Pattern Matching</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="examples">examples</span>&#xa0;<span class="EmacsWiki">EmacsWiki</span></span><br /><div class="outline-text-7" id="text-org108902a">
 <p>
 There are <i>lots</i> of examples here.
 </p>
 </div></li>
 
-<li><a id="org42955c4"></a><a href="http://newartisans.com/2016/01/pattern-matching-with-pcase/">Emacs: Pattern Matching with pcase - Lost in Technopolis</a><br /><div class="outline-text-7" id="text-org42955c4">
+<li><a id="orga2db678"></a><a href="http://newartisans.com/2016/01/pattern-matching-with-pcase/">Emacs: Pattern Matching with pcase - Lost in Technopolis</a><br /><div class="outline-text-7" id="text-orga2db678">
 </div></li>
 
-<li><a id="org12319aa"></a>Nic Ferrier, <a href="http://nic.ferrier.me.uk/blog/2013_03/refactoring-elisp-polymorphically">Using Polymorphism as a Lisp refactoring tool</a><br /></li></ul></li></ul></li>
-<li><a id="org6e18540"></a><a href="https://github.com/VincentToups/shadchen-el">shadchen-el</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shadchen">shadchen</span>&#xa0;<span class="el">el</span></span><br /><div class="outline-text-5" id="text-org6e18540">
+<li><a id="orgec08abf"></a>Nic Ferrier, <a href="http://nic.ferrier.me.uk/blog/2013_03/refactoring-elisp-polymorphically">Using Polymorphism as a Lisp refactoring tool</a><br /></li></ul></li></ul></li>
+<li><a id="orgf95561f"></a><a href="https://github.com/VincentToups/shadchen-el">shadchen-el</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shadchen">shadchen</span>&#xa0;<span class="el">el</span></span><br /><div class="outline-text-5" id="text-orgf95561f">
 <p>
 A powerful, Racket-style pattern-matching library.
 </p>
 </div></li></ul>
 </div>
 
-<div id="outline-container-org5100517" class="outline-4">
-<h4 id="org5100517">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
-<div class="outline-text-4" id="text-org5100517">
-</div><ul class="org-ul"><li><a id="org087ed14"></a>let-alist&#xa0;&#xa0;&#xa0;<span class="tag"><span class="alists">alists</span>&#xa0;<span class="macros">macros</span>&#xa0;<span class="destructuring">destructuring</span></span><br /><div class="outline-text-5" id="text-org087ed14">
+<div id="outline-container-org0eae60b" class="outline-4">
+<h4 id="org0eae60b">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
+<div class="outline-text-4" id="text-org0eae60b">
+</div><ul class="org-ul"><li><a id="org0b13b34"></a>let-alist&#xa0;&#xa0;&#xa0;<span class="tag"><span class="alists">alists</span>&#xa0;<span class="macros">macros</span>&#xa0;<span class="destructuring">destructuring</span></span><br /><div class="outline-text-5" id="text-org0b13b34">
 <blockquote>
 <p>
 let-alist is the best thing to happen to associative lists since the invention of the cons cell. This little macro lets you easily access the contents of an alist, concisely and efficiently, without having to specify them preemptively. It comes built-in with 25.1, and is also available on GNU Elpa for older Emacsen.
@@ -727,7 +730,7 @@ let-alist is the best thing to happen to associative lists since the invention o
 </div>
 </div>
 
-<ul class="org-ul"><li><a id="orgde64b0d"></a>Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span><br /><ul class="org-ul"><li><a id="org73014cb"></a><a href="http://endlessparentheses.com/new-on-elpa-and-in-emacs-25-1-let-alist.html">New on Elpa and in Emacs 25.1: let-alist · Endless Parentheses</a><br /><div class="outline-text-7" id="text-org73014cb">
+<ul class="org-ul"><li><a id="org097362b"></a>Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span><br /><ul class="org-ul"><li><a id="org5201c81"></a><a href="http://endlessparentheses.com/new-on-elpa-and-in-emacs-25-1-let-alist.html">New on Elpa and in Emacs 25.1: let-alist · Endless Parentheses</a><br /><div class="outline-text-7" id="text-org5201c81">
 <p>
 Here Artur introduces the macro and gives examples.
 </p>
@@ -735,40 +738,40 @@ Here Artur introduces the macro and gives examples.
 </div>
 </div>
 
-<div id="outline-container-org4ba63ab" class="outline-3">
-<h3 id="org4ba63ab">String manipulation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="strings">strings</span></span></h3>
-<div class="outline-text-3" id="text-org4ba63ab">
-</div><div id="outline-container-org4882a3c" class="outline-4">
-<h4 id="org4882a3c">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
-<div class="outline-text-4" id="text-org4882a3c">
-</div><ul class="org-ul"><li><a id="org5f5e604"></a><a href="https://github.com/magnars/s.el">s.el: The long lost Emacs string manipulation library</a><br /></li></ul>
+<div id="outline-container-org976229b" class="outline-3">
+<h3 id="org976229b">String manipulation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="strings">strings</span></span></h3>
+<div class="outline-text-3" id="text-org976229b">
+</div><div id="outline-container-orgd95af20" class="outline-4">
+<h4 id="orgd95af20">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
+<div class="outline-text-4" id="text-orgd95af20">
+</div><ul class="org-ul"><li><a id="org808d400"></a><a href="https://github.com/magnars/s.el">s.el: The long lost Emacs string manipulation library</a><br /></li></ul>
 </div>
 </div>
 
-<div id="outline-container-org80a903f" class="outline-3">
-<h3 id="org80a903f">Testing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="testing">testing</span></span></h3>
-<div class="outline-text-3" id="text-org80a903f">
-</div><div id="outline-container-org648f352" class="outline-4">
-<h4 id="org648f352">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
-<div class="outline-text-4" id="text-org648f352">
-</div><ul class="org-ul"><li><a id="org4702201"></a><a href="https://github.com/phillord/assess">assess: Test support functions</a><br /></li>
+<div id="outline-container-orgc830139" class="outline-3">
+<h3 id="orgc830139">Testing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="testing">testing</span></span></h3>
+<div class="outline-text-3" id="text-orgc830139">
+</div><div id="outline-container-org40ad9eb" class="outline-4">
+<h4 id="org40ad9eb">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
+<div class="outline-text-4" id="text-org40ad9eb">
+</div><ul class="org-ul"><li><a id="org69c4cb8"></a><a href="https://github.com/phillord/assess">assess: Test support functions</a><br /></li>
 
-<li><a id="orgf873358"></a><a id="ID-108f5eb6-7307-4d4b-aaf1-dd2a8bb65a58"></a><a href="https://github.com/jorgenschaefer/emacs-buttercup">buttercup: Behavior-Driven Emacs Lisp Testing</a><br /><div class="outline-text-5" id="text-orgf873358">
+<li><a id="orgef17715"></a><a id="ID-108f5eb6-7307-4d4b-aaf1-dd2a8bb65a58"></a><a href="https://github.com/jorgenschaefer/emacs-buttercup">buttercup: Behavior-Driven Emacs Lisp Testing</a><br /><div class="outline-text-5" id="text-orgef17715">
 </div></li>
 
-<li><a id="org03eedfe"></a><a href="https://github.com/ecukes/ecukes">ecukes: Cucumber for Emacs</a><br /></li>
+<li><a id="org634ad7d"></a><a href="https://github.com/ecukes/ecukes">ecukes: Cucumber for Emacs</a><br /></li>
 
-<li><a id="org76ab040"></a><a href="https://www.gnu.org/software/emacs/manual/html_node/ert/">Emacs Lisp Regression Testing</a> (ERT)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span></span><br /><div class="outline-text-5" id="text-org76ab040">
+<li><a id="orga95f011"></a><a href="https://www.gnu.org/software/emacs/manual/html_node/ert/">Emacs Lisp Regression Testing</a> (ERT)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span></span><br /><div class="outline-text-5" id="text-orga95f011">
 <p>
 This is the standard, built-in Emacs testing library, used by core code and third-party packages alike.
 </p>
 </div></li></ul>
 </div>
 
-<div id="outline-container-orgf1bb311" class="outline-4">
-<h4 id="orgf1bb311">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
-<div class="outline-text-4" id="text-orgf1bb311">
-</div><ul class="org-ul"><li><a id="orge1ea768"></a>bench macro&#xa0;&#xa0;&#xa0;<span class="tag"><span class="macros">macros</span></span><br /><div class="outline-text-5" id="text-orge1ea768">
+<div id="outline-container-orga1c70fe" class="outline-4">
+<h4 id="orga1c70fe">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
+<div class="outline-text-4" id="text-orga1c70fe">
+</div><ul class="org-ul"><li><a id="org120eeca"></a>bench macro&#xa0;&#xa0;&#xa0;<span class="tag"><span class="macros">macros</span></span><br /><div class="outline-text-5" id="text-org120eeca">
 <p>
 From Phil Lord's <a href="http://phillord.github.io/m-buffer-el/#sec-5-1-2">m-buffer-el</a>:
 </p>
@@ -791,7 +794,7 @@ From Phil Lord's <a href="http://phillord.github.io/m-buffer-el/#sec-5-1-2">m-bu
 </div>
 </div></li>
 
-<li><a id="org703132f"></a>elp-profile macro&#xa0;&#xa0;&#xa0;<span class="tag"><span class="macros">macros</span></span><br /><div class="outline-text-5" id="text-org703132f">
+<li><a id="org5bf392a"></a>elp-profile macro&#xa0;&#xa0;&#xa0;<span class="tag"><span class="macros">macros</span></span><br /><div class="outline-text-5" id="text-org5bf392a">
 <p>
 Call this macro from an Org source block and you'll get a results block showing which 20 functions were called the most times, how long they took to run, etc.  Set <code>prefixes</code> to a list of strings matching the prefixes of the functions you want to instrument.
 </p>
@@ -828,13 +831,13 @@ Call this macro from an Org source block and you'll get a results block showing 
 </div>
 </div>
 
-<div id="outline-container-orgd600f58" class="outline-3">
-<h3 id="orgd600f58">Version control&#xa0;&#xa0;&#xa0;<span class="tag"><span class="version_control">version_control</span></span></h3>
-<div class="outline-text-3" id="text-orgd600f58">
-</div><div id="outline-container-org3c964a5" class="outline-4">
-<h4 id="org3c964a5">Packages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packages">packages</span></span></h4>
-<div class="outline-text-4" id="text-org3c964a5">
-</div><ul class="org-ul"><li><a id="org61b5eee"></a><a id="ID-43daf455-caeb-4399-b1bb-15a10603018b"></a><a href="https://github.com/magit/magit">Magit</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span><br /><div class="outline-text-5" id="text-org61b5eee">
+<div id="outline-container-org8083fe2" class="outline-3">
+<h3 id="org8083fe2">Version control&#xa0;&#xa0;&#xa0;<span class="tag"><span class="version_control">version_control</span></span></h3>
+<div class="outline-text-3" id="text-org8083fe2">
+</div><div id="outline-container-orgf424f47" class="outline-4">
+<h4 id="orgf424f47">Packages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packages">packages</span></span></h4>
+<div class="outline-text-4" id="text-orgf424f47">
+</div><ul class="org-ul"><li><a id="org2c594a8"></a><a id="ID-43daf455-caeb-4399-b1bb-15a10603018b"></a><a href="https://github.com/magit/magit">Magit</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span><br /><div class="outline-text-5" id="text-org2c594a8">
 <p>
 One of the "killer apps" for Emacs&#x2013;and for git!
 </p>
@@ -842,63 +845,63 @@ One of the "killer apps" for Emacs&#x2013;and for git!
 </div>
 </div>
 </div>
-<div id="outline-container-org2910f7c" class="outline-2">
-<h2 id="org2910f7c">Blogs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="blogs">blogs</span></span></h2>
-<div class="outline-text-2" id="text-org2910f7c">
+<div id="outline-container-orgd22257b" class="outline-2">
+<h2 id="orgd22257b">Blogs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="blogs">blogs</span></span></h2>
+<div class="outline-text-2" id="text-orgd22257b">
 </div>
 
-<div id="outline-container-org3c413f4" class="outline-3">
-<h3 id="org3c413f4"><a href="http://planet.emacsen.org/">Planet Emacsen</a></h3>
-<div class="outline-text-3" id="text-org3c413f4">
+<div id="outline-container-org49d8ffc" class="outline-3">
+<h3 id="org49d8ffc"><a href="http://planet.emacsen.org/">Planet Emacsen</a></h3>
+<div class="outline-text-3" id="text-org49d8ffc">
 <p>
 This is the main community aggregator.  You can find just about everyone's Emacs-related blog posts here.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orge4ff44d" class="outline-3">
-<h3 id="orge4ff44d">Sacha Chua's <a href="http://sachachua.com/blog/category/geek/emacs/emacs-news/"><i>Emacs News</i></a></h3>
-<div class="outline-text-3" id="text-orge4ff44d">
+<div id="outline-container-org5ded7d6" class="outline-3">
+<h3 id="org5ded7d6">Sacha Chua's <a href="http://sachachua.com/blog/category/geek/emacs/emacs-news/"><i>Emacs News</i></a></h3>
+<div class="outline-text-3" id="text-org5ded7d6">
 <p>
 This is Sacha's weekly Emacs news digest.  Don't miss it!
 </p>
 </div>
 </div>
 
-<div id="outline-container-org0e9265a" class="outline-3">
-<h3 id="org0e9265a"><a href="#org197c24a">Artur Malabarba's <i>Endless Parentheses</i></a></h3>
+<div id="outline-container-orgc3daae8" class="outline-3">
+<h3 id="orgc3daae8"><a href="#orgda53156">Artur Malabarba's <i>Endless Parentheses</i></a></h3>
 </div>
 
-<div id="outline-container-orgef69207" class="outline-3">
-<h3 id="orgef69207"><a href="http://irreal.org/blog/">Irreal</a></h3>
-<div class="outline-text-3" id="text-orgef69207">
+<div id="outline-container-orgafdf278" class="outline-3">
+<h3 id="orgafdf278"><a href="http://irreal.org/blog/">Irreal</a></h3>
+<div class="outline-text-3" id="text-orgafdf278">
 <p>
 One of the top Emacs blogs, frequently updated, and often highlights other interesting blog entries in the community.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgb8cf49e" class="outline-3">
-<h3 id="orgb8cf49e"><a id="ID-b6e88f95-8c4f-4d18-a7df-de0820d76291"></a><a href="#org16cf2f1">Oleh Krehel</a>'s <a href="https://oremacs.com"><i>(or emacs</i></a></h3>
-<div class="outline-text-3" id="text-orgb8cf49e">
+<div id="outline-container-org735482d" class="outline-3">
+<h3 id="org735482d"><a id="ID-b6e88f95-8c4f-4d18-a7df-de0820d76291"></a><a href="#orge1e1d5c">Oleh Krehel</a>'s <a href="https://oremacs.com"><i>(or emacs</i></a></h3>
+<div class="outline-text-3" id="text-org735482d">
 </div>
 </div>
-<div id="outline-container-org0eefaff" class="outline-3">
-<h3 id="org0eefaff"><a href="#org35081e9">Sacha Chua's <i>Living an Awesome Life</i></a></h3>
+<div id="outline-container-orgc66736c" class="outline-3">
+<h3 id="orgc66736c"><a href="#org3b82ea4">Sacha Chua's <i>Living an Awesome Life</i></a></h3>
 </div>
 </div>
 
-<div id="outline-container-org26e2c93" class="outline-2">
-<h2 id="org26e2c93">People&#xa0;&#xa0;&#xa0;<span class="tag"><span class="people">people</span></span></h2>
-<div class="outline-text-2" id="text-org26e2c93">
+<div id="outline-container-org473b540" class="outline-2">
+<h2 id="org473b540">People&#xa0;&#xa0;&#xa0;<span class="tag"><span class="people">people</span></span></h2>
+<div class="outline-text-2" id="text-org473b540">
 <p>
 The Emacs community is so full of brilliant, generous people that I can't keep track of them all!  I will surely overlook many, and I will add them in no particular order, but merely as I come across them again and again.
 </p>
 </div>
 
-<div id="outline-container-org197c24a" class="outline-3">
-<h3 id="org197c24a"><a id="ID-53c0b780-7d67-47a5-ad30-090526e2018f"></a>Artur Malabarba</h3>
-<div class="outline-text-3" id="text-org197c24a">
+<div id="outline-container-orgda53156" class="outline-3">
+<h3 id="orgda53156"><a id="ID-53c0b780-7d67-47a5-ad30-090526e2018f"></a>Artur Malabarba</h3>
+<div class="outline-text-3" id="text-orgda53156">
 <p>
 Another prolific Emacs contributor, package developer, and blogger.
 </p>
@@ -910,35 +913,35 @@ Another prolific Emacs contributor, package developer, and blogger.
 </div>
 
 
-<div id="outline-container-org1082b89" class="outline-4">
-<h4 id="org1082b89"><a id="ID-ae5465ac-9fda-4c1a-9900-4fd1eeb173da"></a>Packages</h4>
-<div class="outline-text-4" id="text-org1082b89">
+<div id="outline-container-org2f3c3ad" class="outline-4">
+<h4 id="org2f3c3ad"><a id="ID-ae5465ac-9fda-4c1a-9900-4fd1eeb173da"></a>Packages</h4>
+<div class="outline-text-4" id="text-org2f3c3ad">
 </div>
 
-<ul class="org-ul"><li><a id="orgbd20f36"></a><a href="#org8d5799b">aggressive-indent-mode</a><br /></li>
+<ul class="org-ul"><li><a id="org182ac35"></a><a href="#org0fbe20d">aggressive-indent-mode</a><br /></li>
 
-<li><a id="org684ef81"></a><a href="#org3641c59">paradox</a><br /></li></ul>
+<li><a id="orgd027b0e"></a><a href="#org9b96733">paradox</a><br /></li></ul>
 </div>
 </div>
 
-<div id="outline-container-orgac065bd" class="outline-3">
-<h3 id="orgac065bd">Damien Cassou</h3>
-<div class="outline-text-3" id="text-orgac065bd">
+<div id="outline-container-org19553d1" class="outline-3">
+<h3 id="org19553d1">Damien Cassou</h3>
+<div class="outline-text-3" id="text-org19553d1">
 <ul class="org-ul">
 <li><a href="https://github.com/DamienCassou">GitHub</a></li>
 </ul>
 </div>
 
-<div id="outline-container-orgb72dca5" class="outline-4">
-<h4 id="orgb72dca5">Packages</h4>
-<div class="outline-text-4" id="text-orgb72dca5">
-</div><ul class="org-ul"><li><a id="org5ba0cbb"></a><a href="#org3a7d790">beginend.el</a><br /></li></ul>
+<div id="outline-container-org85f762c" class="outline-4">
+<h4 id="org85f762c">Packages</h4>
+<div class="outline-text-4" id="text-org85f762c">
+</div><ul class="org-ul"><li><a id="orga41d7e6"></a><a href="#org0ac2ecd">beginend.el</a><br /></li></ul>
 </div>
 </div>
 
-<div id="outline-container-org8d3f6c3" class="outline-3">
-<h3 id="org8d3f6c3">John Wiegley</h3>
-<div class="outline-text-3" id="text-org8d3f6c3">
+<div id="outline-container-orgbdeed37" class="outline-3">
+<h3 id="orgbdeed37">John Wiegley</h3>
+<div class="outline-text-3" id="text-orgbdeed37">
 <p>
 John is the current Emacs maintainer.
 </p>
@@ -949,16 +952,16 @@ John is the current Emacs maintainer.
 </ul>
 </div>
 
-<div id="outline-container-orgff35f69" class="outline-4">
-<h4 id="orgff35f69">Packages</h4>
-<div class="outline-text-4" id="text-orgff35f69">
-</div><ul class="org-ul"><li><a id="orgceafcd9"></a><a href="#org343642d">use-package</a><br /></li></ul>
+<div id="outline-container-org4ba10ca" class="outline-4">
+<h4 id="org4ba10ca">Packages</h4>
+<div class="outline-text-4" id="text-org4ba10ca">
+</div><ul class="org-ul"><li><a id="orgf645134"></a><a href="#org9c4b82e">use-package</a><br /></li></ul>
 </div>
 </div>
 
-<div id="outline-container-org7410372" class="outline-3">
-<h3 id="org7410372">Jonas Bernoulli</h3>
-<div class="outline-text-3" id="text-org7410372">
+<div id="outline-container-orgf2826ef" class="outline-3">
+<h3 id="orgf2826ef">Jonas Bernoulli</h3>
+<div class="outline-text-3" id="text-orgf2826ef">
 <p>
 Jonas is a prolific Emacs package developer and maintainer.  You could spend hours on his GitHub repo.
 </p>
@@ -968,109 +971,109 @@ Jonas is a prolific Emacs package developer and maintainer.  You could spend hou
 </ul>
 </div>
 
-<div id="outline-container-orge8c3fd8" class="outline-4">
-<h4 id="orge8c3fd8">Packages</h4>
-<div class="outline-text-4" id="text-orge8c3fd8">
-</div><ul class="org-ul"><li><a id="orga04afe1"></a><a href="#org61b5eee">Magit</a><br /></li></ul>
+<div id="outline-container-orga929a36" class="outline-4">
+<h4 id="orga929a36">Packages</h4>
+<div class="outline-text-4" id="text-orga929a36">
+</div><ul class="org-ul"><li><a id="org0fec671"></a><a href="#org2c594a8">Magit</a><br /></li></ul>
 </div>
 </div>
 
-<div id="outline-container-org61a4af0" class="outline-3">
-<h3 id="org61a4af0">Jorgen Schäfer</h3>
-<div class="outline-text-3" id="text-org61a4af0">
-</div><div id="outline-container-org5d1a5e7" class="outline-4">
-<h4 id="org5d1a5e7">Packages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packages">packages</span></span></h4>
-<div class="outline-text-4" id="text-org5d1a5e7">
-</div><ul class="org-ul"><li><a id="orgd65c4a2"></a><a href="#orgf873358">buttercup: Behavior-Driven Emacs Lisp Testing</a><br /></li>
+<div id="outline-container-org534ba83" class="outline-3">
+<h3 id="org534ba83">Jorgen Schäfer</h3>
+<div class="outline-text-3" id="text-org534ba83">
+</div><div id="outline-container-orgadf00f1" class="outline-4">
+<h4 id="orgadf00f1">Packages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packages">packages</span></span></h4>
+<div class="outline-text-4" id="text-orgadf00f1">
+</div><ul class="org-ul"><li><a id="org3a72b0b"></a><a href="#orgef17715">buttercup: Behavior-Driven Emacs Lisp Testing</a><br /></li>
 
-<li><a id="orgd66574a"></a><a href="https://github.com/jorgenschaefer/circe">Circe, a Client for IRC in Emacs</a><br /></li>
+<li><a id="org36e1b7e"></a><a href="https://github.com/jorgenschaefer/circe">Circe, a Client for IRC in Emacs</a><br /></li>
 
-<li><a id="orgcfa6262"></a><a href="https://github.com/jorgenschaefer/elpy">elpy: Emacs Python Development Environment</a><br /></li>
+<li><a id="org6949564"></a><a href="https://github.com/jorgenschaefer/elpy">elpy: Emacs Python Development Environment</a><br /></li>
 
-<li><a id="org4811273"></a><a href="https://github.com/jorgenschaefer/pyvenv">pyvenv: Python virtual environment interface</a><br /></li></ul>
+<li><a id="orgd0ef465"></a><a href="https://github.com/jorgenschaefer/pyvenv">pyvenv: Python virtual environment interface</a><br /></li></ul>
 </div>
 </div>
 
-<div id="outline-container-orga7d1283" class="outline-3">
-<h3 id="orga7d1283">Magnar Sveen</h3>
-<div class="outline-text-3" id="text-orga7d1283">
+<div id="outline-container-org6da57a8" class="outline-3">
+<h3 id="org6da57a8">Magnar Sveen</h3>
+<div class="outline-text-3" id="text-org6da57a8">
 <ul class="org-ul">
 <li><a href="https://github.com/magnars">GitHub</a></li>
 </ul>
 </div>
 
 
-<div id="outline-container-orge2fd5ec" class="outline-4">
-<h4 id="orge2fd5ec">Packages</h4>
-<div class="outline-text-4" id="text-orge2fd5ec">
-</div><ul class="org-ul"><li><a id="orgf7c8dbb"></a><a href="#org9e79da4">dash.el</a><br /></li>
+<div id="outline-container-orgc327986" class="outline-4">
+<h4 id="orgc327986">Packages</h4>
+<div class="outline-text-4" id="text-orgc327986">
+</div><ul class="org-ul"><li><a id="org909ca18"></a><a href="#org63b3628">dash.el</a><br /></li>
 
-<li><a id="org714187b"></a><a href="#org132144b">expand-region.el</a><br /></li>
+<li><a id="org53ea2c9"></a><a href="#orgaa578bb">expand-region.el</a><br /></li>
 
-<li><a id="org2aca471"></a><a href="#org9fa41ef">multiple-cursors.el</a><br /></li>
+<li><a id="orgb6ab930"></a><a href="#org0e5251e">multiple-cursors.el</a><br /></li>
 
-<li><a id="orgfc1f5ea"></a><a href="#org5f5e604">s.el</a><br /></li></ul>
+<li><a id="org74f4e84"></a><a href="#org808d400">s.el</a><br /></li></ul>
 </div>
 </div>
 
-<div id="outline-container-org402b018" class="outline-3">
-<h3 id="org402b018">Matus Goljer</h3>
-<div class="outline-text-3" id="text-org402b018">
+<div id="outline-container-orgd035a83" class="outline-3">
+<h3 id="orgd035a83">Matus Goljer</h3>
+<div class="outline-text-3" id="text-orgd035a83">
 <ul class="org-ul">
 <li><a href="https://github.com/Fuco1/">GitHub</a></li>
 </ul>
 </div>
 
 
-<div id="outline-container-orge1ffa6b" class="outline-4">
-<h4 id="orge1ffa6b">Packages</h4>
-<div class="outline-text-4" id="text-orge1ffa6b">
-</div><ul class="org-ul"><li><a id="orgac7a8b7"></a><a id="ID-827c9455-2747-4514-8d71-4558eff5a263"></a><a href="#org9e79da4">dash.el</a><br /><div class="outline-text-5" id="text-orgac7a8b7">
+<div id="outline-container-org2798a1d" class="outline-4">
+<h4 id="org2798a1d">Packages</h4>
+<div class="outline-text-4" id="text-org2798a1d">
+</div><ul class="org-ul"><li><a id="org8e33727"></a><a id="ID-827c9455-2747-4514-8d71-4558eff5a263"></a><a href="#org63b3628">dash.el</a><br /><div class="outline-text-5" id="text-org8e33727">
 </div></li>
 
-<li><a id="org2d1feb8"></a><a href="#orga463758">smartparens</a><br /></li></ul>
+<li><a id="org735b907"></a><a href="#org3abb43b">smartparens</a><br /></li></ul>
 </div>
 </div>
 
-<div id="outline-container-org16cf2f1" class="outline-3">
-<h3 id="org16cf2f1"><a id="ID-a8a8dd9f-4113-4d4c-9882-ac59a4e86c0e"></a>Oleh Krehel</h3>
-<div class="outline-text-3" id="text-org16cf2f1">
+<div id="outline-container-orge1e1d5c" class="outline-3">
+<h3 id="orge1e1d5c"><a id="ID-a8a8dd9f-4113-4d4c-9882-ac59a4e86c0e"></a>Oleh Krehel</h3>
+<div class="outline-text-3" id="text-orge1e1d5c">
 <p>
-Oleh is a prolific package author, having contributed many very high-quality packages.  He also writes at <a href="#orgb8cf49e">his blog</a>.
+Oleh is a prolific package author, having contributed many very high-quality packages.  He also writes at <a href="#org735482d">his blog</a>.
 </p>
 </div>
 
-<div id="outline-container-orge13e94b" class="outline-4">
-<h4 id="orge13e94b">Packages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packages">packages</span></span></h4>
-<div class="outline-text-4" id="text-orge13e94b">
-</div><ul class="org-ul"><li><a id="org127a472"></a><a href="https://github.com/abo-abo/ace-window">ace-window: Quickly switch windows</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="navigation">navigation</span>&#xa0;<span class="windows">windows</span>&#xa0;<span class="buffers">buffers</span></span><br /></li>
+<div id="outline-container-org43ce196" class="outline-4">
+<h4 id="org43ce196">Packages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packages">packages</span></span></h4>
+<div class="outline-text-4" id="text-org43ce196">
+</div><ul class="org-ul"><li><a id="org0a24b91"></a><a href="https://github.com/abo-abo/ace-window">ace-window: Quickly switch windows</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="navigation">navigation</span>&#xa0;<span class="windows">windows</span>&#xa0;<span class="buffers">buffers</span></span><br /></li>
 
-<li><a id="org82ce208"></a><a href="https://github.com/abo-abo/avy">avy: Jump to things tree-style</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="navigation">navigation</span></span><br /></li>
-<li><a id="orgc22f2b0"></a><a href="https://github.com/abo-abo/hydra">hydra: make bindings that stick around</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="key_binding">key_binding</span></span><br /></li>
-<li><a id="org1fbf5a4"></a><a href="#orgf010d3c">lispy: short and sweet LISP editing</a><br /></li>
-<li><a id="org446ed8f"></a><a href="https://github.com/abo-abo/swiper">swiper: Ivy - a generic completion frontend, Swiper - isearch with an overview, and more. Oh, man!</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="navigation">navigation</span></span><br /></li></ul>
+<li><a id="org3f87f5d"></a><a href="https://github.com/abo-abo/avy">avy: Jump to things tree-style</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="navigation">navigation</span></span><br /></li>
+<li><a id="orge7fb696"></a><a href="https://github.com/abo-abo/hydra">hydra: make bindings that stick around</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="key_binding">key_binding</span></span><br /></li>
+<li><a id="org07989c0"></a><a href="#org31c5dae">lispy: short and sweet LISP editing</a><br /></li>
+<li><a id="orgcfc68f4"></a><a href="https://github.com/abo-abo/swiper">swiper: Ivy - a generic completion frontend, Swiper - isearch with an overview, and more. Oh, man!</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="navigation">navigation</span></span><br /></li></ul>
 </div>
 </div>
-<div id="outline-container-orgadd3ea6" class="outline-3">
-<h3 id="orgadd3ea6">Phil Lord</h3>
-<div class="outline-text-3" id="text-orgadd3ea6">
+<div id="outline-container-orgc2e655d" class="outline-3">
+<h3 id="orgc2e655d">Phil Lord</h3>
+<div class="outline-text-3" id="text-orgc2e655d">
 <ul class="org-ul">
 <li><a href="https://github.com/phillord">GitHub</a></li>
 </ul>
 </div>
 
-<div id="outline-container-orgd0c655a" class="outline-4">
-<h4 id="orgd0c655a">Packages</h4>
-<div class="outline-text-4" id="text-orgd0c655a">
-</div><ul class="org-ul"><li><a id="org32fe374"></a><a href="#org73ad8bc">lentic: Create views of the same content in two buffers</a><br /></li>
+<div id="outline-container-orgb60540c" class="outline-4">
+<h4 id="orgb60540c">Packages</h4>
+<div class="outline-text-4" id="text-orgb60540c">
+</div><ul class="org-ul"><li><a id="org0aad2d7"></a><a href="#org1e2d443">lentic: Create views of the same content in two buffers</a><br /></li>
 
-<li><a id="orgc1fbf09"></a><a href="#org5c095c5">m-buffer-el</a><br /></li></ul>
+<li><a id="orgbc991b3"></a><a href="#orgcc5e352">m-buffer-el</a><br /></li></ul>
 </div>
 </div>
 
-<div id="outline-container-org35081e9" class="outline-3">
-<h3 id="org35081e9"><a id="ID-12c7b803-9af2-4010-bca4-06304fbb69c7"></a>Sacha Chua</h3>
-<div class="outline-text-3" id="text-org35081e9">
+<div id="outline-container-org3b82ea4" class="outline-3">
+<h3 id="org3b82ea4"><a id="ID-12c7b803-9af2-4010-bca4-06304fbb69c7"></a>Sacha Chua</h3>
+<div class="outline-text-3" id="text-org3b82ea4">
 <p>
 Sacha could easily be nominated the official Emacs ambassador, were there to be one.  Her contributions to the Emacs and Org-mode communities are innumerable.  One of her greatest recent contributions is her weekly <a href="http://sachachua.com/blog/category/geek/emacs/emacs-news/">Emacs news</a> posts that serve as a digest of everything that happened in the Emacs world over the past week.
 </p>
@@ -1083,79 +1086,79 @@ Sacha could easily be nominated the official Emacs ambassador, were there to be 
 </div>
 </div>
 
-<div id="outline-container-org17171b0" class="outline-2">
-<h2 id="org17171b0">Contributions</h2>
-<div class="outline-text-2" id="text-org17171b0">
+<div id="outline-container-org9077b12" class="outline-2">
+<h2 id="org9077b12">Contributions</h2>
+<div class="outline-text-2" id="text-org9077b12">
 <p>
 Yes, please!  Please send pull requests and file issues on the <a href="https://github.com/alphapapa/emacs-package-dev-handbook">GitHub repo</a>.  This is intended to be a community project.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org9c4d673" class="outline-2">
-<h2 id="org9c4d673">Tasks</h2>
-<div class="outline-text-2" id="text-org9c4d673">
+<div id="outline-container-orgd26d0d5" class="outline-2">
+<h2 id="orgd26d0d5">Tasks</h2>
+<div class="outline-text-2" id="text-orgd26d0d5">
 </div>
 
-<div id="outline-container-org5f96f85" class="outline-3">
-<h3 id="org5f96f85"><span class="todo TODO">TODO</span> Articles to add <code>[0/13]</code></h3>
-<div class="outline-text-3" id="text-org5f96f85">
-</div><div id="outline-container-org218dcaa" class="outline-4">
-<h4 id="org218dcaa"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/read-and-write-files-in-emacs-lisp">Read and write files in Emacs Lisp</a> (5 min read)</h4>
+<div id="outline-container-orgf201002" class="outline-3">
+<h3 id="orgf201002"><span class="todo TODO">TODO</span> Articles to add <code>[0/13]</code></h3>
+<div class="outline-text-3" id="text-orgf201002">
+</div><div id="outline-container-orge969db6" class="outline-4">
+<h4 id="orge969db6"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/read-and-write-files-in-emacs-lisp">Read and write files in Emacs Lisp</a> (5 min read)</h4>
 </div>
-<div id="outline-container-org7aaa7dc" class="outline-4">
-<h4 id="org7aaa7dc"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/a-future-for-concurrency-in-emacs-lisp">A Future For Concurrency In Emacs Lisp</a> (6 min read)</h4>
+<div id="outline-container-orgf00ba70" class="outline-4">
+<h4 id="orgf00ba70"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/a-future-for-concurrency-in-emacs-lisp">A Future For Concurrency In Emacs Lisp</a> (6 min read)</h4>
 </div>
-<div id="outline-container-org5289607" class="outline-4">
-<h4 id="org5289607"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/a-blast-from-the-past-the-tale-of-concurrency-in-emacs">A Blast From The Past: The Tale Of Concurrency In Emacs</a> (7 min read)</h4>
+<div id="outline-container-orgf2ac1b5" class="outline-4">
+<h4 id="orgf2ac1b5"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/a-blast-from-the-past-the-tale-of-concurrency-in-emacs">A Blast From The Past: The Tale Of Concurrency In Emacs</a> (7 min read)</h4>
 </div>
-<div id="outline-container-org2b9f428" class="outline-4">
-<h4 id="org2b9f428"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/I-wished-gnu-emacs-had">I wished GNU Emacs had…</a> (2 min read)</h4>
+<div id="outline-container-org1628808" class="outline-4">
+<h4 id="org1628808"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/I-wished-gnu-emacs-had">I wished GNU Emacs had…</a> (2 min read)</h4>
 </div>
-<div id="outline-container-orga436b0a" class="outline-4">
-<h4 id="orga436b0a"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/reproduce-bugs-in-emacs-Q">Reproduce bugs in emacs -Q</a> (4 min read)</h4>
+<div id="outline-container-orge27133f" class="outline-4">
+<h4 id="orge27133f"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/reproduce-bugs-in-emacs-Q">Reproduce bugs in emacs -Q</a> (4 min read)</h4>
 </div>
-<div id="outline-container-org57059de" class="outline-4">
-<h4 id="org57059de"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/use-package-el-really">Why package.el?</a> (1 min read)</h4>
+<div id="outline-container-org06e9c1c" class="outline-4">
+<h4 id="org06e9c1c"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/use-package-el-really">Why package.el?</a> (1 min read)</h4>
 </div>
-<div id="outline-container-orga723cf6" class="outline-4">
-<h4 id="orga723cf6"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package">My Emacs Configuration with use-package</a> (8 min read)</h4>
+<div id="outline-container-org5a8f42a" class="outline-4">
+<h4 id="org5a8f42a"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/my-emacs-configuration-with-use-package">My Emacs Configuration with use-package</a> (8 min read)</h4>
 </div>
-<div id="outline-container-org59450d4" class="outline-4">
-<h4 id="org59450d4"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/emacs-script-pitfalls">Emacs script pitfalls</a> (13 min read)</h4>
+<div id="outline-container-org3671a92" class="outline-4">
+<h4 id="org3671a92"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/emacs-script-pitfalls">Emacs script pitfalls</a> (13 min read)</h4>
 </div>
-<div id="outline-container-orgb69e512" class="outline-4">
-<h4 id="orgb69e512"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/autoloads-in-emacs-lisp">Autoloads in Emacs Lisp</a> (5 min read)</h4>
+<div id="outline-container-orgde2e350" class="outline-4">
+<h4 id="orgde2e350"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/autoloads-in-emacs-lisp">Autoloads in Emacs Lisp</a> (5 min read)</h4>
 </div>
-<div id="outline-container-org0d94855" class="outline-4">
-<h4 id="org0d94855"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/advanced-syntactic-fontification">Advanced syntactic fontification</a> (11 min read)</h4>
+<div id="outline-container-org3d98fd8" class="outline-4">
+<h4 id="org3d98fd8"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/advanced-syntactic-fontification">Advanced syntactic fontification</a> (11 min read)</h4>
 </div>
-<div id="outline-container-orgc1aaee7" class="outline-4">
-<h4 id="orgc1aaee7"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/calling-python-from-haskell">Calling Python from Haskell</a> (12 min read)</h4>
+<div id="outline-container-org0db839e" class="outline-4">
+<h4 id="org0db839e"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/calling-python-from-haskell">Calling Python from Haskell</a> (12 min read)</h4>
 </div>
-<div id="outline-container-orgd893732" class="outline-4">
-<h4 id="orgd893732"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/search-based-fontification-with-keywords">Search-based fontification with keywords</a> (18 min read)</h4>
+<div id="outline-container-orgd9ce566" class="outline-4">
+<h4 id="orgd9ce566"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/search-based-fontification-with-keywords">Search-based fontification with keywords</a> (18 min read)</h4>
 </div>
-<div id="outline-container-orga01c686" class="outline-4">
-<h4 id="orga01c686"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/syntactic-fontification-in-emacs">Syntactic fontification in Emacs</a> (10 min read)</h4>
+<div id="outline-container-org047d5cb" class="outline-4">
+<h4 id="org047d5cb"><span class="todo TODO">TODO</span> <a href="https://www.lunaryorn.com/posts/syntactic-fontification-in-emacs">Syntactic fontification in Emacs</a> (10 min read)</h4>
 </div>
 </div>
 
-<div id="outline-container-orgc99af33" class="outline-3">
-<h3 id="orgc99af33"><span class="todo TODO">TODO</span> Add <a href="http://nic.ferrier.me.uk/">Nic Ferrier</a></h3>
+<div id="outline-container-orgf0c9d12" class="outline-3">
+<h3 id="orgf0c9d12"><span class="todo TODO">TODO</span> Add <a href="http://nic.ferrier.me.uk/">Nic Ferrier</a></h3>
 </div>
-<div id="outline-container-orgd07a6c4" class="outline-3">
-<h3 id="orgd07a6c4"><span class="todo TODO">TODO</span> <a href="https://github.com/VincentToups/emacs-utils">Vincent Toups' projects</a></h3>
-<div class="outline-text-3" id="text-orgd07a6c4">
+<div id="outline-container-org801b95b" class="outline-3">
+<h3 id="org801b95b"><span class="todo TODO">TODO</span> <a href="https://github.com/VincentToups/emacs-utils">Vincent Toups' projects</a></h3>
+<div class="outline-text-3" id="text-org801b95b">
 <p>
 He has a lot of interesting libraries on his repo, and some of them are <i>extensively</i> documented.  An aspiring Emacs Lisp developer could learn a lot from his code.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgb67456a" class="outline-3">
-<h3 id="orgb67456a"><span class="todo TODO">TODO</span> Add MELPA</h3>
-<div class="outline-text-3" id="text-orgb67456a">
+<div id="outline-container-org5d5451a" class="outline-3">
+<h3 id="org5d5451a"><span class="todo TODO">TODO</span> Add MELPA</h3>
+<div class="outline-text-3" id="text-org5d5451a">
 <p>
 Mention @milkypostman, @purcell, @syohex, etc. Mention sandbox.
 </p>
@@ -1163,26 +1166,26 @@ Mention @milkypostman, @purcell, @syohex, etc. Mention sandbox.
 </div>
 </div>
 
-<div id="outline-container-org22c02bb" class="outline-2">
-<h2 id="org22c02bb">Code</h2>
-<div class="outline-text-2" id="text-org22c02bb">
+<div id="outline-container-org5e922e2" class="outline-2">
+<h2 id="org5e922e2">Code</h2>
+<div class="outline-text-2" id="text-org5e922e2">
 <p>
 This section contains code used to add to and update this document.
 </p>
 </div>
 
-<div id="outline-container-org8538bc8" class="outline-3">
-<h3 id="org8538bc8"><span class="todo UNDERWAY">UNDERWAY</span> Automate adding new links and summaries</h3>
-<div class="outline-text-3" id="text-org8538bc8">
+<div id="outline-container-orged13265" class="outline-3">
+<h3 id="orged13265"><span class="todo UNDERWAY">UNDERWAY</span> Automate adding new links and summaries</h3>
+<div class="outline-text-3" id="text-orged13265">
 </div>
 
-<div id="outline-container-org60a2848" class="outline-4">
-<h4 id="org60a2848"><span class="todo TODO">TODO</span> Get summary of page</h4>
+<div id="outline-container-org81664cd" class="outline-4">
+<h4 id="org81664cd"><span class="todo TODO">TODO</span> Get summary of page</h4>
 </div>
 
-<div id="outline-container-org190bd1f" class="outline-4">
-<h4 id="org190bd1f"><a id="ID-a0e9486f-24f0-47a6-8f21-50bcc7ac2ca0"></a><span class="done DONE">DONE</span> Get archive.is link for page</h4>
-<div class="outline-text-4" id="text-org190bd1f">
+<div id="outline-container-org244509f" class="outline-4">
+<h4 id="org244509f"><a id="ID-a0e9486f-24f0-47a6-8f21-50bcc7ac2ca0"></a><span class="done DONE">DONE</span> Get archive.is link for page</h4>
+<div class="outline-text-4" id="text-org244509f">
 <p>
 This bookmarklet should provide a way to get the URL:
 </p>
@@ -1223,9 +1226,9 @@ Seems to only work if run in a browser, with JavaScript.  But there's a <a href=
 </div>
 </div>
 
-<div id="outline-container-orgceb55ed" class="outline-4">
-<h4 id="orgceb55ed"><span class="todo TODO">TODO</span> Insert new entry at point</h4>
-<div class="outline-text-4" id="text-orgceb55ed">
+<div id="outline-container-org9c3df13" class="outline-4">
+<h4 id="org9c3df13"><span class="todo TODO">TODO</span> Insert new entry at point</h4>
+<div class="outline-text-4" id="text-org9c3df13">
 <p>
 Maybe use capture templates and refile?
 </p>
@@ -1233,18 +1236,18 @@ Maybe use capture templates and refile?
 </div>
 </div>
 
-<div id="outline-container-orgb4dd0b3" class="outline-3">
-<h3 id="orgb4dd0b3">Table of Contents</h3>
-<div class="outline-text-3" id="text-orgb4dd0b3">
+<div id="outline-container-org79d31a5" class="outline-3">
+<h3 id="org79d31a5">Table of Contents</h3>
+<div class="outline-text-3" id="text-org79d31a5">
 <p>
 Currently using <a href="https://github.com/alphapapa/org-make-toc">org-make-toc</a>, which is uploaded but unfinished and unpackaged.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org214a12a" class="outline-3">
-<h3 id="org214a12a">Config</h3>
-<div class="outline-text-3" id="text-org214a12a">
+<div id="outline-container-orgdd42696" class="outline-3">
+<h3 id="orgdd42696">Config</h3>
+<div class="outline-text-3" id="text-orgdd42696">
 <p>
 I love Emacs and Org mode.  This makes it so easy to make the document&#x2026;alive!  And automated!  Beautiful.
 </p>
@@ -1254,7 +1257,7 @@ I love Emacs and Org mode.  This makes it so easy to make the document&#x2026;al
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2017-08-05 Sat 21:53</p>
+<p class="date">Created: 2017-08-05 Sat 21:55</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
