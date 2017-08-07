@@ -167,6 +167,15 @@ Can anyone clear up what the intended behaviour is?
 :PROPERTIES:
 :archive.is: http://archive.is/UZHhS
 :END:
+
+**** Integration with other packages
+
+***** Optional support
+
+Sometimes you want your package to integrate with other packages, but you don't want to require users to install those other packages.  For example, you might want your package to work with Helm, Ivy, or the built-in Emacs =completing-read=, but you don't want to declare a dependency on and =require= Helm or Ivy, which would force users to install them to use your package.
+
+The best way to handle this is with the [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Hooks-for-Loading.html][with-eval-after-load]] macro.  The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Hooks-for-Loading.html][Emacs manual]] has a page on it, and [[https://stackoverflow.com/questions/21880139/what-is-with-eval-after-load-in-emacs-lisp][this StackOverflow question]] has some more info.  You can also see an [[https://github.com/alphapapa/org-recent-headings/blob/master/org-recent-headings.el#L350][example]], which also [[https://github.com/alphapapa/org-recent-headings/blob/master/org-recent-headings.el#L377][uses]] [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Declaring-Functions.html][declare-function]] to prevent byte-compiler errors.
+
 **** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Lexical-Binding.html][Lexical binding]]                                     :lexical_binding:
 :PROPERTIES:
 :ID:       7247be4d-4f66-43ff-bb70-1b4a7458611b
