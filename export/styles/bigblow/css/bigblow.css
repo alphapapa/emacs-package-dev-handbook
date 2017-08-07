@@ -796,3 +796,7 @@ ul li {
 .org-ul > li {
     font-weight: bold;
 }
+
+a code {
+    text-decoration: underline;
+}
