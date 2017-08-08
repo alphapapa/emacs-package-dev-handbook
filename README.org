@@ -17,21 +17,29 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 :PROPERTIES:
 :TOC:      this
 :END:
-  - [[#emacs-lisp][Emacs Lisp]]
-   - [[#buffers][Buffers]]
-   - [[#checkers--linters][Checkers / linters]]
-   - [[#editing][Editing]]
-   - [[#general][General]]
-   - [[#packaging][Packaging]]
-   - [[#pattern-matching][Pattern matching]]
-   - [[#string-manipulation][String manipulation]]
-   - [[#testing][Testing]]
-   - [[#version-control][Version control]]
-  - [[#blogs][Blogs]]
-  - [[#people][People]]
-  - [[#contributions][Contributions]]
-  - [[#tasks][Tasks]]
-  - [[#code][Code]]
+  -  [[#emacs-lisp][Emacs Lisp]]
+    -  [[#buffers][Buffers]]
+      -  [[#libraries][Libraries]]
+    -  [[#checkers--linters][Checkers / linters]]
+      -  [[#flycheck-package][Flycheck-package]]
+    -  [[#editing][Editing]]
+    -  [[#general][General]]
+      -  [[#libraries][Libraries]]
+      -  [[#tools][Tools]]
+    -  [[#packaging][Packaging]]
+    -  [[#pattern-matching][Pattern matching]]
+    -  [[#string-manipulation][String manipulation]]
+      -  [[#libraries][Libraries]]
+    -  [[#testing][Testing]]
+      -  [[#libraries][Libraries]]
+      -  [[#tools][Tools]]
+    -  [[#version-control][Version control]]
+      -  [[#packages][Packages]]
+  -  [[#blogs][Blogs]]
+  -  [[#people][People]]
+  -  [[#contributions][Contributions]]
+  -  [[#tasks][Tasks]]
+  -  [[#code][Code]]
 * Emacs Lisp                                                          :elisp:
 :PROPERTIES:
 :TOC:      2
@@ -174,7 +182,15 @@ Can anyone clear up what the intended behaviour is?
 
 Sometimes you want your package to integrate with other packages, but you don't want to require users to install those other packages.  For example, you might want your package to work with Helm, Ivy, or the built-in Emacs =completing-read=, but you don't want to declare a dependency on and =require= Helm or Ivy, which would force users to install them to use your package.
 
-The best way to handle this is with the [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Hooks-for-Loading.html][=with-eval-after-load=]] macro.  The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Hooks-for-Loading.html][Emacs manual]] has a page on it, and [[https://stackoverflow.com/questions/21880139/what-is-with-eval-after-load-in-emacs-lisp][this StackOverflow question]] has some more info.  You can also see an [[https://github.com/alphapapa/org-recent-headings/blob/master/org-recent-headings.el#L350][example]], which also [[https://github.com/alphapapa/org-recent-headings/blob/master/org-recent-headings.el#L377][uses]] [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Declaring-Functions.html][=declare-function=]] to prevent byte-compiler errors.
+The best way to handle this is with the =[[https://www.gnu.org/software/emacs/manual/html_node/elisp/Hooks-for-Loading.html][with-eval-after-load]]= macro.  The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Hooks-for-Loading.html][Emacs manual]] has a page on it, and [[https://stackoverflow.com/questions/21880139/what-is-with-eval-after-load-in-emacs-lisp][this StackOverflow question]] has some more info.  You can also see an [[https://github.com/alphapapa/org-recent-headings/blob/master/org-recent-headings.el#L350][example]], which also [[https://github.com/alphapapa/org-recent-headings/blob/master/org-recent-headings.el#L377][uses]] [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Declaring-Functions.html][=declare-function=]] to prevent byte-compiler errors.
+
+**** Key-binding
+
+***** Reserved prefixes
+
+Certain key prefixes are [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Key-Binding-Conventions.html][reserved]].  Be sure not to define ones that conflict.
+
+If you want to define some key-bindings by default, a good practice is to 
 
 **** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Lexical-Binding.html][Lexical binding]]                                     :lexical_binding:
 :PROPERTIES:
