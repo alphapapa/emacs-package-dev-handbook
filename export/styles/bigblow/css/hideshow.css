@@ -109,8 +109,3 @@
     -ms-user-select: none;
     user-select: none;
 }
-
-/* This is for the sake of Emacs. */
-/* Local Variables: */
-/* eval: (when (locate-library "rainbow-mode") (require 'rainbow-mode) (rainbow-mode)) */
-/* End: */
