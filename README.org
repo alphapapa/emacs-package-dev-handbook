@@ -604,6 +604,8 @@ Yes, please!  Please send pull requests and file issues on the [[https://github.
 *** TODO [[https://www.lunaryorn.com/posts/syntactic-fontification-in-emacs][Syntactic fontification in Emacs]] (10 min read)
 
 ** TODO Add [[http://nic.ferrier.me.uk/][Nic Ferrier]]
+
+** TODO Add [[https://github.com/wasamasa?][Vasilij Schneidermann]]
 ** TODO [[https://github.com/VincentToups/emacs-utils][Vincent Toups' projects]]
 
 He has a lot of interesting libraries on his repo, and some of them are /extensively/ documented.  An aspiring Emacs Lisp developer could learn a lot from his code.
