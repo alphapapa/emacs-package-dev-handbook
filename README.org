@@ -17,24 +17,24 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 :PROPERTIES:
 :TOC:      this
 :END:
-  - [[#emacs-lisp][Emacs Lisp]]
-   - [[#buffers][Buffers]]
-   - [[#checkers--linters][Checkers / linters]]
-   - [[#editing][Editing]]
-   - [[#general][General]]
-   - [[#packaging][Packaging]]
-   - [[#pattern-matching][Pattern matching]]
-   - [[#string-manipulation][String manipulation]]
-   - [[#testing][Testing]]
-   - [[#version-control][Version control]]
-  - [[#blogs][Blogs]]
-  - [[#people][People]]
-  - [[#contributions][Contributions]]
-  - [[#tasks][Tasks]]
-  - [[#code][Code]]
+  -  [[#emacs-lisp][Emacs Lisp]]
+    -  [[#buffers][Buffers]]
+    -  [[#checkers--linters][Checkers / linters]]
+    -  [[#editing][Editing]]
+    -  [[#general][General]]
+    -  [[#packaging][Packaging]]
+    -  [[#pattern-matching][Pattern matching]]
+    -  [[#string-manipulation][String manipulation]]
+    -  [[#testing][Testing]]
+    -  [[#version-control][Version control]]
+  -  [[#blogs][Blogs]]
+  -  [[#people][People]]
+  -  [[#contributions][Contributions]]
+  -  [[#tasks][Tasks]]
+  -  [[#code][Code]]
 * Emacs Lisp                                                          :elisp:
 :PROPERTIES:
-:TOC:      2
+:TOC:      1
 :END:
 
 ** Buffers                                                         :buffers:
