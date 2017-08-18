@@ -22,6 +22,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
     -  [[#checkers--linters][Checkers / linters]]
     -  [[#editing][Editing]]
     -  [[#general][General]]
+    -  [[#highlighting--font-locking][Highlighting / font-locking]]
     -  [[#packaging][Packaging]]
     -  [[#pattern-matching][Pattern matching]]
     -  [[#string-manipulation][String manipulation]]
@@ -71,6 +72,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 :END:
 
 This package, by Damien Cassou and Matus Goljer, helps navigation by redefining the ~M-<~ and ~M->~ keys do, depending on the major-mode.
+
 **** [[https://github.com/magnars/expand-region.el][expand-region.el: Increase selected region by semantic units]] :selection:region:
 :PROPERTIES:
 :ID:       88b496f4-8230-474e-b2ee-d8e4e8ca30d0
@@ -84,6 +86,7 @@ This package, by Damien Cassou and Matus Goljer, helps navigation by redefining 
 :END:
 
 **** [[https://github.com/IvanMalison/multi-line][multi-line: multi-line everything from function invocations and definitions to array and map literals in a wide variety of languages]] :formatting:
+
 **** [[https://github.com/magnars/multiple-cursors.el][multiple-cursors.el: Multiple cursors]]             :selection:editing:
 :PROPERTIES:
 :ID:       deefcbc5-0c37-4936-a820-df99ae31a401
@@ -124,10 +127,66 @@ Do not document these functions in the lispref.  http://lists.gnu.org/archive/ht
 
 *** Tools                                                           :tools:
 
+**** [[https://github.com/Lindydancer/el2markdown][el2markdown: Convert Emacs Lisp comments to MarkDown]]
+:PROPERTIES:
+:ID:       9aacf8f3-5244-4b71-8802-1c7876a9d19e
+:END:
+
+**** [[https://github.com/Lindydancer/multicolumn][multicolumn: Multiple side-by-side windows support]]
+:PROPERTIES:
+:ID:       267c8c25-53db-4ced-9242-176094e101e3
+:END:
+
 **** [[https://github.com/phillord/lentic][lentic: Create views of the same content in two buffers]]
 :PROPERTIES:
 :ID:       0c220bc9-7173-4b0f-8955-e10ab6db640f
 :END:
+
+** Highlighting / font-locking                      :highlighting:font_lock:
+
+*** Packages                                                     :packages:
+
+Packages that do highlighting/font-locking.
+
+**** [[https://github.com/Lindydancer/lisp-extra-font-lock][lisp-extra-font-lock: Highlight bound variables and quoted expressions in lisp]]
+:PROPERTIES:
+:ID:       5b4a9320-1d3d-441b-8505-7b35a8d323d3
+:END:
+
+*** Tools                                                           :tools:
+
+Tools for developing highlighting/font-locking packages.
+
+**** [[https://github.com/Lindydancer/face-explorer][face-explorer: Library and tools for faces and text properties]]
+:PROPERTIES:
+:ID:       66fef80f-0f92-4492-8199-01c24c635914
+:END:
+
+**** [[https://github.com/Lindydancer/faceup][faceup: Regression test system for font-lock keywords]]
+:PROPERTIES:
+:ID:       5ab6c330-15ae-455a-981c-bf298d9a2788
+:END:
+
+**** [[https://github.com/Lindydancer/font-lock-profiler][font-lock-profiler: Coverage and timing tool for font-lock keywords]]
+:PROPERTIES:
+:ID:       0f3ba4be-949b-4efe-8301-acf3873ab345
+:END:
+
+**** [[https://github.com/Lindydancer/font-lock-regression-suite][font-lock-regression-suite: Regression test suite for font-lock keywords of Emacs standard modes]]
+:PROPERTIES:
+:ID:       e54a2697-8b4a-4b65-a971-f79e0fa22120
+:END:
+
+**** [[https://github.com/Lindydancer/font-lock-studio][font-lock-studio: Debugger for Font Lock keywords]]
+:PROPERTIES:
+:ID:       fb9315d1-111d-4eab-8f99-00710e39b04c
+:END:
+
+**** [[https://github.com/Lindydancer/highlight-refontification][highlight-refontification: Visualize how font-lock refontifies a buffer]]
+:PROPERTIES:
+:ID:       85a2421d-6fbd-4c4d-a6f9-587258c8f625
+:END:
+
 ** Packaging                                                     :packaging:
 :PROPERTIES:
 :TOC:      ignore-children
@@ -246,6 +305,7 @@ The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.
 :PROPERTIES:
 :ID:       2c31eae6-eeba-433f-bc26-9465d5aa8537
 :END:
+
 ***** [[https://github.com/raxod502/straight.el][straight.el: Next-generation, purely functional package manager for the Emacs hacker]]
 
 ***** [[https://github.com/jwiegley/use-package][use-package: A use-package declaration for simplifying your .emacs]]
@@ -254,6 +314,7 @@ The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.
 :END:
 
 Developed by the current maintainer of Emacs, himself, John Wiegley.
+
 ** Pattern matching                         :destructuring:pattern_matching:
 :PROPERTIES:
 :TOC:      ignore-children
@@ -296,6 +357,7 @@ There are /lots/ of examples here.
 :END:
 
 ****** Nic Ferrier, [[http://nic.ferrier.me.uk/blog/2013_03/refactoring-elisp-polymorphically][Using Polymorphism as a Lisp refactoring tool]]
+
 **** [[https://github.com/VincentToups/shadchen-el][shadchen-el]]                                             :shadchen:el:
 
 A powerful, Racket-style pattern-matching library.
@@ -453,6 +515,32 @@ One of the top Emacs blogs, frequently updated, and often highlights other inter
 
 The Emacs community is so full of brilliant, generous people that I can't keep track of them all!  I will surely overlook many, and I will add them in no particular order, but merely as I come across them again and again.
 
+** Anders Lindgren
+
+Anders, aka Lindydancer, has written numerous packages to help with developing highlighting and font-lock packages, as well as some other useful tools.
+
++ [[https://github.com/Lindydancer][GitHub]]
+
+*** Packages
+
+**** [[id:9aacf8f3-5244-4b71-8802-1c7876a9d19e][el2markdown: Convert Emacs Lisp comments to MarkDown]]
+
+**** [[id:66fef80f-0f92-4492-8199-01c24c635914][face-explorer: Library and tools for faces and text properties]]
+
+**** [[id:5ab6c330-15ae-455a-981c-bf298d9a2788][faceup: Regression test system for font-lock keywords]]
+
+**** [[id:0f3ba4be-949b-4efe-8301-acf3873ab345][font-lock-profiler: Coverage and timing tool for font-lock keywords]]
+
+**** [[id:e54a2697-8b4a-4b65-a971-f79e0fa22120][font-lock-regression-suite: Regression test suite for font-lock keywords of Emacs standard modes]]
+
+**** [[id:fb9315d1-111d-4eab-8f99-00710e39b04c][font-lock-studio: Debugger for Font Lock keywords]]
+
+**** [[id:85a2421d-6fbd-4c4d-a6f9-587258c8f625][highlight-refontification: Visualize how font-lock refontifies a buffer]]
+
+**** [[id:5b4a9320-1d3d-441b-8505-7b35a8d323d3][lisp-extra-font-lock: Highlight bound variables and quoted expressions in lisp]]
+
+**** [[id:267c8c25-53db-4ced-9242-176094e101e3][multicolumn: Multiple side-by-side windows support]]
+
 ** Artur Malabarba
 :PROPERTIES:
 :ID:       53c0b780-7d67-47a5-ad30-090526e2018f
@@ -555,9 +643,13 @@ Oleh is a prolific package author, having contributed many very high-quality pac
 **** [[https://github.com/abo-abo/ace-window][ace-window: Quickly switch windows]]       :navigation:windows:buffers:
 
 **** [[https://github.com/abo-abo/avy][avy: Jump to things tree-style]]                           :navigation:
+
 **** [[https://github.com/abo-abo/hydra][hydra: make bindings that stick around]]                  :key_binding:
+
 **** [[id:ca3809ba-5900-4dfd-84a1-1ceecc048296][lispy: short and sweet LISP editing]]
+
 **** [[https://github.com/abo-abo/swiper][swiper: Ivy - a generic completion frontend, Swiper - isearch with an overview, and more. Oh, man!]] :navigation:
+
 ** Phil Lord
 
 + [[https://github.com/phillord][GitHub]]
