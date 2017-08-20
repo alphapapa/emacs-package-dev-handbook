@@ -221,7 +221,7 @@ pre {
     background-color: #fdf6e3;
     border: 1px solid #DEDEDE;
     color: #444444;
-    font-family: monospace;
+    font-family: Hack, DejaVu Sans Mono, monospace;
     line-height: 1.14em;
     overflow: auto;
     /* overflow-x: auto; */
