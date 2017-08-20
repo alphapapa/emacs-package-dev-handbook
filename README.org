@@ -267,6 +267,128 @@ Sebastian Wiesner provides a detailed explanation.
 
 A lot of good examples and discussion.
 
+**** Skeleton
+
+Here is a skeleton you can use when starting new packages:
+
+#+BEGIN_SRC elisp
+  ;;; package-name.el --- Package description (don't include the word "Emacs")  -*- lexical-binding: t; -*-
+
+  ;; Copyright (C) 2017 First Last
+
+  ;; Author: First Last <name@example.com>
+  ;; URL: http://example.com/package-name.el
+  ;; Version: 0.1-pre
+  ;; Package-Requires: ((emacs "25.2"))
+  ;; Keywords: something
+
+  ;;; Commentary:
+
+  ;; This is my package.  It is nice.  You should try it.
+
+  ;;;; Installation
+
+  ;;;;; MELPA
+
+  ;; If you installed from MELPA, you're done.
+
+  ;;;;; Manual
+
+  ;; Install these required packages:
+
+  ;; + foo
+  ;; + bar
+
+  ;; Then put this file in your load-path, and put this in your init
+  ;; file:
+
+  ;; (require 'package-name)
+
+  ;;;; Usage
+
+  ;; Run one of these commands:
+
+  ;; `foo': Foo does this.
+  ;; `bar': Bar does this.
+
+  ;;;; Tips
+
+  ;; + You can customize settings in the `package-name' group.
+
+  ;;;; Credits
+
+  ;; This package would not have been possible without the following
+  ;; packages: foo[1], which showed me how to bifurcate, and bar[2],
+  ;; which takes care of flanges.
+  ;;
+  ;;  [1] https://example.com/foo.el
+  ;;  [2] https://example.com/bar.el
+
+  ;;; License:
+
+  ;; This program is free software; you can redistribute it and/or modify
+  ;; it under the terms of the GNU General Public License as published by
+  ;; the Free Software Foundation, either version 3 of the License, or
+  ;; (at your option) any later version.
+
+  ;; This program is distributed in the hope that it will be useful,
+  ;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ;; GNU General Public License for more details.
+
+  ;; You should have received a copy of the GNU General Public License
+  ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+  ;;; Code:
+
+  ;;;; Require
+
+  (require 'foo)
+  (require 'bar)
+
+  ;;;; Vars
+
+  (defgroup package-name nil
+    "Settings for `package-name'."
+    :link '(url-link "http://example.com/package-name.el"))
+
+  (defcustom package-name-something nil
+    "This setting does something."
+    :type 'something)
+
+  (defvar package-name-map
+    (let ((map (copy-keymap keymap)))
+      (define-key map (kbd "key") #'package-name-command)
+      map)
+    "Keymap for `package-name'.")
+
+  (defvar package-name-var nil
+    "A variable.")
+
+  ;;;; Functions
+
+  ;;;;; Commands
+
+  ;;;###autoload
+  (defun package-name-command (args)
+    "This is a command."
+    (interactive)
+    (package-name--something)
+    (bar))
+
+  ;;;;; Support
+
+  (defun package-name--something (args)
+    "This function does something to help."
+    (foo))
+
+  ;;;; Footer
+
+  (provide 'package-name)
+
+  ;;; package-name.el ends here
+#+END_SRC
+
 *** Reference                                                   :reference:
 
 **** Package headers and structure
