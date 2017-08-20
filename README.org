@@ -268,6 +268,9 @@ Sebastian Wiesner provides a detailed explanation.
 A lot of good examples and discussion.
 
 **** Skeleton
+:PROPERTIES:
+:ID:       aacd55b6-a56f-4064-bf0d-25173ce83ef3
+:END:
 
 Here is a skeleton you can use when starting new packages:
 
@@ -393,7 +396,7 @@ Here is a skeleton you can use when starting new packages:
 
 **** Package headers and structure
 
-The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.html][Emacs manual]] gives this example (I've added the lexical-binding part):
+The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.html][Emacs manual]] gives this example (I've added the lexical-binding part).  Also see [[id:aacd55b6-a56f-4064-bf0d-25173ce83ef3][Skeleton]].
 
 #+BEGIN_EXAMPLE
   ;;; superfrobnicator.el --- Frobnicate and bifurcate flanges  -*- lexical-binding: t; -*-
