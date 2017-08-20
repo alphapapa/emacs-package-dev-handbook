@@ -399,6 +399,9 @@ Here is a skeleton you can use when starting new packages:
 *** Reference                                                   :reference:
 
 **** Package headers and structure
+:PROPERTIES:
+:ID:       036e2a71-f392-4c9a-a524-c5354f291e2f
+:END:
 
 The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.html][Emacs manual]] gives this example (I've added the lexical-binding part).  Also see [[id:aacd55b6-a56f-4064-bf0d-25173ce83ef3][Skeleton]].
 
@@ -447,6 +450,7 @@ Developed by the current maintainer of Emacs, himself, John Wiegley.
 ** Pattern matching                         :destructuring:pattern_matching:
 :PROPERTIES:
 :TOC:      ignore-children
+:ID:       b699e1a1-e34c-4ce8-a5dd-41161d2a1cbf
 :END:
 
 *** Articles                                                     :articles:
@@ -463,6 +467,14 @@ Since this is Lisp, we have lots of choices! In this post, we'll compare [[https
 
 For the sake of this post, we'll consider both pattern matching and destructuring, as they're closely related concepts.
 #+END_QUOTE
+
+**** [[http://kitchingroup.cheme.cmu.edu/blog/2017/04/16/A-callable-plist-data-structure-for-Emacs/][A callable plist data structure for Emacs]]             :plists:macros:
+:PROPERTIES:
+:archive.is: http://archive.is/vmITX
+:ID:       9391ab92-5d51-4786-a3c5-4822ec500500
+:END:
+
+John Kitchin demonstrates some [[id:a58f65dc-d4a4-4a40-a573-a66a28f3619c][macros]] that make it easy to access plist values.
 
 *** Libraries                                                   :libraries:
 
@@ -527,6 +539,56 @@ let-alist is the best thing to happen to associative lists since the invention o
 :END:
 
 Here Artur introduces the macro and gives examples.
+
+**** =with-dict=, =with-plist-vals=              :macros:plists:
+:PROPERTIES:
+:ID:       a58f65dc-d4a4-4a40-a573-a66a28f3619c
+:END:
+
+Courtesy of [[id:9391ab92-5d51-4786-a3c5-4822ec500500][John Kitchin]]:[fn:1:Copyright by John Kitchin, licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.]
+
+#+BEGIN_SRC elisp
+  (defmacro with-dict (key-vals &rest body)
+    "A context-manager for a plist where each key is a callable
+  function that returns the value."
+    (declare (indent 1))
+    (let* ((g (if (symbolp key-vals)
+                  (symbol-value key-vals)
+                key-vals))
+           (keys (-slice g 0 nil 2)))
+      `(labels ,(loop for key in keys
+                      collect
+                      (list key '() `(plist-get ',g ,key)))
+         ,@body)))
+
+  ;; Used as:
+
+  (with-dict (:a 1 :b 'some-symbol :c 3)
+             (:b))
+
+  (let ((d '(:key1 1 :key2 some-other-symbol :key3 3)))
+    (with-dict d
+               (format "We got %s" (:key2))))
+#+END_SRC
+
+And:
+
+#+BEGIN_SRC elisp
+  (defmacro with-plist-vals (plist &rest body)
+    "Bind the values of a plist to variables with the name of the keys."
+    (declare (indent 1))
+    `(let ,(loop for key in (-slice plist 0 nil 2)
+                 for val in (-slice plist 1 nil 2)
+                 collect (list (intern
+                                (substring (symbol-name key) 1))
+                               val))
+       ,@body))
+
+  ;; Used like:
+
+  (with-plist-vals (:a 4 :b 6)
+                   (* 2 a))
+#+END_SRC
 
 ** String manipulation                                             :strings:
 
