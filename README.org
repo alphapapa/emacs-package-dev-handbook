@@ -311,8 +311,7 @@ Here is a skeleton you can use when starting new packages:
 
   ;; Run one of these commands:
 
-  ;; `foo': Foo does this.
-  ;; `bar': Bar does this.
+  ;; `package-name-command': Frobnicate the flange.
 
   ;;;; Tips
 
@@ -344,12 +343,12 @@ Here is a skeleton you can use when starting new packages:
 
   ;;; Code:
 
-  ;;;; Require
+  ;;;; Requirements
 
   (require 'foo)
   (require 'bar)
 
-  ;;;; Vars
+  ;;;; Variables
 
   (defgroup package-name nil
     "Settings for `package-name'."
@@ -374,7 +373,7 @@ Here is a skeleton you can use when starting new packages:
 
   ;;;###autoload
   (defun package-name-command (args)
-    "This is a command."
+    "Frobnicate the flange."
     (interactive)
     (package-name--something)
     (bar))
@@ -382,7 +381,7 @@ Here is a skeleton you can use when starting new packages:
   ;;;;; Support
 
   (defun package-name--something (args)
-    "This function does something to help."
+    "This function helps frobnicate the flange."
     (foo))
 
   ;;;; Footer
