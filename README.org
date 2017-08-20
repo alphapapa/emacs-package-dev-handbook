@@ -481,6 +481,9 @@ There are /lots/ of examples here.
 :END:
 
 ****** Nic Ferrier, [[http://nic.ferrier.me.uk/blog/2013_03/refactoring-elisp-polymorphically][Using Polymorphism as a Lisp refactoring tool]]
+:PROPERTIES:
+:archive.is: http://archive.is/0Y3Md
+:END:
 
 **** [[https://github.com/VincentToups/shadchen-el][shadchen-el]]                                             :shadchen:el:
 
