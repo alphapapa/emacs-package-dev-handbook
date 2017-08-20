@@ -881,7 +881,7 @@ Seems to only work if run in a browser, with JavaScript.  But there's a [[https:
     (when-let ((url (or url (save-excursion
                               (unless (org-at-heading-p)
                                 (org-back-to-heading))
-                              (line-beginning-position)
+                              (beginning-of-line)
                               (when (re-search-forward org-bracket-link-regexp (line-end-position) 'noerror)
                                 (org-link-unescape (match-string-no-properties 1))))))
                (archive-url (emacs-package-dev-handbook--archiveis-capture url)))
