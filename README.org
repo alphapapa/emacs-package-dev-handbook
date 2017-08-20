@@ -20,6 +20,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
   -  [[#emacs-lisp][Emacs Lisp]]
     -  [[#buffers][Buffers]]
     -  [[#checkers--linters][Checkers / linters]]
+    -  [[#destructuring][Destructuring]]
     -  [[#editing][Editing]]
     -  [[#general][General]]
     -  [[#highlighting--font-locking][Highlighting / font-locking]]
@@ -53,6 +54,10 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 ** Checkers / linters                                     :linters:checkers:
 
 *** TODO Flycheck-package
+
+** Destructuring                                             :destructuring:
+
+See [[id:b699e1a1-e34c-4ce8-a5dd-41161d2a1cbf][Pattern matching]].
 
 ** Editing                                                         :editing:
 :PROPERTIES:
