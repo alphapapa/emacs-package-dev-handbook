@@ -20,12 +20,14 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
   -  [[#emacs-lisp][Emacs Lisp]]
     -  [[#buffers][Buffers]]
     -  [[#checkers--linters][Checkers / linters]]
+    -  [[#collections][Collections]]
     -  [[#destructuring][Destructuring]]
     -  [[#editing][Editing]]
     -  [[#general][General]]
     -  [[#highlighting--font-locking][Highlighting / font-locking]]
     -  [[#packaging][Packaging]]
     -  [[#pattern-matching][Pattern matching]]
+    -  [[#refactoring][Refactoring]]
     -  [[#string-manipulation][String manipulation]]
     -  [[#testing][Testing]]
     -  [[#version-control][Version control]]
@@ -54,6 +56,17 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 ** Checkers / linters                                     :linters:checkers:
 
 *** TODO Flycheck-package
+
+** Collections                                                 :collections:
+
+*** Libraries                                                   :libraries:
+
+**** [[https://github.com/Wilfred/ht.el][ht.el: The missing hash table library]]                   :hash_tables:
+:PROPERTIES:
+:ID:       22b35972-c32f-467a-92ee-f8a155920756
+:END:
+
+This library provides a consistent and comprehensive set of functions for working with hash tables: they're named consistently, take a natural and consistent argument order, and cover operations that the standard Emacs functions don't.
 
 ** Destructuring                                             :destructuring:
 
@@ -147,6 +160,10 @@ Do not document these functions in the lispref.  http://lists.gnu.org/archive/ht
 :ID:       0c220bc9-7173-4b0f-8955-e10ab6db640f
 :END:
 
+**** [[https://github.com/Wilfred/suggest.el][suggest.el: discover elisp functions that do what you want]]
+:PROPERTIES:
+:ID:       57ecc064-7291-4cc5-a545-958e2bca295b
+:END:
 ** Highlighting / font-locking                      :highlighting:font_lock:
 
 *** Packages                                                     :packages:
@@ -590,6 +607,15 @@ And:
                    (* 2 a))
 #+END_SRC
 
+** Refactoring                                                 :refactoring:
+
+*** Tools                                                           :tools:
+
+**** [[https://github.com/Wilfred/emacs-refactor][emacs-refactor: language-specific refactoring]]
+:PROPERTIES:
+:ID:       d329f03e-ed1e-4205-a232-6eee16717795
+:END:
+
 ** String manipulation                                             :strings:
 
 *** Libraries                                                   :libraries:
@@ -864,6 +890,20 @@ Sacha could easily be nominated the official Emacs ambassador, were there to be 
 +  [[http://sachachua.com/blog/][Blog: /Living an Awesome Life/]]
 +  [[http://github.com/sachac/][GitHub]]
 
+** Wilfred Hughes
+
+Wilfred has published several useful packages, and he's also leading the [[https://github.com/Wilfred/remacs][Rust Emacs port]].
+
+*** Packages
+
+**** [[id:d329f03e-ed1e-4205-a232-6eee16717795][emacs-refactor]]
+
+**** [[id:22b35972-c32f-467a-92ee-f8a155920756][ht.el]]
+
+**** [[id:57ecc064-7291-4cc5-a545-958e2bca295b][suggest.el]]
+:PROPERTIES:
+:ID:       80aa6c33-72d6-4792-8f41-e8ac4f7a1b0d
+:END:
 * Contributions
 
 Yes, please!  Please send pull requests and file issues on the [[https://github.com/alphapapa/emacs-package-dev-handbook][GitHub repo]].  This is intended to be a community project.
