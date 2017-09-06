@@ -734,28 +734,28 @@ It also provides =esxml-query=:
   ;; following table summarizes the currently supported modifiers and
   ;; combinators:
   ;;
-  ;; | Name | Supported? | Syntax |
+  ;; | Name                               | Supported? | Syntax      | 
   ;; |------------------------------------+------------+-------------|
-  ;; | Namespaces | No | foo|bar |
-  ;; | Commas | Yes | foo, bar |
-  ;; | Descendant combinator | Yes | foo bar |
-  ;; | Child combinator | Yes | foo>bar |
-  ;; | Adjacent sibling combinator | No | foo+bar |
-  ;; | General sibling combinator | No | foo~bar |
-  ;; | Universal selector | Yes | * |
-  ;; | Type selector | Yes | tag |
-  ;; | ID selector | Yes | #foo |
-  ;; | Class selector | Yes | .foo |
-  ;; | Attribute selector | Yes | [foo] |
-  ;; | Exact match attribute selector | Yes | [foo=bar] |
-  ;; | Prefix match attribute selector | Yes | [foo^=bar] |
-  ;; | Suffix match attribute selector | Yes | [foo$=bar] |
-  ;; | Substring match attribute selector | Yes | [foo*=bar] |
-  ;; | Include match attribute selector | Yes | [foo~=bar] |
-  ;; | Dash match attribute selector | Yes | [foo|=bar] |
-  ;; | Attribute selector modifiers | No | [foo=bar i] |
-  ;; | Pseudo elements | No | ::foo |
-  ;; | Pseudo classes | No | :foo |
+  ;; | Namespaces                         | No         | foo|bar     | 
+  ;; | Commas                             | Yes        | foo, bar    | 
+  ;; | Descendant combinator              | Yes        | foo bar     | 
+  ;; | Child combinator                   | Yes        | foo>bar     | 
+  ;; | Adjacent sibling combinator        | No         | foo+bar     | 
+  ;; | General sibling combinator         | No         | foo~bar     | 
+  ;; | Universal selector                 | Yes        | *           | 
+  ;; | Type selector                      | Yes        | tag         | 
+  ;; | ID selector                        | Yes        | #foo        | 
+  ;; | Class selector                     | Yes        | .foo        | 
+  ;; | Attribute selector                 | Yes        | [foo]       | 
+  ;; | Exact match attribute selector     | Yes        | [foo=bar]   | 
+  ;; | Prefix match attribute selector    | Yes        | [foo^=bar]  | 
+  ;; | Suffix match attribute selector    | Yes        | [foo$=bar]  | 
+  ;; | Substring match attribute selector | Yes        | [foo*=bar]  | 
+  ;; | Include match attribute selector   | Yes        | [foo~=bar]  | 
+  ;; | Dash match attribute selector      | Yes        | [foo|=bar]  | 
+  ;; | Attribute selector modifiers       | No         | [foo=bar i] | 
+  ;; | Pseudo elements                    | No         | ::foo       | 
+  ;; | Pseudo classes                     | No         | :foo        | 
 #+END_SRC
 
 Example:
