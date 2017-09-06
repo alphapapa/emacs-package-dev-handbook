@@ -31,6 +31,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
     -  [[#string-manipulation][String manipulation]]
     -  [[#testing][Testing]]
     -  [[#version-control][Version control]]
+    -  [[#xml--html][XML / HTML]]
   -  [[#blogs][Blogs]]
   -  [[#people][People]]
   -  [[#contributions][Contributions]]
@@ -703,6 +704,164 @@ Call this macro from an Org source block and you'll get a results block showing 
 :END:
 
 One of the "killer apps" for Emacs--and for git!
+
+** XML / HTML                                                     :xml:html:
+
+*** Libraries                                                   :libraries:
+
+**** [[https://github.com/tali713/esxml][esxml: An elisp library for working with xml, esxml and sxml]]
+
+Probably the most featureful, usable library at the moment.
+
+#+BEGIN_QUOTE
+This library provides to formats for xml code generation. The primary form is esxml. esxml is the form that is returned by such functions as libxml-parse-xml-region and is used internally by emacs in many xml related libraries.
+#+END_QUOTE
+
+It also provides =esxml-query=:
+
+#+BEGIN_SRC elisp
+  ;; Traditionally people pick one of the following options when faced
+  ;; with the task of extracting data from XML in Emacs Lisp:
+  ;;
+  ;; - Using regular expressions on the unparsed document
+  ;; - Manual tree traversal with `assoc', `car' and `cdr'
+  ;;
+  ;; Browsers faced a similar problem until jQuery happened, shortly
+  ;; afterwards they started providing the `node.querySelector' and
+  ;; `node.querySelectorAll' API for retrieving one or all nodes
+  ;; matching a given CSS selector. This code implements the same API
+  ;; with the `esxml-query' and `esxml-query-all' functions. The
+  ;; following table summarizes the currently supported modifiers and
+  ;; combinators:
+  ;;
+  ;; | Name | Supported? | Syntax |
+  ;; |------------------------------------+------------+-------------|
+  ;; | Namespaces | No | foo|bar |
+  ;; | Commas | Yes | foo, bar |
+  ;; | Descendant combinator | Yes | foo bar |
+  ;; | Child combinator | Yes | foo>bar |
+  ;; | Adjacent sibling combinator | No | foo+bar |
+  ;; | General sibling combinator | No | foo~bar |
+  ;; | Universal selector | Yes | * |
+  ;; | Type selector | Yes | tag |
+  ;; | ID selector | Yes | #foo |
+  ;; | Class selector | Yes | .foo |
+  ;; | Attribute selector | Yes | [foo] |
+  ;; | Exact match attribute selector | Yes | [foo=bar] |
+  ;; | Prefix match attribute selector | Yes | [foo^=bar] |
+  ;; | Suffix match attribute selector | Yes | [foo$=bar] |
+  ;; | Substring match attribute selector | Yes | [foo*=bar] |
+  ;; | Include match attribute selector | Yes | [foo~=bar] |
+  ;; | Dash match attribute selector | Yes | [foo|=bar] |
+  ;; | Attribute selector modifiers | No | [foo=bar i] |
+  ;; | Pseudo elements | No | ::foo |
+  ;; | Pseudo classes | No | :foo |
+#+END_SRC
+
+Example:
+
+#+BEGIN_SRC elisp
+  (defun org-books--amazon (url)
+    "Return plist of data for book at Amazon URL."
+    (cl-flet ((field (target-field list)
+                     (cl-loop for li in list
+                              for (field value) = (ignore-errors
+                                                    (-let (((_ _ (_ _ field) value) li))
+                                                      (list field value)))
+                              when (equal field target-field)
+                              return (s-trim value))))
+      (let* ((html (org-web-tools--get-url url))
+             (tree (with-temp-buffer
+                     (insert html)
+                     (libxml-parse-html-region (point-min) (point-max))))
+             (author (esxml-query "span.author a.contributorNameID *" tree))
+             (title (esxml-query "div#booksTitle h1#title > span *" tree))
+             (details (esxml-query-all "table#productDetailsTable ul li" tree))
+             (date (if-let ((printed (third (esxml-query-all "div#booksTitle h1#title span *" tree))))
+                       ;; Printed book
+                       (s-replace "– " "" printed)
+                     ;; Kindle book
+                     (field "Publication Date:" details)))
+             (asin (field "ASIN:" details))
+             (publisher (-some->> (field "Publisher:" details)
+                                  (replace-regexp-in-string (rx " (" (1+ anything) ")") "")))
+             (isbn-10 (field "ISBN-10:" details))
+             (isbn-13 (field "ISBN-13:" details)))
+        (list :author author :title title :publisher publisher :date date
+              :asin asin :isbn-10 isbn-10 :isbn-13 isbn-13))))
+#+END_SRC
+
+**** [[https://github.com/AdamNiederer/elquery][elquery: Read and manipulate HTML]]
+
+#+BEGIN_QUOTE
+It’s like jQuery, but way less useful.
+#+END_QUOTE
+
+Example:
+
+#+BEGIN_SRC html
+  <html style="height: 100vh">
+    <head class="kek"><title class="kek" data-bar="foo">Complex HTML Page</title></head>
+    <body class="kek bur" style="height: 100%">
+      <h1 id="bar" class="kek wow">Wow this is an example</h1>
+      <input id="quux" class="kek foo"/>
+      <iframe id="baz" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+              width="100%" height="100%" src="example.org">
+      </iframe>
+    </body>
+  </html>
+#+END_SRC
+
+#+BEGIN_SRC elisp
+  (let ((html (elq-read-file "~/kek.html")))
+    (elq-el (car (elq-$ ".kek#quux" html))) ; => "input"
+    (mapcar 'elq-el (elq-$ ".kek" html)) ; => ("input" "h1" "body" "title" "head")
+    (mapcar (lambda (el) (elq-el (elq-parent el)))
+            (elq-$ ".kek" html)) ; => ("body" "body" "html" "head" "html")
+    (mapcar (lambda (el) (mapcar 'elq-el (elq-siblings el)))
+            (elq-$ ".kek" html)) ; => (("h1" "input" "iframe") ("h1" "input" "iframe") ("head" "body") ("title") ("head" "body"))
+    (elq-$ ".kek" html) ; => Hope you didn't like your messages buffer
+    (elq-write html nil)) ; => "<html style=\"height: 100vh\"> ... </html>"
+#+END_SRC
+
+**** [[https://github.com/skeeto/elfeed/blob/master/xml-query.el][elfeed/xml-query.el]]
+
+Provides lisp-based (rather than string-based) selectors.  This library is primarily aimed at internal =elfeed= use rather than general use, however it may be useful to others.  The author is [[https://github.com/skeeto/elfeed/issues/189][considering]] publishing it separately.
+
+#+BEGIN_SRC elisp
+  ;; This query grabs the top-level paragraph content from XHTML.
+
+  ;; (xml-query-all '(html body p *) xhtml)
+
+  ;; This query extracts all the links from an Atom feed.
+
+  ;; (xml-query-all '(feed entry link [rel "alternate"] :href) xml)
+#+END_SRC
+
+**** [[https://github.com/zweifisch/enlive][enlive: query html document with css selectors]]
+
+This provides a limited set of lisp-based selectors (rather than string-based selectors).
+
+Example:
+
+#+BEGIN_SRC elisp
+  (require 'enlive)
+
+  (enlive-text
+   (enlive-query (enlive-fetch "http://gnu.org/") [title])) ; => "The GNU Operating System and the Free Software Movement"
+#+END_SRC
+
+**** [[https://github.com/bddean/xml-plus][xml-plus: XML/HTML utilities]]
+
+Mostly undocumented, providing three main functions:
+
+#+BEGIN_SRC elisp
+  ;; Utility functions for xml parse trees.
+  ;; - `xml+-query-all' and `xml+-query-first' are query functions that search
+  ;; descendants in node lists. They don't work with namespace-aware parsing yet
+  ;;
+  ;; - `xml+-node-text' gets node text
+#+END_SRC
 * Blogs                                                               :blogs:
 :PROPERTIES:
 :TOC:      0
