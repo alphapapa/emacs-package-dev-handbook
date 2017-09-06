@@ -945,6 +945,7 @@ Yes, please!  Please send pull requests and file issues on the [[https://github.
 
 ** TODO Add [[http://nic.ferrier.me.uk/][Nic Ferrier]]
 
+*** TODO [[https://github.com/nicferrier/emacs-noflet][GitHub - nicferrier/emacs-noflet: noflet - nic's overriding flet, for fleting functions for the purpose of decorating them]]
 ** TODO Add [[https://github.com/wasamasa?][Vasilij Schneidermann]]
 
 ** TODO [[https://github.com/VincentToups/emacs-utils][Vincent Toups' projects]]
