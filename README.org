@@ -686,7 +686,11 @@ Call this macro from an Org source block and you'll get a results block showing 
        (setq output (buffer-substring-no-properties (point-min) (point-max)))
        (kill-buffer)
        (delete-window)
-       output))
+       (let ((rows (s-lines output)))
+         (append (list (list "Function" "Times called" "Total time" "Average time")
+                       'hline)
+                 (cl-loop for row in rows
+                          collect (s-split (rx (1+ space)) row 'omit-nulls))))))
 
   ;; Use like this:
   (elp-profile 10
