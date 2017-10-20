@@ -1133,6 +1133,13 @@ Mention @milkypostman, @purcell, @syohex, etc. Mention sandbox.
 :PROPERTIES:
 :ID:       caeb4340-1f2e-4c84-a604-80594b465a10
 :END:
+
+** TODO Tree-traversal
+
+*** [[https://github.com/volrath/treepy.el][GitHub - volrath/treepy.el: Generic tree traversing tools for Emacs Lisp]]
+:LOGBOOK:
+-  State "TODO"       from              [2017-09-06 Wed 00:21]
+:END:
 * Code
 :PROPERTIES:
 :TOC:      0
