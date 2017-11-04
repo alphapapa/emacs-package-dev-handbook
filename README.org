@@ -62,6 +62,12 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 
 *** Libraries                                                   :libraries:
 
+**** [[https://github.com/plexus/a.el][a.el: functions for dealing with association lists and hash tables. Inspired by Clojure.]] :alists:hash_tables:
+
+**** [[https://github.com/troyp/asoc.el][asoc.el: alist library]]                                       :alists:
+
+**** [[https://github.com/nicferrier/emacs-kv][emacs-kv: key/value collection-type functions, for alists, hash tables and plists]] :alists:hash_tables:plists:
+
 **** [[https://github.com/Wilfred/ht.el][ht.el: The missing hash table library]]                   :hash_tables:
 :PROPERTIES:
 :ID:       22b35972-c32f-467a-92ee-f8a155920756
