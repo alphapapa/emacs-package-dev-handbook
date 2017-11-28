@@ -60,6 +60,89 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 
 ** Collections                                                 :collections:
 
+*** Examples                                                     :examples:
+
+**** Alists                                                       :alists:
+
+***** Creation
+
+#+BEGIN_SRC elisp
+  ;;;; Built-in methods
+
+  (list (cons 'one 1) (cons 'two 2))  ;; => ((one . 1) (two . 2))
+
+  '((one . 1) (two . 2))  ;; => ((one . 1) (two . 2))
+
+  (let ((numbers (list)))
+    (map-put numbers 'one 1)
+    (map-put numbers 'two 2))  ;; => ((two . 2) (one . 1))
+
+
+  ;;;; Packages
+
+  ;; `a-list' from a.el is the best way to make a new alist.
+
+  (a-list 'one 1
+          'two 2)  ;; => ((one . 1) (two . 2))
+#+END_SRC
+
+***** Adding to
+
+****** Single elements
+
+#+BEGIN_SRC elisp
+  ;;;; Built-in methods
+
+  ;; `map-put' is the best built-in way.  Requires Emacs 25.1+.
+
+  (let ((numbers (list (cons 'one 1))))
+    (map-put numbers 'two 2)
+    numbers)  ; => ((two . 2) (one . 1))
+
+  ;; More primitive methods
+
+  ;; Not recommended, but not too complicated:
+  (let ((numbers (list (cons 'one 1)))
+        (more-numbers (a-list 'two 2
+                              'three 3)))
+    (append numbers more-numbers)) ;; => ((one . 1) (two . 2) (three . 3))
+
+  ;; Don't do it this way, but it does demonstrate list/cons-cell
+  ;; structure:
+  (let ((numbers (list (cons 'one 1))))
+    (cons (cons 'three 3)
+          (cons (cons 'two 2)
+                numbers)))  ;; => ((three . 3) (two . 2) (one . 1))
+#+END_SRC
+
+****** Multiple elements
+
+#+BEGIN_SRC elisp
+  ;;;; Built-in methods
+
+  ;; `map-merge': if you're restricted to built-in packages, this works
+  ;; well (requires Emacs 25.1+):
+  (let ((numbers (list (cons 'one 1)))
+        (more-numbers (a-list 'two 2
+                              'three 3)))
+    (map-merge 'list numbers more-numbers))  ;; => ((three . 3) (two . 2) (one . 1))
+
+
+  ;; Without map.el, you could use `append':
+  (let ((numbers (list (cons 'one 1)))
+        (more-numbers (a-list 'two 2
+                              'three 3)))
+    (append numbers more-numbers)) ;; => ((one . 1) (two . 2) (three . 3))
+
+  ;;;; Packages
+
+  ;; `a-merge' from a.el is probably the best way:
+  (let ((numbers (list (cons 'one 1)))
+        (more-numbers (a-list 'two 2
+                              'three 3)))
+    (a-merge numbers more-numbers))  ;; => ((three . 3) (two . 2) (one . 1))
+#+END_SRC
+
 *** Libraries                                                   :libraries:
 
 **** [[https://github.com/plexus/a.el][a.el: functions for dealing with association lists and hash tables. Inspired by Clojure.]] :alists:hash_tables:
