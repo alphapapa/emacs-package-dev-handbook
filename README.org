@@ -168,6 +168,12 @@ users, as it provides familiar and intuitive interfaces with usual keys (for mov
 
 This library provides a consistent and comprehensive set of functions for working with hash tables: they're named consistently, take a natural and consistent argument order, and cover operations that the standard Emacs functions don't.
 
+*** Tools                                                           :tools:
+
+**** [[id:f8f0755b-c23b-45ad-98da-780d4044676a][let-alist]]
+
+**** [[id:a58f65dc-d4a4-4a40-a573-a66a28f3619c][=with-dict=, =with-plist-vals=]]
+
 ** Destructuring                                             :destructuring:
 
 See [[id:b699e1a1-e34c-4ce8-a5dd-41161d2a1cbf][Pattern matching]].
@@ -644,6 +650,9 @@ A powerful, Racket-style pattern-matching library.
 *** Tools                                                           :tools:
 
 **** let-alist                               :alists:macros:destructuring:
+:PROPERTIES:
+:ID:       f8f0755b-c23b-45ad-98da-780d4044676a
+:END:
 
 #+BEGIN_QUOTE
 let-alist is the best thing to happen to associative lists since the invention of the cons cell. This little macro lets you easily access the contents of an alist, concisely and efficiently, without having to specify them preemptively. It comes built-in with 25.1, and is also available on GNU Elpa for older Emacsen.
