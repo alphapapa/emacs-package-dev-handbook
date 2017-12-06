@@ -242,6 +242,24 @@ This is a built-in package that provides several useful functions and macros, su
 Do not document these functions in the lispref.  http://lists.gnu.org/archive/html/emacs-devel/2014-01/msg01006.html
 #+END_QUOTE
 
+**** [[https://github.com/emacs-mirror/emacs/blob/master/lisp/emacs-lisp/thunk.el][thunk]]                                                      :built_in:
+
+#+BEGIN_QUOTE
+Thunk provides functions and macros to delay the evaluation of forms.
+
+Use =thunk-delay= to delay the evaluation of a form (requires lexical-binding), and =thunk-force= to evaluate it. The result of
+the evaluation is cached, and only happens once.
+
+Here is an example of a form which evaluation is delayed:
+
+    =(setq delayed (thunk-delay (message "this message is delayed")))=
+
+=delayed= is not evaluated until =thunk-force= is called, like the following:
+
+   =(thunk-force delayed)=
+
+This file also defines macros =thunk-let= and =thunk-let*= that are analogous to =let= and =let*= but provide lazy evaluation of bindings by using thunks implicitly (i.e. in the expansion).
+#+END_QUOTE
 
 *** Tools                                                           :tools:
 
