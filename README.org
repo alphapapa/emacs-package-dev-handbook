@@ -839,6 +839,18 @@ Call this macro from an Org source block and you'll get a results block showing 
     (search-forward "something"))
 #+END_SRC
 
+This gives a table like:
+
+#+RESULTS:
+| Function       | Times called |   Total time | Average time |
+|----------------+--------------+--------------+--------------|
+| mapcar         |           30 | 0.0036004130 | 0.0001200137 |
+| search-forward |           10 | 2.089...e-05 | 2.089...e-06 |
+| goto-char      |           10 |    6.926e-06 |    6.926e-07 |
+| car            |           13 | 3.956...e-06 | 3.043...e-07 |
+| append         |            1 |     5.96e-07 |     5.96e-07 |
+| mapatoms       |            1 |            0 |          0.0 |
+
 ** Version control                                         :version_control:
 
 *** Packages                                                     :packages:
