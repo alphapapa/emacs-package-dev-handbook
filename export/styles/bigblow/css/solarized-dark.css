@@ -171,10 +171,13 @@ a:hover {
   background-color: #073642 !important;
   position: fixed;
   bottom: 5em;
-  left: -5em;
+  left: -5.5em;
   transform: rotate(90deg);
   box-shadow: 0px 0px 10px #93a1a1;
-  padding: 0.1em;
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
   filter: opacity(50%);
   z-index: 200;
 }
