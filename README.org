@@ -783,7 +783,7 @@ This is the standard, built-in Emacs testing library, used by core code and thir
 
 *** Tools                                                    :tools:
 
-**** bench macro                                                  :macros:
+**** =bench= macro                                                :macros:
 
 From Phil Lord's [[http://phillord.github.io/m-buffer-el/#sec-5-1-2][m-buffer-el]]:
 
@@ -803,7 +803,7 @@ From Phil Lord's [[http://phillord.github.io/m-buffer-el/#sec-5-1-2][m-buffer-el
     (point))
 #+END_SRC
 
-**** elp-profile macro                                            :macros:
+**** =elp-profile= macro                                          :macros:
 
 Call this macro from an Org source block and you'll get a results block showing which 20 functions were called the most times, how long they took to run, etc.  Set =prefixes= to a list of strings matching the prefixes of the functions you want to instrument.
 
