@@ -643,6 +643,21 @@ There are /lots/ of examples here.
 :archive.is: http://archive.is/0Y3Md
 :END:
 
+***** Examples                                                 :examples:
+
+****** =pcase-let=                                         :destructuring:
+This example shows the use of =pcase-let*= to destructure and bind a nested alist:
+
+#+BEGIN_SRC elisp
+  (let ((alphabets (a-list 'English (a-list 'first "a"
+                                            'second "b")
+                           'Greek (a-list 'first "α"
+                                          'second "β"))))
+    (pcase-let* (((map English) alphabets)
+                 ((map ('first letter) second) English))
+      (list letter second)))  ;; => ("a" "b")
+#+END_SRC
+
 **** [[https://github.com/VincentToups/shadchen-el][shadchen-el]]                                             :shadchen:el:
 
 A powerful, Racket-style pattern-matching library.
