@@ -1,7 +1,7 @@
 # -*- mode: org; -*-
 
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="export/styles/bigblow/css/htmlize.css"/>
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="export/styles/bigblow/css/bigblow.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="export/styles/bigblow/css/solarized-dark.css"/>
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="export/styles/bigblow/css/hideshow.css"/>
 
 #+HTML_HEAD: <script type="text/javascript" src="export/styles/bigblow/js/jquery-1.11.0.min.js"></script>
