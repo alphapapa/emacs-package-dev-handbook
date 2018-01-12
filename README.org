@@ -168,6 +168,33 @@ users, as it provides familiar and intuitive interfaces with usual keys (for mov
 
 This library provides a consistent and comprehensive set of functions for working with hash tables: they're named consistently, take a natural and consistent argument order, and cover operations that the standard Emacs functions don't.
 
+**** [[https://github.com/rolandwalker/list-utils][list-utils: List-manipulation utility functions]]               :lists:
+:PROPERTIES:
+:ID:       4b4cbe99-f048-4043-a946-97f9d1a4be52
+:END:
+
+Similar to =dash.el=, but with slightly different behavior that may be useful, and some unique features.  These functions are provided:
+
+| =make-tconc=                       | =list-utils-depth=                |
+| =tconc-p=                          | =list-utils-flat-length=          |
+| =tconc-list=                       | =list-utils-flatten=              |
+| =tconc=                            | =list-utils-alist-or-flat-length= |
+| =list-utils-cons-cell-p=           | =list-utils-alist-flatten=        |
+| =list-utils-cyclic-length=         | =list-utils-insert-before=        |
+| =list-utils-improper-p=            | =list-utils-insert-after=         |
+| =list-utils-make-proper-copy=      | =list-utils-insert-before-pos=    |
+| =list-utils-make-proper-inplace=   | =list-utils-insert-after-pos=     |
+| =list-utils-make-improper-copy=    | =list-utils-and=                  |
+| =list-utils-make-improper-inplace= | =list-utils-not=                  |
+| =list-utils-linear-p=              | =list-utils-xor=                  |
+| =list-utils-linear-subseq=         | =list-utils-uniq=                 |
+| =list-utils-cyclic-p=              | =list-utils-dupes=                |
+| =list-utils-cyclic-subseq=         | =list-utils-singlets=             |
+| =list-utils-make-linear-copy=      | =list-utils-partition-dupes=      |
+| =list-utils-make-linear-inplace=   | =list-utils-plist-reverse=        |
+| =list-utils-safe-length=           | =list-utils-plist-del=            |
+| =list-utils-safe-equal=            |                                   |
+
 *** Tools                                                           :tools:
 
 **** [[id:f8f0755b-c23b-45ad-98da-780d4044676a][let-alist]]
@@ -1192,6 +1219,19 @@ Oleh is a prolific package author, having contributed many very high-quality pac
 
 **** [[id:6858c112-9756-43b4-a2e3-fa00a71e9367][m-buffer-el]]
 
+** Roland Walker
+:PROPERTIES:
+:ID:       518289de-100e-4387-9917-2adaffc28f48
+:END:
+
+Roland has published a wide variety of useful Emacs packages.
+
++ [[https://github.com/rolandwalker?utf8=%25E2%259C%2593&tab=repositories&q=&type=source&language=emacs+lisp][GitHub]]
+
+*** Packages
+
+**** [[id:4b4cbe99-f048-4043-a946-97f9d1a4be52][list-utils: List-manipulation utility functions]]
+
 ** Sacha Chua
 :PROPERTIES:
 :ID:       12c7b803-9af2-4010-bca4-06304fbb69c7
@@ -1265,6 +1305,7 @@ Yes, please!  Please send pull requests and file issues on the [[https://github.
 
 He has a lot of interesting libraries on his repo, and some of them are /extensively/ documented.  An aspiring Emacs Lisp developer could learn a lot from his code.
 
+** TODO Add more of [[id:518289de-100e-4387-9917-2adaffc28f48][Roland Walker]]'s packages
 ** TODO Add MELPA
 
 Mention @milkypostman, @purcell, @syohex, etc. Mention sandbox.
