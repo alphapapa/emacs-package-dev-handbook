@@ -1294,6 +1294,15 @@ Mention @milkypostman, @purcell, @syohex, etc. Mention sandbox.
 :LOGBOOK:
 -  State "TODO"       from              [2017-09-06 Wed 00:21]
 :END:
+** TODO Test in MELPA sandbox
+:PROPERTIES:
+:ID:       cddadde7-ec36-47a4-8d98-7acc39f03fed
+:END:
+:LOGBOOK:
+-  State "TODO"       from              [2017-12-16 Sat 20:16]
+:END:
+
+[2017-07-29 Sat 00:33] Not only should you test installing and using your package in the sandbox, but you should /also/ test then exiting the sandbox Emacs, running it again with the package already installed, and loading it.  This is because, when the sandbox installs the package, the byte-compilation seems to load some things that won't be loaded the same way when only loading the byte-compiled file (especially if you have any ~eval-when-compile~ lines, or unusual macros or things that modify the environment when loaded).
 * Code
 :PROPERTIES:
 :TOC:      0
