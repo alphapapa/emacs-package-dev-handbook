@@ -817,20 +817,28 @@ This is the standard, built-in Emacs testing library, used by core code and thir
 From Phil Lord's [[http://phillord.github.io/m-buffer-el/#sec-5-1-2][m-buffer-el]]:
 
 #+BEGIN_SRC elisp
-  (defmacro bench (&rest body)
+  (cl-defmacro bench (&optional (times 100000) &rest body)
     (declare (indent defun))
-    `(format "%e"
-             (car
-              (benchmark-run-compiled
-                  1000000
-                (progn
-                  ,@body)))))
-
-  ;; Use like this:
-  (bench
-    (current-buffer)
-    (point))
+    `(list '("Total runtime" "# of GCs" "Total GC runtime")
+           'hline
+           (benchmark-run-compiled ,times
+             (progn
+               ,@body))))
 #+END_SRC
+
+Used like this:
+
+#+BEGIN_SRC elisp
+  (bench 1000000
+    (cons 'time (current-time)))
+#+END_SRC
+
+When called from an Org source block, it gives output like this:
+
+#+RESULTS:
+| Total runtime | # of GCs |   Total GC runtime |
+|---------------+----------+--------------------|
+|   1.657838266 |        3 | 1.4723854609999876 |
 
 **** =elp-profile= macro                                          :macros:
 
