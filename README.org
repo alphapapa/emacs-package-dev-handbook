@@ -393,6 +393,8 @@ should be used instead. What confuses me is [[http://stackoverflow.com/a/3880510
 Can anyone clear up what the intended behaviour is?
 #+END_QUOTE
 
+[2018-01-15 Mon 03:37]  The correct way to do this is documented in [[https://github.com/alphapapa/helm-org-rifle/issues/13][this bug report]].
+
 ***** Articles                                                 :articles:
 
 ****** [[https://www.lunaryorn.com/posts/autoloads-in-emacs-lisp][Autoloads in Emacs Lisp | Sebastian Wiesner]]
