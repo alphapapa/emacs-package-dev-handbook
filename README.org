@@ -1320,6 +1320,7 @@ He has a lot of interesting libraries on his repo, and some of them are /extensi
 
 Mention @milkypostman, @purcell, @syohex, etc. Mention sandbox.
 
+** TODO Add [[https://github.com/vermiculus/apiwrap.el][GitHub - vermiculus/apiwrap.el: Generate wrappers for your API endpoints!]]
 ** Testing
 
 *** TODO Everything at [[https://www.emacswiki.org/emacs/UnitTesting][EmacsWiki: Unit Testing]]
