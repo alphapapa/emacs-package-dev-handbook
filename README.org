@@ -29,7 +29,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
     -  [[#pattern-matching][Pattern matching]]
     -  [[#profiling][Profiling]]
     -  [[#refactoring][Refactoring]]
-    -  [[#string-manipulation][String manipulation]]
+    -  [[#strings][Strings]]
     -  [[#testing][Testing]]
     -  [[#version-control][Version control]]
     -  [[#xml--html][XML / HTML]]
@@ -869,12 +869,15 @@ This gives a table like:
 :PROPERTIES:
 :ID:       d329f03e-ed1e-4205-a232-6eee16717795
 :END:
-
-** String manipulation                                             :strings:
+** Strings                                                         :strings:
 
 *** Libraries                                                   :libraries:
 
 **** [[https://github.com/magnars/s.el][s.el: The long lost Emacs string manipulation library]]
+
+*** Regular expressions                               :regular_expressions:
+
+**** [[https://github.com/joddie/pcre2el][pcre2el: Convert between PCRE, Emacs and rx regexp syntax]]
 
 ** Testing                                                         :testing:
 
