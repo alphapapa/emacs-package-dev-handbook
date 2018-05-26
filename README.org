@@ -27,6 +27,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
     -  [[#highlighting--font-locking][Highlighting / font-locking]]
     -  [[#packaging][Packaging]]
     -  [[#pattern-matching][Pattern matching]]
+    -  [[#profiling][Profiling]]
     -  [[#refactoring][Refactoring]]
     -  [[#string-manipulation][String manipulation]]
     -  [[#testing][Testing]]
@@ -778,41 +779,14 @@ And:
                    (* 2 a))
 #+END_SRC
 
-** Refactoring                                                 :refactoring:
+** Profiling                                                     :profiling:
 
-*** Tools                                                           :tools:
+*** Macros                                                         :macros:
 
-**** [[https://github.com/Wilfred/emacs-refactor][emacs-refactor: language-specific refactoring]]
+**** =bench=
 :PROPERTIES:
-:ID:       d329f03e-ed1e-4205-a232-6eee16717795
+:ID:       89f94efd-fd6b-4fca-9a75-60790d7cafeb
 :END:
-
-** String manipulation                                             :strings:
-
-*** Libraries                                                   :libraries:
-
-**** [[https://github.com/magnars/s.el][s.el: The long lost Emacs string manipulation library]]
-
-** Testing                                                         :testing:
-
-*** Libraries                                                   :libraries:
-
-**** [[https://github.com/phillord/assess][assess: Test support functions]]
-
-**** [[https://github.com/jorgenschaefer/emacs-buttercup][buttercup: Behavior-Driven Emacs Lisp Testing]]
-:PROPERTIES:
-:ID:       108f5eb6-7307-4d4b-aaf1-dd2a8bb65a58
-:END:
-
-**** [[https://github.com/ecukes/ecukes][ecukes: Cucumber for Emacs]]
-
-**** [[https://www.gnu.org/software/emacs/manual/html_node/ert/][Emacs Lisp Regression Testing]] (ERT)                        :built_in:
-
-This is the standard, built-in Emacs testing library, used by core code and third-party packages alike.
-
-*** Tools                                                    :tools:
-
-**** =bench= macro                                                :macros:
 
 From Phil Lord's [[http://phillord.github.io/m-buffer-el/#sec-5-1-2][m-buffer-el]]:
 
@@ -840,7 +814,10 @@ When called from an Org source block, it gives output like this:
 |---------------+----------+--------------------|
 |   1.657838266 |        3 | 1.4723854609999876 |
 
-**** =elp-profile= macro                                          :macros:
+**** =elp-profile=
+:PROPERTIES:
+:ID:       fd3fdece-0342-441c-8540-5a5c463890a5
+:END:
 
 Call this macro from an Org source block and you'll get a results block showing which 20 functions were called the most times, how long they took to run, etc.  =prefixes= should be a list of symbols matching the prefixes of the functions you want to instrument.
 
@@ -883,6 +860,62 @@ This gives a table like:
 | car            |           13 | 3.956...e-06 | 3.043...e-07 |
 | append         |            1 |     5.96e-07 |     5.96e-07 |
 | mapatoms       |            1 |            0 |          0.0 |
+
+** Refactoring                                                 :refactoring:
+
+*** Tools                                                           :tools:
+
+**** [[https://github.com/Wilfred/emacs-refactor][emacs-refactor: language-specific refactoring]]
+:PROPERTIES:
+:ID:       d329f03e-ed1e-4205-a232-6eee16717795
+:END:
+
+** String manipulation                                             :strings:
+
+*** Libraries                                                   :libraries:
+
+**** [[https://github.com/magnars/s.el][s.el: The long lost Emacs string manipulation library]]
+
+** Testing                                                         :testing:
+
+*** Libraries                                                   :libraries:
+
+**** [[https://github.com/phillord/assess][assess: Test support functions]]
+
+*** Tools                                                    :tools:
+
+**** [[https://github.com/jorgenschaefer/emacs-buttercup][buttercup: Behavior-Driven Emacs Lisp Testing]]
+:PROPERTIES:
+:ID:       108f5eb6-7307-4d4b-aaf1-dd2a8bb65a58
+:END:
+
+**** [[https://github.com/ecukes/ecukes][ecukes: Cucumber for Emacs]]
+:PROPERTIES:
+:ID:       f0cdf4dd-38ff-41a1-a4c1-8f7677940863
+:END:
+
+**** [[https://www.gnu.org/software/emacs/manual/html_node/ert/][Emacs Lisp Regression Testing]] (ERT)                        :built_in:
+:PROPERTIES:
+:ID:       386b23bd-5254-457f-9ba1-ca5cbf87fed3
+:END:
+
+This is the standard, built-in Emacs testing library, used by core code and third-party packages alike.
+
+**** [[https://github.com/vermiculus/emake.el][emake.el: Test Elisp without the hoops]]
+
+#+BEGIN_QUOTE
+Test Elisp with services like Travis CI without the fuss of Cask – just you, your project, and (Emacs-)Make.
+
+Things EMake does:
+
++ parses, installs, and runs tests for your package
++ provides all the power of Elisp to extend its capabilities on-demand
+
+Things EMake will never do (or ‘reasons you may still need Cask’):
+
++ manage your development environment or provide tools to do so
++ provide ’bundler-like’ exec abilities (this includes Cask’s emacs and eval commands)
+#+END_QUOTE
 
 ** Version control                                         :version_control:
 
@@ -1309,6 +1342,8 @@ Yes, please!  Please send pull requests and file issues on the [[https://github.
 ** TODO Add [[http://nic.ferrier.me.uk/][Nic Ferrier]]
 
 *** TODO [[https://github.com/nicferrier/emacs-noflet][GitHub - nicferrier/emacs-noflet: noflet - nic's overriding flet, for fleting functions for the purpose of decorating them]]
+
+** TODO Add [[https://github.com/vermiculus][Sean Allred]]
 ** TODO Add [[https://github.com/wasamasa?][Vasilij Schneidermann]]
 
 ** TODO [[https://github.com/VincentToups/emacs-utils][Vincent Toups' projects]]
@@ -1323,6 +1358,8 @@ Mention @milkypostman, @purcell, @syohex, etc. Mention sandbox.
 ** TODO Add [[https://github.com/vermiculus/apiwrap.el][GitHub - vermiculus/apiwrap.el: Generate wrappers for your API endpoints!]]
 
 ** TODO Add [[http://www.modernemacs.com/][Modern Emacs]] site
+
+** TODO Add [[https://github.com/sigma/pcache][GitHub - sigma/pcache: persistent caching for Emacs]]
 ** Testing
 
 *** TODO Everything at [[https://www.emacswiki.org/emacs/UnitTesting][EmacsWiki: Unit Testing]]
