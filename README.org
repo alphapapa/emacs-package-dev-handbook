@@ -524,7 +524,7 @@ Here is a skeleton you can use when starting new packages:
   (require 'foo)
   (require 'bar)
 
-  ;;;; Variables
+  ;;;; Customization
 
   (defgroup package-name nil
     "Settings for `package-name'."
@@ -534,14 +534,29 @@ Here is a skeleton you can use when starting new packages:
     "This setting does something."
     :type 'something)
 
-  (defvar package-name-map
-    (let ((map (copy-keymap keymap)))
-      (define-key map (kbd "key") #'package-name-command)
-      map)
-    "Keymap for `package-name'.")
+  ;;;; Variables
 
   (defvar package-name-var nil
     "A variable.")
+
+  ;;;;; Keymaps
+
+  ;; This technique makes it easier and less verbose to define keymaps.
+
+  (defvar package-name-map
+    ;; This makes it easy and much less verbose to define keys
+    (let ((map (make-sparse-keymap "package-name map"))
+          (maps (list
+                 ;; Mappings go here, e.g.:
+                 "RET" #'package-name-RET-command
+                 [remap search-forward] #'package-name-search-forward
+                 )))
+      (cl-loop for (key fn) on maps by #'cddr
+               do (progn
+                    (when (stringp key)
+                      (setq key (kbd key)))
+                    (define-key map key fn)))
+      map))
 
   ;;;; Functions
 
