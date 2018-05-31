@@ -38,6 +38,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
   -  [[#contributions][Contributions]]
   -  [[#tasks][Tasks]]
   -  [[#code][Code]]
+
 * Emacs Lisp                                                          :elisp:
 :PROPERTIES:
 :TOC:      1
@@ -580,6 +581,123 @@ Here is a skeleton you can use when starting new packages:
   (provide 'package-name)
 
   ;;; package-name.el ends here
+#+END_SRC
+
+**** Readme
+
+You should always include a readme with your project.  Typically it will be include most of the commentary section.  Here's a skeleton that goes with the package skeleton above:
+
+#+BEGIN_SRC org
+  ,#+PROPERTY: LOGGING nil
+
+  # Note: This readme works with the org-make-toc <https://github.com/alphapapa/org-make-toc> package, which automatically updates the table of contents.
+
+  ,* package-name
+  :PROPERTIES:
+  :TOC:      ignore
+  :END:
+
+  [[https://melpa.org/#/helm-org-rifle][file:https://melpa.org/packages/package-name-badge.svg]] [[https://stable.melpa.org/#/helm-org-rifle][file:https://stable.melpa.org/packages/package-name-badge.svg]]
+
+  This is my package.  It is nice.  You should try it.
+
+  ,** Screenshots
+
+  This screenshot shows how to frobnicate the fripulator:
+
+  [[screenshot1.png]]
+
+  ,* Contents                                                         :noexport:
+  :PROPERTIES:
+  :TOC:      this
+  :END:
+    -  [[#installation][Installation]]
+    -  [[#usage][Usage]]
+    -  [[#changelog][Changelog]]
+    -  [[#credits][Credits]]
+    -  [[#development][Development]]
+    -  [[#license][License]]
+
+  ,* Installation
+  :PROPERTIES:
+  :TOC:      0
+  :END:
+
+  ,** MELPA
+
+  If you installed from MELPA, you're done.  Just run one of the commands below.
+
+  ,** Manual
+
+    Install these required packages:
+
+    + =foo=
+    + =bar=
+
+    Then put this file in your load-path, and put this in your init file:
+
+    ,#+BEGIN_SRC elisp
+  (require 'package-name)
+    ,#+END_SRC
+
+  ,* Usage
+  :PROPERTIES:
+  :TOC:      0
+  :END:
+
+    Run one of these commands:
+
+    + =package-name-command=: Frobnicate the flange.
+
+  ,** Tips
+
+  + You can customize settings in the =package-name= group.
+
+  ,* Changelog
+  :PROPERTIES:
+  :TOC:      0
+  :END:
+
+  ,** 1.1.0
+
+  ,*Additions*
+  +  Add command =package-name-debarnacle= to de-barnacle the hull.
+
+  ,*Changes*
+  + Command =package-name-anchor= now takes an argument, =weigh= or =let-go=.
+
+  ,*Internal*
+  +  Rewrote input parsing.
+  +  Factored out anchor-weighing.
+
+  ,** 1.0.1
+
+  ,*Fixes*
+  +  Ensure anchor is secure before returning from =package-name-anchor=.
+
+  ,** 1.0.0
+
+  Initial release.
+
+  ,* Credits
+
+    This package would not have been possible without the following packages: [[https://example.com/foo.el][foo]] which showed me how to bifurcate, and [[https://example.com/bar.el][bar]], which takes care of flanges.
+
+  ,* Development
+
+  Bug reports, feature requests, suggestions — /oh my/!
+
+  ,* License
+
+  GPLv3
+
+  # Local Variables:
+  # eval: (require 'org-make-toc)
+  # before-save-hook: (lambda nil (org-make-toc-make-toc))
+  # org-export-with-properties: ()
+  # org-export-with-title: t
+  # End:
+
 #+END_SRC
 
 *** Reference                                                   :reference:
