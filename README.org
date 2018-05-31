@@ -21,6 +21,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
     -  [[#buffers][Buffers]]
     -  [[#checkers--linters][Checkers / linters]]
     -  [[#collections][Collections]]
+    -  [[#data-structure][Data structure]]
     -  [[#destructuring][Destructuring]]
     -  [[#editing][Editing]]
     -  [[#general][General]]
@@ -202,6 +203,15 @@ Similar to =dash.el=, but with slightly different behavior that may be useful, a
 **** [[id:f8f0755b-c23b-45ad-98da-780d4044676a][let-alist]]
 
 **** [[id:a58f65dc-d4a4-4a40-a573-a66a28f3619c][=with-dict=, =with-plist-vals=]]
+
+** Data structure                                           :data_structure:
+
+*** Articles                                                     :articles:
+
+**** [[http://nullprogram.com/blog/2018/02/14/][Options for Structured Data in Emacs Lisp « null program]]
+:PROPERTIES:
+:archive.is: http://archive.is/YxwP5
+:END:
 
 ** Destructuring                                             :destructuring:
 
@@ -1480,6 +1490,13 @@ Yes, please!  Please send pull requests and file issues on the [[https://github.
 *** TODO [[https://github.com/nicferrier/emacs-noflet][GitHub - nicferrier/emacs-noflet: noflet - nic's overriding flet, for fleting functions for the purpose of decorating them]]
 
 ** TODO Add [[https://github.com/vermiculus][Sean Allred]]
+
+** TODO Add [[http://nullprogram.com/][Chris Wellons]]
+
++  http://github.com/skeeto
++  Elfeed
++  Other Emacs packages
+
 ** TODO Add [[https://github.com/wasamasa?][Vasilij Schneidermann]]
 
 ** TODO [[https://github.com/VincentToups/emacs-utils][Vincent Toups' projects]]
