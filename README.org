@@ -25,6 +25,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
     -  [[#data-structure][Data structure]]
     -  [[#destructuring][Destructuring]]
     -  [[#editing][Editing]]
+    -  [[#functions][Functions]]
     -  [[#general][General]]
     -  [[#highlighting--font-locking][Highlighting / font-locking]]
     -  [[#multiprocessing-generators-threads][Multiprocessing (generators, threads)]]
@@ -306,6 +307,18 @@ This package, by Damien Cassou and Matus Goljer, helps navigation by redefining 
 **** [[https://github.com/Fuco1/smartparens][smartparens: Minor mode  that deals with parens pairs and tries to be smart about it]] :navigation:editing:parentheses:
 :PROPERTIES:
 :ID:       e806d7f3-43e9-4260-aae4-479efbd41653
+:END:
+
+** Functions                                                     :functions:
+
+Including anonymous functions (lambdas).
+
+*** Articles
+
+**** [[https://nullprogram.com/blog/2017/12/14/][What's in an Emacs Lambda « null program]] :lambdas:byte_compilation:lexical_binding:scope:
+:PROPERTIES:
+:archive.is: http://archive.is/ppIuJ
+:ID:       54fa2e85-066f-431e-9db3-8b1627fac4ca
 :END:
 
 ** General                                                         :general:
@@ -976,6 +989,8 @@ And:
 **** [[https://nullprogram.com/blog/2017/01/30/][How to Write Fast(er) Emacs Lisp « null program]]
 
 Chris Wellons explains five ways to write faster Emacs Lisp code.
+
+**** [[id:54fa2e85-066f-431e-9db3-8b1627fac4ca][What's in an Emacs Lambda « null program]]
 
 *** Macros                                                         :macros:
 
