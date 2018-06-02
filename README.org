@@ -18,9 +18,10 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 :TOC:      this
 :END:
   -  [[#emacs-lisp][Emacs Lisp]]
+    -  [[#binding][Binding]]
     -  [[#buffers][Buffers]]
     -  [[#checkers--linters][Checkers / linters]]
-    -  [[#collections][Collections]]
+    -  [[#collections-lists-vectors-hash-tables-etc][Collections (lists, vectors, hash-tables, etc.)]]
     -  [[#data-structure][Data structure]]
     -  [[#destructuring][Destructuring]]
     -  [[#editing][Editing]]
@@ -44,6 +45,52 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 :PROPERTIES:
 :TOC:      1
 :END:
+
+** Binding                                             :scope:binding:
+:PROPERTIES:
+:ID:       50f0cde2-34ca-4131-a688-b434ecde6819
+:END:
+
+Information related to variable scope and binding in elisp code (e.g. lexical vs. dynamic scope).
+
+*** Articles                                                     :articles:
+
+**** [[https://nullprogram.com/blog/2017/10/27/][Make Flet Great Again « null program]]      :macros:flet:letf:
+:PROPERTIES:
+:archive.is: http://archive.is/T8dHM
+:END:
+
+Chris Wellons explains how the old ~cl~ macro ~flet~ changes in its new ~cl-lib~ version, ~cl-flet~, and how to use ~cl-letf~ to achieve the old functionality.  It's a way to override functions in both lexical and dynamic scope, which is especially useful for unit testing.
+
+*** Libraries                                                   :libraries:
+
+**** [[id:e85e4252-ea03-4473-b52f-9393e7527fad][dash.el]]
+
+**** [[https://github.com/emacs-mirror/emacs/blob/master/lisp/emacs-lisp/thunk.el][thunk]]                                                      :built_in:
+:PROPERTIES:
+:ID:       2f389382-af81-4f18-b6bc-ef33e39df1eb
+:END:
+
+#+BEGIN_QUOTE
+Thunk provides functions and macros to delay the evaluation of forms.
+
+Use =thunk-delay= to delay the evaluation of a form (requires lexical-binding), and =thunk-force= to evaluate it. The result of
+the evaluation is cached, and only happens once.
+
+Here is an example of a form which evaluation is delayed:
+
+    =(setq delayed (thunk-delay (message "this message is delayed")))=
+
+=delayed= is not evaluated until =thunk-force= is called, like the following:
+
+   =(thunk-force delayed)=
+
+This file also defines macros =thunk-let= and =thunk-let*= that are analogous to =let= and =let*= but provide lazy evaluation of bindings by using thunks implicitly (i.e. in the expansion).
+#+END_QUOTE
+
+*** Tools                                                           :tools:
+
+**** [[id:7247be4d-4f66-43ff-bb70-1b4a7458611b][Lexical binding]]                            :built_in:lexical_binding:
 
 ** Buffers                                                         :buffers:
 
@@ -71,7 +118,7 @@ users, as it provides familiar and intuitive interfaces with usual keys (for mov
 
 *** TODO Flycheck-package
 
-** Collections                                                 :collections:
+** Collections (lists, vectors, hash-tables, etc.)             :collections:
 
 *** Examples                                                     :examples:
 
@@ -287,25 +334,6 @@ This is a built-in package that provides several useful functions and macros, su
 Do not document these functions in the lispref.  http://lists.gnu.org/archive/html/emacs-devel/2014-01/msg01006.html
 #+END_QUOTE
 
-**** [[https://github.com/emacs-mirror/emacs/blob/master/lisp/emacs-lisp/thunk.el][thunk]]                                                      :built_in:
-
-#+BEGIN_QUOTE
-Thunk provides functions and macros to delay the evaluation of forms.
-
-Use =thunk-delay= to delay the evaluation of a form (requires lexical-binding), and =thunk-force= to evaluate it. The result of
-the evaluation is cached, and only happens once.
-
-Here is an example of a form which evaluation is delayed:
-
-    =(setq delayed (thunk-delay (message "this message is delayed")))=
-
-=delayed= is not evaluated until =thunk-force= is called, like the following:
-
-   =(thunk-force delayed)=
-
-This file also defines macros =thunk-let= and =thunk-let*= that are analogous to =let= and =let*= but provide lazy evaluation of bindings by using thunks implicitly (i.e. in the expansion).
-#+END_QUOTE
-
 *** Tools                                                           :tools:
 
 **** [[https://github.com/Lindydancer/el2markdown][el2markdown: Convert Emacs Lisp comments to MarkDown]]
@@ -327,6 +355,7 @@ This file also defines macros =thunk-let= and =thunk-let*= that are analogous to
 :PROPERTIES:
 :ID:       57ecc064-7291-4cc5-a545-958e2bca295b
 :END:
+
 ** Highlighting / font-locking                      :highlighting:font_lock:
 
 *** Packages                                                     :packages:
@@ -422,7 +451,7 @@ Sometimes you want your package to integrate with other packages, but you don't 
 
 The best way to handle this is with the [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Hooks-for-Loading.html][=with-eval-after-load=]] macro.  The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Hooks-for-Loading.html][Emacs manual]] has a page on it, and [[https://stackoverflow.com/questions/21880139/what-is-with-eval-after-load-in-emacs-lisp][this StackOverflow question]] has some more info.  You can also see an [[https://github.com/alphapapa/org-recent-headings/blob/master/org-recent-headings.el#L350][example]], which also [[https://github.com/alphapapa/org-recent-headings/blob/master/org-recent-headings.el#L377][uses]] [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Declaring-Functions.html][=declare-function=]] to prevent byte-compiler errors.
 
-**** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Lexical-Binding.html][Lexical binding]]                                     :lexical_binding:
+**** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Lexical-Binding.html][Lexical binding]]                            :lexical_binding:built_in:
 :PROPERTIES:
 :ID:       7247be4d-4f66-43ff-bb70-1b4a7458611b
 :END:
@@ -1012,6 +1041,7 @@ This gives a table like:
 :PROPERTIES:
 :ID:       d329f03e-ed1e-4205-a232-6eee16717795
 :END:
+
 ** Strings                                                         :strings:
 
 *** Libraries                                                   :libraries:
