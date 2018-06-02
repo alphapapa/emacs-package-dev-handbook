@@ -18,6 +18,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 :TOC:      this
 :END:
   -  [[#emacs-lisp][Emacs Lisp]]
+    -  [[#asynchronicity][Asynchronicity]]
     -  [[#binding][Binding]]
     -  [[#buffers][Buffers]]
     -  [[#checkers--linters][Checkers / linters]]
@@ -47,6 +48,10 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 :PROPERTIES:
 :TOC:      1
 :END:
+
+** Asynchronicity                                                    :async:
+
+See [[id:94092c16-061c-45c9-9c66-77c5fdeceee8][Multiprocessing (generators, threads)]].
 
 ** Binding                                             :scope:binding:
 :PROPERTIES:
@@ -416,6 +421,9 @@ Tools for developing highlighting/font-locking packages.
 :END:
 
 ** Multiprocessing (generators, threads)           :multiprocessing:
+:PROPERTIES:
+:ID:       94092c16-061c-45c9-9c66-77c5fdeceee8
+:END:
 
 *** Articles                                                     :articles:
 
@@ -425,6 +433,16 @@ Tools for developing highlighting/font-locking packages.
 :END:
 
 Chris Wellons explains the new generators and threads that Emacs 26 provides.  He also shows an example of writing a ~cl-case~ form that uses the new ~switch~ jump table opcode in Emacs 26.
+
+**** [[https://nullprogram.com/blog/2013/01/14/][Turning Asynchronous into Synchronous in Elisp « null program]] :async:
+:PROPERTIES:
+:archive.is: http://archive.is/AfL0y
+:END:
+
+**** [[https://nullprogram.com/blog/2017/02/14/][Asynchronous Requests from Emacs Dynamic Modules « null program]] :modules:async:
+:PROPERTIES:
+:archive.is: http://archive.is/ZS6pU
+:END:
 
 *** Manual                                                         :manual:
 
