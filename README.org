@@ -406,12 +406,12 @@ Tools for developing highlighting/font-locking packages.
 
 *** Articles                                                     :articles:
 
-**** [[https://nullprogram.com/blog/2018/05/31/][Emacs 26 Brings Generators and Threads « null program]] :threads:generators:
+**** [[https://nullprogram.com/blog/2018/05/31/][Emacs 26 Brings Generators and Threads « null program]] :threads:generators:byte_compilation:closures:iterators:
 :PROPERTIES:
 :archive.is: http://archive.is/Irane
 :END:
 
-Chris Wellons explains the new generators and threads that Emacs 26 provides.
+Chris Wellons explains the new generators and threads that Emacs 26 provides.  He also shows an example of writing a ~cl-case~ form that uses the new ~switch~ jump table opcode in Emacs 26.
 
 *** Manual                                                         :manual:
 
