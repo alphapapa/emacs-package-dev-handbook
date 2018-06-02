@@ -30,7 +30,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
     -  [[#multiprocessing-generators-threads][Multiprocessing (generators, threads)]]
     -  [[#packaging][Packaging]]
     -  [[#pattern-matching][Pattern matching]]
-    -  [[#profiling][Profiling]]
+    -  [[#profiling--optimization][Profiling / Optimization]]
     -  [[#refactoring][Refactoring]]
     -  [[#strings][Strings]]
     -  [[#testing][Testing]]
@@ -969,7 +969,13 @@ And:
                    (* 2 a))
 #+END_SRC
 
-** Profiling                                                     :profiling:
+** Profiling / Optimization                         :profiling:optimization:
+
+*** Articles                                                     :articles:
+
+**** [[https://nullprogram.com/blog/2017/01/30/][How to Write Fast(er) Emacs Lisp « null program]]
+
+Chris Wellons explains five ways to write faster Emacs Lisp code.
 
 *** Macros                                                         :macros:
 
