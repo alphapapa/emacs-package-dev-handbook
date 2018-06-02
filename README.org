@@ -27,6 +27,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
     -  [[#editing][Editing]]
     -  [[#general][General]]
     -  [[#highlighting--font-locking][Highlighting / font-locking]]
+    -  [[#multiprocessing-generators-threads][Multiprocessing (generators, threads)]]
     -  [[#packaging][Packaging]]
     -  [[#pattern-matching][Pattern matching]]
     -  [[#profiling][Profiling]]
@@ -400,6 +401,23 @@ Tools for developing highlighting/font-locking packages.
 :PROPERTIES:
 :ID:       85a2421d-6fbd-4c4d-a6f9-587258c8f625
 :END:
+
+** Multiprocessing (generators, threads)           :multiprocessing:
+
+*** Articles                                                     :articles:
+
+**** [[https://nullprogram.com/blog/2018/05/31/][Emacs 26 Brings Generators and Threads « null program]] :threads:generators:
+:PROPERTIES:
+:archive.is: http://archive.is/Irane
+:END:
+
+Chris Wellons explains the new generators and threads that Emacs 26 provides.
+
+*** Manual                                                         :manual:
+
+**** [[https://www.gnu.org/software/emacs/draft/manual/html_node/elisp/Generators.html][GNU Emacs Lisp Reference Manual: Generators]]              :generators:
+
+**** [[https://www.gnu.org/software/emacs/draft/manual/html_node/elisp/Threads.html][GNU Emacs Lisp Reference Manual: Threads]]                    :threads:
 
 ** Packaging                                                     :packaging:
 :PROPERTIES:
