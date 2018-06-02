@@ -1109,6 +1109,24 @@ This gives a table like:
 
 **** [[https://github.com/joddie/pcre2el][pcre2el: Convert between PCRE, Emacs and rx regexp syntax]]
 
+*** Tools                                                           :tools:
+
+**** ~format$~ macro                                  :macros:interpolation:
+
+The ~format$~ macro (currently hosted [[https://github.com/alphapapa/elexandria/blob/master/elexandria.el][here]]) allows for easy string interpolation, including optional ~%~ sequences as used by ~format~.  For example, this:
+
+#+BEGIN_SRC elisp
+  (format$ "Amount: ${amount% .02f} $name %s" date)
+#+END_SRC
+
+Expands to:
+
+#+BEGIN_SRC elisp
+  (format "Amount: % .02f %s %s" amount name date)
+#+END_SRC
+
+Since this happens at macro expansion time rather than at runtime, there is no performance penalty, in contrast to using ~s-lex-format~.
+
 ** Testing                                                         :testing:
 
 *** Libraries                                                   :libraries:
