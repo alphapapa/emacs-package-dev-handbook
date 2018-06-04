@@ -532,12 +532,12 @@ Sebastian Wiesner provides a detailed explanation.
 
 A lot of good examples and discussion.
 
-**** Skeleton
+**** Template
 :PROPERTIES:
 :ID:       aacd55b6-a56f-4064-bf0d-25173ce83ef3
 :END:
 
-Here is a skeleton you can use when starting new packages:
+When you make a new package, the =auto-insert= command will insert a set of standard package headers for you.  However, here is a more comprehensive template you can use:
 
 #+BEGIN_SRC elisp
   ;;; package-name.el --- Package description (don't include the word "Emacs")  -*- lexical-binding: t; -*-
