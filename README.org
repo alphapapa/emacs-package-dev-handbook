@@ -24,6 +24,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
     -  [[#checkers--linters][Checkers / linters]]
     -  [[#collections-lists-vectors-hash-tables-etc][Collections (lists, vectors, hash-tables, etc.)]]
     -  [[#data-structure][Data structure]]
+    -  [[#date--time][Date / Time]]
     -  [[#destructuring][Destructuring]]
     -  [[#editing][Editing]]
     -  [[#functions][Functions]]
@@ -266,6 +267,25 @@ Similar to =dash.el=, but with slightly different behavior that may be useful, a
 :PROPERTIES:
 :archive.is: http://archive.is/YxwP5
 :END:
+
+** Date / Time                                                 :dates:times:
+
+*** Libraries                                                   :libraries:
+
+**** [[https://github.com/emacs-php/emacs-datetime][emacs-datetime]]
+:PROPERTIES:
+:ID:       45613ae9-97a2-4807-b099-a6c051f1a2c4
+:END:
+
+The primary function provided is: ~(datetime-format SYM-OR-FMT &optional TIME &rest OPTION)~
+
+#+BEGIN_EXAMPLE elisp
+  (datetime-format "%Y-%m-%d")
+  (datetime-format 'atom)
+  (datetime-format 'atom "2112-09-03 00:00:00" :timezone "UTC")
+#+END_EXAMPLE
+
+There are several other symbols provided besides ~atom~, such as ~rfc-3339~, which formats dates according to that RFC.
 
 ** Destructuring                                             :destructuring:
 
