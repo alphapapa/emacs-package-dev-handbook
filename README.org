@@ -705,7 +705,7 @@ You should always include a readme with your project.  Typically it will be incl
   :TOC:      ignore
   :END:
 
-  [[https://melpa.org/#/helm-org-rifle][file:https://melpa.org/packages/package-name-badge.svg]] [[https://stable.melpa.org/#/helm-org-rifle][file:https://stable.melpa.org/packages/package-name-badge.svg]]
+  [[https://melpa.org/#/package-name][file:https://melpa.org/packages/package-name-badge.svg]] [[https://stable.melpa.org/#/package-name][file:https://stable.melpa.org/packages/package-name-badge.svg]]
 
   This is my package.  It is nice.  You should try it.
 
