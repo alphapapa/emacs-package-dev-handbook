@@ -1750,7 +1750,7 @@ I love Emacs and Org mode.  This makes it so easy to make the document...alive! 
 
 # Local Variables:
 # eval: (require 'org-make-toc)
-# before-save-hook: (lambda nil (org-make-toc-make-toc))
+# before-save-hook: org-make-toc
 # after-save-hook: (lambda nil (when (org-html-export-to-html) (rename-file "README.html" "index.html" t)))
 # org-export-with-properties: ()
 # org-export-with-title: t
