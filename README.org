@@ -360,6 +360,65 @@ This package, by Damien Cassou and Matus Goljer, helps navigation by redefining 
 
 **** [[https://github.com/emacs-helm/helm-navi][helm-navi: Navigate file sections and language keywords using Helm]] :navigation:
 
+**** [[https://github.com/victorhge/iedit][iedit: Edit multiple regions simultaneously in a buffer or a region]] :refactoring:
+
+=iedit= makes it easy to rename symbols within a function or in a whole buffer.  Simply activate ~iedit-mode~ with point on a symbol, and it will be highlighted in the chosen scope, and any changes you make to the symbol are made in each highlighted occurrence.  It's like a smart, purposeful version of ~multiple-cursors~.
+
+The editor of this handbook uses ~iedit~ with these customizations:
+
++  ~ap/iedit-or-flyspell~ :: Globally bound to @@html:<kbd>@@C-;@@html:</kbd>@@.  In a ~prog-mode~-derived buffer, either corrects the last misspelled word with ~flyspell~ when point is in a comment or string, or activates ~iedit-mode~.  In non- ~prog-mode~-derived buffers, corrects with ~flyspell~.
+
+#+BEGIN_SRC elisp
+  (defun ap/iedit-or-flyspell ()
+    "Call `iedit-mode' or correct misspelling with flyspell, depending..."
+    (interactive)
+    (if (or iedit-mode
+            (and (derived-mode-p 'prog-mode)
+                 (not (or (nth 4 (syntax-ppss))
+                          (nth 3 (syntax-ppss))))))
+        ;; prog-mode is active and point is in a comment, string, or
+        ;; already in iedit-mode
+        (call-interactively #'ap/iedit-mode)
+      ;; Not prog-mode or not in comment or string
+      (if (not (equal flyspell-previous-command this-command))
+          ;; FIXME: This mostly works, but if there are two words on the
+          ;; same line that are misspelled, it doesn't work quite right
+          ;; when correcting the earlier word after correcting the later
+          ;; one
+
+          ;; First correction; autocorrect
+          (call-interactively 'flyspell-auto-correct-previous-word)
+        ;; First correction was not wanted; use popup to choose
+        (progn
+          (save-excursion
+            (undo)) ; This doesn't move point, which I think may be the problem.
+          (flyspell-region (line-beginning-position) (line-end-position))
+          (call-interactively 'flyspell-correct-previous-word-generic)))))
+#+END_SRC
+
++  ~ap/iedit-mode~ :: Calls ~iedit-mode~ with function-local scope by default, or global scope when called with a universal prefix.
+
+#+BEGIN_SRC elisp
+  (defun ap/iedit-mode (orig-fn)
+    "Call `iedit-mode' with function-local scope by default, or global scope if called with a universal prefix."
+    (interactive)
+    (pcase current-prefix-arg
+      ('nil (funcall orig-fn '(0)))
+      ('(4) (funcall orig-fn))
+      (_ (user-error "`ap/iedit-mode' called with prefix: %s" prefix))))
+
+  ;; Override default `iedit-mode' function with advice.
+  (advice-add #'iedit-mode :around #'ap/iedit-mode)
+#+END_SRC
+
++  Helpful minibuffer message :: Confirms when an ~iedit~ session has started.
+
+#+BEGIN_SRC elisp
+  (advice-add 'iedit-mode :after (lambda (&optional ignore)
+                                   (when iedit-mode
+                                     (minibuffer-message "iedit session started. Press C-; to end."))))
+#+END_SRC
+
 **** [[https://github.com/abo-abo/lispy][lispy: short and sweet LISP editing]]    :elisp:navigation:parentheses:
 :PROPERTIES:
 :ID:       ca3809ba-5900-4dfd-84a1-1ceecc048296
