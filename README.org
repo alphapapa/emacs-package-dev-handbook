@@ -1187,50 +1187,62 @@ This macro makes comparing multiple forms easy:
   `garbage-collect' is called."
     (declare (indent defun))
     (let ((results (gensym))
+          (result-times (gensym))
+          (header '(("Form" "x faster than next" "Total runtime" "# of GCs" "Total GC runtime")
+                    hline))
           (descriptions (cl-loop for form in forms
                                  for i from 0
                                  collect (if (stringp (car form))
                                              (prog1 (car form)
                                                (setf (nth i forms) (cadr (nth i forms))))
                                            i))))
-      `(let ((,results (make-hash-table)))
-         (prog1
-             (append (list '("Form" "Total runtime" "# of GCs" "Total GC runtime")
-                           'hline)
-                     (sort (list ,@(cl-loop for form in forms
-                                            for i from 0
-                                            for description = (nth i descriptions)
-                                            collect `(progn
-                                                       (garbage-collect)
-                                                       (cons ,description
-                                                             (benchmark-run-compiled ,times
-                                                               ,(if ensure-equal
-                                                                    `(puthash ,description ,form ,results)
-                                                                  form))))))
-                           (lambda (a b)
-                             (< (second a) (second b)))))
-           ,(when ensure-equal
-              `(cl-loop with keys = (hash-table-keys ,results)
-                        for i from 0 to (- (length keys) 2)
-                        unless (equal (gethash (nth i keys) ,results)
-                                      (gethash (nth (1+ i) keys) ,results))
-                        do (if (sequencep (gethash (car (hash-table-keys ,results)) ,results))
-                               (let* ((k1) (k2)
-                                      ;; If the difference in one order is nil, try in other order.
-                                      (difference (or (prog1 (seq-difference (gethash (nth i keys) ,results)
-                                                                             (gethash (nth (1+ i) keys) ,results))
-                                                        (setq k1 (nth i keys)
-                                                              k2 (nth (1+ i) keys)))
-                                                      (prog1 (seq-difference (gethash (nth (1+ i) keys) ,results)
-                                                                             (gethash (nth i keys) ,results))
-                                                        (setq k1 (nth (1+ i) keys)
-                                                              k2 (nth i keys))))))
-                                 (user-error "Forms' results not equal: difference (%s - %s): %S"
-                                             k1 k2 difference))
-                             (user-error "Forms' results not equal: %s:%S  %s:%S"
-                                         (nth i keys) (nth (1+ i) keys)
-                                         (gethash (nth i keys) ,results)
-                                         (gethash (nth (1+ i) keys) ,results)))))))))
+      `(let* ((,results (make-hash-table))
+              (,result-times (sort (list ,@(cl-loop for form in forms
+                                                    for i from 0
+                                                    for description = (nth i descriptions)
+                                                    collect `(progn
+                                                               (garbage-collect)
+                                                               (cons ,description
+                                                                     (benchmark-run-compiled ,times
+                                                                       ,(if ensure-equal
+                                                                            `(puthash ,description ,form ,results)
+                                                                          form))))))
+                                   (lambda (a b)
+                                     (< (second a) (second b))))))
+         ,(when ensure-equal
+            `(cl-loop with keys = (hash-table-keys ,results)
+                      for i from 0 to (- (length keys) 2)
+                      unless (equal (gethash (nth i keys) ,results)
+                                    (gethash (nth (1+ i) keys) ,results))
+                      do (if (sequencep (gethash (car (hash-table-keys ,results)) ,results))
+                             (let* ((k1) (k2)
+                                    ;; If the difference in one order is nil, try in other order.
+                                    (difference (or (prog1 (seq-difference (gethash (nth i keys) ,results)
+                                                                           (gethash (nth (1+ i) keys) ,results))
+                                                      (setq k1 (nth i keys)
+                                                            k2 (nth (1+ i) keys)))
+                                                    (prog1 (seq-difference (gethash (nth (1+ i) keys) ,results)
+                                                                           (gethash (nth i keys) ,results))
+                                                      (setq k1 (nth (1+ i) keys)
+                                                            k2 (nth i keys))))))
+                               (user-error "Forms' results not equal: difference (%s - %s): %S"
+                                           k1 k2 difference))
+                           (user-error "Forms' results not equal: %s:%S  %s:%S"
+                                       (nth i keys) (nth (1+ i) keys)
+                                       (gethash (nth i keys) ,results)
+                                       (gethash (nth (1+ i) keys) ,results)))))
+         ;; Add factors to times and return table
+         (append ',header
+                 (cl-loop with length = (length ,result-times)
+                          for i from 0 to (1- length)
+                          for time = (second (nth i ,result-times))
+                          for description = (car (nth i ,result-times))
+                          for factor = (if (< i (1- length))
+                                           (format "%.2f" (/ (second (nth (1+ i) ,result-times))
+                                                             (second (nth i ,result-times))))
+                                         "slowest")
+                          collect (append (list description factor)
+                                          (cdr (nth i ,result-times))))))))
 #+END_SRC
 
 Used like:
@@ -1256,10 +1268,10 @@ Used like:
 #+END_SRC
 
 #+RESULTS[3316dc4375a3b162e32790bb7e72d715d7f756fb]:
-| Form            | Total runtime | # of GCs | Total GC runtime |
-|-----------------+---------------+----------+------------------|
-| regexp          |    0.04353956 |        0 |              0.0 |
-| org-map-entries |    2.85911124 |        0 |              0.0 |
+| Form            | x faster than next | Total runtime | # of GCs | Total GC runtime |
+|-----------------+--------------------+---------------+----------+------------------|
+| regexp          | 62.50              |   0.043138672 |        0 |              0.0 |
+| org-map-entries | slowest            |    2.69609941 |        0 |              0.0 |
 
 It can also help catch bugs by ensuring that each form returns the same results.  For example, the benchmark above contains a subtle bug: because ~case-fold-search~ in the =regexp= form is non-nil, the regexp is compared case-insensitively, so it matches Org headings which start with =Maybe= rather than only ones which start with =MAYBE=.  Using the ~:ensure-equal t~ argument to ~bench-multi~ compares the results and raises an error showing the difference between the two sequences the forms evaluate to:
 
@@ -1310,10 +1322,10 @@ Fixing the error, by setting ~case-fold-search~ to ~nil~, not only makes the for
 #+END_SRC
 
 #+RESULTS[13bda5a63b7b851ff3aac91c6487a9eb22ad0fb7]:
-| Form            | Total runtime | # of GCs | Total GC runtime |
-|-----------------+---------------+----------+------------------|
-| regexp          |    0.02124832 |        0 |              0.0 |
-| org-map-entries |    2.72702627 |        0 |              0.0 |
+| Form            | x faster than next | Total runtime | # of GCs | Total GC runtime |
+|-----------------+--------------------+---------------+----------+------------------|
+| regexp          | 125.70             |   0.021080791 |        0 |              0.0 |
+| org-map-entries | slowest            |   2.649818971 |        0 |              0.0 |
 
 So this macro showed which code is faster and helped catch a subtle bug.
 
