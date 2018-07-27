@@ -133,18 +133,17 @@ Inserting strings into buffers with ~insert~ is generally fast, but it can slow 
 #+END_SRC
 
 #+RESULTS[aa866ca87dbf71476c735ed51fca7373934bbf4f]:
-| (insert (apply #'concat ... |  10 | 0.000116547 | 0 | 0.0 |
-| (insert (apply #'concat ... | 100 | 0.000117023 | 0 | 0.0 |
-| (insert (apply #'concat ... |   1 | 0.000124629 | 0 | 0.0 |
-| (apply #'insert ...         |  10 | 0.000614555 | 0 | 0.0 |
-| (apply #'insert ...         |   1 | 0.000631174 | 0 | 0.0 |
-| (loop do (insert ...        | 100 | 0.000631768 | 0 | 0.0 |
-| (loop do (insert ...        |  10 | 0.000644066 | 0 | 0.0 |
-| (apply #'insert ...         | 100 | 0.000644767 | 0 | 0.0 |
-| (loop do (insert ...        |   1 | 0.001106179 | 0 | 0.0 |
+| (insert (apply #'concat ... | 100 | 0.000142085 | 0 | 0.0 |
+| (insert (apply #'concat ... |  10 | 0.000161172 | 0 | 0.0 |
+| (insert (apply #'concat ... |   1 |  0.00018764 | 0 | 0.0 |
+| (apply #'insert ...         |  10 | 0.000665472 | 0 | 0.0 |
+| (apply #'insert ...         | 100 | 0.000678471 | 0 | 0.0 |
+| (apply #'insert ...         |   1 | 0.000755329 | 0 | 0.0 |
+| (loop do (insert ...        |  10 | 0.000817031 | 0 | 0.0 |
+| (loop do (insert ...        | 100 | 0.000869779 | 0 | 0.0 |
+| (loop do (insert ...        |   1 | 0.001490397 | 0 | 0.0 |
 
-The fastest method here is to call ~insert~ once with the result of calling ~concat~ once, using ~apply~ to pass all of the strings.
-
+The fastest method here is to call ~insert~ once with the result of calling ~concat~ once, using ~apply~ to pass all of the strings.  With 100 iterations, it's about 6x faster than the next-fastest method, and even with 1 iteration, it's over 2x faster.
 *** Libraries                                                   :libraries:
 :PROPERTIES:
 :ID:       523aa766-36a3-4827-a114-6babf72edc6b
