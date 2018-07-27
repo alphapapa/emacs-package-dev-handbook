@@ -170,6 +170,39 @@ users, as it provides familiar and intuitive interfaces with usual keys (for mov
 
 ** Collections (lists, vectors, hash-tables, etc.)             :collections:
 
+*** Best practices                                         :best_practices:
+
+**** Filtering a list
+
+Using ~-select~ from =dash.el= seems to be the fastest way:
+
+#+BEGIN_SRC elisp :exports both :cache yes
+  (let ((list (cl-loop for i from 1 to 1000
+                       collect i)))
+    (bench-multi :times 100
+      :ensure-equal t
+      :forms (("(-non-nil (--map (when ..." (-non-nil
+                                             (--map (when (cl-evenp it) it) list)))
+              ("(delq nil (--map (when ..." (delq nil
+                                                  (--map (when (cl-evenp it) it) list)))
+              ("cl-loop" (cl-loop for i in list
+                                  when (cl-evenp i)
+                                  collect i))
+              ("-select" (-select #'cl-evenp list))
+              ("cl-remove-if-not" (cl-remove-if-not #'cl-evenp list))
+              ("seq-filter" (seq-filter #'cl-evenp  list)))))
+#+END_SRC
+
+#+RESULTS[6b2e97c1ebead84a53fd771684cc3e155e7f6b1e]:
+| Form                       | x faster than next | Total runtime | # of GCs | Total GC runtime |
+|----------------------------+--------------------+---------------+----------+------------------|
+| -select                    |               1.17 |    0.01540391 |        0 |              0.0 |
+| cl-loop                    |               1.05 |    0.01808226 |        0 |              0.0 |
+| seq-filter                 |               1.13 |    0.01891708 |        0 |              0.0 |
+| (delq nil (--map (when ... |               1.15 |    0.02134727 |        0 |              0.0 |
+| cl-remove-if-not           |               1.18 |    0.02459478 |        0 |              0.0 |
+| (-non-nil (--map (when ... |            slowest |    0.02903999 |        0 |              0.0 |
+
 *** Examples                                                     :examples:
 
 **** Alists                                                       :alists:
