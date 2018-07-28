@@ -827,7 +827,7 @@ When you make a new package, the =auto-insert= command will insert a set of stan
 
 **** Readme
 
-You should always include a readme with your project.  Typically it will be include most of the commentary section.  Here's a skeleton that goes with the package skeleton above:
+You should always include a readme with your project.  Typically it will be include most of the commentary section.  Here's a template that goes with the package template above:
 
 #+BEGIN_SRC org
   ,#+PROPERTY: LOGGING nil
@@ -935,7 +935,7 @@ You should always include a readme with your project.  Typically it will be incl
 
   # Local Variables:
   # eval: (require 'org-make-toc)
-  # before-save-hook: (lambda nil (org-make-toc-make-toc))
+  # before-save-hook: org-make-toc
   # org-export-with-properties: ()
   # org-export-with-title: t
   # End:
@@ -949,7 +949,7 @@ You should always include a readme with your project.  Typically it will be incl
 :ID:       036e2a71-f392-4c9a-a524-c5354f291e2f
 :END:
 
-The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.html][Emacs manual]] gives this example (I've added the lexical-binding part).  Also see [[id:aacd55b6-a56f-4064-bf0d-25173ce83ef3][Skeleton]].
+The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.html][Emacs manual]] gives this example (I've added the lexical-binding part).  Also see [[id:aacd55b6-a56f-4064-bf0d-25173ce83ef3][template]].
 
 #+BEGIN_EXAMPLE
   ;;; superfrobnicator.el --- Frobnicate and bifurcate flanges  -*- lexical-binding: t; -*-
