@@ -1249,16 +1249,17 @@ This macro makes comparing multiple forms easy:
                       do (if (sequencep (gethash (car (hash-table-keys ,results)) ,results))
                              (let* ((k1) (k2)
                                     ;; If the difference in one order is nil, try in other order.
-                                    (difference (or (prog1 (seq-difference (gethash (nth i keys) ,results)
-                                                                           (gethash (nth (1+ i) keys) ,results))
-                                                      (setq k1 (nth i keys)
-                                                            k2 (nth (1+ i) keys)))
-                                                    (prog1 (seq-difference (gethash (nth (1+ i) keys) ,results)
-                                                                           (gethash (nth i keys) ,results))
-                                                      (setq k1 (nth (1+ i) keys)
-                                                            k2 (nth i keys))))))
+                                    (difference (or (setq k1 (nth i keys)
+                                                          k2 (nth (1+ i) keys)
+                                                          difference (seq-difference (gethash k1 ,results)
+                                                                                     (gethash k2 ,results)))
+                                                    (setq k1 (nth (1+ i) keys)
+                                                          k2 (nth i keys)
+                                                          difference (seq-difference (gethash k1 ,results)
+                                                                                     (gethash k2 ,results))))))
                                (user-error "Forms' results not equal: difference (%s - %s): %S"
                                            k1 k2 difference))
+                           ;; Not a sequence
                            (user-error "Forms' results not equal: %s:%S  %s:%S"
                                        (nth i keys) (nth (1+ i) keys)
                                        (gethash (nth i keys) ,results)
