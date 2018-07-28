@@ -1050,6 +1050,10 @@ There are /lots/ of examples here.
 
 ***** Examples                                                 :examples:
 
+****** TODO ~dash~
+
+[2018-07-27 Fri 23:29]  Dash has new abilities, including ~-setq~, and destructuring plists with implied variable names (i.e. just the keys can be specified, reducing repetition).
+
 ****** =pcase-let=                                         :destructuring:
 This example shows the use of =pcase-let*= to destructure and bind a nested alist:
 
