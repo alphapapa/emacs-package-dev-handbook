@@ -35,6 +35,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
     -  [[#pattern-matching][Pattern matching]]
     -  [[#profiling--optimization][Profiling / Optimization]]
     -  [[#refactoring][Refactoring]]
+    -  [[#regular-expressions][Regular expressions]]
     -  [[#strings][Strings]]
     -  [[#testing][Testing]]
     -  [[#version-control][Version control]]
@@ -1422,13 +1423,9 @@ This gives a table like:
 :ID:       d329f03e-ed1e-4205-a232-6eee16717795
 :END:
 
-** Strings                                                         :strings:
+** Regular expressions                                 :regular_expressions:
 
-*** Libraries                                                   :libraries:
-
-**** [[https://github.com/magnars/s.el][s.el: The long lost Emacs string manipulation library]]
-
-*** Regular expressions                               :regular_expressions:
+*** Tools                                                           :tools:
 
 **** [[https://github.com/immerrr/ample-regexps.el][ample-regexps.el: Compose and reuse regular expressions with ease]]
 
@@ -1463,7 +1460,13 @@ This example shows the use of a function to expand a list of strings into a sequ
   (cond-assignment-rx cond-keyword ws id ":" id ws "=" ws id) ;; -> "\\_<\\(?:elif\\|if\\|while\\)\\_>[[:blank:]]*\\_<\\(?:[[:alpha:]_]+\\|[[:alnum:]_]*\\)\\_>:\\_<\\(?:[[:alpha:]_]+\\|[[:alnum:]_]*\\)\\_>[[:blank:]]*=[[:blank:]]*\\_<\\(?:[[:alpha:]_]+\\|[[:alnum:]_]*\\)\\_>"
 #+END_SRC
 
-**** [[https://github.com/joddie/pcre2el][pcre2el: Convert between PCRE, Emacs and rx regexp syntax]]
+**** TODO [[https://github.com/joddie/pcre2el][pcre2el: Convert between PCRE, Emacs and rx regexp syntax]]
+
+** Strings                                                         :strings:
+
+*** Libraries                                                   :libraries:
+
+**** [[https://github.com/magnars/s.el][s.el: The long lost Emacs string manipulation library]]
 
 *** Tools                                                           :tools:
 
