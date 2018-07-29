@@ -1430,6 +1430,39 @@ This gives a table like:
 
 *** Regular expressions                               :regular_expressions:
 
+**** [[https://github.com/immerrr/ample-regexps.el][ample-regexps.el: Compose and reuse regular expressions with ease]]
+
+=ample-regexps= complements the built-in ~rx~ macro by flexibly defining regular expressions with reusable parts.  In the following example, the ~define-arx~ macro defines three things:
+
++  A macro ~assignment-rx~, which expands to a regular expression string at compile time
++  A function ~assignment-rx-to-string~, which can be used at runtime
++  A variable ~assignment-rx-constituents~, containing form definitions to use
+
+#+BEGIN_SRC elisp
+  (define-arx assignment-rx
+    '((alpha_ (regexp "[[:alpha:]_]"))
+      (alnum_ (regexp "[[:alnum:]_]"))
+      (ws (* blank))
+      (id (seq symbol-start (+ alpha_) (* alnum_) symbol-end)))) ;; -> assignment-rx
+
+  (assignment-rx id ws "=" ws id) ;; -> "\\_<[[:alpha:]_]+[[:alnum:]_]*\\_>[[:blank:]]*=[[:blank:]]*\\_<[[:alpha:]_]+[[:alnum:]_]*\\_>"
+#+END_SRC
+
+This example shows the use of a function to expand a list of strings into a sequence:
+
+#+BEGIN_SRC elisp
+  (define-arx cond-assignment-rx
+    '((alpha_ (regexp "[[:alpha:]_]"))
+      (alnum_ (regexp "[[:alnum:]_]"))
+      (ws (* blank))
+      (sym (:func (lambda (_form &rest args)
+                    `(seq symbol-start (or ,@args) symbol-end))))
+      (cond-keyword (sym "if" "elif" "while"))
+      (id (sym (+ alpha_) (* alnum_))))) ;; -> cond-assignment-rx
+
+  (cond-assignment-rx cond-keyword ws id ":" id ws "=" ws id) ;; -> "\\_<\\(?:elif\\|if\\|while\\)\\_>[[:blank:]]*\\_<\\(?:[[:alpha:]_]+\\|[[:alnum:]_]*\\)\\_>:\\_<\\(?:[[:alpha:]_]+\\|[[:alnum:]_]*\\)\\_>[[:blank:]]*=[[:blank:]]*\\_<\\(?:[[:alpha:]_]+\\|[[:alnum:]_]*\\)\\_>"
+#+END_SRC
+
 **** [[https://github.com/joddie/pcre2el][pcre2el: Convert between PCRE, Emacs and rx regexp syntax]]
 
 *** Tools                                                           :tools:
