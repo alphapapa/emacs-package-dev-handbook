@@ -985,11 +985,19 @@ The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.
 :ID:       2c31eae6-eeba-433f-bc26-9465d5aa8537
 :END:
 
-***** [[https://github.com/raxod502/straight.el][straight.el: Next-generation, purely functional package manager for the Emacs hacker]]
+***** [[https://github.com/dimitri/el-get][el-get: Manage the external elisp bits and pieces upon which you depend!]]
 
-***** [[https://github.com/jwiegley/use-package][use-package: A use-package declaration for simplifying your .emacs]]
+***** TODO [[https://github.com/raxod502/straight.el][straight.el: Next-generation, purely functional package manager for the Emacs hacker]] :needs_examples:
+:LOGBOOK:
+-  State "TODO"       from              [2018-07-29 Sun 13:11]
+:END:
+
+***** TODO [[https://github.com/jwiegley/use-package][use-package: A use-package declaration for simplifying your .emacs]] :needs_examples:
 :PROPERTIES:
 :ID:       540617fd-d4ff-47df-89da-6c48c8f27785
+:END:
+:LOGBOOK:
+-  State "TODO"       from              [2018-07-29 Sun 13:11]
 :END:
 
 Developed by the current maintainer of Emacs, himself, John Wiegley.
