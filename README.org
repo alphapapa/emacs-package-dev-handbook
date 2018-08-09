@@ -1431,6 +1431,30 @@ This gives a table like:
 :ID:       d329f03e-ed1e-4205-a232-6eee16717795
 :END:
 
+** Reading and writing files                                           :file:
+
+From [[https://swsnr.de/blog/2016/11/15/read-and-write-files-in-emacs-lisp/][Read and Write Files in Emacs Lisp]] by Sebastian Wiesner.
+
+It is common to use =find-file= and =write-file= to read/write to files.
+However, they have /side effects/ as interactive commands:
+
+- =write-file= sets major mode in current buffer, which runs major mode hook
+  -- there can be anything in it.
+- =find-file= could prompt users for risky file local variables.
+
+*** Library: [[https://github.com/rejeep/f.el][f.el]] by [[https://github.com/rejeep][Johan Andersson]]
+
+The package provides =f-read-text=, =f-write-text=, =f-read-bytes=, =f-write-bytes=
+and more.
+
+An example:
+
+#+BEGIN_SRC emacs-lisp
+(let* ((filename (locate-user-emacs-file "foo.txt"))
+       (contents (f-read-text filename 'utf-8)))
+  (f-write-text (upcase contents) 'utf-8 filename))
+#+END_SRC
+
 ** Regular expressions                                 :regular_expressions:
 
 *** Tools                                                           :tools:
