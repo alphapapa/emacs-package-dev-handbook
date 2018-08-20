@@ -1188,13 +1188,17 @@ From Phil Lord's [[http://phillord.github.io/m-buffer-el/#sec-5-1-2][m-buffer-el
 
 #+BEGIN_SRC elisp
   (cl-defmacro bench (&optional (times 100000) &rest body)
-    "Call `benchmark-run-compiled' on BODY with TIMES iterations, returning list suitable for Org source block evaluation."
+    "Call `benchmark-run-compiled' on BODY with TIMES iterations, returning list suitable for Org source block evaluation.
+  Garbage is collected before calling `benchmark-run-compiled' to
+  avoid counting existing garbage which needs collection."
     (declare (indent defun))
-    `(list '("Total runtime" "# of GCs" "Total GC runtime")
-           'hline
-           (benchmark-run-compiled ,times
-             (progn
-               ,@body))))
+    `(progn
+       (garbage-collect)
+       (list '("Total runtime" "# of GCs" "Total GC runtime")
+             'hline
+             (benchmark-run-compiled ,times
+               (progn
+                 ,@body)))))
 #+END_SRC
 
 Used like this:
