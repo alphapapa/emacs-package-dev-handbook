@@ -1433,6 +1433,17 @@ This gives a table like:
 
 ** Regular expressions                                 :regular_expressions:
 
+*** Articles                                                     :articles:
+
+**** TODO [[http://francismurillo.github.io/2017-03-30-Exploring-Emacs-rx-Macro/][Exploring Emacs rx Macro]]                                    :rx:
+:PROPERTIES:
+:archive.is: http://archive.is/xPWJP
+:END:
+
+*** Libraries
+
+**** TODO [[https://github.com/joddie/pcre2el][pcre2el: Convert between PCRE, Emacs and rx regexp syntax]]
+
 *** Tools                                                           :tools:
 
 **** [[https://github.com/immerrr/ample-regexps.el][ample-regexps.el: Compose and reuse regular expressions with ease]]
@@ -1467,9 +1478,6 @@ This example shows the use of a function to expand a list of strings into a sequ
 
   (cond-assignment-rx cond-keyword ws id ":" id ws "=" ws id) ;; -> "\\_<\\(?:elif\\|if\\|while\\)\\_>[[:blank:]]*\\_<\\(?:[[:alpha:]_]+\\|[[:alnum:]_]*\\)\\_>:\\_<\\(?:[[:alpha:]_]+\\|[[:alnum:]_]*\\)\\_>[[:blank:]]*=[[:blank:]]*\\_<\\(?:[[:alpha:]_]+\\|[[:alnum:]_]*\\)\\_>"
 #+END_SRC
-
-**** TODO [[https://github.com/joddie/pcre2el][pcre2el: Convert between PCRE, Emacs and rx regexp syntax]]
-
 ** Strings                                                         :strings:
 
 *** Libraries                                                   :libraries:
