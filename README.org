@@ -355,11 +355,11 @@ Similar to =dash.el=, but with slightly different behavior that may be useful, a
 
 The primary function provided is: ~(datetime-format SYM-OR-FMT &optional TIME &rest OPTION)~
 
-#+BEGIN_EXAMPLE elisp
-  (datetime-format "%Y-%m-%d")
-  (datetime-format 'atom)
-  (datetime-format 'atom "2112-09-03 00:00:00" :timezone "UTC")
-#+END_EXAMPLE
+#+BEGIN_SRC elisp
+  (datetime-format "%Y-%m-%d")  ;=> "2018-08-22"
+  (datetime-format 'atom)  ;=> "2018-08-22T18:23:47-05:00"
+  (datetime-format 'atom "2112-09-03 00:00:00" :timezone "UTC")  ;=> "2112-09-03T00:00:00+00:00"
+#+END_SRC
 
 There are several other symbols provided besides ~atom~, such as ~rfc-3339~, which formats dates according to that RFC.
 
