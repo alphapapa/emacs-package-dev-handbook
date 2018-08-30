@@ -2112,7 +2112,7 @@ Maybe use capture templates and refile?
 
 ** Table of Contents
 
-Currently using [[https://github.com/alphapapa/org-make-toc][org-make-toc]], which is uploaded but unfinished and unpackaged.
+The ToC is generated using [[https://github.com/alphapapa/org-make-toc][org-make-toc]].
 
 ** Config
 
