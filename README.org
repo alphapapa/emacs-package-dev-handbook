@@ -2025,6 +2025,7 @@ Mention @milkypostman, @purcell, @syohex, etc. Mention sandbox.
 :ID:       caeb4340-1f2e-4c84-a604-80594b465a10
 :END:
 
+*** TODO [[https://github.com/syohex/emacs-sqlite3][GitHub - syohex/emacs-sqlite3: sqlite3 binding of Emacs Lisp]]
 ** TODO Tree-traversal
 
 *** [[https://github.com/volrath/treepy.el][GitHub - volrath/treepy.el: Generic tree traversing tools for Emacs Lisp]]
