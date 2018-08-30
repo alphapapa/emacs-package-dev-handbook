@@ -1929,9 +1929,19 @@ Wilfred has published several useful packages, and he's also leading the [[https
 :PROPERTIES:
 :ID:       80aa6c33-72d6-4792-8f41-e8ac4f7a1b0d
 :END:
+
 * Contributions
+:PROPERTIES:
+:TOC:      0
+:END:
 
 Yes, please!  Please send pull requests and file issues on the [[https://github.com/alphapapa/emacs-package-dev-handbook][GitHub repo]].  This is intended to be a community project.
+
+** Guidelines
+
+1.  *Catalog and tag appropriately.*  New entries in the outline should have the appropriate tags and should follow the existing hierarchy.  For example, articles should be tagged =articles=, and generally filed under an =Articles= heading using tag inheritance to apply the tag.
+2.  *"Loosely" or "usefully" opinionated*.  Rather than being a place to dump links for users to sort out, we should do that ourselves.  Links should have summaries and examples.  Where there are multiple links to similar projects, we should compare them and guide users to what we think is generally the best solution, or the best solution for each use case.
+3.  *Archive reference material.*  Much of the shared wisdom in the Emacs community is written in a variety of blogs by users and developers, as well as posts on Reddit, StackOverflow, etc.  These tend to hang around for a long time, but being the Internet, this is never guaranteed.  When linking to an article or other reference material, we should store a link to an archived version using [[*Get archive.is link for page][this code]].
 
 * Tasks
 :PROPERTIES:
