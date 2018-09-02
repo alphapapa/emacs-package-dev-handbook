@@ -95,6 +95,9 @@ img {
 #content > p {
     margin: 1em;
 }
+#content > div > h2 {
+    margin: 0.25rem;
+}
 #postamble {
   text-align: right;
 }
