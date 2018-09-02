@@ -31,9 +31,8 @@
 }
 
     .hsButton:hover {
-         background: #FBE448;
-         color: black;
-         cursor: pointer;
+        text-decoration: underline;
+        cursor: pointer;
     }
 
 .ellipsis {

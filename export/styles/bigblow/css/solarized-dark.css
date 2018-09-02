@@ -37,15 +37,9 @@ img {
 }
 .buttons {
   background-color: #073642 !important;
-  box-shadow: 0 0 10px #93a1a1;
   color: #93a1a1 !important;
   font-family: sans-serif;
   font-size: 1.5rem;
-  position: fixed;
-  left: -4.5em;
-  top: 50%;
-  transform: rotate(90deg);
-  filter: opacity(50%);
 }
 .hsReviewPanel {
   display: none;
@@ -94,7 +88,8 @@ img {
   color: #59a9e1 !important;
 }
 #content {
-  clear: both;
+    clear: both;
+    width: 80%;
 }
 #postamble {
   text-align: right;
@@ -170,94 +165,90 @@ a:hover {
 #minitoc {
   background-color: #073642 !important;
   position: fixed;
-  bottom: 5em;
-  left: -5.5em;
-  transform: rotate(90deg);
-  box-shadow: 0px 0px 10px #93a1a1;
-  padding-top: 0.1em;
-  padding-bottom: 0.1em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  filter: opacity(50%);
+  top: 0px;
+  right: -5px;
+  padding: 0.5em;
   z-index: 200;
+  width: 18%;
+  word-wrap: normal;
+  overflow: hidden;
 }
-#minitoc:hover {
-  padding: 1em;
-  filter: opacity(100%);
-  transform: rotate(0deg);
-  left: 0;
+#minitoc ul {
+    margin: 0.5em;
+    padding-left: 1em;
 }
 #minitoc h2 {
-  margin-top: 0;
-  margin-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 110%;
 }
 #minitoc a {
-  display: block;
-  font-family: sans-serif;
-  text-decoration: none;
+    display: block;
+    font-family: sans-serif;
+    text-decoration: none;
 }
 #minitoc a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
-#minitoc a {
-  display: none;
-}
+/* #minitoc a { */
+/*   display: none; */
+/* } */
 #minitoc:hover a {
-  display: block;
+    display: block;
 }
 #toTop {
-  top: -100px;
-  position: fixed;
-  text-align: center;
-  z-index: 999;
-  display: none;
+    top: -100px;
+    position: fixed;
+    text-align: center;
+    z-index: 999;
+    display: none;
 }
 #toTop:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 #left-panel-wrapper {
-  display: none;
-  position: fixed;
-  z-index: 200;
+    display: none;
+    position: fixed;
+    z-index: 200;
 }
 #left-panel-contents {
-  display: none;
-  position: fixed;
-  text-align: left;
-  top: 0;
-  z-index: 200;
+    display: none;
+    position: fixed;
+    text-align: left;
+    top: 0;
+    z-index: 200;
 }
 #left-panel-button {
-  transform: rotate(90deg);
-  left: -23px;
-  position: fixed;
-  top: 50%;
-  z-index: 200;
+    transform: rotate(90deg);
+    left: -23px;
+    position: fixed;
+    top: 50%;
+    z-index: 200;
 }
 #right-panel-wrapper {
-  position: fixed;
-  z-index: 200;
+    position: fixed;
+    z-index: 200;
 }
 #right-panel-contents {
-  display: none;
-  z-index: 200;
-  position: fixed;
-  text-align: left;
-  top: 0;
+    display: none;
+    z-index: 200;
+    position: fixed;
+    text-align: left;
+    top: 0;
 }
 .snippet-copy-to-clipboard {
-  display: none;
-  position: absolute;
-  left: 50px;
-  top: 50px;
+    display: none;
+    position: absolute;
+    left: 50px;
+    top: 50px;
 }
 .org-ul {
-  margin-top: 1em;
-  margin-bottom: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 .org-ul li {
-  margin-top: 0.5em;
+    margin-top: 0.5em;
 }
 .org-ul > li > a {
-  font-family: sans-serif;
+    font-family: sans-serif;
 }

@@ -23,10 +23,10 @@ if (typeof HS_STARTUP_FOLDED === 'undefined') {
 }
 
 if (typeof HS_SHOW_ALL_TEXT === 'undefined') {
-    var HS_SHOW_ALL_TEXT = '[Expand all]';
+    var HS_SHOW_ALL_TEXT = 'Expand';
 }
 if (typeof HS_HIDE_ALL_TEXT === 'undefined') {
-    var HS_HIDE_ALL_TEXT = '[Collapse all]';
+    var HS_HIDE_ALL_TEXT = 'Collapse';
 }
 
 if (typeof HS_ALWAYS_DISPLAY_ICON === 'undefined') {
@@ -162,7 +162,7 @@ function hsInit() {
     }
 
     // Add buttons
-    $('.title').after($('<div class="buttons dontprint"></div>'));
+    $('#minitoc').append($('<div class="buttons dontprint"></div>'));
     $('.buttons').append($('<span>' + HS_SHOW_ALL_TEXT + '</span>')
                  .addClass('hsButton')
                  .click(hsExpandAll));
