@@ -249,6 +249,9 @@ a:hover {
     left: 50px;
     top: 50px;
 }
+.org-ol > li {
+    margin-top: 0.5em;
+}
 .org-ul {
     margin-top: 1em;
     margin-bottom: 1em;
