@@ -161,6 +161,9 @@ function hsInit() {
         });
     }
 
+    // Add div to hold minitoc content (so it can be cleared without deleting the buttons)
+    $('#minitoc').append($('<div id="minitoc-content"></div>'));
+
     // Add buttons
     $('#minitoc').append($('<div class="buttons dontprint"></div>'));
     $('.buttons').append($('<span>' + HS_SHOW_ALL_TEXT + '</span>')

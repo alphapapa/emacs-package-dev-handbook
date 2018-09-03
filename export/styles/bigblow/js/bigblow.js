@@ -45,7 +45,7 @@ $(function() {
 
 // generate contents of minitoc
 function generateMiniToc(divId) {
-        $('#minitoc').empty().append('<h2>In this section</h2><ul></ul>');
+    $('#minitoc-content').empty().append('<h2>In this section</h2><ul></ul>');
     $('#' + divId).find('h3').each(function(i) {
         // [2018-09-03 Mon 03:48] Get text up to non-breaking space,
         // to omit the tags.  If there are no tags, there will be no
@@ -59,11 +59,11 @@ function generateMiniToc(divId) {
         else {
             text = $(this).text();
         }
-        $("#minitoc>ul").append("<li><a href='#" + $(this).attr("id") + "'>"
-                                + text + "</a></li>");
+        $("#minitoc-content>ul").append("<li><a href='#" + $(this).attr("id") + "'>"
+                                        + text + "</a></li>");
     });
     // Ensure that the target is expanded (hideShow)
-    $('#minitoc a[href^="#"]').click(function() {
+    $('#minitoc-content a[href^="#"]').click(function() {
         var href = $(this).attr('href');
         hsExpandAnchor(href);
     });
@@ -149,6 +149,9 @@ $(document).ready(function() {
     $('#preamble').remove();
     $('#table-of-contents').remove();
 
+    // Initialize hideShow
+    hsInit();
+
     // Prepare for tabs
     tabifySections();
 
@@ -191,9 +194,6 @@ $(document).ready(function() {
         selectTabAndScroll(href);
         e.preventDefault();
     });
-
-    // Initialize hideShow
-    hsInit();
 
     // add sticky headers to tables
     $('table').stickyTableHeaders();
