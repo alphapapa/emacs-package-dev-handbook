@@ -2036,6 +2036,8 @@ Mention @milkypostman, @purcell, @syohex, etc. Mention sandbox.
 :END:
 
 *** TODO [[https://github.com/syohex/emacs-sqlite3][GitHub - syohex/emacs-sqlite3: sqlite3 binding of Emacs Lisp]]
+
+*** TODO [[https://github.com/kiwanami/emacs-edbi][GitHub - kiwanami/emacs-edbi: Database Interface for Emacs Lisp]]
 ** TODO Tree-traversal
 
 *** [[https://github.com/volrath/treepy.el][GitHub - volrath/treepy.el: Generic tree traversing tools for Emacs Lisp]]
