@@ -1948,6 +1948,8 @@ Yes, please!  Please send pull requests and file issues on the [[https://github.
 :TOC:      ignore-children
 :END:
 
+These resources should be added to the appropriate sections above.  Since it takes some work to catalog and organize them, they are dumped here for future reference.  Pull requests for these are welcome!
+
 ** TODO Articles to add [0/13]
 
 *** TODO [[https://www.lunaryorn.com/posts/read-and-write-files-in-emacs-lisp][Read and write files in Emacs Lisp]] (5 min read)
