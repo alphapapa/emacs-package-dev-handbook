@@ -2016,6 +2016,54 @@ Mention @milkypostman, @purcell, @syohex, etc. Mention sandbox.
 ** TODO Add [[http://www.modernemacs.com/][Modern Emacs]] site
 
 ** TODO Add [[https://github.com/sigma/pcache][GitHub - sigma/pcache: persistent caching for Emacs]]
+
+** TODO Dynamic modules section
+
+*** TODO [[https://github.com/jkitchin/emacs-modules][GitHub - jkitchin/emacs-modules: Dynamic modules for emacs]]
+
+**** TODO Add resources from its readme
+
+#+BEGIN_QUOTE org
+For my own notes here are all the resources on dynamic modules I know of:
+
+Here are the official Emacs header and example:
+emacs-module.h: http://git.savannah.gnu.org/cgit/emacs.git/tree/src/emacs-module.h?id=e18ee60b02d08b2f075903005798d3d6064dc013
+mod_test.c: http://git.savannah.gnu.org/cgit/emacs.git/tree/modules/mod-test/mod-test.c?id=e18ee60b02d08b2f075903005798d3d6064dc013
+
+This simple example in C  http://diobla.info/blog-archive/modules-tut.html
+
+- joymacs ::  http://nullprogram.com/blog/2016/11/05/
+- mruby :: https://github.com/syohex/emacs-mruby-test
+- https://github.com/tromey/emacs-ffi :: an actual ffi for emacs
+- elfuse :: https://github.com/vkazanov/elfuse a file system in Emacs
+  - asynchronous events :: http://nullprogram.com/blog/2017/02/14/ related to elfuse
+
+- [[https://github.com/syohex/emacs-sqlite3][emacs-sqlite3]] ::  sqlite3 binding of Emacs Lisp
+- [[https://github.com/syohex/emacs-parson][emacs-parson]] :: JSON parser with dynamic module feature with [[http://kgabis.github.com/parson/][parson]]
+- [[https://github.com/syohex/emacs-libyaml][libyaml]] :: libyaml
+- [[https://github.com/syohex/emacs-perl][emacs-perl]] :: Embed Perl into Emacs
+- [[https://github.com/syohex/emacs-eject]] :: eject a cd
+- [[https://github.com/collarchoke/emacs-capstone][emacs-capstone]] :: elisp bindings for the [[http://www.capstone-engine.org/][capstone]] disassembler
+- [[https://github.com/hlolli/csoundAPI_emacsLisp][emacs-csound]] :: EmacsLisp link to Csound's API via Emacs Modules
+- [[https://github.com/rzl24ozi/cmigemo-module][emacs-cmigemo]] :: Emacs dynamic module for cmigemo
+- [[https://github.com/syohex/emacs-cipher][emacs-cipher]] :: OpenSSL cipher binding of Emacs Lisp
+- [[https://github.com/syohex/emacs-lua][emacs-lua]] ::  Lua engine from Emacs Lisp
+- [[https://github.com/syohex/emacs-zstd][emacs-ztd]] :: libzstd binding of Emacs Lisp
+- [[https://github.com/syohex/emacs-memcached][mem-cached]] :: libmemcached
+- https://coldnew.github.io/2d16cc25/ :: in Chinese, but with code
+     
+A collection of module resources: https://github.com/emacs-pe/emacs-modules
+- Nim https://github.com/yuutayamada/nim-emacs-module
+- OCaml https://github.com/janestreet/ecaml
+- Rust
+  https://github.com/lunaryorn/emacs-module.rs
+  https://github.com/jjpe/emacs_module_bindings
+- golang :: https://github.com/sigma/go-emacs writing modules in go
+
+This may not be a dynamic module but claims an ffi
+haskell https://github.com/knupfer/haskell-emacs
+#+END_QUOTE
+
 ** Testing
 
 *** TODO Everything at [[https://www.emacswiki.org/emacs/UnitTesting][EmacsWiki: Unit Testing]]
