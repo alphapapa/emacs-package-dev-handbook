@@ -943,6 +943,47 @@ You should always include a readme with your project.  Typically it will be incl
 
 #+END_SRC
 
+**** Version numbers
+
+Version numbers which are valid in Emacs are those accepted by the function ~version-to-list~, which uses the variables ~version-separator~ and ~version-regexp-alist~.  See their documentation for specific, up-to-date information.  ~version-to-list~'s documentation (as of Emacs 26.1) is reproduced here for convenience:
+
+#+BEGIN_EXAMPLE
+  The version syntax is given by the following EBNF:
+
+  VERSION ::= NUMBER ( SEPARATOR NUMBER )*.
+
+  NUMBER ::= (0|1|2|3|4|5|6|7|8|9)+.
+
+  SEPARATOR ::= ‘version-separator’ (which see)
+  | ‘version-regexp-alist’ (which see).
+
+  The NUMBER part is optional if SEPARATOR is a match for an element
+  in ‘version-regexp-alist’.
+
+  Examples of valid version syntax:
+
+  1.0pre2 1.0.7.5 22.8beta3 0.9alpha1 6.9.30Beta 2.4.snapshot .5
+
+  Examples of invalid version syntax:
+
+  1.0prepre2 1.0..7.5 22.8X3 alpha3.2
+
+  Examples of version conversion:
+
+  Version String Version as a List of Integers
+  ".5" (0 5)
+  "0.9 alpha" (0 9 -3)
+  "0.9AlphA1" (0 9 -3 1)
+  "0.9snapshot" (0 9 -4)
+  "1.0-git" (1 0 -4)
+  "1.0.7.5" (1 0 7 5)
+  "1.0.cvs" (1 0 -4)
+  "1.0PRE2" (1 0 -1 2)
+  "1.0pre2" (1 0 -1 2)
+  "22.8 Beta3" (22 8 -2 3)
+  "22.8beta3" (22 8 -2 3)
+#+END_EXAMPLE
+
 *** Reference                                                   :reference:
 
 **** Package headers and structure
