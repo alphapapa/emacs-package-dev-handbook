@@ -1754,13 +1754,11 @@ Example:
 Provides lisp-based (rather than string-based) selectors.  This library is primarily aimed at internal =elfeed= use rather than general use, however it may be useful to others.  The author is [[https://github.com/skeeto/elfeed/issues/189][considering]] publishing it separately.
 
 #+BEGIN_SRC elisp
-  ;; This query grabs the top-level paragraph content from XHTML.
+  ;; Grab the top-level paragraph content from XHTML.
+  (xml-query-all '(html body p *) xhtml)
 
-  ;; (xml-query-all '(html body p *) xhtml)
-
-  ;; This query extracts all the links from an Atom feed.
-
-  ;; (xml-query-all '(feed entry link [rel "alternate"] :href) xml)
+  ;; Extract all the links from an Atom feed.
+  (xml-query-all '(feed entry link [rel "alternate"] :href) xml)
 #+END_SRC
 
 **** [[https://github.com/zweifisch/enlive][enlive: query html document with css selectors]]
