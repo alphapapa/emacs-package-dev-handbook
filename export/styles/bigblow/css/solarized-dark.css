@@ -1,5 +1,5 @@
 * {
-  border-color: #657b83 !important;
+  border-color: #657b83;
 }
 a {
   color: #268bd2 !important;
@@ -26,7 +26,10 @@ pre {
   color: #839496 !important;
 }
 code {
-  font-size: 1.2em;
+    background-color: #073642;
+    border: 1px solid #094352;
+    border-radious: 2px;
+    font-size: 1.2em;
 }
 pre {
   box-shadow: none;
