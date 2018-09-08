@@ -21,20 +21,16 @@ textarea {
   color: #839496 !important;
 }
 blockquote,
+code,
 pre {
-  background-color: #073642 !important;
-  color: #839496 !important;
+    background-color: #073642 !important;
+    border: 1px solid #094352 !important;
+    border-radius: 2px;
+    box-shadow: none;
+    color: #839496 !important;
 }
 code {
-    background-color: #073642;
-    border: 1px solid #094352;
-    border-radious: 2px;
     font-size: 1.2em;
-}
-pre {
-  box-shadow: none;
-  background-color: #094352 !important;
-  font-size: 1.2em;
 }
 img {
   margin: 0.5em;
