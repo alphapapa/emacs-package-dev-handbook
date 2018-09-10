@@ -2068,6 +2068,7 @@ e.g.:
 
 *** TODO [[https://github.com/nicferrier/emacs-noflet][GitHub - nicferrier/emacs-noflet: noflet - nic's overriding flet, for fleting functions for the purpose of decorating them]]
 
+*** TODO [[https://github.com/nicferrier/emacs-db][GitHub - nicferrier/emacs-db: very simple database for emacslisp, can also wrap other databases.]]
 ** TODO Add [[https://github.com/vermiculus][Sean Allred]]
 
 ** TODO Add [[http://nullprogram.com/][Chris Wellons]]
