@@ -18,6 +18,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 :TOC:      this
 :END:
   -  [[#emacs-lisp][Emacs Lisp]]
+    -  [[#animations--screencasts][Animations / Screencasts]]
     -  [[#asynchronicity][Asynchronicity]]
     -  [[#binding][Binding]]
     -  [[#buffers][Buffers]]
@@ -50,6 +51,20 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 :PROPERTIES:
 :TOC:      1
 :END:
+
+** Animations / Screencasts                    :animations:screencasts:video:
+
+*** Tools                                                           :tools:
+
+**** [[https://gitlab.com/ambrevar/emacs-gif-screencast][emacs-gif-screencast]]                                           :GIFs:
+
+#+BEGIN_QUOTE
+Most Emacs screencasts are done by first recording a video, then converting it to a GIF.  It seems like a waste of resources considering the little animation Emacs features.
+
+Most of the time, one user action equals one visual change.  By exploiting this fact, this package tailors GIF-screencasting for Emacs and captures one frame per user action.  It’s much more efficient than capturing frames even at a frequency as low as 10 per second.  You could roughly expect 3 to 10 times smaller files compared to videos of the same quality.  (Benchmarks are welcome.)
+
+Another neat perk of action-based captures is that it produces editable GIF files: programs such as Gifsicle or The GIMP can be used to edit the delays or rearrange frames.  This is particularly useful to fix mistakes in “post-processing”, without having to record the demo all over again.
+#+END_QUOTE
 
 ** Asynchronicity                                                    :async:
 
@@ -1554,6 +1569,7 @@ This example shows the use of a function to expand a list of strings into a sequ
 
   (cond-assignment-rx cond-keyword ws id ":" id ws "=" ws id) ;; -> "\\_<\\(?:elif\\|if\\|while\\)\\_>[[:blank:]]*\\_<\\(?:[[:alpha:]_]+\\|[[:alnum:]_]*\\)\\_>:\\_<\\(?:[[:alpha:]_]+\\|[[:alnum:]_]*\\)\\_>[[:blank:]]*=[[:blank:]]*\\_<\\(?:[[:alpha:]_]+\\|[[:alnum:]_]*\\)\\_>"
 #+END_SRC
+
 ** Strings                                                         :strings:
 
 *** Libraries                                                   :libraries:
