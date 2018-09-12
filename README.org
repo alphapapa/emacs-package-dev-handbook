@@ -525,6 +525,20 @@ Do not document these functions in the lispref.  http://lists.gnu.org/archive/ht
 
 *** Tools                                                           :tools:
 
+**** [[https://github.com/plexus/chemacs][chemacs: Emacs profile switcher]]                             :testing:
+
+This package may be especially helpful for developing in one's own environment and testing in another, like default Emacs, Spacemacs, etc.
+
+#+BEGIN_QUOTE
+Chemacs is an Emacs profile switcher, it makes it easy to run multiple Emacs configurations side by side.  Think of it as a bootloader for Emacs.
+
+Emacs configuration is either kept in a =~/.emacs= file or, more commonly, in a =~/.emacs.d= directory. These paths are hard-coded. If you want to try out someone else’s configuration, or run different distributions like Prelude or Spacemacs, then you either need to swap out =~/.emacs.d=, or run Emacs with a different =$HOME= directory set.  This last approach is quite common, but has some real drawbacks, since now packages will no longer know where your actual home directory is.  
+
+All of these makes trying out different Emacs configurations and distributions needlessly cumbersome.  Various approaches to solving this have been floated over the years. There’s an Emacs patch around that adds an extra command line option, and various examples of how to add a command line option in userspace from Emacs Lisp.
+
+Chemacs tries to implement this idea in a user-friendly way, taking care of the various edge cases and use cases that come up.
+#+END_QUOTE
+
 **** [[https://github.com/Lindydancer/el2markdown][el2markdown: Convert Emacs Lisp comments to MarkDown]]
 :PROPERTIES:
 :ID:       9aacf8f3-5244-4b71-8802-1c7876a9d19e
