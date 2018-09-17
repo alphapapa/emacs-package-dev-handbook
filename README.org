@@ -734,6 +734,8 @@ When you make a new package, the =auto-insert= command will insert a set of stan
   ;; Package-Requires: ((emacs "25.2"))
   ;; Keywords: something
 
+  ;; This file is not part of GNU Emacs.
+
   ;;; Commentary:
 
   ;; This is my package.  It is nice.  You should try it.
