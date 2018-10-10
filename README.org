@@ -26,6 +26,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
     -  [[#collections-lists-vectors-hash-tables-etc][Collections (lists, vectors, hash-tables, etc.)]]
     -  [[#data-structure][Data structure]]
     -  [[#date--time][Date / Time]]
+    -  [[#debugging][Debugging]]
     -  [[#destructuring][Destructuring]]
     -  [[#editing][Editing]]
     -  [[#functions][Functions]]
@@ -377,6 +378,35 @@ The primary function provided is: ~(datetime-format SYM-OR-FMT &optional TIME &r
 #+END_SRC
 
 There are several other symbols provided besides ~atom~, such as ~rfc-3339~, which formats dates according to that RFC.
+
+** Debugging                                                     :debugging:
+
+*** Tools                                                           :tools:
+
+**** Edebug                                                       :Edebug:
+
+Edebug is a built-in stepping debugger in Emacs.  It's thoroughly documented in the =elisp= manual.
+
+***** Declaring debug forms for keyword arguments                   :tip:
+
+Declaring ~debug~ forms for functions and macros that take keyword arguments can be confusing.  Here's a contrived example:
+
+#+BEGIN_SRC elisp
+  (cl-defmacro make-fn (name docstring &key args bindings body)
+    (declare (indent defun)
+             (debug (&define symbolp stringp
+                             &rest [&or [":body" def-form] [keywordp listp]])))
+    `(defun ,name ,args
+       ,docstring
+       (let* ,bindings
+         ,body)))
+
+  (make-fn my-fn
+    "This is my function."
+    :bindings ((one 1)
+               (two 2))
+    :body (list one two))
+#+END_SRC
 
 ** Destructuring                                             :destructuring:
 
