@@ -408,6 +408,9 @@ Declaring ~debug~ forms for functions and macros that take keyword arguments can
     :body (list one two))
 #+END_SRC
 
+****** TODO Submit this as an improvement to the Elisp manual
+
+Probably should first replace the ~:bindings~ part with this, which correctly matches ~let~ bindings: ~(&rest &or symbolp (gate symbolp &optional def-form))~.
 ** Destructuring                                             :destructuring:
 
 See [[id:b699e1a1-e34c-4ce8-a5dd-41161d2a1cbf][Pattern matching]].
