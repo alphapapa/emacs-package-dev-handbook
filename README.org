@@ -2265,25 +2265,18 @@ CLOSED: [2017-08-03 Thu 15:11]
 :ID:       a0e9486f-24f0-47a6-8f21-50bcc7ac2ca0
 :END:
 :LOGBOOK:
+-  Note taken on [2018-11-24 Sat 10:44] \\
+   Using =org-web-tools= instead of the Python script.
 -  State "DONE"       from "TODO"       [2017-08-03 Thu 15:11]
 :END:
 
-This bookmarklet should provide a way to get the URL:
-
-#+BEGIN_SRC javascript
-  javascript:void(open('https://archive.today/?run=1&url='+encodeURIComponent(document.location)))
-#+END_SRC
-
-Seems to only work if run in a browser, with JavaScript.  But there's a [[https://github.com/pastpages/archiveis][Python package]] that has a shell command.  So:
-
 #+BEGIN_SRC elisp :results silent
-  (require 's)
+  (require 'org-web-tools)
 
   (defun emacs-package-dev-handbook--archiveis-capture (url)
     "Return archive.is archived URL for URL."
-    (with-temp-buffer
-      (when (zerop (call-process "archiveis" nil t nil url))
-        (s-trim (buffer-string)))))
+    (when-let* ((id (org-web-tools-archive--url-id url)))
+      (format "http://%s/%s" org-web-tools-archive-hostname id)))
 
   (cl-defun emacs-package-dev-handbook-insert-archiveis-property (url)
     "Set the \"archive.is\" property for entry at point to the archived version of URL.
