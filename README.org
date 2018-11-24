@@ -1277,6 +1277,9 @@ And:
 *** Articles                                                     :articles:
 
 **** [[https://nullprogram.com/blog/2017/01/30/][How to Write Fast(er) Emacs Lisp « null program]]
+:PROPERTIES:
+:archive.is: http://archive.is/xe0Js
+:END:
 
 Chris Wellons explains five ways to write faster Emacs Lisp code.
 
