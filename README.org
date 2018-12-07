@@ -2120,6 +2120,36 @@ These resources should be added to the appropriate sections above.  Since it tak
 
 *** TODO [[https://www.lunaryorn.com/posts/syntactic-fontification-in-emacs][Syntactic fontification in Emacs]] (10 min read)
 
+** TODO Add people [0/6]
+
+*** TODO Add [[http://nic.ferrier.me.uk/][Nic Ferrier]]
+
+**** TODO [[https://github.com/nicferrier/emacs-noflet][GitHub - nicferrier/emacs-noflet: noflet - nic's overriding flet, for fleting functions for the purpose of decorating them]]
+
+**** TODO [[https://github.com/nicferrier/emacs-db][GitHub - nicferrier/emacs-db: very simple database for emacslisp, can also wrap other databases.]]
+
+*** TODO Add [[https://github.com/vermiculus][Sean Allred]]
+
+*** TODO Add [[http://nullprogram.com/][Chris Wellons]]
+
++  http://github.com/skeeto
++  Elfeed
++  Other Emacs packages
+
+*** TODO Add [[https://github.com/wasamasa?][Vasilij Schneidermann]]
+
+*** TODO [[https://github.com/VincentToups/emacs-utils][Vincent Toups' projects]]
+
+He has a lot of interesting libraries on his repo, and some of them are /extensively/ documented.  An aspiring Emacs Lisp developer could learn a lot from his code.
+
+*** TODO Add more of [[id:518289de-100e-4387-9917-2adaffc28f48][Roland Walker]]'s packages
+
+*** Clemens Radermacher
+
++  [[https://www.with-emacs.com/][blog /With Emacs/]]
++  [[https://github.com/clemera][GitHub]]
+     -  [[https://github.com/clemera?utf8=%25E2%259C%2593&tab=repositories&q=&type=source&language=emacs+lisp][Packages]]
+
 ** TODO Add tips for new developers
 
 e.g.:
@@ -2130,28 +2160,9 @@ e.g.:
      +  =outline-minor-mode=
 
 ** TODO Add [[https://github.com/joddie/pcre2el]]
+
 ** TODO Add [[https://github.com/bbatsov/emacs-lisp-style-guide][GitHub - bbatsov/emacs-lisp-style-guide: A community-driven Emacs Lisp style guide]]
 
-** TODO Add [[http://nic.ferrier.me.uk/][Nic Ferrier]]
-
-*** TODO [[https://github.com/nicferrier/emacs-noflet][GitHub - nicferrier/emacs-noflet: noflet - nic's overriding flet, for fleting functions for the purpose of decorating them]]
-
-*** TODO [[https://github.com/nicferrier/emacs-db][GitHub - nicferrier/emacs-db: very simple database for emacslisp, can also wrap other databases.]]
-** TODO Add [[https://github.com/vermiculus][Sean Allred]]
-
-** TODO Add [[http://nullprogram.com/][Chris Wellons]]
-
-+  http://github.com/skeeto
-+  Elfeed
-+  Other Emacs packages
-
-** TODO Add [[https://github.com/wasamasa?][Vasilij Schneidermann]]
-
-** TODO [[https://github.com/VincentToups/emacs-utils][Vincent Toups' projects]]
-
-He has a lot of interesting libraries on his repo, and some of them are /extensively/ documented.  An aspiring Emacs Lisp developer could learn a lot from his code.
-
-** TODO Add more of [[id:518289de-100e-4387-9917-2adaffc28f48][Roland Walker]]'s packages
 ** TODO Add MELPA
 
 Mention @milkypostman, @purcell, @syohex, etc. Mention sandbox.
@@ -2233,12 +2244,14 @@ haskell https://github.com/knupfer/haskell-emacs
 *** TODO [[https://github.com/kiwanami/emacs-edbi][GitHub - kiwanami/emacs-edbi: Database Interface for Emacs Lisp]]
 
 ** TODO Add [[https://github.com/ijp/mbe.el][GitHub - ijp/mbe.el: macros by example in elisp]]
+
 ** TODO Tree-traversal
 
 *** [[https://github.com/volrath/treepy.el][GitHub - volrath/treepy.el: Generic tree traversing tools for Emacs Lisp]]
 :LOGBOOK:
 -  State "TODO"       from              [2017-09-06 Wed 00:21]
 :END:
+
 ** TODO Test in MELPA sandbox
 :PROPERTIES:
 :ID:       cddadde7-ec36-47a4-8d98-7acc39f03fed
