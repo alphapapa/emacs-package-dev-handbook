@@ -67,6 +67,8 @@ Most of the time, one user action equals one visual change.  By exploiting this 
 Another neat perk of action-based captures is that it produces editable GIF files: programs such as Gifsicle or The GIMP can be used to edit the delays or rearrange frames.  This is particularly useful to fix mistakes in “post-processing”, without having to record the demo all over again.
 #+END_QUOTE
 
+The author of this document can vouch for the fact that this package is the easiest, most powerful way to make screencast animations in Emacs!
+
 ** Asynchronicity                                                    :async:
 
 See [[id:94092c16-061c-45c9-9c66-77c5fdeceee8][Multiprocessing (generators, threads)]].
