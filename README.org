@@ -123,6 +123,25 @@ This file also defines macros =thunk-let= and =thunk-let*= that are analogous to
 
 *** Best practices                                         :best_practices:
 
+**** Accessing buffer-local variables
+
+It's much faster to use ~buffer-local-value~ than ~with-current-buffer~ to access the value of a variable in a buffer.
+
+#+BEGIN_SRC elisp
+  (bench-multi :times 1000 :ensure-equal t
+    :forms (("buffer-local-value" (--filter (equal 'magit-status-mode (buffer-local-value 'major-mode it))
+                                            (buffer-list)))
+            ("with-current-buffer" (--filter (equal 'magit-status-mode (with-current-buffer it
+                                                                         major-mode))
+                                             (buffer-list)))))
+#+END_SRC
+
+#+RESULTS:
+| Form                | x faster than next | Total runtime | # of GCs | Total GC runtime |
+|---------------------+--------------------+---------------+----------+------------------|
+| buffer-local-value  | 50.34              |   0.047657734 |        0 |              0.0 |
+| with-current-buffer | slowest            |   2.399323452 |        0 |              0.0 |
+
 **** Inserting strings                                           :strings:
 
 Inserting strings into buffers with ~insert~ is generally fast, but it can slow down in buffers with lots of markers or overlays.  In general, it can be faster to insert one large string (which may include newlines).  For example:
