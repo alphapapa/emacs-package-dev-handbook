@@ -182,6 +182,8 @@ Inserting strings into buffers with ~insert~ is generally fast, but it can slow 
 | (loop do (insert ...        |   1 | 0.001490397 | 0 | 0.0 |
 
 The fastest method here is to call ~insert~ once with the result of calling ~concat~ once, using ~apply~ to pass all of the strings.  With 100 iterations, it's about 6x faster than the next-fastest method, and even with 1 iteration, it's over 2x faster.
+
+
 *** Libraries                                                   :libraries:
 :PROPERTIES:
 :ID:       523aa766-36a3-4827-a114-6babf72edc6b
@@ -1348,24 +1350,26 @@ When called from an Org source block, it gives output like this:
 
 This macro makes comparing multiple forms easy:
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code :results silent
   (cl-defmacro bench-multi (&key (times 1) forms ensure-equal)
-    "Run FORMS with `benchmark-run-compiled' for TIMES iterations, returning list suitable for Org source block evaluation.
+    "Return Org table as a list with benchmark results for FORMS.
+  Runs FORMS with `benchmark-run-compiled' for TIMES iterations.
 
-  When ENSURE-EQUAL is non-nil, compare the results of FORMS and
-  ensure they are `equal'.  If they aren't, raise an error, and if
-  the results are sequences, show the difference between them using
+  When ENSURE-EQUAL is non-nil, the results of FORMS are compared,
+  and an error is raised if they aren't `equal'. If the results
+  are sequences, the difference between them is shown with
   `seq-difference'.
 
-  If the first element of a form is a string, the string is used as
-  the form's description in the results; otherwise, forms are
-  numbered from 0.
+  If the first element of a form is a string, it's used as the
+  form's description in the bench-multi-results; otherwise, forms
+  are numbered from 0.
 
-  Before `benchmark-run-compiled' is called for each form,
-  `garbage-collect' is called."
+  Before each form is run, `garbage-collect' is called."
+    ;; MAYBE: Since `bench-multi-lexical' byte-compiles the file, I'm not sure if
+    ;; `benchmark-run-compiled' is necessary over `benchmark-run', or if it matters.
     (declare (indent defun))
-    (let ((results (gensym))
-          (result-times (gensym))
+    (let ((keys (gensym "keys"))
+          (result-times (gensym "result-times"))
           (header '(("Form" "x faster than next" "Total runtime" "# of GCs" "Total GC runtime")
                     hline))
           (descriptions (cl-loop for form in forms
@@ -1374,54 +1378,61 @@ This macro makes comparing multiple forms easy:
                                              (prog1 (car form)
                                                (setf (nth i forms) (cadr (nth i forms))))
                                            i))))
-      `(let* ((,results (make-hash-table))
-              (,result-times (sort (list ,@(cl-loop for form in forms
-                                                    for i from 0
-                                                    for description = (nth i descriptions)
-                                                    collect `(progn
-                                                               (garbage-collect)
-                                                               (cons ,description
-                                                                     (benchmark-run-compiled ,times
-                                                                       ,(if ensure-equal
-                                                                            `(puthash ,description ,form ,results)
-                                                                          form))))))
-                                   (lambda (a b)
-                                     (< (second a) (second b))))))
-         ,(when ensure-equal
-            `(cl-loop with keys = (hash-table-keys ,results)
-                      for i from 0 to (- (length keys) 2)
-                      unless (equal (gethash (nth i keys) ,results)
-                                    (gethash (nth (1+ i) keys) ,results))
-                      do (if (sequencep (gethash (car (hash-table-keys ,results)) ,results))
-                             (let* ((k1) (k2)
-                                    ;; If the difference in one order is nil, try in other order.
-                                    (difference (or (setq k1 (nth i keys)
-                                                          k2 (nth (1+ i) keys)
-                                                          difference (seq-difference (gethash k1 ,results)
-                                                                                     (gethash k2 ,results)))
-                                                    (setq k1 (nth (1+ i) keys)
-                                                          k2 (nth i keys)
-                                                          difference (seq-difference (gethash k1 ,results)
-                                                                                     (gethash k2 ,results))))))
-                               (user-error "Forms' results not equal: difference (%s - %s): %S"
-                                           k1 k2 difference))
-                           ;; Not a sequence
-                           (user-error "Forms' results not equal: %s:%S  %s:%S"
-                                       (nth i keys) (nth (1+ i) keys)
-                                       (gethash (nth i keys) ,results)
-                                       (gethash (nth (1+ i) keys) ,results)))))
-         ;; Add factors to times and return table
-         (append ',header
-                 (cl-loop with length = (length ,result-times)
-                          for i from 0 to (1- length)
-                          for time = (second (nth i ,result-times))
-                          for description = (car (nth i ,result-times))
-                          for factor = (if (< i (1- length))
-                                           (format "%.2f" (/ (second (nth (1+ i) ,result-times))
-                                                             (second (nth i ,result-times))))
-                                         "slowest")
-                          collect (append (list description factor)
-                                          (cdr (nth i ,result-times))))))))
+      `(unwind-protect
+           (progn
+             (defvar bench-multi-results nil)
+             (let* ((bench-multi-results (make-hash-table))
+                    (,result-times (sort (list ,@(cl-loop for form in forms
+                                                          for i from 0
+                                                          for description = (nth i descriptions)
+                                                          collect `(progn
+                                                                     (garbage-collect)
+                                                                     (cons ,description
+                                                                           (benchmark-run-compiled ,times
+                                                                             ,(if ensure-equal
+                                                                                  `(puthash ,description ,form bench-multi-results)
+                                                                                form))))))
+                                         (lambda (a b)
+                                           (< (second a) (second b))))))
+               ,(when ensure-equal
+                  `(cl-loop with ,keys = (hash-table-keys bench-multi-results)
+                            for i from 0 to (- (length ,keys) 2)
+                            unless (equal (gethash (nth i ,keys) bench-multi-results)
+                                          (gethash (nth (1+ i) ,keys) bench-multi-results))
+                            do (if (sequencep (gethash (car (hash-table-keys bench-multi-results)) bench-multi-results))
+                                   (let* ((k1) (k2)
+                                          ;; If the difference in one order is nil, try in other order.
+                                          (difference (or (setq k1 (nth i ,keys)
+                                                                k2 (nth (1+ i) ,keys)
+                                                                difference (seq-difference (gethash k1 bench-multi-results)
+                                                                                           (gethash k2 bench-multi-results)))
+                                                          (setq k1 (nth (1+ i) ,keys)
+                                                                k2 (nth i ,keys)
+                                                                difference (seq-difference (gethash k1 bench-multi-results)
+                                                                                           (gethash k2 bench-multi-results))))))
+                                     (user-error "Forms' bench-multi-results not equal: difference (%s - %s): %S"
+                                                 k1 k2 difference))
+                                 ;; Not a sequence
+                                 (user-error "Forms' bench-multi-results not equal: %s:%S %s:%S"
+                                             (nth i ,keys) (nth (1+ i) ,keys)
+                                             (gethash (nth i ,keys) bench-multi-results)
+                                             (gethash (nth (1+ i) ,keys) bench-multi-results)))))
+               ;; Add factors to times and return table
+               (append ',header
+                       (cl-loop with length = (length ,result-times)
+                                for i from 0 to (1- length)
+                                for description = (car (nth i ,result-times))
+                                for factor = (if (< i (1- length))
+                                                 (format "%.2f" (/ (second (nth (1+ i) ,result-times))
+                                                                   (second (nth i ,result-times))))
+                                               "slowest")
+                                collect (append (list description factor)
+                                                (list (format "%.6f" (second (nth i ,result-times)))
+                                                      (third (nth i ,result-times))
+                                                      (if (> (fourth (nth i ,result-times)) 0)
+                                                          (format "%.6f" (fourth (nth i ,result-times)))
+                                                        0)))))))
+         (unintern 'bench-multi-results nil))))
 #+END_SRC
 
 Used like:
@@ -1449,14 +1460,13 @@ Used like:
 #+RESULTS[3316dc4375a3b162e32790bb7e72d715d7f756fb]:
 | Form            | x faster than next | Total runtime | # of GCs | Total GC runtime |
 |-----------------+--------------------+---------------+----------+------------------|
-| regexp          | 62.50              |   0.043138672 |        0 |              0.0 |
-| org-map-entries | slowest            |    2.69609941 |        0 |              0.0 |
+| regexp          | 61.97              |      0.042440 |        0 |                0 |
+| org-map-entries | slowest            |      2.630019 |        0 |                0 |
 
 It can also help catch bugs by ensuring that each form returns the same results.  For example, the benchmark above contains a subtle bug: because ~case-fold-search~ in the =regexp= form is non-nil, the regexp is compared case-insensitively, so it matches Org headings which start with =Maybe= rather than only ones which start with =MAYBE=.  Using the ~:ensure-equal t~ argument to ~bench-multi~ compares the results and raises an error showing the difference between the two sequences the forms evaluate to:
 
-#+BEGIN_SRC elisp :exports code
-  (bench-multi
-    :ensure-equal t
+#+BEGIN_SRC elisp :exports code :results silent
+  (bench-multi :ensure-equal t
     :forms (("org-map-entries" (sort (org-map-entries (lambda ()
                                                         (nth 4 (org-heading-components)))
                                                       "/+MAYBE" 'agenda)
@@ -1480,8 +1490,7 @@ It can also help catch bugs by ensuring that each form returns the same results.
 Fixing the error, by setting ~case-fold-search~ to ~nil~, not only makes the forms give the same result but, in this case, doubles the performance of the faster form:
 
 #+BEGIN_SRC elisp :exports both :cache yes
-  (bench-multi
-    :ensure-equal t
+  (bench-multi :ensure-equal t
     :forms (("org-map-entries" (sort (org-map-entries (lambda ()
                                                         (nth 4 (org-heading-components)))
                                                       "/+MAYBE" 'agenda)
@@ -1500,13 +1509,114 @@ Fixing the error, by setting ~case-fold-search~ to ~nil~, not only makes the for
                             #'string<))))
 #+END_SRC
 
-#+RESULTS[13bda5a63b7b851ff3aac91c6487a9eb22ad0fb7]:
+#+RESULTS[773b94ff27f73dcfcb694429054710a581b7bec5]:
 | Form            | x faster than next | Total runtime | # of GCs | Total GC runtime |
 |-----------------+--------------------+---------------+----------+------------------|
-| regexp          | 125.70             |   0.021080791 |        0 |              0.0 |
-| org-map-entries | slowest            |   2.649818971 |        0 |              0.0 |
+| regexp          | 134.09             |      0.019550 |        0 |                0 |
+| org-map-entries | slowest            |      2.621377 |        0 |                0 |
 
 So this macro showed which code is faster and helped catch a subtle bug.
+
+***** ~bench-multi-lexical~
+
+To evaluate forms with lexical binding enabled, use this macro:
+
+#+BEGIN_SRC elisp :exports code :results silent
+  (cl-defmacro bench-multi-lexical (&key (times 1) forms ensure-equal)
+    "Return Org table as a list with benchmark results for FORMS.
+  Runs FORMS from a byte-compiled temp file with `lexical-binding'
+  enabled, using `bench-multi', which see.
+
+  When ENSURE-EQUAL is non-nil, the results of FORMS are compared,
+  and an error is raised if they aren't `equal'.  If the results
+  are sequences, the difference between them is shown with
+  `seq-difference'.
+
+  If the first element of a form is a string, it's used as the
+  form's description in the bench-multi-results; otherwise, forms
+  are numbered from 0.
+
+  Before each form is run, `garbage-collect' is called.
+
+  Afterward, the temp file is deleted and the function used to run
+  the benchmark is uninterned.."
+    (declare (indent defun))
+    `(let* ((temp-file (concat (make-temp-file "bench-multi-lexical-") ".el"))
+            (fn (gensym "bench-multi-lexical-run-")))
+       (with-temp-file temp-file
+         (insert ";; -*- lexical-binding: t; -*-" "\n\n"
+                 "(defvar bench-multi-results)" "\n\n"
+                 (format "(defun %s () (bench-multi :times %d :ensure-equal %s :forms %S))"
+                         fn ,times ,ensure-equal ',forms)))
+       (unwind-protect
+           (if (byte-compile-file temp-file 'load)
+               (funcall (intern (symbol-name fn)))
+             (user-error "Error byte-compiling and loading temp file"))
+         (delete-file temp-file)
+         (unintern (symbol-name fn) nil))))
+#+END_SRC
+
+Used just like ~bench-multi~:
+
+#+BEGIN_SRC elisp :exports both :cache yes
+  (bench-multi-lexical :ensure-equal t
+    :forms (("org-map-entries" (sort (org-map-entries (lambda ()
+                                                        (nth 4 (org-heading-components)))
+                                                      "/+MAYBE" 'agenda)
+                                     #'string<))
+            ("regexp" (sort (-flatten
+                             (-non-nil
+                              (mapcar (lambda (file)
+                                        (let ((case-fold-search nil))
+                                          (with-current-buffer (find-buffer-visiting file)
+                                            (org-with-wide-buffer
+                                             (goto-char (point-min))
+                                             (cl-loop with regexp = (format org-heading-keyword-regexp-format "MAYBE")
+                                                      while (re-search-forward regexp nil t)
+                                                      collect (nth 4 (org-heading-components)))))))
+                                      (org-agenda-files))))
+                            #'string<))))
+#+END_SRC
+
+#+RESULTS[a8ffc10fa4e21eb632122657312040f139b33204]:
+| Form            | x faster than next | Total runtime | # of GCs | Total GC runtime |
+|-----------------+--------------------+---------------+----------+------------------|
+| regexp          | 134.26             |      0.019640 |        0 |                0 |
+| org-map-entries | slowest            |      2.636943 |        0 |                0 |
+
+This shows that lexical-binding doesn't make much difference in this example.  But in another example, it does:
+
+#+BEGIN_SRC elisp :exports both :cache yes
+  (bench-multi :times 1000 :ensure-equal t
+    :forms (("buffer-local-value" (--filter (equal 'magit-status-mode (buffer-local-value 'major-mode it))
+                                            (buffer-list)))
+            ("with-current-buffer" (--filter (equal 'magit-status-mode (with-current-buffer it
+                                                                         major-mode))
+                                             (buffer-list)))))
+#+END_SRC
+
+#+RESULTS[5ef620a1a1ab52900312e3adb52dd2e6a39dd9b2]:
+| Form                | x faster than next | Total runtime | # of GCs | Total GC runtime |
+|---------------------+--------------------+---------------+----------+------------------|
+| buffer-local-value  | 69.64              |      0.013255 |        0 |                0 |
+| with-current-buffer | slowest            |      0.923159 |        0 |                0 |
+
+#+BEGIN_SRC elisp :exports both :cache yes
+  (bench-multi-lexical :times 1000 :ensure-equal t
+    :forms (("buffer-local-value" (--filter (equal 'magit-status-mode (buffer-local-value 'major-mode it))
+                                            (buffer-list)))
+            ("with-current-buffer" (--filter (equal 'magit-status-mode (with-current-buffer it
+                                                                         major-mode))
+                                             (buffer-list)))))
+#+END_SRC
+
+#+RESULTS[aa64952f5203400ddb1e700814a460fe81f9d2e6]:
+| Form                | x faster than next | Total runtime | # of GCs | Total GC runtime |
+|---------------------+--------------------+---------------+----------+------------------|
+| buffer-local-value  | 86.98              |      0.010512 |        0 |                0 |
+| with-current-buffer | slowest            |      0.914274 |        0 |                0 |
+
+The ~buffer-local-value~ form improved by about 24% when using lexical binding.
 
 **** =elp-profile=
 :PROPERTIES:
