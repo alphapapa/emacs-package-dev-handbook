@@ -2356,6 +2356,7 @@ e.g.:
      +  =highlight-quoted=
      +  =outline-minor-mode=
 
+** TODO [[https://emacs.stackexchange.com/questions/3821/a-faster-method-to-obtain-line-number-at-pos-in-large-buffers][elisp - A faster method to obtain `line-number-at-pos` in large buffers - Emacs Stack Exchange]]
 ** TODO Add [[https://github.com/joddie/pcre2el]]
 
 ** TODO Add [[https://github.com/bbatsov/emacs-lisp-style-guide][GitHub - bbatsov/emacs-lisp-style-guide: A community-driven Emacs Lisp style guide]]
