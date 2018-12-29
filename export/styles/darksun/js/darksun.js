@@ -1,4 +1,4 @@
-// bigblow.js --- BigBlow JS file
+// darksun.js --- darksun JS file
 //
 // Copyright (C) 2011-2016 All Right Reserved, Fabrice Niessen
 //
@@ -21,12 +21,12 @@ $(function() {
         html(function(index, old) {
             return old.replace('FIXME',
                                '<span class="fixme">FIXME</span>');
-    });
+        });
     $('p').
         html(function(index, old) {
             return old.replace('XXX',
                                '<span class="fixme">XXX</span>');
-    });
+        });
 });
 
 // Remove leading section number
@@ -43,27 +43,71 @@ $(function() {
     $('<div id="minitoc" class="dontprint"></div>').prependTo('body');
 });
 
-// generate contents of minitoc
+
+function outline_toc (min, max, i, root) {
+    // Return table of contents as a string for heading levels MIN through MAX, starting at ROOT.
+    // I is an index, allowing the function to be passed to $.map().
+
+    var heading_class = ".outline-" + min;
+    var headings = $(root).find(heading_class);
+    var tocs = headings.map(heading_toc.bind(null, min, max));
+
+    return "<ul>"
+        + tocs.toArray().join("\n")
+        + "</ul>";
+}
+
+function heading_toc (min, max, i, root) {
+    // Return ToC as string for heading elements at levels MIN through
+    // MAX inclusive, starting at ROOT.  I is an index, allowing the
+    // function to be passed to $.map().
+
+    if (min > max) {
+        return "";
+    }
+
+    var heading_tag = "h" + min;
+    var heading = $(root).find(heading_tag);
+
+    var pos = heading.text().search(/ | ►/);
+    if (pos > 0) {
+        var text = heading.text().substring(0, pos);
+    }
+    else {
+        var text = heading.text();
+    }
+
+    return "<li><a href='#" + $(root).attr("id") + "'>" + text + "</a>"
+        + "<ul>" + outline_toc(min + 1, max, null, root) + "</ul>"
+        + "</li>";
+}
+
 function generateMiniToc(divId) {
-    $('#minitoc-content').empty().append('<h2>In this section</h2><ul></ul>');
-    $('#' + divId).find('h3').each(function(i) {
-        // [2018-09-03 Mon 03:48] Get text up to non-breaking space,
-        // to omit the tags.  If there are no tags, there will be no
-        // &nbsp;, so get all the text.  (This fixes a bug in the
-        // original code.)
-        let text = null;
-        let pos = $(this).text().search(/ | ►/);
-        if (pos > 0) {
-            text = $(this).text().substring(0, pos);
-        }
-        else {
-            text = $(this).text();
-        }
-        $("#minitoc-content>ul").append("<li><a href='#" + $(this).attr("id") + "'>"
-                                        + text + "</a></li>");
-    });
+
+
+    $('#minitoc-content').empty().append('<h2>In this section</h2>');
+
+    // Add "Collapse" and "Expand" buttons.  Also done in hideshow.js in hsInit().
+    $('#minitoc-content h2').append($('<span>' + HS_SHOW_ALL_TEXT + '</span>')
+                                    .addClass('hsButton')
+                                    .click(hsExpandAll));
+    $('#minitoc-content h2').append($('<span>' + HS_HIDE_ALL_TEXT + '</span>')
+                                    .addClass('hsButton')
+                                    .click(hsCollapseAll));
+
+    // Add table of contents.
+    // divId is .outline-2, so add headings at levels 3-8 below it.
+
+    // NOTE: Escape *this* *specific* *character*, here and now, not before it gets to
+    // this function, not after.  See <https://github.com/jquery/jquery/issues/2824>.  I
+    // tried to escape both "#" and "%" in a single function, which would make sense,
+    // but that did not work; jQuery would not accept it for some mysterious reason.  I
+    // only got this to work by pure luck.
+    divId = divId.replace(/%/g, "\\%");
+    $('\#minitoc-content').append(outline_toc(3, 3, null, $('#' + divId)));
+
     // Ensure that the target is expanded (hideShow)
-    $('#minitoc-content a[href^="#"]').click(function() {
+    $('#minitoc-content a[href^=\\#]').click(function() {
         var href = $(this).attr('href');
         hsExpandAnchor(href);
     });
@@ -178,8 +222,10 @@ $(document).ready(function() {
 
     // Handle hash in URL
     if ($('#content') && document.location.hash) {
-        hsExpandAnchor(document.location.hash);
-        selectTabAndScroll(document.location.hash);
+        let hash = document.location.hash;
+        hash = hash.replace(/%/g, "\\%");
+        hsExpandAnchor(hash);
+        selectTabAndScroll(hash);
     }
     // If no hash, build the minitoc anyway for selected tab
     else {
@@ -210,10 +256,10 @@ function copyToClipboard(text)
 }
 
 $(document).ready(function() {
-    // Assuming that the ZeroClipboard swf file is in the same folder than bigblow,
+    // Assuming that the ZeroClipboard swf file is in the same folder than darksun,
     // get the path to it (it will be relative to the current page location).
-    var bbScriptPath = $('script[src$="bigblow.js"]').attr('src');  // the js file path
-    var bbPathToZeroClipboardSwf = bbScriptPath.replace('bigblow.js', 'ZeroClipboard.swf');
+    var bbScriptPath = $('script[src$="darksun.js"]').attr('src');  // the js file path
+    var bbPathToZeroClipboardSwf = bbScriptPath.replace('darksun.js', 'ZeroClipboard.swf');
 
     // Add copy to clipboard snippets
     $('.org-src-container').prepend('<div class="snippet-copy-to-clipboard"><span class="copy-to-clipboard-button">[copy]</span></div>');
@@ -227,7 +273,7 @@ $(document).ready(function() {
         if ((window.location.protocol != 'file:') && ($(this).find('.zclip').length == 0)) {
             $(this).find('.copy-to-clipboard-button').zclip({
                 //path: 'http://www.steamdev.com/zclip/js/ZeroClipboard.swf',
-                //path: 'styles/bigblow/js/ZeroClipboard.swf',
+                //path: 'styles/darksun/js/ZeroClipboard.swf',
                 path: bbPathToZeroClipboardSwf,
                 copy: function() {
                     return $(this).parent().parent().find('.src').text();
@@ -253,17 +299,17 @@ $(document).ready(function() {
 $(function() {
     $('li > code :contains("[X]")')
         .parent()
-            .addClass('checked')
+        .addClass('checked')
         .end()
         .remove();
     $('li > code :contains("[-]")')
         .parent()
-            .addClass('halfchecked')
+        .addClass('halfchecked')
         .end()
         .remove();
     $('li > code :contains("[ ]")')
         .parent()
-            .addClass('unchecked')
+        .addClass('unchecked')
         .end()
         .remove();
 });
@@ -327,17 +373,17 @@ $(function() {
 
     function scoreTodo(t) {
         switch (t) {
-            case 'NEW': return 1;
-            case 'TODO': return 2;
-            case 'STRT': return 3;
-            case 'WAIT': return 4;
-            case 'DLGT': return 5;
-            case 'SDAY': return 6;
-            case 'DFRD': return 7;
-            case 'DONE': return 8;
-            case 'CANX': return 9;
-            default: return 0;
-            }
+        case 'NEW': return 1;
+        case 'TODO': return 2;
+        case 'STRT': return 3;
+        case 'WAIT': return 4;
+        case 'DLGT': return 5;
+        case 'SDAY': return 6;
+        case 'DFRD': return 7;
+        case 'DONE': return 8;
+        case 'CANX': return 9;
+        default: return 0;
+        }
     }
 
     function compareTodo(a, b) {
@@ -394,7 +440,7 @@ $(function() {
     // assign the counts (avoid double-counting elements from the ToC)
     $('span.tag').not($('#table-of-contents span.tag')).each(function() {
         var $thisTagGroup = $(this).text().trim().split(/\s/);
-                                        // \s matches spaces, tabs, new lines, etc.
+        // \s matches spaces, tabs, new lines, etc.
 
         for (tag in $thisTagGroup) {
             if ($.inArray($thisTagGroup[tag], listOfTags) == -1) {
@@ -481,43 +527,43 @@ function orgDefkey(e) {
     var keycode = (e.keyCode) ? e.keyCode : e.which;
     var actualkey = String.fromCharCode(keycode);
     switch (actualkey) {
-        case "?": // help (dashboard)
-        case "h":
-            togglePanel(e);
-            break;
-        case "n": // next
-            clickNextTab();
-            break;
-        case "p": // previous
-            clickPreviousTab();
-            break;
+    case "?": // help (dashboard)
+    case "h":
+        togglePanel(e);
+        break;
+    case "n": // next
+        clickNextTab();
+        break;
+    case "p": // previous
+        clickPreviousTab();
+        break;
         // case "b": // scroll down - should be mapped to Shift-SPC
         //     $(window).scrollTop($(window).scrollTop()-$(window).height());
         //     break;
-        case "<": // scroll to top
-            $(window).scrollTop(0);
-            break;
-        case ">": // scroll to bottom
-            $(window).scrollTop($(document).height());
-            break;
-        case "-": // collapse all
-            hsCollapseAll();
-            break;
-        case "+": // expand all
-            hsExpandAll();
-            break;
-        case "r": // go to next task
-            hsReviewTaskNext();
-            break;
-        case "R": // go to previous task
-            hsReviewTaskPrev();
-            break;
-        case "q": // quit reviewing
-            hsReviewTaskQuit();
-            break;
-        case "g": // refresh the page (from the server, rather than the cache)
-            location.reload(true);
-            break;
+    case "<": // scroll to top
+        $(window).scrollTop(0);
+        break;
+    case ">": // scroll to bottom
+        $(window).scrollTop($(document).height());
+        break;
+    case "-": // collapse all
+        hsCollapseAll();
+        break;
+    case "+": // expand all
+        hsExpandAll();
+        break;
+    case "r": // go to next task
+        hsReviewTaskNext();
+        break;
+    case "R": // go to previous task
+        hsReviewTaskPrev();
+        break;
+    case "q": // quit reviewing
+        hsReviewTaskQuit();
+        break;
+    case "g": // refresh the page (from the server, rather than the cache)
+        location.reload(true);
+        break;
     }
 }
 

@@ -170,7 +170,7 @@ a:hover {
 }
 #minitoc {
     background-color: #073642 !important;
-    position: fixed;
+    position: absolute;
     top: 0px;
     right: -5px;
     padding: 0.5em;
@@ -180,7 +180,6 @@ a:hover {
     overflow: hidden;
 }
 #minitoc ul {
-    margin: 0.5em;
     padding-left: 1em;
 }
 #minitoc h2 {

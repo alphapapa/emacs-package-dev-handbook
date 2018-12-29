@@ -31,7 +31,7 @@ if (typeof HS_HIDE_ALL_TEXT === 'undefined') {
 
 if (typeof HS_ALWAYS_DISPLAY_ICON === 'undefined') {
     var HS_ALWAYS_DISPLAY_ICON = false; // Display an icon for all states, or
-                                        // just when closed.
+    // just when closed.
 }
 
 if (typeof HS_ICON_CLOSED === 'undefined') {
@@ -154,7 +154,7 @@ function hsInit() {
             else {
                 if (HS_ALWAYS_DISPLAY_ICON == true) {
                     header.append('<span class="ellipsis"> ' + HS_ICON_EMPTY
-                                   + '</span>');
+                                  + '</span>');
                 }
                 $(this).addClass('hsEmpty');
             }
@@ -167,11 +167,11 @@ function hsInit() {
     // Add buttons
     $('#minitoc').append($('<div class="buttons dontprint"></div>'));
     $('.buttons').append($('<span>' + HS_SHOW_ALL_TEXT + '</span>')
-                 .addClass('hsButton')
-                 .click(hsExpandAll));
+                         .addClass('hsButton')
+                         .click(hsExpandAll));
     $('.buttons').append($('<span>' + HS_HIDE_ALL_TEXT + '</span>')
-                 .addClass('hsButton')
-                 .click(hsCollapseAll));
+                         .addClass('hsButton')
+                         .click(hsCollapseAll));
 }
 
 // Returns true if a header is a DONE header
@@ -196,9 +196,16 @@ function hsSetDefaultVisibility(header) {
 
 // Expands an anchor, i.e. expand all parent headers
 function hsExpandAnchor(id) {
-    // alert(id);
     if (id) {
-        // alert($(id + '.hsNode').length);
+        $(id).parents('.hsCollapsed').each(function() {
+            hsExpand2($(this).children(':header'), true);
+        });
+    }
+}
+
+function hsExpandAnchor(id) {
+    if (id) {
+        id = id.replace(/#/g, '\#').replace(/%/g, '\%');
         $(id).parents('.hsCollapsed').each(function() {
             hsExpand2($(this).children(':header'), true);
         });

@@ -1,7 +1,7 @@
 #+TITLE: The Emacs Package Developer's Handbook
 #+OPTIONS: broken-links:t num:nil H:8
 #+TAGS: Emacs
-#+SETUPFILE: export/setup/theme-bigblow-local.setup
+#+SETUPFILE: export/setup/theme-darksun-local.setup
 
 #+HTML: <a href=https://alphapapa.github.io/dont-tread-on-emacs/><img src="dont-tread-on-emacs-150.png" align="right"></a>
 
