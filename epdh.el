@@ -37,6 +37,7 @@
 
 ;;;; General tools
 
+;;;###autoload
 (defun epdh/byte-compile-and-load-directory (directory)
   "Byte-compile and load all elisp files in DIRECTORY.
 Interactively, directory defaults to `default-directory' and asks
@@ -50,6 +51,7 @@ for confirmation."
         (dolist (file files)
           (byte-compile-file file 'load)))))
 
+;;;###autoload
 (defun epdh/emacs-lisp-macroreplace ()
   "Replace macro form before or after point with its expansion."
   (interactive)
@@ -70,6 +72,7 @@ for confirmation."
 
 ;;;; Profiling / Optimization
 
+;;;###autoload
 (cl-defmacro bench (&optional (times 100000) &rest body)
   "Call `benchmark-run-compiled' on BODY with TIMES iterations, returning list suitable for Org source block evaluation.
 Garbage is collected before calling `benchmark-run-compiled' to
@@ -83,6 +86,7 @@ avoid counting existing garbage which needs collection."
              (progn
                ,@body)))))
 
+;;;###autoload
 (cl-defmacro bench-multi (&key (times 1) forms ensure-equal raw)
   "Return Org table as a list with benchmark results for FORMS.
  Runs FORMS with `benchmark-run-compiled' for TIMES iterations.
@@ -179,6 +183,7 @@ avoid counting existing garbage which needs collection."
                                      (format "%.6f" (fourth (nth i results)))
                                    0)))))
 
+;;;###autoload
 (cl-defmacro bench-multi-lexical (&key (times 1) forms ensure-equal raw)
   "Return Org table as a list with benchmark results for FORMS.
 Runs FORMS from a byte-compiled temp file with `lexical-binding'
@@ -201,6 +206,7 @@ the benchmark is uninterned."
        (delete-file temp-file)
        (unintern (symbol-name fn) nil))))
 
+;;;###autoload
 (cl-defmacro bench-dynamic-vs-lexical-binding (&key (times 1) forms ensure-equal)
   "Benchmark FORMS with both dynamic and lexical binding.
 Calls `bench-multi' and `bench-multi-lexical', which see."
@@ -218,6 +224,7 @@ Calls `bench-multi' and `bench-multi-lexical', which see."
              (list 'hline)
              (bench-multi-process-results (append dynamic lexical)))))
 
+;;;###autoload
 (defmacro elp-profile (times prefixes &rest body)
   (declare (indent defun))
   `(let (output)

@@ -704,6 +704,7 @@ Chemacs tries to implement this idea in a user-friendly way, taking care of the 
 Byte-compile and load all elisp files in ~DIRECTORY~.  Interactively, directory defaults to ~default-directory~ and asks for confirmation.
 
 #+BEGIN_SRC elisp :exports code :tangle epdh.el
+  ;;;###autoload
   (defun epdh/byte-compile-and-load-directory (directory)
     "Byte-compile and load all elisp files in DIRECTORY.
   Interactively, directory defaults to `default-directory' and asks
@@ -723,6 +724,7 @@ Byte-compile and load all elisp files in ~DIRECTORY~.  Interactively, directory 
 Replace macro form before or after point with its expansion.
 
 #+BEGIN_SRC elisp :exports code :eval no-export :tangle epdh.el
+  ;;;###autoload
   (defun epdh/emacs-lisp-macroreplace ()
     "Replace macro form before or after point with its expansion."
     (interactive)
@@ -1451,6 +1453,7 @@ Chris Wellons explains five ways to write faster Emacs Lisp code.
 From Phil Lord's [[http://phillord.github.io/m-buffer-el/#sec-5-1-2][m-buffer-el]]:
 
 #+BEGIN_SRC elisp :exports code :tangle epdh.el
+  ;;;###autoload
   (cl-defmacro bench (&optional (times 100000) &rest body)
     "Call `benchmark-run-compiled' on BODY with TIMES iterations, returning list suitable for Org source block evaluation.
   Garbage is collected before calling `benchmark-run-compiled' to
@@ -1484,6 +1487,7 @@ When called from an Org source block, it gives output like this:
 These macros make comparing multiple forms easy:
 
 #+BEGIN_SRC elisp :exports code :results silent :tangle epdh.el
+  ;;;###autoload
   (cl-defmacro bench-multi (&key (times 1) forms ensure-equal raw)
     "Return Org table as a list with benchmark results for FORMS.
    Runs FORMS with `benchmark-run-compiled' for TIMES iterations.
@@ -1668,6 +1672,7 @@ So this macro showed which code is faster and helped catch a subtle bug.
 To evaluate forms with lexical binding enabled, use this macro:
 
 #+BEGIN_SRC elisp :exports code :tangle epdh.el
+  ;;;###autoload
   (cl-defmacro bench-multi-lexical (&key (times 1) forms ensure-equal raw)
     "Return Org table as a list with benchmark results for FORMS.
   Runs FORMS from a byte-compiled temp file with `lexical-binding'
@@ -1758,6 +1763,7 @@ The ~buffer-local-value~ form improved by about 24% when using lexical binding.
 This macro compares dynamic and lexical binding.
 
 #+BEGIN_SRC elisp :exports code :tangle epdh.el
+  ;;;###autoload
   (cl-defmacro bench-dynamic-vs-lexical-binding (&key (times 1) forms ensure-equal)
     "Benchmark FORMS with both dynamic and lexical binding.
   Calls `bench-multi' and `bench-multi-lexical', which see."
@@ -1803,6 +1809,7 @@ Example:
 Call this macro from an Org source block and you'll get a results block showing which 20 functions were called the most times, how long they took to run, etc.  =prefixes= should be a list of symbols matching the prefixes of the functions you want to instrument.
 
 #+BEGIN_SRC elisp :exports both :eval no-export :tangle epdh.el
+  ;;;###autoload
   (defmacro elp-profile (times prefixes &rest body)
     (declare (indent defun))
     `(let (output)

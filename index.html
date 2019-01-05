@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-04 Fri 21:54 -->
+<!-- 2019-01-04 Fri 21:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -2072,7 +2072,8 @@ Byte-compile and load all elisp files in <code>DIRECTORY</code>.  Interactively,
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">epdh/byte-compile-and-load-directory</span> <span style="color: #b58900;">(</span><span style="color: #a4cca4cca4cc;">directory</span><span style="color: #b58900;">)</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">###</span><span style="color: #cb4b16; font-weight: bold; font-style: italic;">autoload</span>
+<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">epdh/byte-compile-and-load-directory</span> <span style="color: #b58900;">(</span><span style="color: #a4cca4cca4cc;">directory</span><span style="color: #b58900;">)</span>
   <span style="color: #2aa198;">"Byte-compile and load all elisp files in DIRECTORY.</span>
 <span style="color: #2aa198;">Interactively, directory defaults to `</span><span style="color: #268bd2; font-weight: bold;">default-directory</span><span style="color: #2aa198;">' and asks</span>
 <span style="color: #2aa198;">for confirmation."</span>
@@ -2097,7 +2098,8 @@ Replace macro form before or after point with its expansion.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">epdh/emacs-lisp-macroreplace</span> <span style="color: #b58900;">()</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">###</span><span style="color: #cb4b16; font-weight: bold; font-style: italic;">autoload</span>
+<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">epdh/emacs-lisp-macroreplace</span> <span style="color: #b58900;">()</span>
   <span style="color: #2aa198;">"Replace macro form before or after point with its expansion."</span>
   <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">interactive</span><span style="color: #b58900;">)</span>
   <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">if-let*</span> <span style="color: #268bd2;">(</span><span style="color: #6c71c4;">(</span><span style="color: #90cc76662432;">beg</span> <span style="color: #859900;">(</span><span style="color: #a3726d7d5726; text-decoration: underline;">point</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
@@ -2997,7 +2999,8 @@ From Phil Lord's <a href="http://phillord.github.io/m-buffer-el/#sec-5-1-2">m-bu
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">cl-defmacro</span> <span style="color: #268bd2;">bench</span> <span style="color: #b58900;">(</span><span style="color: #b58900;">&amp;optional</span> <span style="color: #268bd2;">(</span><span style="color: #6e667a661e98;">times</span> <span style="color: #68717c277aa9;">100000</span><span style="color: #268bd2;">)</span> <span style="color: #b58900;">&amp;rest</span> <span style="color: #52997866758a;">body</span><span style="color: #b58900;">)</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">###</span><span style="color: #cb4b16; font-weight: bold; font-style: italic;">autoload</span>
+<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">cl-defmacro</span> <span style="color: #268bd2;">bench</span> <span style="color: #b58900;">(</span><span style="color: #b58900;">&amp;optional</span> <span style="color: #268bd2;">(</span><span style="color: #6e667a661e98;">times</span> <span style="color: #68717c277aa9;">100000</span><span style="color: #268bd2;">)</span> <span style="color: #b58900;">&amp;rest</span> <span style="color: #52997866758a;">body</span><span style="color: #b58900;">)</span>
   <span style="color: #2aa198;">"Call `</span><span style="color: #268bd2; font-weight: bold;">benchmark-run-compiled</span><span style="color: #2aa198;">' on BODY with TIMES iterations, returning list suitable for Org source block evaluation.</span>
 <span style="color: #2aa198;">Garbage is collected before calling `</span><span style="color: #268bd2; font-weight: bold;">benchmark-run-compiled</span><span style="color: #2aa198;">' to</span>
 <span style="color: #2aa198;">avoid counting existing garbage which needs collection."</span>
@@ -3062,7 +3065,8 @@ These macros make comparing multiple forms easy:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">cl-defmacro</span> <span style="color: #268bd2;">bench-multi</span> <span style="color: #b58900;">(</span><span style="color: #b58900;">&amp;key</span> <span style="color: #268bd2;">(</span><span style="color: #6e667a661e98;">times</span> <span style="color: #71ba8cd29fdd;">1</span><span style="color: #268bd2;">)</span> <span style="color: #a19967658391;">forms</span> <span style="color: #959995df9a66;">ensure</span>-<span style="color: #9dff5da442ff;">equal</span> <span style="color: #52997866758a;">raw</span><span style="color: #b58900;">)</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">###</span><span style="color: #cb4b16; font-weight: bold; font-style: italic;">autoload</span>
+<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">cl-defmacro</span> <span style="color: #268bd2;">bench-multi</span> <span style="color: #b58900;">(</span><span style="color: #b58900;">&amp;key</span> <span style="color: #268bd2;">(</span><span style="color: #6e667a661e98;">times</span> <span style="color: #71ba8cd29fdd;">1</span><span style="color: #268bd2;">)</span> <span style="color: #a19967658391;">forms</span> <span style="color: #959995df9a66;">ensure</span>-<span style="color: #9dff5da442ff;">equal</span> <span style="color: #52997866758a;">raw</span><span style="color: #b58900;">)</span>
   <span style="color: #2aa198;">"Return Org table as a list with benchmark results for FORMS.</span>
 <span style="color: #2aa198;"> Runs FORMS with `</span><span style="color: #268bd2; font-weight: bold;">benchmark-run-compiled</span><span style="color: #2aa198;">' for TIMES iterations.</span>
 
@@ -3336,7 +3340,8 @@ To evaluate forms with lexical binding enabled, use this macro:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">cl-defmacro</span> <span style="color: #268bd2;">bench-multi-lexical</span> <span style="color: #b58900;">(</span><span style="color: #b58900;">&amp;key</span> <span style="color: #268bd2;">(</span><span style="color: #6e667a661e98;">times</span> <span style="color: #71ba8cd29fdd;">1</span><span style="color: #268bd2;">)</span> <span style="color: #a19967658391;">forms</span> <span style="color: #959995df9a66;">ensure</span>-<span style="color: #9dff5da442ff;">equal</span> <span style="color: #52997866758a;">raw</span><span style="color: #b58900;">)</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">###</span><span style="color: #cb4b16; font-weight: bold; font-style: italic;">autoload</span>
+<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">cl-defmacro</span> <span style="color: #268bd2;">bench-multi-lexical</span> <span style="color: #b58900;">(</span><span style="color: #b58900;">&amp;key</span> <span style="color: #268bd2;">(</span><span style="color: #6e667a661e98;">times</span> <span style="color: #71ba8cd29fdd;">1</span><span style="color: #268bd2;">)</span> <span style="color: #a19967658391;">forms</span> <span style="color: #959995df9a66;">ensure</span>-<span style="color: #9dff5da442ff;">equal</span> <span style="color: #52997866758a;">raw</span><span style="color: #b58900;">)</span>
   <span style="color: #2aa198;">"Return Org table as a list with benchmark results for FORMS.</span>
 <span style="color: #2aa198;">Runs FORMS from a byte-compiled temp file with `</span><span style="color: #268bd2; font-weight: bold;">lexical-binding</span><span style="color: #2aa198;">'</span>
 <span style="color: #2aa198;">enabled, using `</span><span style="color: #268bd2; font-weight: bold;">bench-multi</span><span style="color: #2aa198;">', which see.</span>
@@ -3549,7 +3554,8 @@ This macro compares dynamic and lexical binding.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">cl-defmacro</span> <span style="color: #268bd2;">bench-dynamic-vs-lexical-binding</span> <span style="color: #b58900;">(</span><span style="color: #b58900;">&amp;key</span> <span style="color: #268bd2;">(</span><span style="color: #6e667a661e98;">times</span> <span style="color: #71ba8cd29fdd;">1</span><span style="color: #268bd2;">)</span> <span style="color: #a19967658391;">forms</span> <span style="color: #959995df9a66;">ensure</span>-<span style="color: #9dff5da442ff;">equal</span><span style="color: #b58900;">)</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">###</span><span style="color: #cb4b16; font-weight: bold; font-style: italic;">autoload</span>
+<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">cl-defmacro</span> <span style="color: #268bd2;">bench-dynamic-vs-lexical-binding</span> <span style="color: #b58900;">(</span><span style="color: #b58900;">&amp;key</span> <span style="color: #268bd2;">(</span><span style="color: #6e667a661e98;">times</span> <span style="color: #71ba8cd29fdd;">1</span><span style="color: #268bd2;">)</span> <span style="color: #a19967658391;">forms</span> <span style="color: #959995df9a66;">ensure</span>-<span style="color: #9dff5da442ff;">equal</span><span style="color: #b58900;">)</span>
   <span style="color: #2aa198;">"Benchmark FORMS with both dynamic and lexical binding.</span>
 <span style="color: #2aa198;">Calls `</span><span style="color: #268bd2; font-weight: bold;">bench-multi</span><span style="color: #2aa198;">' and `</span><span style="color: #268bd2; font-weight: bold;">bench-multi-lexical</span><span style="color: #2aa198;">', which see."</span>
   <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">declare</span> <span style="color: #268bd2;">(</span><span style="color: #a4cca4cca4cc;">indent</span> <span style="color: #a3726d7d5726;">defun</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
@@ -3651,7 +3657,8 @@ Call this macro from an Org source block and you'll get a results block showing 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">defmacro</span> <span style="color: #268bd2;">elp-profile</span> <span style="color: #b58900;">(</span><span style="color: #6e667a661e98;">times</span> <span style="color: #a3726d7d5726;">prefixes</span> <span style="color: #b58900;">&amp;rest</span> <span style="color: #52997866758a;">body</span><span style="color: #b58900;">)</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">###</span><span style="color: #cb4b16; font-weight: bold; font-style: italic;">autoload</span>
+<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">defmacro</span> <span style="color: #268bd2;">elp-profile</span> <span style="color: #b58900;">(</span><span style="color: #6e667a661e98;">times</span> <span style="color: #a3726d7d5726;">prefixes</span> <span style="color: #b58900;">&amp;rest</span> <span style="color: #52997866758a;">body</span><span style="color: #b58900;">)</span>
   <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">declare</span> <span style="color: #268bd2;">(</span><span style="color: #a4cca4cca4cc;">indent</span> <span style="color: #a3726d7d5726;">defun</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
   <span style="color: #859900; font-weight: bold;">`</span><span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">let</span> <span style="color: #268bd2;">(</span><span style="color: #a3726d7d5726;">output</span><span style="color: #268bd2;">)</span>
      <span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">dolist</span> <span style="color: #6c71c4;">(</span><span style="color: #a4cca4cca4cc;">prefix</span> ,<span style="color: #a3726d7d5726;">prefixes</span><span style="color: #6c71c4;">)</span>
@@ -5029,7 +5036,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2019-01-04 Fri 21:54</p>
+<p class="date">Created: 2019-01-04 Fri 21:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
