@@ -54,6 +54,55 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 :TOC:      1
 :END:
 
+*Note:* Usable Emacs Lisp code snippets (not examples) are tangled to the file =epdh.el=, which may be found in the [[https://github.com/alphapapa/emacs-package-dev-handbook/blob/master/epdh.el][repository]].  You could even install the file as a package with [[https://framagit.org/steckerhalter/quelpa-use-package][quelpa-use-package]], like this:
+
+#+BEGIN_SRC elisp :exports code
+  (use-package epdh
+    :quelpa (epdh :fetcher github :repo "alphapapa/emacs-package-dev-handbook"))
+#+END_SRC
+
+# Elisp header
+
+#+BEGIN_SRC elisp :exports none :tangle epdh.el
+  ;;; epdh.el --- Code useful for developing Emacs packages -*- lexical-binding: t; -*-
+
+  ;; Copyright (C) 2018  Adam Porter
+
+  ;; Author: Adam Porter <adam@alphapapa.net>
+  ;; Keywords: convenience, development
+  ;; URL: https://github.com/alphapapa/emacs-package-dev-handbook
+  ;; Package-Requires: ((emacs "25.1") (dash "2.13") (s "1.10.0"))
+
+  ;;; License:
+
+  ;; This program is free software; you can redistribute it and/or modify
+  ;; it under the terms of the GNU General Public License as published by
+  ;; the Free Software Foundation, either version 3 of the License, or
+  ;; (at your option) any later version.
+
+  ;; This program is distributed in the hope that it will be useful,
+  ;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ;; GNU General Public License for more details.
+
+  ;; You should have received a copy of the GNU General Public License
+  ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+  ;;; Commentary:
+
+  ;; Code useful for developing Emacs packages.  Contributions welcome.
+
+  ;;; Code:
+
+  ;;;; Requirements
+
+  (require 'cl-lib)
+
+  (require 'dash)
+  (require 's)
+
+#+END_SRC
+
 ** Animations / Screencasts                    :animations:screencasts:video:
 
 *** Tools                                                           :tools:
@@ -132,7 +181,7 @@ This file also defines macros =thunk-let= and =thunk-let*= that are analogous to
 
 It's much faster to use ~buffer-local-value~ than ~with-current-buffer~ to access the value of a variable in a buffer.
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports both :eval no-export
   (bench-multi :times 1000 :ensure-equal t
     :forms (("buffer-local-value" (--filter (equal 'magit-status-mode (buffer-local-value 'major-mode it))
                                             (buffer-list)))
@@ -187,7 +236,6 @@ Inserting strings into buffers with ~insert~ is generally fast, but it can slow 
 | (loop do (insert ...        |   1 | 0.001490397 | 0 | 0.0 |
 
 The fastest method here is to call ~insert~ once with the result of calling ~concat~ once, using ~apply~ to pass all of the strings.  With 100 iterations, it's about 6x faster than the next-fastest method, and even with 1 iteration, it's over 2x faster.
-
 
 *** Libraries                                                   :libraries:
 :PROPERTIES:
@@ -254,7 +302,7 @@ Using ~-select~ from =dash.el= seems to be the fastest way:
 
 ***** Creation
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   ;;;; Built-in methods
 
   (list (cons 'one 1) (cons 'two 2))  ;; => ((one . 1) (two . 2))
@@ -278,7 +326,7 @@ Using ~-select~ from =dash.el= seems to be the fastest way:
 
 ****** Single elements
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   ;;;; Built-in methods
 
   ;; `map-put' is the best built-in way.  Requires Emacs 25.1+.
@@ -305,7 +353,7 @@ Using ~-select~ from =dash.el= seems to be the fastest way:
 
 ****** Multiple elements
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   ;;;; Built-in methods
 
   ;; `map-merge': if you're restricted to built-in packages, this works
@@ -399,7 +447,7 @@ Similar to =dash.el=, but with slightly different behavior that may be useful, a
 
 The primary function provided is: ~(datetime-format SYM-OR-FMT &optional TIME &rest OPTION)~
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp  :exports code
   (datetime-format "%Y-%m-%d")  ;=> "2018-08-22"
   (datetime-format 'atom)  ;=> "2018-08-22T18:23:47-05:00"
   (datetime-format 'atom "2112-09-03 00:00:00" :timezone "UTC")  ;=> "2112-09-03T00:00:00+00:00"
@@ -419,7 +467,7 @@ Edebug is a built-in stepping debugger in Emacs.  It's thoroughly documented in 
 
 Declaring ~debug~ forms for functions and macros that take keyword arguments can be confusing.  Here's a contrived example:
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp  :exports code
   (cl-defmacro make-fn (name docstring &key args bindings body)
     (declare (indent defun)
              (debug (&define symbolp stringp
@@ -439,6 +487,7 @@ Declaring ~debug~ forms for functions and macros that take keyword arguments can
 ****** TODO Submit this as an improvement to the Elisp manual
 
 Probably should first replace the ~:bindings~ part with this, which correctly matches ~let~ bindings: ~(&rest &or symbolp (gate symbolp &optional def-form))~.
+
 ** Destructuring                                             :destructuring:
 
 See [[id:b699e1a1-e34c-4ce8-a5dd-41161d2a1cbf][Pattern matching]].
@@ -462,6 +511,7 @@ This package provides some extensions for Org's ~texinfo~ exporter defined in ~o
 3.  Optionally modify the Org file before exporting it.
 4.  Fully respect the local value of indent-tabs-mode from the Org file when editing source blocks and exporting. This affects all source blocks and all exporters.
 #+END_QUOTE
+
 ** Editing                                                         :editing:
 :PROPERTIES:
 :TOC:      ignore-children
@@ -496,7 +546,7 @@ The editor of this handbook uses ~iedit~ with these customizations:
 
 +  ~ap/iedit-or-flyspell~ :: Globally bound to @@html:<kbd>@@C-;@@html:</kbd>@@.  In a ~prog-mode~-derived buffer, either corrects the last misspelled word with ~flyspell~ when point is in a comment or string, or activates ~iedit-mode~.  In non- ~prog-mode~-derived buffers, corrects with ~flyspell~.
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   (defun ap/iedit-or-flyspell ()
     "Call `iedit-mode' or correct misspelling with flyspell, depending..."
     (interactive)
@@ -526,7 +576,7 @@ The editor of this handbook uses ~iedit~ with these customizations:
 
 +  ~ap/iedit-mode~ :: Calls ~iedit-mode~ with function-local scope by default, or global scope when called with a universal prefix.
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   (defun ap/iedit-mode (orig-fn)
     "Call `iedit-mode' with function-local scope by default, or global scope if called with a universal prefix."
     (interactive)
@@ -541,11 +591,13 @@ The editor of this handbook uses ~iedit~ with these customizations:
 
 +  Helpful minibuffer message :: Confirms when an ~iedit~ session has started.
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   (advice-add 'iedit-mode :after (lambda (&optional ignore)
                                    (when iedit-mode
                                      (minibuffer-message "iedit session started. Press C-; to end."))))
 #+END_SRC
+
+***** TODO Refer to version published in =unpackaged.el=
 
 **** [[https://github.com/abo-abo/lispy][lispy: short and sweet LISP editing]]    :elisp:navigation:parentheses:
 :PROPERTIES:
@@ -577,6 +629,11 @@ Including anonymous functions (lambdas).
 :END:
 
 ** General                                                         :general:
+
+#+BEGIN_SRC elisp :exports none :eval never :tangle epdh.el
+;;;; General tools
+
+#+END_SRC
 
 *** Libraries                                                   :libraries:
 
@@ -638,6 +695,28 @@ Chemacs tries to implement this idea in a user-friendly way, taking care of the 
 :PROPERTIES:
 :ID:       57ecc064-7291-4cc5-a545-958e2bca295b
 :END:
+
+**** Byte-compile and load directory
+:PROPERTIES:
+:ID:       e9b527d5-ae5e-4052-95f3-781ebc1b4ce1
+:END:
+
+Byte-compile and load all elisp files in ~DIRECTORY~.  Interactively, directory defaults to ~default-directory~ and asks for confirmation.
+
+#+BEGIN_SRC elisp :exports code :tangle epdh.el
+  (defun epdh/byte-compile-and-load-directory (directory)
+    "Byte-compile and load all elisp files in DIRECTORY.
+  Interactively, directory defaults to `default-directory' and asks
+  for confirmation."
+    (interactive (list default-directory))
+    (if (or (not (called-interactively-p))
+            (yes-or-no-p (format "Compile and load all files in %s?" directory)))
+        ;; Not sure if binding `load-path' is necessary.
+        (let* ((load-path (cons directory load-path))
+               (files (directory-files directory 't (rx ".el" eos))))
+          (dolist (file files)
+            (byte-compile-file file 'load)))))
+#+END_SRC
 
 ** Highlighting / font-locking                      :highlighting:font_lock:
 
@@ -803,7 +882,7 @@ A lot of good examples and discussion.
 
 When you make a new package, the =auto-insert= command will insert a set of standard package headers for you.  However, here is a more comprehensive template you can use:
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   ;;; package-name.el --- Package description (don't include the word "Emacs")  -*- lexical-binding: t; -*-
 
   ;; Copyright (C) 2017 First Last
@@ -1216,9 +1295,10 @@ There are /lots/ of examples here.
 [2018-07-27 Fri 23:29]  Dash has new abilities, including ~-setq~, and destructuring plists with implied variable names (i.e. just the keys can be specified, reducing repetition).
 
 ****** =pcase-let=                                         :destructuring:
+
 This example shows the use of =pcase-let*= to destructure and bind a nested alist:
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   (let ((alphabets (a-list 'English (a-list 'first "a"
                                             'second "b")
                            'Greek (a-list 'first "α"
@@ -1245,7 +1325,7 @@ let-alist is the best thing to happen to associative lists since the invention o
 
 [[http://endlessparentheses.com/new-on-elpa-and-in-emacs-25-1-let-alist.html][Example]]:
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   (defun sx-question-list--print-info (question-data)
     "DOC"
     (let-alist question-data
@@ -1276,7 +1356,7 @@ Here Artur introduces the macro and gives examples.
 
 Courtesy of [[id:9391ab92-5d51-4786-a3c5-4822ec500500][John Kitchin]]:[fn:1:Copyright by John Kitchin, licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.]
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   (defmacro with-dict (key-vals &rest body)
     "A context-manager for a plist where each key is a callable
   function that returns the value."
@@ -1302,7 +1382,7 @@ Courtesy of [[id:9391ab92-5d51-4786-a3c5-4822ec500500][John Kitchin]]:[fn:1:Copy
 
 And:
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   (defmacro with-plist-vals (plist &rest body)
     "Bind the values of a plist to variables with the name of the keys."
     (declare (indent 1))
@@ -1320,6 +1400,11 @@ And:
 #+END_SRC
 
 ** Profiling / Optimization                         :profiling:optimization:
+
+#+BEGIN_SRC elisp :exports none :eval never :tangle epdh.el
+;;;; Profiling / Optimization
+
+#+END_SRC
 
 *** Articles                                                     :articles:
 
@@ -1341,7 +1426,7 @@ Chris Wellons explains five ways to write faster Emacs Lisp code.
 
 From Phil Lord's [[http://phillord.github.io/m-buffer-el/#sec-5-1-2][m-buffer-el]]:
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code :tangle epdh.el
   (cl-defmacro bench (&optional (times 100000) &rest body)
     "Call `benchmark-run-compiled' on BODY with TIMES iterations, returning list suitable for Org source block evaluation.
   Garbage is collected before calling `benchmark-run-compiled' to
@@ -1358,7 +1443,7 @@ From Phil Lord's [[http://phillord.github.io/m-buffer-el/#sec-5-1-2][m-buffer-el
 
 Used like this:
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports both :eval never
   (bench 1000000
     (cons 'time (current-time)))
 #+END_SRC
@@ -1374,7 +1459,7 @@ When called from an Org source block, it gives output like this:
 
 These macros make comparing multiple forms easy:
 
-#+BEGIN_SRC elisp :exports code :results silent
+#+BEGIN_SRC elisp :exports code :results silent :tangle epdh.el
   (cl-defmacro bench-multi (&key (times 1) forms ensure-equal raw)
     "Return Org table as a list with benchmark results for FORMS.
    Runs FORMS with `benchmark-run-compiled' for TIMES iterations.
@@ -1558,7 +1643,7 @@ So this macro showed which code is faster and helped catch a subtle bug.
 
 To evaluate forms with lexical binding enabled, use this macro:
 
-#+BEGIN_SRC elisp :exports code :results silent
+#+BEGIN_SRC elisp :exports code :tangle epdh.el
   (cl-defmacro bench-multi-lexical (&key (times 1) forms ensure-equal raw)
     "Return Org table as a list with benchmark results for FORMS.
   Runs FORMS from a byte-compiled temp file with `lexical-binding'
@@ -1648,7 +1733,7 @@ The ~buffer-local-value~ form improved by about 24% when using lexical binding.
 
 This macro compares dynamic and lexical binding.
 
-#+BEGIN_SRC elisp :exports code :results silent
+#+BEGIN_SRC elisp :exports code :tangle epdh.el
   (cl-defmacro bench-dynamic-vs-lexical-binding (&key (times 1) forms ensure-equal)
     "Benchmark FORMS with both dynamic and lexical binding.
   Calls `bench-multi' and `bench-multi-lexical', which see."
@@ -1693,7 +1778,7 @@ Example:
 
 Call this macro from an Org source block and you'll get a results block showing which 20 functions were called the most times, how long they took to run, etc.  =prefixes= should be a list of symbols matching the prefixes of the functions you want to instrument.
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports both :eval no-export :tangle epdh.el
   (defmacro elp-profile (times prefixes &rest body)
     (declare (indent defun))
     `(let (output)
@@ -1714,7 +1799,9 @@ Call this macro from an Org source block and you'll get a results block showing 
                        'hline)
                  (cl-loop for row in rows
                           collect (s-split (rx (1+ space)) row 'omit-nulls))))))
+#+END_SRC
 
+#+BEGIN_SRC elisp :exports both :eval no-export
   ;; Use like this:
   (elp-profile 10 '(map search goto-char car append)
     (goto-char (point-min))
@@ -1765,7 +1852,7 @@ This gives a table like:
 +  A function ~url-rx-to-string~, which can be used at runtime
 +  A variable ~url-rx-constituents~, containing form definitions to use
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   (define-arx url-rx
     '((http (seq bos (group "http") "://") )
       (https (seq bos (group "https") "://") )
@@ -1779,7 +1866,7 @@ This gives a table like:
 
 The ~url-rx~ macro can then be used to test and select parts of URLs:
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   ;; Accept HTTP or HTTPS
   (let ((url "http://server/path?query#fragment"))
     (when (string-match (url-rx https? host path (optional query) (optional fragment)) url)
@@ -1808,7 +1895,7 @@ The ~url-rx~ macro can then be used to test and select parts of URLs:
 
 This example shows the use of a function to expand a list of strings into a sequence:
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   (define-arx cond-assignment-rx
     '((alpha_ (regexp "[[:alpha:]_]"))
       (alnum_ (regexp "[[:alnum:]_]"))
@@ -1833,13 +1920,13 @@ This example shows the use of a function to expand a list of strings into a sequ
 
 The ~format$~ macro (currently hosted [[https://github.com/alphapapa/elexandria/blob/master/elexandria.el][here]]) allows for easy string interpolation, including optional ~%~ sequences as used by ~format~.  For example, this:
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   (format$ "Amount: ${amount% .02f} $name %s" date)
 #+END_SRC
 
 Expands to:
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   (format "Amount: % .02f %s %s" amount name date)
 #+END_SRC
 
@@ -1911,7 +1998,7 @@ This library provides to formats for xml code generation. The primary form is es
 
 It also provides =esxml-query=:
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   ;; Traditionally people pick one of the following options when faced
   ;; with the task of extracting data from XML in Emacs Lisp:
   ;;
@@ -1952,7 +2039,7 @@ It also provides =esxml-query=:
 
 Example:
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   (defun org-books--amazon (url)
     "Return plist of data for book at Amazon URL."
     (cl-flet ((field (target-field list)
@@ -2004,7 +2091,7 @@ Example:
   </html>
 #+END_SRC
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   (let ((html (elq-read-file "~/kek.html")))
     (elq-el (car (elq-$ ".kek#quux" html))) ; => "input"
     (mapcar 'elq-el (elq-$ ".kek" html)) ; => ("input" "h1" "body" "title" "head")
@@ -2020,7 +2107,7 @@ Example:
 
 Provides lisp-based (rather than string-based) selectors.  This library is primarily aimed at internal =elfeed= use rather than general use, however it may be useful to others.  The author is [[https://github.com/skeeto/elfeed/issues/189][considering]] publishing it separately.
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   ;; Grab the top-level paragraph content from XHTML.
   (xml-query-all '(html body p *) xhtml)
 
@@ -2034,7 +2121,7 @@ This provides a limited set of lisp-based selectors (rather than string-based se
 
 Example:
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   (require 'enlive)
 
   (enlive-text
@@ -2045,13 +2132,24 @@ Example:
 
 Mostly undocumented, providing three main functions:
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports code
   ;; Utility functions for xml parse trees.
   ;; - `xml+-query-all' and `xml+-query-first' are query functions that search
   ;; descendants in node lists. They don't work with namespace-aware parsing yet
   ;;
   ;; - `xml+-node-text' gets node text
 #+END_SRC
+
+# Elisp footer
+
+#+BEGIN_SRC elisp :exports none :tangle epdh.el :eval never
+  ;;;; Footer
+
+  (provide 'epdh)
+
+  ;;; epdh.el ends here
+#+END_SRC
+
 * Blogs                                                               :blogs:
 :PROPERTIES:
 :TOC:      0
@@ -2075,6 +2173,7 @@ One of the top Emacs blogs, frequently updated, and often highlights other inter
 :PROPERTIES:
 :ID:       b6e88f95-8c4f-4d18-a7df-de0820d76291
 :END:
+
 ** [[id:12c7b803-9af2-4010-bca4-06304fbb69c7][Sacha Chua's /Living an Awesome Life/]]
 
 * People                                                             :people:
@@ -2293,6 +2392,11 @@ Yes, please!  Send pull requests and file issues on the [[https://github.com/alp
 
 These resources should be added to the appropriate sections above.  Since it takes some work to catalog and organize them, they are dumped here for future reference.  Pull requests for these are welcome!
 
+** TODO [[https://gitlab.petton.fr/DamienCassou/makel/][Damien Cassou / makel · GitLab]]
+:LOGBOOK:
+-  State "TODO"       from              [2019-01-02 Wed 16:18]
+:END:
+
 ** TODO Articles to add [0/13]
 
 *** TODO [[https://www.lunaryorn.com/posts/read-and-write-files-in-emacs-lisp][Read and write files in Emacs Lisp]] (5 min read)
@@ -2361,6 +2465,7 @@ e.g.:
      +  =outline-minor-mode=
 
 ** TODO [[https://emacs.stackexchange.com/questions/3821/a-faster-method-to-obtain-line-number-at-pos-in-large-buffers][elisp - A faster method to obtain `line-number-at-pos` in large buffers - Emacs Stack Exchange]]
+
 ** TODO Add [[https://github.com/joddie/pcre2el]]
 
 ** TODO Add [[https://github.com/bbatsov/emacs-lisp-style-guide][GitHub - bbatsov/emacs-lisp-style-guide: A community-driven Emacs Lisp style guide]]
@@ -2467,6 +2572,7 @@ Describe things like exporting an Org readme to an Info manual, e.g. like Magit,
 :END:
 
 [2017-07-29 Sat 00:33] Not only should you test installing and using your package in the sandbox, but you should /also/ test then exiting the sandbox Emacs, running it again with the package already installed, and loading it.  This is because, when the sandbox installs the package, the byte-compilation seems to load some things that won't be loaded the same way when only loading the byte-compiled file (especially if you have any ~eval-when-compile~ lines, or unusual macros or things that modify the environment when loaded).
+
 * Code
 :PROPERTIES:
 :TOC:      0
@@ -2492,7 +2598,7 @@ CLOSED: [2017-08-03 Thu 15:11]
 -  State "DONE"       from "TODO"       [2017-08-03 Thu 15:11]
 :END:
 
-#+BEGIN_SRC elisp :results silent
+#+BEGIN_SRC elisp :exports code :results silent
   (require 'org-web-tools)
 
   (defun emacs-package-dev-handbook--archiveis-capture (url)
@@ -2522,14 +2628,23 @@ Maybe use capture templates and refile?
 
 The ToC is generated using [[https://github.com/alphapapa/org-make-toc][org-make-toc]].
 
-** Config
+** Config                                                         :noexport:
 
 I love Emacs and Org mode.  This makes it so easy to make the document...alive!  And automated!  Beautiful.
+
+*** File-local properties
+
+#+PROPERTY: header-args:elisp :tangle no
+
+*** File-local variables
 
 # Local Variables:
 # eval: (require 'org-make-toc)
 # before-save-hook: org-make-toc
-# after-save-hook: (lambda nil (when (org-html-export-to-html) (rename-file "README.html" "index.html" t)))
+# after-save-hook: (lambda nil (org-babel-tangle) (when (org-html-export-to-html) (rename-file "README.html" "index.html" t)))
 # org-export-with-properties: ()
 # org-export-with-title: t
+# org-export-with-broken-links: t
+# org-id-link-to-org-use-id: nil
+# org-export-initial-scope: buffer
 # End:

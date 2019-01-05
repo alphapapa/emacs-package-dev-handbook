@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-12-29 Sat 00:36 -->
+<!-- 2019-01-04 Fri 21:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -390,7 +390,11 @@ for the JavaScript code in this tag.
 <li><a href="#%5B%5Bhttps%3A%2F%2Femacs.cafe%2Femacs%2Fpackage%2F2017%2F08%2F01%2Fbeginend.html%5D%5Bbeginend.el%5D%5D">beginend.el&#xa0;&#xa0;&#xa0;<span class="tag"><span class="navigation">navigation</span></span></a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fmagnars%2Fexpand-region.el%5D%5Bexpand-region.el%3A%20Increase%20selected%20region%20by%20semantic%20units%5D%5D">expand-region.el: Increase selected region by semantic units&#xa0;&#xa0;&#xa0;<span class="tag"><span class="selection">selection</span>&#xa0;<span class="region">region</span></span></a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Femacs-helm%2Fhelm-navi%5D%5Bhelm-navi%3A%20Navigate%20file%20sections%20and%20language%20keywords%20using%20Helm%5D%5D">helm-navi: Navigate file sections and language keywords using Helm&#xa0;&#xa0;&#xa0;<span class="tag"><span class="navigation">navigation</span></span></a></li>
-<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fvictorhge%2Fiedit%5D%5Biedit%3A%20Edit%20multiple%20regions%20simultaneously%20in%20a%20buffer%20or%20a%20region%5D%5D">iedit: Edit multiple regions simultaneously in a buffer or a region&#xa0;&#xa0;&#xa0;<span class="tag"><span class="refactoring">refactoring</span></span></a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fvictorhge%2Fiedit%5D%5Biedit%3A%20Edit%20multiple%20regions%20simultaneously%20in%20a%20buffer%20or%20a%20region%5D%5D">iedit: Edit multiple regions simultaneously in a buffer or a region&#xa0;&#xa0;&#xa0;<span class="tag"><span class="refactoring">refactoring</span></span></a>
+<ul>
+<li><a href="#Refer%20to%20version%20published%20in%20%3Dunpackaged.el%3D"><span class="todo TODO">TODO</span> Refer to version published in <code>unpackaged.el</code></a></li>
+</ul>
+</li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fabo-abo%2Flispy%5D%5Blispy%3A%20short%20and%20sweet%20LISP%20editing%5D%5D">lispy: short and sweet LISP editing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span>&#xa0;<span class="navigation">navigation</span>&#xa0;<span class="parentheses">parentheses</span></span></a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2FIvanMalison%2Fmulti-line%5D%5Bmulti-line%3A%20multi-line%20everything%20from%20function%20invocations%20and%20definitions%20to%20array%20and%20map%20literals%20in%20a%20wide%20variety%20of%20languages%5D%5D">multi-line: multi-line everything from function invocations and definitions to array and map literals in a wide variety of languages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="formatting">formatting</span></span></a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fmagnars%2Fmultiple-cursors.el%5D%5Bmultiple-cursors.el%3A%20Multiple%20cursors%5D%5D">multiple-cursors.el: Multiple cursors&#xa0;&#xa0;&#xa0;<span class="tag"><span class="selection">selection</span>&#xa0;<span class="editing">editing</span></span></a></li>
@@ -424,6 +428,7 @@ for the JavaScript code in this tag.
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2FLindydancer%2Fmulticolumn%5D%5Bmulticolumn%3A%20Multiple%20side-by-side%20windows%20support%5D%5D">multicolumn: Multiple side-by-side windows support</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fphillord%2Flentic%5D%5Blentic%3A%20Create%20views%20of%20the%20same%20content%20in%20two%20buffers%5D%5D">lentic: Create views of the same content in two buffers</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2FWilfred%2Fsuggest.el%5D%5Bsuggest.el%3A%20discover%20elisp%20functions%20that%20do%20what%20you%20want%5D%5D">suggest.el: discover elisp functions that do what you want</a></li>
+<li><a href="#Byte-compile%20and%20load%20directory">Byte-compile and load directory</a></li>
 </ul>
 </li>
 </ul>
@@ -825,6 +830,7 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#Tasks">Tasks</a>
 <ul>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fmakel%2F%5D%5BDamien%20Cassou%20%2F%20makel%20%C2%B7%20GitLab%5D%5D"><span class="todo TODO">TODO</span> Damien Cassou / makel · GitLab</a></li>
 <li><a href="#Articles%20to%20add%20%5B0%2F13%5D"><span class="todo TODO">TODO</span> Articles to add <code>[0/13]</code></a>
 <ul>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fwww.lunaryorn.com%2Fposts%2Fread-and-write-files-in-emacs-lisp%5D%5BRead%20and%20write%20files%20in%20Emacs%20Lisp%5D%5D%20%285%20min%20read%29"><span class="todo TODO">TODO</span> Read and write files in Emacs Lisp (5 min read)</a></li>
@@ -911,7 +917,6 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#Table%20of%20Contents">Table of Contents</a></li>
-<li><a href="#Config">Config</a></li>
 </ul>
 </li>
 </ul>
@@ -938,6 +943,15 @@ You can read this Org file directly on the <a href="https://github.com/alphapapa
 <div id="outline-container-Emacs%20Lisp" class="outline-2">
 <h2 id="Emacs%20Lisp">Emacs Lisp&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h2>
 <div class="outline-text-2" id="text-Emacs%20Lisp">
+<p>
+<b>Note:</b> Usable Emacs Lisp code snippets (not examples) are tangled to the file <code>epdh.el</code>, which may be found in the <a href="https://github.com/alphapapa/emacs-package-dev-handbook/blob/master/epdh.el">repository</a>.  You could even install the file as a package with <a href="https://framagit.org/steckerhalter/quelpa-use-package">quelpa-use-package</a>, like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">use-package</span> <span style="color: #268bd2; font-weight: bold;">epdh</span>
+  <span style="color: #839496; font-weight: bold;">:quelpa</span> <span style="color: #b58900;">(</span><span style="color: #959995df9a66;">epdh</span> <span style="color: #839496; font-weight: bold;">:fetcher</span> <span style="color: #52997866758a;">github</span> <span style="color: #839496; font-weight: bold;">:repo</span> <span style="color: #2aa198;">"alphapapa/emacs-package-dev-handbook"</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
 </div>
 
 <div id="outline-container-Animations%20%2F%20Screencasts" class="outline-3">
@@ -1085,6 +1099,48 @@ It's much faster to use <code>buffer-local-value</code> than <code>with-current-
                                            <span style="color: #859900;">(</span><span style="color: #959995df9a66; text-decoration: underline;">buffer</span><span style="text-decoration: underline;">-</span><span style="color: #a8e97c777baf; text-decoration: underline;">list</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
 </pre>
 </div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Form</th>
+<th scope="col" class="org-left">x faster than next</th>
+<th scope="col" class="org-right">Total runtime</th>
+<th scope="col" class="org-right"># of GCs</th>
+<th scope="col" class="org-right">Total GC runtime</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">buffer-local-value</td>
+<td class="org-left">50.34</td>
+<td class="org-right">0.047657734</td>
+<td class="org-right">0</td>
+<td class="org-right">0.0</td>
+</tr>
+
+<tr>
+<td class="org-left">with-current-buffer</td>
+<td class="org-left">slowest</td>
+<td class="org-right">2.399323452</td>
+<td class="org-right">0</td>
+<td class="org-right">0.0</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
@@ -1215,7 +1271,6 @@ The fastest method here is to call <code>insert</code> once with the result of c
 </div>
 </div>
 </div>
-
 
 <div id="outline-container-Libraries--1" class="outline-4">
 <h4 id="Libraries--1"><a id="ID-523aa766-36a3-4827-a114-6babf72edc6b"></a>Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
@@ -1713,6 +1768,7 @@ Probably should first replace the <code>:bindings</code> part with this, which c
 </div>
 </div>
 </div>
+
 <div id="outline-container-Destructuring" class="outline-3">
 <h3 id="Destructuring">Destructuring&#xa0;&#xa0;&#xa0;<span class="tag"><span class="destructuring">destructuring</span></span></h3>
 <div class="outline-text-3" id="text-Destructuring">
@@ -1751,6 +1807,7 @@ This package provides some extensions for Org's <code>texinfo</code> exporter de
 </div>
 </div>
 </div>
+
 <div id="outline-container-Editing" class="outline-3">
 <h3 id="Editing">Editing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="editing">editing</span></span></h3>
 <div class="outline-text-3" id="text-Editing">
@@ -1856,6 +1913,10 @@ The editor of this handbook uses <code>iedit</code> with these customizations:
                                    <span style="color: #6c71c4;">(</span><span style="color: #959995df9a66; text-decoration: underline;">minibuffer</span><span style="text-decoration: underline;">-</span><span style="color: #a4cca4cca4cc; text-decoration: underline;">message</span> <span style="color: #2aa198;">"iedit session started. Press C-; to end."</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
 </pre>
 </div>
+</div>
+
+<div id="outline-container-Refer%20to%20version%20published%20in%20%3Dunpackaged.el%3D" class="outline-6">
+<h6 id="Refer%20to%20version%20published%20in%20%3Dunpackaged.el%3D"><span class="todo TODO">TODO</span> Refer to version published in <code>unpackaged.el</code></h6>
 </div>
 </div>
 
@@ -1999,6 +2060,31 @@ Chemacs tries to implement this idea in a user-friendly way, taking care of the 
 <div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2FWilfred%2Fsuggest.el%5D%5Bsuggest.el%3A%20discover%20elisp%20functions%20that%20do%20what%20you%20want%5D%5D" class="outline-5">
 <h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2FWilfred%2Fsuggest.el%5D%5Bsuggest.el%3A%20discover%20elisp%20functions%20that%20do%20what%20you%20want%5D%5D"><a id="ID-57ecc064-7291-4cc5-a545-958e2bca295b"></a><a href="https://github.com/Wilfred/suggest.el">suggest.el: discover elisp functions that do what you want</a></h5>
 <div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2FWilfred%2Fsuggest.el%5D%5Bsuggest.el%3A%20discover%20elisp%20functions%20that%20do%20what%20you%20want%5D%5D">
+</div>
+</div>
+
+<div id="outline-container-Byte-compile%20and%20load%20directory" class="outline-5">
+<h5 id="Byte-compile%20and%20load%20directory"><a id="ID-e9b527d5-ae5e-4052-95f3-781ebc1b4ce1"></a>Byte-compile and load directory</h5>
+<div class="outline-text-5" id="text-Byte-compile%20and%20load%20directory">
+<p>
+Byte-compile and load all elisp files in <code>DIRECTORY</code>.  Interactively, directory defaults to <code>default-directory</code> and asks for confirmation.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">epdh/byte-compile-and-load-directory</span> <span style="color: #b58900;">(</span><span style="color: #a4cca4cca4cc;">directory</span><span style="color: #b58900;">)</span>
+  <span style="color: #2aa198;">"Byte-compile and load all elisp files in DIRECTORY.</span>
+<span style="color: #2aa198;">Interactively, directory defaults to `</span><span style="color: #268bd2; font-weight: bold;">default-directory</span><span style="color: #2aa198;">' and asks</span>
+<span style="color: #2aa198;">for confirmation."</span>
+  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">interactive</span> <span style="color: #268bd2;">(</span><span style="color: #a8e97c777baf; text-decoration: underline;">list</span> <span style="color: #959995df9a66;">default</span>-<span style="color: #a4cca4cca4cc;">directory</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
+  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">if</span> <span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">or</span> <span style="color: #6c71c4;">(</span><span style="color: #cb4b16; font-weight: bold;">not</span> <span style="color: #859900;">(</span><span style="color: #a961952b94d0; text-decoration: underline;">called</span><span style="text-decoration: underline;">-</span><span style="color: #a3726d7d5726; text-decoration: underline;">interactively</span><span style="text-decoration: underline;">-</span><span style="color: #9af381d633a6; text-decoration: underline;">p</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
+          <span style="color: #6c71c4;">(</span><span style="color: #9dff5da442ff; text-decoration: underline;">yes</span><span style="text-decoration: underline;">-</span><span style="color: #a961952b94d0; text-decoration: underline;">or</span><span style="text-decoration: underline;">-</span><span style="color: #a19967658391; text-decoration: underline;">no</span><span style="text-decoration: underline;">-</span><span style="color: #9af381d633a6; text-decoration: underline;">p</span> <span style="color: #859900;">(</span><span style="color: #57998258a066; text-decoration: underline;">format</span> <span style="color: #2aa198;">"Compile and load all files in %s?"</span> <span style="color: #a4cca4cca4cc;">directory</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
+      <span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">Not sure if binding `</span><span style="color: #268bd2; font-weight: bold; font-style: italic;">load-path</span><span style="color: #586e75; font-weight: bold; font-style: italic;">' is necessary.</span>
+      <span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">let*</span> <span style="color: #6c71c4;">(</span><span style="color: #859900;">(</span><span style="color: #a4cca4cca4cc;">load</span>-<span style="color: #52997866758a;">path</span> <span style="color: #b58900;">(</span><span style="color: #a19967658391; text-decoration: underline;">cons</span> <span style="color: #a4cca4cca4cc;">directory</span> <span style="color: #a4cca4cca4cc;">load</span>-<span style="color: #52997866758a;">path</span><span style="color: #b58900;">)</span><span style="color: #859900;">)</span>
+             <span style="color: #859900;">(</span><span style="color: #a961952b94d0;">files</span> <span style="color: #b58900;">(</span><span style="color: #a4cca4cca4cc; text-decoration: underline;">directory</span><span style="text-decoration: underline;">-</span><span style="color: #a961952b94d0; text-decoration: underline;">files</span> <span style="color: #a4cca4cca4cc;">directory</span> <span style="color: #859900; font-weight: bold;">'</span><span style="color: #959995df9a66;">t</span> <span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">rx</span> <span style="color: #2aa198;">".el"</span> <span style="color: #a3726d7d5726;">eos</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
+        <span style="color: #6c71c4;">(</span><span style="color: #859900; font-weight: bold;">dolist</span> <span style="color: #859900;">(</span><span style="color: #6e667a661e98;">file</span> <span style="color: #a961952b94d0;">files</span><span style="color: #859900;">)</span>
+          <span style="color: #859900;">(</span><span style="color: #57998258a066; text-decoration: underline;">byte</span><span style="text-decoration: underline;">-</span><span style="color: #9af381d633a6; text-decoration: underline;">compile</span><span style="text-decoration: underline;">-</span><span style="color: #6e667a661e98; text-decoration: underline;">file</span> <span style="color: #6e667a661e98;">file</span> <span style="color: #859900; font-weight: bold;">'</span><span style="color: #a4cca4cca4cc;">load</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
 </div>
 </div>
 </div>
@@ -3554,8 +3640,11 @@ Call this macro from an Org source block and you'll get a results block showing 
                      <span style="color: #859900; font-weight: bold;">'</span><span style="color: #a050824890d1;">hline</span><span style="color: #859900;">)</span>
                <span style="color: #859900;">(</span><span style="color: #859900; font-weight: bold;">cl-loop</span> <span style="color: #71ba8cd29fdd;">for</span> <span style="color: #a8e97c777baf;">row</span> <span style="color: #a961952b94d0;">in</span> <span style="color: #6e667a661e98;">rows</span>
                         <span style="color: #a4cca4cca4cc;">collect</span> <span style="color: #b58900;">(</span><span style="color: #57998258a066; text-decoration: underline;">s</span><span style="text-decoration: underline;">-</span><span style="color: #7a4685f22ca6; text-decoration: underline;">split</span> <span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">rx</span> <span style="color: #6c71c4;">(</span><span style="color: #71ba8cd29fdd; text-decoration: underline;">1</span><span style="text-decoration: underline;">+</span> <span style="color: #6e667a661e98;">space</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span> <span style="color: #a8e97c777baf;">row</span> <span style="color: #859900; font-weight: bold;">'</span><span style="color: #a050824890d1;">omit</span>-<span style="color: #7a4685f22ca6;">nulls</span><span style="color: #b58900;">)</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">Use like this:</span>
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">Use like this:</span>
 <span style="color: #2aa198;">(</span><span style="color: #a050824890d1;">elp</span>-<span style="color: #9af381d633a6;">profile</span> <span style="color: #959995df9a66;">10</span> <span style="color: #859900; font-weight: bold;">'</span><span style="color: #b58900;">(</span><span style="color: #9af381d633a6;">map</span> <span style="color: #9dff5da442ff;">search</span> <span style="color: #959995df9a66;">goto</span>-<span style="color: #6e667a661e98;">char</span> <span style="color: #a19967658391;">car</span> <span style="color: #7a4685f22ca6;">append</span><span style="color: #b58900;">)</span>
   <span style="color: #b58900;">(</span><span style="color: #959995df9a66; text-decoration: underline;">goto</span><span style="text-decoration: underline;">-</span><span style="color: #6e667a661e98; text-decoration: underline;">char</span> <span style="color: #268bd2;">(</span><span style="color: #a3726d7d5726; text-decoration: underline;">point</span><span style="text-decoration: underline;">-</span><span style="color: #a19967658391; text-decoration: underline;">min</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
   <span style="color: #b58900;">(</span><span style="color: #9dff5da442ff; text-decoration: underline;">search</span><span style="text-decoration: underline;">-</span><span style="color: #9dff5da442ff; text-decoration: underline;">forward</span> <span style="color: #2aa198;">"something"</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
@@ -4081,6 +4170,7 @@ Mostly undocumented, providing three main functions:
 </div>
 </div>
 </div>
+
 <div id="outline-container-Blogs" class="outline-2">
 <h2 id="Blogs">Blogs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="blogs">blogs</span></span></h2>
 <div class="outline-text-2" id="text-Blogs">
@@ -4122,6 +4212,7 @@ One of the top Emacs blogs, frequently updated, and often highlights other inter
 <div class="outline-text-3" id="text-%5B%5Bid%3Aa8a8dd9f-4113-4d4c-9882-ac59a4e86c0e%5D%5BOleh%20Krehel%5D%5D%27s%20%5B%5Bhttps%3A%2F%2Foremacs.com%5D%5B%2F%28or%20emacs%2F%5D%5D">
 </div>
 </div>
+
 <div id="outline-container-%5B%5Bid%3A12c7b803-9af2-4010-bca4-06304fbb69c7%5D%5BSacha%20Chua%27s%20%2FLiving%20an%20Awesome%20Life%2F%5D%5D" class="outline-3">
 <h3 id="%5B%5Bid%3A12c7b803-9af2-4010-bca4-06304fbb69c7%5D%5BSacha%20Chua%27s%20%2FLiving%20an%20Awesome%20Life%2F%5D%5D"><a href="#Sacha%20Chua">Sacha Chua's <i>Living an Awesome Life</i></a></h3>
 </div>
@@ -4513,6 +4604,12 @@ These resources should be added to the appropriate sections above.  Since it tak
 </p>
 </div>
 
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fmakel%2F%5D%5BDamien%20Cassou%20%2F%20makel%20%C2%B7%20GitLab%5D%5D" class="outline-3">
+<h3 id="%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fmakel%2F%5D%5BDamien%20Cassou%20%2F%20makel%20%C2%B7%20GitLab%5D%5D"><span class="todo TODO">TODO</span> <a href="https://gitlab.petton.fr/DamienCassou/makel/">Damien Cassou / makel · GitLab</a></h3>
+<div class="outline-text-3" id="text-%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fmakel%2F%5D%5BDamien%20Cassou%20%2F%20makel%20%C2%B7%20GitLab%5D%5D">
+</div>
+</div>
+
 <div id="outline-container-Articles%20to%20add%20%5B0%2F13%5D" class="outline-3">
 <h3 id="Articles%20to%20add%20%5B0%2F13%5D"><span class="todo TODO">TODO</span> Articles to add <code>[0/13]</code></h3>
 <div class="outline-text-3" id="text-Articles%20to%20add%20%5B0%2F13%5D">
@@ -4651,6 +4748,7 @@ e.g.:
 <div id="outline-container-%5B%5Bhttps%3A%2F%2Femacs.stackexchange.com%2Fquestions%2F3821%2Fa-faster-method-to-obtain-line-number-at-pos-in-large-buffers%5D%5Belisp%20-%20A%20faster%20method%20to%20obtain%20%60line-number-at-pos%60%20in%20large%20buffers%20-%20Emacs%20Stack%20Exchange%5D%5D" class="outline-3">
 <h3 id="%5B%5Bhttps%3A%2F%2Femacs.stackexchange.com%2Fquestions%2F3821%2Fa-faster-method-to-obtain-line-number-at-pos-in-large-buffers%5D%5Belisp%20-%20A%20faster%20method%20to%20obtain%20%60line-number-at-pos%60%20in%20large%20buffers%20-%20Emacs%20Stack%20Exchange%5D%5D"><span class="todo TODO">TODO</span> <a href="https://emacs.stackexchange.com/questions/3821/a-faster-method-to-obtain-line-number-at-pos-in-large-buffers">elisp - A faster method to obtain `line-number-at-pos` in large buffers - Emacs Stack Exchange</a></h3>
 </div>
+
 <div id="outline-container-Add%20%5B%5Bhttps%3A%2F%2Fgithub.com%2Fjoddie%2Fpcre2el%5D%5D" class="outline-3">
 <h3 id="Add%20%5B%5Bhttps%3A%2F%2Fgithub.com%2Fjoddie%2Fpcre2el%5D%5D"><span class="todo TODO">TODO</span> Add <a href="https://github.com/joddie/pcre2el">https://github.com/joddie/pcre2el</a></h3>
 </div>
@@ -4824,6 +4922,7 @@ Describe things like exporting an Org readme to an Info manual, e.g. like Magit,
 </div>
 </div>
 </div>
+
 <div id="outline-container-Code" class="outline-2">
 <h2 id="Code">Code</h2>
 <div class="outline-text-2" id="text-Code">
@@ -4887,15 +4986,6 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </p>
 </div>
 </div>
-
-<div id="outline-container-Config" class="outline-3">
-<h3 id="Config">Config</h3>
-<div class="outline-text-3" id="text-Config">
-<p>
-I love Emacs and Org mode.  This makes it so easy to make the document&#x2026;alive!  And automated!  Beautiful.
-</p>
-</div>
-</div>
 </div>
 <div id="footnotes">
 <h2 class="footnotes">Footnotes: </h2>
@@ -4908,7 +4998,7 @@ I love Emacs and Org mode.  This makes it so easy to make the document&#x2026;al
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2018-12-29 Sat 00:36</p>
+<p class="date">Created: 2019-01-04 Fri 21:51</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
