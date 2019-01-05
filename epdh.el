@@ -50,6 +50,24 @@ for confirmation."
         (dolist (file files)
           (byte-compile-file file 'load)))))
 
+(defun epdh/emacs-lisp-macroreplace ()
+  "Replace macro form before or after point with its expansion."
+  (interactive)
+  (if-let* ((beg (point))
+            (end t)
+            (form (or (ignore-errors
+                        (save-excursion
+                          (prog1 (read (current-buffer))
+                            (setq end (point)))))
+                      (ignore-errors
+                        (forward-sexp -1)
+                        (setq beg (point))
+                        (prog1 (read (current-buffer))
+                          (setq end (point))))))
+            (expansion (macroexpand-all form)))
+      (setf (buffer-substring beg end) (pp-to-string expansion))
+    (user-error "Unable to expand")))
+
 ;;;; Profiling / Optimization
 
 (cl-defmacro bench (&optional (times 100000) &rest body)

@@ -718,6 +718,30 @@ Byte-compile and load all elisp files in ~DIRECTORY~.  Interactively, directory 
             (byte-compile-file file 'load)))))
 #+END_SRC
 
+**** =emacs-lisp-macroreplace=
+
+Replace macro form before or after point with its expansion.
+
+#+BEGIN_SRC elisp :exports code :eval no-export :tangle epdh.el
+  (defun epdh/emacs-lisp-macroreplace ()
+    "Replace macro form before or after point with its expansion."
+    (interactive)
+    (if-let* ((beg (point))
+              (end t)
+              (form (or (ignore-errors
+                          (save-excursion
+                            (prog1 (read (current-buffer))
+                              (setq end (point)))))
+                        (ignore-errors
+                          (forward-sexp -1)
+                          (setq beg (point))
+                          (prog1 (read (current-buffer))
+                            (setq end (point))))))
+              (expansion (macroexpand-all form)))
+        (setf (buffer-substring beg end) (pp-to-string expansion))
+      (user-error "Unable to expand")))
+#+END_SRC
+
 ** Highlighting / font-locking                      :highlighting:font_lock:
 
 *** Packages                                                     :packages:
