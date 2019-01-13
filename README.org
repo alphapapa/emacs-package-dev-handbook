@@ -422,6 +422,9 @@ Similar to =dash.el=, but with slightly different behavior that may be useful, a
 | =list-utils-safe-length=           | =list-utils-plist-del=            |
 | =list-utils-safe-equal=            |                                   |
 
+**** [[https://elpa.gnu.org/packages/map.html][map.el: Map manipulation functions]]   :maps:hash_tables:alists:arrays:
+
+=map= is included with Emacs, but the latest version, which may include improvements since the last Emacs release, is now available separately on [[https://elpa.gnu.org/][GNU ELPA]].
 *** Tools                                                           :tools:
 
 **** [[id:f8f0755b-c23b-45ad-98da-780d4044676a][let-alist]]
