@@ -1905,7 +1905,19 @@ This gives a table like:
 :archive.is: http://archive.is/xPWJP
 :END:
 
-*** Libraries
+*** Libraries                                                   :libraries:
+
+**** [[https://elpa.gnu.org/packages/lex.html][lex]]
+
+=lex= is a regular expression matching engine with syntax similar to =rx=.  It appears to be more implemented in elisp than standard Emacs regexp tools, so it may be slower, but its additional capabilities may be useful.
+
+#+BEGIN_QUOTE
+Format of regexps is the same as used for `rx' and `sregex'.  Additions:
+
+-  =(ere RE)= specify regexps using the ERE syntax.
+-  =(inter REs...)= (aka =&=) make a regexp that only matches if all its branches match.  E.g. =(inter (ere ".*a.*") (ere ".*b.*"))= match any string that contain both an =a= and a =b=, in any order.
+-  =(case-fold REs...)= and =(case-sensitive REs...)= make a regexp that is case sensitive or not, regardless of case-fold-search.
+#+END_QUOTE
 
 **** TODO [[https://github.com/joddie/pcre2el][pcre2el: Convert between PCRE, Emacs and rx regexp syntax]]
 

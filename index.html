@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-13 Sun 01:31 -->
+<!-- 2019-01-16 Wed 12:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -627,8 +627,9 @@ for the JavaScript code in this tag.
 <li><a href="#%5B%5Bhttp%3A%2F%2Ffrancismurillo.github.io%2F2017-03-30-Exploring-Emacs-rx-Macro%2F%5D%5BExploring%20Emacs%20rx%20Macro%5D%5D"><span class="todo TODO">TODO</span> Exploring Emacs rx Macro&#xa0;&#xa0;&#xa0;<span class="tag"><span class="rx">rx</span></span></a></li>
 </ul>
 </li>
-<li><a href="#Regular%20expressions--Libraries">Libraries</a>
+<li><a href="#Regular%20expressions--Libraries">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a>
 <ul>
+<li><a href="#%5B%5Bhttps%3A%2F%2Felpa.gnu.org%2Fpackages%2Flex.html%5D%5Blex%5D%5D">lex</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fjoddie%2Fpcre2el%5D%5Bpcre2el%3A%20Convert%20between%20PCRE%2C%20Emacs%20and%20rx%20regexp%20syntax%5D%5D"><span class="todo TODO">TODO</span> pcre2el: Convert between PCRE, Emacs and rx regexp syntax</a></li>
 </ul>
 </li>
@@ -3878,9 +3879,30 @@ This gives a table like:
 </div>
 
 <div id="outline-container-Regular%20expressions--Libraries" class="outline-4">
-<h4 id="Regular%20expressions--Libraries">Libraries</h4>
+<h4 id="Regular%20expressions--Libraries">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
 <div class="outline-text-4" id="text-Regular%20expressions--Libraries">
-</div><div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fjoddie%2Fpcre2el%5D%5Bpcre2el%3A%20Convert%20between%20PCRE%2C%20Emacs%20and%20rx%20regexp%20syntax%5D%5D" class="outline-5">
+</div><div id="outline-container-%5B%5Bhttps%3A%2F%2Felpa.gnu.org%2Fpackages%2Flex.html%5D%5Blex%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttps%3A%2F%2Felpa.gnu.org%2Fpackages%2Flex.html%5D%5Blex%5D%5D"><a href="https://elpa.gnu.org/packages/lex.html">lex</a></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Felpa.gnu.org%2Fpackages%2Flex.html%5D%5Blex%5D%5D">
+<p>
+<code>lex</code> is a regular expression matching engine with syntax similar to <code>rx</code>.  It appears to be more implemented in elisp than standard Emacs regexp tools, so it may be slower, but its additional capabilities may be useful.
+</p>
+
+<blockquote>
+<p>
+Format of regexps is the same as used for `rx' and `sregex'.  Additions:
+</p>
+
+<ul class="org-ul">
+<li><code>(ere RE)</code> specify regexps using the ERE syntax.</li>
+<li><code>(inter REs...)</code> (aka <code>&amp;</code>) make a regexp that only matches if all its branches match.  E.g. <code>(inter (ere ".*a.*") (ere ".*b.*"))</code> match any string that contain both an <code>a</code> and a <code>b</code>, in any order.</li>
+<li><code>(case-fold REs...)</code> and <code>(case-sensitive REs...)</code> make a regexp that is case sensitive or not, regardless of case-fold-search.</li>
+</ul>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fjoddie%2Fpcre2el%5D%5Bpcre2el%3A%20Convert%20between%20PCRE%2C%20Emacs%20and%20rx%20regexp%20syntax%5D%5D" class="outline-5">
 <h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fjoddie%2Fpcre2el%5D%5Bpcre2el%3A%20Convert%20between%20PCRE%2C%20Emacs%20and%20rx%20regexp%20syntax%5D%5D"><span class="todo TODO">TODO</span> <a href="https://github.com/joddie/pcre2el">pcre2el: Convert between PCRE, Emacs and rx regexp syntax</a></h5>
 </div>
 </div>
@@ -5124,7 +5146,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2019-01-13 Sun 01:31</p>
+<p class="date">Created: 2019-01-16 Wed 12:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
