@@ -2813,6 +2813,7 @@ I love Emacs and Org mode.  This makes it so easy to make the document...alive! 
 
 # Local Variables:
 # eval: (require 'org-make-toc)
+# eval: (unpackaged/org-export-html-with-useful-ids-mode 1)
 # before-save-hook: org-make-toc
 # after-save-hook: (lambda nil (org-babel-tangle) (when (org-html-export-to-html) (rename-file "README.html" "index.html" t)))
 # org-export-with-properties: ()
