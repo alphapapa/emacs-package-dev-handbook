@@ -2652,6 +2652,100 @@ Describe things like exporting an Org readme to an Info manual, e.g. like Magit,
 
 [2017-07-29 Sat 00:33] Not only should you test installing and using your package in the sandbox, but you should /also/ test then exiting the sandbox Emacs, running it again with the package already installed, and loading it.  This is because, when the sandbox installs the package, the byte-compilation seems to load some things that won't be loaded the same way when only loading the byte-compiled file (especially if you have any ~eval-when-compile~ lines, or unusual macros or things that modify the environment when loaded).
 
+** TODO Sequence shuffling examples and benchmarks
+*** Benchmarking sequence shuffling
+
+See https://github.com/melpa/melpa/pull/6191#issuecomment-498101336
+
+#+BEGIN_SRC elisp
+(defun key-quiz--shuffle-list (list)
+  "Shuffles LIST randomly, modying it in-place."
+  (dolist (i (reverse (number-sequence 1 (1- (length list)))))
+    (let ((j (random (1+ i)))
+	  (tmp (elt list i)))
+      (setf (elt list i) (elt list j))
+      (setf (elt list j) tmp)))
+  list)
+
+(defun key-quiz--shuffle-list-nreverse (list)
+  "Shuffles LIST randomly, modying it in-place."
+  (dolist (i (nreverse (number-sequence 1 (1- (length list)))))
+    (let ((j (random (1+ i)))
+	  (tmp (elt list i)))
+      (setf (elt list i) (elt list j))
+      (setf (elt list j) tmp)))
+  list)
+
+(defun elfeed--shuffle (seq)
+  "Destructively shuffle SEQ."
+  (let ((n (length seq)))
+    (prog1 seq                  ; don't use dotimes result (bug#16206)
+      (dotimes (i n)
+        (cl-rotatef (elt seq i) (elt seq (+ i (random (- n i)))))))))
+
+(defun faster-seq-sort-by (function pred sequence)
+  "Sort SEQUENCE using PRED as a comparison function.
+Elements of SEQUENCE are transformed by FUNCTION before being
+sorted.  FUNCTION must be a function of one argument."
+  ;; This version is modified to avoid calling "random" twice every time the predicate is called.
+  (seq-map 'cdr
+           (sort (seq-map (lambda (x) (cons (funcall function x) x)) sequence)
+                 (lambda (a b)
+                   (funcall pred (car a) (car b))))))
+
+(defun seq-sort-by--shuffle (seq)
+  (seq-sort-by (lambda (_) (random)) #'<= seq))
+
+(defun faster-seq-sort-by--shuffle (seq)
+  (faster-seq-sort-by (lambda (_) (random)) #'<= seq))
+#+END_SRC
+
+#+RESULTS:
+: faster-seq-sort-by--shuffle
+
+**** Lists
+
+#+BEGIN_SRC elisp
+  (let ((big-list (seq-into (seq-take obarray 5000) 'list)))
+    (bench-multi-lexical :times 100
+      :forms (("key-quiz--shuffle-list" (key-quiz--shuffle-list big-list))
+              ("key-quiz--shuffle-list-nreverse" (key-quiz--shuffle-list-nreverse big-list))
+              ("elfeed--shuffle" (elfeed--shuffle big-list))
+              ("seq-sort-by--shuffle" (seq-sort-by--shuffle big-list))
+              ("faster-seq-sort-by--shuffle" (faster-seq-sort-by--shuffle big-list)))))
+#+END_SRC
+
+#+RESULTS:
+| Form                            | x faster than next | Total runtime | # of GCs | Total GC runtime |
+|---------------------------------+--------------------+---------------+----------+------------------|
+| faster-seq-sort-by--shuffle     |               1.38 |      1.725037 |        0 |                0 |
+| seq-sort-by--shuffle            |              15.01 |      2.378234 |        0 |                0 |
+| key-quiz--shuffle-list-nreverse |               1.03 |     35.703316 |       27 |        17.892723 |
+| key-quiz--shuffle-list          |               1.24 |     36.630320 |       28 |        18.768216 |
+| elfeed--shuffle                 |            slowest |     45.439405 |       32 |        21.130538 |
+
+
+**** Vectors
+
+#+BEGIN_SRC elisp
+  (let ((big-list (seq-into (seq-take obarray 5000) 'vector)))
+    (bench-multi-lexical :times 100
+      :forms (("key-quiz--shuffle-list" (key-quiz--shuffle-list big-list))
+              ("key-quiz--shuffle-list-nreverse" (key-quiz--shuffle-list-nreverse big-list))
+              ("elfeed--shuffle" (elfeed--shuffle big-list))
+              ("seq-sort-by--shuffle" (seq-sort-by--shuffle big-list))
+              ("faster-seq-sort-by--shuffle" (faster-seq-sort-by--shuffle big-list)))))
+#+END_SRC
+
+#+RESULTS:
+| Form                            | x faster than next | Total runtime | # of GCs | Total GC runtime |
+|---------------------------------+--------------------+---------------+----------+------------------|
+| faster-seq-sort-by--shuffle     |               1.39 |      1.718990 |        0 |                0 |
+| seq-sort-by--shuffle            |              10.42 |      2.390860 |        0 |                0 |
+| key-quiz--shuffle-list-nreverse |               1.02 |     24.918774 |       27 |        17.971779 |
+| key-quiz--shuffle-list          |               1.10 |     25.452665 |       28 |        18.487015 |
+| elfeed--shuffle                 |            slowest |     27.991305 |       32 |        21.215224 |
+
 * Code
 :PROPERTIES:
 :TOC:      0
