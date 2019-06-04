@@ -31,8 +31,10 @@
 ;;;; Requirements
 
 (require 'cl-lib)
+(require 'subr-x)
 
 (require 'dash)
+(require 'dash-functional)
 (require 's)
 
 ;;;; General tools
@@ -43,7 +45,7 @@
 Interactively, directory defaults to `default-directory' and asks
 for confirmation."
   (interactive (list default-directory))
-  (if (or (not (called-interactively-p))
+  (if (or (not (called-interactively-p 'any))
           (yes-or-no-p (format "Compile and load all files in %s?" directory)))
       ;; Not sure if binding `load-path' is necessary.
       (let* ((load-path (cons directory load-path))
@@ -113,7 +115,7 @@ avoid counting existing garbage which needs collection."
         (header '(("Form" "x faster than next" "Total runtime" "# of GCs" "Total GC runtime")
                   hline))
         ;; Copy forms so that a subsequent call of the macro will get the original forms.
-        (forms (copy-list forms))
+        (forms (cl-copy-list forms))
         (descriptions (cl-loop for form in forms
                                for i from 0
                                collect (if (stringp (car form))
@@ -135,7 +137,7 @@ avoid counting existing garbage which needs collection."
                                                                                 `(puthash ,description ,form bench-multi-results)
                                                                               form))))))
                                        (lambda (a b)
-                                         (< (second a) (second b))))))
+                                         (< (cl-second a) (cl-second b))))))
              ,(when ensure-equal
                 `(cl-loop with ,keys = (hash-table-keys bench-multi-results)
                           for i from 0 to (- (length ,keys) 2)
@@ -168,19 +170,19 @@ avoid counting existing garbage which needs collection."
 
 (defun bench-multi-process-results (results)
   "Return sorted RESULTS with factors added."
-  (setq results (sort results (-on #'< #'second)))
+  (setq results (sort results (-on #'< #'cl-second)))
   (cl-loop with length = (length results)
            for i from 0 to (1- length)
            for description = (car (nth i results))
            for factor = (if (< i (1- length))
-                            (format "%.2f" (/ (second (nth (1+ i) results))
-                                              (second (nth i results))))
+                            (format "%.2f" (/ (cl-second (nth (1+ i) results))
+                                              (cl-second (nth i results))))
                           "slowest")
            collect (append (list description factor)
-                           (list (format "%.6f" (second (nth i results)))
-                                 (third (nth i results))
-                                 (if (> (fourth (nth i results)) 0)
-                                     (format "%.6f" (fourth (nth i results)))
+                           (list (format "%.6f" (cl-second (nth i results)))
+                                 (cl-third (nth i results))
+                                 (if (> (cl-fourth (nth i results)) 0)
+                                     (format "%.6f" (cl-fourth (nth i results)))
                                    0)))))
 
 ;;;###autoload
