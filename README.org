@@ -1526,22 +1526,22 @@ These macros make comparing multiple forms easy:
   ;;;###autoload
   (cl-defmacro bench-multi (&key (times 1) forms ensure-equal raw)
     "Return Org table as a list with benchmark results for FORMS.
-   Runs FORMS with `benchmark-run-compiled' for TIMES iterations.
+  Runs FORMS with `benchmark-run-compiled' for TIMES iterations.
 
-   When ENSURE-EQUAL is non-nil, the results of FORMS are compared,
-   and an error is raised if they aren't `equal'. If the results
-   are sequences, the difference between them is shown with
-   `seq-difference'.
+  When ENSURE-EQUAL is non-nil, the results of FORMS are compared,
+  and an error is raised if they aren't `equal'. If the results are
+  sequences, the difference between them is shown with
+  `seq-difference'.
 
-   When RAW is non-nil, the raw results from
-   `benchmark-run-compiled' are returned instead of an Org table
-   list.
+  When RAW is non-nil, the raw results from
+  `benchmark-run-compiled' are returned instead of an Org table
+  list.
 
-   If the first element of a form is a string, it's used as the
-   form's description in the bench-multi-results; otherwise, forms
-   are numbered from 0.
+  If the first element of a form is a string, it's used as the
+  form's description in the bench-multi-results; otherwise, forms
+  are numbered from 0.
 
-   Before each form is run, `garbage-collect' is called."
+  Before each form is run, `garbage-collect' is called."
     ;; MAYBE: Since `bench-multi-lexical' byte-compiles the file, I'm not sure if
     ;; `benchmark-run-compiled' is necessary over `benchmark-run', or if it matters.
     (declare (indent defun))
