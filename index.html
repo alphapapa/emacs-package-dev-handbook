@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-07-12 Fri 06:51 -->
+<!-- 2019-07-12 Fri 06:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -302,6 +302,7 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#Collections%20%28lists%2C%20vectors%2C%20hash-tables%2C%20etc.%29--Best%20practices">Best practices&#xa0;&#xa0;&#xa0;<span class="tag"><span class="best_practices">best_practices</span></span></a>
 <ul>
+<li><a href="#Collecting%20items%20into%20a%20list">Collecting items into a list&#xa0;&#xa0;&#xa0;<span class="tag"><span class="lists">lists</span></span></a></li>
 <li><a href="#Filtering%20a%20list">Filtering a list</a></li>
 </ul>
 </li>
@@ -1348,7 +1349,65 @@ users, as it provides familiar and intuitive interfaces with usual keys (for mov
 </div><div id="outline-container-Collections%20%28lists%2C%20vectors%2C%20hash-tables%2C%20etc.%29--Best%20practices" class="outline-4">
 <h4 id="Collections%20%28lists%2C%20vectors%2C%20hash-tables%2C%20etc.%29--Best%20practices">Best practices&#xa0;&#xa0;&#xa0;<span class="tag"><span class="best_practices">best_practices</span></span></h4>
 <div class="outline-text-4" id="text-Collections%20%28lists%2C%20vectors%2C%20hash-tables%2C%20etc.%29--Best%20practices">
-</div><div id="outline-container-Filtering%20a%20list" class="outline-5">
+</div><div id="outline-container-Collecting%20items%20into%20a%20list" class="outline-5">
+<h5 id="Collecting%20items%20into%20a%20list">Collecting items into a list&#xa0;&#xa0;&#xa0;<span class="tag"><span class="lists">lists</span></span></h5>
+<div class="outline-text-5" id="text-Collecting%20items%20into%20a%20list">
+<p>
+Here are some examples of fast ways to collect items into a list.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 1: </span>Benchmarking code that collects items into a list.</label><pre class="src src-elisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">bench-multi-lexical</span> <span style="color: #839496; font-weight: bold;">:times</span> <span style="color: #9af381d633a6;">500000</span> <span style="color: #839496; font-weight: bold;">:ensure-equal</span> <span style="color: #959995df9a66;">t</span>
+  <span style="color: #839496; font-weight: bold;">:forms</span> <span style="color: #b58900;">(</span><span style="color: #268bd2;">(</span><span style="color: #2aa198;">"cl-loop"</span> <span style="color: #6c71c4;">(</span><span style="color: #859900; font-weight: bold;">let</span> <span style="color: #859900;">(</span><span style="color: #b58900;">(</span><span style="color: #a8e97c777baf;">l</span> <span style="color: #859900; font-weight: bold;">'</span><span style="color: #268bd2;">(</span><span style="color: #71ba8cd29fdd;">1</span> <span style="color: #9dff5da442ff;">2</span> <span style="color: #71ba8cd29fdd;">3</span> <span style="color: #7a4685f22ca6;">4</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #859900;">)</span>
+                       <span style="color: #859900;">(</span><span style="color: #859900; font-weight: bold;">cl-loop</span> <span style="color: #71ba8cd29fdd;">for</span> <span style="color: #68717c277aa9;">val</span> <span style="color: #a961952b94d0;">in</span> <span style="color: #a8e97c777baf;">l</span>
+                                <span style="color: #a4cca4cca4cc;">collect</span> <span style="color: #68717c277aa9;">val</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
+          <span style="color: #268bd2;">(</span><span style="color: #2aa198;">"push-nreverse with setf/pop"</span> <span style="color: #6c71c4;">(</span><span style="color: #859900; font-weight: bold;">let</span> <span style="color: #859900;">(</span><span style="color: #b58900;">(</span><span style="color: #a8e97c777baf;">l</span> <span style="color: #859900; font-weight: bold;">'</span><span style="color: #268bd2;">(</span><span style="color: #71ba8cd29fdd;">1</span> <span style="color: #9dff5da442ff;">2</span> <span style="color: #71ba8cd29fdd;">3</span> <span style="color: #7a4685f22ca6;">4</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
+                                              <span style="color: #68717c277aa9;">val</span> <span style="color: #a8e97c777baf;">r</span><span style="color: #859900;">)</span>
+                                          <span style="color: #859900;">(</span><span style="color: #859900; font-weight: bold;">while</span> <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">setf</span> <span style="color: #68717c277aa9;">val</span> <span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">pop</span> <span style="color: #a8e97c777baf;">l</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
+                                            <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">push</span> <span style="color: #68717c277aa9;">val</span> <span style="color: #a8e97c777baf;">r</span><span style="color: #b58900;">)</span><span style="color: #859900;">)</span>
+                                          <span style="color: #859900;">(</span><span style="color: #7a4685f22ca6; text-decoration: underline;">nreverse</span> <span style="color: #a8e97c777baf;">r</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
+          <span style="color: #268bd2;">(</span><span style="color: #2aa198;">"push-nreverse with when-let*/pop"</span> <span style="color: #6c71c4;">(</span><span style="color: #859900; font-weight: bold;">let</span> <span style="color: #859900;">(</span><span style="color: #b58900;">(</span><span style="color: #a8e97c777baf;">l</span> <span style="color: #859900; font-weight: bold;">'</span><span style="color: #268bd2;">(</span><span style="color: #71ba8cd29fdd;">1</span> <span style="color: #9dff5da442ff;">2</span> <span style="color: #71ba8cd29fdd;">3</span> <span style="color: #7a4685f22ca6;">4</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
+                                                    <span style="color: #a8e97c777baf;">r</span><span style="color: #859900;">)</span>
+                                                <span style="color: #859900;">(</span><span style="color: #859900; font-weight: bold;">while</span> <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">when-let*</span> <span style="color: #268bd2;">(</span><span style="color: #6c71c4;">(</span><span style="color: #68717c277aa9;">val</span> <span style="color: #859900;">(</span><span style="color: #859900; font-weight: bold;">pop</span> <span style="color: #a8e97c777baf;">l</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
+                                                         <span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">push</span> <span style="color: #68717c277aa9;">val</span> <span style="color: #a8e97c777baf;">r</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #859900;">)</span>
+                                                <span style="color: #859900;">(</span><span style="color: #7a4685f22ca6; text-decoration: underline;">nreverse</span> <span style="color: #a8e97c777baf;">r</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
+          <span style="color: #268bd2;">(</span><span style="color: #2aa198;">"</span><span style="color: #2aa198; text-decoration: underline;">nconc</span><span style="color: #2aa198;"> with when-let*/pop"</span> <span style="color: #6c71c4;">(</span><span style="color: #859900; font-weight: bold;">let</span> <span style="color: #859900;">(</span><span style="color: #b58900;">(</span><span style="color: #a8e97c777baf;">l</span> <span style="color: #859900; font-weight: bold;">'</span><span style="color: #268bd2;">(</span><span style="color: #71ba8cd29fdd;">1</span> <span style="color: #9dff5da442ff;">2</span> <span style="color: #71ba8cd29fdd;">3</span> <span style="color: #7a4685f22ca6;">4</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
+                                            <span style="color: #a8e97c777baf;">r</span><span style="color: #859900;">)</span>
+                                        <span style="color: #859900;">(</span><span style="color: #859900; font-weight: bold;">while</span> <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">when-let*</span> <span style="color: #268bd2;">(</span><span style="color: #6c71c4;">(</span><span style="color: #68717c277aa9;">val</span> <span style="color: #859900;">(</span><span style="color: #859900; font-weight: bold;">pop</span> <span style="color: #a8e97c777baf;">l</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
+                                                 <span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">setf</span> <span style="color: #a8e97c777baf;">r</span> <span style="color: #6c71c4;">(</span><span style="color: #9dff5da442ff; text-decoration: underline;">nconc</span> <span style="color: #a8e97c777baf;">r</span> <span style="color: #859900;">(</span><span style="color: #a8e97c777baf; text-decoration: underline;">list</span> <span style="color: #68717c277aa9;">val</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #859900;">)</span>
+                                        <span style="color: #a8e97c777baf;">r</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
+          <span style="color: #268bd2;">(</span><span style="color: #2aa198;">"</span><span style="color: #2aa198; text-decoration: underline;">nconc</span><span style="color: #2aa198;"> with setf/pop"</span> <span style="color: #6c71c4;">(</span><span style="color: #859900; font-weight: bold;">let</span> <span style="color: #859900;">(</span><span style="color: #b58900;">(</span><span style="color: #a8e97c777baf;">l</span> <span style="color: #859900; font-weight: bold;">'</span><span style="color: #268bd2;">(</span><span style="color: #71ba8cd29fdd;">1</span> <span style="color: #9dff5da442ff;">2</span> <span style="color: #71ba8cd29fdd;">3</span> <span style="color: #7a4685f22ca6;">4</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
+                                            <span style="color: #68717c277aa9;">val</span> <span style="color: #a8e97c777baf;">r</span><span style="color: #859900;">)</span>
+                                        <span style="color: #859900;">(</span><span style="color: #859900; font-weight: bold;">while</span> <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">setf</span> <span style="color: #68717c277aa9;">val</span> <span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">pop</span> <span style="color: #a8e97c777baf;">l</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
+                                          <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">setf</span> <span style="color: #a8e97c777baf;">r</span> <span style="color: #268bd2;">(</span><span style="color: #9dff5da442ff; text-decoration: underline;">nconc</span> <span style="color: #a8e97c777baf;">r</span> <span style="color: #6c71c4;">(</span><span style="color: #a8e97c777baf; text-decoration: underline;">list</span> <span style="color: #68717c277aa9;">val</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #859900;">)</span>
+                                        <span style="color: #a8e97c777baf;">r</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+As is usually the case, the <code>cl-loop</code> macro expands to the most efficient code, which uses <code>(setq val (car ...</code>, <code>push</code>, and <code>nreverse</code>:
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 2: </span>Expansion of <code>cl-loop</code> form in the benchmark.</label><pre class="src src-elisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">cl-block</span> <span style="color: #a4cca4cca4cc;">nil</span>
+  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">let*</span> <span style="color: #268bd2;">(</span><span style="color: #6c71c4;">(</span>--<span style="color: #a8e97c777baf;">cl</span>-<span style="color: #a961952b94d0;">var</span>-- <span style="color: #a8e97c777baf;">l</span><span style="color: #6c71c4;">)</span>
+         <span style="color: #6c71c4;">(</span><span style="color: #68717c277aa9;">val</span> <span style="color: #a4cca4cca4cc;">nil</span><span style="color: #6c71c4;">)</span>
+         <span style="color: #6c71c4;">(</span>--<span style="color: #a8e97c777baf;">cl</span>-<span style="color: #a961952b94d0;">var</span>-- <span style="color: #a4cca4cca4cc;">nil</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
+    <span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">while</span> <span style="color: #6c71c4;">(</span><span style="color: #a8e97c777baf; text-decoration: underline;">consp</span> --<span style="color: #a8e97c777baf;">cl</span>-<span style="color: #a961952b94d0;">var</span>--<span style="color: #6c71c4;">)</span>
+      <span style="color: #6c71c4;">(</span><span style="color: #859900; font-weight: bold;">setq</span> <span style="color: #68717c277aa9;">val</span> <span style="color: #859900;">(</span><span style="color: #a19967658391; text-decoration: underline;">car</span> --<span style="color: #a8e97c777baf;">cl</span>-<span style="color: #a961952b94d0;">var</span>--<span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
+      <span style="color: #6c71c4;">(</span><span style="color: #859900; font-weight: bold;">push</span> <span style="color: #68717c277aa9;">val</span> --<span style="color: #a8e97c777baf;">cl</span>-<span style="color: #a961952b94d0;">var</span>--<span style="color: #6c71c4;">)</span>
+      <span style="color: #6c71c4;">(</span><span style="color: #859900; font-weight: bold;">setq</span> --<span style="color: #a8e97c777baf;">cl</span>-<span style="color: #a961952b94d0;">var</span>-- <span style="color: #859900;">(</span><span style="color: #71ba8cd29fdd; text-decoration: underline;">cdr</span> --<span style="color: #a8e97c777baf;">cl</span>-<span style="color: #a961952b94d0;">var</span>--<span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
+    <span style="color: #268bd2;">(</span><span style="color: #7a4685f22ca6; text-decoration: underline;">nreverse</span> --<span style="color: #a8e97c777baf;">cl</span>-<span style="color: #a961952b94d0;">var</span>--<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+However, in some cases <code>cl-loop</code> may expand to code which uses <code>nconc</code>, which, as the benchmark shows, is much slower.  In that case, you may write the loop without <code>cl-loop</code> to avoid using <code>nconc</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-Filtering%20a%20list" class="outline-5">
 <h5 id="Filtering%20a%20list">Filtering a list</h5>
 <div class="outline-text-5" id="text-Filtering%20a%20list">
 <p>
@@ -5246,7 +5305,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2019-07-12 Fri 06:51</p>
+<p class="date">Created: 2019-07-12 Fri 06:52</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

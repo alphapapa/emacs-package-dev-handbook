@@ -266,6 +266,64 @@ users, as it provides familiar and intuitive interfaces with usual keys (for mov
 
 *** Best practices                                         :best_practices:
 
+**** Collecting items into a list                                  :lists:
+
+Here are some examples of fast ways to collect items into a list.
+
+#+CAPTION: Benchmarking code that collects items into a list.
+#+BEGIN_SRC elisp
+  (bench-multi-lexical :times 500000 :ensure-equal t
+    :forms (("cl-loop" (let ((l '(1 2 3 4)))
+                         (cl-loop for val in l
+                                  collect val)))
+            ("push-nreverse with setf/pop" (let ((l '(1 2 3 4))
+                                                val r)
+                                            (while (setf val (pop l))
+                                              (push val r))
+                                            (nreverse r)))
+            ("push-nreverse with when-let*/pop" (let ((l '(1 2 3 4))
+                                                      r)
+                                                  (while (when-let* ((val (pop l)))
+                                                           (push val r)))
+                                                  (nreverse r)))
+            ("nconc with when-let*/pop" (let ((l '(1 2 3 4))
+                                              r)
+                                          (while (when-let* ((val (pop l)))
+                                                   (setf r (nconc r (list val)))))
+                                          r))
+            ("nconc with setf/pop" (let ((l '(1 2 3 4))
+                                              val r)
+                                          (while (setf val (pop l))
+                                            (setf r (nconc r (list val))))
+                                          r))))
+#+END_SRC
+
+#+RESULTS:
+| Form                             | x faster than next | Total runtime | # of GCs | Total GC runtime |
+|----------------------------------+--------------------+---------------+----------+------------------|
+| cl-loop                          |               1.01 |      0.154578 |        0 |                0 |
+| push-nreverse with setf/pop      |               1.02 |      0.155930 |        0 |                0 |
+| push-nreverse with when-let*/pop |               1.23 |      0.159211 |        0 |                0 |
+| nconc with setf/pop              |               1.06 |      0.195685 |        0 |                0 |
+| nconc with when-let*/pop         |            slowest |      0.207103 |        0 |                0 |
+
+As is usually the case, the =cl-loop= macro expands to the most efficient code, which uses =(setq val (car ...=, =push=, and =nreverse=:
+
+#+CAPTION: Expansion of =cl-loop= form in the benchmark.
+#+BEGIN_SRC elisp
+  (cl-block nil
+    (let* ((--cl-var-- l)
+           (val nil)
+           (--cl-var-- nil))
+      (while (consp --cl-var--)
+        (setq val (car --cl-var--))
+        (push val --cl-var--)
+        (setq --cl-var-- (cdr --cl-var--)))
+      (nreverse --cl-var--)))
+#+END_SRC
+
+However, in some cases =cl-loop= may expand to code which uses =nconc=, which, as the benchmark shows, is much slower.  In that case, you may write the loop without =cl-loop= to avoid using =nconc=.
+
 **** Filtering a list
 
 Using ~-select~ from =dash.el= seems to be the fastest way:
