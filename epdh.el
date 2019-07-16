@@ -225,6 +225,30 @@ Calls `bench-multi' and `bench-multi-lexical', which see."
              (bench-multi-process-results (append dynamic lexical)))))
 
 ;;;###autoload
+(cl-defmacro bench-multi-lets (&key (times 1) lets forms ensure-equal)
+  "Benchmark FORMS in each of lexical environments defined in LETS.
+LETS is a list of (\"NAME\" BINDING-FORM) forms.
+
+FORMS is a list of (\"NAME\" FORM) forms.
+
+Calls `bench-multi-lexical', which see."
+  (declare (indent defun))
+  (let ((benchmarks (cl-loop for (let-name let) in lets
+                             collect (list 'list let-name
+                                           `(let ,let
+                                              (bench-multi-lexical :times ,times :ensure-equal ,ensure-equal :raw t
+                                                :forms ,forms))))))
+    `(let* ((results (list ,@benchmarks))
+            (header '("Form" "x faster than next" "Total runtime" "# of GCs" "Total GC runtime"))
+            (results (cl-loop for (let-name let) in results
+                              append (cl-loop for result in-ref let
+                                              do (setf (car result) (format "%s: %s" let-name (car result)))
+                                              collect result))))
+       (append (list header)
+               (list 'hline)
+               (bench-multi-process-results results)))))
+
+;;;###autoload
 (defmacro elp-profile (times prefixes &rest body)
   (declare (indent defun))
   `(let (output)

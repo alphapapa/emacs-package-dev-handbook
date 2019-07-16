@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-07-12 Fri 06:52 -->
+<!-- 2019-07-20 Sat 17:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -605,6 +605,7 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#~bench-multi-lexical~"><code>bench-multi-lexical</code></a></li>
 <li><a href="#~bench-dynamic-vs-lexical-binding~"><code>bench-dynamic-vs-lexical-binding</code></a></li>
+<li><a href="#~bench-multi-lets~"><code>bench-multi-lets</code></a></li>
 </ul>
 </li>
 <li><a href="#%3Delp-profile%3D"><code>elp-profile</code></a></li>
@@ -2663,7 +2664,7 @@ You should always include a readme with your project.  Typically it will be incl
 </p>
 
 <div class="org-src-container">
-<pre class="src src-org"><span style="color: #586e75; background-color: #0c1e24; font-weight: bold; font-style: italic;">#+PROPERTY: LOGGING nil</span>
+<pre class="src src-org"><span style="color: #586e75; background-color: #0c1e24;">#+PROPERTY: LOGGING nil</span>
 
 <span style="color: #586e75; font-weight: bold; font-style: italic;"># Note: This readme works with the org-make-toc <a href="https://github.com/alphapapa/org-make-toc">&lt;https://github.com/alphapapa/org-make-toc&gt;</a> package, which automatically updates the table of contents.</span>
 
@@ -2713,7 +2714,7 @@ If you installed from MELPA, you're done.  Just run one of the commands below.
 
 <span style="color: #586e75; background-color: #0c1e24; text-decoration: underline;">  #+BEGIN_SRC elisp</span>
 <span style="color: #2aa198; background-color: #0e2329;">(</span><span style="color: #859900; background-color: #0e2329; font-weight: bold;">require</span><span style="color: #586e75; background-color: #0e2329;"> </span><span style="color: #859900; background-color: #0e2329; font-weight: bold;">'</span><span style="color: #268bd2; background-color: #0e2329; font-weight: bold;">package-name</span><span style="color: #2aa198; background-color: #0e2329;">)</span>
-<span style="color: #586e75; background-color: #0c1e24; font-weight: bold; font-style: italic; text-decoration: overline;">  #+END_SRC</span>
+<span style="color: #586e75; background-color: #0c1e24; text-decoration: overline;">  #+END_SRC</span>
 
 <span style="color: #a94058fc37c0; background-color: #073642; font-weight: bold; text-decoration: overline;">* Usage</span>
 <span style="color: #586e75; font-size: 90%; font-weight: bold;">:PROPERTIES:</span>
@@ -3300,7 +3301,7 @@ These macros make comparing multiple forms easy:
              <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">if</span> ,<span style="color: #52997866758a;">raw</span>
                  ,<span style="color: #a3726d7d5726;">result</span>-<span style="color: #6e667a661e98;">times</span>
                <span style="color: #268bd2;">(</span><span style="color: #7a4685f22ca6; text-decoration: underline;">append</span> <span style="color: #859900; font-weight: bold;">'</span>,<span style="color: #90cc76662432;">header</span>
-                       <span style="color: #6c71c4;">(</span><span style="color: #a050824890d1;">bench</span>-<span style="color: #a3726d7d5726;">multi</span>-<span style="color: #959995df9a66;">process</span>-<span style="color: #959995df9a66;">results</span> ,<span style="color: #a3726d7d5726;">result</span>-<span style="color: #6e667a661e98;">times</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
+                       <span style="color: #6c71c4;">(</span><span style="color: #a050824890d1; text-decoration: underline;">bench</span><span style="text-decoration: underline;">-</span><span style="color: #a3726d7d5726; text-decoration: underline;">multi</span><span style="text-decoration: underline;">-</span><span style="color: #959995df9a66; text-decoration: underline;">process</span><span style="text-decoration: underline;">-</span><span style="color: #959995df9a66; text-decoration: underline;">results</span> ,<span style="color: #a3726d7d5726;">result</span>-<span style="color: #6e667a661e98;">times</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
        <span style="color: #6c71c4;">(</span><span style="color: #7a4685f22ca6; text-decoration: underline;">unintern</span> <span style="color: #859900; font-weight: bold;">'</span><span style="color: #a050824890d1;">bench</span>-<span style="color: #a3726d7d5726;">multi</span>-<span style="color: #959995df9a66;">results</span> <span style="color: #a4cca4cca4cc;">nil</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
 
 <span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">bench-multi-process-results</span> <span style="color: #b58900;">(</span><span style="color: #959995df9a66;">results</span><span style="color: #b58900;">)</span>
@@ -3728,7 +3729,7 @@ This macro compares dynamic and lexical binding.
               <span style="color: #7a4685f22ca6;">do</span> <span style="color: #6c71c4;">(</span><span style="color: #859900; font-weight: bold;">setf</span> <span style="color: #859900;">(</span><span style="color: #a19967658391; text-decoration: underline;">car</span> <span style="color: #a3726d7d5726;">result</span><span style="color: #859900;">)</span> <span style="color: #859900;">(</span><span style="color: #57998258a066; text-decoration: underline;">format</span> <span style="color: #2aa198;">"Lexical: %s"</span> <span style="color: #b58900;">(</span><span style="color: #a19967658391; text-decoration: underline;">car</span> <span style="color: #a3726d7d5726;">result</span><span style="color: #b58900;">)</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
      <span style="color: #268bd2;">(</span><span style="color: #7a4685f22ca6; text-decoration: underline;">append</span> <span style="color: #6c71c4;">(</span><span style="color: #a8e97c777baf; text-decoration: underline;">list</span> <span style="color: #90cc76662432;">header</span><span style="color: #6c71c4;">)</span>
              <span style="color: #6c71c4;">(</span><span style="color: #a8e97c777baf; text-decoration: underline;">list</span> <span style="color: #859900; font-weight: bold;">'</span><span style="color: #a050824890d1;">hline</span><span style="color: #6c71c4;">)</span>
-             <span style="color: #6c71c4;">(</span><span style="color: #a050824890d1;">bench</span>-<span style="color: #a3726d7d5726;">multi</span>-<span style="color: #959995df9a66;">process</span>-<span style="color: #959995df9a66;">results</span> <span style="color: #859900;">(</span><span style="color: #7a4685f22ca6; text-decoration: underline;">append</span> <span style="color: #57998258a066;">dynamic</span> <span style="color: #71ba8cd29fdd;">lexical</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+             <span style="color: #6c71c4;">(</span><span style="color: #a050824890d1; text-decoration: underline;">bench</span><span style="text-decoration: underline;">-</span><span style="color: #a3726d7d5726; text-decoration: underline;">multi</span><span style="text-decoration: underline;">-</span><span style="color: #959995df9a66; text-decoration: underline;">process</span><span style="text-decoration: underline;">-</span><span style="color: #959995df9a66; text-decoration: underline;">results</span> <span style="color: #859900;">(</span><span style="color: #7a4685f22ca6; text-decoration: underline;">append</span> <span style="color: #57998258a066;">dynamic</span> <span style="color: #71ba8cd29fdd;">lexical</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
 </pre>
 </div>
 
@@ -3737,7 +3738,7 @@ Example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #2aa198;">(</span><span style="color: #a050824890d1;">bench</span>-<span style="color: #57998258a066;">dynamic</span>-<span style="color: #a4cca4cca4cc;">vs</span>-<span style="color: #71ba8cd29fdd;">lexical</span>-<span style="color: #9dff5da442ff;">binding</span> <span style="color: #839496; font-weight: bold;">:times</span> <span style="color: #71ba8cd29fdd;">1000</span> <span style="color: #839496; font-weight: bold;">:ensure-equal</span> <span style="color: #959995df9a66;">t</span>
+<pre class="src src-elisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">bench-dynamic-vs-lexical-binding</span> <span style="color: #839496; font-weight: bold;">:times</span> <span style="color: #71ba8cd29fdd;">1000</span> <span style="color: #839496; font-weight: bold;">:ensure-equal</span> <span style="color: #959995df9a66;">t</span>
   <span style="color: #839496; font-weight: bold;">:forms</span> <span style="color: #b58900;">(</span><span style="color: #268bd2;">(</span><span style="color: #2aa198;">"</span><span style="color: #2aa198; text-decoration: underline;">buffer-local-value</span><span style="color: #2aa198;">"</span> <span style="color: #6c71c4;">(</span><span style="color: #859900; font-weight: bold;">--filter</span> <span style="color: #859900;">(</span><span style="color: #9dff5da442ff; text-decoration: underline;">equal</span> <span style="color: #859900; font-weight: bold;">'</span><span style="color: #90cc76662432;">magit</span>-<span style="color: #71ba8cd29fdd;">status</span>-<span style="color: #68717c277aa9;">mode</span> <span style="color: #b58900;">(</span><span style="color: #959995df9a66; text-decoration: underline;">buffer</span><span style="text-decoration: underline;">-</span><span style="color: #9dff5da442ff; text-decoration: underline;">local</span><span style="text-decoration: underline;">-</span><span style="color: #959995df9a66; text-decoration: underline;">value</span> <span style="color: #859900; font-weight: bold;">'</span><span style="color: #a3726d7d5726;">major</span>-<span style="color: #68717c277aa9;">mode</span> <span style="color: #268bd2;">it</span><span style="color: #b58900;">)</span><span style="color: #859900;">)</span>
                                           <span style="color: #859900;">(</span><span style="color: #959995df9a66; text-decoration: underline;">buffer</span><span style="text-decoration: underline;">-</span><span style="color: #a8e97c777baf; text-decoration: underline;">list</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
           <span style="color: #268bd2;">(</span><span style="color: #2aa198;">"with-current-buffer"</span> <span style="color: #6c71c4;">(</span><span style="color: #859900; font-weight: bold;">--filter</span> <span style="color: #859900;">(</span><span style="color: #9dff5da442ff; text-decoration: underline;">equal</span> <span style="color: #859900; font-weight: bold;">'</span><span style="color: #90cc76662432;">magit</span>-<span style="color: #71ba8cd29fdd;">status</span>-<span style="color: #68717c277aa9;">mode</span> <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">with-current-buffer</span> <span style="color: #268bd2;">it</span>
@@ -3805,6 +3806,56 @@ Example:
 </table>
 </div>
 </div>
+
+<div id="outline-container-~bench-multi-lets~" class="outline-6">
+<h6 id="~bench-multi-lets~"><code>bench-multi-lets</code></h6>
+<div class="outline-text-6" id="text-~bench-multi-lets~">
+<p>
+This macro benchmarks multiple forms in multiple environments, which is helpful for testing code that behaves differently depending on global variables.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">###</span><span style="color: #cb4b16; font-weight: bold; font-style: italic;">autoload</span>
+<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">cl-defmacro</span> <span style="color: #268bd2;">bench-multi-lets</span> <span style="color: #b58900;">(</span><span style="color: #b58900;">&amp;key</span> <span style="color: #268bd2;">(</span><span style="color: #6e667a661e98;">times</span> <span style="color: #71ba8cd29fdd;">1</span><span style="color: #268bd2;">)</span> <span style="color: #68717c277aa9;">lets</span> <span style="color: #a19967658391;">forms</span> <span style="color: #959995df9a66;">ensure</span>-<span style="color: #9dff5da442ff;">equal</span><span style="color: #b58900;">)</span>
+  <span style="color: #2aa198;">"Benchmark FORMS in each of lexical environments defined in LETS.</span>
+<span style="color: #2aa198;">LETS is a list of (\"NAME\" BINDING-FORM) forms.</span>
+
+<span style="color: #2aa198;">FORMS is a list of (\"NAME\" FORM) forms.</span>
+
+<span style="color: #2aa198;">Calls `</span><span style="color: #268bd2; font-weight: bold;">bench-multi-lexical</span><span style="color: #2aa198;">', which see."</span>
+  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">declare</span> <span style="color: #268bd2;">(</span><span style="color: #a4cca4cca4cc;">indent</span> <span style="color: #a3726d7d5726;">defun</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
+  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">let</span> <span style="color: #268bd2;">(</span><span style="color: #6c71c4;">(</span><span style="color: #52997866758a;">benchmarks</span> <span style="color: #859900;">(</span><span style="color: #859900; font-weight: bold;">cl-loop</span> <span style="color: #71ba8cd29fdd;">for</span> <span style="color: #b58900;">(</span><span style="color: #959995df9a66;">let</span>-<span style="color: #68717c277aa9;">name</span> <span style="color: #959995df9a66;">let</span><span style="color: #b58900;">)</span> <span style="color: #a961952b94d0;">in</span> <span style="color: #68717c277aa9;">lets</span>
+                             <span style="color: #a4cca4cca4cc;">collect</span> <span style="color: #b58900;">(</span><span style="color: #a8e97c777baf; text-decoration: underline;">list</span> <span style="color: #859900; font-weight: bold;">'</span><span style="color: #a8e97c777baf;">list</span> <span style="color: #959995df9a66;">let</span>-<span style="color: #68717c277aa9;">name</span>
+                                           <span style="color: #859900; font-weight: bold;">`</span><span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">let</span> ,<span style="color: #959995df9a66;">let</span>
+                                              <span style="color: #6c71c4;">(</span><span style="color: #859900; font-weight: bold;">bench-multi-lexical</span> <span style="color: #839496; font-weight: bold;">:times</span> ,<span style="color: #6e667a661e98;">times</span> <span style="color: #839496; font-weight: bold;">:ensure-equal</span> ,<span style="color: #959995df9a66;">ensure</span>-<span style="color: #9dff5da442ff;">equal</span> <span style="color: #839496; font-weight: bold;">:raw</span> <span style="color: #959995df9a66;">t</span>
+                                                <span style="color: #839496; font-weight: bold;">:forms</span> ,<span style="color: #a19967658391;">forms</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
+    <span style="color: #859900; font-weight: bold;">`</span><span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">let*</span> <span style="color: #6c71c4;">(</span><span style="color: #859900;">(</span><span style="color: #959995df9a66;">results</span> <span style="color: #b58900;">(</span><span style="color: #a8e97c777baf; text-decoration: underline;">list</span> ,@<span style="color: #52997866758a;">benchmarks</span><span style="color: #b58900;">)</span><span style="color: #859900;">)</span>
+            <span style="color: #859900;">(</span><span style="color: #90cc76662432;">header</span> <span style="color: #859900; font-weight: bold;">'</span><span style="color: #b58900;">(</span><span style="color: #2aa198;">"Form"</span> <span style="color: #2aa198;">"x faster than next"</span> <span style="color: #2aa198;">"Total runtime"</span> <span style="color: #2aa198;">"# of GCs"</span> <span style="color: #2aa198;">"Total GC runtime"</span><span style="color: #b58900;">)</span><span style="color: #859900;">)</span>
+            <span style="color: #859900;">(</span><span style="color: #959995df9a66;">results</span> <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">cl-loop</span> <span style="color: #71ba8cd29fdd;">for</span> <span style="color: #268bd2;">(</span><span style="color: #959995df9a66;">let</span>-<span style="color: #68717c277aa9;">name</span> <span style="color: #959995df9a66;">let</span><span style="color: #268bd2;">)</span> <span style="color: #a961952b94d0;">in</span> <span style="color: #959995df9a66;">results</span>
+                              <span style="color: #7a4685f22ca6;">append</span> <span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">cl-loop</span> <span style="color: #71ba8cd29fdd;">for</span> <span style="color: #a3726d7d5726;">result</span> <span style="color: #a961952b94d0;">in</span>-<span style="color: #52997866758a;">ref</span> <span style="color: #959995df9a66;">let</span>
+                                              <span style="color: #7a4685f22ca6;">do</span> <span style="color: #6c71c4;">(</span><span style="color: #859900; font-weight: bold;">setf</span> <span style="color: #859900;">(</span><span style="color: #a19967658391; text-decoration: underline;">car</span> <span style="color: #a3726d7d5726;">result</span><span style="color: #859900;">)</span> <span style="color: #859900;">(</span><span style="color: #57998258a066; text-decoration: underline;">format</span> <span style="color: #2aa198;">"%s: %s"</span> <span style="color: #959995df9a66;">let</span>-<span style="color: #68717c277aa9;">name</span> <span style="color: #2aa198;">(</span><span style="color: #a19967658391; text-decoration: underline;">car</span> <span style="color: #a3726d7d5726;">result</span><span style="color: #2aa198;">)</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
+                                              <span style="color: #a4cca4cca4cc;">collect</span> <span style="color: #a3726d7d5726;">result</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
+       <span style="color: #6c71c4;">(</span><span style="color: #7a4685f22ca6; text-decoration: underline;">append</span> <span style="color: #859900;">(</span><span style="color: #a8e97c777baf; text-decoration: underline;">list</span> <span style="color: #90cc76662432;">header</span><span style="color: #859900;">)</span>
+               <span style="color: #859900;">(</span><span style="color: #a8e97c777baf; text-decoration: underline;">list</span> <span style="color: #859900; font-weight: bold;">'</span><span style="color: #a050824890d1;">hline</span><span style="color: #859900;">)</span>
+               <span style="color: #859900;">(</span><span style="color: #a050824890d1; text-decoration: underline;">bench</span><span style="text-decoration: underline;">-</span><span style="color: #a3726d7d5726; text-decoration: underline;">multi</span><span style="text-decoration: underline;">-</span><span style="color: #959995df9a66; text-decoration: underline;">process</span><span style="text-decoration: underline;">-</span><span style="color: #959995df9a66; text-decoration: underline;">results</span> <span style="color: #959995df9a66;">results</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+Used like:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #2aa198;">(</span><span style="color: #a050824890d1;">bench</span>-<span style="color: #a3726d7d5726;">multi</span>-<span style="color: #68717c277aa9;">lets</span> <span style="color: #839496; font-weight: bold;">:times</span> <span style="color: #68717c277aa9;">100000</span> <span style="color: #839496; font-weight: bold;">:ensure-equal</span> <span style="color: #959995df9a66;">t</span>
+  <span style="color: #839496; font-weight: bold;">:lets</span> <span style="color: #b58900;">(</span><span style="color: #268bd2;">(</span><span style="color: #2aa198;">"1"</span> <span style="color: #6c71c4;">(</span><span style="color: #859900;">(</span><span style="color: #a961952b94d0;">var</span> <span style="color: #2aa198;">"1"</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
+         <span style="color: #268bd2;">(</span><span style="color: #2aa198;">"12345"</span> <span style="color: #6c71c4;">(</span><span style="color: #859900;">(</span><span style="color: #a961952b94d0;">var</span> <span style="color: #2aa198;">"12345"</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
+         <span style="color: #268bd2;">(</span><span style="color: #2aa198;">"1234567890"</span> <span style="color: #6c71c4;">(</span><span style="color: #859900;">(</span><span style="color: #a961952b94d0;">var</span> <span style="color: #2aa198;">"1234567890"</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
+  <span style="color: #839496; font-weight: bold;">:forms</span> <span style="color: #b58900;">(</span><span style="color: #268bd2;">(</span><span style="color: #2aa198;">"</span><span style="color: #2aa198; text-decoration: underline;">concat</span><span style="color: #2aa198;">"</span> <span style="color: #6c71c4;">(</span><span style="color: #a3726d7d5726; text-decoration: underline;">concat</span> <span style="color: #2aa198;">"VAR: "</span> <span style="color: #a961952b94d0;">var</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
+          <span style="color: #268bd2;">(</span><span style="color: #2aa198;">"</span><span style="color: #2aa198; text-decoration: underline;">format</span><span style="color: #2aa198;">"</span> <span style="color: #6c71c4;">(</span><span style="color: #57998258a066; text-decoration: underline;">format</span> <span style="color: #2aa198;">"VAR: %s"</span> <span style="color: #a961952b94d0;">var</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</div>
+</div>
 </div>
 
 <div id="outline-container-%3Delp-profile%3D" class="outline-5">
@@ -3841,7 +3892,7 @@ Call this macro from an Org source block and you'll get a results block showing 
 
 <div class="org-src-container">
 <pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">Use like this:</span>
-<span style="color: #2aa198;">(</span><span style="color: #a050824890d1;">elp</span>-<span style="color: #9af381d633a6;">profile</span> <span style="color: #959995df9a66;">10</span> <span style="color: #859900; font-weight: bold;">'</span><span style="color: #b58900;">(</span><span style="color: #9af381d633a6;">map</span> <span style="color: #9dff5da442ff;">search</span> <span style="color: #959995df9a66;">goto</span>-<span style="color: #6e667a661e98;">char</span> <span style="color: #a19967658391;">car</span> <span style="color: #7a4685f22ca6;">append</span><span style="color: #b58900;">)</span>
+<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">elp-profile</span> <span style="color: #959995df9a66;">10</span> <span style="color: #859900; font-weight: bold;">'</span><span style="color: #b58900;">(</span><span style="color: #9af381d633a6;">map</span> <span style="color: #9dff5da442ff;">search</span> <span style="color: #959995df9a66;">goto</span>-<span style="color: #6e667a661e98;">char</span> <span style="color: #a19967658391;">car</span> <span style="color: #7a4685f22ca6;">append</span><span style="color: #b58900;">)</span>
   <span style="color: #b58900;">(</span><span style="color: #959995df9a66; text-decoration: underline;">goto</span><span style="text-decoration: underline;">-</span><span style="color: #6e667a661e98; text-decoration: underline;">char</span> <span style="color: #268bd2;">(</span><span style="color: #a3726d7d5726; text-decoration: underline;">point</span><span style="text-decoration: underline;">-</span><span style="color: #a19967658391; text-decoration: underline;">min</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
   <span style="color: #b58900;">(</span><span style="color: #9dff5da442ff; text-decoration: underline;">search</span><span style="text-decoration: underline;">-</span><span style="color: #9dff5da442ff; text-decoration: underline;">forward</span> <span style="color: #2aa198;">"something"</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
 </pre>
@@ -5305,7 +5356,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2019-07-12 Fri 06:52</p>
+<p class="date">Created: 2019-07-20 Sat 17:55</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

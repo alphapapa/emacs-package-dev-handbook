@@ -1895,6 +1895,57 @@ Example:
 | Lexical: with-current-buffer |               1.01 |      0.966651 |        0 |                0 |
 | Dynamic: with-current-buffer |            slowest |      0.974830 |        0 |                0 |
 
+***** ~bench-multi-lets~
+
+This macro benchmarks multiple forms in multiple environments, which is helpful for testing code that behaves differently depending on global variables.
+
+#+BEGIN_SRC elisp :exports code :results silent :tangle epdh.el
+  ;;;###autoload
+  (cl-defmacro bench-multi-lets (&key (times 1) lets forms ensure-equal)
+    "Benchmark FORMS in each of lexical environments defined in LETS.
+  LETS is a list of (\"NAME\" BINDING-FORM) forms.
+
+  FORMS is a list of (\"NAME\" FORM) forms.
+
+  Calls `bench-multi-lexical', which see."
+    (declare (indent defun))
+    (let ((benchmarks (cl-loop for (let-name let) in lets
+                               collect (list 'list let-name
+                                             `(let ,let
+                                                (bench-multi-lexical :times ,times :ensure-equal ,ensure-equal :raw t
+                                                  :forms ,forms))))))
+      `(let* ((results (list ,@benchmarks))
+              (header '("Form" "x faster than next" "Total runtime" "# of GCs" "Total GC runtime"))
+              (results (cl-loop for (let-name let) in results
+                                append (cl-loop for result in-ref let
+                                                do (setf (car result) (format "%s: %s" let-name (car result)))
+                                                collect result))))
+         (append (list header)
+                 (list 'hline)
+                 (bench-multi-process-results results)))))
+#+END_SRC
+
+Used like:
+
+#+BEGIN_SRC elisp
+  (bench-multi-lets :times 100000 :ensure-equal t
+    :lets (("1" ((var "1")))
+           ("12345" ((var "12345")))
+           ("1234567890" ((var "1234567890"))))
+    :forms (("concat" (concat "VAR: " var))
+            ("format" (format "VAR: %s" var))))
+#+END_SRC
+
+#+RESULTS:
+| Form               | x faster than next | Total runtime | # of GCs | Total GC runtime |
+|--------------------+--------------------+---------------+----------+------------------|
+| 1: concat          |               1.06 |      0.021622 |        0 |                0 |
+| 12345: concat      |               1.12 |      0.022978 |        0 |                0 |
+| 1234567890: concat |               1.42 |      0.025835 |        0 |                0 |
+| 1: format          |               1.22 |      0.036601 |        0 |                0 |
+| 12345: format      |               1.20 |      0.044604 |        0 |                0 |
+| 1234567890: format |            slowest |      0.053642 |        0 |                0 |
+
 **** =elp-profile=
 :PROPERTIES:
 :ID:       fd3fdece-0342-441c-8540-5a5c463890a5
