@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-07-24 Wed 20:45 -->
+<!-- 2019-07-24 Wed 20:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -4162,6 +4162,29 @@ Since this happens at macro expansion time rather than at runtime, there is no p
 <div class="outline-text-4" id="text-Testing--Libraries">
 </div><div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fphillord%2Fassess%5D%5Bassess%3A%20Test%20support%20functions%5D%5D" class="outline-5">
 <h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fphillord%2Fassess%5D%5Bassess%3A%20Test%20support%20functions%5D%5D"><a href="https://github.com/phillord/assess">assess: Test support functions</a></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fphillord%2Fassess%5D%5Bassess%3A%20Test%20support%20functions%5D%5D">
+<blockquote>
+<p>
+Assess provides additional support for testing Emacs packages.
+</p>
+
+<p>
+It provides:
+</p>
+
+<ul class="org-ul">
+<li>a set of predicates for comparing strings, buffers and file contents.</li>
+<li>explainer functions for all predicates giving useful output</li>
+<li>macros for creating many temporary buffers at once, and for restoring the buffer list.</li>
+<li>methods for testing indentation, by comparision or "roundtripping".</li>
+<li>methods for testing fontification.</li>
+</ul>
+
+<p>
+Assess aims to be a stateless as possible, leaving Emacs unchanged whether the tests succeed or fail, with respect to buffers, open files and so on; this helps to keep tests independent from each other.
+</p>
+</blockquote>
+</div>
 </div>
 </div>
 
@@ -5391,7 +5414,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2019-07-24 Wed 20:45</p>
+<p class="date">Created: 2019-07-24 Wed 20:46</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

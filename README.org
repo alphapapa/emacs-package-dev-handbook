@@ -2126,6 +2126,20 @@ Since this happens at macro expansion time rather than at runtime, there is no p
 
 **** [[https://github.com/phillord/assess][assess: Test support functions]]
 
+#+BEGIN_QUOTE
+Assess provides additional support for testing Emacs packages.
+
+It provides:
+
+- a set of predicates for comparing strings, buffers and file contents.
+- explainer functions for all predicates giving useful output
+- macros for creating many temporary buffers at once, and for restoring the buffer list.
+- methods for testing indentation, by comparision or "roundtripping".
+- methods for testing fontification.
+
+Assess aims to be a stateless as possible, leaving Emacs unchanged whether the tests succeed or fail, with respect to buffers, open files and so on; this helps to keep tests independent from each other.
+#+END_QUOTE
+
 *** Tools                                                    :tools:
 
 **** [[https://github.com/jorgenschaefer/emacs-buttercup][buttercup: Behavior-Driven Emacs Lisp Testing]]
