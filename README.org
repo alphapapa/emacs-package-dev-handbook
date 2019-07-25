@@ -2167,6 +2167,12 @@ Things EMake will never do (or ‘reasons you may still need Cask’):
 + provide ’bundler-like’ exec abilities (this includes Cask’s emacs and eval commands)
 #+END_QUOTE
 
+**** [[https://gitlab.petton.fr/DamienCassou/makel/][makel: A makefile to facilitate checking Emacs packages]]
+
+#+BEGIN_QUOTE
+makel is a project consisting of a Makefile (=makel.mk=) that Emacs package authors can use to facilitate quality checking (linting and tests). The Makefile can be used both locally on the developer machine and remotely on a continuous integration machine.
+#+END_QUOTE
+
 ** Version control                                         :version_control:
 
 *** Packages                                                     :packages:
@@ -2585,11 +2591,6 @@ Yes, please!  Send pull requests and file issues on the [[https://github.com/alp
 :END:
 
 These resources should be added to the appropriate sections above.  Since it takes some work to catalog and organize them, they are dumped here for future reference.  Pull requests for these are welcome!
-
-** TODO [[https://gitlab.petton.fr/DamienCassou/makel/][Damien Cassou / makel · GitLab]]
-:LOGBOOK:
--  State "TODO"       from              [2019-01-02 Wed 16:18]
-:END:
 
 ** TODO Articles to add [0/13]
 
