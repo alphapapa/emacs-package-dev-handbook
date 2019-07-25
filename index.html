@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-07-20 Sat 17:55 -->
+<!-- 2019-07-24 Wed 20:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -666,6 +666,7 @@ for the JavaScript code in this tag.
 <li><a href="#Testing--Tools">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a>
 <ul>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fjorgenschaefer%2Femacs-buttercup%5D%5Bbuttercup%3A%20Behavior-Driven%20Emacs%20Lisp%20Testing%5D%5D">buttercup: Behavior-Driven Emacs Lisp Testing</a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fcask%2Fcask%5D%5Bcask%3A%20Project%20management%20tool%20for%20Emacs%5D%5D">cask: Project management tool for Emacs</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fecukes%2Fecukes%5D%5Becukes%3A%20Cucumber%20for%20Emacs%5D%5D">ecukes: Cucumber for Emacs</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fwww.gnu.org%2Fsoftware%2Femacs%2Fmanual%2Fhtml_node%2Fert%2F%5D%5BEmacs%20Lisp%20Regression%20Testing%5D%5D%20%28ERT%29">Emacs Lisp Regression Testing (ERT)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span></span></a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fvermiculus%2Femake.el%5D%5Bemake.el%3A%20Test%20Elisp%20without%20the%20hoops%5D%5D">emake.el: Test Elisp without the hoops</a></li>
@@ -2664,7 +2665,7 @@ You should always include a readme with your project.  Typically it will be incl
 </p>
 
 <div class="org-src-container">
-<pre class="src src-org"><span style="color: #586e75; background-color: #0c1e24;">#+PROPERTY: LOGGING nil</span>
+<pre class="src src-org"><span style="color: #586e75; background-color: #0c1e24; font-weight: bold; font-style: italic;">#+PROPERTY: LOGGING nil</span>
 
 <span style="color: #586e75; font-weight: bold; font-style: italic;"># Note: This readme works with the org-make-toc <a href="https://github.com/alphapapa/org-make-toc">&lt;https://github.com/alphapapa/org-make-toc&gt;</a> package, which automatically updates the table of contents.</span>
 
@@ -2714,7 +2715,7 @@ If you installed from MELPA, you're done.  Just run one of the commands below.
 
 <span style="color: #586e75; background-color: #0c1e24; text-decoration: underline;">  #+BEGIN_SRC elisp</span>
 <span style="color: #2aa198; background-color: #0e2329;">(</span><span style="color: #859900; background-color: #0e2329; font-weight: bold;">require</span><span style="color: #586e75; background-color: #0e2329;"> </span><span style="color: #859900; background-color: #0e2329; font-weight: bold;">'</span><span style="color: #268bd2; background-color: #0e2329; font-weight: bold;">package-name</span><span style="color: #2aa198; background-color: #0e2329;">)</span>
-<span style="color: #586e75; background-color: #0c1e24; text-decoration: overline;">  #+END_SRC</span>
+<span style="color: #586e75; background-color: #0c1e24; font-weight: bold; font-style: italic; text-decoration: overline;">  #+END_SRC</span>
 
 <span style="color: #a94058fc37c0; background-color: #073642; font-weight: bold; text-decoration: overline;">* Usage</span>
 <span style="color: #586e75; font-size: 90%; font-weight: bold;">:PROPERTIES:</span>
@@ -3846,7 +3847,7 @@ Used like:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #2aa198;">(</span><span style="color: #a050824890d1;">bench</span>-<span style="color: #a3726d7d5726;">multi</span>-<span style="color: #68717c277aa9;">lets</span> <span style="color: #839496; font-weight: bold;">:times</span> <span style="color: #68717c277aa9;">100000</span> <span style="color: #839496; font-weight: bold;">:ensure-equal</span> <span style="color: #959995df9a66;">t</span>
+<pre class="src src-elisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">bench-multi-lets</span> <span style="color: #839496; font-weight: bold;">:times</span> <span style="color: #68717c277aa9;">100000</span> <span style="color: #839496; font-weight: bold;">:ensure-equal</span> <span style="color: #959995df9a66;">t</span>
   <span style="color: #839496; font-weight: bold;">:lets</span> <span style="color: #b58900;">(</span><span style="color: #268bd2;">(</span><span style="color: #2aa198;">"1"</span> <span style="color: #6c71c4;">(</span><span style="color: #859900;">(</span><span style="color: #a961952b94d0;">var</span> <span style="color: #2aa198;">"1"</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
          <span style="color: #268bd2;">(</span><span style="color: #2aa198;">"12345"</span> <span style="color: #6c71c4;">(</span><span style="color: #859900;">(</span><span style="color: #a961952b94d0;">var</span> <span style="color: #2aa198;">"12345"</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
          <span style="color: #268bd2;">(</span><span style="color: #2aa198;">"1234567890"</span> <span style="color: #6c71c4;">(</span><span style="color: #859900;">(</span><span style="color: #a961952b94d0;">var</span> <span style="color: #2aa198;">"1234567890"</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
@@ -4170,6 +4171,17 @@ Since this happens at macro expansion time rather than at runtime, there is no p
 </div><div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fjorgenschaefer%2Femacs-buttercup%5D%5Bbuttercup%3A%20Behavior-Driven%20Emacs%20Lisp%20Testing%5D%5D" class="outline-5">
 <h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fjorgenschaefer%2Femacs-buttercup%5D%5Bbuttercup%3A%20Behavior-Driven%20Emacs%20Lisp%20Testing%5D%5D"><a id="ID-108f5eb6-7307-4d4b-aaf1-dd2a8bb65a58"></a><a href="https://github.com/jorgenschaefer/emacs-buttercup">buttercup: Behavior-Driven Emacs Lisp Testing</a></h5>
 <div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fjorgenschaefer%2Femacs-buttercup%5D%5Bbuttercup%3A%20Behavior-Driven%20Emacs%20Lisp%20Testing%5D%5D">
+</div>
+</div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fcask%2Fcask%5D%5Bcask%3A%20Project%20management%20tool%20for%20Emacs%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fcask%2Fcask%5D%5Bcask%3A%20Project%20management%20tool%20for%20Emacs%5D%5D"><a href="https://github.com/cask/cask">cask: Project management tool for Emacs</a></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fcask%2Fcask%5D%5Bcask%3A%20Project%20management%20tool%20for%20Emacs%5D%5D">
+<blockquote>
+<p>
+Cask is a project management tool for Emacs that helps automate the package development cycle; development, dependencies, testing, building, packaging and more.
+</p>
+</blockquote>
 </div>
 </div>
 
@@ -5356,7 +5368,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2019-07-20 Sat 17:55</p>
+<p class="date">Created: 2019-07-24 Wed 20:38</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

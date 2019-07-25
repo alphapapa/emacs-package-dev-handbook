@@ -2133,6 +2133,12 @@ Since this happens at macro expansion time rather than at runtime, there is no p
 :ID:       108f5eb6-7307-4d4b-aaf1-dd2a8bb65a58
 :END:
 
+**** [[https://github.com/cask/cask][cask: Project management tool for Emacs]]
+
+#+BEGIN_QUOTE
+Cask is a project management tool for Emacs that helps automate the package development cycle; development, dependencies, testing, building, packaging and more.
+#+END_QUOTE
+
 **** [[https://github.com/ecukes/ecukes][ecukes: Cucumber for Emacs]]
 :PROPERTIES:
 :ID:       f0cdf4dd-38ff-41a1-a4c1-8f7677940863
