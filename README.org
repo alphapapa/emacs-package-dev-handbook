@@ -2133,6 +2133,12 @@ Since this happens at macro expansion time rather than at runtime, there is no p
 :ID:       108f5eb6-7307-4d4b-aaf1-dd2a8bb65a58
 :END:
 
+#+BEGIN_QUOTE
+Buttercup is a behavior-driven development framework for testing Emacs Lisp code. It allows to group related tests so they can share common set-up and tear-down code, and allows the programmer to “spy” on functions to ensure they are called with the right arguments during testing.
+
+The framework is heavily inspired by Jasmine.
+#+END_QUOTE
+
 **** [[https://github.com/cask/cask][cask: Project management tool for Emacs]]
 
 #+BEGIN_QUOTE
