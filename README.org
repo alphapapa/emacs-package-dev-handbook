@@ -2150,6 +2150,12 @@ Cask is a project management tool for Emacs that helps automate the package deve
 :ID:       f0cdf4dd-38ff-41a1-a4c1-8f7677940863
 :END:
 
+#+BEGIN_QUOTE
+There are plenty of unit/regression testing tools for Emacs, and even some for functional testing. What Emacs is missing though is a really good testing framework for integration testing. This is where Ecukes comes in.
+
+Cucumber is a great integration testing tool, used mostly for testing web applications. Ecukes is Cucumber for Emacs. No, it's not a major mode to edit feature files. It is a package that makes it possible to write Cucumber like tests for your Emacs packages.
+#+END_QUOTE
+
 **** [[https://www.gnu.org/software/emacs/manual/html_node/ert/][Emacs Lisp Regression Testing]] (ERT)                        :built_in:
 :PROPERTIES:
 :ID:       386b23bd-5254-457f-9ba1-ca5cbf87fed3
