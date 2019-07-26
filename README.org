@@ -1927,7 +1927,7 @@ This macro benchmarks multiple forms in multiple environments, which is helpful 
 
 Used like:
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC elisp :exports both :cache yes
   (bench-multi-lets :times 100000 :ensure-equal t
     :lets (("1" ((var "1")))
            ("12345" ((var "12345")))
@@ -1936,15 +1936,15 @@ Used like:
             ("format" (format "VAR: %s" var))))
 #+END_SRC
 
-#+RESULTS:
+#+RESULTS[1e38aeddf90e38a2d2e1cf00aa77f13e7da51cb3]:
 | Form               | x faster than next | Total runtime | # of GCs | Total GC runtime |
 |--------------------+--------------------+---------------+----------+------------------|
-| 1: concat          |               1.06 |      0.021622 |        0 |                0 |
-| 12345: concat      |               1.12 |      0.022978 |        0 |                0 |
-| 1234567890: concat |               1.42 |      0.025835 |        0 |                0 |
-| 1: format          |               1.22 |      0.036601 |        0 |                0 |
-| 12345: format      |               1.20 |      0.044604 |        0 |                0 |
-| 1234567890: format |            slowest |      0.053642 |        0 |                0 |
+| 1: concat          |               1.03 |      0.023708 |        0 |                0 |
+| 12345: concat      |               1.07 |      0.024533 |        0 |                0 |
+| 1234567890: concat |               1.28 |      0.026210 |        0 |                0 |
+| 1: format          |               1.31 |      0.033463 |        0 |                0 |
+| 12345: format      |               1.21 |      0.043897 |        0 |                0 |
+| 1234567890: format |            slowest |      0.053263 |        0 |                0 |
 
 **** =elp-profile=
 :PROPERTIES:

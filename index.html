@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-07-24 Wed 20:46 -->
+<!-- 2019-07-26 Fri 16:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -3855,6 +3855,80 @@ Used like:
           <span style="color: #268bd2;">(</span><span style="color: #2aa198;">"</span><span style="color: #2aa198; text-decoration: underline;">format</span><span style="color: #2aa198;">"</span> <span style="color: #6c71c4;">(</span><span style="color: #57998258a066; text-decoration: underline;">format</span> <span style="color: #2aa198;">"VAR: %s"</span> <span style="color: #a961952b94d0;">var</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
 </pre>
 </div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Form</th>
+<th scope="col" class="org-right">x faster than next</th>
+<th scope="col" class="org-right">Total runtime</th>
+<th scope="col" class="org-right"># of GCs</th>
+<th scope="col" class="org-right">Total GC runtime</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">1: concat</td>
+<td class="org-right">1.03</td>
+<td class="org-right">0.023708</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-left">12345: concat</td>
+<td class="org-right">1.07</td>
+<td class="org-right">0.024533</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-left">1234567890: concat</td>
+<td class="org-right">1.28</td>
+<td class="org-right">0.026210</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-left">1: format</td>
+<td class="org-right">1.31</td>
+<td class="org-right">0.033463</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-left">12345: format</td>
+<td class="org-right">1.21</td>
+<td class="org-right">0.043897</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-left">1234567890: format</td>
+<td class="org-right">slowest</td>
+<td class="org-right">0.053263</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -5414,7 +5488,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2019-07-24 Wed 20:46</p>
+<p class="date">Created: 2019-07-26 Fri 16:54</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
