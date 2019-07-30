@@ -483,6 +483,26 @@ Similar to =dash.el=, but with slightly different behavior that may be useful, a
 **** [[https://elpa.gnu.org/packages/map.html][map.el: Map manipulation functions]]   :maps:hash_tables:alists:arrays:
 
 =map= is included with Emacs, but the latest version, which may include improvements since the last Emacs release, is now available separately on [[https://elpa.gnu.org/][GNU ELPA]].
+
+**** [[https://github.com/NicolasPetton/stream][stream: Lazy sequences]]                       :streams:sequences:lazy:
+
+#+BEGIN_QUOTE
+=stream.el= provides an implementation of streams, implemented as delayed evaluation of cons cells.
+
+Functions defined in seq.el can also take a stream as input.
+
+Streams could be created from any sequential input data:
+
+-  sequences, making operation on them lazy
+-  a set of 2 forms (first and rest), making it easy to represent infinite sequences
+-  buffers (by character)
+-  buffers (by line)
+-  buffers (by page)
+-  IO streams
+-  orgmode table cells
+-  ...
+#+END_QUOTE
+
 *** Tools                                                           :tools:
 
 **** [[id:f8f0755b-c23b-45ad-98da-780d4044676a][let-alist]]

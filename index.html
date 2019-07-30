@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-07-26 Fri 16:54 -->
+<!-- 2019-07-29 Mon 22:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -329,6 +329,7 @@ for the JavaScript code in this tag.
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2FWilfred%2Fht.el%5D%5Bht.el%3A%20The%20missing%20hash%20table%20library%5D%5D">ht.el: The missing hash table library&#xa0;&#xa0;&#xa0;<span class="tag"><span class="hash_tables">hash_tables</span></span></a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Frolandwalker%2Flist-utils%5D%5Blist-utils%3A%20List-manipulation%20utility%20functions%5D%5D">list-utils: List-manipulation utility functions&#xa0;&#xa0;&#xa0;<span class="tag"><span class="lists">lists</span></span></a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Felpa.gnu.org%2Fpackages%2Fmap.html%5D%5Bmap.el%3A%20Map%20manipulation%20functions%5D%5D">map.el: Map manipulation functions&#xa0;&#xa0;&#xa0;<span class="tag"><span class="maps">maps</span>&#xa0;<span class="hash_tables">hash_tables</span>&#xa0;<span class="alists">alists</span>&#xa0;<span class="arrays">arrays</span></span></a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2FNicolasPetton%2Fstream%5D%5Bstream%3A%20Lazy%20sequences%5D%5D">stream: Lazy sequences&#xa0;&#xa0;&#xa0;<span class="tag"><span class="streams">streams</span>&#xa0;<span class="sequences">sequences</span>&#xa0;<span class="lazy">lazy</span></span></a></li>
 </ul>
 </li>
 <li><a href="#Collections%20%28lists%2C%20vectors%2C%20hash-tables%2C%20etc.%29--Tools">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a>
@@ -1759,7 +1760,38 @@ Similar to <code>dash.el</code>, but with slightly different behavior that may b
 </p>
 </div>
 </div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2FNicolasPetton%2Fstream%5D%5Bstream%3A%20Lazy%20sequences%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2FNicolasPetton%2Fstream%5D%5Bstream%3A%20Lazy%20sequences%5D%5D"><a href="https://github.com/NicolasPetton/stream">stream: Lazy sequences</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="streams">streams</span>&#xa0;<span class="sequences">sequences</span>&#xa0;<span class="lazy">lazy</span></span></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2FNicolasPetton%2Fstream%5D%5Bstream%3A%20Lazy%20sequences%5D%5D">
+<blockquote>
+<p>
+<code>stream.el</code> provides an implementation of streams, implemented as delayed evaluation of cons cells.
+</p>
+
+<p>
+Functions defined in seq.el can also take a stream as input.
+</p>
+
+<p>
+Streams could be created from any sequential input data:
+</p>
+
+<ul class="org-ul">
+<li>sequences, making operation on them lazy</li>
+<li>a set of 2 forms (first and rest), making it easy to represent infinite sequences</li>
+<li>buffers (by character)</li>
+<li>buffers (by line)</li>
+<li>buffers (by page)</li>
+<li>IO streams</li>
+<li>orgmode table cells</li>
+<li>&#x2026;</li>
+</ul>
+</blockquote>
 </div>
+</div>
+</div>
+
 <div id="outline-container-Collections%20%28lists%2C%20vectors%2C%20hash-tables%2C%20etc.%29--Tools" class="outline-4">
 <h4 id="Collections%20%28lists%2C%20vectors%2C%20hash-tables%2C%20etc.%29--Tools">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
 <div class="outline-text-4" id="text-Collections%20%28lists%2C%20vectors%2C%20hash-tables%2C%20etc.%29--Tools">
@@ -5488,7 +5520,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2019-07-26 Fri 16:54</p>
+<p class="date">Created: 2019-07-29 Mon 22:59</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
