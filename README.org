@@ -1161,20 +1161,17 @@ When you make a new package, the =auto-insert= command will insert a set of stan
 You should always include a readme with your project.  Typically it will be include most of the commentary section.  Here's a template that goes with the package template above:
 
 #+BEGIN_SRC org
+  ,#+TITLE: package-name
+
   ,#+PROPERTY: LOGGING nil
 
   # Note: This readme works with the org-make-toc <https://github.com/alphapapa/org-make-toc> package, which automatically updates the table of contents.
-
-  ,* package-name
-  :PROPERTIES:
-  :TOC:      ignore
-  :END:
 
   [[https://melpa.org/#/package-name][file:https://melpa.org/packages/package-name-badge.svg]] [[https://stable.melpa.org/#/package-name][file:https://stable.melpa.org/packages/package-name-badge.svg]]
 
   This is my package.  It is nice.  You should try it.
 
-  ,** Screenshots
+  ,* Screenshots
 
   This screenshot shows how to frobnicate the fripulator:
 
