@@ -2227,6 +2227,14 @@ makel is a project consisting of a Makefile (=makel.mk=) that Emacs package auth
 This is a package for GNU Emacs that can be used to tie related commands into a family of short bindings with a common prefix - a Hydra.
 #+END_QUOTE
 
+**** =tabulated-list-mode=                                        :built_in:
+
+#+BEGIN_QUOTE
+Tabulated List mode is a major mode for displaying tabulated data, i.e., data consisting of entries, each entry occupying one row of text with its contents divided into columns. Tabulated List mode provides facilities for pretty-printing rows and columns, and sorting the rows according to the values in each column.
+#+END_QUOTE
+
++ [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Tabulated-List-Mode.html][Manual]]
+
 **** [[https://github.com/magit/transient][Transient]]
 
 The library that powers Magit's command/option UI.
