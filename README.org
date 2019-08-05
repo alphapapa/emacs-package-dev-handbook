@@ -2217,6 +2217,12 @@ Things EMake will never do (or ‘reasons you may still need Cask’):
 makel is a project consisting of a Makefile (=makel.mk=) that Emacs package authors can use to facilitate quality checking (linting and tests). The Makefile can be used both locally on the developer machine and remotely on a continuous integration machine.
 #+END_QUOTE
 
+**** [[https://github.com/alphapapa/makem.sh][makem.sh: Makefile-like script for building and testing packages]]
+
+#+BEGIN_QUOTE
+=makem.sh= is a script to help build and test Emacs Lisp packages (not Emacs itself). It aims to make linting and testing as simple as possible. Source files and test files are discovered automatically from the project’s Git repo. Output is simple: by default, there is no output unless errors occur. With increasing verbosity levels (with =-v= or =-vv= options), more detail gives positive feedback. Output is colored by default to make reading easy.
+#+END_QUOTE
+
 ** User Interface                                                       :UI:
 
 *** Libraries                                                   :libraries:
