@@ -2245,7 +2245,7 @@ Most graphical user interface toolkits provide a number of standard user interfa
 
 ** Version control                                         :version_control:
 
-*** Packages                                                     :packages:
+*** Tools                                                     :tools:
 
 **** [[https://github.com/magit/magit][Magit]]                                                           :git:
 :PROPERTIES:
