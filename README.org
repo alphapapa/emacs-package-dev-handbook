@@ -2812,6 +2812,7 @@ Describe things like exporting an Org readme to an Info manual, e.g. like Magit,
 [2017-07-29 Sat 00:33] Not only should you test installing and using your package in the sandbox, but you should /also/ test then exiting the sandbox Emacs, running it again with the package already installed, and loading it.  This is because, when the sandbox installs the package, the byte-compilation seems to load some things that won't be loaded the same way when only loading the byte-compiled file (especially if you have any ~eval-when-compile~ lines, or unusual macros or things that modify the environment when loaded).
 
 ** TODO Sequence shuffling examples and benchmarks
+
 *** Benchmarking sequence shuffling
 
 See https://github.com/melpa/melpa/pull/6191#issuecomment-498101336
