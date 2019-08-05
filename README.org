@@ -2598,7 +2598,7 @@ Oleh is a prolific package author, having contributed many very high-quality pac
 
 **** [[https://github.com/abo-abo/avy][avy: Jump to things tree-style]]                           :navigation:
 
-**** [[https://github.com/abo-abo/hydra][hydra]]                  :key_binding:
+**** [[https://github.com/abo-abo/hydra][hydra]]                                                   :key_binding:
 
 **** [[id:ca3809ba-5900-4dfd-84a1-1ceecc048296][lispy: short and sweet LISP editing]]
 
