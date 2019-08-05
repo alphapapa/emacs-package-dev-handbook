@@ -42,6 +42,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
     -  [[#regular-expressions][Regular expressions]]
     -  [[#strings][Strings]]
     -  [[#testing][Testing]]
+    -  [[#user-interface][User Interface]]
     -  [[#version-control][Version control]]
     -  [[#xml--html][XML / HTML]]
   -  [[#blogs][Blogs]]
@@ -2216,6 +2217,32 @@ Things EMake will never do (or ‘reasons you may still need Cask’):
 makel is a project consisting of a Makefile (=makel.mk=) that Emacs package authors can use to facilitate quality checking (linting and tests). The Makefile can be used both locally on the developer machine and remotely on a continuous integration machine.
 #+END_QUOTE
 
+** User Interface                                                       :UI:
+
+*** Libraries                                                   :libraries:
+
+**** [[https://github.com/abo-abo/hydra][hydra: bindings that stick around]]
+
+#+BEGIN_QUOTE
+This is a package for GNU Emacs that can be used to tie related commands into a family of short bindings with a common prefix - a Hydra.
+#+END_QUOTE
+
+**** [[https://github.com/magit/transient][Transient]]
+
+The library that powers Magit's command/option UI.
+
+#+BEGIN_QUOTE
+Taking inspiration from prefix keys and prefix arguments, Transient implements a similar abstraction involving a prefix command, infix arguments and suffix commands.
+#+END_QUOTE
+
+**** =widget=                                                     :built_in:
+
+#+BEGIN_QUOTE
+Most graphical user interface toolkits provide a number of standard user interface controls (sometimes known as “widgets” or “gadgets”). Emacs doesn't really support anything like this, except for an incredibly powerful text “widget.” On the other hand, Emacs does provide the necessary primitives to implement many other widgets within a text buffer. The =widget= package simplifies this task.
+#+END_QUOTE
+
++ [[https://www.gnu.org/software/emacs/manual/html_mono/widget.html][Manual]]
+
 ** Version control                                         :version_control:
 
 *** Packages                                                     :packages:
@@ -2557,7 +2584,7 @@ Oleh is a prolific package author, having contributed many very high-quality pac
 
 **** [[https://github.com/abo-abo/avy][avy: Jump to things tree-style]]                           :navigation:
 
-**** [[https://github.com/abo-abo/hydra][hydra: make bindings that stick around]]                  :key_binding:
+**** [[https://github.com/abo-abo/hydra][hydra]]                  :key_binding:
 
 **** [[id:ca3809ba-5900-4dfd-84a1-1ceecc048296][lispy: short and sweet LISP editing]]
 
