@@ -2227,7 +2227,7 @@ makel is a project consisting of a Makefile (=makel.mk=) that Emacs package auth
 
 *** Libraries                                                   :libraries:
 
-**** [[https://github.com/abo-abo/hydra][hydra: bindings that stick around]]
+**** [[https://github.com/abo-abo/hydra][hydra]]                                                   :key_binding:
 
 #+BEGIN_QUOTE
 This is a package for GNU Emacs that can be used to tie related commands into a family of short bindings with a common prefix - a Hydra.
@@ -2597,8 +2597,6 @@ Oleh is a prolific package author, having contributed many very high-quality pac
 **** [[https://github.com/abo-abo/ace-window][ace-window: Quickly switch windows]]       :navigation:windows:buffers:
 
 **** [[https://github.com/abo-abo/avy][avy: Jump to things tree-style]]                           :navigation:
-
-**** [[https://github.com/abo-abo/hydra][hydra]]                                                   :key_binding:
 
 **** [[id:ca3809ba-5900-4dfd-84a1-1ceecc048296][lispy: short and sweet LISP editing]]
 
