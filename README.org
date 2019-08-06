@@ -2233,6 +2233,12 @@ makel is a project consisting of a Makefile (=makel.mk=) that Emacs package auth
 This is a package for GNU Emacs that can be used to tie related commands into a family of short bindings with a common prefix - a Hydra.
 #+END_QUOTE
 
+**** [[https://gitlab.petton.fr/DamienCassou/navigel/][navigel]]
+
+#+BEGIN_QUOTE
+The navigel package is a library that makes it simpler for Emacs Lisp developers to define user-interfaces based on tablists (also known as tabulated-lists).  Overriding a few (CL) methods and calling =navigel-open= is all that’s required to get a nice UI to navigate your domain objects (files, music library, database, etc.).
+#+END_QUOTE
+
 **** =tabulated-list-mode=                                        :built_in:
 
 #+BEGIN_QUOTE
@@ -2520,6 +2526,8 @@ Another prolific Emacs contributor, package developer, and blogger.
 *** Packages
 
 **** [[id:a32ed391-8ce6-46b7-9367-8117829ce2e7][beginend.el]]
+
+**** [[*%5B%5Bhttps://gitlab.petton.fr/DamienCassou/navigel/%5D%5Bnavigel%5D%5D][navigel]]
 
 ** John Wiegley
 
