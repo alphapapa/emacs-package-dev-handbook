@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-06 Tue 16:02 -->
+<!-- 2019-08-07 Wed 04:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -463,6 +463,11 @@ for the JavaScript code in this tag.
 <li><a href="#%5B%5Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2018%2F05%2F31%2F%5D%5BEmacs%2026%20Brings%20Generators%20and%20Threads%20%C2%AB%20null%20program%5D%5D">Emacs 26 Brings Generators and Threads « null program&#xa0;&#xa0;&#xa0;<span class="tag"><span class="threads">threads</span>&#xa0;<span class="generators">generators</span>&#xa0;<span class="byte_compilation">byte_compilation</span>&#xa0;<span class="closures">closures</span>&#xa0;<span class="iterators">iterators</span></span></a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2013%2F01%2F14%2F%5D%5BTurning%20Asynchronous%20into%20Synchronous%20in%20Elisp%20%C2%AB%20null%20program%5D%5D">Turning Asynchronous into Synchronous in Elisp « null program&#xa0;&#xa0;&#xa0;<span class="tag"><span class="async">async</span></span></a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2017%2F02%2F14%2F%5D%5BAsynchronous%20Requests%20from%20Emacs%20Dynamic%20Modules%20%C2%AB%20null%20program%5D%5D">Asynchronous Requests from Emacs Dynamic Modules « null program&#xa0;&#xa0;&#xa0;<span class="tag"><span class="modules">modules</span>&#xa0;<span class="async">async</span></span></a></li>
+</ul>
+</li>
+<li><a href="#Multiprocessing%20%28generators%2C%20threads%29--Libraries">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a>
+<ul>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fskeeto%2Femacs-aio%5D%5Bemacs-aio%3A%20async%2Fawait%20for%20Emacs%20Lisp%5D%5D">emacs-aio: async/await for Emacs Lisp</a></li>
 </ul>
 </li>
 <li><a href="#Manual">Manual&#xa0;&#xa0;&#xa0;<span class="tag"><span class="manual">manual</span></span></a>
@@ -2357,6 +2362,21 @@ Chris Wellons explains the new generators and threads that Emacs 26 provides.  H
 <div id="outline-container-%5B%5Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2017%2F02%2F14%2F%5D%5BAsynchronous%20Requests%20from%20Emacs%20Dynamic%20Modules%20%C2%AB%20null%20program%5D%5D" class="outline-5">
 <h5 id="%5B%5Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2017%2F02%2F14%2F%5D%5BAsynchronous%20Requests%20from%20Emacs%20Dynamic%20Modules%20%C2%AB%20null%20program%5D%5D"><a href="https://nullprogram.com/blog/2017/02/14/">Asynchronous Requests from Emacs Dynamic Modules « null program</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="modules">modules</span>&#xa0;<span class="async">async</span></span></h5>
 <div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2017%2F02%2F14%2F%5D%5BAsynchronous%20Requests%20from%20Emacs%20Dynamic%20Modules%20%C2%AB%20null%20program%5D%5D">
+</div>
+</div>
+</div>
+
+<div id="outline-container-Multiprocessing%20%28generators%2C%20threads%29--Libraries" class="outline-4">
+<h4 id="Multiprocessing%20%28generators%2C%20threads%29--Libraries">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
+<div class="outline-text-4" id="text-Multiprocessing%20%28generators%2C%20threads%29--Libraries">
+</div><div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fskeeto%2Femacs-aio%5D%5Bemacs-aio%3A%20async%2Fawait%20for%20Emacs%20Lisp%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fskeeto%2Femacs-aio%5D%5Bemacs-aio%3A%20async%2Fawait%20for%20Emacs%20Lisp%5D%5D"><a href="https://github.com/skeeto/emacs-aio">emacs-aio: async/await for Emacs Lisp</a></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fskeeto%2Femacs-aio%5D%5Bemacs-aio%3A%20async%2Fawait%20for%20Emacs%20Lisp%5D%5D">
+<blockquote>
+<p>
+<code>aio</code> is to Emacs Lisp as asyncio is to Python. This package builds upon Emacs 25 generators to provide functions that pause while they wait on asynchronous events. They do not block any thread while paused.
+</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -5220,6 +5240,7 @@ These resources should be added to the appropriate sections above.  Since it tak
 <ul class="org-ul">
 <li><a href="http://github.com/skeeto">http://github.com/skeeto</a></li>
 <li>Elfeed</li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fskeeto%2Femacs-aio%5D%5Bemacs-aio%3A%20async%2Fawait%20for%20Emacs%20Lisp%5D%5D">emacs-aio: async/await for Emacs Lisp</a></li>
 <li>Other Emacs packages</li>
 </ul>
 </div>
@@ -5617,7 +5638,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2019-08-06 Tue 16:02</p>
+<p class="date">Created: 2019-08-07 Wed 04:32</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -896,6 +896,14 @@ Chris Wellons explains the new generators and threads that Emacs 26 provides.  H
 :archive.is: http://archive.is/ZS6pU
 :END:
 
+*** Libraries                                                   :libraries:
+
+**** [[https://github.com/skeeto/emacs-aio][emacs-aio: async/await for Emacs Lisp]]
+
+#+BEGIN_QUOTE
+=aio= is to Emacs Lisp as asyncio is to Python. This package builds upon Emacs 25 generators to provide functions that pause while they wait on asynchronous events. They do not block any thread while paused.
+#+END_QUOTE
+
 *** Manual                                                         :manual:
 
 **** [[https://www.gnu.org/software/emacs/draft/manual/html_node/elisp/Generators.html][GNU Emacs Lisp Reference Manual: Generators]]              :generators:
@@ -2724,6 +2732,7 @@ These resources should be added to the appropriate sections above.  Since it tak
 
 +  http://github.com/skeeto
 +  Elfeed
++  [[*%5B%5Bhttps://github.com/skeeto/emacs-aio%5D%5Bemacs-aio:%20async/await%20for%20Emacs%20Lisp%5D%5D][emacs-aio: async/await for Emacs Lisp]]
 +  Other Emacs packages
 
 *** TODO Add [[https://github.com/wasamasa?][Vasilij Schneidermann]]
