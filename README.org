@@ -2031,6 +2031,10 @@ This gives a table like:
 :ID:       d329f03e-ed1e-4205-a232-6eee16717795
 :END:
 
+#+BEGIN_QUOTE
+Emacs Refactor (EMR) is a framework for providing language-specific refactoring in Emacs. It includes refactoring commands for a variety of languages, including elisp itself!
+#+END_QUOTE
+
 ** Regular expressions                                 :regular_expressions:
 
 *** Articles                                                     :articles:
@@ -2961,6 +2965,8 @@ sorted.  FUNCTION must be a function of one argument."
 | key-quiz--shuffle-list-nreverse |               1.02 |     24.918774 |       27 |        17.971779 |
 | key-quiz--shuffle-list          |               1.10 |     25.452665 |       28 |        18.487015 |
 | elfeed--shuffle                 |            slowest |     27.991305 |       32 |        21.215224 |
+
+** TODO [[https://github.com/chrisbarrett/elisp-namespaces][GitHub - chrisbarrett/elisp-namespaces: UNMAINTAINED]]
 
 * Code
 :PROPERTIES:
