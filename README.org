@@ -2170,6 +2170,14 @@ It provides:
 Assess aims to be a stateless as possible, leaving Emacs unchanged whether the tests succeed or fail, with respect to buffers, open files and so on; this helps to keep tests independent from each other.
 #+END_QUOTE
 
+**** [[https://github.com/DarwinAwardWinner/with-simulated-input][with-simulated-input: Test interactive functions non-interactively]]
+
+#+BEGIN_QUOTE
+This package provides an Emacs Lisp macro, ~with-simulated-input~, which evaluates one or more forms while simulating a sequence of input events for those forms to read. The result is the same as if you had evaluated the forms and then manually typed in the same input. This macro is useful for non-interactive testing of normally interactive commands and functions, such as ~completing-read~.
+
+Some interactive functions rely on idle timers to do their work, so you might need a way to simulate idleness. For that, there is the ~wsi-simulate-idle-time~ function. You can insert calls to this function in between input strings.
+#+END_QUOTE
+
 *** Tools                                                    :tools:
 
 **** [[https://github.com/jorgenschaefer/emacs-buttercup][buttercup: Behavior-Driven Emacs Lisp Testing]]
