@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-11 Sun 08:04 -->
+<!-- 2019-08-16 Fri 11:17 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -521,6 +521,7 @@ for the JavaScript code in this tag.
 <li><a href="#%5B%5Bhttps%3A%2F%2Fyoo2080.wordpress.com%2F2013%2F09%2F11%2Femacs-lisp-lexical-binding-gotchas-and-related-best-practices%2F%5D%5BEmacs%20Lisp%20lexical%20binding%20gotchas%20and%20related%20best%20practices%20%7C%20Yoo%20Box%5D%5D">Emacs Lisp lexical binding gotchas and related best practices | Yoo Box</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Femacs.stackexchange.com%2Fquestions%2F2129%2Fwhy-is-let-faster-with-lexical-scope%5D%5Belisp%20-%20Why%20is%20%60let%27%20faster%20with%20lexical%20scope%3F%20-%20Emacs%20Stack%20Exchange%5D%5D">elisp - Why is `let' faster with lexical scope? - Emacs Stack Exchange</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fwww.emacswiki.org%2Femacs%2FDynamicBindingVsLexicalBinding%5D%5BEmacsWiki%3A%20Dynamic%20Binding%20Vs%20Lexical%20Binding%5D%5D">EmacsWiki: Dynamic Binding Vs Lexical Binding</a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2016%2F12%2F22%2F%5D%5BSome%20Performance%20Advantages%20of%20Lexical%20Scope%20%C2%AB%20null%20program%5D%5D">Some Performance Advantages of Lexical Scope « null program</a></li>
 </ul>
 </li>
 </ul>
@@ -601,6 +602,7 @@ for the JavaScript code in this tag.
 <li><a href="#Profiling%20%2F%20Optimization--Articles">Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span></a>
 <ul>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2017%2F01%2F30%2F%5D%5BHow%20to%20Write%20Fast%28er%29%20Emacs%20Lisp%20%C2%AB%20null%20program%5D%5D">How to Write Fast(er) Emacs Lisp « null program</a></li>
+<li><a href="#%5B%5B%2A%255B%255Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2016%2F12%2F22%2F%255D%255BSome%2520Performance%2520Advantages%2520of%2520Lexical%2520Scope%2520%25C2%25AB%2520null%2520program%255D%255D%5D%5BSome%20Performance%20Advantages%20of%20Lexical%20Scope%20%C2%AB%20null%20program%5D%5D">Some Performance Advantages of Lexical Scope « null program&#xa0;&#xa0;&#xa0;<span class="tag"><span class="lexical_binding">lexical_binding</span></span></a></li>
 <li><a href="#%5B%5Bid%3A54fa2e85-066f-431e-9db3-8b1627fac4ca%5D%5BWhat%27s%20in%20an%20Emacs%20Lambda%20%C2%AB%20null%20program%5D%5D">What's in an Emacs Lambda « null program</a></li>
 </ul>
 </li>
@@ -2578,6 +2580,17 @@ A lot of good examples and discussion.
 </p>
 </div>
 </div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2016%2F12%2F22%2F%5D%5BSome%20Performance%20Advantages%20of%20Lexical%20Scope%20%C2%AB%20null%20program%5D%5D" class="outline-7">
+<h7 id="%5B%5Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2016%2F12%2F22%2F%5D%5BSome%20Performance%20Advantages%20of%20Lexical%20Scope%20%C2%AB%20null%20program%5D%5D"><a id="ID-3659d32e-3e9e-466f-94ff-33cfed5dc49d"></a><a href="https://nullprogram.com/blog/2016/12/22/">Some Performance Advantages of Lexical Scope « null program</a></h7>
+<div class="outline-text-7" id="text-%5B%5Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2016%2F12%2F22%2F%5D%5BSome%20Performance%20Advantages%20of%20Lexical%20Scope%20%C2%AB%20null%20program%5D%5D">
+<blockquote>
+<p>
+I recently had a discussion with Xah Lee about lexical scope in Emacs Lisp. The topic was why lexical-binding exists at a file-level when there was already lexical-let (from cl-lib), prompted by my previous article on JIT byte-code compilation. The specific context is Emacs Lisp, but these concepts apply to language design in general.
+</p>
+</blockquote>
+</div>
+</div>
 </div>
 </div>
 
@@ -3208,6 +3221,9 @@ Chris Wellons explains five ways to write faster Emacs Lisp code.
 </div>
 </div>
 
+<div id="outline-container-%5B%5B%2A%255B%255Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2016%2F12%2F22%2F%255D%255BSome%2520Performance%2520Advantages%2520of%2520Lexical%2520Scope%2520%25C2%25AB%2520null%2520program%255D%255D%5D%5BSome%20Performance%20Advantages%20of%20Lexical%20Scope%20%C2%AB%20null%20program%5D%5D" class="outline-5">
+<h5 id="%5B%5B%2A%255B%255Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2016%2F12%2F22%2F%255D%255BSome%2520Performance%2520Advantages%2520of%2520Lexical%2520Scope%2520%25C2%25AB%2520null%2520program%255D%255D%5D%5BSome%20Performance%20Advantages%20of%20Lexical%20Scope%20%C2%AB%20null%20program%5D%5D"><a href="#%5B%5Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2016%2F12%2F22%2F%5D%5BSome%20Performance%20Advantages%20of%20Lexical%20Scope%20%C2%AB%20null%20program%5D%5D">Some Performance Advantages of Lexical Scope « null program</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="lexical_binding">lexical_binding</span></span></h5>
+</div>
 <div id="outline-container-%5B%5Bid%3A54fa2e85-066f-431e-9db3-8b1627fac4ca%5D%5BWhat%27s%20in%20an%20Emacs%20Lambda%20%C2%AB%20null%20program%5D%5D" class="outline-5">
 <h5 id="%5B%5Bid%3A54fa2e85-066f-431e-9db3-8b1627fac4ca%5D%5BWhat%27s%20in%20an%20Emacs%20Lambda%20%C2%AB%20null%20program%5D%5D"><a href="#%5B%5Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2017%2F12%2F14%2F%5D%5BWhat%27s%20in%20an%20Emacs%20Lambda%20%C2%AB%20null%20program%5D%5D">What's in an Emacs Lambda « null program</a></h5>
 </div>
@@ -5664,7 +5680,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2019-08-11 Sun 08:04</p>
+<p class="date">Created: 2019-08-16 Fri 11:17</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

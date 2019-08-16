@@ -1024,6 +1024,16 @@ Sebastian Wiesner provides a detailed explanation.
 
 A lot of good examples and discussion.
 
+****** [[https://nullprogram.com/blog/2016/12/22/][Some Performance Advantages of Lexical Scope « null program]]
+:PROPERTIES:
+:ID:       3659d32e-3e9e-466f-94ff-33cfed5dc49d
+:archive.is: http://archive.today/xm5zq
+:END:
+
+#+BEGIN_QUOTE
+I recently had a discussion with Xah Lee about lexical scope in Emacs Lisp. The topic was why lexical-binding exists at a file-level when there was already lexical-let (from cl-lib), prompted by my previous article on JIT byte-code compilation. The specific context is Emacs Lisp, but these concepts apply to language design in general.
+#+END_QUOTE
+
 **** Template
 :PROPERTIES:
 :ID:       aacd55b6-a56f-4064-bf0d-25173ce83ef3
@@ -1561,6 +1571,7 @@ And:
 
 Chris Wellons explains five ways to write faster Emacs Lisp code.
 
+**** [[*%5B%5Bhttps://nullprogram.com/blog/2016/12/22/%5D%5BSome%20Performance%20Advantages%20of%20Lexical%20Scope%20%C2%AB%20null%20program%5D%5D][Some Performance Advantages of Lexical Scope « null program]] :lexical_binding:
 **** [[id:54fa2e85-066f-431e-9db3-8b1627fac4ca][What's in an Emacs Lambda « null program]]
 
 *** Macros                                                         :macros:
