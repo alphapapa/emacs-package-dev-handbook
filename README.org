@@ -140,7 +140,7 @@ Information related to variable scope and binding in elisp code (e.g. lexical vs
 
 **** [[https://nullprogram.com/blog/2017/10/27/][Make Flet Great Again « null program]]      :macros:flet:letf:
 :PROPERTIES:
-:archive.is: http://archive.is/T8dHM
+:archive.today: http://archive.today/T8dHM
 :END:
 
 Chris Wellons explains how the old ~cl~ macro ~flet~ changes in its new ~cl-lib~ version, ~cl-flet~, and how to use ~cl-letf~ to achieve the old functionality.  It's a way to override functions in both lexical and dynamic scope, which is especially useful for unit testing.
@@ -516,7 +516,7 @@ Streams could be created from any sequential input data:
 
 **** [[http://nullprogram.com/blog/2018/02/14/][Options for Structured Data in Emacs Lisp « null program]]
 :PROPERTIES:
-:archive.is: http://archive.is/YxwP5
+:archive.today: http://archive.today/YxwP5
 :END:
 
 ** Date / Time                                                 :dates:times:
@@ -707,7 +707,7 @@ Including anonymous functions (lambdas).
 
 **** [[https://nullprogram.com/blog/2017/12/14/][What's in an Emacs Lambda « null program]] :lambdas:byte_compilation:lexical_binding:scope:
 :PROPERTIES:
-:archive.is: http://archive.is/ppIuJ
+:archive.today: http://archive.today/ppIuJ
 :ID:       54fa2e85-066f-431e-9db3-8b1627fac4ca
 :END:
 
@@ -881,19 +881,19 @@ Tools for developing highlighting/font-locking packages.
 
 **** [[https://nullprogram.com/blog/2018/05/31/][Emacs 26 Brings Generators and Threads « null program]] :threads:generators:byte_compilation:closures:iterators:
 :PROPERTIES:
-:archive.is: http://archive.is/Irane
+:archive.today: http://archive.today/Irane
 :END:
 
 Chris Wellons explains the new generators and threads that Emacs 26 provides.  He also shows an example of writing a ~cl-case~ form that uses the new ~switch~ jump table opcode in Emacs 26.
 
 **** [[https://nullprogram.com/blog/2013/01/14/][Turning Asynchronous into Synchronous in Elisp « null program]] :async:
 :PROPERTIES:
-:archive.is: http://archive.is/AfL0y
+:archive.today: http://archive.today/AfL0y
 :END:
 
 **** [[https://nullprogram.com/blog/2017/02/14/][Asynchronous Requests from Emacs Dynamic Modules « null program]] :modules:async:
 :PROPERTIES:
-:archive.is: http://archive.is/ZS6pU
+:archive.today: http://archive.today/ZS6pU
 :END:
 
 *** Libraries                                                   :libraries:
@@ -981,7 +981,7 @@ Can anyone clear up what the intended behaviour is?
 
 ****** [[https://www.lunaryorn.com/posts/autoloads-in-emacs-lisp][Autoloads in Emacs Lisp | Sebastian Wiesner]]
 :PROPERTIES:
-:archive.is: http://archive.is/UZHhS
+:archive.today: http://archive.today/UZHhS
 :END:
 
 **** Integration with other packages
@@ -1007,19 +1007,19 @@ You should always use lexical binding by setting the header in the first line of
 
 ****** [[https://yoo2080.wordpress.com/2013/09/11/emacs-lisp-lexical-binding-gotchas-and-related-best-practices/][Emacs Lisp lexical binding gotchas and related best practices | Yoo Box]]
 :PROPERTIES:
-:archive.is: http://archive.is/0nfB4
+:archive.today: http://archive.today/0nfB4
 :END:
 
 ****** [[https://emacs.stackexchange.com/questions/2129/why-is-let-faster-with-lexical-scope][elisp - Why is `let' faster with lexical scope? - Emacs Stack Exchange]]
 :PROPERTIES:
-:archive.is: http://archive.is/LUtfZ
+:archive.today: http://archive.today/LUtfZ
 :END:
 
 Sebastian Wiesner provides a detailed explanation.
 
 ****** [[https://www.emacswiki.org/emacs/DynamicBindingVsLexicalBinding][EmacsWiki: Dynamic Binding Vs Lexical Binding]]
 :PROPERTIES:
-:archive.is: http://archive.is/2VtOU
+:archive.today: http://archive.today/2VtOU
 :END:
 
 A lot of good examples and discussion.
@@ -1027,7 +1027,7 @@ A lot of good examples and discussion.
 ****** [[https://nullprogram.com/blog/2016/12/22/][Some Performance Advantages of Lexical Scope « null program]]
 :PROPERTIES:
 :ID:       3659d32e-3e9e-466f-94ff-33cfed5dc49d
-:archive.is: http://archive.today/xm5zq
+:archive.today: http://archive.today/xm5zq
 :END:
 
 #+BEGIN_QUOTE
@@ -1399,7 +1399,7 @@ Developed by the current maintainer of Emacs, himself, John Wiegley.
 
 **** [[http://www.wilfred.me.uk/blog/2017/03/19/pattern-matching-in-emacs-lisp/][Pattern Matching in Emacs Lisp – Wilfred Hughes::Blog]] :pcase:shadchen:cl:dash:
 :PROPERTIES:
-:archive.is: http://archive.is/J4DqY
+:archive.today: http://archive.today/J4DqY
 :END:
 
 #+BEGIN_QUOTE
@@ -1412,7 +1412,7 @@ For the sake of this post, we'll consider both pattern matching and destructurin
 
 **** [[http://kitchingroup.cheme.cmu.edu/blog/2017/04/16/A-callable-plist-data-structure-for-Emacs/][A callable plist data structure for Emacs]]             :plists:macros:
 :PROPERTIES:
-:archive.is: http://archive.is/vmITX
+:archive.today: http://archive.today/vmITX
 :ID:       9391ab92-5d51-4786-a3c5-4822ec500500
 :END:
 
@@ -1436,12 +1436,12 @@ There are /lots/ of examples here.
 
 ****** [[http://newartisans.com/2016/01/pattern-matching-with-pcase/][Emacs: Pattern Matching with pcase - Lost in Technopolis]]
 :PROPERTIES:
-:archive.is: http://archive.is/FAzd8
+:archive.today: http://archive.today/FAzd8
 :END:
 
 ****** Nic Ferrier, [[http://nic.ferrier.me.uk/blog/2013_03/refactoring-elisp-polymorphically][Using Polymorphism as a Lisp refactoring tool]]
 :PROPERTIES:
-:archive.is: http://archive.is/0Y3Md
+:archive.today: http://archive.today/0Y3Md
 :END:
 
 ***** Examples                                                 :examples:
@@ -1500,7 +1500,7 @@ let-alist is the best thing to happen to associative lists since the invention o
 
 ****** [[http://endlessparentheses.com/new-on-elpa-and-in-emacs-25-1-let-alist.html][New on Elpa and in Emacs 25.1: let-alist · Endless Parentheses]]
 :PROPERTIES:
-:archive.is: http://archive.is/2wNFm
+:archive.today: http://archive.today/2wNFm
 :END:
 
 Here Artur introduces the macro and gives examples.
@@ -1566,7 +1566,7 @@ And:
 
 **** [[https://nullprogram.com/blog/2017/01/30/][How to Write Fast(er) Emacs Lisp « null program]]
 :PROPERTIES:
-:archive.is: http://archive.is/xe0Js
+:archive.today: http://archive.today/xe0Js
 :END:
 
 Chris Wellons explains five ways to write faster Emacs Lisp code.
@@ -2052,7 +2052,7 @@ Emacs Refactor (EMR) is a framework for providing language-specific refactoring 
 
 **** TODO [[http://francismurillo.github.io/2017-03-30-Exploring-Emacs-rx-Macro/][Exploring Emacs rx Macro]]                                    :rx:
 :PROPERTIES:
-:archive.is: http://archive.is/xPWJP
+:archive.today: http://archive.today/xPWJP
 :END:
 
 *** Libraries                                                   :libraries:
