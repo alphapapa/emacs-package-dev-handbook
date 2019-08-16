@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-16 Fri 11:17 -->
+<!-- 2019-08-16 Fri 11:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -969,7 +969,7 @@ for the JavaScript code in this tag.
 <li><a href="#Automate%20adding%20new%20links%20and%20summaries"><span class="todo UNDERWAY">UNDERWAY</span> Automate adding new links and summaries</a>
 <ul>
 <li><a href="#Get%20summary%20of%20page"><span class="todo TODO">TODO</span> Get summary of page</a></li>
-<li><a href="#Get%20archive.is%20link%20for%20page"><span class="done DONE">DONE</span> Get archive.is link for page</a></li>
+<li><a href="#Get%20archive.today%20link%20for%20page"><span class="done DONE">DONE</span> Get archive.today link for page</a></li>
 <li><a href="#Insert%20new%20entry%20at%20point"><span class="todo TODO">TODO</span> Insert new entry at point</a></li>
 </ul>
 </li>
@@ -5174,7 +5174,7 @@ Yes, please!  Send pull requests and file issues on the <a href="https://github.
 <dl class="org-dl">
 <dt>Catalog and tag appropriately</dt><dd>New entries in the outline should have the appropriate tags and should follow the existing hierarchy.  For example, articles should be tagged <code>articles</code>, and generally filed under an <code>Articles</code> heading using tag inheritance to apply the tag.</dd>
 <dt>"Loosely" or "usefully" opinionated</dt><dd>Rather than being a place to dump links for users to sort out, we should do that ourselves.  Links should have summaries and examples.  Where there are multiple links to similar projects, we should compare them and guide users to what we think is generally the best solution, or the best solution for each use case.</dd>
-<dt>Archive reference material</dt><dd>Much of the shared wisdom in the Emacs community is written in a variety of blogs by users and developers, as well as posts on Reddit, StackOverflow, etc.  These tend to hang around for a long time, but being the Internet, this is never guaranteed.  When linking to an article or other reference material, we should store a link to an archived version using <a href="#Get%20archive.is%20link%20for%20page">this code</a>.</dd>
+<dt>Archive reference material</dt><dd>Much of the shared wisdom in the Emacs community is written in a variety of blogs by users and developers, as well as posts on Reddit, StackOverflow, etc.  These tend to hang around for a long time, but being the Internet, this is never guaranteed.  When linking to an article or other reference material, we should store a link to an archived version using <a href="#Get%20archive.today%20link%20for%20page">this code</a>.</dd>
 </dl>
 </div>
 </div>
@@ -5622,19 +5622,19 @@ This section contains code used to add to and update this document.
 <h4 id="Get%20summary%20of%20page"><span class="todo TODO">TODO</span> Get summary of page</h4>
 </div>
 
-<div id="outline-container-Get%20archive.is%20link%20for%20page" class="outline-4">
-<h4 id="Get%20archive.is%20link%20for%20page"><a id="ID-a0e9486f-24f0-47a6-8f21-50bcc7ac2ca0"></a><span class="done DONE">DONE</span> Get archive.is link for page</h4>
-<div class="outline-text-4" id="text-Get%20archive.is%20link%20for%20page">
+<div id="outline-container-Get%20archive.today%20link%20for%20page" class="outline-4">
+<h4 id="Get%20archive.today%20link%20for%20page"><a id="ID-a0e9486f-24f0-47a6-8f21-50bcc7ac2ca0"></a><span class="done DONE">DONE</span> Get archive.today link for page</h4>
+<div class="outline-text-4" id="text-Get%20archive.today%20link%20for%20page">
 <div class="org-src-container">
 <pre class="src src-elisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">require</span> <span style="color: #859900; font-weight: bold;">'</span><span style="color: #268bd2; font-weight: bold;">org-web-tools</span><span style="color: #2aa198;">)</span>
 
-<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">emacs-package-dev-handbook--archiveis-capture</span> <span style="color: #b58900;">(</span><span style="color: #68717c277aa9;">url</span><span style="color: #b58900;">)</span>
-  <span style="color: #2aa198;">"Return archive.is archived URL for URL."</span>
-  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">when-let*</span> <span style="color: #268bd2;">(</span><span style="color: #6c71c4;">(</span><span style="color: #a8e97c777baf;">id</span> <span style="color: #859900;">(</span><span style="color: #57998258a066;">org</span>-<span style="color: #a3726d7d5726;">web</span>-<span style="color: #90cc76662432;">tools</span>-<span style="color: #a050824890d1;">archive</span>--<span style="color: #68717c277aa9;">url</span>-<span style="color: #a8e97c777baf;">id</span> <span style="color: #68717c277aa9;">url</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
+<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">emacs-package-dev-handbook--archive.today-capture</span> <span style="color: #b58900;">(</span><span style="color: #68717c277aa9;">url</span><span style="color: #b58900;">)</span>
+  <span style="color: #2aa198;">"Return archive.today archived URL for URL."</span>
+  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">when-let*</span> <span style="color: #268bd2;">(</span><span style="color: #6c71c4;">(</span><span style="color: #a8e97c777baf;">id</span> <span style="color: #859900;">(</span><span style="color: #57998258a066;">org</span>-<span style="color: #a3726d7d5726;">web</span>-<span style="color: #90cc76662432;">tools</span>-<span style="color: #a050824890d1;">archive</span>--<span style="color: #a050824890d1;">archive</span>.<span style="color: #90cc76662432;">today</span>-<span style="color: #68717c277aa9;">url</span>-<span style="color: #a8e97c777baf;">id</span> <span style="color: #68717c277aa9;">url</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
     <span style="color: #268bd2;">(</span><span style="color: #57998258a066; text-decoration: underline;">format</span> <span style="color: #2aa198;">"http://%s/%s"</span> <span style="color: #57998258a066;">org</span>-<span style="color: #a3726d7d5726;">web</span>-<span style="color: #90cc76662432;">tools</span>-<span style="color: #a050824890d1;">archive</span>-<span style="color: #a8e97c777baf;">hostname</span> <span style="color: #a8e97c777baf;">id</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
 
-<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">cl-defun</span> <span style="color: #268bd2;">emacs-package-dev-handbook-insert-archiveis-property</span> <span style="color: #b58900;">(</span><span style="color: #68717c277aa9;">url</span><span style="color: #b58900;">)</span>
-  <span style="color: #2aa198;">"Set the \"archive.is\" property for entry at point to the archived version of URL.</span>
+<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">cl-defun</span> <span style="color: #268bd2;">emacs-package-dev-handbook-insert-archive.today-property</span> <span style="color: #b58900;">(</span><span style="color: #68717c277aa9;">url</span><span style="color: #b58900;">)</span>
+  <span style="color: #2aa198;">"Set the \"archive.today\" property for entry at point to the archived version of URL.</span>
 <span style="color: #2aa198;">Interactively, assumes heading on/before point is an Org link to</span>
 <span style="color: #2aa198;">a web page."</span>
   <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">interactive</span> <span style="color: #268bd2;">(</span><span style="color: #a8e97c777baf; text-decoration: underline;">list</span> <span style="color: #6c71c4;">(</span><span style="color: #859900; font-weight: bold;">save-excursion</span>
@@ -5643,8 +5643,8 @@ This section contains code used to add to and update this document.
                        <span style="color: #859900;">(</span><span style="color: #6e667a661e98; text-decoration: underline;">beginning</span><span style="text-decoration: underline;">-</span><span style="color: #52997866758a; text-decoration: underline;">of</span><span style="text-decoration: underline;">-</span><span style="color: #a8e97c777baf; text-decoration: underline;">line</span><span style="color: #859900;">)</span>
                        <span style="color: #859900;">(</span><span style="color: #859900; font-weight: bold;">when</span> <span style="color: #b58900;">(</span><span style="color: #9af381d633a6; text-decoration: underline;">re</span><span style="text-decoration: underline;">-</span><span style="color: #9dff5da442ff; text-decoration: underline;">search</span><span style="text-decoration: underline;">-</span><span style="color: #9dff5da442ff; text-decoration: underline;">forward</span> <span style="color: #57998258a066;">org</span>-<span style="color: #959995df9a66;">bracket</span>-<span style="color: #9dff5da442ff;">link</span>-<span style="color: #52997866758a;">regexp</span> <span style="color: #268bd2;">(</span><span style="color: #a8e97c777baf; text-decoration: underline;">line</span><span style="text-decoration: underline;">-</span><span style="color: #a961952b94d0; text-decoration: underline;">end</span><span style="text-decoration: underline;">-</span><span style="color: #9dff5da442ff; text-decoration: underline;">position</span><span style="color: #268bd2;">)</span> <span style="color: #859900; font-weight: bold;">'</span><span style="color: #52997866758a;">noerror</span><span style="color: #b58900;">)</span>
                          <span style="color: #b58900;">(</span><span style="color: #57998258a066; text-decoration: underline;">org</span><span style="text-decoration: underline;">-</span><span style="color: #9dff5da442ff; text-decoration: underline;">link</span><span style="text-decoration: underline;">-</span><span style="color: #a3726d7d5726; text-decoration: underline;">unescape</span> <span style="color: #268bd2;">(</span><span style="color: #7a4685f22ca6; text-decoration: underline;">match</span><span style="text-decoration: underline;">-</span><span style="color: #a4cca4cca4cc; text-decoration: underline;">string</span><span style="text-decoration: underline;">-</span><span style="color: #a19967658391; text-decoration: underline;">no</span><span style="text-decoration: underline;">-</span><span style="color: #7a4685f22ca6; text-decoration: underline;">properties</span> <span style="color: #71ba8cd29fdd;">1</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
-  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">when-let</span> <span style="color: #268bd2;">(</span><span style="color: #6c71c4;">(</span><span style="color: #a050824890d1;">archive</span>-<span style="color: #68717c277aa9;">url</span> <span style="color: #859900;">(</span><span style="color: #90cc76662432;">emacs</span>-<span style="color: #7a4685f22ca6;">package</span>-<span style="color: #57998258a066;">dev</span>-<span style="color: #a050824890d1;">handbook</span>--<span style="color: #68717c277aa9;">archiveis</span>-<span style="color: #a961952b94d0;">capture</span> <span style="color: #68717c277aa9;">url</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
-    <span style="color: #268bd2;">(</span><span style="color: #57998258a066; text-decoration: underline;">org</span><span style="text-decoration: underline;">-</span><span style="color: #57998258a066; text-decoration: underline;">set</span><span style="text-decoration: underline;">-</span><span style="color: #68717c277aa9; text-decoration: underline;">property</span> <span style="color: #2aa198;">"archive.is"</span> <span style="color: #a050824890d1;">archive</span>-<span style="color: #68717c277aa9;">url</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">when-let</span> <span style="color: #268bd2;">(</span><span style="color: #6c71c4;">(</span><span style="color: #a050824890d1;">archive</span>-<span style="color: #68717c277aa9;">url</span> <span style="color: #859900;">(</span><span style="color: #90cc76662432;">emacs</span>-<span style="color: #7a4685f22ca6;">package</span>-<span style="color: #57998258a066;">dev</span>-<span style="color: #a050824890d1;">handbook</span>--<span style="color: #a050824890d1;">archive</span>.<span style="color: #90cc76662432;">today</span>-<span style="color: #a961952b94d0;">capture</span> <span style="color: #68717c277aa9;">url</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
+    <span style="color: #268bd2;">(</span><span style="color: #57998258a066; text-decoration: underline;">org</span><span style="text-decoration: underline;">-</span><span style="color: #57998258a066; text-decoration: underline;">set</span><span style="text-decoration: underline;">-</span><span style="color: #68717c277aa9; text-decoration: underline;">property</span> <span style="color: #2aa198;">"archive.today"</span> <span style="color: #a050824890d1;">archive</span>-<span style="color: #68717c277aa9;">url</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
 </pre>
 </div>
 </div>
@@ -5680,7 +5680,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2019-08-16 Fri 11:17</p>
+<p class="date">Created: 2019-08-16 Fri 11:23</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
