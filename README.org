@@ -2259,6 +2259,26 @@ makel is a project consisting of a Makefile (=makel.mk=) that Emacs package auth
 
 *** Libraries                                                   :libraries:
 
+**** [[https://github.com/alezost/bui.el][bui: Buffer interface library]]
+
+#+BEGIN_QUOTE
+BUI (Buffer User Interface) is an Emacs library that can be used to make user interfaces to display some kind of entries (like packages, buffers, functions, etc.).
+
+The intention of BUI is to be a high-level library which is convenient to be used both by:
+
+-  package makers, as there is no need to bother about implementing routine details and usual features (like buffer history, filtering displayed entries, etc.);
+-  users, as it provides familiar and intuitive interfaces with usual keys (for moving by lines, marking, sorting, switching between buttons); and what is also important, the defined interfaces are highly configurable through various generated variables. A summary of available key bindings can be displayed by pressing h.
+
+*Usage*
+
+BUI provides means to display entries in 2 types of buffers:
+
+-  =list=: it is based on =tabulated-list-mode=, thus it looks similar to a list of Emacs packages (=M-x list-packages=);
+-  =info=: it can be used to display more verbose info, like various buttons, text and other stuff related to the displayed entry (or entries).
+
+In short, you define how a =list= / =info= interface looks like (using =bui-define-interface= macro), and then you can make some user commands that will display entries (using =bui-get-display-entries= and similar functions).
+#+END_QUOTE
+
 **** [[https://github.com/kiwanami/emacs-calfw][calfw: Calendar framework]]
 
 #+BEGIN_QUOTE
@@ -2299,6 +2319,13 @@ The library that powers Magit's command/option UI.
 
 #+BEGIN_QUOTE
 Taking inspiration from prefix keys and prefix arguments, Transient implements a similar abstraction involving a prefix command, infix arguments and suffix commands.
+#+END_QUOTE
+
+**** [[https://github.com/ebpa/tui.el][tui: An experimental text-based UI framework modeled after React]]
+
+#+BEGIN_QUOTE
+This is an experiment in building purely text-based user interfaces (TUI’s). The ultimate goal is to explore new paradigms for user interface design and development using Emacs. To this end, tui.el implements an API based on the popular React JavaScript framework in order to reduce the demands involved with designing and building complex text-based UI’s.
+This is all currently experimental! Expect things to change as I get feedback about what works, what does not!
 #+END_QUOTE
 
 **** =widget=                                                     :built_in:
