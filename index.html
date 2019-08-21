@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-21 Wed 14:17 -->
+<!-- 2019-08-21 Wed 14:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -692,6 +692,7 @@ for the JavaScript code in this tag.
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Falezost%2Fbui.el%5D%5Bbui%3A%20Buffer%20interface%20library%5D%5D">bui: Buffer interface library</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fkiwanami%2Femacs-calfw%5D%5Bcalfw%3A%20Calendar%20framework%5D%5D">calfw: Calendar framework</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fkiwanami%2Femacs-ctable%5D%5Bctable%3A%20Table%20Component%5D%5D">ctable: Table Component</a></li>
+<li><a href="#Emacs%27s%20Widget%20for%20Object%20Collections%20%28%3Dewoc%3D%29">Emacs's Widget for Object Collections (<code>ewoc</code>)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span></span></a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fabo-abo%2Fhydra%5D%5Bhydra%5D%5D">hydra&#xa0;&#xa0;&#xa0;<span class="tag"><span class="key_binding">key_binding</span></span></a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fnavigel%2F%5D%5Bnavigel%5D%5D">navigel</a></li>
 <li><a href="#%3Dtabulated-list-mode%3D"><code>tabulated-list-mode</code>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span></span></a></li>
@@ -4544,6 +4545,25 @@ ctable.el is a table component for Emacs Lisp.  Emacs Lisp programs can display 
 </div>
 </div>
 
+<div id="outline-container-Emacs%27s%20Widget%20for%20Object%20Collections%20%28%3Dewoc%3D%29" class="outline-5">
+<h5 id="Emacs%27s%20Widget%20for%20Object%20Collections%20%28%3Dewoc%3D%29">Emacs's Widget for Object Collections (<code>ewoc</code>)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span></span></h5>
+<div class="outline-text-5" id="text-Emacs%27s%20Widget%20for%20Object%20Collections%20%28%3Dewoc%3D%29">
+<blockquote>
+<p>
+The Ewoc package constructs buffer text that represents a structure of Lisp objects, and updates the text to follow changes in that structure. This is like the “view” component in the “model–view–controller” design paradigm. Ewoc means “Emacs's Widget for Object Collections”.
+</p>
+
+<p>
+An ewoc is a structure that organizes information required to construct buffer text that represents certain Lisp data. The buffer text of the ewoc has three parts, in order: first, fixed header text; next, textual descriptions of a series of data elements (Lisp objects that you specify); and last, fixed footer text.
+</p>
+</blockquote>
+
+<ul class="org-ul">
+<li><a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Abstract-Display.html">Manual</a></li>
+</ul>
+</div>
+</div>
+
 <div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fabo-abo%2Fhydra%5D%5Bhydra%5D%5D" class="outline-5">
 <h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fabo-abo%2Fhydra%5D%5Bhydra%5D%5D"><a href="https://github.com/abo-abo/hydra">hydra</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="key_binding">key_binding</span></span></h5>
 <div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fabo-abo%2Fhydra%5D%5Bhydra%5D%5D">
@@ -5772,7 +5792,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2019-08-21 Wed 14:17</p>
+<p class="date">Created: 2019-08-21 Wed 14:20</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -2293,6 +2293,16 @@ It is also usable as a library to display items on a calendar.
 ctable.el is a table component for Emacs Lisp.  Emacs Lisp programs can display a nice table view from an abstract data model.  The many emacs programs have the code for displaying table views, such as dired, list-process, buffer-list and so on.  So, ctable.el would provide functions and a table framework for the table views.
 #+END_QUOTE
 
+**** Emacs's Widget for Object Collections (=ewoc=)               :built_in:
+
+#+BEGIN_QUOTE
+The Ewoc package constructs buffer text that represents a structure of Lisp objects, and updates the text to follow changes in that structure. This is like the “view” component in the “model–view–controller” design paradigm. Ewoc means “Emacs's Widget for Object Collections”.
+
+An ewoc is a structure that organizes information required to construct buffer text that represents certain Lisp data. The buffer text of the ewoc has three parts, in order: first, fixed header text; next, textual descriptions of a series of data elements (Lisp objects that you specify); and last, fixed footer text.
+#+END_QUOTE
+
++ [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Abstract-Display.html][Manual]]
+
 **** [[https://github.com/abo-abo/hydra][hydra]]                                                   :key_binding:
 
 #+BEGIN_QUOTE
