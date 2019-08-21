@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-16 Fri 11:25 -->
+<!-- 2019-08-20 Tue 20:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -689,11 +689,14 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#User%20Interface--Libraries">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a>
 <ul>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fkiwanami%2Femacs-calfw%5D%5Bcalfw%3A%20Calendar%20framework%5D%5D">calfw: Calendar framework</a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fkiwanami%2Femacs-ctable%5D%5Bctable%3A%20Table%20Component%5D%5D">ctable: Table Component</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fabo-abo%2Fhydra%5D%5Bhydra%5D%5D">hydra&#xa0;&#xa0;&#xa0;<span class="tag"><span class="key_binding">key_binding</span></span></a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fnavigel%2F%5D%5Bnavigel%5D%5D">navigel</a></li>
 <li><a href="#%3Dtabulated-list-mode%3D"><code>tabulated-list-mode</code>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span></span></a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fmagit%2Ftransient%5D%5BTransient%5D%5D">Transient</a></li>
 <li><a href="#%3Dwidget%3D"><code>widget</code>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span></span></a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fkiwanami%2Femacs-widget-mvc%5D%5Bwidget-mvc%3A%20Web-like%20MVC%20framework%5D%5D">widget-mvc: Web-like MVC framework</a></li>
 </ul>
 </li>
 </ul>
@@ -3224,6 +3227,7 @@ Chris Wellons explains five ways to write faster Emacs Lisp code.
 <div id="outline-container-%5B%5B%2A%255B%255Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2016%2F12%2F22%2F%255D%255BSome%2520Performance%2520Advantages%2520of%2520Lexical%2520Scope%2520%25C2%25AB%2520null%2520program%255D%255D%5D%5BSome%20Performance%20Advantages%20of%20Lexical%20Scope%20%C2%AB%20null%20program%5D%5D" class="outline-5">
 <h5 id="%5B%5B%2A%255B%255Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2016%2F12%2F22%2F%255D%255BSome%2520Performance%2520Advantages%2520of%2520Lexical%2520Scope%2520%25C2%25AB%2520null%2520program%255D%255D%5D%5BSome%20Performance%20Advantages%20of%20Lexical%20Scope%20%C2%AB%20null%20program%5D%5D"><a href="#%5B%5Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2016%2F12%2F22%2F%5D%5BSome%20Performance%20Advantages%20of%20Lexical%20Scope%20%C2%AB%20null%20program%5D%5D">Some Performance Advantages of Lexical Scope « null program</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="lexical_binding">lexical_binding</span></span></h5>
 </div>
+
 <div id="outline-container-%5B%5Bid%3A54fa2e85-066f-431e-9db3-8b1627fac4ca%5D%5BWhat%27s%20in%20an%20Emacs%20Lambda%20%C2%AB%20null%20program%5D%5D" class="outline-5">
 <h5 id="%5B%5Bid%3A54fa2e85-066f-431e-9db3-8b1627fac4ca%5D%5BWhat%27s%20in%20an%20Emacs%20Lambda%20%C2%AB%20null%20program%5D%5D"><a href="#%5B%5Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2017%2F12%2F14%2F%5D%5BWhat%27s%20in%20an%20Emacs%20Lambda%20%C2%AB%20null%20program%5D%5D">What's in an Emacs Lambda « null program</a></h5>
 </div>
@@ -4475,7 +4479,33 @@ makel is a project consisting of a Makefile (<code>makel.mk</code>) that Emacs p
 </div><div id="outline-container-User%20Interface--Libraries" class="outline-4">
 <h4 id="User%20Interface--Libraries">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
 <div class="outline-text-4" id="text-User%20Interface--Libraries">
-</div><div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fabo-abo%2Fhydra%5D%5Bhydra%5D%5D" class="outline-5">
+</div><div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fkiwanami%2Femacs-calfw%5D%5Bcalfw%3A%20Calendar%20framework%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fkiwanami%2Femacs-calfw%5D%5Bcalfw%3A%20Calendar%20framework%5D%5D"><a href="https://github.com/kiwanami/emacs-calfw">calfw: Calendar framework</a></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fkiwanami%2Femacs-calfw%5D%5Bcalfw%3A%20Calendar%20framework%5D%5D">
+<blockquote>
+<p>
+This program displays a calendar view in the Emacs buffer.
+</p>
+</blockquote>
+
+<p>
+It is also usable as a library to display items on a calendar.
+</p>
+</div>
+</div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fkiwanami%2Femacs-ctable%5D%5Bctable%3A%20Table%20Component%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fkiwanami%2Femacs-ctable%5D%5Bctable%3A%20Table%20Component%5D%5D"><a href="https://github.com/kiwanami/emacs-ctable">ctable: Table Component</a></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fkiwanami%2Femacs-ctable%5D%5Bctable%3A%20Table%20Component%5D%5D">
+<blockquote>
+<p>
+ctable.el is a table component for Emacs Lisp.  Emacs Lisp programs can display a nice table view from an abstract data model.  The many emacs programs have the code for displaying table views, such as dired, list-process, buffer-list and so on.  So, ctable.el would provide functions and a table framework for the table views.
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fabo-abo%2Fhydra%5D%5Bhydra%5D%5D" class="outline-5">
 <h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fabo-abo%2Fhydra%5D%5Bhydra%5D%5D"><a href="https://github.com/abo-abo/hydra">hydra</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="key_binding">key_binding</span></span></h5>
 <div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fabo-abo%2Fhydra%5D%5Bhydra%5D%5D">
 <blockquote>
@@ -4539,6 +4569,17 @@ Most graphical user interface toolkits provide a number of standard user interfa
 <ul class="org-ul">
 <li><a href="https://www.gnu.org/software/emacs/manual/html_mono/widget.html">Manual</a></li>
 </ul>
+</div>
+</div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fkiwanami%2Femacs-widget-mvc%5D%5Bwidget-mvc%3A%20Web-like%20MVC%20framework%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fkiwanami%2Femacs-widget-mvc%5D%5Bwidget-mvc%3A%20Web-like%20MVC%20framework%5D%5D"><a href="https://github.com/kiwanami/emacs-widget-mvc">widget-mvc: Web-like MVC framework</a></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fkiwanami%2Femacs-widget-mvc%5D%5Bwidget-mvc%3A%20Web-like%20MVC%20framework%5D%5D">
+<blockquote>
+<p>
+This is a GUI framework for Emacs Lisp.  It is designed for programmers who are familiar with conventional Web MVC frameworks.
+</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -5680,7 +5721,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2019-08-16 Fri 11:25</p>
+<p class="date">Created: 2019-08-20 Tue 20:13</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

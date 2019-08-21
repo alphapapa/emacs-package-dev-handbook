@@ -1572,6 +1572,7 @@ And:
 Chris Wellons explains five ways to write faster Emacs Lisp code.
 
 **** [[*%5B%5Bhttps://nullprogram.com/blog/2016/12/22/%5D%5BSome%20Performance%20Advantages%20of%20Lexical%20Scope%20%C2%AB%20null%20program%5D%5D][Some Performance Advantages of Lexical Scope « null program]] :lexical_binding:
+
 **** [[id:54fa2e85-066f-431e-9db3-8b1627fac4ca][What's in an Emacs Lambda « null program]]
 
 *** Macros                                                         :macros:
@@ -2258,6 +2259,20 @@ makel is a project consisting of a Makefile (=makel.mk=) that Emacs package auth
 
 *** Libraries                                                   :libraries:
 
+**** [[https://github.com/kiwanami/emacs-calfw][calfw: Calendar framework]]
+
+#+BEGIN_QUOTE
+This program displays a calendar view in the Emacs buffer.
+#+END_QUOTE
+
+It is also usable as a library to display items on a calendar.
+
+**** [[https://github.com/kiwanami/emacs-ctable][ctable: Table Component]]
+
+#+BEGIN_QUOTE
+ctable.el is a table component for Emacs Lisp.  Emacs Lisp programs can display a nice table view from an abstract data model.  The many emacs programs have the code for displaying table views, such as dired, list-process, buffer-list and so on.  So, ctable.el would provide functions and a table framework for the table views.
+#+END_QUOTE
+
 **** [[https://github.com/abo-abo/hydra][hydra]]                                                   :key_binding:
 
 #+BEGIN_QUOTE
@@ -2293,6 +2308,12 @@ Most graphical user interface toolkits provide a number of standard user interfa
 #+END_QUOTE
 
 + [[https://www.gnu.org/software/emacs/manual/html_mono/widget.html][Manual]]
+
+**** [[https://github.com/kiwanami/emacs-widget-mvc][widget-mvc: Web-like MVC framework]]
+
+#+BEGIN_QUOTE
+This is a GUI framework for Emacs Lisp.  It is designed for programmers who are familiar with conventional Web MVC frameworks.
+#+END_QUOTE
 
 ** Version control                                         :version_control:
 
