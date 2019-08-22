@@ -1330,6 +1330,12 @@ Version numbers which are valid in Emacs are those accepted by the function ~ver
   "22.8beta3" (22 8 -2 3)
 #+END_EXAMPLE
 
+*** Libraries                                                   :libraries:
+
+**** =lisp-mnt.el= (=lm=)                                           :built_in:
+
+This library includes functions helpful for working with and verifying the format of Emacs Lisp package files, including headers, commentary, etc.  It's easy to overlook and hard to re-discover this package because of its =lm= symbol prefix.  It's listed here because your editor keeps forgetting what it's called.
+
 *** Reference                                                   :reference:
 
 **** Package headers and structure
