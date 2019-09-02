@@ -177,7 +177,19 @@ This file also defines macros =thunk-let= and =thunk-let*= that are analogous to
 
 ** Buffers                                                         :buffers:
 
+*** Contents
+:PROPERTIES:
+:TOC:      siblings
+:END:
+      -  [[#best-practices][Best practices]]
+        -  [[#accessing-buffer-local-variables][Accessing buffer-local variables]]
+        -  [[#inserting-strings][Inserting strings]]
+      -  [[#libraries][Libraries]]
+
 *** Best practices                                         :best_practices:
+:PROPERTIES:
+:TOC: 1
+:END:
 
 **** Accessing buffer-local variables
 
@@ -242,6 +254,7 @@ The fastest method here is to call ~insert~ once with the result of calling ~con
 *** Libraries                                                   :libraries:
 :PROPERTIES:
 :ID:       523aa766-36a3-4827-a114-6babf72edc6b
+:TOC:      0
 :END:
 
 **** [[https://github.com/phillord/m-buffer-el][m-buffer-el: List Oriented Buffer Operations]]
@@ -265,7 +278,20 @@ users, as it provides familiar and intuitive interfaces with usual keys (for mov
 
 ** Collections (lists, vectors, hash-tables, etc.)             :collections:
 
+*** Contents
+:PROPERTIES:
+:TOC:      siblings
+:END:
+      -  [[#best-practices][Best practices]]
+      -  [[#examples][Examples]]
+        -  [[#alists][Alists]]
+      -  [[#libraries][Libraries]]
+      -  [[#tools][Tools]]
+
 *** Best practices                                         :best_practices:
+:PROPERTIES:
+:TOC: 0
+:END:
 
 **** Collecting items into a list                                  :lists:
 
@@ -357,6 +383,9 @@ Using ~-select~ from =dash.el= seems to be the fastest way:
 | (-non-nil (--map (when ... |            slowest |    0.02903999 |        0 |              0.0 |
 
 *** Examples                                                     :examples:
+:PROPERTIES:
+:TOC: 1
+:END:
 
 **** Alists                                                       :alists:
 
@@ -440,6 +469,9 @@ Using ~-select~ from =dash.el= seems to be the fastest way:
 #+END_SRC
 
 *** Libraries                                                   :libraries:
+:PROPERTIES:
+:TOC: 0
+:END:
 
 **** [[https://github.com/plexus/a.el][a.el: functions for dealing with association lists and hash tables. Inspired by Clojure.]] :alists:hash_tables:
 
@@ -505,6 +537,9 @@ Streams could be created from any sequential input data:
 #+END_QUOTE
 
 *** Tools                                                           :tools:
+:PROPERTIES:
+:TOC: 0
+:END:
 
 **** [[id:f8f0755b-c23b-45ad-98da-780d4044676a][let-alist]]
 
@@ -947,7 +982,27 @@ A flexible, featureful =curl= wrapper, last updated in 2015.
 :TOC:      ignore-children
 :END:
 
+*** Contents
+:PROPERTIES:
+:TOC:      siblings
+:END:
+      -  [[#best-practices][Best practices]]
+        -  [[#autoloads][Autoloads]]
+        -  [[#integration-with-other-packages][Integration with other packages]]
+        -  [[#httpswwwgnuorgsoftwareemacsmanualhtml_nodeelisplexical-bindinghtmllexical-binding][Lexical binding]]
+        -  [[#template][Template]]
+        -  [[#readme][Readme]]
+        -  [[#version-numbers][Version numbers]]
+      -  [[#libraries][Libraries]]
+      -  [[#reference][Reference]]
+        -  [[#package-headers-and-structure][Package headers and structure]]
+      -  [[#tools][Tools]]
+        -  [[#package-installationmanagement][Package installation/management]]
+
 *** Best practices                                         :best_practices:
+:PROPERTIES:
+:TOC:      1
+:END:
 
 **** Autoloads                                                 :autoloads:
 
@@ -1331,12 +1386,18 @@ Version numbers which are valid in Emacs are those accepted by the function ~ver
 #+END_EXAMPLE
 
 *** Libraries                                                   :libraries:
+:PROPERTIES:
+:TOC:      0
+:END:
 
 **** =lisp-mnt.el= (=lm=)                                           :built_in:
 
 This library includes functions helpful for working with and verifying the format of Emacs Lisp package files, including headers, commentary, etc.  It's easy to overlook and hard to re-discover this package because of its =lm= symbol prefix.  It's listed here because your editor keeps forgetting what it's called.
 
 *** Reference                                                   :reference:
+:PROPERTIES:
+:TOC:      1
+:END:
 
 **** Package headers and structure
 :PROPERTIES:
@@ -1370,6 +1431,9 @@ The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.
 #+END_EXAMPLE
 
 *** Tools                                                           :tools:
+:PROPERTIES:
+:TOC:      1
+:END:
 
 **** Package installation/management             :installation:management:
 
@@ -1401,7 +1465,18 @@ Developed by the current maintainer of Emacs, himself, John Wiegley.
 :ID:       b699e1a1-e34c-4ce8-a5dd-41161d2a1cbf
 :END:
 
+*** Contents
+:PROPERTIES:
+:TOC:      siblings
+:END:
+      -  [[#articles][Articles]]
+      -  [[#libraries][Libraries]]
+      -  [[#tools][Tools]]
+
 *** Articles                                                     :articles:
+:PROPERTIES:
+:TOC:      0
+:END:
 
 **** [[http://www.wilfred.me.uk/blog/2017/03/19/pattern-matching-in-emacs-lisp/][Pattern Matching in Emacs Lisp – Wilfred Hughes::Blog]] :pcase:shadchen:cl:dash:
 :PROPERTIES:
@@ -1425,6 +1500,9 @@ For the sake of this post, we'll consider both pattern matching and destructurin
 John Kitchin demonstrates some [[id:a58f65dc-d4a4-4a40-a573-a66a28f3619c][macros]] that make it easy to access plist values.
 
 *** Libraries                                                   :libraries:
+:PROPERTIES:
+:TOC:      0
+:END:
 
 **** [[https://github.com/magnars/dash.el][dash.el]] :dash:
 
@@ -1475,6 +1553,9 @@ This example shows the use of =pcase-let*= to destructure and bind a nested alis
 A powerful, Racket-style pattern-matching library.
 
 *** Tools                                                           :tools:
+:PROPERTIES:
+:TOC:      0
+:END:
 
 **** let-alist                               :alists:macros:destructuring:
 :PROPERTIES:
@@ -1568,7 +1649,23 @@ And:
 
 #+END_SRC
 
+*** Contents
+:PROPERTIES:
+:TOC:      siblings
+:END:
+      -  [[#articles][Articles]]
+      -  [[#macros][Macros]]
+        -  [[#bench][bench]]
+        -  [[#bench-multi-macros][bench-multi macros]]
+          -  [[#bench-multi-lexical][bench-multi-lexical]]
+          -  [[#bench-dynamic-vs-lexical-binding][bench-dynamic-vs-lexical-binding]]
+          -  [[#bench-multi-lets][bench-multi-lets]]
+        -  [[#elp-profile][elp-profile]]
+
 *** Articles                                                     :articles:
+:PROPERTIES:
+:TOC:      0
+:END:
 
 **** [[https://nullprogram.com/blog/2017/01/30/][How to Write Fast(er) Emacs Lisp « null program]]
 :PROPERTIES:
@@ -2055,7 +2152,18 @@ Emacs Refactor (EMR) is a framework for providing language-specific refactoring 
 
 ** Regular expressions                                 :regular_expressions:
 
+*** Contents
+:PROPERTIES:
+:TOC:      siblings
+:END:
+      -  [[#articles][Articles]]
+      -  [[#libraries][Libraries]]
+      -  [[#tools][Tools]]
+
 *** Articles                                                     :articles:
+:PROPERTIES:
+:TOC:      0
+:END:
 
 **** TODO [[http://francismurillo.github.io/2017-03-30-Exploring-Emacs-rx-Macro/][Exploring Emacs rx Macro]]                                    :rx:
 :PROPERTIES:
@@ -2063,6 +2171,9 @@ Emacs Refactor (EMR) is a framework for providing language-specific refactoring 
 :END:
 
 *** Libraries                                                   :libraries:
+:PROPERTIES:
+:TOC:  0
+:END:
 
 **** [[https://elpa.gnu.org/packages/lex.html][lex]]
 
@@ -2079,6 +2190,9 @@ Format of regexps is the same as used for `rx' and `sregex'.  Additions:
 **** TODO [[https://github.com/joddie/pcre2el][pcre2el: Convert between PCRE, Emacs and rx regexp syntax]]
 
 *** Tools                                                           :tools:
+:PROPERTIES:
+:TOC: 0
+:END:
 
 **** [[https://github.com/immerrr/ample-regexps.el][ample-regexps.el: Compose and reuse regular expressions with ease]]
 
@@ -2146,11 +2260,25 @@ This example shows the use of a function to expand a list of strings into a sequ
 
 ** Strings                                                         :strings:
 
+*** Contents
+:PROPERTIES:
+:TOC:      siblings
+:END:
+      -  [[#libraries][Libraries]]
+      -  [[#tools][Tools]]
+        -  [[#format-macro][format$ macro]]
+
 *** Libraries                                                   :libraries:
+:PROPERTIES:
+:TOC: 0
+:END:
 
 **** [[https://github.com/magnars/s.el][s.el: The long lost Emacs string manipulation library]]
 
 *** Tools                                                           :tools:
+:PROPERTIES:
+:TOC: 1
+:END:
 
 **** ~format$~ macro                                  :macros:interpolation:
 
@@ -2169,8 +2297,14 @@ Expands to:
 Since this happens at macro expansion time rather than at runtime, there is no performance penalty, in contrast to using ~s-lex-format~.
 
 ** Testing                                                         :testing:
+:PROPERTIES:
+:TOC:      0
+:END:
 
 *** Libraries                                                   :libraries:
+:PROPERTIES:
+:TOC: 0
+:END:
 
 **** [[https://github.com/phillord/assess][assess: Test support functions]]
 
@@ -2197,6 +2331,9 @@ Some interactive functions rely on idle timers to do their work, so you might ne
 #+END_QUOTE
 
 *** Tools                                                    :tools:
+:PROPERTIES:
+:TOC: 0
+:END:
 
 **** [[https://github.com/jorgenschaefer/emacs-buttercup][buttercup: Behavior-Driven Emacs Lisp Testing]]
 :PROPERTIES:
