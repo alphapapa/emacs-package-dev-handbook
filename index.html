@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-09-02 Mon 09:04 -->
+<!-- 2019-09-02 Mon 09:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -355,6 +355,11 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#Date%20%2F%20Time--Libraries">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a>
 <ul>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Falphapapa%2Fts.el%5D%5Bts.el%3A%20Timestamp%20and%20date-time%20library%5D%5D">ts.el: Timestamp and date-time library</a>
+<ul>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Falphapapa%2Fts.el%5D%5Bts.el%3A%20Timestamp%20and%20date-time%20library%5D%5D--Examples">Examples</a></li>
+</ul>
+</li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Femacs-php%2Femacs-datetime%5D%5Bemacs-datetime%5D%5D">emacs-datetime</a></li>
 </ul>
 </li>
@@ -1903,7 +1908,125 @@ Streams could be created from any sequential input data:
 </div><div id="outline-container-Date%20%2F%20Time--Libraries" class="outline-4">
 <h4 id="Date%20%2F%20Time--Libraries">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
 <div class="outline-text-4" id="text-Date%20%2F%20Time--Libraries">
-</div><div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Femacs-php%2Femacs-datetime%5D%5Bemacs-datetime%5D%5D" class="outline-5">
+</div><div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Falphapapa%2Fts.el%5D%5Bts.el%3A%20Timestamp%20and%20date-time%20library%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Falphapapa%2Fts.el%5D%5Bts.el%3A%20Timestamp%20and%20date-time%20library%5D%5D"><a href="https://github.com/alphapapa/ts.el">ts.el: Timestamp and date-time library</a></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Falphapapa%2Fts.el%5D%5Bts.el%3A%20Timestamp%20and%20date-time%20library%5D%5D">
+<p>
+<code>ts</code> aids in parsing, formatting, and manipulating timestamps.
+</p>
+
+<blockquote>
+<p>
+ts is a date and time library for Emacs. It aims to be more convenient than patterns like <code>(string-to-number (format-time-string "%Y"))</code> by providing easy accessors, like <code>(ts-year (ts-now))</code>.
+</p>
+
+<p>
+To improve performance (significantly), formatted date parts are computed lazily rather than when a timestamp object is instantiated, and the computed parts are then cached for later access without recomputing. Behind the scenes, this avoids unnecessary <code>(string-to-number (format-time-string...</code> calls, which are surprisingly expensive.
+</p>
+</blockquote>
+</div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Falphapapa%2Fts.el%5D%5Bts.el%3A%20Timestamp%20and%20date-time%20library%5D%5D--Examples" class="outline-6">
+<h6 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Falphapapa%2Fts.el%5D%5Bts.el%3A%20Timestamp%20and%20date-time%20library%5D%5D--Examples">Examples</h6>
+<div class="outline-text-6" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Falphapapa%2Fts.el%5D%5Bts.el%3A%20Timestamp%20and%20date-time%20library%5D%5D--Examples">
+<p>
+Get parts of the current date:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">When the current date is 2018-12-08 23:09:14 -0600:</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">ts-year</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-now</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>       <span style="color: #586e75;">;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; 2018</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">ts-month</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-now</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>      <span style="color: #586e75;">;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; 12</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">ts-day</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-now</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>        <span style="color: #586e75;">;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; 8</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">ts-hour</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-now</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>       <span style="color: #586e75;">;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; 23</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">ts-minute</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-now</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>     <span style="color: #586e75;">;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; 9</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">ts-second</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-now</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>     <span style="color: #586e75;">;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; 14</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">ts-tz-offset</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-now</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>  <span style="color: #586e75;">;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; "-0600"</span>
+
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">ts-dow</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-now</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>        <span style="color: #586e75;">;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; 6</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">ts-day-abbr</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-now</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>   <span style="color: #586e75;">;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; "Sat"</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">ts-day-name</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-now</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>   <span style="color: #586e75;">;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; "Saturday"</span>
+
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">ts-month-abbr</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-now</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span> <span style="color: #586e75;">;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; "Dec"</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">ts-month-name</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-now</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span> <span style="color: #586e75;">;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; "December"</span>
+
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">ts-tz-abbr</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-now</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>    <span style="color: #586e75;">;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; "CST"</span>
+</pre>
+</div>
+
+<p>
+Increment the current date:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">By 10 years:</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">list</span><span style="color: #3e86b8;"> </span><span style="color: #3e86b8; font-weight: bold;">:now</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-format</span><span style="color: #3e86b8;">)</span>
+      <span style="color: #3e86b8; font-weight: bold;">:future</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-format</span><span style="color: #79890f;"> (</span><span style="color: #3e8c86; text-decoration: underline;">ts-adjust</span><span style="color: #3e8c86;"> 'year 10 (</span><span style="color: #a27f12; text-decoration: underline;">ts-now</span><span style="color: #3e8c86;">)</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
+<span style="color: #586e75;">;;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; (   :now "2018-12-15 22:00:34 -0600"</span>
+<span style="color: #586e75;">;;    </span><span style="color: #586e75; font-weight: bold; font-style: italic;">:future "2028-12-15 22:00:34 -0600")</span>
+
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">By 10 years, 2 months, 3 days, 5 hours, and 4 seconds:</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">list</span><span style="color: #3e86b8;"> </span><span style="color: #3e86b8; font-weight: bold;">:now</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-format</span><span style="color: #3e86b8;">)</span>
+      <span style="color: #3e86b8; font-weight: bold;">:future</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-format</span>
+<span style="color: #79890f;">               (</span><span style="color: #3e8c86; text-decoration: underline;">ts-adjust</span><span style="color: #3e8c86;"> 'year 10 'month 2 'day 3</span>
+<span style="color: #3e8c86;">                          'hour 5 'second 4</span>
+<span style="color: #3e8c86;">                          (</span><span style="color: #a27f12; text-decoration: underline;">ts-now</span><span style="color: #3e8c86;">)</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
+<span style="color: #586e75;">;;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; (   :now "2018-12-15 22:02:31 -0600"</span>
+<span style="color: #586e75;">;;    </span><span style="color: #586e75; font-weight: bold; font-style: italic;">:future "2029-02-19 03:02:35 -0600")</span>
+</pre>
+</div>
+
+<p>
+What day of the week was 2 days ago?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">ts-day-name</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-dec</span><span style="color: #79890f;"> 'day 2 (</span><span style="color: #3e8c86; text-decoration: underline;">ts-now</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>             <span style="color: #586e75;">;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; "Thursday"</span>
+
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">Or, with threading macros:</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; font-weight: bold;">thread-last</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-now</span><span style="color: #3e86b8;">)</span> <span style="color: #3e86b8;">(</span><span style="color: #79890f; text-decoration: underline;">ts-dec</span><span style="color: #79890f;"> 'day 2</span><span style="color: #3e86b8;">)</span> <span style="color: #3e86b8;">ts-day-name</span><span style="color: #a27f12;">)</span> <span style="color: #586e75;">;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; "Thursday"</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; font-weight: bold;">-&gt;&gt;</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-now</span><span style="color: #3e86b8;">)</span> <span style="color: #3e86b8;">(</span><span style="color: #79890f; text-decoration: underline;">ts-dec</span><span style="color: #79890f;"> 'day 2</span><span style="color: #3e86b8;">)</span> <span style="color: #3e86b8;">ts-day-name</span><span style="color: #a27f12;">)</span>         <span style="color: #586e75;">;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; "Thursday"</span>
+</pre>
+</div>
+
+<p>
+Get timestamp for this time last week:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">ts-unix</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-adjust</span><span style="color: #79890f;"> 'day -7 (</span><span style="color: #3e8c86; text-decoration: underline;">ts-now</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
+<span style="color: #586e75;">;;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; 1543728398.0</span>
+
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">To confirm that the difference really is 7 days:</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8;">/ (</span><span style="color: #79890f;">- (</span><span style="color: #3e8c86; text-decoration: underline;">ts-unix</span><span style="color: #3e8c86;"> (</span><span style="color: #a27f12; text-decoration: underline;">ts-now</span><span style="color: #3e8c86;">)</span><span style="color: #79890f;">)</span>
+      <span style="color: #79890f;">(</span><span style="color: #3e8c86; text-decoration: underline;">ts-unix</span><span style="color: #3e8c86;"> (</span><span style="color: #a27f12; text-decoration: underline;">ts-adjust</span><span style="color: #a27f12;"> 'day -7 (</span><span style="color: #3e86b8; text-decoration: underline;">ts-now</span><span style="color: #a27f12;">)</span><span style="color: #3e8c86;">)</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
+   <span style="color: #3e86b8;">86400</span><span style="color: #a27f12;">)</span>
+<span style="color: #586e75;">;;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; 7.000000567521762</span>
+
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">Or human-friendly as a list:</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">ts-human-duration</span>
+<span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-difference</span><span style="color: #79890f;"> (</span><span style="color: #3e8c86; text-decoration: underline;">ts-now</span><span style="color: #79890f;">)</span>
+                <span style="color: #79890f;">(</span><span style="color: #3e8c86; text-decoration: underline;">ts-dec</span><span style="color: #3e8c86;"> 'day 7 (</span><span style="color: #a27f12; text-decoration: underline;">ts-now</span><span style="color: #3e8c86;">)</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
+<span style="color: #586e75;">;;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; (:years 0 :days 7 :hours 0 :minutes 0 :seconds 0)</span>
+
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">Or as a string:</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">ts-human-format-duration</span>
+<span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-difference</span><span style="color: #79890f;"> (</span><span style="color: #3e8c86; text-decoration: underline;">ts-now</span><span style="color: #79890f;">)</span>
+                <span style="color: #79890f;">(</span><span style="color: #3e8c86; text-decoration: underline;">ts-dec</span><span style="color: #3e8c86;"> 'day 7 (</span><span style="color: #a27f12; text-decoration: underline;">ts-now</span><span style="color: #3e8c86;">)</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
+<span style="color: #586e75;">;;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; "7 days"</span>
+
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">Or confirm by formatting:</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">list</span><span style="color: #3e86b8;"> </span><span style="color: #3e86b8; font-weight: bold;">:now</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-format</span><span style="color: #3e86b8;">)</span>
+      <span style="color: #3e86b8; font-weight: bold;">:last-week</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; text-decoration: underline;">ts-format</span><span style="color: #79890f;"> (</span><span style="color: #3e8c86; text-decoration: underline;">ts-dec</span><span style="color: #3e8c86;"> 'day 7 (</span><span style="color: #a27f12; text-decoration: underline;">ts-now</span><span style="color: #3e8c86;">)</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
+<span style="color: #586e75;">;;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">=&gt; (      :now "2018-12-08 23:31:37 -0600"</span>
+<span style="color: #586e75;">;;    </span><span style="color: #586e75; font-weight: bold; font-style: italic;">:last-week "2018-12-01 23:31:37 -0600")</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Femacs-php%2Femacs-datetime%5D%5Bemacs-datetime%5D%5D" class="outline-5">
 <h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Femacs-php%2Femacs-datetime%5D%5Bemacs-datetime%5D%5D"><a id="ID-45613ae9-97a2-4807-b099-a6c051f1a2c4"></a><a href="https://github.com/emacs-php/emacs-datetime">emacs-datetime</a></h5>
 <div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Femacs-php%2Femacs-datetime%5D%5Bemacs-datetime%5D%5D">
 <p>
@@ -5961,7 +6084,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2019-09-02 Mon 09:04</p>
+<p class="date">Created: 2019-09-02 Mon 09:11</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

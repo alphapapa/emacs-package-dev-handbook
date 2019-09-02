@@ -558,6 +558,100 @@ Streams could be created from any sequential input data:
 
 *** Libraries                                                   :libraries:
 
+**** [[https://github.com/alphapapa/ts.el][ts.el: Timestamp and date-time library]]
+
+=ts= aids in parsing, formatting, and manipulating timestamps.
+
+#+BEGIN_QUOTE
+ts is a date and time library for Emacs. It aims to be more convenient than patterns like ~(string-to-number (format-time-string "%Y"))~ by providing easy accessors, like ~(ts-year (ts-now))~.
+
+To improve performance (significantly), formatted date parts are computed lazily rather than when a timestamp object is instantiated, and the computed parts are then cached for later access without recomputing. Behind the scenes, this avoids unnecessary ~(string-to-number (format-time-string...~ calls, which are surprisingly expensive.
+#+END_QUOTE
+
+***** Examples
+
+Get parts of the current date:
+
+#+BEGIN_SRC elisp
+  ;; When the current date is 2018-12-08 23:09:14 -0600:
+  (ts-year (ts-now))       ;=> 2018
+  (ts-month (ts-now))      ;=> 12
+  (ts-day (ts-now))        ;=> 8
+  (ts-hour (ts-now))       ;=> 23
+  (ts-minute (ts-now))     ;=> 9
+  (ts-second (ts-now))     ;=> 14
+  (ts-tz-offset (ts-now))  ;=> "-0600"
+
+  (ts-dow (ts-now))        ;=> 6
+  (ts-day-abbr (ts-now))   ;=> "Sat"
+  (ts-day-name (ts-now))   ;=> "Saturday"
+
+  (ts-month-abbr (ts-now)) ;=> "Dec"
+  (ts-month-name (ts-now)) ;=> "December"
+
+  (ts-tz-abbr (ts-now))    ;=> "CST"
+#+END_SRC
+
+Increment the current date:
+
+#+BEGIN_SRC elisp
+  ;; By 10 years:
+  (list :now (ts-format)
+        :future (ts-format (ts-adjust 'year 10 (ts-now))))
+  ;;=> (   :now "2018-12-15 22:00:34 -0600"
+  ;;    :future "2028-12-15 22:00:34 -0600")
+
+  ;; By 10 years, 2 months, 3 days, 5 hours, and 4 seconds:
+  (list :now (ts-format)
+        :future (ts-format
+                 (ts-adjust 'year 10 'month 2 'day 3
+                            'hour 5 'second 4
+                            (ts-now))))
+  ;;=> (   :now "2018-12-15 22:02:31 -0600"
+  ;;    :future "2029-02-19 03:02:35 -0600")
+#+END_SRC
+
+What day of the week was 2 days ago?
+
+#+BEGIN_SRC elisp
+  (ts-day-name (ts-dec 'day 2 (ts-now)))             ;=> "Thursday"
+
+  ;; Or, with threading macros:
+  (thread-last (ts-now) (ts-dec 'day 2) ts-day-name) ;=> "Thursday"
+  (->> (ts-now) (ts-dec 'day 2) ts-day-name)         ;=> "Thursday"
+#+END_SRC
+
+Get timestamp for this time last week:
+
+#+BEGIN_SRC elisp
+  (ts-unix (ts-adjust 'day -7 (ts-now)))
+  ;;=> 1543728398.0
+
+  ;; To confirm that the difference really is 7 days:
+  (/ (- (ts-unix (ts-now))
+        (ts-unix (ts-adjust 'day -7 (ts-now))))
+     86400)
+  ;;=> 7.000000567521762
+
+  ;; Or human-friendly as a list:
+  (ts-human-duration
+   (ts-difference (ts-now)
+                  (ts-dec 'day 7 (ts-now))))
+  ;;=> (:years 0 :days 7 :hours 0 :minutes 0 :seconds 0)
+
+  ;; Or as a string:
+  (ts-human-format-duration
+   (ts-difference (ts-now)
+                  (ts-dec 'day 7 (ts-now))))
+  ;;=> "7 days"
+
+  ;; Or confirm by formatting:
+  (list :now (ts-format)
+        :last-week (ts-format (ts-dec 'day 7 (ts-now))))
+  ;;=> (      :now "2018-12-08 23:31:37 -0600"
+  ;;    :last-week "2018-12-01 23:31:37 -0600")
+#+END_SRC
+
 **** [[https://github.com/emacs-php/emacs-datetime][emacs-datetime]]
 :PROPERTIES:
 :ID:       45613ae9-97a2-4807-b099-a6c051f1a2c4
