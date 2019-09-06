@@ -351,7 +351,75 @@ As is usually the case, the =cl-loop= macro expands to the most efficient code, 
 
 However, in some cases =cl-loop= may expand to code which uses =nconc=, which, as the benchmark shows, is much slower.  In that case, you may write the loop without =cl-loop= to avoid using =nconc=.
 
-**** Filtering a list
+**** Diffing two lists                                             :lists:
+
+As expected, =seq-difference= is the slowest, because it's a generic function that dispatches based on the types of its arguments, which is relatively slow in Emacs.  And it's not surprising that =cl-nset-difference= is generally slightly faster than =cl-set-difference=, since it's destructive.
+
+However, it is surprising how much faster =-difference= is than =cl-nset-difference=.
+
+It's also nonintuitive that =-difference= suffers a large performance penalty by binding =-compare-fn= (the equivalent of the =:test= argument to =cl-set-difference=): while one might expect that setting it to =string== would give a slight performance increase, it's actually faster to let =-difference= use its default, =equal=.
+
+Note that since this benchmark compares lists of strings, =cl-nset-difference= requires setting the =:test= argument, since it uses =eql= by default, which does not work for comparing strings.
+
+#+BEGIN_SRC elisp :exports both :eval no-export
+  (defmacro test/set-lists ()
+    `(setf list1 (cl-loop for i from 0 below 1000
+                          collect (number-to-string i))
+           list2 (cl-loop for i from 500 below 1500
+                          collect (number-to-string i))))
+
+  (let (list1 list2)
+    (bench-multi-lexical :times 10 :ensure-equal t
+      :forms (("-difference"
+               (progn
+                 (test/set-lists)
+                 (-difference list1 list2)))
+              ("-difference string="
+               (progn
+                 ;; This is much slower because of the way `-contains?'
+                 ;; works when `-compare-fn' is non-nil.
+                 (test/set-lists)
+                 (let ((-compare-fn #'string=))
+                   (-difference list1 list2))))
+              ("cl-set-difference equal"
+               (progn
+                 (test/set-lists)
+                 (cl-set-difference list1 list2 :test #'equal)))
+              ("cl-set-difference string="
+               (progn
+                 (test/set-lists)
+                 (cl-set-difference list1 list2 :test #'string=)))
+              ("cl-nset-difference equal"
+               (progn
+                 (test/set-lists)
+                 (cl-nset-difference list1 list2 :test #'equal)))
+              ("cl-nset-difference string="
+               (progn
+                 (test/set-lists)
+                 (cl-nset-difference list1 list2 :test #'string=)))
+              ("seq-difference"
+               (progn
+                 (test/set-lists)
+                 (seq-difference list1 list2)))
+              ("seq-difference string="
+               (progn
+                 (test/set-lists)
+                 (seq-difference list1 list2 #'string=))))))
+#+END_SRC
+
+#+RESULTS:
+| Form                       | x faster than next | Total runtime | # of GCs | Total GC runtime |
+|----------------------------+--------------------+---------------+----------+------------------|
+| -difference                |               7.16 |      0.084484 |        0 |                0 |
+| cl-nset-difference equal   |               1.05 |      0.605193 |        0 |                0 |
+| cl-set-difference string=  |               1.01 |      0.636973 |        0 |                0 |
+| cl-set-difference equal    |               1.01 |      0.644919 |        0 |                0 |
+| cl-nset-difference string= |               1.19 |      0.650708 |        0 |                0 |
+| -difference string=        |               1.59 |      0.773919 |        0 |                0 |
+| seq-difference             |               1.05 |      1.232616 |        0 |                0 |
+| seq-difference string=     |            slowest |      1.293030 |        0 |                0 |
+
+**** Filtering a list                                              :lists:
 
 Using ~-select~ from =dash.el= seems to be the fastest way:
 
