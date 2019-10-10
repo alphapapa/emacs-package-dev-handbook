@@ -3076,6 +3076,8 @@ Yes, please!  Send pull requests and file issues on the [[https://github.com/alp
 
 These resources should be added to the appropriate sections above.  Since it takes some work to catalog and organize them, they are dumped here for future reference.  Pull requests for these are welcome!
 
+** TODO [[https://github.com/ellerh/peg.el][GitHub - ellerh/peg.el]]
+
 ** TODO Articles to add [0/13]
 
 *** TODO [[https://www.lunaryorn.com/posts/read-and-write-files-in-emacs-lisp][Read and write files in Emacs Lisp]] (5 min read)
@@ -3350,6 +3352,10 @@ sorted.  FUNCTION must be a function of one argument."
 
 ** TODO [[https://github.com/chrisbarrett/elisp-namespaces][GitHub - chrisbarrett/elisp-namespaces: UNMAINTAINED]]
 
+** TODO [[https://github.com/marketplace/actions/set-up-emacs][Set up Emacs · Actions · GitHub Marketplace · GitHub]]
+:LOGBOOK:
+-  State "TODO"       from              [2019-10-05 Sat 12:20]
+:END:
 * Code
 :PROPERTIES:
 :TOC:      0
