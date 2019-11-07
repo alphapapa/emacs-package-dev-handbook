@@ -3076,6 +3076,10 @@ Yes, please!  Send pull requests and file issues on the [[https://github.com/alp
 
 These resources should be added to the appropriate sections above.  Since it takes some work to catalog and organize them, they are dumped here for future reference.  Pull requests for these are welcome!
 
+** TODO =easy-mmode.el=
+
+Especially =easy-mmode-defmap=.
+
 ** TODO [[https://github.com/ellerh/peg.el][GitHub - ellerh/peg.el]]
 
 ** TODO Articles to add [0/13]
