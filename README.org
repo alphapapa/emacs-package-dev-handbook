@@ -949,7 +949,7 @@ This package may be especially helpful for developing in one's own environment a
 #+BEGIN_QUOTE
 Chemacs is an Emacs profile switcher, it makes it easy to run multiple Emacs configurations side by side.  Think of it as a bootloader for Emacs.
 
-Emacs configuration is either kept in a =~/.emacs= file or, more commonly, in a =~/.emacs.d= directory. These paths are hard-coded. If you want to try out someone else’s configuration, or run different distributions like Prelude or Spacemacs, then you either need to swap out =~/.emacs.d=, or run Emacs with a different =$HOME= directory set.  This last approach is quite common, but has some real drawbacks, since now packages will no longer know where your actual home directory is.  
+Emacs configuration is either kept in a =~/.emacs= file or, more commonly, in a =~/.emacs.d= directory. These paths are hard-coded. If you want to try out someone else’s configuration, or run different distributions like Prelude or Spacemacs, then you either need to swap out =~/.emacs.d=, or run Emacs with a different =$HOME= directory set.  This last approach is quite common, but has some real drawbacks, since now packages will no longer know where your actual home directory is.
 
 All of these makes trying out different Emacs configurations and distributions needlessly cumbersome.  Various approaches to solving this have been floated over the years. There’s an Emacs patch around that adds an extra command line option, and various examples of how to add a command line option in userspace from Emacs Lisp.
 
@@ -1840,6 +1840,60 @@ Chris Wellons explains five ways to write faster Emacs Lisp code.
 
 **** [[id:54fa2e85-066f-431e-9db3-8b1627fac4ca][What's in an Emacs Lambda « null program]]
 
+**** Updating a buffer fast
+* Updating a buffer fast
+
+By Stefan Champailler.
+
+If you want to fill a buffer quickly (for example in case you want to animate som content), remember that function
+calls are slow. So, a good advice is to architecture your code
+around that constraint. For example, if you use ~set-text-properties~
+to colour some text, make sure you group the calls to that function
+in order to minimize the number of calls. I.e. instead of painting
+three consecutive characters in blue with three separate calls
+to ~set-text-properties~, make sure you gather them in one call (which
+applies to the three characters at once).
+
+For the specific case of setting faces attributes (like colours), the following strategy seems good :
+- Clear the buffer
+- Insert the text (simple text, without properties)
+- Set the text properties
+- Tell emacs to redisplay
+
+My experience is that if you do the first 3 steps without any
+interruption (such has processing i/o), then emacs will not refresh
+the screen. So you can draw the whole screen before showing it,
+much like when doing [[https://en.wikipedia.org/wiki/Multiple_buffering][double buffering]].
+
+Here’s some code.
+#+BEGIN_SRC emacs-lisp
+(erase-buffer)
+(insert big-string) ; Insert the text
+(set-text-properties 1 10 '(face (:foreground "red" :background "yellow")))
+(redisplay)
+#+END_SRC
+
+
+In the same vein it's faster to build a string piece by piece
+then insert it into a buffer rather than inserting each piece separately
+in the buffer. To do that, use the ~concat~ function which is very
+fast (it even has its own opcode in the elisp VM).
+~concat~ is also very powerful because it can build a string out of
+a ~vector~.
+
+So prefer this :
+#+BEGIN_SRC emacs-lisp
+(insert
+   (concat "abc" "def"))
+#+END_SRC
+To this :
+#+BEGIN_SRC emacs-lisp
+(insert "abc")
+(insert "def")
+#+END_SRC
+
+See this [[https://github.com/wiz21b/FlamesOfFreedom][this package]] for a demonstration of those advices.
+
 *** Macros                                                         :macros:
 
 **** =bench=
@@ -2697,28 +2751,28 @@ It also provides =esxml-query=:
   ;; following table summarizes the currently supported modifiers and
   ;; combinators:
   ;;
-  ;; | Name                               | Supported? | Syntax      | 
+  ;; | Name                               | Supported? | Syntax      |
   ;; |------------------------------------+------------+-------------|
-  ;; | Namespaces                         | No         | foo|bar     | 
-  ;; | Commas                             | Yes        | foo, bar    | 
-  ;; | Descendant combinator              | Yes        | foo bar     | 
-  ;; | Child combinator                   | Yes        | foo>bar     | 
-  ;; | Adjacent sibling combinator        | No         | foo+bar     | 
-  ;; | General sibling combinator         | No         | foo~bar     | 
-  ;; | Universal selector                 | Yes        | *           | 
-  ;; | Type selector                      | Yes        | tag         | 
-  ;; | ID selector                        | Yes        | #foo        | 
-  ;; | Class selector                     | Yes        | .foo        | 
-  ;; | Attribute selector                 | Yes        | [foo]       | 
-  ;; | Exact match attribute selector     | Yes        | [foo=bar]   | 
-  ;; | Prefix match attribute selector    | Yes        | [foo^=bar]  | 
-  ;; | Suffix match attribute selector    | Yes        | [foo$=bar]  | 
-  ;; | Substring match attribute selector | Yes        | [foo*=bar]  | 
-  ;; | Include match attribute selector   | Yes        | [foo~=bar]  | 
-  ;; | Dash match attribute selector      | Yes        | [foo|=bar]  | 
-  ;; | Attribute selector modifiers       | No         | [foo=bar i] | 
-  ;; | Pseudo elements                    | No         | ::foo       | 
-  ;; | Pseudo classes                     | No         | :foo        | 
+  ;; | Namespaces                         | No         | foo|bar     |
+  ;; | Commas                             | Yes        | foo, bar    |
+  ;; | Descendant combinator              | Yes        | foo bar     |
+  ;; | Child combinator                   | Yes        | foo>bar     |
+  ;; | Adjacent sibling combinator        | No         | foo+bar     |
+  ;; | General sibling combinator         | No         | foo~bar     |
+  ;; | Universal selector                 | Yes        | *           |
+  ;; | Type selector                      | Yes        | tag         |
+  ;; | ID selector                        | Yes        | #foo        |
+  ;; | Class selector                     | Yes        | .foo        |
+  ;; | Attribute selector                 | Yes        | [foo]       |
+  ;; | Exact match attribute selector     | Yes        | [foo=bar]   |
+  ;; | Prefix match attribute selector    | Yes        | [foo^=bar]  |
+  ;; | Suffix match attribute selector    | Yes        | [foo$=bar]  |
+  ;; | Substring match attribute selector | Yes        | [foo*=bar]  |
+  ;; | Include match attribute selector   | Yes        | [foo~=bar]  |
+  ;; | Dash match attribute selector      | Yes        | [foo|=bar]  |
+  ;; | Attribute selector modifiers       | No         | [foo=bar i] |
+  ;; | Pseudo elements                    | No         | ::foo       |
+  ;; | Pseudo classes                     | No         | :foo        |
 #+END_SRC
 
 Example:
@@ -3200,7 +3254,7 @@ This simple example in C  http://diobla.info/blog-archive/modules-tut.html
 - [[https://github.com/syohex/emacs-zstd][emacs-ztd]] :: libzstd binding of Emacs Lisp
 - [[https://github.com/syohex/emacs-memcached][mem-cached]] :: libmemcached
 - https://coldnew.github.io/2d16cc25/ :: in Chinese, but with code
-     
+
 A collection of module resources: https://github.com/emacs-pe/emacs-modules
 - Nim https://github.com/yuutayamada/nim-emacs-module
 - OCaml https://github.com/janestreet/ecaml
