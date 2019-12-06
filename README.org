@@ -24,6 +24,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
     -  [[#buffers][Buffers]]
     -  [[#checkers--linters][Checkers / linters]]
     -  [[#collections-lists-vectors-hash-tables-etc][Collections (lists, vectors, hash-tables, etc.)]]
+    -  [[#color][Color]]
     -  [[#data-structure][Data structure]]
     -  [[#date--time][Date / Time]]
     -  [[#debugging][Debugging]]
@@ -612,6 +613,27 @@ Streams could be created from any sequential input data:
 **** [[id:f8f0755b-c23b-45ad-98da-780d4044676a][let-alist]]
 
 **** [[id:a58f65dc-d4a4-4a40-a573-a66a28f3619c][=with-dict=, =with-plist-vals=]]
+
+** Color                                                             :color:
+
+*** Libraries                                                   :libraries:
+
+**** [[https://github.com/yurikhan/yk-color][yk-color: Linear RGB color manipulation]]
+
+Includes these functions:
+
++  =yk-color-adjust=
++  =yk-color-adjust-rgb=
++  =yk-color-blend=
++  =yk-color-blend-rgb=
++  =yk-color-contrast-ratio=
++  =yk-color-contrast-ratio-rgb=
++  =yk-color-from-rgb=
++  =yk-color-relative-luminance=
++  =yk-color-relative-luminance-rgb=
++  =yk-color-rgb-to-srgb=
++  =yk-color-srgb-to-rgb=
++  =yk-color-to-rgb=
 
 ** Data structure                                           :data_structure:
 
@@ -3360,6 +3382,7 @@ sorted.  FUNCTION must be a function of one argument."
 :LOGBOOK:
 -  State "TODO"       from              [2019-10-05 Sat 12:20]
 :END:
+
 * Code
 :PROPERTIES:
 :TOC:      0

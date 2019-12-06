@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-10-09 Wed 21:03 -->
+<!-- 2019-12-05 Thu 23:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -339,6 +339,15 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#%5B%5Bid%3Af8f0755b-c23b-45ad-98da-780d4044676a%5D%5Blet-alist%5D%5D">let-alist</a></li>
 <li><a href="#%5B%5Bid%3Aa58f65dc-d4a4-4a40-a573-a66a28f3619c%5D%5B%3Dwith-dict%3D%2C%20%3Dwith-plist-vals%3D%5D%5D"><code>with-dict</code>, <code>with-plist-vals</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Color">Color&#xa0;&#xa0;&#xa0;<span class="tag"><span class="color">color</span></span></a>
+<ul>
+<li><a href="#Color--Libraries">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a>
+<ul>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fyurikhan%2Fyk-color%5D%5Byk-color%3A%20Linear%20RGB%20color%20manipulation%5D%5D">yk-color: Linear RGB color manipulation</a></li>
 </ul>
 </li>
 </ul>
@@ -901,6 +910,7 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#Tasks">Tasks</a>
 <ul>
+<li><a href="#%3Deasy-mmode.el%3D"><span class="todo TODO">TODO</span> <code>easy-mmode.el</code></a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fellerh%2Fpeg.el%5D%5BGitHub%20-%20ellerh%2Fpeg.el%5D%5D"><span class="todo TODO">TODO</span> GitHub - ellerh/peg.el</a></li>
 <li><a href="#Articles%20to%20add%20%5B0%2F13%5D"><span class="todo TODO">TODO</span> Articles to add <code>[0/13]</code></a>
 <ul>
@@ -2049,6 +2059,38 @@ Streams could be created from any sequential input data:
 </div>
 </div>
 
+<div id="outline-container-Color" class="outline-3">
+<h3 id="Color">Color&#xa0;&#xa0;&#xa0;<span class="tag"><span class="color">color</span></span></h3>
+<div class="outline-text-3" id="text-Color">
+</div><div id="outline-container-Color--Libraries" class="outline-4">
+<h4 id="Color--Libraries">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
+<div class="outline-text-4" id="text-Color--Libraries">
+</div><div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fyurikhan%2Fyk-color%5D%5Byk-color%3A%20Linear%20RGB%20color%20manipulation%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fyurikhan%2Fyk-color%5D%5Byk-color%3A%20Linear%20RGB%20color%20manipulation%5D%5D"><a href="https://github.com/yurikhan/yk-color">yk-color: Linear RGB color manipulation</a></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fyurikhan%2Fyk-color%5D%5Byk-color%3A%20Linear%20RGB%20color%20manipulation%5D%5D">
+<p>
+Includes these functions:
+</p>
+
+<ul class="org-ul">
+<li><code>yk-color-adjust</code></li>
+<li><code>yk-color-adjust-rgb</code></li>
+<li><code>yk-color-blend</code></li>
+<li><code>yk-color-blend-rgb</code></li>
+<li><code>yk-color-contrast-ratio</code></li>
+<li><code>yk-color-contrast-ratio-rgb</code></li>
+<li><code>yk-color-from-rgb</code></li>
+<li><code>yk-color-relative-luminance</code></li>
+<li><code>yk-color-relative-luminance-rgb</code></li>
+<li><code>yk-color-rgb-to-srgb</code></li>
+<li><code>yk-color-srgb-to-rgb</code></li>
+<li><code>yk-color-to-rgb</code></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
 <div id="outline-container-Data%20structure" class="outline-3">
 <h3 id="Data%20structure">Data structure&#xa0;&#xa0;&#xa0;<span class="tag"><span class="data_structure">data_structure</span></span></h3>
 <div class="outline-text-3" id="text-Data%20structure">
@@ -3112,7 +3154,7 @@ You should always include a readme with your project.  Typically it will be incl
 <div class="org-src-container">
 <pre class="src src-org"><span style="color: #586e75;">#+TITLE:</span> <span style="color: #93a1a1; font-size: 130%; font-weight: bold;">package-name</span>
 
-<span style="color: #586e75; background-color: #0c1e24; font-weight: bold; font-style: italic;">#+PROPERTY: LOGGING nil</span>
+<span style="color: #586e75; background-color: #0c1e24;">#+PROPERTY: LOGGING nil</span>
 
 <span style="color: #586e75; font-size: 110%; font-style: italic;"># Note: This readme works with the org-make-toc <a href="https://github.com/alphapapa/org-make-toc">&lt;https://github.com/alphapapa/org-make-toc&gt;</a> package, which automatically updates the table of contents.</span>
 
@@ -3157,7 +3199,7 @@ If you installed from MELPA, you're done.  Just run one of the commands below.
 
 <span style="color: #586e75; background-color: #0c1e24; text-decoration: underline;">  #+BEGIN_SRC elisp</span>
 <span style="color: #a27f12; background-color: #0e2329;">(</span><span style="color: #3e86b8; background-color: #0e2329; font-weight: bold;">require</span><span style="color: #3e86b8; background-color: #0e2329;"> '</span><span style="color: #3e86b8; background-color: #0e2329; font-weight: bold;">package-name</span><span style="color: #a27f12; background-color: #0e2329;">)</span>
-<span style="color: #586e75; background-color: #0c1e24; font-weight: bold; font-style: italic; text-decoration: overline;">  #+END_SRC</span>
+<span style="color: #586e75; background-color: #0c1e24; text-decoration: overline;">  #+END_SRC</span>
 
 <span style="color: #a94058fc37c0; background-color: #073642; font-weight: bold; text-decoration: overline;">* Usage</span>
 <span style="color: #586e75; font-size: 90%; font-weight: bold;">:PROPERTIES:</span>
@@ -5762,6 +5804,15 @@ These resources should be added to the appropriate sections above.  Since it tak
 </p>
 </div>
 
+<div id="outline-container-%3Deasy-mmode.el%3D" class="outline-3">
+<h3 id="%3Deasy-mmode.el%3D"><span class="todo TODO">TODO</span> <code>easy-mmode.el</code></h3>
+<div class="outline-text-3" id="text-%3Deasy-mmode.el%3D">
+<p>
+Especially <code>easy-mmode-defmap</code>.
+</p>
+</div>
+</div>
+
 <div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fellerh%2Fpeg.el%5D%5BGitHub%20-%20ellerh%2Fpeg.el%5D%5D" class="outline-3">
 <h3 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fellerh%2Fpeg.el%5D%5BGitHub%20-%20ellerh%2Fpeg.el%5D%5D"><span class="todo TODO">TODO</span> <a href="https://github.com/ellerh/peg.el">GitHub - ellerh/peg.el</a></h3>
 </div>
@@ -6179,6 +6230,7 @@ See <a href="https://github.com/melpa/melpa/pull/6191#issuecomment-498101336">ht
 </div>
 </div>
 </div>
+
 <div id="outline-container-Code" class="outline-2">
 <h2 id="Code">Code</h2>
 <div class="outline-text-2" id="text-Code">
@@ -6254,7 +6306,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2019-10-09 Wed 21:03</p>
+<p class="date">Created: 2019-12-05 Thu 23:03</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
