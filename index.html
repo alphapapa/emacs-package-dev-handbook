@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-05 Thu 23:03 -->
+<!-- 2019-12-10 Tue 00:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -357,6 +357,16 @@ for the JavaScript code in this tag.
 <li><a href="#Data%20structure--Articles">Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span></a>
 <ul>
 <li><a href="#%5B%5Bhttp%3A%2F%2Fnullprogram.com%2Fblog%2F2018%2F02%2F14%2F%5D%5BOptions%20for%20Structured%20Data%20in%20Emacs%20Lisp%20%C2%AB%20null%20program%5D%5D">Options for Structured Data in Emacs Lisp « null program</a></li>
+<li><a href="#%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5BToby%20%27qubit%27%20Cubitt%3A%20Data%20structure%20packages%5D%5D">Toby 'qubit' Cubitt: Data structure packages</a></li>
+</ul>
+</li>
+<li><a href="#Data%20structure--Libraries">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a>
+<ul>
+<li><a href="#%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5Bheap.el%5D%5D">heap.el</a></li>
+<li><a href="#%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5Bqueue.el%5D%5D">queue.el&#xa0;&#xa0;&#xa0;<span class="tag"><span class="queue">queue</span></span></a></li>
+<li><a href="#%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5BTagged%20Non-deterministic%20Finite%20state%20Automata%20%28tNFA.el%29%5D%5D">Tagged Non-deterministic Finite state Automata (tNFA.el)</a></li>
+<li><a href="#%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5Btrie.el%5D%5D">trie.el</a></li>
+<li><a href="#%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5Bdict-tree.el%5D%5D">dict-tree.el</a></li>
 </ul>
 </li>
 </ul>
@@ -929,8 +939,9 @@ for the JavaScript code in this tag.
 <li><a href="#%5B%5Bhttps%3A%2F%2Fwww.lunaryorn.com%2Fposts%2Fsyntactic-fontification-in-emacs%5D%5BSyntactic%20fontification%20in%20Emacs%5D%5D%20%2810%20min%20read%29"><span class="todo TODO">TODO</span> Syntactic fontification in Emacs (10 min read)</a></li>
 </ul>
 </li>
-<li><a href="#Add%20people%20%5B0%2F6%5D"><span class="todo TODO">TODO</span> Add people <code>[0/6]</code></a>
+<li><a href="#Add%20people%20%5B0%2F7%5D"><span class="todo TODO">TODO</span> Add people <code>[0/7]</code></a>
 <ul>
+<li><a href="#Add%20Toby%20Cubitt"><span class="todo TODO">TODO</span> Add Toby Cubitt</a></li>
 <li><a href="#Add%20%5B%5Bhttp%3A%2F%2Fnic.ferrier.me.uk%2F%5D%5BNic%20Ferrier%5D%5D"><span class="todo TODO">TODO</span> Add Nic Ferrier</a>
 <ul>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fnicferrier%2Femacs-noflet%5D%5BGitHub%20-%20nicferrier%2Femacs-noflet%3A%20noflet%20-%20nic%27s%20overriding%20flet%2C%20for%20fleting%20functions%20for%20the%20purpose%20of%20decorating%20them%5D%5D"><span class="todo TODO">TODO</span> GitHub - nicferrier/emacs-noflet: noflet - nic's overriding flet, for fleting functions for the purpose of decorating them</a></li>
@@ -2100,6 +2111,82 @@ Includes these functions:
 </div><div id="outline-container-%5B%5Bhttp%3A%2F%2Fnullprogram.com%2Fblog%2F2018%2F02%2F14%2F%5D%5BOptions%20for%20Structured%20Data%20in%20Emacs%20Lisp%20%C2%AB%20null%20program%5D%5D" class="outline-5">
 <h5 id="%5B%5Bhttp%3A%2F%2Fnullprogram.com%2Fblog%2F2018%2F02%2F14%2F%5D%5BOptions%20for%20Structured%20Data%20in%20Emacs%20Lisp%20%C2%AB%20null%20program%5D%5D"><a href="http://nullprogram.com/blog/2018/02/14/">Options for Structured Data in Emacs Lisp « null program</a></h5>
 <div class="outline-text-5" id="text-%5B%5Bhttp%3A%2F%2Fnullprogram.com%2Fblog%2F2018%2F02%2F14%2F%5D%5BOptions%20for%20Structured%20Data%20in%20Emacs%20Lisp%20%C2%AB%20null%20program%5D%5D">
+</div>
+</div>
+
+<div id="outline-container-%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5BToby%20%27qubit%27%20Cubitt%3A%20Data%20structure%20packages%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5BToby%20%27qubit%27%20Cubitt%3A%20Data%20structure%20packages%5D%5D"><a href="http://www.dr-qubit.org/emacs_data-structures.html">Toby 'qubit' Cubitt: Data structure packages</a></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5BToby%20%27qubit%27%20Cubitt%3A%20Data%20structure%20packages%5D%5D">
+<p>
+Individual libraries from this article are listed below.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-Data%20structure--Libraries" class="outline-4">
+<h4 id="Data%20structure--Libraries">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
+<div class="outline-text-4" id="text-Data%20structure--Libraries">
+</div><div id="outline-container-%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5Bheap.el%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5Bheap.el%5D%5D"><a href="http://www.dr-qubit.org/emacs_data-structures.html">heap.el</a></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5Bheap.el%5D%5D">
+<blockquote>
+<p>
+A heap is a form of efficient self-sorting tree. In particular, the root node is guaranteed to be the highest-ranked entry in the tree. (The comparison function used for ranking the data can, of course, be freely defined). They are often used as priority queues, for scheduling tasks in order of importance, and for implementing efficient sorting algorithms (such as heap-sort).
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5Bqueue.el%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5Bqueue.el%5D%5D"><a href="http://www.dr-qubit.org/emacs_data-structures.html">queue.el</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="queue">queue</span></span></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5Bqueue.el%5D%5D">
+<blockquote>
+<p>
+A queue can be used both as a first-in last-out and as a first-in first-out stack, i.e. elements can be added to and removed from the front or back of the queue. (This library is an updated re-implementation of the old Elib queue library.)
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5BTagged%20Non-deterministic%20Finite%20state%20Automata%20%28tNFA.el%29%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5BTagged%20Non-deterministic%20Finite%20state%20Automata%20%28tNFA.el%29%5D%5D"><a href="http://www.dr-qubit.org/emacs_data-structures.html">Tagged Non-deterministic Finite state Automata (tNFA.el)</a></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5BTagged%20Non-deterministic%20Finite%20state%20Automata%20%28tNFA.el%29%5D%5D">
+<blockquote>
+<p>
+Features of modern regexp implementations, including Emacs', mean they can recognise much more than regular languages. This comes with a big downside: matching certain pathological regexps is very time-consuming. (In fact, it's NP-complete.)
+</p>
+
+<p>
+A tagged, non-deterministic finite state automata (NFA) is an abstract computing machine that recognises regular languages. In layman's terms, they are used to decide whether a string matches a regular expression.  The "tagged" part lets the NFA do group-capture: it returns information about which parts of a string matched which subgroup of the regular expression.
+</p>
+
+<p>
+Why re-implement regular expression matching when Emacs comes with extensive built-in support for regexps? Primarily, because some algorithms require access to the NFA states produced part way through the regular expression matching process. Secondarily, because Emacs regexps only work on strings, whereas regular expressions can equally well be used to match other Lisp sequence types.
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5Btrie.el%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5Btrie.el%5D%5D"><a href="http://www.dr-qubit.org/emacs_data-structures.html">trie.el</a></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5Btrie.el%5D%5D">
+<blockquote>
+<p>
+A trie stores data associated with "strings" (not necessarily the string data type; any ordered sequence of elements can be used). It stores them in such a way that both storage size and data lookup are reasonably space- and time- efficient, respectively. But, more importantly, advanced string queries are also very efficient, such as finding all strings with a given prefix, finding approximate matches, finding all strings matching a regular expression, returning results in alphabetical or any other order, returning only the first few results, etc.
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5Bdict-tree.el%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5Bdict-tree.el%5D%5D"><a href="http://www.dr-qubit.org/emacs_data-structures.html">dict-tree.el</a></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5Bdict-tree.el%5D%5D">
+<blockquote>
+<p>
+The dictionary tree data structures are a hybrid between tries and hash tables. Data is stored in a trie, but results that take particularly long to retrieve are cached in hash tables, which are automatically synchronised with the trie. The dictionary package provides persistent storage of the data structures in files, and many other convenience features.
+</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -5873,10 +5960,19 @@ Especially <code>easy-mmode-defmap</code>.
 </div>
 </div>
 
-<div id="outline-container-Add%20people%20%5B0%2F6%5D" class="outline-3">
-<h3 id="Add%20people%20%5B0%2F6%5D"><span class="todo TODO">TODO</span> Add people <code>[0/6]</code></h3>
-<div class="outline-text-3" id="text-Add%20people%20%5B0%2F6%5D">
-</div><div id="outline-container-Add%20%5B%5Bhttp%3A%2F%2Fnic.ferrier.me.uk%2F%5D%5BNic%20Ferrier%5D%5D" class="outline-4">
+<div id="outline-container-Add%20people%20%5B0%2F7%5D" class="outline-3">
+<h3 id="Add%20people%20%5B0%2F7%5D"><span class="todo TODO">TODO</span> Add people <code>[0/7]</code></h3>
+<div class="outline-text-3" id="text-Add%20people%20%5B0%2F7%5D">
+</div><div id="outline-container-Add%20Toby%20Cubitt" class="outline-4">
+<h4 id="Add%20Toby%20Cubitt"><span class="todo TODO">TODO</span> Add Toby Cubitt</h4>
+<div class="outline-text-4" id="text-Add%20Toby%20Cubitt">
+<p>
+A variety of packages published, e.g. at <a href="http://www.dr-qubit.org/emacs_data-structures.html">http://www.dr-qubit.org/emacs_data-structures.html</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Add%20%5B%5Bhttp%3A%2F%2Fnic.ferrier.me.uk%2F%5D%5BNic%20Ferrier%5D%5D" class="outline-4">
 <h4 id="Add%20%5B%5Bhttp%3A%2F%2Fnic.ferrier.me.uk%2F%5D%5BNic%20Ferrier%5D%5D"><span class="todo TODO">TODO</span> Add <a href="http://nic.ferrier.me.uk/">Nic Ferrier</a></h4>
 <div class="outline-text-4" id="text-Add%20%5B%5Bhttp%3A%2F%2Fnic.ferrier.me.uk%2F%5D%5BNic%20Ferrier%5D%5D">
 </div><div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fnicferrier%2Femacs-noflet%5D%5BGitHub%20-%20nicferrier%2Femacs-noflet%3A%20noflet%20-%20nic%27s%20overriding%20flet%2C%20for%20fleting%20functions%20for%20the%20purpose%20of%20decorating%20them%5D%5D" class="outline-5">
@@ -6306,7 +6402,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2019-12-05 Thu 23:03</p>
+<p class="date">Created: 2019-12-10 Tue 00:19</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

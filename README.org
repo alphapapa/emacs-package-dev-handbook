@@ -644,6 +644,46 @@ Includes these functions:
 :archive.today: http://archive.today/YxwP5
 :END:
 
+**** [[http://www.dr-qubit.org/emacs_data-structures.html][Toby 'qubit' Cubitt: Data structure packages]]
+
+Individual libraries from this article are listed below.
+
+*** Libraries                                                   :libraries:
+
+**** [[http://www.dr-qubit.org/emacs_data-structures.html][heap.el]]
+
+#+BEGIN_QUOTE
+A heap is a form of efficient self-sorting tree. In particular, the root node is guaranteed to be the highest-ranked entry in the tree. (The comparison function used for ranking the data can, of course, be freely defined). They are often used as priority queues, for scheduling tasks in order of importance, and for implementing efficient sorting algorithms (such as heap-sort).
+#+END_QUOTE
+
+**** [[http://www.dr-qubit.org/emacs_data-structures.html][queue.el]]                                                      :queue:
+
+#+BEGIN_QUOTE
+A queue can be used both as a first-in last-out and as a first-in first-out stack, i.e. elements can be added to and removed from the front or back of the queue. (This library is an updated re-implementation of the old Elib queue library.)
+#+END_QUOTE
+
+**** [[http://www.dr-qubit.org/emacs_data-structures.html][Tagged Non-deterministic Finite state Automata (tNFA.el)]]
+
+#+BEGIN_QUOTE
+Features of modern regexp implementations, including Emacs', mean they can recognise much more than regular languages. This comes with a big downside: matching certain pathological regexps is very time-consuming. (In fact, it's NP-complete.)
+
+A tagged, non-deterministic finite state automata (NFA) is an abstract computing machine that recognises regular languages. In layman's terms, they are used to decide whether a string matches a regular expression.  The "tagged" part lets the NFA do group-capture: it returns information about which parts of a string matched which subgroup of the regular expression.
+
+Why re-implement regular expression matching when Emacs comes with extensive built-in support for regexps? Primarily, because some algorithms require access to the NFA states produced part way through the regular expression matching process. Secondarily, because Emacs regexps only work on strings, whereas regular expressions can equally well be used to match other Lisp sequence types.
+#+END_QUOTE
+
+**** [[http://www.dr-qubit.org/emacs_data-structures.html][trie.el]]
+
+#+BEGIN_QUOTE
+A trie stores data associated with "strings" (not necessarily the string data type; any ordered sequence of elements can be used). It stores them in such a way that both storage size and data lookup are reasonably space- and time- efficient, respectively. But, more importantly, advanced string queries are also very efficient, such as finding all strings with a given prefix, finding approximate matches, finding all strings matching a regular expression, returning results in alphabetical or any other order, returning only the first few results, etc.
+#+END_QUOTE
+
+**** [[http://www.dr-qubit.org/emacs_data-structures.html][dict-tree.el]]
+
+#+BEGIN_QUOTE
+The dictionary tree data structures are a hybrid between tries and hash tables. Data is stored in a trie, but results that take particularly long to retrieve are cached in hash tables, which are automatically synchronised with the trie. The dictionary package provides persistent storage of the data structures in files, and many other convenience features.
+#+END_QUOTE
+
 ** Date / Time                                                 :dates:times:
 
 *** Libraries                                                   :libraries:
@@ -3132,7 +3172,11 @@ Especially =easy-mmode-defmap=.
 
 *** TODO [[https://www.lunaryorn.com/posts/syntactic-fontification-in-emacs][Syntactic fontification in Emacs]] (10 min read)
 
-** TODO Add people [0/6]
+** TODO Add people [0/7]
+
+*** TODO Add Toby Cubitt
+
+A variety of packages published, e.g. at http://www.dr-qubit.org/emacs_data-structures.html
 
 *** TODO Add [[http://nic.ferrier.me.uk/][Nic Ferrier]]
 
