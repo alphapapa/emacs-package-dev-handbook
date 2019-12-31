@@ -3142,6 +3142,7 @@ These resources should be added to the appropriate sections above.  Since it tak
 
 Especially =easy-mmode-defmap=.
 
+** TODO [[https://github.com/rocky/elisp-decompile][GitHub - rocky/elisp-decompile: Emacs Lisp Decompiler]]
 ** TODO [[https://github.com/ellerh/peg.el][GitHub - ellerh/peg.el]]
 
 ** TODO Articles to add [0/13]
