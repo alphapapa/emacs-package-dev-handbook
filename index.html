@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-31 Tue 17:10 -->
+<!-- 2019-12-31 Tue 17:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -715,7 +715,7 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fjorgenschaefer%2Femacs-buttercup%5D%5Bbuttercup%3A%20Behavior-Driven%20Emacs%20Lisp%20Testing%5D%5D">buttercup: Behavior-Driven Emacs Lisp Testing</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fecukes%2Fecukes%5D%5Becukes%3A%20Cucumber%20for%20Emacs%5D%5D">ecukes: Cucumber for Emacs</a></li>
-<li><a href="#%5B%5Bhttps%3A%2F%2Fwww.gnu.org%2Fsoftware%2Femacs%2Fmanual%2Fhtml_node%2Fert%2F%5D%5BEmacs%20Lisp%20Regression%20Testing%5D%5D%20%28ERT%29">Emacs Lisp Regression Testing (ERT)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span></span></a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fwww.gnu.org%2Fsoftware%2Femacs%2Fmanual%2Fhtml_node%2Fert%2F%5D%5BEmacs%20Lisp%20Regression%20Testing%5D%5D%20%28ERT%29">Emacs Lisp Regression Testing (ERT)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span>&#xa0;<span class="ERT">ERT</span></span></a></li>
 </ul>
 </li>
 <li><a href="#Testing--Libraries">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a>
@@ -724,6 +724,7 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fphillord%2Fassess%5D%5Bassess%3A%20Test%20support%20functions%5D%5D">assess: Test support functions</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2FDarwinAwardWinner%2Fwith-simulated-input%5D%5Bwith-simulated-input%3A%20Test%20interactive%20functions%20non-interactively%5D%5D">with-simulated-input: Test interactive functions non-interactively</a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fpromethial%2Fxtest%5D%5Bxtest%3A%20Extensions%20for%20ERT%5D%5D">xtest: Extensions for ERT&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ERT">ERT</span></span></a></li>
 </ul>
 </li>
 </ul>
@@ -5023,7 +5024,7 @@ Cucumber is a great integration testing tool, used mostly for testing web applic
 </div>
 
 <div id="outline-container-%5B%5Bhttps%3A%2F%2Fwww.gnu.org%2Fsoftware%2Femacs%2Fmanual%2Fhtml_node%2Fert%2F%5D%5BEmacs%20Lisp%20Regression%20Testing%5D%5D%20%28ERT%29" class="outline-5">
-<h5 id="%5B%5Bhttps%3A%2F%2Fwww.gnu.org%2Fsoftware%2Femacs%2Fmanual%2Fhtml_node%2Fert%2F%5D%5BEmacs%20Lisp%20Regression%20Testing%5D%5D%20%28ERT%29"><a id="ID-386b23bd-5254-457f-9ba1-ca5cbf87fed3"></a><a href="https://www.gnu.org/software/emacs/manual/html_node/ert/">Emacs Lisp Regression Testing</a> (ERT)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span></span></h5>
+<h5 id="%5B%5Bhttps%3A%2F%2Fwww.gnu.org%2Fsoftware%2Femacs%2Fmanual%2Fhtml_node%2Fert%2F%5D%5BEmacs%20Lisp%20Regression%20Testing%5D%5D%20%28ERT%29"><a id="ID-386b23bd-5254-457f-9ba1-ca5cbf87fed3"></a><a href="https://www.gnu.org/software/emacs/manual/html_node/ert/">Emacs Lisp Regression Testing</a> (ERT)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span>&#xa0;<span class="ERT">ERT</span></span></h5>
 <div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fwww.gnu.org%2Fsoftware%2Femacs%2Fmanual%2Fhtml_node%2Fert%2F%5D%5BEmacs%20Lisp%20Regression%20Testing%5D%5D%20%28ERT%29">
 <p>
 This is the standard, built-in Emacs testing library, used by core code and third-party packages alike.
@@ -5077,6 +5078,17 @@ This package provides an Emacs Lisp macro, <code>with-simulated-input</code>, wh
 
 <p>
 Some interactive functions rely on idle timers to do their work, so you might need a way to simulate idleness. For that, there is the <code>wsi-simulate-idle-time</code> function. You can insert calls to this function in between input strings.
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fpromethial%2Fxtest%5D%5Bxtest%3A%20Extensions%20for%20ERT%5D%5D" class="outline-6">
+<h6 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fpromethial%2Fxtest%5D%5Bxtest%3A%20Extensions%20for%20ERT%5D%5D"><a href="https://github.com/promethial/xtest">xtest: Extensions for ERT</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ERT">ERT</span></span></h6>
+<div class="outline-text-6" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fpromethial%2Fxtest%5D%5Bxtest%3A%20Extensions%20for%20ERT%5D%5D">
+<blockquote>
+<p>
+XTest is a simple set of extensions for ERT.  XTest speeds up the creation of tests that follow the “one assertion per test” rule of thumb.  It also simplifies testing functions that manipulate buffers.  XTest aims to do a few things well, instead of being a monolithic library that attempts to solve every conceivable testing need.  XTest is designed to be paired with vanilla ERT and other ERT libraries, where the user mixes and matches depending on their needs.
 </p>
 </blockquote>
 </div>
@@ -6440,7 +6452,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2019-12-31 Tue 17:10</p>
+<p class="date">Created: 2019-12-31 Tue 17:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
