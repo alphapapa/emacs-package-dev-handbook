@@ -1221,6 +1221,7 @@ A flexible, featureful =curl= wrapper, last updated in 2015.
       -  [[#reference][Reference]]
         -  [[#package-headers-and-structure][Package headers and structure]]
       -  [[#tools][Tools]]
+        -  [[#building--testing][Building / Testing]]
         -  [[#package-installationmanagement][Package installation/management]]
 
 *** Best practices                                         :best_practices:
@@ -1658,6 +1659,56 @@ The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.
 :PROPERTIES:
 :TOC:      1
 :END:
+
+**** Building / Testing                                 :building:testing:
+
+Tools for building and testing packages, especially from scripts or Makefiles.
+
+***** [[https://github.com/cask/cask][cask: Project management tool for Emacs]]
+:PROPERTIES:
+:ID:       06ba57cf-464f-473a-9911-4311033bc358
+:END:
+
+#+BEGIN_QUOTE
+Cask is a project management tool for Emacs that helps automate the package development cycle; development, dependencies, testing, building, packaging and more.
+#+END_QUOTE
+
+***** [[https://github.com/vermiculus/emake.el][emake.el: Test Elisp without the hoops]]
+:PROPERTIES:
+:ID:       2e076cf2-77b5-440c-9832-086739185f6b
+:END:
+
+#+BEGIN_QUOTE
+Test Elisp with services like Travis CI without the fuss of Cask – just you, your project, and (Emacs-)Make.
+
+Things EMake does:
+
++ parses, installs, and runs tests for your package
++ provides all the power of Elisp to extend its capabilities on-demand
+
+Things EMake will never do (or ‘reasons you may still need Cask’):
+
++ manage your development environment or provide tools to do so
++ provide ’bundler-like’ exec abilities (this includes Cask’s emacs and eval commands)
+#+END_QUOTE
+
+***** [[https://gitlab.petton.fr/DamienCassou/makel/][makel: A makefile to facilitate checking Emacs packages]]
+:PROPERTIES:
+:ID:       5bcfdd7f-40a3-40b4-bd0a-586602791161
+:END:
+
+#+BEGIN_QUOTE
+makel is a project consisting of a Makefile (=makel.mk=) that Emacs package authors can use to facilitate quality checking (linting and tests). The Makefile can be used both locally on the developer machine and remotely on a continuous integration machine.
+#+END_QUOTE
+
+***** [[https://github.com/alphapapa/makem.sh][makem.sh: Makefile-like script for building and testing packages]]
+:PROPERTIES:
+:ID:       38e6ee67-0d22-44d2-a2c6-01602e00ee23
+:END:
+
+#+BEGIN_QUOTE
+=makem.sh= is a script to help build and test Emacs Lisp packages (not Emacs itself). It aims to make linting and testing as simple as possible. Source files and test files are discovered automatically from the project’s Git repo. Output is simple: by default, there is no output unless errors occur. With increasing verbosity levels (with =-v= or =-vv= options), more detail gives positive feedback. Output is colored by default to make reading easy.
+#+END_QUOTE
 
 **** Package installation/management             :installation:management:
 
@@ -2525,39 +2576,9 @@ Since this happens at macro expansion time rather than at runtime, there is no p
 :TOC:      0
 :END:
 
-*** Libraries                                                   :libraries:
-:PROPERTIES:
-:TOC: 0
-:END:
+*** Frameworks                                                 :frameworks:
 
-**** [[https://github.com/phillord/assess][assess: Test support functions]]
-
-#+BEGIN_QUOTE
-Assess provides additional support for testing Emacs packages.
-
-It provides:
-
-- a set of predicates for comparing strings, buffers and file contents.
-- explainer functions for all predicates giving useful output
-- macros for creating many temporary buffers at once, and for restoring the buffer list.
-- methods for testing indentation, by comparision or "roundtripping".
-- methods for testing fontification.
-
-Assess aims to be a stateless as possible, leaving Emacs unchanged whether the tests succeed or fail, with respect to buffers, open files and so on; this helps to keep tests independent from each other.
-#+END_QUOTE
-
-**** [[https://github.com/DarwinAwardWinner/with-simulated-input][with-simulated-input: Test interactive functions non-interactively]]
-
-#+BEGIN_QUOTE
-This package provides an Emacs Lisp macro, ~with-simulated-input~, which evaluates one or more forms while simulating a sequence of input events for those forms to read. The result is the same as if you had evaluated the forms and then manually typed in the same input. This macro is useful for non-interactive testing of normally interactive commands and functions, such as ~completing-read~.
-
-Some interactive functions rely on idle timers to do their work, so you might need a way to simulate idleness. For that, there is the ~wsi-simulate-idle-time~ function. You can insert calls to this function in between input strings.
-#+END_QUOTE
-
-*** Tools                                                    :tools:
-:PROPERTIES:
-:TOC: 0
-:END:
+Frameworks for writing, organizing, and running tests.
 
 **** [[https://github.com/jorgenschaefer/emacs-buttercup][buttercup: Behavior-Driven Emacs Lisp Testing]]
 :PROPERTIES:
@@ -2568,12 +2589,6 @@ Some interactive functions rely on idle timers to do their work, so you might ne
 Buttercup is a behavior-driven development framework for testing Emacs Lisp code. It allows to group related tests so they can share common set-up and tear-down code, and allows the programmer to “spy” on functions to ensure they are called with the right arguments during testing.
 
 The framework is heavily inspired by Jasmine.
-#+END_QUOTE
-
-**** [[https://github.com/cask/cask][cask: Project management tool for Emacs]]
-
-#+BEGIN_QUOTE
-Cask is a project management tool for Emacs that helps automate the package development cycle; development, dependencies, testing, building, packaging and more.
 #+END_QUOTE
 
 **** [[https://github.com/ecukes/ecukes][ecukes: Cucumber for Emacs]]
@@ -2594,34 +2609,43 @@ Cucumber is a great integration testing tool, used mostly for testing web applic
 
 This is the standard, built-in Emacs testing library, used by core code and third-party packages alike.
 
-**** [[https://github.com/vermiculus/emake.el][emake.el: Test Elisp without the hoops]]
+*** Libraries                                                   :libraries:
+:PROPERTIES:
+:TOC: 0
+:END:
+
+Libraries that help with writing tests.
+
+***** [[https://github.com/phillord/assess][assess: Test support functions]]
 
 #+BEGIN_QUOTE
-Test Elisp with services like Travis CI without the fuss of Cask – just you, your project, and (Emacs-)Make.
+Assess provides additional support for testing Emacs packages.
 
-Things EMake does:
+It provides:
 
-+ parses, installs, and runs tests for your package
-+ provides all the power of Elisp to extend its capabilities on-demand
+- a set of predicates for comparing strings, buffers and file contents.
+- explainer functions for all predicates giving useful output
+- macros for creating many temporary buffers at once, and for restoring the buffer list.
+- methods for testing indentation, by comparision or "roundtripping".
+- methods for testing fontification.
 
-Things EMake will never do (or ‘reasons you may still need Cask’):
-
-+ manage your development environment or provide tools to do so
-+ provide ’bundler-like’ exec abilities (this includes Cask’s emacs and eval commands)
+Assess aims to be a stateless as possible, leaving Emacs unchanged whether the tests succeed or fail, with respect to buffers, open files and so on; this helps to keep tests independent from each other.
 #+END_QUOTE
 
-**** [[https://gitlab.petton.fr/DamienCassou/makel/][makel: A makefile to facilitate checking Emacs packages]]
+***** [[https://github.com/DarwinAwardWinner/with-simulated-input][with-simulated-input: Test interactive functions non-interactively]]
 
 #+BEGIN_QUOTE
-makel is a project consisting of a Makefile (=makel.mk=) that Emacs package authors can use to facilitate quality checking (linting and tests). The Makefile can be used both locally on the developer machine and remotely on a continuous integration machine.
+This package provides an Emacs Lisp macro, ~with-simulated-input~, which evaluates one or more forms while simulating a sequence of input events for those forms to read. The result is the same as if you had evaluated the forms and then manually typed in the same input. This macro is useful for non-interactive testing of normally interactive commands and functions, such as ~completing-read~.
+
+Some interactive functions rely on idle timers to do their work, so you might need a way to simulate idleness. For that, there is the ~wsi-simulate-idle-time~ function. You can insert calls to this function in between input strings.
 #+END_QUOTE
 
-**** [[https://github.com/alphapapa/makem.sh][makem.sh: Makefile-like script for building and testing packages]]
+*** Tools                                                    :tools:
+:PROPERTIES:
+:TOC: 0
+:END:
 
-#+BEGIN_QUOTE
-=makem.sh= is a script to help build and test Emacs Lisp packages (not Emacs itself). It aims to make linting and testing as simple as possible. Source files and test files are discovered automatically from the project’s Git repo. Output is simple: by default, there is no output unless errors occur. With increasing verbosity levels (with =-v= or =-vv= options), more detail gives positive feedback. Output is colored by default to make reading easy.
-#+END_QUOTE
-
++ See [[*Building / Testing][Building / Testing tools]].
 ** User interface                                                       :UI:
 
 *** Libraries                                                   :libraries:
@@ -3143,6 +3167,7 @@ These resources should be added to the appropriate sections above.  Since it tak
 Especially =easy-mmode-defmap=.
 
 ** TODO [[https://github.com/rocky/elisp-decompile][GitHub - rocky/elisp-decompile: Emacs Lisp Decompiler]]
+
 ** TODO [[https://github.com/ellerh/peg.el][GitHub - ellerh/peg.el]]
 
 ** TODO Articles to add [0/13]

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-31 Tue 01:41 -->
+<!-- 2019-12-31 Tue 17:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -571,6 +571,14 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#Packaging--Tools">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a>
 <ul>
+<li><a href="#Building%20%2F%20Testing">Building / Testing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="building">building</span>&#xa0;<span class="testing">testing</span></span></a>
+<ul>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fcask%2Fcask%5D%5Bcask%3A%20Project%20management%20tool%20for%20Emacs%5D%5D">cask: Project management tool for Emacs</a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fvermiculus%2Femake.el%5D%5Bemake.el%3A%20Test%20Elisp%20without%20the%20hoops%5D%5D">emake.el: Test Elisp without the hoops</a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fmakel%2F%5D%5Bmakel%3A%20A%20makefile%20to%20facilitate%20checking%20Emacs%20packages%5D%5D">makel: A makefile to facilitate checking Emacs packages</a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Falphapapa%2Fmakem.sh%5D%5Bmakem.sh%3A%20Makefile-like%20script%20for%20building%20and%20testing%20packages%5D%5D">makem.sh: Makefile-like script for building and testing packages</a></li>
+</ul>
+</li>
 <li><a href="#Package%20installation%2Fmanagement">Package installation/management&#xa0;&#xa0;&#xa0;<span class="tag"><span class="installation">installation</span>&#xa0;<span class="management">management</span></span></a>
 <ul>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2FMalabarba%2Fparadox%5D%5Bparadox%3A%20modernizing%20Emacs%27%20Package%20Menu.%20With%20package%20ratings%2C%20usage%20statistics%2C%20customizability%2C%20and%20more.%5D%5D">paradox: modernizing Emacs' Package Menu. With package ratings, usage statistics, customizability, and more.</a></li>
@@ -703,23 +711,24 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#Testing">Testing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="testing">testing</span></span></a>
 <ul>
+<li><a href="#Frameworks">Frameworks&#xa0;&#xa0;&#xa0;<span class="tag"><span class="frameworks">frameworks</span></span></a>
+<ul>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fjorgenschaefer%2Femacs-buttercup%5D%5Bbuttercup%3A%20Behavior-Driven%20Emacs%20Lisp%20Testing%5D%5D">buttercup: Behavior-Driven Emacs Lisp Testing</a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fecukes%2Fecukes%5D%5Becukes%3A%20Cucumber%20for%20Emacs%5D%5D">ecukes: Cucumber for Emacs</a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fwww.gnu.org%2Fsoftware%2Femacs%2Fmanual%2Fhtml_node%2Fert%2F%5D%5BEmacs%20Lisp%20Regression%20Testing%5D%5D%20%28ERT%29">Emacs Lisp Regression Testing (ERT)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span></span></a></li>
+</ul>
+</li>
 <li><a href="#Testing--Libraries">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a>
+<ul>
+<li>
 <ul>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fphillord%2Fassess%5D%5Bassess%3A%20Test%20support%20functions%5D%5D">assess: Test support functions</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2FDarwinAwardWinner%2Fwith-simulated-input%5D%5Bwith-simulated-input%3A%20Test%20interactive%20functions%20non-interactively%5D%5D">with-simulated-input: Test interactive functions non-interactively</a></li>
 </ul>
 </li>
-<li><a href="#Testing--Tools">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a>
-<ul>
-<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fjorgenschaefer%2Femacs-buttercup%5D%5Bbuttercup%3A%20Behavior-Driven%20Emacs%20Lisp%20Testing%5D%5D">buttercup: Behavior-Driven Emacs Lisp Testing</a></li>
-<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fcask%2Fcask%5D%5Bcask%3A%20Project%20management%20tool%20for%20Emacs%5D%5D">cask: Project management tool for Emacs</a></li>
-<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fecukes%2Fecukes%5D%5Becukes%3A%20Cucumber%20for%20Emacs%5D%5D">ecukes: Cucumber for Emacs</a></li>
-<li><a href="#%5B%5Bhttps%3A%2F%2Fwww.gnu.org%2Fsoftware%2Femacs%2Fmanual%2Fhtml_node%2Fert%2F%5D%5BEmacs%20Lisp%20Regression%20Testing%5D%5D%20%28ERT%29">Emacs Lisp Regression Testing (ERT)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span></span></a></li>
-<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fvermiculus%2Femake.el%5D%5Bemake.el%3A%20Test%20Elisp%20without%20the%20hoops%5D%5D">emake.el: Test Elisp without the hoops</a></li>
-<li><a href="#%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fmakel%2F%5D%5Bmakel%3A%20A%20makefile%20to%20facilitate%20checking%20Emacs%20packages%5D%5D">makel: A makefile to facilitate checking Emacs packages</a></li>
-<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Falphapapa%2Fmakem.sh%5D%5Bmakem.sh%3A%20Makefile-like%20script%20for%20building%20and%20testing%20packages%5D%5D">makem.sh: Makefile-like script for building and testing packages</a></li>
 </ul>
 </li>
+<li><a href="#Testing--Tools">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a></li>
 </ul>
 </li>
 <li><a href="#User%20interface">User interface&#xa0;&#xa0;&#xa0;<span class="tag"><span class="UI">UI</span></span></a>
@@ -2952,6 +2961,7 @@ A flexible, featureful <code>curl</code> wrapper, last updated in 2015.
 </ul></li>
 <li><ul class="org-ul">
 <li></li>
+<li></li>
 </ul></li>
 </ul>
 </div>
@@ -3455,6 +3465,77 @@ The <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Pa
 <div id="outline-container-Packaging--Tools" class="outline-4">
 <h4 id="Packaging--Tools">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
 <div class="outline-text-4" id="text-Packaging--Tools">
+</div>
+
+<div id="outline-container-Building%20%2F%20Testing" class="outline-5">
+<h5 id="Building%20%2F%20Testing">Building / Testing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="building">building</span>&#xa0;<span class="testing">testing</span></span></h5>
+<div class="outline-text-5" id="text-Building%20%2F%20Testing">
+<p>
+Tools for building and testing packages, especially from scripts or Makefiles.
+</p>
+</div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fcask%2Fcask%5D%5Bcask%3A%20Project%20management%20tool%20for%20Emacs%5D%5D" class="outline-6">
+<h6 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fcask%2Fcask%5D%5Bcask%3A%20Project%20management%20tool%20for%20Emacs%5D%5D"><a id="ID-06ba57cf-464f-473a-9911-4311033bc358"></a><a href="https://github.com/cask/cask">cask: Project management tool for Emacs</a></h6>
+<div class="outline-text-6" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fcask%2Fcask%5D%5Bcask%3A%20Project%20management%20tool%20for%20Emacs%5D%5D">
+<blockquote>
+<p>
+Cask is a project management tool for Emacs that helps automate the package development cycle; development, dependencies, testing, building, packaging and more.
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fvermiculus%2Femake.el%5D%5Bemake.el%3A%20Test%20Elisp%20without%20the%20hoops%5D%5D" class="outline-6">
+<h6 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fvermiculus%2Femake.el%5D%5Bemake.el%3A%20Test%20Elisp%20without%20the%20hoops%5D%5D"><a id="ID-2e076cf2-77b5-440c-9832-086739185f6b"></a><a href="https://github.com/vermiculus/emake.el">emake.el: Test Elisp without the hoops</a></h6>
+<div class="outline-text-6" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fvermiculus%2Femake.el%5D%5Bemake.el%3A%20Test%20Elisp%20without%20the%20hoops%5D%5D">
+<blockquote>
+<p>
+Test Elisp with services like Travis CI without the fuss of Cask – just you, your project, and (Emacs-)Make.
+</p>
+
+<p>
+Things EMake does:
+</p>
+
+<ul class="org-ul">
+<li>parses, installs, and runs tests for your package</li>
+<li>provides all the power of Elisp to extend its capabilities on-demand</li>
+</ul>
+
+<p>
+Things EMake will never do (or ‘reasons you may still need Cask’):
+</p>
+
+<ul class="org-ul">
+<li>manage your development environment or provide tools to do so</li>
+<li>provide ’bundler-like’ exec abilities (this includes Cask’s emacs and eval commands)</li>
+</ul>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fmakel%2F%5D%5Bmakel%3A%20A%20makefile%20to%20facilitate%20checking%20Emacs%20packages%5D%5D" class="outline-6">
+<h6 id="%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fmakel%2F%5D%5Bmakel%3A%20A%20makefile%20to%20facilitate%20checking%20Emacs%20packages%5D%5D"><a id="ID-5bcfdd7f-40a3-40b4-bd0a-586602791161"></a><a href="https://gitlab.petton.fr/DamienCassou/makel/">makel: A makefile to facilitate checking Emacs packages</a></h6>
+<div class="outline-text-6" id="text-%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fmakel%2F%5D%5Bmakel%3A%20A%20makefile%20to%20facilitate%20checking%20Emacs%20packages%5D%5D">
+<blockquote>
+<p>
+makel is a project consisting of a Makefile (<code>makel.mk</code>) that Emacs package authors can use to facilitate quality checking (linting and tests). The Makefile can be used both locally on the developer machine and remotely on a continuous integration machine.
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Falphapapa%2Fmakem.sh%5D%5Bmakem.sh%3A%20Makefile-like%20script%20for%20building%20and%20testing%20packages%5D%5D" class="outline-6">
+<h6 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Falphapapa%2Fmakem.sh%5D%5Bmakem.sh%3A%20Makefile-like%20script%20for%20building%20and%20testing%20packages%5D%5D"><a id="ID-38e6ee67-0d22-44d2-a2c6-01602e00ee23"></a><a href="https://github.com/alphapapa/makem.sh">makem.sh: Makefile-like script for building and testing packages</a></h6>
+<div class="outline-text-6" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Falphapapa%2Fmakem.sh%5D%5Bmakem.sh%3A%20Makefile-like%20script%20for%20building%20and%20testing%20packages%5D%5D">
+<blockquote>
+<p>
+<code>makem.sh</code> is a script to help build and test Emacs Lisp packages (not Emacs itself). It aims to make linting and testing as simple as possible. Source files and test files are discovered automatically from the project’s Git repo. Output is simple: by default, there is no output unless errors occur. With increasing verbosity levels (with <code>-v</code> or <code>-vv</code> options), more detail gives positive feedback. Output is colored by default to make reading easy.
+</p>
+</blockquote>
+</div>
+</div>
 </div>
 
 <div id="outline-container-Package%20installation%2Fmanagement" class="outline-5">
@@ -4903,57 +4984,12 @@ Since this happens at macro expansion time rather than at runtime, there is no p
 <div class="outline-text-3" id="text-Testing">
 </div>
 
-<div id="outline-container-Testing--Libraries" class="outline-4">
-<h4 id="Testing--Libraries">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
-<div class="outline-text-4" id="text-Testing--Libraries">
-</div>
-
-<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fphillord%2Fassess%5D%5Bassess%3A%20Test%20support%20functions%5D%5D" class="outline-5">
-<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fphillord%2Fassess%5D%5Bassess%3A%20Test%20support%20functions%5D%5D"><a href="https://github.com/phillord/assess">assess: Test support functions</a></h5>
-<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fphillord%2Fassess%5D%5Bassess%3A%20Test%20support%20functions%5D%5D">
-<blockquote>
+<div id="outline-container-Frameworks" class="outline-4">
+<h4 id="Frameworks">Frameworks&#xa0;&#xa0;&#xa0;<span class="tag"><span class="frameworks">frameworks</span></span></h4>
+<div class="outline-text-4" id="text-Frameworks">
 <p>
-Assess provides additional support for testing Emacs packages.
+Frameworks for writing, organizing, and running tests.
 </p>
-
-<p>
-It provides:
-</p>
-
-<ul class="org-ul">
-<li>a set of predicates for comparing strings, buffers and file contents.</li>
-<li>explainer functions for all predicates giving useful output</li>
-<li>macros for creating many temporary buffers at once, and for restoring the buffer list.</li>
-<li>methods for testing indentation, by comparision or "roundtripping".</li>
-<li>methods for testing fontification.</li>
-</ul>
-
-<p>
-Assess aims to be a stateless as possible, leaving Emacs unchanged whether the tests succeed or fail, with respect to buffers, open files and so on; this helps to keep tests independent from each other.
-</p>
-</blockquote>
-</div>
-</div>
-
-<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2FDarwinAwardWinner%2Fwith-simulated-input%5D%5Bwith-simulated-input%3A%20Test%20interactive%20functions%20non-interactively%5D%5D" class="outline-5">
-<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2FDarwinAwardWinner%2Fwith-simulated-input%5D%5Bwith-simulated-input%3A%20Test%20interactive%20functions%20non-interactively%5D%5D"><a href="https://github.com/DarwinAwardWinner/with-simulated-input">with-simulated-input: Test interactive functions non-interactively</a></h5>
-<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2FDarwinAwardWinner%2Fwith-simulated-input%5D%5Bwith-simulated-input%3A%20Test%20interactive%20functions%20non-interactively%5D%5D">
-<blockquote>
-<p>
-This package provides an Emacs Lisp macro, <code>with-simulated-input</code>, which evaluates one or more forms while simulating a sequence of input events for those forms to read. The result is the same as if you had evaluated the forms and then manually typed in the same input. This macro is useful for non-interactive testing of normally interactive commands and functions, such as <code>completing-read</code>.
-</p>
-
-<p>
-Some interactive functions rely on idle timers to do their work, so you might need a way to simulate idleness. For that, there is the <code>wsi-simulate-idle-time</code> function. You can insert calls to this function in between input strings.
-</p>
-</blockquote>
-</div>
-</div>
-</div>
-
-<div id="outline-container-Testing--Tools" class="outline-4">
-<h4 id="Testing--Tools">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
-<div class="outline-text-4" id="text-Testing--Tools">
 </div>
 
 <div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fjorgenschaefer%2Femacs-buttercup%5D%5Bbuttercup%3A%20Behavior-Driven%20Emacs%20Lisp%20Testing%5D%5D" class="outline-5">
@@ -4966,17 +5002,6 @@ Buttercup is a behavior-driven development framework for testing Emacs Lisp code
 
 <p>
 The framework is heavily inspired by Jasmine.
-</p>
-</blockquote>
-</div>
-</div>
-
-<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fcask%2Fcask%5D%5Bcask%3A%20Project%20management%20tool%20for%20Emacs%5D%5D" class="outline-5">
-<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fcask%2Fcask%5D%5Bcask%3A%20Project%20management%20tool%20for%20Emacs%5D%5D"><a href="https://github.com/cask/cask">cask: Project management tool for Emacs</a></h5>
-<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fcask%2Fcask%5D%5Bcask%3A%20Project%20management%20tool%20for%20Emacs%5D%5D">
-<blockquote>
-<p>
-Cask is a project management tool for Emacs that helps automate the package development cycle; development, dependencies, testing, building, packaging and more.
 </p>
 </blockquote>
 </div>
@@ -5005,60 +5030,68 @@ This is the standard, built-in Emacs testing library, used by core code and thir
 </p>
 </div>
 </div>
+</div>
 
-<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fvermiculus%2Femake.el%5D%5Bemake.el%3A%20Test%20Elisp%20without%20the%20hoops%5D%5D" class="outline-5">
-<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fvermiculus%2Femake.el%5D%5Bemake.el%3A%20Test%20Elisp%20without%20the%20hoops%5D%5D"><a href="https://github.com/vermiculus/emake.el">emake.el: Test Elisp without the hoops</a></h5>
-<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fvermiculus%2Femake.el%5D%5Bemake.el%3A%20Test%20Elisp%20without%20the%20hoops%5D%5D">
+<div id="outline-container-Testing--Libraries" class="outline-4">
+<h4 id="Testing--Libraries">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
+<div class="outline-text-4" id="text-Testing--Libraries">
+<p>
+Libraries that help with writing tests.
+</p>
+</div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fphillord%2Fassess%5D%5Bassess%3A%20Test%20support%20functions%5D%5D" class="outline-6">
+<h6 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fphillord%2Fassess%5D%5Bassess%3A%20Test%20support%20functions%5D%5D"><a href="https://github.com/phillord/assess">assess: Test support functions</a></h6>
+<div class="outline-text-6" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fphillord%2Fassess%5D%5Bassess%3A%20Test%20support%20functions%5D%5D">
 <blockquote>
 <p>
-Test Elisp with services like Travis CI without the fuss of Cask – just you, your project, and (Emacs-)Make.
+Assess provides additional support for testing Emacs packages.
 </p>
 
 <p>
-Things EMake does:
+It provides:
 </p>
 
 <ul class="org-ul">
-<li>parses, installs, and runs tests for your package</li>
-<li>provides all the power of Elisp to extend its capabilities on-demand</li>
+<li>a set of predicates for comparing strings, buffers and file contents.</li>
+<li>explainer functions for all predicates giving useful output</li>
+<li>macros for creating many temporary buffers at once, and for restoring the buffer list.</li>
+<li>methods for testing indentation, by comparision or "roundtripping".</li>
+<li>methods for testing fontification.</li>
 </ul>
 
 <p>
-Things EMake will never do (or ‘reasons you may still need Cask’):
+Assess aims to be a stateless as possible, leaving Emacs unchanged whether the tests succeed or fail, with respect to buffers, open files and so on; this helps to keep tests independent from each other.
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2FDarwinAwardWinner%2Fwith-simulated-input%5D%5Bwith-simulated-input%3A%20Test%20interactive%20functions%20non-interactively%5D%5D" class="outline-6">
+<h6 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2FDarwinAwardWinner%2Fwith-simulated-input%5D%5Bwith-simulated-input%3A%20Test%20interactive%20functions%20non-interactively%5D%5D"><a href="https://github.com/DarwinAwardWinner/with-simulated-input">with-simulated-input: Test interactive functions non-interactively</a></h6>
+<div class="outline-text-6" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2FDarwinAwardWinner%2Fwith-simulated-input%5D%5Bwith-simulated-input%3A%20Test%20interactive%20functions%20non-interactively%5D%5D">
+<blockquote>
+<p>
+This package provides an Emacs Lisp macro, <code>with-simulated-input</code>, which evaluates one or more forms while simulating a sequence of input events for those forms to read. The result is the same as if you had evaluated the forms and then manually typed in the same input. This macro is useful for non-interactive testing of normally interactive commands and functions, such as <code>completing-read</code>.
 </p>
 
+<p>
+Some interactive functions rely on idle timers to do their work, so you might need a way to simulate idleness. For that, there is the <code>wsi-simulate-idle-time</code> function. You can insert calls to this function in between input strings.
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+
+<div id="outline-container-Testing--Tools" class="outline-4">
+<h4 id="Testing--Tools">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
+<div class="outline-text-4" id="text-Testing--Tools">
 <ul class="org-ul">
-<li>manage your development environment or provide tools to do so</li>
-<li>provide ’bundler-like’ exec abilities (this includes Cask’s emacs and eval commands)</li>
+<li>See <a href="#Building%20%2F%20Testing">Building / Testing tools</a>.</li>
 </ul>
-</blockquote>
-</div>
-</div>
-
-<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fmakel%2F%5D%5Bmakel%3A%20A%20makefile%20to%20facilitate%20checking%20Emacs%20packages%5D%5D" class="outline-5">
-<h5 id="%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fmakel%2F%5D%5Bmakel%3A%20A%20makefile%20to%20facilitate%20checking%20Emacs%20packages%5D%5D"><a href="https://gitlab.petton.fr/DamienCassou/makel/">makel: A makefile to facilitate checking Emacs packages</a></h5>
-<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fmakel%2F%5D%5Bmakel%3A%20A%20makefile%20to%20facilitate%20checking%20Emacs%20packages%5D%5D">
-<blockquote>
-<p>
-makel is a project consisting of a Makefile (<code>makel.mk</code>) that Emacs package authors can use to facilitate quality checking (linting and tests). The Makefile can be used both locally on the developer machine and remotely on a continuous integration machine.
-</p>
-</blockquote>
-</div>
-</div>
-
-<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Falphapapa%2Fmakem.sh%5D%5Bmakem.sh%3A%20Makefile-like%20script%20for%20building%20and%20testing%20packages%5D%5D" class="outline-5">
-<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Falphapapa%2Fmakem.sh%5D%5Bmakem.sh%3A%20Makefile-like%20script%20for%20building%20and%20testing%20packages%5D%5D"><a href="https://github.com/alphapapa/makem.sh">makem.sh: Makefile-like script for building and testing packages</a></h5>
-<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Falphapapa%2Fmakem.sh%5D%5Bmakem.sh%3A%20Makefile-like%20script%20for%20building%20and%20testing%20packages%5D%5D">
-<blockquote>
-<p>
-<code>makem.sh</code> is a script to help build and test Emacs Lisp packages (not Emacs itself). It aims to make linting and testing as simple as possible. Source files and test files are discovered automatically from the project’s Git repo. Output is simple: by default, there is no output unless errors occur. With increasing verbosity levels (with <code>-v</code> or <code>-vv</code> options), more detail gives positive feedback. Output is colored by default to make reading easy.
-</p>
-</blockquote>
 </div>
 </div>
 </div>
-</div>
-
 <div id="outline-container-User%20interface" class="outline-3">
 <h3 id="User%20interface">User interface&#xa0;&#xa0;&#xa0;<span class="tag"><span class="UI">UI</span></span></h3>
 <div class="outline-text-3" id="text-User%20interface">
@@ -5904,6 +5937,7 @@ Especially <code>easy-mmode-defmap</code>.
 <div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Frocky%2Felisp-decompile%5D%5BGitHub%20-%20rocky%2Felisp-decompile%3A%20Emacs%20Lisp%20Decompiler%5D%5D" class="outline-3">
 <h3 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Frocky%2Felisp-decompile%5D%5BGitHub%20-%20rocky%2Felisp-decompile%3A%20Emacs%20Lisp%20Decompiler%5D%5D"><span class="todo TODO">TODO</span> <a href="https://github.com/rocky/elisp-decompile">GitHub - rocky/elisp-decompile: Emacs Lisp Decompiler</a></h3>
 </div>
+
 <div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fellerh%2Fpeg.el%5D%5BGitHub%20-%20ellerh%2Fpeg.el%5D%5D" class="outline-3">
 <h3 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fellerh%2Fpeg.el%5D%5BGitHub%20-%20ellerh%2Fpeg.el%5D%5D"><span class="todo TODO">TODO</span> <a href="https://github.com/ellerh/peg.el">GitHub - ellerh/peg.el</a></h3>
 </div>
@@ -6406,7 +6440,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2019-12-31 Tue 01:41</p>
+<p class="date">Created: 2019-12-31 Tue 17:10</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
