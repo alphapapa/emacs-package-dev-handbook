@@ -1752,19 +1752,9 @@ Developed by the current maintainer of Emacs, himself, John Wiegley.
 :PROPERTIES:
 :TOC:      siblings
 :END:
--  [[#best-practices][Best practices]]
-  -  [[#autoloads][Autoloads]]
-  -  [[#integration-with-other-packages][Integration with other packages]]
-  -  [[#httpswwwgnuorgsoftwareemacsmanualhtml_nodeelisplexical-bindinghtmllexical-binding][Lexical binding]]
-  -  [[#template][Template]]
-  -  [[#readme][Readme]]
-  -  [[#version-numbers][Version numbers]]
+-  [[#articles][Articles]]
 -  [[#libraries][Libraries]]
--  [[#reference][Reference]]
-  -  [[#package-headers-and-structure][Package headers and structure]]
 -  [[#tools][Tools]]
-  -  [[#building--testing][Building / Testing]]
-  -  [[#package-installationmanagement][Package installation/management]]
 
 *** Articles                                                     :articles:
 :PROPERTIES:
@@ -1946,19 +1936,14 @@ And:
 :PROPERTIES:
 :TOC:      siblings
 :END:
--  [[#best-practices][Best practices]]
-  -  [[#autoloads][Autoloads]]
-  -  [[#integration-with-other-packages][Integration with other packages]]
-  -  [[#httpswwwgnuorgsoftwareemacsmanualhtml_nodeelisplexical-bindinghtmllexical-binding][Lexical binding]]
-  -  [[#template][Template]]
-  -  [[#readme][Readme]]
-  -  [[#version-numbers][Version numbers]]
--  [[#libraries][Libraries]]
--  [[#reference][Reference]]
-  -  [[#package-headers-and-structure][Package headers and structure]]
--  [[#tools][Tools]]
-  -  [[#building--testing][Building / Testing]]
-  -  [[#package-installationmanagement][Package installation/management]]
+-  [[#articles][Articles]]
+-  [[#macros][Macros]]
+  -  [[#bench][bench]]
+  -  [[#bench-multi-macros][bench-multi macros]]
+    -  [[#bench-multi-lexical][bench-multi-lexical]]
+    -  [[#bench-dynamic-vs-lexical-binding][bench-dynamic-vs-lexical-binding]]
+    -  [[#bench-multi-lets][bench-multi-lets]]
+  -  [[#elp-profile][elp-profile]]
 
 *** Articles                                                     :articles:
 :PROPERTIES:
