@@ -17,40 +17,40 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 :PROPERTIES:
 :TOC:      this
 :END:
-  -  [[#emacs-lisp][Emacs Lisp]]
-    -  [[#animations--screencasts][Animations / Screencasts]]
-    -  [[#asynchronicity][Asynchronicity]]
-    -  [[#binding][Binding]]
-    -  [[#buffers][Buffers]]
-    -  [[#checkers--linters][Checkers / linters]]
-    -  [[#collections-lists-vectors-hash-tables-etc][Collections (lists, vectors, hash-tables, etc.)]]
-    -  [[#color][Color]]
-    -  [[#data-structure][Data structure]]
-    -  [[#date--time][Date / Time]]
-    -  [[#debugging][Debugging]]
-    -  [[#destructuring][Destructuring]]
-    -  [[#documentation][Documentation]]
-    -  [[#editing][Editing]]
-    -  [[#functions][Functions]]
-    -  [[#general][General]]
-    -  [[#highlighting--font-locking][Highlighting / font-locking]]
-    -  [[#multiprocessing-generators-threads][Multiprocessing (generators, threads)]]
-    -  [[#networking][Networking]]
-    -  [[#packaging][Packaging]]
-    -  [[#pattern-matching][Pattern matching]]
-    -  [[#profiling--optimization][Profiling / Optimization]]
-    -  [[#refactoring][Refactoring]]
-    -  [[#regular-expressions][Regular expressions]]
-    -  [[#strings][Strings]]
-    -  [[#testing][Testing]]
-    -  [[#user-interface][User interface]]
-    -  [[#version-control][Version control]]
-    -  [[#xml--html][XML / HTML]]
-  -  [[#blogs][Blogs]]
-  -  [[#people][People]]
-  -  [[#contributions][Contributions]]
-  -  [[#tasks][Tasks]]
-  -  [[#code][Code]]
+-  [[#emacs-lisp][Emacs Lisp]]
+  -  [[#animations--screencasts][Animations / Screencasts]]
+  -  [[#asynchronicity][Asynchronicity]]
+  -  [[#binding][Binding]]
+  -  [[#buffers][Buffers]]
+  -  [[#checkers--linters][Checkers / linters]]
+  -  [[#collections-lists-vectors-hash-tables-etc][Collections (lists, vectors, hash-tables, etc.)]]
+  -  [[#color][Color]]
+  -  [[#data-structure][Data structure]]
+  -  [[#date--time][Date / Time]]
+  -  [[#debugging][Debugging]]
+  -  [[#destructuring][Destructuring]]
+  -  [[#documentation][Documentation]]
+  -  [[#editing][Editing]]
+  -  [[#functions][Functions]]
+  -  [[#general][General]]
+  -  [[#highlighting--font-locking][Highlighting / font-locking]]
+  -  [[#multiprocessing-generators-threads][Multiprocessing (generators, threads)]]
+  -  [[#networking][Networking]]
+  -  [[#packaging][Packaging]]
+  -  [[#pattern-matching][Pattern matching]]
+  -  [[#profiling--optimization][Profiling / Optimization]]
+  -  [[#refactoring][Refactoring]]
+  -  [[#regular-expressions][Regular expressions]]
+  -  [[#strings][Strings]]
+  -  [[#testing][Testing]]
+  -  [[#user-interface][User interface]]
+  -  [[#version-control][Version control]]
+  -  [[#xml--html][XML / HTML]]
+-  [[#blogs][Blogs]]
+-  [[#people][People]]
+-  [[#contributions][Contributions]]
+-  [[#tasks][Tasks]]
+-  [[#code][Code]]
 
 * Emacs Lisp                                                          :elisp:
 :PROPERTIES:
@@ -182,10 +182,10 @@ This file also defines macros =thunk-let= and =thunk-let*= that are analogous to
 :PROPERTIES:
 :TOC:      siblings
 :END:
-      -  [[#best-practices][Best practices]]
-        -  [[#accessing-buffer-local-variables][Accessing buffer-local variables]]
-        -  [[#inserting-strings][Inserting strings]]
-      -  [[#libraries][Libraries]]
+-  [[#best-practices][Best practices]]
+  -  [[#accessing-buffer-local-variables][Accessing buffer-local variables]]
+  -  [[#inserting-strings][Inserting strings]]
+-  [[#libraries][Libraries]]
 
 *** Best practices                                         :best_practices:
 :PROPERTIES:
@@ -283,11 +283,11 @@ users, as it provides familiar and intuitive interfaces with usual keys (for mov
 :PROPERTIES:
 :TOC:      siblings
 :END:
-      -  [[#best-practices][Best practices]]
-      -  [[#examples][Examples]]
-        -  [[#alists][Alists]]
-      -  [[#libraries][Libraries]]
-      -  [[#tools][Tools]]
+-  [[#best-practices][Best practices]]
+-  [[#examples][Examples]]
+  -  [[#alists][Alists]]
+-  [[#libraries][Libraries]]
+-  [[#tools][Tools]]
 
 *** Best practices                                         :best_practices:
 :PROPERTIES:
@@ -1210,19 +1210,19 @@ A flexible, featureful =curl= wrapper, last updated in 2015.
 :PROPERTIES:
 :TOC:      siblings
 :END:
-      -  [[#best-practices][Best practices]]
-        -  [[#autoloads][Autoloads]]
-        -  [[#integration-with-other-packages][Integration with other packages]]
-        -  [[#httpswwwgnuorgsoftwareemacsmanualhtml_nodeelisplexical-bindinghtmllexical-binding][Lexical binding]]
-        -  [[#template][Template]]
-        -  [[#readme][Readme]]
-        -  [[#version-numbers][Version numbers]]
-      -  [[#libraries][Libraries]]
-      -  [[#reference][Reference]]
-        -  [[#package-headers-and-structure][Package headers and structure]]
-      -  [[#tools][Tools]]
-        -  [[#building--testing][Building / Testing]]
-        -  [[#package-installationmanagement][Package installation/management]]
+-  [[#best-practices][Best practices]]
+  -  [[#autoloads][Autoloads]]
+  -  [[#integration-with-other-packages][Integration with other packages]]
+  -  [[#httpswwwgnuorgsoftwareemacsmanualhtml_nodeelisplexical-bindinghtmllexical-binding][Lexical binding]]
+  -  [[#template][Template]]
+  -  [[#readme][Readme]]
+  -  [[#version-numbers][Version numbers]]
+-  [[#libraries][Libraries]]
+-  [[#reference][Reference]]
+  -  [[#package-headers-and-structure][Package headers and structure]]
+-  [[#tools][Tools]]
+  -  [[#building--testing][Building / Testing]]
+  -  [[#package-installationmanagement][Package installation/management]]
 
 *** Best practices                                         :best_practices:
 :PROPERTIES:
@@ -1744,9 +1744,19 @@ Developed by the current maintainer of Emacs, himself, John Wiegley.
 :PROPERTIES:
 :TOC:      siblings
 :END:
-      -  [[#articles][Articles]]
-      -  [[#libraries][Libraries]]
-      -  [[#tools][Tools]]
+-  [[#best-practices][Best practices]]
+  -  [[#autoloads][Autoloads]]
+  -  [[#integration-with-other-packages][Integration with other packages]]
+  -  [[#httpswwwgnuorgsoftwareemacsmanualhtml_nodeelisplexical-bindinghtmllexical-binding][Lexical binding]]
+  -  [[#template][Template]]
+  -  [[#readme][Readme]]
+  -  [[#version-numbers][Version numbers]]
+-  [[#libraries][Libraries]]
+-  [[#reference][Reference]]
+  -  [[#package-headers-and-structure][Package headers and structure]]
+-  [[#tools][Tools]]
+  -  [[#building--testing][Building / Testing]]
+  -  [[#package-installationmanagement][Package installation/management]]
 
 *** Articles                                                     :articles:
 :PROPERTIES:
@@ -1928,14 +1938,19 @@ And:
 :PROPERTIES:
 :TOC:      siblings
 :END:
-      -  [[#articles][Articles]]
-      -  [[#macros][Macros]]
-        -  [[#bench][bench]]
-        -  [[#bench-multi-macros][bench-multi macros]]
-          -  [[#bench-multi-lexical][bench-multi-lexical]]
-          -  [[#bench-dynamic-vs-lexical-binding][bench-dynamic-vs-lexical-binding]]
-          -  [[#bench-multi-lets][bench-multi-lets]]
-        -  [[#elp-profile][elp-profile]]
+-  [[#best-practices][Best practices]]
+  -  [[#autoloads][Autoloads]]
+  -  [[#integration-with-other-packages][Integration with other packages]]
+  -  [[#httpswwwgnuorgsoftwareemacsmanualhtml_nodeelisplexical-bindinghtmllexical-binding][Lexical binding]]
+  -  [[#template][Template]]
+  -  [[#readme][Readme]]
+  -  [[#version-numbers][Version numbers]]
+-  [[#libraries][Libraries]]
+-  [[#reference][Reference]]
+  -  [[#package-headers-and-structure][Package headers and structure]]
+-  [[#tools][Tools]]
+  -  [[#building--testing][Building / Testing]]
+  -  [[#package-installationmanagement][Package installation/management]]
 
 *** Articles                                                     :articles:
 :PROPERTIES:
@@ -2431,9 +2446,9 @@ Emacs Refactor (EMR) is a framework for providing language-specific refactoring 
 :PROPERTIES:
 :TOC:      siblings
 :END:
-      -  [[#articles][Articles]]
-      -  [[#libraries][Libraries]]
-      -  [[#tools][Tools]]
+-  [[#articles][Articles]]
+-  [[#libraries][Libraries]]
+-  [[#tools][Tools]]
 
 *** Articles                                                     :articles:
 :PROPERTIES:
@@ -2539,9 +2554,9 @@ This example shows the use of a function to expand a list of strings into a sequ
 :PROPERTIES:
 :TOC:      siblings
 :END:
-      -  [[#libraries][Libraries]]
-      -  [[#tools][Tools]]
-        -  [[#format-macro][format$ macro]]
+-  [[#libraries][Libraries]]
+-  [[#tools][Tools]]
+  -  [[#format-macro][format$ macro]]
 
 *** Libraries                                                   :libraries:
 :PROPERTIES:
