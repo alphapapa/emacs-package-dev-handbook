@@ -1707,9 +1707,15 @@ makel is a project consisting of a Makefile (=makel.mk=) that Emacs package auth
 :END:
 
 #+BEGIN_QUOTE
-=makem.sh= is a script to help build and test Emacs Lisp packages (not Emacs itself). It aims to make linting and testing as simple as possible. Source files and test files are discovered automatically from the project’s Git repo. Output is simple: by default, there is no output unless errors occur. With increasing verbosity levels (with =-v= or =-vv= options), more detail gives positive feedback. Output is colored by default to make reading easy.
+makem.sh is a script helps to build, lint, and test Emacs Lisp packages.  It aims to make linting and testing as simple as possible without requiring per-package configuration.
 
-Testing can also be done with [[https://github.com/alphapapa/emacs-sandbox.sh][emacs-sandbox.sh]], which allows package dependencies to be installed into the sandbox automatically, without affecting the developer’s personal Emacs configuration. This is especially helpful when upstream dependencies may have released new versions that differ from the developer’s personal configuration.
+It works similarly to a Makefile in that "rules" are called to perform actions such as byte-compiling, linting, testing, etc.
+
+Source and test files are discovered automatically from the project's Git repo, and package dependencies within them are parsed automatically.
+
+Output is simple: by default, there is no output unless errors occur.  With increasing verbosity levels, more detail gives positive feedback.  Output is colored by default to make reading easy.
+
+When desired, [[https://github.com/alphapapa/emacs-sandbox.sh][emacs-sandbox.sh]] can be used as a backend, which allows package dependencies to be installed automatically into a clean Emacs "sandbox" configuration without affecting the developer's personal configuration.  This is especially helpful when upstream dependencies may have released new versions that differ from those installed in the developer's personal configuration.
 #+END_QUOTE
 
 **** Package installation/management             :installation:management:
