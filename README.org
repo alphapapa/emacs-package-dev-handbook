@@ -2647,6 +2647,29 @@ It provides:
 Assess aims to be a stateless as possible, leaving Emacs unchanged whether the tests succeed or fail, with respect to buffers, open files and so on; this helps to keep tests independent from each other.
 #+END_QUOTE
 
+***** [[https://www.emacswiki.org/emacs/ert-expectations.el][ert-expectations]]                                              :ERT:
+
+=expectations= allows more concise definitions of ERT tests.  For example:
+
+#+BEGIN_SRC elisp
+  ;; With ERT:
+
+  (ert-deftest erte-test-00001 ()
+    (should (equal 10 (+ 4 6))))
+
+  ;; With Expectations:
+  (expect 10 (+ 4 6))
+
+  ;; Or:
+  (expectations
+   (desc "success")
+   (expect 10 (+ 4 6))
+   (expect 5 (length "abcde"))
+   (desc "fail")
+   (expect 11 (+ 4 6))
+   (expect 6 (length "abcde")))
+#+END_SRC
+
 ***** [[https://github.com/DarwinAwardWinner/with-simulated-input][with-simulated-input: Test interactive functions non-interactively]]
 
 #+BEGIN_QUOTE

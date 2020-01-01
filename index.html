@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-31 Tue 18:20 -->
+<!-- 2019-12-31 Tue 18:33 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -723,6 +723,7 @@ for the JavaScript code in this tag.
 <li>
 <ul>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fphillord%2Fassess%5D%5Bassess%3A%20Test%20support%20functions%5D%5D">assess: Test support functions</a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fwww.emacswiki.org%2Femacs%2Fert-expectations.el%5D%5Bert-expectations%5D%5D">ert-expectations&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ERT">ERT</span></span></a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2FDarwinAwardWinner%2Fwith-simulated-input%5D%5Bwith-simulated-input%3A%20Test%20interactive%20functions%20non-interactively%5D%5D">with-simulated-input: Test interactive functions non-interactively</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fpromethial%2Fxtest%5D%5Bxtest%3A%20Extensions%20for%20ERT%5D%5D">xtest: Extensions for ERT&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ERT">ERT</span></span></a></li>
 </ul>
@@ -5087,6 +5088,35 @@ Assess aims to be a stateless as possible, leaving Emacs unchanged whether the t
 </div>
 </div>
 
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fwww.emacswiki.org%2Femacs%2Fert-expectations.el%5D%5Bert-expectations%5D%5D" class="outline-6">
+<h6 id="%5B%5Bhttps%3A%2F%2Fwww.emacswiki.org%2Femacs%2Fert-expectations.el%5D%5Bert-expectations%5D%5D"><a href="https://www.emacswiki.org/emacs/ert-expectations.el">ert-expectations</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ERT">ERT</span></span></h6>
+<div class="outline-text-6" id="text-%5B%5Bhttps%3A%2F%2Fwww.emacswiki.org%2Femacs%2Fert-expectations.el%5D%5Bert-expectations%5D%5D">
+<p>
+<code>expectations</code> allows more concise definitions of ERT tests.  For example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75; font-size: 110%; font-style: italic;">With ERT:</span>
+
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; font-weight: bold;">ert-deftest</span><span style="color: #3e86b8;"> </span><span style="color: #3e86b8;">erte-test-00001</span><span style="color: #3e86b8;"> ()</span>
+  <span style="color: #3e86b8;">(</span><span style="color: #79890f;">should (</span><span style="color: #3e8c86; text-decoration: underline;">equal</span><span style="color: #3e8c86;"> 10 (</span><span style="color: #a27f12;">+ 4 6</span><span style="color: #3e8c86;">)</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
+
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-size: 110%; font-style: italic;">With Expectations:</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8;">expect 10 (</span><span style="color: #79890f;">+ 4 6</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
+
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-size: 110%; font-style: italic;">Or:</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8;">expectations</span>
+<span style="color: #3e86b8;"> (</span><span style="color: #79890f;">desc </span><span style="color: #92c4a2d2285f;">"success"</span><span style="color: #3e86b8;">)</span>
+ <span style="color: #3e86b8;">(</span><span style="color: #79890f;">expect 10 (</span><span style="color: #3e8c86;">+ 4 6</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
+ <span style="color: #3e86b8;">(</span><span style="color: #79890f;">expect 5 (</span><span style="color: #3e8c86; text-decoration: underline;">length</span><span style="color: #3e8c86;"> </span><span style="color: #670896299289;">"abcde"</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
+ <span style="color: #3e86b8;">(</span><span style="color: #79890f;">desc </span><span style="color: #92c4a2d2285f;">"fail"</span><span style="color: #3e86b8;">)</span>
+ <span style="color: #3e86b8;">(</span><span style="color: #79890f;">expect 11 (</span><span style="color: #3e8c86;">+ 4 6</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
+ <span style="color: #3e86b8;">(</span><span style="color: #79890f;">expect 6 (</span><span style="color: #3e8c86; text-decoration: underline;">length</span><span style="color: #3e8c86;"> </span><span style="color: #670896299289;">"abcde"</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
 <div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2FDarwinAwardWinner%2Fwith-simulated-input%5D%5Bwith-simulated-input%3A%20Test%20interactive%20functions%20non-interactively%5D%5D" class="outline-6">
 <h6 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2FDarwinAwardWinner%2Fwith-simulated-input%5D%5Bwith-simulated-input%3A%20Test%20interactive%20functions%20non-interactively%5D%5D"><a href="https://github.com/DarwinAwardWinner/with-simulated-input">with-simulated-input: Test interactive functions non-interactively</a></h6>
 <div class="outline-text-6" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2FDarwinAwardWinner%2Fwith-simulated-input%5D%5Bwith-simulated-input%3A%20Test%20interactive%20functions%20non-interactively%5D%5D">
@@ -6471,7 +6501,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2019-12-31 Tue 18:20</p>
+<p class="date">Created: 2019-12-31 Tue 18:33</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
