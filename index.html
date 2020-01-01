@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-31 Tue 18:33 -->
+<!-- 2019-12-31 Tue 20:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -3535,6 +3535,10 @@ makel is a project consisting of a Makefile (<code>makel.mk</code>) that Emacs p
 <p>
 <code>makem.sh</code> is a script to help build and test Emacs Lisp packages (not Emacs itself). It aims to make linting and testing as simple as possible. Source files and test files are discovered automatically from the project’s Git repo. Output is simple: by default, there is no output unless errors occur. With increasing verbosity levels (with <code>-v</code> or <code>-vv</code> options), more detail gives positive feedback. Output is colored by default to make reading easy.
 </p>
+
+<p>
+Testing can also be done with <a href="https://github.com/alphapapa/emacs-sandbox.sh">emacs-sandbox.sh</a>, which allows package dependencies to be installed into the sandbox automatically, without affecting the developer’s personal Emacs configuration. This is especially helpful when upstream dependencies may have released new versions that differ from the developer’s personal configuration.
+</p>
 </blockquote>
 </div>
 </div>
@@ -6501,7 +6505,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2019-12-31 Tue 18:33</p>
+<p class="date">Created: 2019-12-31 Tue 20:43</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
