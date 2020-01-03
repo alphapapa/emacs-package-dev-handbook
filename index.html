@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-31 Tue 21:30 -->
+<!-- 2020-01-03 Fri 06:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -821,6 +821,17 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#%5B%5Bid%3Aa32ed391-8ce6-46b7-9367-8117829ce2e7%5D%5Bbeginend.el%5D%5D">beginend.el</a></li>
 <li><a href="#%5B%5B%2A%255B%255Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fnavigel%2F%255D%255Bnavigel%255D%255D%5D%5Bnavigel%5D%5D">navigel</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Henrik%20Lissner">Henrik Lissner</a>
+<ul>
+<li><a href="#Henrik%20Lissner--Packages">Packages</a>
+<ul>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fhlissner%2Fdoom-emacs%5D%5Bdoom-emacs%3A%20An%20Emacs%20configuration%20for%20the%20stubborn%20martian%20vimmer%5D%5D">doom-emacs: An Emacs configuration for the stubborn martian vimmer</a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fhlissner%2Femacs-doom-themes%5D%5Bemacs-doom-themes%3A%20An%20opinionated%20pack%20of%20modern%20color-themes%5D%5D">emacs-doom-themes: An opinionated pack of modern color-themes</a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fhlissner%2Femacs-doom-themer%5D%5Bemacs-doom-themer%5D%5D">emacs-doom-themer</a></li>
 </ul>
 </li>
 </ul>
@@ -5096,7 +5107,7 @@ Assess aims to be a stateless as possible, leaving Emacs unchanged whether the t
 <pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75; font-size: 110%; font-style: italic;">With ERT:</span>
 
 <span style="color: #a27f12;">(</span><span style="color: #3e86b8; font-weight: bold;">ert-deftest</span><span style="color: #3e86b8;"> </span><span style="color: #3e86b8;">erte-test-00001</span><span style="color: #3e86b8;"> ()</span>
-  <span style="color: #3e86b8;">(</span><span style="color: #79890f;">should (</span><span style="color: #3e8c86; text-decoration: underline;">equal</span><span style="color: #3e8c86;"> 10 (</span><span style="color: #a27f12;">+ 4 6</span><span style="color: #3e8c86;">)</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
+  <span style="color: #3e86b8;">(</span><span style="color: #79890f; font-weight: bold;">should</span><span style="color: #79890f;"> (</span><span style="color: #3e8c86; text-decoration: underline;">equal</span><span style="color: #3e8c86;"> 10 (</span><span style="color: #a27f12;">+ 4 6</span><span style="color: #3e8c86;">)</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
 
 <span style="color: #586e75;">;; </span><span style="color: #586e75; font-size: 110%; font-style: italic;">With Expectations:</span>
 <span style="color: #a27f12;">(</span><span style="color: #3e86b8;">expect 10 (</span><span style="color: #79890f;">+ 4 6</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
@@ -5150,6 +5161,7 @@ XTest is a simple set of extensions for ERT.  XTest speeds up the creation of te
 </div>
 </div>
 </div>
+
 <div id="outline-container-User%20interface" class="outline-3">
 <h3 id="User%20interface">User interface&#xa0;&#xa0;&#xa0;<span class="tag"><span class="UI">UI</span></span></h3>
 <div class="outline-text-3" id="text-User%20interface">
@@ -5704,6 +5716,35 @@ Another prolific Emacs contributor, package developer, and blogger.
 
 <div id="outline-container-%5B%5B%2A%255B%255Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fnavigel%2F%255D%255Bnavigel%255D%255D%5D%5Bnavigel%5D%5D" class="outline-5">
 <h5 id="%5B%5B%2A%255B%255Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fnavigel%2F%255D%255Bnavigel%255D%255D%5D%5Bnavigel%5D%5D"><a href="#%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fnavigel%2F%5D%5Bnavigel%5D%5D">navigel</a></h5>
+</div>
+</div>
+</div>
+
+<div id="outline-container-Henrik%20Lissner" class="outline-3">
+<h3 id="Henrik%20Lissner">Henrik Lissner</h3>
+<div class="outline-text-3" id="text-Henrik%20Lissner">
+<p>
+Author and maintainer of Doom Emacs, one of the most popular configurations.
+</p>
+
+<ul class="org-ul">
+<li><a href="https://github.com/hlissner">GitHub</a></li>
+</ul>
+</div>
+
+<div id="outline-container-Henrik%20Lissner--Packages" class="outline-4">
+<h4 id="Henrik%20Lissner--Packages">Packages</h4>
+<div class="outline-text-4" id="text-Henrik%20Lissner--Packages">
+</div><div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fhlissner%2Fdoom-emacs%5D%5Bdoom-emacs%3A%20An%20Emacs%20configuration%20for%20the%20stubborn%20martian%20vimmer%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fhlissner%2Fdoom-emacs%5D%5Bdoom-emacs%3A%20An%20Emacs%20configuration%20for%20the%20stubborn%20martian%20vimmer%5D%5D"><a href="https://github.com/hlissner/doom-emacs">doom-emacs: An Emacs configuration for the stubborn martian vimmer</a></h5>
+</div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fhlissner%2Femacs-doom-themes%5D%5Bemacs-doom-themes%3A%20An%20opinionated%20pack%20of%20modern%20color-themes%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fhlissner%2Femacs-doom-themes%5D%5Bemacs-doom-themes%3A%20An%20opinionated%20pack%20of%20modern%20color-themes%5D%5D"><a href="https://github.com/hlissner/emacs-doom-themes">emacs-doom-themes: An opinionated pack of modern color-themes</a></h5>
+</div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fhlissner%2Femacs-doom-themer%5D%5Bemacs-doom-themer%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fhlissner%2Femacs-doom-themer%5D%5Bemacs-doom-themer%5D%5D"><a href="https://github.com/hlissner/emacs-doom-themer">emacs-doom-themer</a></h5>
 </div>
 </div>
 </div>
@@ -6498,7 +6539,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2019-12-31 Tue 21:30</p>
+<p class="date">Created: 2020-01-03 Fri 06:31</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

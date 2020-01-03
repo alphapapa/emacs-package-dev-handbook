@@ -3046,6 +3046,23 @@ Another prolific Emacs contributor, package developer, and blogger.
 
 **** [[*%5B%5Bhttps://gitlab.petton.fr/DamienCassou/navigel/%5D%5Bnavigel%5D%5D][navigel]]
 
+** Henrik Lissner
+:LOGBOOK:
+-  State "TODO"       from              [2020-01-03 Fri 06:27]
+:END:
+
+Author and maintainer of Doom Emacs, one of the most popular configurations.
+
++  [[https://github.com/hlissner][GitHub]]
+
+*** Packages
+
+**** [[https://github.com/hlissner/doom-emacs][doom-emacs: An Emacs configuration for the stubborn martian vimmer]]
+
+**** [[https://github.com/hlissner/emacs-doom-themes][emacs-doom-themes: An opinionated pack of modern color-themes]]
+
+**** [[https://github.com/hlissner/emacs-doom-themer][emacs-doom-themer]]
+
 ** John Wiegley
 
 John is the current Emacs maintainer.
