@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-03 Fri 06:31 -->
+<!-- 2020-01-09 Thu 09:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -251,6 +251,7 @@ for the JavaScript code in this tag.
 <li><a href="#Tools">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a>
 <ul>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgitlab.com%2Fambrevar%2Femacs-gif-screencast%5D%5Bemacs-gif-screencast%5D%5D">emacs-gif-screencast&#xa0;&#xa0;&#xa0;<span class="tag"><span class="GIFs">GIFs</span></span></a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Ftarsius%2Fkeycast%5D%5Bkeycast%3A%20Show%20current%20command%20and%20its%20key%20in%20the%20mode%20line%5D%5D">keycast: Show current command and its key in the mode line</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Falphapapa%2Fbashcaster%5D%5BBashcaster%5D%5D">Bashcaster</a></li>
 </ul>
 </li>
@@ -1108,6 +1109,10 @@ Another neat perk of action-based captures is that it produces editable GIF file
 The author of this document can vouch for the fact that this package is the easiest, most powerful way to make screencast animations in Emacs!
 </p>
 </div>
+</div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Ftarsius%2Fkeycast%5D%5Bkeycast%3A%20Show%20current%20command%20and%20its%20key%20in%20the%20mode%20line%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Ftarsius%2Fkeycast%5D%5Bkeycast%3A%20Show%20current%20command%20and%20its%20key%20in%20the%20mode%20line%5D%5D"><a href="https://github.com/tarsius/keycast">keycast: Show current command and its key in the mode line</a></h5>
 </div>
 
 <div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Falphapapa%2Fbashcaster%5D%5BBashcaster%5D%5D" class="outline-5">
@@ -5110,16 +5115,16 @@ Assess aims to be a stateless as possible, leaving Emacs unchanged whether the t
   <span style="color: #3e86b8;">(</span><span style="color: #79890f; font-weight: bold;">should</span><span style="color: #79890f;"> (</span><span style="color: #3e8c86; text-decoration: underline;">equal</span><span style="color: #3e8c86;"> 10 (</span><span style="color: #a27f12;">+ 4 6</span><span style="color: #3e8c86;">)</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
 
 <span style="color: #586e75;">;; </span><span style="color: #586e75; font-size: 110%; font-style: italic;">With Expectations:</span>
-<span style="color: #a27f12;">(</span><span style="color: #3e86b8;">expect 10 (</span><span style="color: #79890f;">+ 4 6</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; font-weight: bold;">expect</span><span style="color: #3e86b8;"> 10 (</span><span style="color: #79890f;">+ 4 6</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
 
 <span style="color: #586e75;">;; </span><span style="color: #586e75; font-size: 110%; font-style: italic;">Or:</span>
 <span style="color: #a27f12;">(</span><span style="color: #3e86b8;">expectations</span>
 <span style="color: #3e86b8;"> (</span><span style="color: #79890f;">desc </span><span style="color: #92c4a2d2285f;">"success"</span><span style="color: #3e86b8;">)</span>
- <span style="color: #3e86b8;">(</span><span style="color: #79890f;">expect 10 (</span><span style="color: #3e8c86;">+ 4 6</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
- <span style="color: #3e86b8;">(</span><span style="color: #79890f;">expect 5 (</span><span style="color: #3e8c86; text-decoration: underline;">length</span><span style="color: #3e8c86;"> </span><span style="color: #670896299289;">"abcde"</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
+ <span style="color: #3e86b8;">(</span><span style="color: #79890f; font-weight: bold;">expect</span><span style="color: #79890f;"> 10 (</span><span style="color: #3e8c86;">+ 4 6</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
+ <span style="color: #3e86b8;">(</span><span style="color: #79890f; font-weight: bold;">expect</span><span style="color: #79890f;"> 5 (</span><span style="color: #3e8c86; text-decoration: underline;">length</span><span style="color: #3e8c86;"> </span><span style="color: #670896299289;">"abcde"</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
  <span style="color: #3e86b8;">(</span><span style="color: #79890f;">desc </span><span style="color: #92c4a2d2285f;">"fail"</span><span style="color: #3e86b8;">)</span>
- <span style="color: #3e86b8;">(</span><span style="color: #79890f;">expect 11 (</span><span style="color: #3e8c86;">+ 4 6</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
- <span style="color: #3e86b8;">(</span><span style="color: #79890f;">expect 6 (</span><span style="color: #3e8c86; text-decoration: underline;">length</span><span style="color: #3e8c86;"> </span><span style="color: #670896299289;">"abcde"</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
+ <span style="color: #3e86b8;">(</span><span style="color: #79890f; font-weight: bold;">expect</span><span style="color: #79890f;"> 11 (</span><span style="color: #3e8c86;">+ 4 6</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
+ <span style="color: #3e86b8;">(</span><span style="color: #79890f; font-weight: bold;">expect</span><span style="color: #79890f;"> 6 (</span><span style="color: #3e8c86; text-decoration: underline;">length</span><span style="color: #3e8c86;"> </span><span style="color: #670896299289;">"abcde"</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
 </pre>
 </div>
 </div>
@@ -6539,7 +6544,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2020-01-03 Fri 06:31</p>
+<p class="date">Created: 2020-01-09 Thu 09:04</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

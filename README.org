@@ -122,6 +122,8 @@ Another neat perk of action-based captures is that it produces editable GIF file
 
 The author of this document can vouch for the fact that this package is the easiest, most powerful way to make screencast animations in Emacs!
 
+**** [[https://github.com/tarsius/keycast][keycast: Show current command and its key in the mode line]]
+
 **** [[https://github.com/alphapapa/bashcaster][Bashcaster]]
 
 While =emacs-gif-screencast= should usually be your first choice, the way it works, recording one frame per Emacs command, isn't suitable for every case.  For general use, your editor can recommend Bashcaster, which is an easy-to-use script that can record the whole screen or individual windows, to videos or GIFs.
@@ -2683,6 +2685,7 @@ XTest is a simple set of extensions for ERT.  XTest speeds up the creation of te
 :END:
 
 + See [[*Building / Testing][Building / Testing tools]].
+
 ** User interface                                                       :UI:
 
 *** Libraries                                                   :libraries:
