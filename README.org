@@ -34,6 +34,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 :CONTENTS:
 - [[#animations--screencasts][Animations / Screencasts]]
 - [[#asynchronicity][Asynchronicity]]
+- [[#auditing--reviewing][Auditing / Reviewing]]
 - [[#binding][Binding]]
 - [[#buffers][Buffers]]
 - [[#checkers--linters][Checkers / linters]]
@@ -145,6 +146,18 @@ While =emacs-gif-screencast= should usually be your first choice, the way it wor
 ** Asynchronicity                                                    :async:
 
 See [[id:94092c16-061c-45c9-9c66-77c5fdeceee8][Multiprocessing (generators, threads)]].
+
+** Auditing / Reviewing                                 :auditing:reviewing:
+
+Auditing, reviewing, and analyzing source code.
+
+*** Tools                                                           :tools:
+
+**** [[https://github.com/cyrus-and/comb][comb: Interactive grep annotation tool for manual static analysis]]
+
+#+BEGIN_QUOTE
+Comb is a native Emacs Lisp solution to search, browse and annotate occurrences of regular expressions in files. The interactive interface allows to perform an exhaustive classification of all the results to rule out false positives and asses proper matches during manual static analysis.
+#+END_QUOTE
 
 ** Binding                                             :scope:binding:
 :PROPERTIES:
