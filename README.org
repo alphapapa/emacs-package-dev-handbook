@@ -707,6 +707,7 @@ Individual libraries from this article are listed below.
 - [[#httpwwwdr-qubitorgemacs_data-structureshtmltagged-non-deterministic-finite-state-automata-tnfael][Tagged Non-deterministic Finite state Automata (tNFA.el)]]
 - [[#httpwwwdr-qubitorgemacs_data-structureshtmltrieel][trie.el]]
 - [[#httpwwwdr-qubitorgemacs_data-structureshtmldict-treeel][dict-tree.el]]
+- [[#httpsgithubcomdoublepextmapextmap-externally-stored-constant-mapping][extmap: Externally-stored constant mapping]]
 :END:
 
 **** [[http://www.dr-qubit.org/emacs_data-structures.html][heap.el]]
@@ -741,6 +742,12 @@ A trie stores data associated with "strings" (not necessarily the string data ty
 
 #+BEGIN_QUOTE
 The dictionary tree data structures are a hybrid between tries and hash tables. Data is stored in a trie, but results that take particularly long to retrieve are cached in hash tables, which are automatically synchronised with the trie. The dictionary package provides persistent storage of the data structures in files, and many other convenience features.
+#+END_QUOTE
+
+**** [[https://github.com/doublep/extmap][extmap: Externally-stored constant mapping]]
+
+#+BEGIN_QUOTE
+extmap is a very simple package that lets you build a read-only, constant database that maps Elisp symbols to almost arbitrary Elisp objects. The idea is to avoid preloading all data to memory and only retrieve it when needed.  This package doesn’t use any external programs, making it a suitable dependency for smaller libraries.
 #+END_QUOTE
 
 ** Date / Time                                                 :dates:times:

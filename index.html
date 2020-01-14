@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-13 Mon 14:47 -->
+<!-- 2020-01-14 Tue 17:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -375,6 +375,7 @@ for the JavaScript code in this tag.
 <li><a href="#%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5BTagged%20Non-deterministic%20Finite%20state%20Automata%20%28tNFA.el%29%5D%5D">Tagged Non-deterministic Finite state Automata (tNFA.el)</a></li>
 <li><a href="#%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5Btrie.el%5D%5D">trie.el</a></li>
 <li><a href="#%5B%5Bhttp%3A%2F%2Fwww.dr-qubit.org%2Femacs_data-structures.html%5D%5Bdict-tree.el%5D%5D">dict-tree.el</a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fdoublep%2Fextmap%5D%5Bextmap%3A%20Externally-stored%20constant%20mapping%5D%5D">extmap: Externally-stored constant mapping</a></li>
 </ul>
 </li>
 </ul>
@@ -2222,6 +2223,17 @@ A trie stores data associated with "strings" (not necessarily the string data ty
 <blockquote>
 <p>
 The dictionary tree data structures are a hybrid between tries and hash tables. Data is stored in a trie, but results that take particularly long to retrieve are cached in hash tables, which are automatically synchronised with the trie. The dictionary package provides persistent storage of the data structures in files, and many other convenience features.
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fdoublep%2Fextmap%5D%5Bextmap%3A%20Externally-stored%20constant%20mapping%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fdoublep%2Fextmap%5D%5Bextmap%3A%20Externally-stored%20constant%20mapping%5D%5D"><a href="https://github.com/doublep/extmap">extmap: Externally-stored constant mapping</a></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fdoublep%2Fextmap%5D%5Bextmap%3A%20Externally-stored%20constant%20mapping%5D%5D">
+<blockquote>
+<p>
+extmap is a very simple package that lets you build a read-only, constant database that maps Elisp symbols to almost arbitrary Elisp objects. The idea is to avoid preloading all data to memory and only retrieve it when needed.  This package doesn’t use any external programs, making it a suitable dependency for smaller libraries.
 </p>
 </blockquote>
 </div>
@@ -6483,7 +6495,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2020-01-13 Mon 14:47</p>
+<p class="date">Created: 2020-01-14 Tue 17:55</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
