@@ -1791,6 +1791,7 @@ The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.
 :CONTENTS:
 - [[#building--testing][Building / Testing]]
   - [[#httpsgithubcomcaskcaskcask-project-management-tool-for-emacs][cask: Project management tool for Emacs]]
+  - [[#httpsgithubcomdoublepeldeveldev-elisp-development-tool][eldev: Elisp Development Tool]]
   - [[#httpsgithubcomvermiculusemakeelemakeel-test-elisp-without-the-hoops][emake.el: Test Elisp without the hoops]]
   - [[#httpsgitlabpettonfrdamiencassoumakelmakel-a-makefile-to-facilitate-checking-emacs-packages][makel: A makefile to facilitate checking Emacs packages]]
   - [[#httpsgithubcomalphapapamakemshmakemsh-makefile-like-script-for-building-and-testing-packages][makem.sh: Makefile-like script for building and testing packages]]
@@ -1812,6 +1813,12 @@ Tools for building and testing packages, especially from scripts or Makefiles.
 
 #+BEGIN_QUOTE
 Cask is a project management tool for Emacs that helps automate the package development cycle; development, dependencies, testing, building, packaging and more.
+#+END_QUOTE
+
+***** [[https://github.com/doublep/eldev][eldev: Elisp Development Tool]]
+
+#+BEGIN_QUOTE
+Eldev (Elisp Development Tool) is an Emacs-based build tool, targeted solely at Elisp projects. It is an alternative to Cask. Unlike Cask, Eldev itself is fully written in Elisp and its configuration files are also Elisp programs. If you are familiar with Java world, Cask can be seen as a parallel to Maven — it uses project description, while Eldev is sort of a parallel to Gradle — its configuration is a program on its own.
 #+END_QUOTE
 
 ***** [[https://github.com/vermiculus/emake.el][emake.el: Test Elisp without the hoops]]

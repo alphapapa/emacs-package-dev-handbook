@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-14 Tue 17:55 -->
+<!-- 2020-01-14 Tue 17:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -582,6 +582,7 @@ for the JavaScript code in this tag.
 <li><a href="#Building%20%2F%20Testing">Building / Testing&#xa0;&#xa0;&#xa0;<span class="tag"><span class="building">building</span>&#xa0;<span class="testing">testing</span></span></a>
 <ul>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fcask%2Fcask%5D%5Bcask%3A%20Project%20management%20tool%20for%20Emacs%5D%5D">cask: Project management tool for Emacs</a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fdoublep%2Feldev%5D%5Beldev%3A%20Elisp%20Development%20Tool%5D%5D">eldev: Elisp Development Tool</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fvermiculus%2Femake.el%5D%5Bemake.el%3A%20Test%20Elisp%20without%20the%20hoops%5D%5D">emake.el: Test Elisp without the hoops</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fmakel%2F%5D%5Bmakel%3A%20A%20makefile%20to%20facilitate%20checking%20Emacs%20packages%5D%5D">makel: A makefile to facilitate checking Emacs packages</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Falphapapa%2Fmakem.sh%5D%5Bmakem.sh%3A%20Makefile-like%20script%20for%20building%20and%20testing%20packages%5D%5D">makem.sh: Makefile-like script for building and testing packages</a></li>
@@ -3507,6 +3508,17 @@ Cask is a project management tool for Emacs that helps automate the package deve
 </div>
 </div>
 
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fdoublep%2Feldev%5D%5Beldev%3A%20Elisp%20Development%20Tool%5D%5D" class="outline-6">
+<h6 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fdoublep%2Feldev%5D%5Beldev%3A%20Elisp%20Development%20Tool%5D%5D"><a href="https://github.com/doublep/eldev">eldev: Elisp Development Tool</a></h6>
+<div class="outline-text-6" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fdoublep%2Feldev%5D%5Beldev%3A%20Elisp%20Development%20Tool%5D%5D">
+<blockquote>
+<p>
+Eldev (Elisp Development Tool) is an Emacs-based build tool, targeted solely at Elisp projects. It is an alternative to Cask. Unlike Cask, Eldev itself is fully written in Elisp and its configuration files are also Elisp programs. If you are familiar with Java world, Cask can be seen as a parallel to Maven — it uses project description, while Eldev is sort of a parallel to Gradle — its configuration is a program on its own.
+</p>
+</blockquote>
+</div>
+</div>
+
 <div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fvermiculus%2Femake.el%5D%5Bemake.el%3A%20Test%20Elisp%20without%20the%20hoops%5D%5D" class="outline-6">
 <h6 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fvermiculus%2Femake.el%5D%5Bemake.el%3A%20Test%20Elisp%20without%20the%20hoops%5D%5D"><a id="ID-2e076cf2-77b5-440c-9832-086739185f6b"></a><a href="https://github.com/vermiculus/emake.el">emake.el: Test Elisp without the hoops</a></h6>
 <div class="outline-text-6" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fvermiculus%2Femake.el%5D%5Bemake.el%3A%20Test%20Elisp%20without%20the%20hoops%5D%5D">
@@ -3535,7 +3547,6 @@ Things EMake will never do (or ‘reasons you may still need Cask’):
 </blockquote>
 </div>
 </div>
-
 <div id="outline-container-%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fmakel%2F%5D%5Bmakel%3A%20A%20makefile%20to%20facilitate%20checking%20Emacs%20packages%5D%5D" class="outline-6">
 <h6 id="%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fmakel%2F%5D%5Bmakel%3A%20A%20makefile%20to%20facilitate%20checking%20Emacs%20packages%5D%5D"><a id="ID-5bcfdd7f-40a3-40b4-bd0a-586602791161"></a><a href="https://gitlab.petton.fr/DamienCassou/makel/">makel: A makefile to facilitate checking Emacs packages</a></h6>
 <div class="outline-text-6" id="text-%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fmakel%2F%5D%5Bmakel%3A%20A%20makefile%20to%20facilitate%20checking%20Emacs%20packages%5D%5D">
@@ -6495,7 +6506,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2020-01-14 Tue 17:55</p>
+<p class="date">Created: 2020-01-14 Tue 17:58</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
