@@ -3412,6 +3412,14 @@ These resources should be added to the appropriate sections above.  Since it tak
 ** TODO Add [[https://github.com/vermiculus/package-demo][GitHub - vermiculus/package-demo: Script your Emacs package demos!]]
 
 ** TODO [[https://github.com/vermiculus/stash.el][GitHub - vermiculus/stash.el: Lightweight, Persistent Caching for Elisp]]
+
+** MAYBE [[https://github.com/raxod502/elint][GitHub - raxod502/elint: 💀 DEPRECATED: Small module to deduplicate Elisp build tooling.]]
+:LOGBOOK:
+-  State "MAYBE"      from              [2020-01-19 Sun 15:48]
+:END:
+
+He archived the project, so it probably shouldn't be used, but it may have interesting historical significance for developing similar tools.
+
 ** TODO =easy-mmode.el=
 
 Especially =easy-mmode-defmap=.
