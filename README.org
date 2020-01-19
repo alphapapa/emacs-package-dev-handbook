@@ -3409,6 +3409,9 @@ Yes, please!  Send pull requests and file issues on the [[https://github.com/alp
 
 These resources should be added to the appropriate sections above.  Since it takes some work to catalog and organize them, they are dumped here for future reference.  Pull requests for these are welcome!
 
+** TODO Add [[https://github.com/vermiculus/package-demo][GitHub - vermiculus/package-demo: Script your Emacs package demos!]]
+
+** TODO [[https://github.com/vermiculus/stash.el][GitHub - vermiculus/stash.el: Lightweight, Persistent Caching for Elisp]]
 ** TODO =easy-mmode.el=
 
 Especially =easy-mmode-defmap=.
