@@ -316,7 +316,17 @@ users, as it provides familiar and intuitive interfaces with usual keys (for mov
 
 ** Checkers / linters                                     :linters:checkers:
 
-*** TODO Flycheck-package
+*** [[https://github.com/purcell/flycheck-package][flycheck-package: Flycheck checker for Elisp package metadata]]
+
+#+BEGIN_QUOTE
+This library provides a =flycheck= checker for the metadata in Emacs Lisp files which are intended to be packages.  That metadata includes the package description, its dependencies and more.  The checks are performed by the separate =package-lint= library.
+#+END_QUOTE
+
+*** [[https://github.com/mattiase/relint][relint: regexp lint tool]]
+
+#+BEGIN_QUOTE
+Relint scans elisp files for mistakes in regexps, including deprecated syntax and bad practice.  It also checks the regexp-like arguments to =skip-chars-forward=, =skip-chars-backward=, =skip-syntax-forward= and =skip-syntax-backward=.
+#+END_QUOTE
 
 ** Collections (lists, vectors, hash-tables, etc.)             :collections:
 :PROPERTIES:

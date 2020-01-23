@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-19 Sun 15:49 -->
+<!-- 2020-01-23 Thu 02:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -305,7 +305,8 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#Checkers%20%2F%20linters">Checkers / linters&#xa0;&#xa0;&#xa0;<span class="tag"><span class="linters">linters</span>&#xa0;<span class="checkers">checkers</span></span></a>
 <ul>
-<li><a href="#Flycheck-package"><span class="todo TODO">TODO</span> Flycheck-package</a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fpurcell%2Fflycheck-package%5D%5Bflycheck-package%3A%20Flycheck%20checker%20for%20Elisp%20package%20metadata%5D%5D">flycheck-package: Flycheck checker for Elisp package metadata</a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fmattiase%2Frelint%5D%5Brelint%3A%20regexp%20lint%20tool%5D%5D">relint: regexp lint tool</a></li>
 </ul>
 </li>
 <li><a href="#Collections%20%28lists%2C%20vectors%2C%20hash-tables%2C%20etc.%29">Collections (lists, vectors, hash-tables, etc.)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="collections">collections</span></span></a>
@@ -1478,8 +1479,26 @@ users, as it provides familiar and intuitive interfaces with usual keys (for mov
 <div id="outline-container-Checkers%20%2F%20linters" class="outline-3">
 <h3 id="Checkers%20%2F%20linters">Checkers / linters&#xa0;&#xa0;&#xa0;<span class="tag"><span class="linters">linters</span>&#xa0;<span class="checkers">checkers</span></span></h3>
 <div class="outline-text-3" id="text-Checkers%20%2F%20linters">
-</div><div id="outline-container-Flycheck-package" class="outline-4">
-<h4 id="Flycheck-package"><span class="todo TODO">TODO</span> Flycheck-package</h4>
+</div><div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fpurcell%2Fflycheck-package%5D%5Bflycheck-package%3A%20Flycheck%20checker%20for%20Elisp%20package%20metadata%5D%5D" class="outline-4">
+<h4 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fpurcell%2Fflycheck-package%5D%5Bflycheck-package%3A%20Flycheck%20checker%20for%20Elisp%20package%20metadata%5D%5D"><a href="https://github.com/purcell/flycheck-package">flycheck-package: Flycheck checker for Elisp package metadata</a></h4>
+<div class="outline-text-4" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fpurcell%2Fflycheck-package%5D%5Bflycheck-package%3A%20Flycheck%20checker%20for%20Elisp%20package%20metadata%5D%5D">
+<blockquote>
+<p>
+This library provides a <code>flycheck</code> checker for the metadata in Emacs Lisp files which are intended to be packages.  That metadata includes the package description, its dependencies and more.  The checks are performed by the separate <code>package-lint</code> library.
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fmattiase%2Frelint%5D%5Brelint%3A%20regexp%20lint%20tool%5D%5D" class="outline-4">
+<h4 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fmattiase%2Frelint%5D%5Brelint%3A%20regexp%20lint%20tool%5D%5D"><a href="https://github.com/mattiase/relint">relint: regexp lint tool</a></h4>
+<div class="outline-text-4" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fmattiase%2Frelint%5D%5Brelint%3A%20regexp%20lint%20tool%5D%5D">
+<blockquote>
+<p>
+Relint scans elisp files for mistakes in regexps, including deprecated syntax and bad practice.  It also checks the regexp-like arguments to <code>skip-chars-forward</code>, <code>skip-chars-backward</code>, <code>skip-syntax-forward</code> and <code>skip-syntax-backward</code>.
+</p>
+</blockquote>
+</div>
 </div>
 </div>
 
@@ -5074,19 +5093,19 @@ Assess aims to be a stateless as possible, leaving Emacs unchanged whether the t
 <pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75; font-size: 110%; font-style: italic;">With ERT:</span>
 
 <span style="color: #a27f12;">(</span><span style="color: #3e86b8; font-weight: bold;">ert-deftest</span><span style="color: #3e86b8;"> </span><span style="color: #3e86b8;">erte-test-00001</span><span style="color: #3e86b8;"> ()</span>
-  <span style="color: #3e86b8;">(</span><span style="color: #79890f;">should (</span><span style="color: #3e8c86; text-decoration: underline;">equal</span><span style="color: #3e8c86;"> 10 (</span><span style="color: #a27f12;">+ 4 6</span><span style="color: #3e8c86;">)</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
+  <span style="color: #3e86b8;">(</span><span style="color: #79890f; font-weight: bold;">should</span><span style="color: #79890f;"> (</span><span style="color: #3e8c86; text-decoration: underline;">equal</span><span style="color: #3e8c86;"> 10 (</span><span style="color: #a27f12;">+ 4 6</span><span style="color: #3e8c86;">)</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
 
 <span style="color: #586e75;">;; </span><span style="color: #586e75; font-size: 110%; font-style: italic;">With Expectations:</span>
-<span style="color: #a27f12;">(</span><span style="color: #3e86b8;">expect 10 (</span><span style="color: #79890f;">+ 4 6</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; font-weight: bold;">expect</span><span style="color: #3e86b8;"> 10 (</span><span style="color: #79890f;">+ 4 6</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
 
 <span style="color: #586e75;">;; </span><span style="color: #586e75; font-size: 110%; font-style: italic;">Or:</span>
 <span style="color: #a27f12;">(</span><span style="color: #3e86b8;">expectations</span>
 <span style="color: #3e86b8;"> (</span><span style="color: #79890f;">desc </span><span style="color: #92c4a2d2285f;">"success"</span><span style="color: #3e86b8;">)</span>
- <span style="color: #3e86b8;">(</span><span style="color: #79890f;">expect 10 (</span><span style="color: #3e8c86;">+ 4 6</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
- <span style="color: #3e86b8;">(</span><span style="color: #79890f;">expect 5 (</span><span style="color: #3e8c86; text-decoration: underline;">length</span><span style="color: #3e8c86;"> </span><span style="color: #670896299289;">"abcde"</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
+ <span style="color: #3e86b8;">(</span><span style="color: #79890f; font-weight: bold;">expect</span><span style="color: #79890f;"> 10 (</span><span style="color: #3e8c86;">+ 4 6</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
+ <span style="color: #3e86b8;">(</span><span style="color: #79890f; font-weight: bold;">expect</span><span style="color: #79890f;"> 5 (</span><span style="color: #3e8c86; text-decoration: underline;">length</span><span style="color: #3e8c86;"> </span><span style="color: #670896299289;">"abcde"</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
  <span style="color: #3e86b8;">(</span><span style="color: #79890f;">desc </span><span style="color: #92c4a2d2285f;">"fail"</span><span style="color: #3e86b8;">)</span>
- <span style="color: #3e86b8;">(</span><span style="color: #79890f;">expect 11 (</span><span style="color: #3e8c86;">+ 4 6</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
- <span style="color: #3e86b8;">(</span><span style="color: #79890f;">expect 6 (</span><span style="color: #3e8c86; text-decoration: underline;">length</span><span style="color: #3e8c86;"> </span><span style="color: #670896299289;">"abcde"</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
+ <span style="color: #3e86b8;">(</span><span style="color: #79890f; font-weight: bold;">expect</span><span style="color: #79890f;"> 11 (</span><span style="color: #3e8c86;">+ 4 6</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
+ <span style="color: #3e86b8;">(</span><span style="color: #79890f; font-weight: bold;">expect</span><span style="color: #79890f;"> 6 (</span><span style="color: #3e8c86; text-decoration: underline;">length</span><span style="color: #3e8c86;"> </span><span style="color: #670896299289;">"abcde"</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
 </pre>
 </div>
 </div>
@@ -6527,7 +6546,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2020-01-19 Sun 15:49</p>
+<p class="date">Created: 2020-01-23 Thu 02:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
