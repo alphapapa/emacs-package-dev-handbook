@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-23 Thu 02:22 -->
+<!-- 2020-01-23 Thu 02:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -305,6 +305,7 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#Checkers%20%2F%20linters">Checkers / linters&#xa0;&#xa0;&#xa0;<span class="tag"><span class="linters">linters</span>&#xa0;<span class="checkers">checkers</span></span></a>
 <ul>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fgonewest818%2Felisp-lint%5D%5Belisp-lint%3A%20basic%20linting%20for%20Emacs%20Lisp%5D%5D">elisp-lint: basic linting for Emacs Lisp</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fpurcell%2Fflycheck-package%5D%5Bflycheck-package%3A%20Flycheck%20checker%20for%20Elisp%20package%20metadata%5D%5D">flycheck-package: Flycheck checker for Elisp package metadata</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fmattiase%2Frelint%5D%5Brelint%3A%20regexp%20lint%20tool%5D%5D">relint: regexp lint tool</a></li>
 </ul>
@@ -1479,7 +1480,27 @@ users, as it provides familiar and intuitive interfaces with usual keys (for mov
 <div id="outline-container-Checkers%20%2F%20linters" class="outline-3">
 <h3 id="Checkers%20%2F%20linters">Checkers / linters&#xa0;&#xa0;&#xa0;<span class="tag"><span class="linters">linters</span>&#xa0;<span class="checkers">checkers</span></span></h3>
 <div class="outline-text-3" id="text-Checkers%20%2F%20linters">
-</div><div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fpurcell%2Fflycheck-package%5D%5Bflycheck-package%3A%20Flycheck%20checker%20for%20Elisp%20package%20metadata%5D%5D" class="outline-4">
+</div><div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fgonewest818%2Felisp-lint%5D%5Belisp-lint%3A%20basic%20linting%20for%20Emacs%20Lisp%5D%5D" class="outline-4">
+<h4 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fgonewest818%2Felisp-lint%5D%5Belisp-lint%3A%20basic%20linting%20for%20Emacs%20Lisp%5D%5D"><a href="https://github.com/gonewest818/elisp-lint">elisp-lint: basic linting for Emacs Lisp</a></h4>
+<div class="outline-text-4" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fgonewest818%2Felisp-lint%5D%5Belisp-lint%3A%20basic%20linting%20for%20Emacs%20Lisp%5D%5D">
+<p>
+Includes the following validators:
+</p>
+
+<ul class="org-ul">
+<li>byte-compile</li>
+<li>check-declare</li>
+<li>checkdoc</li>
+<li>fill-column</li>
+<li>indent</li>
+<li>indent-character</li>
+<li>package-format</li>
+<li>trailing-whitespace</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fpurcell%2Fflycheck-package%5D%5Bflycheck-package%3A%20Flycheck%20checker%20for%20Elisp%20package%20metadata%5D%5D" class="outline-4">
 <h4 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fpurcell%2Fflycheck-package%5D%5Bflycheck-package%3A%20Flycheck%20checker%20for%20Elisp%20package%20metadata%5D%5D"><a href="https://github.com/purcell/flycheck-package">flycheck-package: Flycheck checker for Elisp package metadata</a></h4>
 <div class="outline-text-4" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fpurcell%2Fflycheck-package%5D%5Bflycheck-package%3A%20Flycheck%20checker%20for%20Elisp%20package%20metadata%5D%5D">
 <blockquote>
@@ -1489,7 +1510,6 @@ This library provides a <code>flycheck</code> checker for the metadata in Emacs 
 </blockquote>
 </div>
 </div>
-
 <div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fmattiase%2Frelint%5D%5Brelint%3A%20regexp%20lint%20tool%5D%5D" class="outline-4">
 <h4 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fmattiase%2Frelint%5D%5Brelint%3A%20regexp%20lint%20tool%5D%5D"><a href="https://github.com/mattiase/relint">relint: regexp lint tool</a></h4>
 <div class="outline-text-4" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fmattiase%2Frelint%5D%5Brelint%3A%20regexp%20lint%20tool%5D%5D">
@@ -6546,7 +6566,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2020-01-23 Thu 02:22</p>
+<p class="date">Created: 2020-01-23 Thu 02:32</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

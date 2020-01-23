@@ -316,6 +316,19 @@ users, as it provides familiar and intuitive interfaces with usual keys (for mov
 
 ** Checkers / linters                                     :linters:checkers:
 
+*** [[https://github.com/gonewest818/elisp-lint][elisp-lint: basic linting for Emacs Lisp]]
+
+Includes the following validators:
+
++  byte-compile
++  check-declare
++  checkdoc
++  fill-column
++  indent
++  indent-character
++  package-format
++  trailing-whitespace
+
 *** [[https://github.com/purcell/flycheck-package][flycheck-package: Flycheck checker for Elisp package metadata]]
 
 #+BEGIN_QUOTE
