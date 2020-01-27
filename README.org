@@ -602,6 +602,29 @@ Using ~-select~ from =dash.el= seems to be the fastest way:
     (a-merge numbers more-numbers))  ;; => ((three . 3) (two . 2) (one . 1))
 #+END_SRC
 
+***** Populating from a paired list
+
+#+BEGIN_SRC elisp :exports code
+  ;; Aim: Group input pairs into either "fruit" or "veg" groups.
+  (let ((input '(("fruit" "apple") ("veg" "cucumber") ("fruit" "banana")
+                 ("veg" "cabbage") ("fruit" "orange") ("fruit" "grapes")))
+        (outmap nil)
+        (testfn 'string=)) ;; use string equality as the test function
+    (dolist (paired input outmap)
+      (let ((group (first paired)) ;; "fruit" or "veg"
+            (value (last paired))) ;; "apple" or "cucumber" or ...
+        (if (map-contains-key outmap group testfn)
+            ;; Append value to the group if the group already exists
+            (let ((mapvals (map-elt input group nil testfn)))
+              (map-put outmap group (append mapvals value) testfn))
+          ;; Otherwise, initialise key value pair
+          (map-put outmap group value testfn)))))
+
+  ;; outmap => (("veg" "cucumber" "cabbage") ("fruit" "apple" "grapes"))
+#+END_SRC
+
+
+
 *** Libraries                                                   :libraries:
 :PROPERTIES:
 :TOC: :depth 0
