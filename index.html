@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-26 Sun 20:51 -->
+<!-- 2020-02-02 Sun 05:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -400,7 +400,7 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#Debugging--Tools">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a>
 <ul>
-<li><a href="#Edebug">Edebug&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Edebug">Edebug</span></span></a>
+<li><a href="#Edebug">Edebug&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Edebug">Edebug</span>&#xa0;<span class="built_in">built_in</span></span></a>
 <ul>
 <li><a href="#Declaring%20debug%20forms%20for%20keyword%20arguments">Declaring debug forms for keyword arguments&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tip">tip</span></span></a>
 <ul>
@@ -409,6 +409,7 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
+<li><a href="#%3Ddebug-warn%3D%20macro"><code>debug-warn</code> macro</a></li>
 </ul>
 </li>
 </ul>
@@ -2435,14 +2436,16 @@ There are several other symbols provided besides <code>atom</code>, such as <cod
 <div id="outline-container-Debugging" class="outline-3">
 <h3 id="Debugging">Debugging&#xa0;&#xa0;&#xa0;<span class="tag"><span class="debugging">debugging</span></span></h3>
 <div class="outline-text-3" id="text-Debugging">
-</div><div id="outline-container-Debugging--Tools" class="outline-4">
+</div>
+
+<div id="outline-container-Debugging--Tools" class="outline-4">
 <h4 id="Debugging--Tools">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
 <div class="outline-text-4" id="text-Debugging--Tools">
 </div><div id="outline-container-Edebug" class="outline-5">
-<h5 id="Edebug">Edebug&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Edebug">Edebug</span></span></h5>
+<h5 id="Edebug">Edebug&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Edebug">Edebug</span>&#xa0;<span class="built_in">built_in</span></span></h5>
 <div class="outline-text-5" id="text-Edebug">
 <p>
-Edebug is a built-in stepping debugger in Emacs.  It's thoroughly documented in the <code>elisp</code> manual.
+Edebug is a built-in stepping debugger in Emacs.  It's <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Edebug.html">thoroughly documented in the <code>elisp</code> manual</a>.
 </p>
 </div>
 
@@ -2479,6 +2482,87 @@ Declaring <code>debug</code> forms for functions and macros that take keyword ar
 Probably should first replace the <code>:bindings</code> part with this, which correctly matches <code>let</code> bindings: <code>(&amp;rest &amp;or symbolp (gate symbolp &amp;optional def-form))</code>.
 </p>
 </div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-%3Ddebug-warn%3D%20macro" class="outline-5">
+<h5 id="%3Ddebug-warn%3D%20macro"><code>debug-warn</code> macro</h5>
+<div class="outline-text-5" id="text-%3Ddebug-warn%3D%20macro">
+<p>
+This macro simplifies print-style debugging by automatically including the names of the containing function and argument forms, rather than requiring the programmer to write <code>format</code> strings manually.
+</p>
+
+<p>
+For example, when used like:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #a27f12;">(</span><span style="color: #3e86b8; font-weight: bold;">defun</span><span style="color: #3e86b8;"> </span><span style="color: #3e86b8;">argh</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f;">var</span><span style="color: #3e86b8;">)</span>
+  <span style="color: #3e86b8;">(</span><span style="color: #79890f; font-weight: bold;">debug-warn</span><span style="color: #79890f;"> (</span><span style="color: #3e8c86; text-decoration: underline;">current-buffer</span><span style="color: #79890f;">)</span> <span style="color: #92c4a2d2285f;">"This is bad!"</span> <span style="color: #79890f;">(</span><span style="color: #3e8c86; text-decoration: underline;">point</span><span style="color: #79890f;">)</span> <span style="color: #79890f;">var</span><span style="color: #3e86b8;">)</span>
+  <span style="color: #3e86b8;">var</span><span style="color: #a27f12;">)</span>
+
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; font-weight: bold;">setq</span><span style="color: #3e86b8;"> warning-minimum-log-level </span><span style="color: #3e86b8; font-weight: bold;">:debug</span><span style="color: #a27f12;">)</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">argh</span><span style="color: #3e86b8;"> 1</span><span style="color: #a27f12;">)</span>
+</pre>
+</div>
+
+<p>
+This warning would be shown in the <code>*Warnings*</code> buffer:
+</p>
+
+<pre class="example">
+Debug (argh): (CURRENT-BUFFER):*scratch* This is bad! (POINT):491845 VAR:1
+</pre>
+
+<p>
+The macro is not tangled to <code>epdh.el</code>, so you may add it to your code as necessary.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #a27f12;">(</span><span style="color: #3e86b8; font-weight: bold;">cl-defmacro</span><span style="color: #3e86b8;"> </span><span style="color: #3e86b8;">debug-warn</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f;">&amp;rest</span><span style="color: #79890f;"> args</span><span style="color: #3e86b8;">)</span>
+  <span style="color: #74d09a54b461;">"Display a debug warning showing the runtime value of ARGS.</span>
+<span style="color: #74d09a54b461;">The warning automatically includes the name of the containing</span>
+<span style="color: #74d09a54b461;">function, and it is only displayed if `</span><span style="color: #74d09a54b461; font-weight: bold;">warning-minimum-log-level</span><span style="color: #74d09a54b461;">'</span>
+<span style="color: #74d09a54b461;">is `</span><span style="color: #74d09a54b461; font-weight: bold;">:debug</span><span style="color: #74d09a54b461;">' at runtime (which avoids formatting messages that</span>
+<span style="color: #74d09a54b461;">won't be shown).</span>
+
+<span style="color: #74d09a54b461;">Each of ARGS may be a string, which is displayed as-is, or a</span>
+<span style="color: #74d09a54b461;">symbol, the value of which is displayed prefixed by its name, or</span>
+<span style="color: #74d09a54b461;">a Lisp form, which is displayed prefixed by its first symbol.</span>
+
+<span style="color: #74d09a54b461;">Before the actual ARGS arguments, you can write keyword</span>
+<span style="color: #74d09a54b461;">arguments, i.e. alternating keywords and values.  The following</span>
+<span style="color: #74d09a54b461;">keywords are supported:</span>
+
+<span style="color: #74d09a54b461;">:buffer BUFFER   Name of buffer to pass to `</span><span style="color: #74d09a54b461; font-weight: bold;">display-warning</span><span style="color: #74d09a54b461;">'.</span>
+<span style="color: #74d09a54b461;">:level  LEVEL    Level passed to `</span><span style="color: #74d09a54b461; font-weight: bold;">display-warning</span><span style="color: #74d09a54b461;">', which see.</span>
+<span style="color: #74d09a54b461;">                 Default is :debug."</span>
+  <span style="color: #3e86b8;">(</span><span style="color: #79890f; font-weight: bold;">pcase-let*</span><span style="color: #79890f;"> (</span><span style="color: #3e8c86;">(</span><span style="color: #a27f12;">fn-name (</span><span style="color: #3e86b8; font-weight: bold;">with-current-buffer</span>
+<span style="color: #3e86b8;">                            (</span><span style="color: #79890f; font-weight: bold;">or</span><span style="color: #79890f;"> byte-compile-current-buffer (</span><span style="color: #3e8c86; text-decoration: underline;">current-buffer</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
+                          <span style="color: #4e5064d6747b;">;; </span><span style="color: #4e5064d6747b; font-size: 110%; font-style: italic;">This is a hack, but a nifty one.</span>
+<span style="color: #4e5064d6747b;">                          </span><span style="color: #3e86b8;">(</span><span style="color: #79890f; font-weight: bold;">save-excursion</span>
+<span style="color: #79890f;">                            (</span><span style="color: #3e8c86; text-decoration: underline;">beginning-of-defun</span><span style="color: #79890f;">)</span>
+                            <span style="color: #79890f;">(</span><span style="color: #3e8c86; text-decoration: underline;">cl-second</span><span style="color: #3e8c86;"> (</span><span style="color: #a48629; text-decoration: underline;">read</span><span style="color: #a48629;"> (</span><span style="color: #658eab; text-decoration: underline;">current-buffer</span><span style="color: #a48629;">)</span><span style="color: #3e8c86;">)</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span><span style="color: #3e8c86;">)</span>
+               <span style="color: #3e8c86;">(</span><span style="color: #a27f12;">plist-args (</span><span style="color: #3e86b8; font-weight: bold;">cl-loop</span><span style="color: #3e86b8;"> while (</span><span style="color: #79890f; text-decoration: underline;">keywordp</span><span style="color: #79890f;"> (</span><span style="color: #3e8c86; text-decoration: underline;">car</span><span style="color: #3e8c86;"> args</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
+                                    <span style="color: #3e86b8;">collect (</span><span style="color: #79890f; font-weight: bold;">pop</span><span style="color: #79890f;"> args</span><span style="color: #3e86b8;">)</span>
+                                    <span style="color: #3e86b8;">collect (</span><span style="color: #79890f; font-weight: bold;">pop</span><span style="color: #79890f;"> args</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span><span style="color: #3e8c86;">)</span>
+               <span style="color: #3e8c86;">(</span><span style="color: #a27f12;">(</span><span style="color: #3e86b8; text-decoration: underline;">map</span><span style="color: #3e86b8;"> (</span><span style="color: #79890f; font-weight: bold;">:buffer</span><span style="color: #79890f;"> buffer</span><span style="color: #3e86b8;">)</span> <span style="color: #3e86b8;">(</span><span style="color: #79890f; font-weight: bold;">:level</span><span style="color: #79890f;"> level</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span> <span style="color: #a27f12;">plist-args</span><span style="color: #3e8c86;">)</span>
+               <span style="color: #3e8c86;">(</span><span style="color: #a27f12;">level (</span><span style="color: #3e86b8; font-weight: bold;">or</span><span style="color: #3e86b8;"> level </span><span style="color: #3e86b8; font-weight: bold;">:debug</span><span style="color: #a27f12;">)</span><span style="color: #3e8c86;">)</span>
+               <span style="color: #3e8c86;">(</span><span style="color: #a27f12; text-decoration: underline;">string</span><span style="color: #a27f12;"> (</span><span style="color: #3e86b8; font-weight: bold;">cl-loop</span><span style="color: #3e86b8;"> for arg in args</span>
+<span style="color: #3e86b8;">                                concat (</span><span style="color: #79890f; font-weight: bold;">pcase</span><span style="color: #79890f;"> arg</span>
+<span style="color: #79890f;">                                         (</span><span style="color: #3e8c86;">(</span><span style="color: #a48629;">pred stringp</span><span style="color: #3e8c86;">)</span> <span style="color: #670896299289;">"%s "</span><span style="color: #79890f;">)</span>
+                                         <span style="color: #79890f;">(</span><span style="color: #3e8c86;">(</span><span style="color: #a48629;">pred symbolp</span><span style="color: #3e8c86;">)</span>
+                                          <span style="color: #3e8c86;">(</span><span style="color: #a48629; text-decoration: underline;">concat</span><span style="color: #a48629;"> (</span><span style="color: #658eab; text-decoration: underline;">upcase</span><span style="color: #658eab;"> (</span><span style="color: #808e23; text-decoration: underline;">symbol-name</span><span style="color: #808e23;"> arg</span><span style="color: #658eab;">)</span><span style="color: #a48629;">)</span> <span style="color: #b3429a4d4cef;">":%s "</span><span style="color: #3e8c86;">)</span><span style="color: #79890f;">)</span>
+                                         <span style="color: #79890f;">(</span><span style="color: #3e8c86;">(</span><span style="color: #a48629;">pred listp</span><span style="color: #3e8c86;">)</span>
+                                          <span style="color: #3e8c86;">(</span><span style="color: #a48629; text-decoration: underline;">concat</span><span style="color: #a48629;"> </span><span style="color: #b3429a4d4cef;">"("</span> <span style="color: #a48629;">(</span><span style="color: #658eab; text-decoration: underline;">upcase</span><span style="color: #658eab;"> (</span><span style="color: #808e23; text-decoration: underline;">symbol-name</span><span style="color: #808e23;"> (</span><span style="color: #5c8783; text-decoration: underline;">car</span><span style="color: #5c8783;"> arg</span><span style="color: #808e23;">)</span><span style="color: #658eab;">)</span><span style="color: #a48629;">)</span>
+                                                  <span style="color: #a48629;">(</span><span style="color: #658eab; font-weight: bold;">pcase</span><span style="color: #658eab;"> (</span><span style="color: #808e23; text-decoration: underline;">length</span><span style="color: #808e23;"> arg</span><span style="color: #658eab;">)</span>
+                                                    <span style="color: #658eab;">(</span><span style="color: #808e23;">1 </span><span style="color: #942ca04043f1;">")"</span><span style="color: #658eab;">)</span>
+                                                    <span style="color: #658eab;">(</span><span style="color: #808e23;">_ </span><span style="color: #942ca04043f1;">"...)"</span><span style="color: #658eab;">)</span><span style="color: #a48629;">)</span>
+                                                  <span style="color: #b3429a4d4cef;">":%s "</span><span style="color: #3e8c86;">)</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span><span style="color: #3e8c86;">)</span><span style="color: #79890f;">)</span>
+    <span style="color: #79890f;">`(</span><span style="color: #3e8c86; font-weight: bold;">when</span><span style="color: #3e8c86;"> (</span><span style="color: #a27f12; text-decoration: underline;">eq</span><span style="color: #a27f12;"> </span><span style="color: #a27f12; font-weight: bold;">:debug</span><span style="color: #a27f12;"> warning-minimum-log-level</span><span style="color: #3e8c86;">)</span>
+       <span style="color: #3e8c86;">(</span><span style="color: #a27f12; text-decoration: underline;">display-warning</span><span style="color: #a27f12;"> ',fn-name (</span><span style="color: #3e86b8; text-decoration: underline;">format</span><span style="color: #3e86b8;"> ,string ,@args</span><span style="color: #a27f12;">)</span> <span style="color: #a27f12;">,level ,buffer</span><span style="color: #3e8c86;">)</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
+</pre>
 </div>
 </div>
 </div>
@@ -5118,16 +5202,16 @@ Assess aims to be a stateless as possible, leaving Emacs unchanged whether the t
   <span style="color: #3e86b8;">(</span><span style="color: #79890f; font-weight: bold;">should</span><span style="color: #79890f;"> (</span><span style="color: #3e8c86; text-decoration: underline;">equal</span><span style="color: #3e8c86;"> 10 (</span><span style="color: #a27f12;">+ 4 6</span><span style="color: #3e8c86;">)</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
 
 <span style="color: #586e75;">;; </span><span style="color: #586e75; font-size: 110%; font-style: italic;">With Expectations:</span>
-<span style="color: #a27f12;">(</span><span style="color: #3e86b8; font-weight: bold;">expect</span><span style="color: #3e86b8;"> 10 (</span><span style="color: #79890f;">+ 4 6</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
+<span style="color: #a27f12;">(</span><span style="color: #3e86b8;">expect 10 (</span><span style="color: #79890f;">+ 4 6</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
 
 <span style="color: #586e75;">;; </span><span style="color: #586e75; font-size: 110%; font-style: italic;">Or:</span>
 <span style="color: #a27f12;">(</span><span style="color: #3e86b8;">expectations</span>
 <span style="color: #3e86b8;"> (</span><span style="color: #79890f;">desc </span><span style="color: #92c4a2d2285f;">"success"</span><span style="color: #3e86b8;">)</span>
- <span style="color: #3e86b8;">(</span><span style="color: #79890f; font-weight: bold;">expect</span><span style="color: #79890f;"> 10 (</span><span style="color: #3e8c86;">+ 4 6</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
- <span style="color: #3e86b8;">(</span><span style="color: #79890f; font-weight: bold;">expect</span><span style="color: #79890f;"> 5 (</span><span style="color: #3e8c86; text-decoration: underline;">length</span><span style="color: #3e8c86;"> </span><span style="color: #670896299289;">"abcde"</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
+ <span style="color: #3e86b8;">(</span><span style="color: #79890f;">expect 10 (</span><span style="color: #3e8c86;">+ 4 6</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
+ <span style="color: #3e86b8;">(</span><span style="color: #79890f;">expect 5 (</span><span style="color: #3e8c86; text-decoration: underline;">length</span><span style="color: #3e8c86;"> </span><span style="color: #670896299289;">"abcde"</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
  <span style="color: #3e86b8;">(</span><span style="color: #79890f;">desc </span><span style="color: #92c4a2d2285f;">"fail"</span><span style="color: #3e86b8;">)</span>
- <span style="color: #3e86b8;">(</span><span style="color: #79890f; font-weight: bold;">expect</span><span style="color: #79890f;"> 11 (</span><span style="color: #3e8c86;">+ 4 6</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
- <span style="color: #3e86b8;">(</span><span style="color: #79890f; font-weight: bold;">expect</span><span style="color: #79890f;"> 6 (</span><span style="color: #3e8c86; text-decoration: underline;">length</span><span style="color: #3e8c86;"> </span><span style="color: #670896299289;">"abcde"</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
+ <span style="color: #3e86b8;">(</span><span style="color: #79890f;">expect 11 (</span><span style="color: #3e8c86;">+ 4 6</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span>
+ <span style="color: #3e86b8;">(</span><span style="color: #79890f;">expect 6 (</span><span style="color: #3e8c86; text-decoration: underline;">length</span><span style="color: #3e8c86;"> </span><span style="color: #670896299289;">"abcde"</span><span style="color: #79890f;">)</span><span style="color: #3e86b8;">)</span><span style="color: #a27f12;">)</span>
 </pre>
 </div>
 </div>
@@ -6571,7 +6655,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2020-01-26 Sun 20:51</p>
+<p class="date">Created: 2020-02-02 Sun 05:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

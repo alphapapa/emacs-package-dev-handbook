@@ -118,9 +118,9 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 :END:
 :CONTENTS:
 - [[#tools][Tools]]
-  - [[#httpsgitlabcomambrevaremacs-gif-screencastemacs-gif-screencast][emacs-gif-screencast]]
-  - [[#httpsgithubcomtarsiuskeycastkeycast-show-current-command-and-its-key-in-the-mode-line][keycast: Show current command and its key in the mode line]]
-  - [[#httpsgithubcomalphapapabashcasterbashcaster][Bashcaster]]
+  - [[#emacs-gif-screencast][emacs-gif-screencast]]
+  - [[#keycast-show-current-command-and-its-key-in-the-mode-line][keycast: Show current command and its key in the mode line]]
+  - [[#bashcaster][Bashcaster]]
 :END:
 
 *** Tools                                                           :tools:
@@ -167,10 +167,10 @@ Comb is a native Emacs Lisp solution to search, browse and annotate occurrences 
 :CONTENTS:
 - [[#articles][Articles]]
 - [[#libraries][Libraries]]
-  - [[#ide85e4252-ea03-4473-b52f-9393e7527faddashel][dash.el]]
-  - [[#httpsgithubcomemacs-mirroremacsblobmasterlispemacs-lispthunkelthunk][thunk]]
+  - [[#dashel][dash.el]]
+  - [[#thunk][thunk]]
 - [[#tools][Tools]]
-  - [[#id7247be4d-4f66-43ff-bb70-1b4a7458611blexical-binding][Lexical binding]]
+  - [[#lexical-binding][Lexical binding]]
 :END:
 
 Information related to variable scope and binding in elisp code (e.g. lexical vs. dynamic scope).
@@ -725,12 +725,12 @@ Individual libraries from this article are listed below.
 :TOC:      :include descendants
 :END:
 :CONTENTS:
-- [[#httpwwwdr-qubitorgemacs_data-structureshtmlheapel][heap.el]]
-- [[#httpwwwdr-qubitorgemacs_data-structureshtmlqueueel][queue.el]]
-- [[#httpwwwdr-qubitorgemacs_data-structureshtmltagged-non-deterministic-finite-state-automata-tnfael][Tagged Non-deterministic Finite state Automata (tNFA.el)]]
-- [[#httpwwwdr-qubitorgemacs_data-structureshtmltrieel][trie.el]]
-- [[#httpwwwdr-qubitorgemacs_data-structureshtmldict-treeel][dict-tree.el]]
-- [[#httpsgithubcomdoublepextmapextmap-externally-stored-constant-mapping][extmap: Externally-stored constant mapping]]
+- [[#heapel][heap.el]]
+- [[#queueel][queue.el]]
+- [[#tagged-non-deterministic-finite-state-automata-tnfael][Tagged Non-deterministic Finite state Automata (tNFA.el)]]
+- [[#trieel][trie.el]]
+- [[#dict-treeel][dict-tree.el]]
+- [[#extmap-externally-stored-constant-mapping][extmap: Externally-stored constant mapping]]
 :END:
 
 **** [[http://www.dr-qubit.org/emacs_data-structures.html][heap.el]]
@@ -1025,15 +1025,15 @@ This package provides some extensions for Org's ~texinfo~ exporter defined in ~o
 :END:
 :CONTENTS:
 - [[#tools][Tools]]
-  - [[#httpsgithubcommalabarbaaggressive-indent-modeaggressive-indent-mode-minor-mode-that-keeps-your-code-always-indented][aggressive-indent-mode: minor mode that keeps your code always indented]]
-  - [[#httpsemacscafeemacspackage20170801beginendhtmlbeginendel][beginend.el]]
-  - [[#httpsgithubcommagnarsexpand-regionelexpand-regionel-increase-selected-region-by-semantic-units][expand-region.el: Increase selected region by semantic units]]
-  - [[#httpsgithubcomemacs-helmhelm-navihelm-navi-navigate-file-sections-and-language-keywords-using-helm][helm-navi: Navigate file sections and language keywords using Helm]]
-  - [[#httpsgithubcomvictorhgeieditiedit-edit-multiple-regions-simultaneously-in-a-buffer-or-a-region][iedit: Edit multiple regions simultaneously in a buffer or a region]]
-  - [[#httpsgithubcomabo-abolispylispy-short-and-sweet-lisp-editing][lispy: short and sweet LISP editing]]
-  - [[#httpsgithubcomivanmalisonmulti-linemulti-line-multi-line-everything-from-function-invocations-and-definitions-to-array-and-map-literals-in-a-wide-variety-of-languages][multi-line: multi-line everything from function invocations and definitions to array and map literals in a wide variety of languages]]
-  - [[#httpsgithubcommagnarsmultiple-cursorselmultiple-cursorsel-multiple-cursors][multiple-cursors.el: Multiple cursors]]
-  - [[#httpsgithubcomfuco1smartparenssmartparens-minor-mode--that-deals-with-parens-pairs-and-tries-to-be-smart-about-it][smartparens: Minor mode  that deals with parens pairs and tries to be smart about it]]
+  - [[#aggressive-indent-mode-minor-mode-that-keeps-your-code-always-indented][aggressive-indent-mode: minor mode that keeps your code always indented]]
+  - [[#beginendel][beginend.el]]
+  - [[#expand-regionel-increase-selected-region-by-semantic-units][expand-region.el: Increase selected region by semantic units]]
+  - [[#helm-navi-navigate-file-sections-and-language-keywords-using-helm][helm-navi: Navigate file sections and language keywords using Helm]]
+  - [[#iedit-edit-multiple-regions-simultaneously-in-a-buffer-or-a-region][iedit: Edit multiple regions simultaneously in a buffer or a region]]
+  - [[#lispy-short-and-sweet-lisp-editing][lispy: short and sweet LISP editing]]
+  - [[#multi-line-multi-line-everything-from-function-invocations-and-definitions-to-array-and-map-literals-in-a-wide-variety-of-languages][multi-line: multi-line everything from function invocations and definitions to array and map literals in a wide variety of languages]]
+  - [[#multiple-cursorsel-multiple-cursors][multiple-cursors.el: Multiple cursors]]
+  - [[#smartparens-minor-mode--that-deals-with-parens-pairs-and-tries-to-be-smart-about-it][smartparens: Minor mode  that deals with parens pairs and tries to be smart about it]]
 :END:
 
 *** Tools                                                           :tools:
@@ -1153,15 +1153,15 @@ Including anonymous functions (lambdas).
 :END:
 :CONTENTS:
 - [[#libraries][Libraries]]
-  - [[#httpswwwgnuorgsoftwareemacsmanualhtml_nodeclindexhtmlcommon-lisp-extensions-cl-lib][Common Lisp Extensions (cl-lib)]]
-  - [[#httpsgithubcommagnarsdasheldashel][dash.el]]
-  - [[#httpsgithubcomemacs-mirroremacsblobmasterlispemacs-lispsubr-xelsubr-x][subr-x]]
+  - [[#common-lisp-extensions-cl-lib][Common Lisp Extensions (cl-lib)]]
+  - [[#dashel][dash.el]]
+  - [[#subr-x][subr-x]]
 - [[#tools][Tools]]
-  - [[#httpsgithubcomplexuschemacschemacs-emacs-profile-switcher][chemacs: Emacs profile switcher]]
-  - [[#httpsgithubcomlindydancerel2markdownel2markdown-convert-emacs-lisp-comments-to-markdown][el2markdown: Convert Emacs Lisp comments to MarkDown]]
-  - [[#httpsgithubcomlindydancermulticolumnmulticolumn-multiple-side-by-side-windows-support][multicolumn: Multiple side-by-side windows support]]
-  - [[#httpsgithubcomphillordlenticlentic-create-views-of-the-same-content-in-two-buffers][lentic: Create views of the same content in two buffers]]
-  - [[#httpsgithubcomwilfredsuggestelsuggestel-discover-elisp-functions-that-do-what-you-want][suggest.el: discover elisp functions that do what you want]]
+  - [[#chemacs-emacs-profile-switcher][chemacs: Emacs profile switcher]]
+  - [[#el2markdown-convert-emacs-lisp-comments-to-markdown][el2markdown: Convert Emacs Lisp comments to MarkDown]]
+  - [[#multicolumn-multiple-side-by-side-windows-support][multicolumn: Multiple side-by-side windows support]]
+  - [[#lentic-create-views-of-the-same-content-in-two-buffers][lentic: Create views of the same content in two buffers]]
+  - [[#suggestel-discover-elisp-functions-that-do-what-you-want][suggest.el: discover elisp functions that do what you want]]
   - [[#byte-compile-and-load-directory][Byte-compile and load directory]]
   - [[#emacs-lisp-macroreplace][emacs-lisp-macroreplace]]
 :END:
@@ -1286,14 +1286,14 @@ Replace macro form before or after point with its expansion.
 :END:
 :CONTENTS:
 - [[#packages][Packages]]
-  - [[#httpsgithubcomlindydancerlisp-extra-font-locklisp-extra-font-lock-highlight-bound-variables-and-quoted-expressions-in-lisp][lisp-extra-font-lock: Highlight bound variables and quoted expressions in lisp]]
+  - [[#lisp-extra-font-lock-highlight-bound-variables-and-quoted-expressions-in-lisp][lisp-extra-font-lock: Highlight bound variables and quoted expressions in lisp]]
 - [[#tools][Tools]]
-  - [[#httpsgithubcomlindydancerface-explorerface-explorer-library-and-tools-for-faces-and-text-properties][face-explorer: Library and tools for faces and text properties]]
-  - [[#httpsgithubcomlindydancerfaceupfaceup-regression-test-system-for-font-lock-keywords][faceup: Regression test system for font-lock keywords]]
-  - [[#httpsgithubcomlindydancerfont-lock-profilerfont-lock-profiler-coverage-and-timing-tool-for-font-lock-keywords][font-lock-profiler: Coverage and timing tool for font-lock keywords]]
-  - [[#httpsgithubcomlindydancerfont-lock-regression-suitefont-lock-regression-suite-regression-test-suite-for-font-lock-keywords-of-emacs-standard-modes][font-lock-regression-suite: Regression test suite for font-lock keywords of Emacs standard modes]]
-  - [[#httpsgithubcomlindydancerfont-lock-studiofont-lock-studio-debugger-for-font-lock-keywords][font-lock-studio: Debugger for Font Lock keywords]]
-  - [[#httpsgithubcomlindydancerhighlight-refontificationhighlight-refontification-visualize-how-font-lock-refontifies-a-buffer][highlight-refontification: Visualize how font-lock refontifies a buffer]]
+  - [[#face-explorer-library-and-tools-for-faces-and-text-properties][face-explorer: Library and tools for faces and text properties]]
+  - [[#faceup-regression-test-system-for-font-lock-keywords][faceup: Regression test system for font-lock keywords]]
+  - [[#font-lock-profiler-coverage-and-timing-tool-for-font-lock-keywords][font-lock-profiler: Coverage and timing tool for font-lock keywords]]
+  - [[#font-lock-regression-suite-regression-test-suite-for-font-lock-keywords-of-emacs-standard-modes][font-lock-regression-suite: Regression test suite for font-lock keywords of Emacs standard modes]]
+  - [[#font-lock-studio-debugger-for-font-lock-keywords][font-lock-studio: Debugger for Font Lock keywords]]
+  - [[#highlight-refontification-visualize-how-font-lock-refontifies-a-buffer][highlight-refontification: Visualize how font-lock refontifies a buffer]]
 :END:
 
 *** Packages                                                     :packages:
@@ -1347,7 +1347,7 @@ Tools for developing highlighting/font-locking packages.
 :CONTENTS:
 - [[#articles][Articles]]
 - [[#libraries][Libraries]]
-  - [[#httpsgithubcomskeetoemacs-aioemacs-aio-asyncawait-for-emacs-lisp][emacs-aio: async/await for Emacs Lisp]]
+  - [[#emacs-aio-asyncawait-for-emacs-lisp][emacs-aio: async/await for Emacs Lisp]]
 - [[#manual][Manual]]
 :END:
 
@@ -1402,10 +1402,10 @@ Chris Wellons explains the new generators and threads that Emacs 26 provides.  H
 For simple use cases, and some more complex ones, the built-in [[*=url=][url]] library should be sufficient.  Libraries that use =curl=, such as [[*%5B%5Bhttps://github.com/tkf/emacs-request%5D%5BRequest.el%20--%20Easy%20HTTP%20requests%5D%5D][request]], can provide better performance and more flexibility.  However, in this author's experience, both of those tools, while mostly reliable, tend to have some obscure bugs that can occasionally be problematic.
 
 :CONTENTS:
-- [[#httpsgithubcomskeetoelfeedblobmasterelfeed-curlelelfeed-curl][elfeed-curl]]
-- [[#httpsgithubcomcinskemacs-curlemacs-curl-curl-wrapper][emacs-curl: CURL wrapper]]
-- [[#httpsgithubcomleathekdgrapnelgrapnel-http-request-lib-built-on-curl-with-flexible-callback-dispatch][grapnel: HTTP request lib built on curl with flexible callback dispatch]]
-- [[#httpsgithubcomtkfemacs-requestrequestel----easy-http-requests][Request.el -- Easy HTTP requests]]
+- [[#elfeed-curl][elfeed-curl]]
+- [[#emacs-curl-curl-wrapper][emacs-curl: CURL wrapper]]
+- [[#grapnel-http-request-lib-built-on-curl-with-flexible-callback-dispatch][grapnel: HTTP request lib built on curl with flexible callback dispatch]]
+- [[#requestel----easy-http-requests][Request.el -- Easy HTTP requests]]
 - [[#url][url]]
 :END:
 
@@ -1441,7 +1441,7 @@ A flexible, featureful =curl= wrapper, last updated in 2015.
 - [[#best-practices][Best practices]]
   - [[#autoloads][Autoloads]]
   - [[#integration-with-other-packages][Integration with other packages]]
-  - [[#httpswwwgnuorgsoftwareemacsmanualhtml_nodeelisplexical-bindinghtmllexical-binding][Lexical binding]]
+  - [[#lexical-binding][Lexical binding]]
   - [[#template][Template]]
   - [[#readme][Readme]]
   - [[#version-numbers][Version numbers]]
@@ -1889,16 +1889,16 @@ The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.
 :END:
 :CONTENTS:
 - [[#building--testing][Building / Testing]]
-  - [[#httpsgithubcomcaskcaskcask-project-management-tool-for-emacs][cask: Project management tool for Emacs]]
-  - [[#httpsgithubcomdoublepeldeveldev-elisp-development-tool][eldev: Elisp Development Tool]]
-  - [[#httpsgithubcomvermiculusemakeelemakeel-test-elisp-without-the-hoops][emake.el: Test Elisp without the hoops]]
-  - [[#httpsgitlabpettonfrdamiencassoumakelmakel-a-makefile-to-facilitate-checking-emacs-packages][makel: A makefile to facilitate checking Emacs packages]]
-  - [[#httpsgithubcomalphapapamakemshmakemsh-makefile-like-script-for-building-and-testing-packages][makem.sh: Makefile-like script for building and testing packages]]
+  - [[#cask-project-management-tool-for-emacs][cask: Project management tool for Emacs]]
+  - [[#eldev-elisp-development-tool][eldev: Elisp Development Tool]]
+  - [[#emakeel-test-elisp-without-the-hoops][emake.el: Test Elisp without the hoops]]
+  - [[#makel-a-makefile-to-facilitate-checking-emacs-packages][makel: A makefile to facilitate checking Emacs packages]]
+  - [[#makemsh-makefile-like-script-for-building-and-testing-packages][makem.sh: Makefile-like script for building and testing packages]]
 - [[#package-installationmanagement][Package installation/management]]
-  - [[#httpsgithubcommalabarbaparadoxparadox-modernizing-emacs-package-menu-with-package-ratings-usage-statistics-customizability-and-more][paradox: modernizing Emacs' Package Menu. With package ratings, usage statistics, customizability, and more.]]
-  - [[#httpsgithubcomdimitriel-getel-get-manage-the-external-elisp-bits-and-pieces-upon-which-you-depend][el-get: Manage the external elisp bits and pieces upon which you depend!]]
-  - [[#httpsgithubcomraxod502straightelstraightel-next-generation-purely-functional-package-manager-for-the-emacs-hacker][straight.el: Next-generation, purely functional package manager for the Emacs hacker]]
-  - [[#httpsgithubcomjwiegleyuse-packageuse-package-a-use-package-declaration-for-simplifying-your-emacs][use-package: A use-package declaration for simplifying your .emacs]]
+  - [[#paradox-modernizing-emacs-package-menu-with-package-ratings-usage-statistics-customizability-and-more][paradox: modernizing Emacs' Package Menu. With package ratings, usage statistics, customizability, and more.]]
+  - [[#el-get-manage-the-external-elisp-bits-and-pieces-upon-which-you-depend][el-get: Manage the external elisp bits and pieces upon which you depend!]]
+  - [[#straightel-next-generation-purely-functional-package-manager-for-the-emacs-hacker][straight.el: Next-generation, purely functional package manager for the Emacs hacker]]
+  - [[#use-package-a-use-package-declaration-for-simplifying-your-emacs][use-package: A use-package declaration for simplifying your .emacs]]
 :END:
 
 **** Building / Testing                                 :building:testing:
@@ -1997,9 +1997,9 @@ Developed by the current maintainer of Emacs, himself, John Wiegley.
 :CONTENTS:
 - [[#articles][Articles]]
 - [[#libraries][Libraries]]
-  - [[#httpsgithubcommagnarsdasheldashel][dash.el]]
-  - [[#httpswwwgnuorgsoftwareemacsmanualhtml_nodeelisppattern-matching-case-statementhtmlpcase][pcase]]
-  - [[#httpsgithubcomvincenttoupsshadchen-elshadchen-el][shadchen-el]]
+  - [[#dashel][dash.el]]
+  - [[#pcase][pcase]]
+  - [[#shadchen-el][shadchen-el]]
 - [[#tools][Tools]]
   - [[#let-alist][let-alist]]
   - [[#with-dict-with-plist-vals][with-dict, with-plist-vals]]
@@ -2683,10 +2683,10 @@ Emacs Refactor (EMR) is a framework for providing language-specific refactoring 
 :CONTENTS:
 - [[#articles][Articles]]
 - [[#libraries][Libraries]]
-  - [[#httpselpagnuorgpackageslexhtmllex][lex]]
-  - [[#httpsgithubcomjoddiepcre2elpcre2el-convert-between-pcre-emacs-and-rx-regexp-syntax][pcre2el: Convert between PCRE, Emacs and rx regexp syntax]]
+  - [[#lex][lex]]
+  - [[#pcre2el-convert-between-pcre-emacs-and-rx-regexp-syntax][pcre2el: Convert between PCRE, Emacs and rx regexp syntax]]
 - [[#tools][Tools]]
-  - [[#httpsgithubcomimmerrrample-regexpselample-regexpsel-compose-and-reuse-regular-expressions-with-ease][ample-regexps.el: Compose and reuse regular expressions with ease]]
+  - [[#ample-regexpsel-compose-and-reuse-regular-expressions-with-ease][ample-regexps.el: Compose and reuse regular expressions with ease]]
 :END:
 
 *** Articles                                                     :articles:
@@ -2787,7 +2787,7 @@ This example shows the use of a function to expand a list of strings into a sequ
 :END:
 :CONTENTS:
 - [[#libraries][Libraries]]
-  - [[#httpsgithubcommagnarsselsel-the-long-lost-emacs-string-manipulation-library][s.el: The long lost Emacs string manipulation library]]
+  - [[#sel-the-long-lost-emacs-string-manipulation-library][{{https://github.com/magnars/s.el}{s.el: The long lost Emacs string manipulation library}}]]
 - [[#tools][Tools]]
   - [[#format-macro][format$ macro]]
 :END:
@@ -2823,14 +2823,14 @@ Since this happens at macro expansion time rather than at runtime, there is no p
 :END:
 :CONTENTS:
 - [[#frameworks][Frameworks]]
-  - [[#httpsgithubcomjorgenschaeferemacs-buttercupbuttercup-behavior-driven-emacs-lisp-testing][buttercup: Behavior-Driven Emacs Lisp Testing]]
-  - [[#httpsgithubcomecukesecukesecukes-cucumber-for-emacs][ecukes: Cucumber for Emacs]]
-  - [[#httpswwwgnuorgsoftwareemacsmanualhtml_nodeertemacs-lisp-regression-testing-ert][Emacs Lisp Regression Testing (ERT)]]
+  - [[#buttercup-behavior-driven-emacs-lisp-testing][buttercup: Behavior-Driven Emacs Lisp Testing]]
+  - [[#ecukes-cucumber-for-emacs][ecukes: Cucumber for Emacs]]
+  - [[#emacs-lisp-regression-testing-ert][Emacs Lisp Regression Testing (ERT)]]
 - [[#libraries][Libraries]]
-  - [[#httpsgithubcomphillordassessassess-test-support-functions][assess: Test support functions]]
-  - [[#httpswwwemacswikiorgemacsert-expectationselert-expectations][ert-expectations]]
-  - [[#httpsgithubcomdarwinawardwinnerwith-simulated-inputwith-simulated-input-test-interactive-functions-non-interactively][with-simulated-input: Test interactive functions non-interactively]]
-  - [[#httpsgithubcompromethialxtestxtest-extensions-for-ert][xtest: Extensions for ERT]]
+  - [[#assess-test-support-functions][assess: Test support functions]]
+  - [[#ert-expectations][ert-expectations]]
+  - [[#with-simulated-input-test-interactive-functions-non-interactively][with-simulated-input: Test interactive functions non-interactively]]
+  - [[#xtest-extensions-for-ert][xtest: Extensions for ERT]]
 - [[#tools][Tools]]
 :END:
 
@@ -2937,17 +2937,17 @@ XTest is a simple set of extensions for ERT.  XTest speeds up the creation of te
 :END:
 :CONTENTS:
 - [[#libraries][Libraries]]
-  - [[#httpsgithubcomalezostbuielbui-buffer-interface-library][bui: Buffer interface library]]
-  - [[#httpsgithubcomkiwanamiemacs-calfwcalfw-calendar-framework][calfw: Calendar framework]]
-  - [[#httpsgithubcomkiwanamiemacs-ctablectable-table-component][ctable: Table Component]]
+  - [[#bui-buffer-interface-library][bui: Buffer interface library]]
+  - [[#calfw-calendar-framework][calfw: Calendar framework]]
+  - [[#ctable-table-component][ctable: Table Component]]
   - [[#emacss-widget-for-object-collections-ewoc][Emacs's Widget for Object Collections (ewoc)]]
-  - [[#httpsgithubcomabo-abohydrahydra][hydra]]
-  - [[#httpsgitlabpettonfrdamiencassounavigelnavigel][navigel]]
+  - [[#hydra][hydra]]
+  - [[#navigel][navigel]]
   - [[#tabulated-list-mode][tabulated-list-mode]]
-  - [[#httpsgithubcommagittransienttransient][Transient]]
-  - [[#httpsgithubcomebpatuieltui-an-experimental-text-based-ui-framework-modeled-after-react][tui: An experimental text-based UI framework modeled after React]]
+  - [[#transient][Transient]]
+  - [[#tui-an-experimental-text-based-ui-framework-modeled-after-react][tui: An experimental text-based UI framework modeled after React]]
   - [[#widget][widget]]
-  - [[#httpsgithubcomkiwanamiemacs-widget-mvcwidget-mvc-web-like-mvc-framework][widget-mvc: Web-like MVC framework]]
+  - [[#widget-mvc-web-like-mvc-framework][widget-mvc: Web-like MVC framework]]
 :END:
 
 *** Libraries                                                   :libraries:
@@ -3063,11 +3063,11 @@ One of the "killer apps" for Emacs--and for git!
 :TOC:      :include descendants :depth 1
 :END:
 :CONTENTS:
-- [[#httpsgithubcomtali713esxmlesxml-an-elisp-library-for-working-with-xml-esxml-and-sxml][esxml: An elisp library for working with xml, esxml and sxml]]
-- [[#httpsgithubcomadamniedererelqueryelquery-read-and-manipulate-html][elquery: Read and manipulate HTML]]
-- [[#httpsgithubcomskeetoelfeedblobmasterxml-queryelelfeedxml-queryel][elfeed/xml-query.el]]
-- [[#httpsgithubcomzweifischenliveenlive-query-html-document-with-css-selectors][enlive: query html document with css selectors]]
-- [[#httpsgithubcombddeanxml-plusxml-plus-xmlhtml-utilities][xml-plus: XML/HTML utilities]]
+- [[#esxml-an-elisp-library-for-working-with-xml-esxml-and-sxml][esxml: An elisp library for working with xml, esxml and sxml]]
+- [[#elquery-read-and-manipulate-html][elquery: Read and manipulate HTML]]
+- [[#elfeedxml-queryel][elfeed/xml-query.el]]
+- [[#enlive-query-html-document-with-css-selectors][enlive: query html document with css selectors]]
+- [[#xml-plus-xmlhtml-utilities][xml-plus: XML/HTML utilities]]
 :END:
 
 **** [[https://github.com/tali713/esxml][esxml: An elisp library for working with xml, esxml and sxml]]
