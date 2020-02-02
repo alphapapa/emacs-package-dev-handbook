@@ -887,6 +887,14 @@ The primary function provided is: ~(datetime-format SYM-OR-FMT &optional TIME &r
 There are several other symbols provided besides ~atom~, such as ~rfc-3339~, which formats dates according to that RFC.
 
 ** Debugging                                                     :debugging:
+:PROPERTIES:
+:TOC:      :depth 2 :include descendants
+:END:
+:CONTENTS:
+- [[#tools][Tools]]
+  - [[#edebug][Edebug]]
+  - [[#debug-warn-macro][debug-warn macro]]
+:END:
 
 *** Tools                                                           :tools:
 
@@ -918,6 +926,74 @@ Declaring ~debug~ forms for functions and macros that take keyword arguments can
 ****** TODO Submit this as an improvement to the Elisp manual
 
 Probably should first replace the ~:bindings~ part with this, which correctly matches ~let~ bindings: ~(&rest &or symbolp (gate symbolp &optional def-form))~.
+
+**** =debug-warn= macro
+
+This macro simplifies print-style debugging by automatically including the names of the containing function and argument forms, rather than requiring the programmer to write =format= strings manually.
+
+For example, when used like:
+
+#+BEGIN_SRC elisp :exports code
+  (defun argh (var)
+    (debug-warn (current-buffer) "This is bad!" (point) var)
+    var)
+
+  (setq warning-minimum-log-level :debug)
+  (argh 1)
+#+END_SRC
+
+This warning would be shown in the =*Warnings*= buffer:
+
+#+BEGIN_EXAMPLE
+  Debug (argh): (CURRENT-BUFFER):*scratch* This is bad! (POINT):491845 VAR:1
+#+END_EXAMPLE
+
+The macro is not tangled to =epdh.el=, so you may add it to your code as necessary.
+
+#+BEGIN_SRC elisp :exports code
+  (cl-defmacro debug-warn (&rest args)
+    "Display a debug warning showing the runtime value of ARGS.
+  The warning automatically includes the name of the containing
+  function, and it is only displayed if `warning-minimum-log-level'
+  is `:debug' at runtime (which avoids formatting messages that
+  won't be shown).
+
+  Each of ARGS may be a string, which is displayed as-is, or a
+  symbol, the value of which is displayed prefixed by its name, or
+  a Lisp form, which is displayed prefixed by its first symbol.
+
+  Before the actual ARGS arguments, you can write keyword
+  arguments, i.e. alternating keywords and values.  The following
+  keywords are supported:
+
+  :buffer BUFFER   Name of buffer to pass to `display-warning'.
+  :level  LEVEL    Level passed to `display-warning', which see.
+                   Default is :debug."
+    (pcase-let* ((fn-name (with-current-buffer
+                              (or byte-compile-current-buffer (current-buffer))
+                            ;; This is a hack, but a nifty one.
+                            (save-excursion
+                              (beginning-of-defun)
+                              (cl-second (read (current-buffer))))))
+                 (plist-args (cl-loop while (keywordp (car args))
+                                      collect (pop args)
+                                      collect (pop args)))
+                 ((map (:buffer buffer) (:level level)) plist-args)
+                 (level (or level :debug))
+                 (string (cl-loop for arg in args
+                                  concat (pcase arg
+                                           ((pred stringp) "%s ")
+                                           ((pred symbolp)
+                                            (concat (upcase (symbol-name arg)) ":%s "))
+                                           ((pred listp)
+                                            (concat "(" (upcase (symbol-name (car arg)))
+                                                    (pcase (length arg)
+                                                      (1 ")")
+                                                      (_ "...)"))
+                                                    ":%s "))))))
+      `(when (eq :debug warning-minimum-log-level)
+         (display-warning ',fn-name (format ,string ,@args) ,level ,buffer))))
+#+END_SRC
 
 ** Destructuring                                             :destructuring:
 
