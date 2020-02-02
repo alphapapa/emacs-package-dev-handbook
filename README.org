@@ -890,9 +890,9 @@ There are several other symbols provided besides ~atom~, such as ~rfc-3339~, whi
 
 *** Tools                                                           :tools:
 
-**** Edebug                                                       :Edebug:
+**** Edebug                                              :Edebug:built_in:
 
-Edebug is a built-in stepping debugger in Emacs.  It's thoroughly documented in the =elisp= manual.
+Edebug is a built-in stepping debugger in Emacs.  It's [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Edebug.html][thoroughly documented in the =elisp= manual]].
 
 ***** Declaring debug forms for keyword arguments                   :tip:
 
