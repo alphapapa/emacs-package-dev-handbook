@@ -2248,6 +2248,9 @@ When called from an Org source block, it gives output like this:
 These macros make comparing multiple forms easy:
 
 #+BEGIN_SRC elisp :exports code :results silent :tangle epdh.el
+  ;; TODO: Consider not using `-on' here to avoid the extra dependency.
+  (require 'dash-functional)
+
   ;;;###autoload
   (cl-defmacro bench-multi (&key (times 1) forms ensure-equal raw)
     "Return Org table as a list with benchmark results for FORMS.

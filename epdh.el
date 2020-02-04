@@ -86,6 +86,9 @@ avoid counting existing garbage which needs collection."
              (progn
                ,@body)))))
 
+;; TODO: Consider not using `-on' here to avoid the extra dependency.
+(require 'dash-functional)
+
 ;;;###autoload
 (cl-defmacro bench-multi (&key (times 1) forms ensure-equal raw)
   "Return Org table as a list with benchmark results for FORMS.
