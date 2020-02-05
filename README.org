@@ -3073,7 +3073,9 @@ One of the "killer apps" for Emacs--and for git!
 - [[#xml-plus-xmlhtml-utilities][xml-plus: XML/HTML utilities]]
 :END:
 
-**** [[https://github.com/tali713/esxml][esxml: An elisp library for working with xml, esxml and sxml]]
+These libraries can all be used for HTML.
+
+**** [[https://github.com/tali713/esxml][esxml]]
 
 Probably the most featureful, usable library at the moment.
 
@@ -3155,7 +3157,7 @@ Example:
               :asin asin :isbn-10 isbn-10 :isbn-13 isbn-13))))
 #+END_SRC
 
-**** [[https://github.com/AdamNiederer/elquery][elquery: Read and manipulate HTML]]
+**** [[https://github.com/AdamNiederer/elquery][elquery]]
 
 #+BEGIN_QUOTE
 It’s like jQuery, but way less useful.
@@ -3200,7 +3202,7 @@ Provides lisp-based (rather than string-based) selectors.  This library is prima
   (xml-query-all '(feed entry link [rel "alternate"] :href) xml)
 #+END_SRC
 
-**** [[https://github.com/zweifisch/enlive][enlive: query html document with css selectors]]
+**** [[https://github.com/zweifisch/enlive][enlive]]
 
 This provides a limited set of lisp-based selectors (rather than string-based selectors).
 
@@ -3213,7 +3215,7 @@ Example:
    (enlive-query (enlive-fetch "http://gnu.org/") [title])) ; => "The GNU Operating System and the Free Software Movement"
 #+END_SRC
 
-**** [[https://github.com/bddean/xml-plus][xml-plus: XML/HTML utilities]]
+**** [[https://github.com/bddean/xml-plus][xml-plus]]
 
 Mostly undocumented, providing three main functions:
 
