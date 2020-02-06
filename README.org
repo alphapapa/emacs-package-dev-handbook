@@ -227,6 +227,20 @@ This file also defines macros =thunk-let= and =thunk-let*= that are analogous to
   - [[#inserting-strings][Inserting strings]]
 - [[#libraries][Libraries]]
 :END:
+*** Articles                                                     :articles:
+:PROPERTIES:
+:TOC:      :depth 0
+:END:
+
+**** [[https://nullprogram.com/blog/2014/05/27/][Emacs Lisp Buffer Passing Style]]
+:PROPERTIES:
+:archive.today: https://archive.ph/Jygil
+:END:
+
+Chris Wellons explains how to build strings in several steps. This is
+achieved thanks to the creation of a temporary buffer that is passed
+to helper methods using the "current" buffer mechanism. A nice and
+simple design pattern for Emacs.
 
 *** Best practices                                         :best_practices:
 :PROPERTIES:
