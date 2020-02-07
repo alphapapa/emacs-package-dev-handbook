@@ -982,15 +982,15 @@ The macro is not tangled to =epdh.el=, so you may add it to your code as necessa
                  (level (or level :debug))
                  (string (cl-loop for arg in args
                                   concat (pcase arg
-                                           ((pred stringp) "%s ")
+                                           ((pred stringp) "%S ")
                                            ((pred symbolp)
-                                            (concat (upcase (symbol-name arg)) ":%s "))
+                                            (concat (upcase (symbol-name arg)) ":%S "))
                                            ((pred listp)
                                             (concat "(" (upcase (symbol-name (car arg)))
                                                     (pcase (length arg)
                                                       (1 ")")
                                                       (_ "...)"))
-                                                    ":%s "))))))
+                                                    ":%S "))))))
       `(when (eq :debug warning-minimum-log-level)
          (display-warning ',fn-name (format ,string ,@args) ,level ,buffer))))
 #+END_SRC

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-02-06 Thu 08:21 -->
+<!-- 2020-02-07 Fri 05:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -2503,7 +2503,7 @@ For example, when used like:
   <span style="color: #53bce9;">var</span><span style="color: #e3c118;">)</span>
 
 <span style="color: #e3c118;">(</span><span style="color: #53bce9; font-weight: bold;">setq</span><span style="color: #53bce9;"> warning-minimum-log-level </span><span style="color: #53bce9;">:debug</span><span style="color: #e3c118;">)</span>
-<span style="color: #e3c118;">(</span><span style="color: #53bce9;">argh 1</span><span style="color: #e3c118;">)</span>
+<span style="color: #e3c118;">(</span><span style="color: #53bce9; text-decoration: underline;">argh</span><span style="color: #53bce9;"> 1</span><span style="color: #e3c118;">)</span>
 </pre>
 </div>
 
@@ -2551,15 +2551,15 @@ The macro is not tangled to <code>epdh.el</code>, so you may add it to your code
                <span style="color: #a981ef;">(</span><span style="color: #e3c118;">level (</span><span style="color: #53bce9; font-weight: bold;">or</span><span style="color: #53bce9;"> level </span><span style="color: #53bce9;">:debug</span><span style="color: #e3c118;">)</span><span style="color: #a981ef;">)</span>
                <span style="color: #a981ef;">(</span><span style="color: #e3c118; text-decoration: underline;">string</span><span style="color: #e3c118;"> (</span><span style="color: #53bce9; font-weight: bold;">cl-loop</span><span style="color: #53bce9;"> for arg in args</span>
 <span style="color: #53bce9;">                                concat (</span><span style="color: #e73ee5; font-weight: bold;">pcase</span><span style="color: #e73ee5;"> arg</span>
-<span style="color: #e73ee5;">                                         (</span><span style="color: #a981ef;">(</span><span style="color: #cfb845;">pred stringp</span><span style="color: #a981ef;">)</span> <span style="color: #ca76b76febc2;">"%s "</span><span style="color: #e73ee5;">)</span>
+<span style="color: #e73ee5;">                                         (</span><span style="color: #a981ef;">(</span><span style="color: #cfb845;">pred stringp</span><span style="color: #a981ef;">)</span> <span style="color: #ca76b76febc2;">"%S "</span><span style="color: #e73ee5;">)</span>
                                          <span style="color: #e73ee5;">(</span><span style="color: #a981ef;">(</span><span style="color: #cfb845;">pred symbolp</span><span style="color: #a981ef;">)</span>
-                                          <span style="color: #a981ef;">(</span><span style="color: #cfb845; text-decoration: underline;">concat</span><span style="color: #cfb845;"> (</span><span style="color: #7bbedc; text-decoration: underline;">upcase</span><span style="color: #7bbedc;"> (</span><span style="color: #d767d5; text-decoration: underline;">symbol-name</span><span style="color: #d767d5;"> arg</span><span style="color: #7bbedc;">)</span><span style="color: #cfb845;">)</span> <span style="color: #c726bb4c800b;">":%s "</span><span style="color: #a981ef;">)</span><span style="color: #e73ee5;">)</span>
+                                          <span style="color: #a981ef;">(</span><span style="color: #cfb845; text-decoration: underline;">concat</span><span style="color: #cfb845;"> (</span><span style="color: #7bbedc; text-decoration: underline;">upcase</span><span style="color: #7bbedc;"> (</span><span style="color: #d767d5; text-decoration: underline;">symbol-name</span><span style="color: #d767d5;"> arg</span><span style="color: #7bbedc;">)</span><span style="color: #cfb845;">)</span> <span style="color: #c726bb4c800b;">":%S "</span><span style="color: #a981ef;">)</span><span style="color: #e73ee5;">)</span>
                                          <span style="color: #e73ee5;">(</span><span style="color: #a981ef;">(</span><span style="color: #cfb845;">pred listp</span><span style="color: #a981ef;">)</span>
                                           <span style="color: #a981ef;">(</span><span style="color: #cfb845; text-decoration: underline;">concat</span><span style="color: #cfb845;"> </span><span style="color: #c726bb4c800b;">"("</span> <span style="color: #cfb845;">(</span><span style="color: #7bbedc; text-decoration: underline;">upcase</span><span style="color: #7bbedc;"> (</span><span style="color: #d767d5; text-decoration: underline;">symbol-name</span><span style="color: #d767d5;"> (</span><span style="color: #bca3e6; text-decoration: underline;">car</span><span style="color: #bca3e6;"> arg</span><span style="color: #d767d5;">)</span><span style="color: #7bbedc;">)</span><span style="color: #cfb845;">)</span>
                                                   <span style="color: #cfb845;">(</span><span style="color: #7bbedc; font-weight: bold;">pcase</span><span style="color: #7bbedc;"> (</span><span style="color: #d767d5; text-decoration: underline;">length</span><span style="color: #d767d5;"> arg</span><span style="color: #7bbedc;">)</span>
                                                     <span style="color: #7bbedc;">(</span><span style="color: #d767d5;">1 </span><span style="color: #d3899da8d293;">")"</span><span style="color: #7bbedc;">)</span>
                                                     <span style="color: #7bbedc;">(</span><span style="color: #d767d5;">_ </span><span style="color: #d3899da8d293;">"...)"</span><span style="color: #7bbedc;">)</span><span style="color: #cfb845;">)</span>
-                                                  <span style="color: #c726bb4c800b;">":%s "</span><span style="color: #a981ef;">)</span><span style="color: #e73ee5;">)</span><span style="color: #53bce9;">)</span><span style="color: #e3c118;">)</span><span style="color: #a981ef;">)</span><span style="color: #e73ee5;">)</span>
+                                                  <span style="color: #c726bb4c800b;">":%S "</span><span style="color: #a981ef;">)</span><span style="color: #e73ee5;">)</span><span style="color: #53bce9;">)</span><span style="color: #e3c118;">)</span><span style="color: #a981ef;">)</span><span style="color: #e73ee5;">)</span>
     <span style="color: #e73ee5;">`(</span><span style="color: #a981ef; font-weight: bold;">when</span><span style="color: #a981ef;"> (</span><span style="color: #e3c118; text-decoration: underline;">eq</span><span style="color: #e3c118;"> </span><span style="color: #e3c118;">:debug</span><span style="color: #e3c118;"> warning-minimum-log-level</span><span style="color: #a981ef;">)</span>
        <span style="color: #a981ef;">(</span><span style="color: #e3c118; text-decoration: underline;">display-warning</span><span style="color: #e3c118;"> ',fn-name (</span><span style="color: #53bce9; text-decoration: underline;">format</span><span style="color: #53bce9;"> ,string ,@args</span><span style="color: #e3c118;">)</span> <span style="color: #e3c118;">,level ,buffer</span><span style="color: #a981ef;">)</span><span style="color: #e73ee5;">)</span><span style="color: #53bce9;">)</span><span style="color: #e3c118;">)</span>
 </pre>
@@ -6661,7 +6661,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2020-02-06 Thu 08:21</p>
+<p class="date">Created: 2020-02-07 Fri 05:08</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
