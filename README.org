@@ -2204,6 +2204,14 @@ Chris Wellons explains five ways to write faster Emacs Lisp code.
 
 **** [[id:54fa2e85-066f-431e-9db3-8b1627fac4ca][What's in an Emacs Lambda « null program]]
 
+**** [[https://nullprogram.com/blog/2019/12/10/][Efficient Alias of a Built-In Emacs Lisp Function « null program]]
+:PROPERTIES:
+:archive.is: http://archive.today/wip/pdIQH
+:ID:       26105b53-a344-48bd-a252-596dd838ac3b
+:END:
+
+Chris Wellons compares the use of =defalias= and =defsubst= and how they are optimized by the byte-compiler.
+
 *** Macros                                                         :macros:
 
 **** =bench=
@@ -2790,7 +2798,7 @@ This example shows the use of a function to expand a list of strings into a sequ
 :END:
 :CONTENTS:
 - [[#libraries][Libraries]]
-  - [[#sel-the-long-lost-emacs-string-manipulation-library][{{https://github.com/magnars/s.el}{s.el: The long lost Emacs string manipulation library}}]]
+  - [[#sel-the-long-lost-emacs-string-manipulation-library][s.el: The long lost Emacs string manipulation library]]
 - [[#tools][Tools]]
   - [[#format-macro][format$ macro]]
 :END:
@@ -3066,11 +3074,11 @@ One of the "killer apps" for Emacs--and for git!
 :TOC:      :include descendants :depth 1
 :END:
 :CONTENTS:
-- [[#esxml-an-elisp-library-for-working-with-xml-esxml-and-sxml][esxml: An elisp library for working with xml, esxml and sxml]]
-- [[#elquery-read-and-manipulate-html][elquery: Read and manipulate HTML]]
+- [[#esxml][esxml]]
+- [[#elquery][elquery]]
 - [[#elfeedxml-queryel][elfeed/xml-query.el]]
-- [[#enlive-query-html-document-with-css-selectors][enlive: query html document with css selectors]]
-- [[#xml-plus-xmlhtml-utilities][xml-plus: XML/HTML utilities]]
+- [[#enlive][enlive]]
+- [[#xml-plus][xml-plus]]
 :END:
 
 These libraries can all be used for HTML.
