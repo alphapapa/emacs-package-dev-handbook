@@ -1891,6 +1891,7 @@ The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.
 - [[#building--testing][Building / Testing]]
   - [[#cask-project-management-tool-for-emacs][cask: Project management tool for Emacs]]
   - [[#eldev-elisp-development-tool][eldev: Elisp Development Tool]]
+  - [[#emacs-package-checker-check-emacs-lisp-packages-in-a-clean-environment][emacs-package-checker: Check Emacs Lisp packages in a clean environment]]
   - [[#emakeel-test-elisp-without-the-hoops][emake.el: Test Elisp without the hoops]]
   - [[#makel-a-makefile-to-facilitate-checking-emacs-packages][makel: A makefile to facilitate checking Emacs packages]]
   - [[#makemsh-makefile-like-script-for-building-and-testing-packages][makem.sh: Makefile-like script for building and testing packages]]
@@ -1918,6 +1919,14 @@ Cask is a project management tool for Emacs that helps automate the package deve
 
 #+BEGIN_QUOTE
 Eldev (Elisp Development Tool) is an Emacs-based build tool, targeted solely at Elisp projects. It is an alternative to Cask. Unlike Cask, Eldev itself is fully written in Elisp and its configuration files are also Elisp programs. If you are familiar with Java world, Cask can be seen as a parallel to Maven — it uses project description, while Eldev is sort of a parallel to Gradle — its configuration is a program on its own.
+#+END_QUOTE
+
+***** [[https://github.com/akirak/emacs-package-checker][emacs-package-checker: Check Emacs Lisp packages in a clean environment]]
+
+#+BEGIN_QUOTE
+Emacs Package Checker lets you quickly configure typical linters (i.e. package-lint, byte-compile, and checkdoc) for your Emacs package.
+
+There are existing solutions in this field like emake.el and makel. Emacs Package Checker is not any more capable than those existing solutions, but it is based on Nix package manager and runs tests in a pure, sandboxed environment. This is useful for testing Emacs packages on local machines.
 #+END_QUOTE
 
 ***** [[https://github.com/vermiculus/emake.el][emake.el: Test Elisp without the hoops]]
