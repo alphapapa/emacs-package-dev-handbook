@@ -3844,13 +3844,13 @@ CLOSED: [2017-08-03 Thu 15:11]
 #+BEGIN_SRC elisp :exports code :results silent
   (require 'org-web-tools)
 
-  (defun emacs-package-dev-handbook--archive.today-capture (url)
-    "Return archive.today archived URL for URL."
-    (when-let* ((id (org-web-tools-archive--archive.today-url-id url)))
+  (defun emacs-package-dev-handbook--archive.is-capture (url)
+    "Return archive.is archived URL for URL."
+    (when-let* ((id (org-web-tools-archive--archive.is-url-id url)))
       (format "http://%s/%s" org-web-tools-archive-hostname id)))
 
-  (cl-defun emacs-package-dev-handbook-insert-archive.today-property (url)
-    "Set the \"archive.today\" property for entry at point to the archived version of URL.
+  (cl-defun emacs-package-dev-handbook-insert-archive.is-property (url)
+    "Set the \"archive.is\" property for entry at point to the archived version of URL.
   Interactively, assumes heading on/before point is an Org link to
   a web page."
     (interactive (list (save-excursion
@@ -3859,8 +3859,8 @@ CLOSED: [2017-08-03 Thu 15:11]
                          (beginning-of-line)
                          (when (re-search-forward org-bracket-link-regexp (line-end-position) 'noerror)
                            (org-link-unescape (match-string-no-properties 1))))))
-    (when-let ((archive-url (emacs-package-dev-handbook--archive.today-capture url)))
-      (org-set-property "archive.today" archive-url)))
+    (when-let ((archive-url (emacs-package-dev-handbook--archive.is-capture url)))
+      (org-set-property "archive.is" archive-url)))
 #+END_SRC
 
 *** TODO Insert new entry at point
