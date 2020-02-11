@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-02-09 Sun 10:57 -->
+<!-- 2020-02-11 Tue 15:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -289,6 +289,11 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#Buffers">Buffers&#xa0;&#xa0;&#xa0;<span class="tag"><span class="buffers">buffers</span></span></a>
 <ul>
+<li><a href="#Buffers--Articles">Articles</a>
+<ul>
+<li><a href="#%5B%5B%2A%255B%255Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2014%2F05%2F27%2F%255D%255BEmacs%2520Lisp%2520Buffer%2520Passing%2520Style%255D%255D%5D%5BBuffer-Passing%20Style%5D%5D">Buffer-Passing Style&#xa0;&#xa0;&#xa0;<span class="tag"><span class="strings">strings</span></span></a></li>
+</ul>
+</li>
 <li><a href="#Best%20practices">Best practices&#xa0;&#xa0;&#xa0;<span class="tag"><span class="best_practices">best_practices</span></span></a>
 <ul>
 <li><a href="#Accessing%20buffer-local%20variables">Accessing buffer-local variables</a></li>
@@ -707,6 +712,11 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#Strings">Strings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="strings">strings</span></span></a>
 <ul>
+<li><a href="#Strings--Articles">Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span></a>
+<ul>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2014%2F05%2F27%2F%5D%5BBuffer-Passing%20Style%5D%5D">Buffer-Passing Style&#xa0;&#xa0;&#xa0;<span class="tag"><span class="buffers">buffers</span></span></a></li>
+</ul>
+</li>
 <li><a href="#Strings--Libraries">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a>
 <ul>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fmagnars%2Fs.el%5D%5Bs.el%3A%20The%20long%20lost%20Emacs%20string%20manipulation%20library%5D%5D">s.el: The long lost Emacs string manipulation library</a></li>
@@ -1255,6 +1265,14 @@ This file also defines macros <code>thunk-let</code> and <code>thunk-let*</code>
 <div class="outline-text-3" id="text-Buffers">
 </div>
 
+<div id="outline-container-Buffers--Articles" class="outline-4">
+<h4 id="Buffers--Articles">Articles</h4>
+<div class="outline-text-4" id="text-Buffers--Articles">
+</div><div id="outline-container-%5B%5B%2A%255B%255Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2014%2F05%2F27%2F%255D%255BEmacs%2520Lisp%2520Buffer%2520Passing%2520Style%255D%255D%5D%5BBuffer-Passing%20Style%5D%5D" class="outline-5">
+<h5 id="%5B%5B%2A%255B%255Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2014%2F05%2F27%2F%255D%255BEmacs%2520Lisp%2520Buffer%2520Passing%2520Style%255D%255D%5D%5BBuffer-Passing%20Style%5D%5D">&#xa0;&#xa0;&#xa0;<span class="tag"><span class="strings">strings</span></span></h5>
+</div>
+</div>
+
 <div id="outline-container-Best%20practices" class="outline-4">
 <h4 id="Best%20practices">Best practices&#xa0;&#xa0;&#xa0;<span class="tag"><span class="best_practices">best_practices</span></span></h4>
 <div class="outline-text-4" id="text-Best%20practices">
@@ -1629,8 +1647,8 @@ Note that since this benchmark compares lists of strings, <code>cl-nset-differen
                <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">-difference</span><span style="color: #78880e;"> list1 list2</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span>
             <span style="color: #3d8b85;">(</span><span style="color: #b86396762cce;">"</span><span style="color: #b86396762cce; text-decoration: underline;">-difference</span><span style="color: #b86396762cce;"> string="</span>
              <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">progn</span>
-<span style="color: #3d85b7;">               </span><span style="color: #4d1e63e073ad;">;; </span><span style="color: #4d1e63e073ad;">This is much slower because of the way `</span><span style="color: #4d1e63e073ad; font-weight: bold;">-contains?</span><span style="color: #4d1e63e073ad;">'</span>
-<span style="color: #4d1e63e073ad;">               </span><span style="color: #4d1e63e073ad;">;; </span><span style="color: #4d1e63e073ad;">works when `</span><span style="color: #4d1e63e073ad; font-weight: bold;">-compare-fn</span><span style="color: #4d1e63e073ad;">' is non-nil.</span>
+<span style="color: #3d85b7;">               </span><span style="color: #4d1e63e073ad;">;; </span><span style="color: #4d1e63e073ad; font-style: italic;">This is much slower because of the way `</span><span style="color: #4d1e63e073ad; font-weight: bold; font-style: italic;">-contains?</span><span style="color: #4d1e63e073ad; font-style: italic;">'</span>
+<span style="color: #4d1e63e073ad;">               </span><span style="color: #4d1e63e073ad;">;; </span><span style="color: #4d1e63e073ad; font-style: italic;">works when `</span><span style="color: #4d1e63e073ad; font-weight: bold; font-style: italic;">-compare-fn</span><span style="color: #4d1e63e073ad; font-style: italic;">' is non-nil.</span>
 <span style="color: #4d1e63e073ad;">               </span><span style="color: #3d85b7;">(</span><span style="color: #78880e;">test/set-lists</span><span style="color: #3d85b7;">)</span>
                <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">let</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85;">(</span><span style="color: #a38528;">-compare-fn #'string=</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
                  <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">-difference</span><span style="color: #3d8b85;"> list1 list2</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span>
@@ -1867,21 +1885,21 @@ Using <code>-select</code> from <code>dash.el</code> seems to be the fastest way
 <div class="org-src-container">
 <pre class="src src-elisp"><span style="color: #586e75;">;;;; </span><span style="color: #99d97b0c1b26; background-color: #073642; font-weight: bold; text-decoration: overline;">Built-in methods</span>
 
-<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">list</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">cons</span><span style="color: #78880e;"> 'one 1</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">cons</span><span style="color: #78880e;"> 'two 2</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;; </span><span style="color: #586e75;">=&gt; ((one . 1) (two . 2))</span>
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">list</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">cons</span><span style="color: #78880e;"> 'one 1</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">cons</span><span style="color: #78880e;"> 'two 2</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; ((one . 1) (two . 2))</span>
 
-<span style="color: #a17e11;">'(</span><span style="color: #3d85b7;">(</span><span style="color: #78880e;">one . 1</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">(</span><span style="color: #78880e;">two . 2</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;; </span><span style="color: #586e75;">=&gt; ((one . 1) (two . 2))</span>
+<span style="color: #a17e11;">'(</span><span style="color: #3d85b7;">(</span><span style="color: #78880e;">one . 1</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">(</span><span style="color: #78880e;">two . 2</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; ((one . 1) (two . 2))</span>
 
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">let</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">(</span><span style="color: #3d8b85;">numbers (</span><span style="color: #a17e11; text-decoration: underline;">list</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
   <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">map-put</span><span style="color: #78880e;"> numbers 'one 1</span><span style="color: #3d85b7;">)</span>
-  <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">map-put</span><span style="color: #78880e;"> numbers 'two 2</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;; </span><span style="color: #586e75;">=&gt; ((two . 2) (one . 1))</span>
+  <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">map-put</span><span style="color: #78880e;"> numbers 'two 2</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; ((two . 2) (one . 1))</span>
 
 
 <span style="color: #586e75;">;;;; </span><span style="color: #99d97b0c1b26; background-color: #073642; font-weight: bold; text-decoration: overline;">Packages</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">`</span><span style="color: #268bd2; font-weight: bold;">a-list</span><span style="color: #586e75;">' from a.el is the best way to make a new alist.</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">`</span><span style="color: #268bd2; font-weight: bold; font-style: italic;">a-list</span><span style="color: #586e75; font-style: italic;">' from a.el is the best way to make a new alist.</span>
 
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">a-list</span><span style="color: #3d85b7;"> 'one 1</span>
-<span style="color: #3d85b7;">        'two 2</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;; </span><span style="color: #586e75;">=&gt; ((one . 1) (two . 2))</span>
+<span style="color: #3d85b7;">        'two 2</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; ((one . 1) (two . 2))</span>
 </pre>
 </div>
 </div>
@@ -1896,26 +1914,26 @@ Using <code>-select</code> from <code>dash.el</code> seems to be the fastest way
 <div class="org-src-container">
 <pre class="src src-elisp"><span style="color: #586e75;">;;;; </span><span style="color: #99d97b0c1b26; background-color: #073642; font-weight: bold; text-decoration: overline;">Built-in methods</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">`</span><span style="color: #268bd2; font-weight: bold;">map-put</span><span style="color: #586e75;">' is the best built-in way.  Requires Emacs 25.1+.</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">`</span><span style="color: #268bd2; font-weight: bold; font-style: italic;">map-put</span><span style="color: #586e75; font-style: italic;">' is the best built-in way.  Requires Emacs 25.1+.</span>
 
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">let</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">(</span><span style="color: #3d8b85;">numbers (</span><span style="color: #a17e11; text-decoration: underline;">list</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7; text-decoration: underline;">cons</span><span style="color: #3d85b7;"> 'one 1</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
   <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">map-put</span><span style="color: #78880e;"> numbers 'two 2</span><span style="color: #3d85b7;">)</span>
-  <span style="color: #3d85b7;">numbers</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">; </span><span style="color: #586e75;">=&gt; ((two . 2) (one . 1))</span>
+  <span style="color: #3d85b7;">numbers</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">; </span><span style="color: #586e75; font-style: italic;">=&gt; ((two . 2) (one . 1))</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">More primitive methods</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">More primitive methods</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Not recommended, but not too complicated:</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Not recommended, but not too complicated:</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">let</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">(</span><span style="color: #3d8b85;">numbers (</span><span style="color: #a17e11; text-decoration: underline;">list</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7; text-decoration: underline;">cons</span><span style="color: #3d85b7;"> 'one 1</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
       <span style="color: #78880e;">(</span><span style="color: #3d8b85;">more-numbers (</span><span style="color: #a17e11; text-decoration: underline;">a-list</span><span style="color: #a17e11;"> 'two 2</span>
 <span style="color: #a17e11;">                            'three 3</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
-  <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">append</span><span style="color: #78880e;"> numbers more-numbers</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">;; </span><span style="color: #586e75;">=&gt; ((one . 1) (two . 2) (three . 3))</span>
+  <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">append</span><span style="color: #78880e;"> numbers more-numbers</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; ((one . 1) (two . 2) (three . 3))</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Don't do it this way, but it does demonstrate list/cons-cell</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">structure:</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Don't do it this way, but it does demonstrate list/cons-cell</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">structure:</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">let</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">(</span><span style="color: #3d8b85;">numbers (</span><span style="color: #a17e11; text-decoration: underline;">list</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7; text-decoration: underline;">cons</span><span style="color: #3d85b7;"> 'one 1</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
   <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">cons</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">cons</span><span style="color: #3d8b85;"> 'three 3</span><span style="color: #78880e;">)</span>
         <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">cons</span><span style="color: #3d8b85;"> (</span><span style="color: #a17e11; text-decoration: underline;">cons</span><span style="color: #a17e11;"> 'two 2</span><span style="color: #3d8b85;">)</span>
-              <span style="color: #3d8b85;">numbers</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;; </span><span style="color: #586e75;">=&gt; ((three . 3) (two . 2) (one . 1))</span>
+              <span style="color: #3d8b85;">numbers</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; ((three . 3) (two . 2) (one . 1))</span>
 </pre>
 </div>
 </div>
@@ -1927,27 +1945,27 @@ Using <code>-select</code> from <code>dash.el</code> seems to be the fastest way
 <div class="org-src-container">
 <pre class="src src-elisp"><span style="color: #586e75;">;;;; </span><span style="color: #99d97b0c1b26; background-color: #073642; font-weight: bold; text-decoration: overline;">Built-in methods</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">`</span><span style="color: #268bd2; font-weight: bold;">map-merge</span><span style="color: #586e75;">': if you're restricted to built-in packages, this works</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">well (requires Emacs 25.1+):</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">`</span><span style="color: #268bd2; font-weight: bold; font-style: italic;">map-merge</span><span style="color: #586e75; font-style: italic;">': if you're restricted to built-in packages, this works</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">well (requires Emacs 25.1+):</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">let</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">(</span><span style="color: #3d8b85;">numbers (</span><span style="color: #a17e11; text-decoration: underline;">list</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7; text-decoration: underline;">cons</span><span style="color: #3d85b7;"> 'one 1</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
       <span style="color: #78880e;">(</span><span style="color: #3d8b85;">more-numbers (</span><span style="color: #a17e11; text-decoration: underline;">a-list</span><span style="color: #a17e11;"> 'two 2</span>
 <span style="color: #a17e11;">                            'three 3</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
-  <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">map-merge</span><span style="color: #78880e;"> 'list numbers more-numbers</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;; </span><span style="color: #586e75;">=&gt; ((three . 3) (two . 2) (one . 1))</span>
+  <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">map-merge</span><span style="color: #78880e;"> 'list numbers more-numbers</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; ((three . 3) (two . 2) (one . 1))</span>
 
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Without map.el, you could use `</span><span style="color: #268bd2; font-weight: bold;">append</span><span style="color: #586e75;">':</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Without map.el, you could use `</span><span style="color: #268bd2; font-weight: bold; font-style: italic;">append</span><span style="color: #586e75; font-style: italic;">':</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">let</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">(</span><span style="color: #3d8b85;">numbers (</span><span style="color: #a17e11; text-decoration: underline;">list</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7; text-decoration: underline;">cons</span><span style="color: #3d85b7;"> 'one 1</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
       <span style="color: #78880e;">(</span><span style="color: #3d8b85;">more-numbers (</span><span style="color: #a17e11; text-decoration: underline;">a-list</span><span style="color: #a17e11;"> 'two 2</span>
 <span style="color: #a17e11;">                            'three 3</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
-  <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">append</span><span style="color: #78880e;"> numbers more-numbers</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">;; </span><span style="color: #586e75;">=&gt; ((one . 1) (two . 2) (three . 3))</span>
+  <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">append</span><span style="color: #78880e;"> numbers more-numbers</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; ((one . 1) (two . 2) (three . 3))</span>
 
 <span style="color: #586e75;">;;;; </span><span style="color: #99d97b0c1b26; background-color: #073642; font-weight: bold; text-decoration: overline;">Packages</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">`</span><span style="color: #268bd2; font-weight: bold;">a-merge</span><span style="color: #586e75;">' from a.el is probably the best way:</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">`</span><span style="color: #268bd2; font-weight: bold; font-style: italic;">a-merge</span><span style="color: #586e75; font-style: italic;">' from a.el is probably the best way:</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">let</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">(</span><span style="color: #3d8b85;">numbers (</span><span style="color: #a17e11; text-decoration: underline;">list</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7; text-decoration: underline;">cons</span><span style="color: #3d85b7;"> 'one 1</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
       <span style="color: #78880e;">(</span><span style="color: #3d8b85;">more-numbers (</span><span style="color: #a17e11; text-decoration: underline;">a-list</span><span style="color: #a17e11;"> 'two 2</span>
 <span style="color: #a17e11;">                            'three 3</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
-  <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">a-merge</span><span style="color: #78880e;"> numbers more-numbers</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;; </span><span style="color: #586e75;">=&gt; ((three . 3) (two . 2) (one . 1))</span>
+  <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">a-merge</span><span style="color: #78880e;"> numbers more-numbers</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; ((three . 3) (two . 2) (one . 1))</span>
 </pre>
 </div>
 </div>
@@ -2321,23 +2339,23 @@ Get parts of the current date:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75;">When the current date is 2018-12-08 23:09:14 -0600:</span>
-<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-year</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>       <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; 2018</span>
-<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-month</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>      <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; 12</span>
-<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-day</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>        <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; 8</span>
-<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-hour</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>       <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; 23</span>
-<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-minute</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>     <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; 9</span>
-<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-second</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>     <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; 14</span>
-<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-tz-offset</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; "-0600"</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">When the current date is 2018-12-08 23:09:14 -0600:</span>
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-year</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>       <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; 2018</span>
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-month</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>      <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; 12</span>
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-day</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>        <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; 8</span>
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-hour</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>       <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; 23</span>
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-minute</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>     <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; 9</span>
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-second</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>     <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; 14</span>
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-tz-offset</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; "-0600"</span>
 
-<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-dow</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>        <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; 6</span>
-<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-day-abbr</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>   <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; "Sat"</span>
-<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-day-name</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>   <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; "Saturday"</span>
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-dow</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>        <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; 6</span>
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-day-abbr</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>   <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; "Sat"</span>
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-day-name</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>   <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; "Saturday"</span>
 
-<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-month-abbr</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; "Dec"</span>
-<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-month-name</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; "December"</span>
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-month-abbr</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; "Dec"</span>
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-month-name</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; "December"</span>
 
-<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-tz-abbr</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>    <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; "CST"</span>
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-tz-abbr</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>    <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; "CST"</span>
 </pre>
 </div>
 
@@ -2346,20 +2364,20 @@ Increment the current date:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75;">By 10 years:</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">By 10 years:</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">list</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7; font-weight: bold;">:now</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-format</span><span style="color: #3d85b7;">)</span>
       <span style="color: #3d85b7; font-weight: bold;">:future</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-format</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">ts-adjust</span><span style="color: #3d8b85;"> 'year 10 (</span><span style="color: #a17e11; text-decoration: underline;">ts-now</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
-<span style="color: #586e75;">;;</span><span style="color: #586e75;">=&gt; (   :now "2018-12-15 22:00:34 -0600"</span>
-<span style="color: #586e75;">;;    </span><span style="color: #586e75;">:future "2028-12-15 22:00:34 -0600")</span>
+<span style="color: #586e75;">;;</span><span style="color: #586e75; font-style: italic;">=&gt; (   :now "2018-12-15 22:00:34 -0600"</span>
+<span style="color: #586e75;">;;    </span><span style="color: #586e75; font-style: italic;">:future "2028-12-15 22:00:34 -0600")</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">By 10 years, 2 months, 3 days, 5 hours, and 4 seconds:</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">By 10 years, 2 months, 3 days, 5 hours, and 4 seconds:</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">list</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7; font-weight: bold;">:now</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-format</span><span style="color: #3d85b7;">)</span>
       <span style="color: #3d85b7; font-weight: bold;">:future</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-format</span>
 <span style="color: #78880e;">               (</span><span style="color: #3d8b85; text-decoration: underline;">ts-adjust</span><span style="color: #3d8b85;"> 'year 10 'month 2 'day 3</span>
 <span style="color: #3d8b85;">                          'hour 5 'second 4</span>
 <span style="color: #3d8b85;">                          (</span><span style="color: #a17e11; text-decoration: underline;">ts-now</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
-<span style="color: #586e75;">;;</span><span style="color: #586e75;">=&gt; (   :now "2018-12-15 22:02:31 -0600"</span>
-<span style="color: #586e75;">;;    </span><span style="color: #586e75;">:future "2029-02-19 03:02:35 -0600")</span>
+<span style="color: #586e75;">;;</span><span style="color: #586e75; font-style: italic;">=&gt; (   :now "2018-12-15 22:02:31 -0600"</span>
+<span style="color: #586e75;">;;    </span><span style="color: #586e75; font-style: italic;">:future "2029-02-19 03:02:35 -0600")</span>
 </pre>
 </div>
 
@@ -2368,11 +2386,11 @@ What day of the week was 2 days ago?
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-day-name</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-dec</span><span style="color: #78880e;"> 'day 2 (</span><span style="color: #3d8b85; text-decoration: underline;">ts-now</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>             <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; "Thursday"</span>
+<pre class="src src-elisp"><span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-day-name</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-dec</span><span style="color: #78880e;"> 'day 2 (</span><span style="color: #3d8b85; text-decoration: underline;">ts-now</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>             <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; "Thursday"</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Or, with threading macros:</span>
-<span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">thread-last</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">ts-dec</span><span style="color: #78880e;"> 'day 2</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">ts-day-name</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; "Thursday"</span>
-<span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">-&gt;&gt;</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">ts-dec</span><span style="color: #78880e;"> 'day 2</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">ts-day-name</span><span style="color: #a17e11;">)</span>         <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; "Thursday"</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Or, with threading macros:</span>
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">thread-last</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">ts-dec</span><span style="color: #78880e;"> 'day 2</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">ts-day-name</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; "Thursday"</span>
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">-&gt;&gt;</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-now</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">ts-dec</span><span style="color: #78880e;"> 'day 2</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">ts-day-name</span><span style="color: #a17e11;">)</span>         <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; "Thursday"</span>
 </pre>
 </div>
 
@@ -2382,31 +2400,31 @@ Get timestamp for this time last week:
 
 <div class="org-src-container">
 <pre class="src src-elisp"><span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-unix</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-adjust</span><span style="color: #78880e;"> 'day -7 (</span><span style="color: #3d8b85; text-decoration: underline;">ts-now</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
-<span style="color: #586e75;">;;</span><span style="color: #586e75;">=&gt; 1543728398.0</span>
+<span style="color: #586e75;">;;</span><span style="color: #586e75; font-style: italic;">=&gt; 1543728398.0</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">To confirm that the difference really is 7 days:</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">To confirm that the difference really is 7 days:</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7;">/ (</span><span style="color: #78880e;">- (</span><span style="color: #3d8b85; text-decoration: underline;">ts-unix</span><span style="color: #3d8b85;"> (</span><span style="color: #a17e11; text-decoration: underline;">ts-now</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
       <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">ts-unix</span><span style="color: #3d8b85;"> (</span><span style="color: #a17e11; text-decoration: underline;">ts-adjust</span><span style="color: #a17e11;"> 'day -7 (</span><span style="color: #3d85b7; text-decoration: underline;">ts-now</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
    <span style="color: #3d85b7;">86400</span><span style="color: #a17e11;">)</span>
-<span style="color: #586e75;">;;</span><span style="color: #586e75;">=&gt; 7.000000567521762</span>
+<span style="color: #586e75;">;;</span><span style="color: #586e75; font-style: italic;">=&gt; 7.000000567521762</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Or human-friendly as a list:</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Or human-friendly as a list:</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-human-duration</span>
 <span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-difference</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">ts-now</span><span style="color: #78880e;">)</span>
                 <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">ts-dec</span><span style="color: #3d8b85;"> 'day 7 (</span><span style="color: #a17e11; text-decoration: underline;">ts-now</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
-<span style="color: #586e75;">;;</span><span style="color: #586e75;">=&gt; (:years 0 :days 7 :hours 0 :minutes 0 :seconds 0)</span>
+<span style="color: #586e75;">;;</span><span style="color: #586e75; font-style: italic;">=&gt; (:years 0 :days 7 :hours 0 :minutes 0 :seconds 0)</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Or as a string:</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Or as a string:</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">ts-human-format-duration</span>
 <span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-difference</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">ts-now</span><span style="color: #78880e;">)</span>
                 <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">ts-dec</span><span style="color: #3d8b85;"> 'day 7 (</span><span style="color: #a17e11; text-decoration: underline;">ts-now</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
-<span style="color: #586e75;">;;</span><span style="color: #586e75;">=&gt; "7 days"</span>
+<span style="color: #586e75;">;;</span><span style="color: #586e75; font-style: italic;">=&gt; "7 days"</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Or confirm by formatting:</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Or confirm by formatting:</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">list</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7; font-weight: bold;">:now</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-format</span><span style="color: #3d85b7;">)</span>
       <span style="color: #3d85b7; font-weight: bold;">:last-week</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">ts-format</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">ts-dec</span><span style="color: #3d8b85;"> 'day 7 (</span><span style="color: #a17e11; text-decoration: underline;">ts-now</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
-<span style="color: #586e75;">;;</span><span style="color: #586e75;">=&gt; (      :now "2018-12-08 23:31:37 -0600"</span>
-<span style="color: #586e75;">;;    </span><span style="color: #586e75;">:last-week "2018-12-01 23:31:37 -0600")</span>
+<span style="color: #586e75;">;;</span><span style="color: #586e75; font-style: italic;">=&gt; (      :now "2018-12-08 23:31:37 -0600"</span>
+<span style="color: #586e75;">;;    </span><span style="color: #586e75; font-style: italic;">:last-week "2018-12-01 23:31:37 -0600")</span>
 </pre>
 </div>
 </div>
@@ -2421,9 +2439,9 @@ The primary function provided is: <code>(datetime-format SYM-OR-FMT &amp;optiona
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #a17e11;">(</span><span style="color: #3d85b7;">datetime-format </span><span style="color: #73139976b41e;">"%Y-%m-%d"</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; "2018-08-22"</span>
-<span style="color: #a17e11;">(</span><span style="color: #3d85b7;">datetime-format 'atom</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; "2018-08-22T18:23:47-05:00"</span>
-<span style="color: #a17e11;">(</span><span style="color: #3d85b7;">datetime-format 'atom </span><span style="color: #73139976b41e;">"2112-09-03 00:00:00"</span> <span style="color: #3d85b7; font-weight: bold;">:timezone</span><span style="color: #3d85b7;"> </span><span style="color: #73139976b41e;">"UTC"</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; "2112-09-03T00:00:00+00:00"</span>
+<pre class="src src-elisp"><span style="color: #a17e11;">(</span><span style="color: #3d85b7;">datetime-format </span><span style="color: #73139976b41e;">"%Y-%m-%d"</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; "2018-08-22"</span>
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7;">datetime-format 'atom</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; "2018-08-22T18:23:47-05:00"</span>
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7;">datetime-format 'atom </span><span style="color: #73139976b41e;">"2112-09-03 00:00:00"</span> <span style="color: #3d85b7; font-weight: bold;">:timezone</span><span style="color: #3d85b7;"> </span><span style="color: #73139976b41e;">"UTC"</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; "2112-09-03T00:00:00+00:00"</span>
 </pre>
 </div>
 
@@ -2501,11 +2519,11 @@ For example, when used like:
 
 <div class="org-src-container">
 <pre class="src src-elisp"><span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">defun</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">argh</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">var</span><span style="color: #3d85b7;">)</span>
-  <span style="color: #3d85b7;">(</span><span style="color: #78880e;">debug-warn (</span><span style="color: #3d8b85; text-decoration: underline;">current-buffer</span><span style="color: #78880e;">)</span> <span style="color: #921da24c26e6;">"This is bad!"</span> <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">point</span><span style="color: #78880e;">)</span> <span style="color: #78880e;">var</span><span style="color: #3d85b7;">)</span>
+  <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">debug-warn</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">current-buffer</span><span style="color: #78880e;">)</span> <span style="color: #921da24c26e6;">"This is bad!"</span> <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">point</span><span style="color: #78880e;">)</span> <span style="color: #78880e;">var</span><span style="color: #3d85b7;">)</span>
   <span style="color: #3d85b7;">var</span><span style="color: #a17e11;">)</span>
 
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">setq</span><span style="color: #3d85b7;"> warning-minimum-log-level </span><span style="color: #3d85b7; font-weight: bold;">:debug</span><span style="color: #a17e11;">)</span>
-<span style="color: #a17e11;">(</span><span style="color: #3d85b7;">argh 1</span><span style="color: #a17e11;">)</span>
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">argh</span><span style="color: #3d85b7;"> 1</span><span style="color: #a17e11;">)</span>
 </pre>
 </div>
 
@@ -2542,7 +2560,7 @@ The macro is not tangled to <code>epdh.el</code>, so you may add it to your code
 <span style="color: #73139976b41e;">                 Default is :debug."</span>
   <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">pcase-let*</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85;">(</span><span style="color: #a17e11;">fn-name (</span><span style="color: #3d85b7; font-weight: bold;">with-current-buffer</span>
 <span style="color: #3d85b7;">                            (</span><span style="color: #78880e; font-weight: bold;">or</span><span style="color: #78880e;"> byte-compile-current-buffer (</span><span style="color: #3d8b85; text-decoration: underline;">current-buffer</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
-                          <span style="color: #4d1e63e073ad;">;; </span><span style="color: #4d1e63e073ad;">This is a hack, but a nifty one.</span>
+                          <span style="color: #4d1e63e073ad;">;; </span><span style="color: #4d1e63e073ad; font-style: italic;">This is a hack, but a nifty one.</span>
 <span style="color: #4d1e63e073ad;">                          </span><span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">save-excursion</span>
 <span style="color: #78880e;">                            (</span><span style="color: #3d8b85; text-decoration: underline;">beginning-of-defun</span><span style="color: #78880e;">)</span>
                             <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">cl-second</span><span style="color: #3d8b85;"> (</span><span style="color: #a38528; text-decoration: underline;">read</span><span style="color: #a38528;"> (</span><span style="color: #648daa; text-decoration: underline;">current-buffer</span><span style="color: #a38528;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span>
@@ -2666,22 +2684,22 @@ The editor of this handbook uses <code>iedit</code> with these customizations:
 <span style="color: #3d8b85;">          (</span><span style="color: #a17e11; font-weight: bold;">and</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7; text-decoration: underline;">derived-mode-p</span><span style="color: #3d85b7;"> 'prog-mode</span><span style="color: #a17e11;">)</span>
                <span style="color: #a17e11;">(</span><span style="color: #cb4b16; font-weight: bold;">not</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; font-weight: bold;">or</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">nth</span><span style="color: #3d8b85;"> 4 (</span><span style="color: #a38528; text-decoration: underline;">syntax-ppss</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
                         <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">nth</span><span style="color: #3d8b85;"> 3 (</span><span style="color: #a38528; text-decoration: underline;">syntax-ppss</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
-      <span style="color: #441b4ac2180a;">;; </span><span style="color: #441b4ac2180a;">prog-mode is active and point is in a comment, string, or</span>
-<span style="color: #441b4ac2180a;">      </span><span style="color: #441b4ac2180a;">;; </span><span style="color: #441b4ac2180a;">already in iedit-mode</span>
+      <span style="color: #441b4ac2180a;">;; </span><span style="color: #441b4ac2180a; font-style: italic;">prog-mode is active and point is in a comment, string, or</span>
+<span style="color: #441b4ac2180a;">      </span><span style="color: #441b4ac2180a;">;; </span><span style="color: #441b4ac2180a; font-style: italic;">already in iedit-mode</span>
 <span style="color: #441b4ac2180a;">      </span><span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">call-interactively</span><span style="color: #3d8b85;"> #'ap/iedit-mode</span><span style="color: #78880e;">)</span>
-    <span style="color: #441b4ac2180a;">;; </span><span style="color: #441b4ac2180a;">Not prog-mode or not in comment or string</span>
+    <span style="color: #441b4ac2180a;">;; </span><span style="color: #441b4ac2180a; font-style: italic;">Not prog-mode or not in comment or string</span>
 <span style="color: #441b4ac2180a;">    </span><span style="color: #78880e;">(</span><span style="color: #3d8b85; font-weight: bold;">if</span><span style="color: #3d8b85;"> (</span><span style="color: #cb4b16; font-weight: bold;">not</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7; text-decoration: underline;">equal</span><span style="color: #3d85b7;"> flyspell-previous-command this-command</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span>
-        <span style="color: #43b451175010;">;; </span><span style="color: #cb4b16;">FIXME</span><span style="color: #43b451175010;">: This mostly works, but if there are two words on the</span>
-<span style="color: #43b451175010;">        </span><span style="color: #43b451175010;">;; </span><span style="color: #43b451175010;">same line that are misspelled, it doesn't work quite right</span>
-<span style="color: #43b451175010;">        </span><span style="color: #43b451175010;">;; </span><span style="color: #43b451175010;">when correcting the earlier word after correcting the later</span>
-<span style="color: #43b451175010;">        </span><span style="color: #43b451175010;">;; </span><span style="color: #43b451175010;">one</span>
+        <span style="color: #43b451175010;">;; </span><span style="color: #cb4b16;">FIXME</span><span style="color: #43b451175010; font-style: italic;">: This mostly works, but if there are two words on the</span>
+<span style="color: #43b451175010;">        </span><span style="color: #43b451175010;">;; </span><span style="color: #43b451175010; font-style: italic;">same line that are misspelled, it doesn't work quite right</span>
+<span style="color: #43b451175010;">        </span><span style="color: #43b451175010;">;; </span><span style="color: #43b451175010; font-style: italic;">when correcting the earlier word after correcting the later</span>
+<span style="color: #43b451175010;">        </span><span style="color: #43b451175010;">;; </span><span style="color: #43b451175010; font-style: italic;">one</span>
 
-<span style="color: #43b451175010;">        </span><span style="color: #43b451175010;">;; </span><span style="color: #43b451175010;">First correction; autocorrect</span>
+<span style="color: #43b451175010;">        </span><span style="color: #43b451175010;">;; </span><span style="color: #43b451175010; font-style: italic;">First correction; autocorrect</span>
 <span style="color: #43b451175010;">        </span><span style="color: #3d8b85;">(</span><span style="color: #a17e11; text-decoration: underline;">call-interactively</span><span style="color: #a17e11;"> 'flyspell-auto-correct-previous-word</span><span style="color: #3d8b85;">)</span>
-      <span style="color: #43b451175010;">;; </span><span style="color: #43b451175010;">First correction was not wanted; use popup to choose</span>
+      <span style="color: #43b451175010;">;; </span><span style="color: #43b451175010; font-style: italic;">First correction was not wanted; use popup to choose</span>
 <span style="color: #43b451175010;">      </span><span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">progn</span>
 <span style="color: #a17e11;">        (</span><span style="color: #3d85b7; font-weight: bold;">save-excursion</span>
-<span style="color: #3d85b7;">          (</span><span style="color: #78880e; text-decoration: underline;">undo</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #5faa4ffb1f21;">; </span><span style="color: #5faa4ffb1f21;">This doesn't move point, which I think may be the problem.</span>
+<span style="color: #3d85b7;">          (</span><span style="color: #78880e; text-decoration: underline;">undo</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #5faa4ffb1f21;">; </span><span style="color: #5faa4ffb1f21; font-style: italic;">This doesn't move point, which I think may be the problem.</span>
 <span style="color: #5faa4ffb1f21;">        </span><span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">flyspell-region</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">line-beginning-position</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">line-end-position</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
         <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">call-interactively</span><span style="color: #3d85b7;"> 'flyspell-correct-previous-word-generic</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
 </pre>
@@ -2700,7 +2718,7 @@ The editor of this handbook uses <code>iedit</code> with these customizations:
     <span style="color: #78880e;">(</span><span style="color: #3d8b85;">'(</span><span style="color: #a17e11;">4</span><span style="color: #3d8b85;">)</span> <span style="color: #3d8b85;">(</span><span style="color: #a17e11; text-decoration: underline;">funcall</span><span style="color: #a17e11;"> orig-fn</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
     <span style="color: #78880e;">(</span><span style="color: #3d8b85;">_ (</span><span style="color: #a17e11; font-weight: bold;">user-error</span><span style="color: #a17e11;"> </span><span style="color: #b86396762cce;">"`</span><span style="color: #b86396762cce; font-weight: bold;">ap/iedit-mode</span><span style="color: #b86396762cce;">' called with prefix: %s"</span> <span style="color: #a17e11;">prefix</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Override default `</span><span style="color: #268bd2; font-weight: bold;">iedit-mode</span><span style="color: #586e75;">' function with advice.</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Override default `</span><span style="color: #268bd2; font-weight: bold; font-style: italic;">iedit-mode</span><span style="color: #586e75; font-style: italic;">' function with advice.</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">advice-add</span><span style="color: #3d85b7;"> #'iedit-mode </span><span style="color: #3d85b7; font-weight: bold;">:around</span><span style="color: #3d85b7;"> #'ap/iedit-mode</span><span style="color: #a17e11;">)</span>
 </pre>
 </div>
@@ -2875,7 +2893,7 @@ Byte-compile and load all elisp files in <code>DIRECTORY</code>.  Interactively,
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75;">###</span><span style="color: #cb4b16; font-weight: bold;">autoload</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75; font-style: italic;">###</span><span style="color: #cb4b16; font-weight: bold; font-style: italic;">autoload</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">defun</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">epdh/byte-compile-and-load-directory</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">directory</span><span style="color: #3d85b7;">)</span>
   <span style="color: #73139976b41e;">"Byte-compile and load all elisp files in DIRECTORY.</span>
 <span style="color: #73139976b41e;">Interactively, directory defaults to `</span><span style="color: #73139976b41e; font-weight: bold;">default-directory</span><span style="color: #73139976b41e;">' and asks</span>
@@ -2883,7 +2901,7 @@ Byte-compile and load all elisp files in <code>DIRECTORY</code>.  Interactively,
   <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">interactive</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">list</span><span style="color: #3d8b85;"> default-directory</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
   <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">if</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; font-weight: bold;">or</span><span style="color: #3d8b85;"> (</span><span style="color: #cb4b16; font-weight: bold;">not</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7; text-decoration: underline;">called-interactively-p</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span>
           <span style="color: #3d8b85;">(</span><span style="color: #a17e11; text-decoration: underline;">yes-or-no-p</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7; text-decoration: underline;">format</span><span style="color: #3d85b7;"> </span><span style="color: #73139976b41e;">"Compile and load all files in %s?"</span> <span style="color: #3d85b7;">directory</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
-      <span style="color: #441b4ac2180a;">;; </span><span style="color: #441b4ac2180a;">Not sure if binding `</span><span style="color: #441b4ac2180a; font-weight: bold;">load-path</span><span style="color: #441b4ac2180a;">' is necessary.</span>
+      <span style="color: #441b4ac2180a;">;; </span><span style="color: #441b4ac2180a; font-style: italic;">Not sure if binding `</span><span style="color: #441b4ac2180a; font-weight: bold; font-style: italic;">load-path</span><span style="color: #441b4ac2180a; font-style: italic;">' is necessary.</span>
 <span style="color: #441b4ac2180a;">      </span><span style="color: #78880e;">(</span><span style="color: #3d8b85; font-weight: bold;">let*</span><span style="color: #3d8b85;"> (</span><span style="color: #a17e11;">(</span><span style="color: #3d85b7;">load-path (</span><span style="color: #78880e; text-decoration: underline;">cons</span><span style="color: #78880e;"> directory load-path</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
              <span style="color: #a17e11;">(</span><span style="color: #3d85b7;">files (</span><span style="color: #78880e; text-decoration: underline;">directory-files</span><span style="color: #78880e;"> directory 't (</span><span style="color: #3d8b85; font-weight: bold;">rx</span><span style="color: #3d8b85;"> </span><span style="color: #65bc957591ca;">".el"</span> <span style="color: #3d8b85;">eos</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span>
         <span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">dolist</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7;">file files</span><span style="color: #a17e11;">)</span>
@@ -2901,7 +2919,7 @@ Replace macro form before or after point with its expansion.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75;">###</span><span style="color: #cb4b16; font-weight: bold;">autoload</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75; font-style: italic;">###</span><span style="color: #cb4b16; font-weight: bold; font-style: italic;">autoload</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">defun</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">epdh/emacs-lisp-macroreplace</span><span style="color: #3d85b7;"> ()</span>
   <span style="color: #73139976b41e;">"Replace macro form before or after point with its expansion."</span>
   <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">interactive</span><span style="color: #3d85b7;">)</span>
@@ -3260,71 +3278,71 @@ When you make a new package, the <code>auto-insert</code> command will insert a 
 <div class="org-src-container">
 <pre class="src src-elisp"><span style="color: #586e75;">;;; </span><span style="color: #a94058fc37c0; background-color: #073642; font-weight: bold; text-decoration: overline;">package-name.el --- Package description (don't include the word "Emacs")  -*- lexical-binding: t; -*-</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Copyright (C) 2017 First Last</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Copyright (C) 2017 First Last</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Author: First Last <a href="mailto:name%40example.com">&lt;name@example.com&gt;</a></span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">URL: http://example.com/package-name.el</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Version: 0.1-pre</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Package-Requires: ((emacs "25.2"))</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Keywords: something</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Author: First Last <a href="mailto:name%40example.com">&lt;name@example.com&gt;</a></span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">URL: http://example.com/package-name.el</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Version: 0.1-pre</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Package-Requires: ((emacs "25.2"))</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Keywords: something</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">This file is not part of GNU Emacs.</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">This file is not part of GNU Emacs.</span>
 
 <span style="color: #586e75;">;;; </span><span style="color: #a94058fc37c0; background-color: #073642; font-weight: bold; text-decoration: overline;">Commentary:</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">This is my package.  It is nice.  You should try it.</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">This is my package.  It is nice.  You should try it.</span>
 
 <span style="color: #586e75;">;;;; </span><span style="color: #99d97b0c1b26; background-color: #073642; font-weight: bold; text-decoration: overline;">Installation</span>
 
 <span style="color: #586e75;">;;;;; </span><span style="color: #740c820c16f3; background-color: #073642; font-weight: bold; text-decoration: overline;">MELPA</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">If you installed from MELPA, you're done.</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">If you installed from MELPA, you're done.</span>
 
 <span style="color: #586e75;">;;;;; </span><span style="color: #740c820c16f3; background-color: #073642; font-weight: bold; text-decoration: overline;">Manual</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Install these required packages:</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Install these required packages:</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">+ foo</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">+ bar</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">+ foo</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">+ bar</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Then put this file in your load-path, and put this in your init</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">file:</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Then put this file in your load-path, and put this in your init</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">file:</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">(require 'package-name)</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">(require 'package-name)</span>
 
 <span style="color: #586e75;">;;;; </span><span style="color: #99d97b0c1b26; background-color: #073642; font-weight: bold; text-decoration: overline;">Usage</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Run one of these commands:</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Run one of these commands:</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">`</span><span style="color: #268bd2; font-weight: bold;">package-name-command</span><span style="color: #586e75;">': Frobnicate the flange.</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">`</span><span style="color: #268bd2; font-weight: bold; font-style: italic;">package-name-command</span><span style="color: #586e75; font-style: italic;">': Frobnicate the flange.</span>
 
 <span style="color: #586e75;">;;;; </span><span style="color: #99d97b0c1b26; background-color: #073642; font-weight: bold; text-decoration: overline;">Tips</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">+ You can customize settings in the `</span><span style="color: #268bd2; font-weight: bold;">package-name</span><span style="color: #586e75;">' group.</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">+ You can customize settings in the `</span><span style="color: #268bd2; font-weight: bold; font-style: italic;">package-name</span><span style="color: #586e75; font-style: italic;">' group.</span>
 
 <span style="color: #586e75;">;;;; </span><span style="color: #99d97b0c1b26; background-color: #073642; font-weight: bold; text-decoration: overline;">Credits</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">This package would not have been possible without the following</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">packages: foo[1], which showed me how to bifurcate, and bar[2],</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">which takes care of flanges.</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">This package would not have been possible without the following</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">packages: foo[1], which showed me how to bifurcate, and bar[2],</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">which takes care of flanges.</span>
 <span style="color: #586e75;">;;</span>
-<span style="color: #586e75;">;;  </span><span style="color: #586e75;">[1] https://example.com/foo.el</span>
-<span style="color: #586e75;">;;  </span><span style="color: #586e75;">[2] https://example.com/bar.el</span>
+<span style="color: #586e75;">;;  </span><span style="color: #586e75; font-style: italic;">[1] https://example.com/foo.el</span>
+<span style="color: #586e75;">;;  </span><span style="color: #586e75; font-style: italic;">[2] https://example.com/bar.el</span>
 
 <span style="color: #586e75;">;;; </span><span style="color: #a94058fc37c0; background-color: #073642; font-weight: bold; text-decoration: overline;">License:</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">This program is free software; you can redistribute it and/or modify</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">it under the terms of the GNU General Public License as published by</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">the Free Software Foundation, either version 3 of the License, or</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">(at your option) any later version.</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">This program is free software; you can redistribute it and/or modify</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">it under the terms of the GNU General Public License as published by</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">the Free Software Foundation, either version 3 of the License, or</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">(at your option) any later version.</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">This program is distributed in the hope that it will be useful,</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">GNU General Public License for more details.</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">This program is distributed in the hope that it will be useful,</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">GNU General Public License for more details.</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">You should have received a copy of the GNU General Public License</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">along with this program.  If not, see <a href="http://www.gnu.org/licenses/">&lt;http://www.gnu.org/licenses/&gt;</a>.</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">You should have received a copy of the GNU General Public License</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">along with this program.  If not, see <a href="http://www.gnu.org/licenses/">&lt;http://www.gnu.org/licenses/&gt;</a>.</span>
 
 <span style="color: #586e75;">;;; </span><span style="color: #a94058fc37c0; background-color: #073642; font-weight: bold; text-decoration: overline;">Code:</span>
 
@@ -3350,13 +3368,13 @@ When you make a new package, the <code>auto-insert</code> command will insert a 
 
 <span style="color: #586e75;">;;;;; </span><span style="color: #740c820c16f3; background-color: #073642; font-weight: bold; text-decoration: overline;">Keymaps</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">This technique makes it easier and less verbose to define keymaps.</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">This technique makes it easier and less verbose to define keymaps.</span>
 
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">defvar</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">package-name-map</span>
-<span style="color: #3d85b7;">  </span><span style="color: #4d1e63e073ad;">;; </span><span style="color: #4d1e63e073ad;">This makes it easy and much less verbose to define keys</span>
+<span style="color: #3d85b7;">  </span><span style="color: #4d1e63e073ad;">;; </span><span style="color: #4d1e63e073ad; font-style: italic;">This makes it easy and much less verbose to define keys</span>
 <span style="color: #4d1e63e073ad;">  </span><span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">let</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85;">(</span><span style="color: #a17e11; text-decoration: underline;">map</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7; text-decoration: underline;">make-sparse-keymap</span><span style="color: #3d85b7;"> </span><span style="color: #73139976b41e;">"package-name map"</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span>
         <span style="color: #3d8b85;">(</span><span style="color: #a17e11;">maps (</span><span style="color: #3d85b7; text-decoration: underline;">list</span>
-<span style="color: #3d85b7;">               </span><span style="color: #4d1e63e073ad;">;; </span><span style="color: #4d1e63e073ad;">Mappings go here, e.g.:</span>
+<span style="color: #3d85b7;">               </span><span style="color: #4d1e63e073ad;">;; </span><span style="color: #4d1e63e073ad; font-style: italic;">Mappings go here, e.g.:</span>
 <span style="color: #4d1e63e073ad;">               </span><span style="color: #73139976b41e;">"RET"</span> <span style="color: #3d85b7;">#'package-name-RET-command</span>
 <span style="color: #3d85b7;">               [</span><span style="color: #78880e;">remap search-forward</span><span style="color: #3d85b7;">]</span> <span style="color: #3d85b7;">#'package-name-search-forward</span>
 <span style="color: #3d85b7;">               </span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
@@ -3371,7 +3389,7 @@ When you make a new package, the <code>auto-insert</code> command will insert a 
 
 <span style="color: #586e75;">;;;;; </span><span style="color: #740c820c16f3; background-color: #073642; font-weight: bold; text-decoration: overline;">Commands</span>
 
-<span style="color: #586e75;">;;;</span><span style="color: #586e75;">###</span><span style="color: #cb4b16; font-weight: bold;">autoload</span>
+<span style="color: #586e75;">;;;</span><span style="color: #586e75; font-style: italic;">###</span><span style="color: #cb4b16; font-weight: bold; font-style: italic;">autoload</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">defun</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">package-name-command</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">args</span><span style="color: #3d85b7;">)</span>
   <span style="color: #73139976b41e;">"Frobnicate the flange."</span>
   <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">interactive</span><span style="color: #3d85b7;">)</span>
@@ -3406,7 +3424,7 @@ You should always include a readme with your project.  Typically it will be incl
 
 <span style="color: #586e75; background-color: #0c1e24; font-weight: bold; font-style: italic;">#+PROPERTY: LOGGING nil</span>
 
-<span style="color: #586e75;"># Note: This readme works with the org-make-toc <a href="https://github.com/alphapapa/org-make-toc">&lt;https://github.com/alphapapa/org-make-toc&gt;</a> package, which automatically updates the table of contents.</span>
+<span style="color: #586e75; font-style: italic;"># Note: This readme works with the org-make-toc <a href="https://github.com/alphapapa/org-make-toc">&lt;https://github.com/alphapapa/org-make-toc&gt;</a> package, which automatically updates the table of contents.</span>
 
 <span style="color: #b58900; text-decoration: underline;"><a href="https://melpa.org/#/package-name">file:https://melpa.org/packages/package-name-badge.svg</a></span> <span style="color: #b58900; text-decoration: underline;"><a href="https://stable.melpa.org/#/package-name">file:https://stable.melpa.org/packages/package-name-badge.svg</a></span>
 
@@ -3504,12 +3522,12 @@ Bug reports, feature requests, suggestions &#8212; <span style="font-style: ital
 
 GPLv3
 
-<span style="color: #586e75;"># Local Variables&#58;</span>
-<span style="color: #586e75;"># eval: (require 'org-make-toc)</span>
-<span style="color: #586e75;"># before-save-hook: org-make-toc</span>
-<span style="color: #586e75;"># org-export-with-properties: ()</span>
-<span style="color: #586e75;"># org-export-with-title: t</span>
-<span style="color: #586e75;"># End:</span>
+<span style="color: #586e75; font-style: italic;"># Local Variables&#58;</span>
+<span style="color: #586e75; font-style: italic;"># eval: (require 'org-make-toc)</span>
+<span style="color: #586e75; font-style: italic;"># before-save-hook: org-make-toc</span>
+<span style="color: #586e75; font-style: italic;"># org-export-with-properties: ()</span>
+<span style="color: #586e75; font-style: italic;"># org-export-with-title: t</span>
+<span style="color: #586e75; font-style: italic;"># End:</span>
 </pre>
 </div>
 </div>
@@ -3692,6 +3710,7 @@ Things EMake will never do (or ‘reasons you may still need Cask’):
 </blockquote>
 </div>
 </div>
+
 <div id="outline-container-%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fmakel%2F%5D%5Bmakel%3A%20A%20makefile%20to%20facilitate%20checking%20Emacs%20packages%5D%5D" class="outline-6">
 <h6 id="%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fmakel%2F%5D%5Bmakel%3A%20A%20makefile%20to%20facilitate%20checking%20Emacs%20packages%5D%5D"><a id="ID-5bcfdd7f-40a3-40b4-bd0a-586602791161"></a><a href="https://gitlab.petton.fr/DamienCassou/makel/">makel: A makefile to facilitate checking Emacs packages</a></h6>
 <div class="outline-text-6" id="text-%5B%5Bhttps%3A%2F%2Fgitlab.petton.fr%2FDamienCassou%2Fmakel%2F%5D%5Bmakel%3A%20A%20makefile%20to%20facilitate%20checking%20Emacs%20packages%5D%5D">
@@ -3872,7 +3891,7 @@ This example shows the use of <code>pcase-let*</code> to destructure and bind a 
                                         <span style="color: #3d85b7;">'second </span><span style="color: #73139976b41e;">"&#946;"</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
   <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">pcase-let*</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85;">(</span><span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">map</span><span style="color: #3d85b7;"> English</span><span style="color: #a17e11;">)</span> <span style="color: #a17e11;">alphabets</span><span style="color: #3d8b85;">)</span>
                <span style="color: #3d8b85;">(</span><span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">map</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">'</span><span style="color: #78880e; text-decoration: underline;">first</span><span style="color: #78880e;"> letter</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">second</span><span style="color: #a17e11;">)</span> <span style="color: #a17e11;">English</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
-    <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">list</span><span style="color: #3d8b85;"> letter second</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;; </span><span style="color: #586e75;">=&gt; ("a" "b")</span>
+    <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">list</span><span style="color: #3d8b85;"> letter second</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>  <span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; ("a" "b")</span>
 </pre>
 </div>
 </div>
@@ -3958,7 +3977,7 @@ Courtesy of <a href="#%5B%5Bhttp%3A%2F%2Fkitchingroup.cheme.cmu.edu%2Fblog%2F201
 <span style="color: #a17e11;">                    (</span><span style="color: #3d85b7; text-decoration: underline;">list</span><span style="color: #3d85b7;"> key '()</span> <span style="color: #3d85b7;">`(</span><span style="color: #78880e;">plist-get ',g ,key</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span>
        <span style="color: #3d8b85;">,@body</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Used as:</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Used as:</span>
 
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7;">with-dict (</span><span style="color: #78880e; font-weight: bold;">:a</span><span style="color: #78880e;"> 1 </span><span style="color: #78880e; font-weight: bold;">:b</span><span style="color: #78880e;"> 'some-symbol </span><span style="color: #78880e; font-weight: bold;">:c</span><span style="color: #78880e;"> 3</span><span style="color: #3d85b7;">)</span>
            <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">:b</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
@@ -3984,7 +4003,7 @@ And:
                              <span style="color: #a17e11;">val</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
      <span style="color: #78880e;">,@body</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Used like:</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Used like:</span>
 
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7;">with-plist-vals (</span><span style="color: #78880e; font-weight: bold;">:a</span><span style="color: #78880e;"> 4 </span><span style="color: #78880e; font-weight: bold;">:b</span><span style="color: #78880e;"> 6</span><span style="color: #3d85b7;">)</span>
                  <span style="color: #3d85b7;">(</span><span style="color: #78880e;">* 2 a</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
@@ -4043,7 +4062,7 @@ From Phil Lord's <a href="http://phillord.github.io/m-buffer-el/#sec-5-1-2">m-bu
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75;">###</span><span style="color: #cb4b16; font-weight: bold;">autoload</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75; font-style: italic;">###</span><span style="color: #cb4b16; font-weight: bold; font-style: italic;">autoload</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">cl-defmacro</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">bench</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">&amp;optional</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85;">times 100000</span><span style="color: #78880e;">)</span> <span style="color: #78880e;">&amp;rest</span><span style="color: #78880e;"> body</span><span style="color: #3d85b7;">)</span>
   <span style="color: #73139976b41e;">"Call `</span><span style="color: #73139976b41e; font-weight: bold;">benchmark-run-compiled</span><span style="color: #73139976b41e;">' on BODY with TIMES iterations, returning list suitable for Org source block evaluation.</span>
 <span style="color: #73139976b41e;">Garbage is collected before calling `</span><span style="color: #73139976b41e; font-weight: bold;">benchmark-run-compiled</span><span style="color: #73139976b41e;">' to</span>
@@ -4109,10 +4128,10 @@ These macros make comparing multiple forms easy:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #859900;">TODO</span><span style="color: #586e75;">: Consider not using `</span><span style="color: #268bd2; font-weight: bold;">-on</span><span style="color: #586e75;">' here to avoid the extra dependency.</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #859900;">TODO</span><span style="color: #586e75; font-style: italic;">: Consider not using `</span><span style="color: #268bd2; font-weight: bold; font-style: italic;">-on</span><span style="color: #586e75; font-style: italic;">' here to avoid the extra dependency.</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">require</span><span style="color: #3d85b7;"> '</span><span style="color: #3d85b7; font-weight: bold;">dash-functional</span><span style="color: #a17e11;">)</span>
 
-<span style="color: #586e75;">;;;</span><span style="color: #586e75;">###</span><span style="color: #cb4b16; font-weight: bold;">autoload</span>
+<span style="color: #586e75;">;;;</span><span style="color: #586e75; font-style: italic;">###</span><span style="color: #cb4b16; font-weight: bold; font-style: italic;">autoload</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">cl-defmacro</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">bench-multi</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">&amp;key</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85;">times 1</span><span style="color: #78880e;">)</span> <span style="color: #78880e;">forms ensure-equal raw</span><span style="color: #3d85b7;">)</span>
   <span style="color: #73139976b41e;">"Return Org table as a list with benchmark results for FORMS.</span>
 <span style="color: #73139976b41e;">Runs FORMS with `</span><span style="color: #73139976b41e; font-weight: bold;">benchmark-run-compiled</span><span style="color: #73139976b41e;">' for TIMES iterations.</span>
@@ -4131,14 +4150,14 @@ These macros make comparing multiple forms easy:
 <span style="color: #73139976b41e;">are numbered from 0.</span>
 
 <span style="color: #73139976b41e;">Before each form is run, `</span><span style="color: #73139976b41e; font-weight: bold;">garbage-collect</span><span style="color: #73139976b41e;">' is called."</span>
-  <span style="color: #4d1e63e073ad;">;; </span><span style="color: #6c71c4;">MAYBE</span><span style="color: #4d1e63e073ad;">: Since `</span><span style="color: #4d1e63e073ad; font-weight: bold;">bench-multi-lexical</span><span style="color: #4d1e63e073ad;">' byte-compiles the file, I'm not sure if</span>
-<span style="color: #4d1e63e073ad;">  </span><span style="color: #4d1e63e073ad;">;; </span><span style="color: #4d1e63e073ad;">`</span><span style="color: #4d1e63e073ad; font-weight: bold;">benchmark-run-compiled</span><span style="color: #4d1e63e073ad;">' is necessary over `</span><span style="color: #4d1e63e073ad; font-weight: bold;">benchmark-run</span><span style="color: #4d1e63e073ad;">', or if it matters.</span>
+  <span style="color: #4d1e63e073ad;">;; </span><span style="color: #6c71c4;">MAYBE</span><span style="color: #4d1e63e073ad; font-style: italic;">: Since `</span><span style="color: #4d1e63e073ad; font-weight: bold; font-style: italic;">bench-multi-lexical</span><span style="color: #4d1e63e073ad; font-style: italic;">' byte-compiles the file, I'm not sure if</span>
+<span style="color: #4d1e63e073ad;">  </span><span style="color: #4d1e63e073ad;">;; </span><span style="color: #4d1e63e073ad; font-style: italic;">`</span><span style="color: #4d1e63e073ad; font-weight: bold; font-style: italic;">benchmark-run-compiled</span><span style="color: #4d1e63e073ad; font-style: italic;">' is necessary over `</span><span style="color: #4d1e63e073ad; font-weight: bold; font-style: italic;">benchmark-run</span><span style="color: #4d1e63e073ad; font-style: italic;">', or if it matters.</span>
 <span style="color: #4d1e63e073ad;">  </span><span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">declare</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85;">indent defun</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
   <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">let*</span><span style="color: #78880e;">(</span><span style="color: #3d8b85;">(</span><span style="color: #a17e11;">keys (</span><span style="color: #3d85b7; text-decoration: underline;">gensym</span><span style="color: #3d85b7;"> </span><span style="color: #73139976b41e;">"keys"</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span>
         <span style="color: #3d8b85;">(</span><span style="color: #a17e11;">result-times (</span><span style="color: #3d85b7; text-decoration: underline;">gensym</span><span style="color: #3d85b7;"> </span><span style="color: #73139976b41e;">"result-times"</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span>
         <span style="color: #3d8b85;">(</span><span style="color: #a17e11;">header '(</span><span style="color: #3d85b7;">(</span><span style="color: #921da24c26e6;">"Form"</span> <span style="color: #921da24c26e6;">"x faster than next"</span> <span style="color: #921da24c26e6;">"Total runtime"</span> <span style="color: #921da24c26e6;">"# of GCs"</span> <span style="color: #921da24c26e6;">"Total GC runtime"</span><span style="color: #3d85b7;">)</span>
                   <span style="color: #3d85b7;">hline</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span>
-        <span style="color: #43b451175010;">;; </span><span style="color: #43b451175010;">Copy forms so that a subsequent call of the macro will get the original forms.</span>
+        <span style="color: #43b451175010;">;; </span><span style="color: #43b451175010; font-style: italic;">Copy forms so that a subsequent call of the macro will get the original forms.</span>
 <span style="color: #43b451175010;">        </span><span style="color: #3d8b85;">(</span><span style="color: #a17e11;">forms (</span><span style="color: #3d85b7; text-decoration: underline;">copy-list</span><span style="color: #3d85b7;"> forms</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span>
         <span style="color: #3d8b85;">(</span><span style="color: #a17e11;">descriptions (</span><span style="color: #3d85b7; font-weight: bold;">cl-loop</span><span style="color: #3d85b7;"> for form in forms</span>
 <span style="color: #3d85b7;">                               for i from 0</span>
@@ -4169,7 +4188,7 @@ These macros make comparing multiple forms easy:
                                         <span style="color: #a38528;">(</span><span style="color: #648daa; text-decoration: underline;">gethash</span><span style="color: #648daa;"> (</span><span style="color: #7f8d22; text-decoration: underline;">nth</span><span style="color: #7f8d22;"> (</span><span style="color: #5b8682; text-decoration: underline;">1+</span><span style="color: #5b8682;"> i</span><span style="color: #7f8d22;">)</span> <span style="color: #7f8d22;">,keys</span><span style="color: #648daa;">)</span> <span style="color: #648daa;">bench-multi-results</span><span style="color: #a38528;">)</span><span style="color: #3d8b85;">)</span>
                           <span style="color: #3d8b85;">do (</span><span style="color: #a38528; font-weight: bold;">if</span><span style="color: #a38528;"> (</span><span style="color: #648daa; text-decoration: underline;">sequencep</span><span style="color: #648daa;"> (</span><span style="color: #7f8d22; text-decoration: underline;">gethash</span><span style="color: #7f8d22;"> (</span><span style="color: #5b8682; text-decoration: underline;">car</span><span style="color: #5b8682;"> (</span><span style="color: #a38528; text-decoration: underline;">hash-table-keys</span><span style="color: #a38528;"> bench-multi-results</span><span style="color: #5b8682;">)</span><span style="color: #7f8d22;">)</span> <span style="color: #7f8d22;">bench-multi-results</span><span style="color: #648daa;">)</span><span style="color: #a38528;">)</span>
                                  <span style="color: #a38528;">(</span><span style="color: #648daa; font-weight: bold;">let*</span><span style="color: #648daa;"> (</span><span style="color: #7f8d22;">(</span><span style="color: #5b8682;">k1</span><span style="color: #7f8d22;">)</span> <span style="color: #7f8d22;">(</span><span style="color: #5b8682;">k2</span><span style="color: #7f8d22;">)</span>
-                                        <span style="color: #4c21512d2a9e;">;; </span><span style="color: #4c21512d2a9e;">If the difference in one order is nil, try in other order.</span>
+                                        <span style="color: #4c21512d2a9e;">;; </span><span style="color: #4c21512d2a9e; font-style: italic;">If the difference in one order is nil, try in other order.</span>
 <span style="color: #4c21512d2a9e;">                                        </span><span style="color: #7f8d22;">(</span><span style="color: #5b8682;">difference (</span><span style="color: #a38528; font-weight: bold;">or</span><span style="color: #a38528;"> (</span><span style="color: #648daa; font-weight: bold;">setq</span><span style="color: #648daa;"> k1 (</span><span style="color: #7f8d22; text-decoration: underline;">nth</span><span style="color: #7f8d22;"> i ,keys</span><span style="color: #648daa;">)</span>
                                                               <span style="color: #648daa;">k2 (</span><span style="color: #7f8d22; text-decoration: underline;">nth</span><span style="color: #7f8d22;"> (</span><span style="color: #5b8682; text-decoration: underline;">1+</span><span style="color: #5b8682;"> i</span><span style="color: #7f8d22;">)</span> <span style="color: #7f8d22;">,keys</span><span style="color: #648daa;">)</span>
                                                               <span style="color: #648daa;">difference (</span><span style="color: #7f8d22; text-decoration: underline;">seq-difference</span><span style="color: #7f8d22;"> (</span><span style="color: #5b8682; text-decoration: underline;">gethash</span><span style="color: #5b8682;"> k1 bench-multi-results</span><span style="color: #7f8d22;">)</span>
@@ -4180,12 +4199,12 @@ These macros make comparing multiple forms easy:
                                                                                          <span style="color: #7f8d22;">(</span><span style="color: #5b8682; text-decoration: underline;">gethash</span><span style="color: #5b8682;"> k2 bench-multi-results</span><span style="color: #7f8d22;">)</span><span style="color: #648daa;">)</span><span style="color: #a38528;">)</span><span style="color: #5b8682;">)</span><span style="color: #7f8d22;">)</span><span style="color: #648daa;">)</span>
                                    <span style="color: #648daa;">(</span><span style="color: #7f8d22; font-weight: bold;">user-error</span><span style="color: #7f8d22;"> </span><span style="color: #93749fa14291;">"Forms' bench-multi-results not equal: difference (%s - %s): %S"</span>
                                                <span style="color: #7f8d22;">k1 k2 difference</span><span style="color: #648daa;">)</span><span style="color: #a38528;">)</span>
-                               <span style="color: #631d57ca34ae;">;; </span><span style="color: #631d57ca34ae;">Not a sequence</span>
+                               <span style="color: #631d57ca34ae;">;; </span><span style="color: #631d57ca34ae; font-style: italic;">Not a sequence</span>
 <span style="color: #631d57ca34ae;">                               </span><span style="color: #a38528;">(</span><span style="color: #648daa; font-weight: bold;">user-error</span><span style="color: #648daa;"> </span><span style="color: #9815a20fa91d;">"Forms' bench-multi-results not equal: %s:%S %s:%S"</span>
                                            <span style="color: #648daa;">(</span><span style="color: #7f8d22; text-decoration: underline;">nth</span><span style="color: #7f8d22;"> i ,keys</span><span style="color: #648daa;">)</span> <span style="color: #648daa;">(</span><span style="color: #7f8d22; text-decoration: underline;">nth</span><span style="color: #7f8d22;"> (</span><span style="color: #5b8682; text-decoration: underline;">1+</span><span style="color: #5b8682;"> i</span><span style="color: #7f8d22;">)</span> <span style="color: #7f8d22;">,keys</span><span style="color: #648daa;">)</span>
                                            <span style="color: #648daa;">(</span><span style="color: #7f8d22; text-decoration: underline;">gethash</span><span style="color: #7f8d22;"> (</span><span style="color: #5b8682; text-decoration: underline;">nth</span><span style="color: #5b8682;"> i ,keys</span><span style="color: #7f8d22;">)</span> <span style="color: #7f8d22;">bench-multi-results</span><span style="color: #648daa;">)</span>
                                            <span style="color: #648daa;">(</span><span style="color: #7f8d22; text-decoration: underline;">gethash</span><span style="color: #7f8d22;"> (</span><span style="color: #5b8682; text-decoration: underline;">nth</span><span style="color: #5b8682;"> (</span><span style="color: #a38528; text-decoration: underline;">1+</span><span style="color: #a38528;"> i</span><span style="color: #5b8682;">)</span> <span style="color: #5b8682;">,keys</span><span style="color: #7f8d22;">)</span> <span style="color: #7f8d22;">bench-multi-results</span><span style="color: #648daa;">)</span><span style="color: #a38528;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
-             <span style="color: #4d1e63e073ad;">;; </span><span style="color: #4d1e63e073ad;">Add factors to times and return table</span>
+             <span style="color: #4d1e63e073ad;">;; </span><span style="color: #4d1e63e073ad; font-style: italic;">Add factors to times and return table</span>
 <span style="color: #4d1e63e073ad;">             </span><span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">if</span><span style="color: #78880e;"> ,raw</span>
 <span style="color: #78880e;">                 ,result-times</span>
 <span style="color: #78880e;">               (</span><span style="color: #3d8b85; text-decoration: underline;">append</span><span style="color: #3d8b85;"> ',header</span>
@@ -4387,7 +4406,7 @@ To evaluate forms with lexical binding enabled, use this macro:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75;">###</span><span style="color: #cb4b16; font-weight: bold;">autoload</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75; font-style: italic;">###</span><span style="color: #cb4b16; font-weight: bold; font-style: italic;">autoload</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">cl-defmacro</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">bench-multi-lexical</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">&amp;key</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85;">times 1</span><span style="color: #78880e;">)</span> <span style="color: #78880e;">forms ensure-equal raw</span><span style="color: #3d85b7;">)</span>
   <span style="color: #73139976b41e;">"Return Org table as a list with benchmark results for FORMS.</span>
 <span style="color: #73139976b41e;">Runs FORMS from a byte-compiled temp file with `</span><span style="color: #73139976b41e; font-weight: bold;">lexical-binding</span><span style="color: #73139976b41e;">'</span>
@@ -4601,7 +4620,7 @@ This macro compares dynamic and lexical binding.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75;">###</span><span style="color: #cb4b16; font-weight: bold;">autoload</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75; font-style: italic;">###</span><span style="color: #cb4b16; font-weight: bold; font-style: italic;">autoload</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">cl-defmacro</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">bench-dynamic-vs-lexical-binding</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">&amp;key</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85;">times 1</span><span style="color: #78880e;">)</span> <span style="color: #78880e;">forms ensure-equal</span><span style="color: #3d85b7;">)</span>
   <span style="color: #73139976b41e;">"Benchmark FORMS with both dynamic and lexical binding.</span>
 <span style="color: #73139976b41e;">Calls `</span><span style="color: #73139976b41e; font-weight: bold;">bench-multi</span><span style="color: #73139976b41e;">' and `</span><span style="color: #73139976b41e; font-weight: bold;">bench-multi-lexical</span><span style="color: #73139976b41e;">', which see."</span>
@@ -4703,7 +4722,7 @@ This macro benchmarks multiple forms in multiple environments, which is helpful 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75;">###</span><span style="color: #cb4b16; font-weight: bold;">autoload</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75; font-style: italic;">###</span><span style="color: #cb4b16; font-weight: bold; font-style: italic;">autoload</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">cl-defmacro</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">bench-multi-lets</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">&amp;key</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85;">times 1</span><span style="color: #78880e;">)</span> <span style="color: #78880e;">lets forms ensure-equal</span><span style="color: #3d85b7;">)</span>
   <span style="color: #73139976b41e;">"Benchmark FORMS in each of lexical environments defined in LETS.</span>
 <span style="color: #73139976b41e;">LETS is a list of (\"NAME\" BINDING-FORM) forms.</span>
@@ -4828,7 +4847,7 @@ Call this macro from an Org source block and you'll get a results block showing 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75;">###</span><span style="color: #cb4b16; font-weight: bold;">autoload</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;;;</span><span style="color: #586e75; font-style: italic;">###</span><span style="color: #cb4b16; font-weight: bold; font-style: italic;">autoload</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">defmacro</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">elp-profile</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">times prefixes </span><span style="color: #78880e;">&amp;rest</span><span style="color: #78880e;"> body</span><span style="color: #3d85b7;">)</span>
   <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">declare</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85;">indent defun</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
   <span style="color: #3d85b7;">`(</span><span style="color: #78880e; font-weight: bold;">let</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85;">output</span><span style="color: #78880e;">)</span>
@@ -4853,7 +4872,7 @@ Call this macro from an Org source block and you'll get a results block showing 
 </div>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75;">Use like this:</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Use like this:</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">elp-profile</span><span style="color: #3d85b7;"> 10 '(</span><span style="color: #78880e;">map search goto-char car append</span><span style="color: #3d85b7;">)</span>
   <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">goto-char</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">point-min</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
   <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">search-forward</span><span style="color: #78880e;"> </span><span style="color: #921da24c26e6;">"something"</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
@@ -5032,7 +5051,7 @@ The <code>url-rx</code> macro can then be used to test and select parts of URLs:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75;">Accept HTTP or HTTPS</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Accept HTTP or HTTPS</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">let</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">(</span><span style="color: #3d8b85;">url </span><span style="color: #65bc957591ca;">"http://server/path?query#fragment"</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
   <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">when</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">string-match</span><span style="color: #3d8b85;"> (</span><span style="color: #a17e11; font-weight: bold;">url-rx</span><span style="color: #a17e11;"> https? host path (</span><span style="color: #3d85b7;">optional query</span><span style="color: #a17e11;">)</span> <span style="color: #a17e11;">(</span><span style="color: #3d85b7;">optional fragment</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span> <span style="color: #3d8b85;">url</span><span style="color: #78880e;">)</span>
     <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">list</span><span style="color: #3d8b85;"> (</span><span style="color: #a17e11; text-decoration: underline;">match-string</span><span style="color: #a17e11;"> 0 url</span><span style="color: #3d8b85;">)</span>
@@ -5040,14 +5059,14 @@ The <code>url-rx</code> macro can then be used to test and select parts of URLs:
           <span style="color: #3d8b85;">(</span><span style="color: #a17e11; text-decoration: underline;">match-string</span><span style="color: #a17e11;"> 2 url</span><span style="color: #3d8b85;">)</span>
           <span style="color: #3d8b85;">(</span><span style="color: #a17e11; text-decoration: underline;">match-string</span><span style="color: #a17e11;"> 3 url</span><span style="color: #3d8b85;">)</span>
           <span style="color: #3d8b85;">(</span><span style="color: #a17e11; text-decoration: underline;">match-string</span><span style="color: #a17e11;"> 4 url</span><span style="color: #3d8b85;">)</span>
-          <span style="color: #3d8b85;">(</span><span style="color: #a17e11; text-decoration: underline;">match-string</span><span style="color: #a17e11;"> 5 url</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; ("http://server/path?query#fragment" "http" "server" "/path" "query" "fragment")</span>
+          <span style="color: #3d8b85;">(</span><span style="color: #a17e11; text-decoration: underline;">match-string</span><span style="color: #a17e11;"> 5 url</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; ("http://server/path?query#fragment" "http" "server" "/path" "query" "fragment")</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Only accept HTTPS, not plain HTTP</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Only accept HTTPS, not plain HTTP</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">let</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">(</span><span style="color: #3d8b85;">url </span><span style="color: #65bc957591ca;">"http://server/path?query#fragment"</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
   <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">when</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">string-match</span><span style="color: #3d8b85;"> (</span><span style="color: #a17e11; font-weight: bold;">url-rx</span><span style="color: #a17e11;"> https host path (</span><span style="color: #3d85b7;">optional query</span><span style="color: #a17e11;">)</span> <span style="color: #a17e11;">(</span><span style="color: #3d85b7;">optional fragment</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span> <span style="color: #3d8b85;">url</span><span style="color: #78880e;">)</span>
-    <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">list</span><span style="color: #3d8b85;"> (</span><span style="color: #a17e11; text-decoration: underline;">match-string</span><span style="color: #a17e11;"> 0 url</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; nil</span>
+    <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">list</span><span style="color: #3d8b85;"> (</span><span style="color: #a17e11; text-decoration: underline;">match-string</span><span style="color: #a17e11;"> 0 url</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; nil</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Accept any protocol, not just HTTP</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Accept any protocol, not just HTTP</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">let</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">(</span><span style="color: #3d8b85;">url </span><span style="color: #65bc957591ca;">"ftp://server/path"</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
   <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">when</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">string-match</span><span style="color: #3d8b85;"> (</span><span style="color: #a17e11; font-weight: bold;">url-rx</span><span style="color: #a17e11;"> protocol host path (</span><span style="color: #3d85b7;">optional query</span><span style="color: #a17e11;">)</span> <span style="color: #a17e11;">(</span><span style="color: #3d85b7;">optional fragment</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span> <span style="color: #3d8b85;">url</span><span style="color: #78880e;">)</span>
     <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">list</span><span style="color: #3d8b85;"> (</span><span style="color: #a17e11; text-decoration: underline;">match-string</span><span style="color: #a17e11;"> 0 url</span><span style="color: #3d8b85;">)</span>
@@ -5055,7 +5074,7 @@ The <code>url-rx</code> macro can then be used to test and select parts of URLs:
           <span style="color: #3d8b85;">(</span><span style="color: #a17e11; text-decoration: underline;">match-string</span><span style="color: #a17e11;"> 2 url</span><span style="color: #3d8b85;">)</span>
           <span style="color: #3d8b85;">(</span><span style="color: #a17e11; text-decoration: underline;">match-string</span><span style="color: #a17e11;"> 3 url</span><span style="color: #3d8b85;">)</span>
           <span style="color: #3d8b85;">(</span><span style="color: #a17e11; text-decoration: underline;">match-string</span><span style="color: #a17e11;"> 4 url</span><span style="color: #3d8b85;">)</span>
-          <span style="color: #3d8b85;">(</span><span style="color: #a17e11; text-decoration: underline;">match-string</span><span style="color: #a17e11;"> 5 url</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">;</span><span style="color: #586e75;">=&gt; ("ftp://server/path" "ftp" "server" "/path" nil nil)</span>
+          <span style="color: #3d8b85;">(</span><span style="color: #a17e11; text-decoration: underline;">match-string</span><span style="color: #a17e11;"> 5 url</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">;</span><span style="color: #586e75; font-style: italic;">=&gt; ("ftp://server/path" "ftp" "server" "/path" nil nil)</span>
 </pre>
 </div>
 
@@ -5071,9 +5090,9 @@ This example shows the use of a function to expand a list of strings into a sequ
     <span style="color: #78880e;">(</span><span style="color: #3d8b85;">sym (</span><span style="color: #a17e11; font-weight: bold;">:func</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7; font-weight: bold;">lambda</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">_form </span><span style="color: #78880e;">&amp;rest</span><span style="color: #78880e;"> args</span><span style="color: #3d85b7;">)</span>
                   <span style="color: #3d85b7;">`(</span><span style="color: #78880e;">seq symbol-start (</span><span style="color: #3d8b85; font-weight: bold;">or</span><span style="color: #3d8b85;"> ,@args</span><span style="color: #78880e;">)</span> <span style="color: #78880e;">symbol-end</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
     <span style="color: #78880e;">(</span><span style="color: #3d8b85;">cond-keyword (</span><span style="color: #a17e11;">sym </span><span style="color: #b86396762cce;">"if"</span> <span style="color: #b86396762cce;">"elif"</span> <span style="color: #b86396762cce;">"while"</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
-    <span style="color: #78880e;">(</span><span style="color: #3d8b85;">id (</span><span style="color: #a17e11;">sym (</span><span style="color: #3d85b7;">+ alpha_</span><span style="color: #a17e11;">)</span> <span style="color: #a17e11;">(</span><span style="color: #3d85b7;">* alnum_</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">;; </span><span style="color: #586e75;">-&gt; cond-assignment-rx</span>
+    <span style="color: #78880e;">(</span><span style="color: #3d8b85;">id (</span><span style="color: #a17e11;">sym (</span><span style="color: #3d85b7;">+ alpha_</span><span style="color: #a17e11;">)</span> <span style="color: #a17e11;">(</span><span style="color: #3d85b7;">* alnum_</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">-&gt; cond-assignment-rx</span>
 
-<span style="color: #a17e11;">(</span><span style="color: #3d85b7;">cond-assignment-rx cond-keyword ws id </span><span style="color: #73139976b41e;">":"</span> <span style="color: #3d85b7;">id ws </span><span style="color: #73139976b41e;">"="</span> <span style="color: #3d85b7;">ws id</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">;; </span><span style="color: #586e75;">-&gt; "\\_&lt;\\(?:elif\\|if\\|while\\)\\_&gt;[[:blank:]]*\\_&lt;\\(?:[[:alpha:]_]+\\|[[:alnum:]_]*\\)\\_&gt;:\\_&lt;\\(?:[[:alpha:]_]+\\|[[:alnum:]_]*\\)\\_&gt;[[:blank:]]*=[[:blank:]]*\\_&lt;\\(?:[[:alpha:]_]+\\|[[:alnum:]_]*\\)\\_&gt;"</span>
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7;">cond-assignment-rx cond-keyword ws id </span><span style="color: #73139976b41e;">":"</span> <span style="color: #3d85b7;">id ws </span><span style="color: #73139976b41e;">"="</span> <span style="color: #3d85b7;">ws id</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">-&gt; "\\_&lt;\\(?:elif\\|if\\|while\\)\\_&gt;[[:blank:]]*\\_&lt;\\(?:[[:alpha:]_]+\\|[[:alnum:]_]*\\)\\_&gt;:\\_&lt;\\(?:[[:alpha:]_]+\\|[[:alnum:]_]*\\)\\_&gt;[[:blank:]]*=[[:blank:]]*\\_&lt;\\(?:[[:alpha:]_]+\\|[[:alnum:]_]*\\)\\_&gt;"</span>
 </pre>
 </div>
 </div>
@@ -5084,6 +5103,19 @@ This example shows the use of a function to expand a list of strings into a sequ
 <div id="outline-container-Strings" class="outline-3">
 <h3 id="Strings">Strings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="strings">strings</span></span></h3>
 <div class="outline-text-3" id="text-Strings">
+</div>
+
+<div id="outline-container-Strings--Articles" class="outline-4">
+<h4 id="Strings--Articles">Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span></h4>
+<div class="outline-text-4" id="text-Strings--Articles">
+</div><div id="outline-container-%5B%5Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2014%2F05%2F27%2F%5D%5BBuffer-Passing%20Style%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2014%2F05%2F27%2F%5D%5BBuffer-Passing%20Style%5D%5D"><a id="ID-3040c491-39ba-429e-8af7-e4971170d7eb"></a><a href="https://nullprogram.com/blog/2014/05/27/">Buffer-Passing Style</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="buffers">buffers</span></span></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fnullprogram.com%2Fblog%2F2014%2F05%2F27%2F%5D%5BBuffer-Passing%20Style%5D%5D">
+<p>
+Chris Wellons explains how to build strings in several steps.  This is achieved thanks to the creation of a temporary buffer that is passed to helper methods using the "current" buffer mechanism.  A nice and simple design pattern for Emacs.
+</p>
+</div>
+</div>
 </div>
 
 <div id="outline-container-Strings--Libraries" class="outline-4">
@@ -5224,15 +5256,15 @@ Assess aims to be a stateless as possible, leaving Emacs unchanged whether the t
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75;">With ERT:</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">With ERT:</span>
 
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">ert-deftest</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">erte-test-00001</span><span style="color: #3d85b7;"> ()</span>
   <span style="color: #3d85b7;">(</span><span style="color: #78880e;">should (</span><span style="color: #3d8b85; text-decoration: underline;">equal</span><span style="color: #3d8b85;"> 10 (</span><span style="color: #a17e11;">+ 4 6</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">With Expectations:</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">With Expectations:</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7;">expect 10 (</span><span style="color: #78880e;">+ 4 6</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Or:</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Or:</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7;">expectations</span>
 <span style="color: #3d85b7;"> (</span><span style="color: #78880e;">desc </span><span style="color: #921da24c26e6;">"success"</span><span style="color: #3d85b7;">)</span>
  <span style="color: #3d85b7;">(</span><span style="color: #78880e;">expect 10 (</span><span style="color: #3d8b85;">+ 4 6</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
@@ -5510,42 +5542,42 @@ It also provides <code>esxml-query</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75;">Traditionally people pick one of the following options when faced</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">with the task of extracting data from XML in Emacs Lisp:</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Traditionally people pick one of the following options when faced</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">with the task of extracting data from XML in Emacs Lisp:</span>
 <span style="color: #586e75;">;;</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">- Using regular expressions on the unparsed document</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">- Manual tree traversal with `</span><span style="color: #268bd2; font-weight: bold;">assoc</span><span style="color: #586e75;">', `</span><span style="color: #268bd2; font-weight: bold;">car</span><span style="color: #586e75;">' and `</span><span style="color: #268bd2; font-weight: bold;">cdr</span><span style="color: #586e75;">'</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">- Using regular expressions on the unparsed document</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">- Manual tree traversal with `</span><span style="color: #268bd2; font-weight: bold; font-style: italic;">assoc</span><span style="color: #586e75; font-style: italic;">', `</span><span style="color: #268bd2; font-weight: bold; font-style: italic;">car</span><span style="color: #586e75; font-style: italic;">' and `</span><span style="color: #268bd2; font-weight: bold; font-style: italic;">cdr</span><span style="color: #586e75; font-style: italic;">'</span>
 <span style="color: #586e75;">;;</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Browsers faced a similar problem until jQuery happened, shortly</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">afterwards they started providing the `</span><span style="color: #268bd2; font-weight: bold;">node.querySelector</span><span style="color: #586e75;">' and</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">`</span><span style="color: #268bd2; font-weight: bold;">node.querySelectorAll</span><span style="color: #586e75;">' API for retrieving one or all nodes</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">matching a given CSS selector. This code implements the same API</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">with the `</span><span style="color: #268bd2; font-weight: bold;">esxml-query</span><span style="color: #586e75;">' and `</span><span style="color: #268bd2; font-weight: bold;">esxml-query-all</span><span style="color: #586e75;">' functions. The</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">following table summarizes the currently supported modifiers and</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">combinators:</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Browsers faced a similar problem until jQuery happened, shortly</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">afterwards they started providing the `</span><span style="color: #268bd2; font-weight: bold; font-style: italic;">node.querySelector</span><span style="color: #586e75; font-style: italic;">' and</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">`</span><span style="color: #268bd2; font-weight: bold; font-style: italic;">node.querySelectorAll</span><span style="color: #586e75; font-style: italic;">' API for retrieving one or all nodes</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">matching a given CSS selector. This code implements the same API</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">with the `</span><span style="color: #268bd2; font-weight: bold; font-style: italic;">esxml-query</span><span style="color: #586e75; font-style: italic;">' and `</span><span style="color: #268bd2; font-weight: bold; font-style: italic;">esxml-query-all</span><span style="color: #586e75; font-style: italic;">' functions. The</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">following table summarizes the currently supported modifiers and</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">combinators:</span>
 <span style="color: #586e75;">;;</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">| Name                               | Supported? | Syntax      | </span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">|------------------------------------+------------+-------------|</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">| Namespaces                         | No         | foo|bar     | </span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">| Commas                             | Yes        | foo, bar    | </span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">| Descendant combinator              | Yes        | foo bar     | </span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">| Child combinator                   | Yes        | foo&gt;bar     | </span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">| Adjacent sibling combinator        | No         | foo+bar     | </span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">| General sibling combinator         | No         | foo~bar     | </span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">| Universal selector                 | Yes        | *           | </span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">| Type selector                      | Yes        | tag         | </span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">| ID selector                        | Yes        | #foo        | </span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">| Class selector                     | Yes        | .foo        | </span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">| Attribute selector                 | Yes        | [foo]       | </span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">| Exact match attribute selector     | Yes        | [foo=bar]   | </span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">| Prefix match attribute selector    | Yes        | [foo^=bar]  | </span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">| Suffix match attribute selector    | Yes        | [foo$=bar]  | </span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">| Substring match attribute selector | Yes        | [foo*=bar]  | </span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">| Include match attribute selector   | Yes        | [foo~=bar]  | </span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">| Dash match attribute selector      | Yes        | [foo|=bar]  | </span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">| Attribute selector modifiers       | No         | [foo=bar i] | </span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">| Pseudo elements                    | No         | ::foo       | </span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">| Pseudo classes                     | No         | :foo        |</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">| Name                               | Supported? | Syntax      | </span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">|------------------------------------+------------+-------------|</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">| Namespaces                         | No         | foo|bar     | </span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">| Commas                             | Yes        | foo, bar    | </span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">| Descendant combinator              | Yes        | foo bar     | </span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">| Child combinator                   | Yes        | foo&gt;bar     | </span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">| Adjacent sibling combinator        | No         | foo+bar     | </span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">| General sibling combinator         | No         | foo~bar     | </span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">| Universal selector                 | Yes        | *           | </span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">| Type selector                      | Yes        | tag         | </span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">| ID selector                        | Yes        | #foo        | </span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">| Class selector                     | Yes        | .foo        | </span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">| Attribute selector                 | Yes        | [foo]       | </span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">| Exact match attribute selector     | Yes        | [foo=bar]   | </span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">| Prefix match attribute selector    | Yes        | [foo^=bar]  | </span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">| Suffix match attribute selector    | Yes        | [foo$=bar]  | </span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">| Substring match attribute selector | Yes        | [foo*=bar]  | </span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">| Include match attribute selector   | Yes        | [foo~=bar]  | </span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">| Dash match attribute selector      | Yes        | [foo|=bar]  | </span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">| Attribute selector modifiers       | No         | [foo=bar i] | </span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">| Pseudo elements                    | No         | ::foo       | </span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">| Pseudo classes                     | No         | :foo        |</span>
 </pre>
 </div>
 
@@ -5571,9 +5603,9 @@ Example:
            <span style="color: #a17e11;">(</span><span style="color: #3d85b7;">title (</span><span style="color: #78880e; text-decoration: underline;">esxml-query</span><span style="color: #78880e;"> </span><span style="color: #921da24c26e6;">"div#booksTitle h1#title &gt; span *"</span> <span style="color: #78880e;">tree</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
            <span style="color: #a17e11;">(</span><span style="color: #3d85b7;">details (</span><span style="color: #78880e; text-decoration: underline;">esxml-query-all</span><span style="color: #78880e;"> </span><span style="color: #921da24c26e6;">"table#productDetailsTable ul li"</span> <span style="color: #78880e;">tree</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
            <span style="color: #a17e11;">(</span><span style="color: #3d85b7;">date (</span><span style="color: #78880e; font-weight: bold;">if-let</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85;">(</span><span style="color: #a38528;">printed (</span><span style="color: #648daa; text-decoration: underline;">third</span><span style="color: #648daa;"> (</span><span style="color: #7f8d22; text-decoration: underline;">esxml-query-all</span><span style="color: #7f8d22;"> </span><span style="color: #93749fa14291;">"div#booksTitle h1#title span *"</span> <span style="color: #7f8d22;">tree</span><span style="color: #648daa;">)</span><span style="color: #a38528;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
-                     <span style="color: #441b4ac2180a;">;; </span><span style="color: #441b4ac2180a;">Printed book</span>
+                     <span style="color: #441b4ac2180a;">;; </span><span style="color: #441b4ac2180a; font-style: italic;">Printed book</span>
 <span style="color: #441b4ac2180a;">                     </span><span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">s-replace</span><span style="color: #3d8b85;"> </span><span style="color: #65bc957591ca;">"&#8211; "</span> <span style="color: #65bc957591ca;">""</span> <span style="color: #3d8b85;">printed</span><span style="color: #78880e;">)</span>
-                   <span style="color: #441b4ac2180a;">;; </span><span style="color: #441b4ac2180a;">Kindle book</span>
+                   <span style="color: #441b4ac2180a;">;; </span><span style="color: #441b4ac2180a; font-style: italic;">Kindle book</span>
 <span style="color: #441b4ac2180a;">                   </span><span style="color: #78880e;">(</span><span style="color: #3d8b85;">field </span><span style="color: #65bc957591ca;">"Publication Date:"</span> <span style="color: #3d8b85;">details</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
            <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">asin</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">field </span><span style="color: #921da24c26e6;">"ASIN:"</span> <span style="color: #78880e;">details</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
            <span style="color: #a17e11;">(</span><span style="color: #3d85b7;">publisher (</span><span style="color: #78880e; font-weight: bold;">-some-&gt;&gt;</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85;">field </span><span style="color: #65bc957591ca;">"Publisher:"</span> <span style="color: #3d8b85;">details</span><span style="color: #78880e;">)</span>
@@ -5616,14 +5648,14 @@ Example:
 
 <div class="org-src-container">
 <pre class="src src-elisp"><span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">let</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">(</span><span style="color: #3d8b85;">html (</span><span style="color: #a17e11;">elq-read-file </span><span style="color: #b86396762cce;">"~/kek.html"</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
-  <span style="color: #3d85b7;">(</span><span style="color: #78880e;">elq-el (</span><span style="color: #3d8b85; text-decoration: underline;">car</span><span style="color: #3d8b85;"> (</span><span style="color: #a17e11;">elq-$ </span><span style="color: #b86396762cce;">".kek#quux"</span> <span style="color: #a17e11;">html</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span> <span style="color: #4d1e63e073ad;">; </span><span style="color: #4d1e63e073ad;">=&gt; "input"</span>
-<span style="color: #4d1e63e073ad;">  </span><span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">mapcar</span><span style="color: #78880e;"> 'elq-el (</span><span style="color: #3d8b85;">elq-$ </span><span style="color: #65bc957591ca;">".kek"</span> <span style="color: #3d8b85;">html</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span> <span style="color: #4d1e63e073ad;">; </span><span style="color: #4d1e63e073ad;">=&gt; ("input" "h1" "body" "title" "head")</span>
+  <span style="color: #3d85b7;">(</span><span style="color: #78880e;">elq-el (</span><span style="color: #3d8b85; text-decoration: underline;">car</span><span style="color: #3d8b85;"> (</span><span style="color: #a17e11;">elq-$ </span><span style="color: #b86396762cce;">".kek#quux"</span> <span style="color: #a17e11;">html</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span> <span style="color: #4d1e63e073ad;">; </span><span style="color: #4d1e63e073ad; font-style: italic;">=&gt; "input"</span>
+<span style="color: #4d1e63e073ad;">  </span><span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">mapcar</span><span style="color: #78880e;"> 'elq-el (</span><span style="color: #3d8b85;">elq-$ </span><span style="color: #65bc957591ca;">".kek"</span> <span style="color: #3d8b85;">html</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span> <span style="color: #4d1e63e073ad;">; </span><span style="color: #4d1e63e073ad; font-style: italic;">=&gt; ("input" "h1" "body" "title" "head")</span>
 <span style="color: #4d1e63e073ad;">  </span><span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">mapcar</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; font-weight: bold;">lambda</span><span style="color: #3d8b85;"> (</span><span style="color: #a17e11;">el</span><span style="color: #3d8b85;">)</span> <span style="color: #3d8b85;">(</span><span style="color: #a17e11;">elq-el (</span><span style="color: #3d85b7;">elq-parent el</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
-          <span style="color: #78880e;">(</span><span style="color: #3d8b85;">elq-$ </span><span style="color: #65bc957591ca;">".kek"</span> <span style="color: #3d8b85;">html</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span> <span style="color: #4d1e63e073ad;">; </span><span style="color: #4d1e63e073ad;">=&gt; ("body" "body" "html" "head" "html")</span>
+          <span style="color: #78880e;">(</span><span style="color: #3d8b85;">elq-$ </span><span style="color: #65bc957591ca;">".kek"</span> <span style="color: #3d8b85;">html</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span> <span style="color: #4d1e63e073ad;">; </span><span style="color: #4d1e63e073ad; font-style: italic;">=&gt; ("body" "body" "html" "head" "html")</span>
 <span style="color: #4d1e63e073ad;">  </span><span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">mapcar</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; font-weight: bold;">lambda</span><span style="color: #3d8b85;"> (</span><span style="color: #a17e11;">el</span><span style="color: #3d8b85;">)</span> <span style="color: #3d8b85;">(</span><span style="color: #a17e11; text-decoration: underline;">mapcar</span><span style="color: #a17e11;"> 'elq-el (</span><span style="color: #3d85b7;">elq-siblings el</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
-          <span style="color: #78880e;">(</span><span style="color: #3d8b85;">elq-$ </span><span style="color: #65bc957591ca;">".kek"</span> <span style="color: #3d8b85;">html</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span> <span style="color: #4d1e63e073ad;">; </span><span style="color: #4d1e63e073ad;">=&gt; (("h1" "input" "iframe") ("h1" "input" "iframe") ("head" "body") ("title") ("head" "body"))</span>
-<span style="color: #4d1e63e073ad;">  </span><span style="color: #3d85b7;">(</span><span style="color: #78880e;">elq-$ </span><span style="color: #921da24c26e6;">".kek"</span> <span style="color: #78880e;">html</span><span style="color: #3d85b7;">)</span> <span style="color: #4d1e63e073ad;">; </span><span style="color: #4d1e63e073ad;">=&gt; Hope you didn't like your messages buffer</span>
-<span style="color: #4d1e63e073ad;">  </span><span style="color: #3d85b7;">(</span><span style="color: #78880e;">elq-write html nil</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">; </span><span style="color: #586e75;">=&gt; "&lt;html style=\"height: 100vh\"&gt; ... &lt;/html&gt;"</span>
+          <span style="color: #78880e;">(</span><span style="color: #3d8b85;">elq-$ </span><span style="color: #65bc957591ca;">".kek"</span> <span style="color: #3d8b85;">html</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span> <span style="color: #4d1e63e073ad;">; </span><span style="color: #4d1e63e073ad; font-style: italic;">=&gt; (("h1" "input" "iframe") ("h1" "input" "iframe") ("head" "body") ("title") ("head" "body"))</span>
+<span style="color: #4d1e63e073ad;">  </span><span style="color: #3d85b7;">(</span><span style="color: #78880e;">elq-$ </span><span style="color: #921da24c26e6;">".kek"</span> <span style="color: #78880e;">html</span><span style="color: #3d85b7;">)</span> <span style="color: #4d1e63e073ad;">; </span><span style="color: #4d1e63e073ad; font-style: italic;">=&gt; Hope you didn't like your messages buffer</span>
+<span style="color: #4d1e63e073ad;">  </span><span style="color: #3d85b7;">(</span><span style="color: #78880e;">elq-write html nil</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">; </span><span style="color: #586e75; font-style: italic;">=&gt; "&lt;html style=\"height: 100vh\"&gt; ... &lt;/html&gt;"</span>
 </pre>
 </div>
 </div>
@@ -5637,10 +5669,10 @@ Provides lisp-based (rather than string-based) selectors.  This library is prima
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75;">Grab the top-level paragraph content from XHTML.</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Grab the top-level paragraph content from XHTML.</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">xml-query-all</span><span style="color: #3d85b7;"> '(</span><span style="color: #78880e;">html body p *</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">xhtml</span><span style="color: #a17e11;">)</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">Extract all the links from an Atom feed.</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Extract all the links from an Atom feed.</span>
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">xml-query-all</span><span style="color: #3d85b7;"> '(</span><span style="color: #78880e;">feed entry link [</span><span style="color: #3d8b85;">rel </span><span style="color: #65bc957591ca;">"alternate"</span><span style="color: #78880e;">]</span> <span style="color: #78880e; font-weight: bold;">:href</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">xml</span><span style="color: #a17e11;">)</span>
 </pre>
 </div>
@@ -5662,7 +5694,7 @@ Example:
 <pre class="src src-elisp"><span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">require</span><span style="color: #3d85b7;"> '</span><span style="color: #3d85b7; font-weight: bold;">enlive</span><span style="color: #a17e11;">)</span>
 
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7;">enlive-text</span>
-<span style="color: #3d85b7;"> (</span><span style="color: #78880e;">enlive-query (</span><span style="color: #3d8b85;">enlive-fetch </span><span style="color: #65bc957591ca;">"http://gnu.org/"</span><span style="color: #78880e;">)</span> <span style="color: #78880e;">[</span><span style="color: #3d8b85;">title</span><span style="color: #78880e;">]</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">; </span><span style="color: #586e75;">=&gt; "The GNU Operating System and the Free Software Movement"</span>
+<span style="color: #3d85b7;"> (</span><span style="color: #78880e;">enlive-query (</span><span style="color: #3d8b85;">enlive-fetch </span><span style="color: #65bc957591ca;">"http://gnu.org/"</span><span style="color: #78880e;">)</span> <span style="color: #78880e;">[</span><span style="color: #3d8b85;">title</span><span style="color: #78880e;">]</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #586e75;">; </span><span style="color: #586e75; font-style: italic;">=&gt; "The GNU Operating System and the Free Software Movement"</span>
 </pre>
 </div>
 </div>
@@ -5676,11 +5708,11 @@ Mostly undocumented, providing three main functions:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75;">Utility functions for xml parse trees.</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">- `</span><span style="color: #268bd2; font-weight: bold;">xml+-query-all</span><span style="color: #586e75;">' and `</span><span style="color: #268bd2; font-weight: bold;">xml+-query-first</span><span style="color: #586e75;">' are query functions that search</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">descendants in node lists. They don't work with namespace-aware parsing yet</span>
+<pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">Utility functions for xml parse trees.</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">- `</span><span style="color: #268bd2; font-weight: bold; font-style: italic;">xml+-query-all</span><span style="color: #586e75; font-style: italic;">' and `</span><span style="color: #268bd2; font-weight: bold; font-style: italic;">xml+-query-first</span><span style="color: #586e75; font-style: italic;">' are query functions that search</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">descendants in node lists. They don't work with namespace-aware parsing yet</span>
 <span style="color: #586e75;">;;</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75;">- `</span><span style="color: #268bd2; font-weight: bold;">xml+-node-text</span><span style="color: #586e75;">' gets node text</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-style: italic;">- `</span><span style="color: #268bd2; font-weight: bold; font-style: italic;">xml+-node-text</span><span style="color: #586e75; font-style: italic;">' gets node text</span>
 </pre>
 </div>
 </div>
@@ -6154,6 +6186,7 @@ These resources should be added to the appropriate sections above.  Since it tak
 <div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2FDarwinAwardWinner%2Femacs-named-timer%5D%5BGitHub%20-%20DarwinAwardWinner%2Femacs-named-timer%3A%20Simplified%20timer%20management%20for%20Emacs%20Lisp%5D%5D" class="outline-3">
 <h3 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2FDarwinAwardWinner%2Femacs-named-timer%5D%5BGitHub%20-%20DarwinAwardWinner%2Femacs-named-timer%3A%20Simplified%20timer%20management%20for%20Emacs%20Lisp%5D%5D"><span class="todo TODO">TODO</span> <a href="https://github.com/DarwinAwardWinner/emacs-named-timer">GitHub - DarwinAwardWinner/emacs-named-timer: Simplified timer management for Emacs Lisp</a></h3>
 </div>
+
 <div id="outline-container-Add%20%5B%5Bhttps%3A%2F%2Fgithub.com%2Fvermiculus%2Fpackage-demo%5D%5BGitHub%20-%20vermiculus%2Fpackage-demo%3A%20Script%20your%20Emacs%20package%20demos%21%5D%5D" class="outline-3">
 <h3 id="Add%20%5B%5Bhttps%3A%2F%2Fgithub.com%2Fvermiculus%2Fpackage-demo%5D%5BGitHub%20-%20vermiculus%2Fpackage-demo%3A%20Script%20your%20Emacs%20package%20demos%21%5D%5D"><span class="todo TODO">TODO</span> Add <a href="https://github.com/vermiculus/package-demo">GitHub - vermiculus/package-demo: Script your Emacs package demos!</a></h3>
 </div>
@@ -6542,7 +6575,7 @@ See <a href="https://github.com/melpa/melpa/pull/6191#issuecomment-498101336">ht
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">defun</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">elfeed--shuffle</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">seq</span><span style="color: #3d85b7;">)</span>
   <span style="color: #73139976b41e;">"Destructively shuffle SEQ."</span>
   <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">let</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85;">(</span><span style="color: #a17e11;">n (</span><span style="color: #3d85b7; text-decoration: underline;">length</span><span style="color: #3d85b7;"> seq</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
-    <span style="color: #78880e;">(</span><span style="color: #3d8b85; font-weight: bold;">prog1</span><span style="color: #3d8b85;"> seq                  </span><span style="color: #43b451175010;">; </span><span style="color: #43b451175010;">don't use dotimes result (bug#16206)</span>
+    <span style="color: #78880e;">(</span><span style="color: #3d8b85; font-weight: bold;">prog1</span><span style="color: #3d8b85;"> seq                  </span><span style="color: #43b451175010;">; </span><span style="color: #43b451175010; font-style: italic;">don't use dotimes result (bug#16206)</span>
 <span style="color: #43b451175010;">      </span><span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">dotimes</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7;">i n</span><span style="color: #a17e11;">)</span>
         <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">cl-rotatef</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">elt</span><span style="color: #78880e;"> seq i</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">elt</span><span style="color: #78880e;"> seq (</span><span style="color: #3d8b85;">+ i (</span><span style="color: #a38528; text-decoration: underline;">random</span><span style="color: #a38528;"> (</span><span style="color: #648daa;">- n i</span><span style="color: #a38528;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
 
@@ -6550,7 +6583,7 @@ See <a href="https://github.com/melpa/melpa/pull/6191#issuecomment-498101336">ht
   <span style="color: #73139976b41e;">"Sort SEQUENCE using PRED as a comparison function.</span>
 <span style="color: #73139976b41e;">Elements of SEQUENCE are transformed by FUNCTION before being</span>
 <span style="color: #73139976b41e;">sorted.  FUNCTION must be a function of one argument."</span>
-  <span style="color: #4d1e63e073ad;">;; </span><span style="color: #4d1e63e073ad;">This version is modified to avoid calling "random" twice every time the predicate is called.</span>
+  <span style="color: #4d1e63e073ad;">;; </span><span style="color: #4d1e63e073ad; font-style: italic;">This version is modified to avoid calling "random" twice every time the predicate is called.</span>
 <span style="color: #4d1e63e073ad;">  </span><span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">seq-map</span><span style="color: #78880e;"> 'cdr</span>
 <span style="color: #78880e;">           (</span><span style="color: #3d8b85; text-decoration: underline;">sort</span><span style="color: #3d8b85;"> (</span><span style="color: #a17e11; text-decoration: underline;">seq-map</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7; font-weight: bold;">lambda</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">x</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">cons</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">funcall</span><span style="color: #3d8b85;"> function x</span><span style="color: #78880e;">)</span> <span style="color: #78880e;">x</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span> <span style="color: #a17e11;">sequence</span><span style="color: #3d8b85;">)</span>
                  <span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">lambda</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7;">a b</span><span style="color: #a17e11;">)</span>
@@ -6686,7 +6719,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2020-02-09 Sun 10:57</p>
+<p class="date">Created: 2020-02-11 Tue 15:40</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -222,11 +222,17 @@ This file also defines macros =thunk-let= and =thunk-let*= that are analogous to
 :TOC: :include descendants
 :END:
 :CONTENTS:
+- [[#articles][Articles]]
+  - [[#buffer-passing-style][Buffer-Passing Style]]
 - [[#best-practices][Best practices]]
   - [[#accessing-buffer-local-variables][Accessing buffer-local variables]]
   - [[#inserting-strings][Inserting strings]]
 - [[#libraries][Libraries]]
 :END:
+
+*** Articles
+
+**** [[*%5B%5Bhttps://nullprogram.com/blog/2014/05/27/%5D%5BEmacs%20Lisp%20Buffer%20Passing%20Style%5D%5D][Buffer-Passing Style]]                             :strings:
 
 *** Best practices                                         :best_practices:
 :PROPERTIES:
@@ -2806,11 +2812,23 @@ This example shows the use of a function to expand a list of strings into a sequ
 :TOC:      :include descendants :depth 2
 :END:
 :CONTENTS:
+- [[#articles][Articles]]
+  - [[#buffer-passing-style][Buffer-Passing Style]]
 - [[#libraries][Libraries]]
   - [[#sel-the-long-lost-emacs-string-manipulation-library][s.el: The long lost Emacs string manipulation library]]
 - [[#tools][Tools]]
   - [[#format-macro][format$ macro]]
 :END:
+
+*** Articles                                                     :articles:
+
+**** [[https://nullprogram.com/blog/2014/05/27/][Buffer-Passing Style]]                             :buffers:
+:PROPERTIES:
+:archive.today: https://archive.ph/Jygil
+:ID:       3040c491-39ba-429e-8af7-e4971170d7eb
+:END:
+
+Chris Wellons explains how to build strings in several steps.  This is achieved thanks to the creation of a temporary buffer that is passed to helper methods using the "current" buffer mechanism.  A nice and simple design pattern for Emacs.
 
 *** Libraries                                                   :libraries:
 
@@ -3531,6 +3549,7 @@ Yes, please!  Send pull requests and file issues on the [[https://github.com/alp
 These resources should be added to the appropriate sections above.  Since it takes some work to catalog and organize them, they are dumped here for future reference.  Pull requests for these are welcome!
 
 ** TODO [[https://github.com/DarwinAwardWinner/emacs-named-timer][GitHub - DarwinAwardWinner/emacs-named-timer: Simplified timer management for Emacs Lisp]]
+
 ** TODO Add [[https://github.com/vermiculus/package-demo][GitHub - vermiculus/package-demo: Script your Emacs package demos!]]
 
 ** TODO [[https://github.com/vermiculus/stash.el][GitHub - vermiculus/stash.el: Lightweight, Persistent Caching for Elisp]]
