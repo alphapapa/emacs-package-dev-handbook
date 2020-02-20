@@ -3548,8 +3548,9 @@ Yes, please!  Send pull requests and file issues on the [[https://github.com/alp
 
 These resources should be added to the appropriate sections above.  Since it takes some work to catalog and organize them, they are dumped here for future reference.  Pull requests for these are welcome!
 
-** TODO [[https://github.com/DarwinAwardWinner/emacs-named-timer][GitHub - DarwinAwardWinner/emacs-named-timer: Simplified timer management for Emacs Lisp]]
+** TODO [[http://github.com/nicferrier/emacs-s-buffer][GitHub - nicferrier/emacs-s-buffer: string operations on emacs buffers]]
 
+** TODO [[https://github.com/DarwinAwardWinner/emacs-named-timer][GitHub - DarwinAwardWinner/emacs-named-timer: Simplified timer management for Emacs Lisp]]
 ** TODO Add [[https://github.com/vermiculus/package-demo][GitHub - vermiculus/package-demo: Script your Emacs package demos!]]
 
 ** TODO [[https://github.com/vermiculus/stash.el][GitHub - vermiculus/stash.el: Lightweight, Persistent Caching for Elisp]]
