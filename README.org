@@ -3550,6 +3550,7 @@ These resources should be added to the appropriate sections above.  Since it tak
 
 ** TODO [[https://github.com/jasonm23/autothemer][GitHub - jasonm23/autothemer: Conveniently create Emacs themes]]
 
+** TODO [[https://github.com/emacs-mirror/emacs/blob/master/lisp/rtree.el][emacs/rtree.el at master · emacs-mirror/emacs · GitHub]]
 ** TODO [[http://github.com/nicferrier/emacs-s-buffer][GitHub - nicferrier/emacs-s-buffer: string operations on emacs buffers]]
 ** TODO [[https://github.com/DarwinAwardWinner/emacs-named-timer][GitHub - DarwinAwardWinner/emacs-named-timer: Simplified timer management for Emacs Lisp]]
 ** TODO Add [[https://github.com/vermiculus/package-demo][GitHub - vermiculus/package-demo: Script your Emacs package demos!]]
