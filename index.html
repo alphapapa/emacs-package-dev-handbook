@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-08-21 Fri 16:31 -->
+<!-- 2020-10-05 Mon 16:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -335,6 +335,11 @@ for the JavaScript code in this tag.
 <li><a href="#Multiple%20elements">Multiple elements</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#Property%20lists%20%28plists%29">Property lists (plists)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="plists">plists</span></span></a>
+<ul>
+<li><a href="#Removing%20properties">Removing properties</a></li>
 </ul>
 </li>
 </ul>
@@ -1975,6 +1980,33 @@ Using <code>-select</code> from <code>dash.el</code> seems to be the fastest way
 </pre>
 </div>
 </div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-Property%20lists%20%28plists%29" class="outline-5">
+<h5 id="Property%20lists%20%28plists%29">Property lists (plists)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="plists">plists</span></span></h5>
+<div class="outline-text-5" id="text-Property%20lists%20%28plists%29">
+</div><div id="outline-container-Removing%20properties" class="outline-6">
+<h6 id="Removing%20properties">Removing properties</h6>
+<div class="outline-text-6" id="text-Removing%20properties">
+<p>
+<a href="https://www.reddit.com/r/emacs/comments/aupifm/what_is_the_best_way_to_do_plistremove/eh9xom5/">According to Stefan Monnier</a>:
+</p>
+
+<blockquote>
+<p>
+The plist design in Elisp was based on the idea that you shouldn't distinguish an entry with a nil value from an entry that's absent. Hence <code>plist-remove</code> is not needed because you can do <code>(plist-put PLIST PROP nil)</code> instead.
+</p>
+
+<p>
+Of course, in the mean time, <code>plist-member</code> appeared, breaking the design, so this answer is probably not 100% satisfactory, but I still think you'll generally be better off if you can ignore the difference between <code>nil</code> and "absent".
+</p>
+</blockquote>
+
+<p>
+If you do need to remove a key and value from a plist, you could use <code>cl-remf</code> or <code>map-delete</code> (the former probably being faster).
+</p>
 </div>
 </div>
 </div>
@@ -6750,7 +6782,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2020-08-21 Fri 16:31</p>
+<p class="date">Created: 2020-10-05 Mon 16:57</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -608,6 +608,20 @@ Using ~-select~ from =dash.el= seems to be the fastest way:
     (a-merge numbers more-numbers))  ;; => ((three . 3) (two . 2) (one . 1))
 #+END_SRC
 
+**** Property lists (plists)                                      :plists:
+
+***** Removing properties
+
+[[https://www.reddit.com/r/emacs/comments/aupifm/what_is_the_best_way_to_do_plistremove/eh9xom5/][According to Stefan Monnier]]:
+
+#+BEGIN_QUOTE
+The plist design in Elisp was based on the idea that you shouldn't distinguish an entry with a nil value from an entry that's absent. Hence =plist-remove= is not needed because you can do ~(plist-put PLIST PROP nil)~ instead.
+
+Of course, in the mean time, =plist-member= appeared, breaking the design, so this answer is probably not 100% satisfactory, but I still think you'll generally be better off if you can ignore the difference between =nil= and "absent".
+#+END_QUOTE
+
+If you do need to remove a key and value from a plist, you could use =cl-remf= or =map-delete= (the former probably being faster).
+
 *** Libraries                                                   :libraries:
 :PROPERTIES:
 :TOC: :depth 0
