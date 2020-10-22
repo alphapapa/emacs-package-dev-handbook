@@ -3566,14 +3566,30 @@ These resources should be added to the appropriate sections above.  Since it tak
 
 e.g. https://www.reddit.com/r/emacs/comments/idz35e/emacs_27_can_take_svg_screenshots_of_itself/
 
+** TODO Add section about files
+
+e.g. saving files to disk.
+
+*** Best practices
+
+**** TODO Mention =file-precious-flag=
+
+*** Discussions
+
+**** [[https://lists.gnu.org/archive/html/emacs-devel/2020-10/msg01423.html][Atomic file replacement in Emacs]]
+
 ** TODO [[https://github.com/tarsius/map-regexp][GitHub - tarsius/map-regexp: Map over matches of a regular expression]]
 
 ** TODO [[https://github.com/tarsius/map-progress][GitHub - tarsius/map-progress: Mapping macros that report progress]]
 
 ** TODO [[https://github.com/jasonm23/autothemer][GitHub - jasonm23/autothemer: Conveniently create Emacs themes]]
+
 ** TODO [[https://github.com/emacs-mirror/emacs/blob/master/lisp/rtree.el][emacs/rtree.el at master · emacs-mirror/emacs · GitHub]]
+
 ** TODO [[http://github.com/nicferrier/emacs-s-buffer][GitHub - nicferrier/emacs-s-buffer: string operations on emacs buffers]]
+
 ** TODO [[https://github.com/DarwinAwardWinner/emacs-named-timer][GitHub - DarwinAwardWinner/emacs-named-timer: Simplified timer management for Emacs Lisp]]
+
 ** TODO Add [[https://github.com/vermiculus/package-demo][GitHub - vermiculus/package-demo: Script your Emacs package demos!]]
 
 ** TODO [[https://github.com/vermiculus/stash.el][GitHub - vermiculus/stash.el: Lightweight, Persistent Caching for Elisp]]
