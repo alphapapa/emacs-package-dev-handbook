@@ -2072,14 +2072,17 @@ Dash is a powerful library, and one of its features is powerful destructuring wi
 
 ***** Articles                                                 :articles:
 
+****** [[http://newartisans.com/2016/01/pattern-matching-with-pcase/][Emacs: Pattern Matching with pcase - Lost in Technopolis]] :tutorial:
+:PROPERTIES:
+:archive.today: http://archive.today/FAzd8
+:author:   John Wiegley
+:END:
+
+This tutorial by John Wiegley is a great introduction to =pcase=.
+
 ****** [[https://www.emacswiki.org/emacs/PatternMatching][EmacsWiki: Pattern Matching]]                  :examples:EmacsWiki:
 
 There are /lots/ of examples here.
-
-****** [[http://newartisans.com/2016/01/pattern-matching-with-pcase/][Emacs: Pattern Matching with pcase - Lost in Technopolis]]
-:PROPERTIES:
-:archive.today: http://archive.today/FAzd8
-:END:
 
 ****** Nic Ferrier, [[http://nic.ferrier.me.uk/blog/2013_03/refactoring-elisp-polymorphically][Using Polymorphism as a Lisp refactoring tool]]
 :PROPERTIES:
