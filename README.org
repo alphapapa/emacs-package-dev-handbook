@@ -2213,6 +2213,8 @@ And:
     - [[#bench-dynamic-vs-lexical-binding][bench-dynamic-vs-lexical-binding]]
     - [[#bench-multi-lets][bench-multi-lets]]
   - [[#elp-profile][elp-profile]]
+- [[#tools][Tools]]
+  - [[#etrace-emacs-lisp-latency-tracing-for-the-chromium-catapult-trace-event-format][etrace: Emacs Lisp Latency Tracing for the Chromium Catapult Trace Event Format]]
 :END:
 
 #+BEGIN_SRC elisp :exports none :eval never :tangle epdh.el
@@ -2705,6 +2707,14 @@ This gives a table like:
 | car            |           13 | 3.956...e-06 | 3.043...e-07 |
 | append         |            1 |     5.96e-07 |     5.96e-07 |
 | mapatoms       |            1 |            0 |          0.0 |
+
+*** Tools                                                           :tools:
+
+**** [[https://github.com/aspiers/etrace][etrace: Emacs Lisp Latency Tracing for the Chromium Catapult Trace Event Format]]
+
+#+BEGIN_QUOTE
+This package for GNU Emacs allows latency tracing to be performed on Emacs Lisp code and the results output to files using the Chromium Catapult Trace Event Format.  These trace files can then be loaded into trace analysis utilities in order to generate flame graphs and other useful visualisations and analyses.
+#+END_QUOTE
 
 ** Refactoring                                                 :refactoring:
 

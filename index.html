@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-10-25 Sun 06:14 -->
+<!-- 2020-10-28 Wed 11:36 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -682,6 +682,11 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#%3Delp-profile%3D"><code>elp-profile</code></a></li>
+</ul>
+</li>
+<li><a href="#Profiling%20%2F%20Optimization--Tools">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a>
+<ul>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Faspiers%2Fetrace%5D%5Betrace%3A%20Emacs%20Lisp%20Latency%20Tracing%20for%20the%20Chromium%20Catapult%20Trace%20Event%20Format%5D%5D">etrace: Emacs Lisp Latency Tracing for the Chromium Catapult Trace Event Format</a></li>
 </ul>
 </li>
 </ul>
@@ -2572,7 +2577,7 @@ For example, when used like:
 
 <div class="org-src-container">
 <pre class="src src-elisp"><span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">defun</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">argh</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">var</span><span style="color: #3d85b7;">)</span>
-  <span style="color: #3d85b7;">(</span><span style="color: #78880e;">debug-warn (</span><span style="color: #3d8b85; text-decoration: underline;">current-buffer</span><span style="color: #78880e;">)</span> <span style="color: #921da24c26e6;">"This is bad!"</span> <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">point</span><span style="color: #78880e;">)</span> <span style="color: #78880e;">var</span><span style="color: #3d85b7;">)</span>
+  <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">debug-warn</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">current-buffer</span><span style="color: #78880e;">)</span> <span style="color: #921da24c26e6;">"This is bad!"</span> <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">point</span><span style="color: #78880e;">)</span> <span style="color: #78880e;">var</span><span style="color: #3d85b7;">)</span>
   <span style="color: #3d85b7;">var</span><span style="color: #a17e11;">)</span>
 
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">setq</span><span style="color: #3d85b7;"> warning-minimum-log-level </span><span style="color: #3d85b7; font-weight: bold;">:debug</span><span style="color: #a17e11;">)</span>
@@ -5006,6 +5011,21 @@ This gives a table like:
 </div>
 </div>
 </div>
+
+<div id="outline-container-Profiling%20%2F%20Optimization--Tools" class="outline-4">
+<h4 id="Profiling%20%2F%20Optimization--Tools">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></h4>
+<div class="outline-text-4" id="text-Profiling%20%2F%20Optimization--Tools">
+</div><div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Faspiers%2Fetrace%5D%5Betrace%3A%20Emacs%20Lisp%20Latency%20Tracing%20for%20the%20Chromium%20Catapult%20Trace%20Event%20Format%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Faspiers%2Fetrace%5D%5Betrace%3A%20Emacs%20Lisp%20Latency%20Tracing%20for%20the%20Chromium%20Catapult%20Trace%20Event%20Format%5D%5D"><a href="https://github.com/aspiers/etrace">etrace: Emacs Lisp Latency Tracing for the Chromium Catapult Trace Event Format</a></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Faspiers%2Fetrace%5D%5Betrace%3A%20Emacs%20Lisp%20Latency%20Tracing%20for%20the%20Chromium%20Catapult%20Trace%20Event%20Format%5D%5D">
+<blockquote>
+<p>
+This package for GNU Emacs allows latency tracing to be performed on Emacs Lisp code and the results output to files using the Chromium Catapult Trace Event Format.  These trace files can then be loaded into trace analysis utilities in order to generate flame graphs and other useful visualisations and analyses.
+</p>
+</blockquote>
+</div>
+</div>
+</div>
 </div>
 
 <div id="outline-container-Refactoring" class="outline-3">
@@ -6833,7 +6853,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2020-10-25 Sun 06:14</p>
+<p class="date">Created: 2020-10-28 Wed 11:36</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
