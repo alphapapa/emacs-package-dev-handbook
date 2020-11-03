@@ -3575,10 +3575,153 @@ Yes, please!  Send pull requests and file issues on the [[https://github.com/alp
 
 These resources should be added to the appropriate sections above.  Since it takes some work to catalog and organize them, they are dumped here for future reference.  Pull requests for these are welcome!
 
+** TODO stream.el benchmarks
+
+[2020-11-03 Tue 15:27]  It's very surprising that =stream= seems faster than a plain =cl-loop=.  I wonder if I'm doing something wrong...
+
+Also see:
+
++  [[https://www.reddit.com/r/emacs/comments/jmvzhs/has_anything_of_substance_ever_been_done_in_elisp/][Has anything of substance ever been done in elisp using lazy data structures? : emacs]]
+
+#+BEGIN_SRC elisp
+  (bench-multi-lexical :times 100 :ensure-equal t
+    :forms (("cl-loop"
+             (let* ((buffer (find-file-noselect "~/org/main.org"))
+                    (regexp (rx bow "Emacs" eow)))
+               (with-current-buffer buffer
+                 (goto-char (point-min))
+                 (length (cl-loop while (re-search-forward regexp nil t)
+                                  collect (match-string-no-properties 0))))))
+
+            ("stream-regexp/seq-do/push"
+             (let* ((buffer (find-file-noselect "~/org/main.org"))
+                    (regexp (rx bow "Emacs" eow))
+                    (stream (stream-regexp buffer regexp))
+                    result)
+               (with-current-buffer buffer
+                 (goto-char (point-min))
+                 (seq-do (lambda (_match)
+                           (push (match-string-no-properties 0) result))
+                         stream)
+                 (length result))))
+
+            ("stream-regexp/cl-loop"
+             (let* ((buffer (find-file-noselect "~/org/main.org"))
+                    (regexp (rx bow "Emacs" eow))
+                    (stream (stream-regexp buffer regexp)))
+               (with-current-buffer buffer
+                 (goto-char (point-min))
+                 (length (cl-loop while (stream-pop stream)
+                                  collect (match-string-no-properties 0))))))))
+#+END_SRC
+
+#+RESULTS:
+| Form                      | x faster than next | Total runtime | # of GCs | Total GC runtime |
+|---------------------------+--------------------+---------------+----------+------------------|
+| stream-regexp/cl-loop     |               1.03 |      1.305895 |        1 |         0.193277 |
+| stream-regexp/seq-do/push |               1.42 |      1.350986 |        1 |         0.199524 |
+| cl-loop                   |            slowest |      1.925070 |        0 |                0 |
+
+[2020-11-03 Tue 16:57]  Other stream-related tests (these methods are bespoke):
+
+*** Buffer lines
+
+The benchmark macros need to be extended to allow definitions that aren't part of the benchmarked code.
+
+#+BEGIN_SRC elisp
+  (cl-defmethod stream-lines ((buffer buffer) &optional pos no-properties)
+    "Return a stream of the lines of the buffer BUFFER.
+  BUFFER may be a buffer or a string (buffer name).
+  The sequence starts at POS if non-nil, `point-min' otherwise."
+    ;; Copied from the buffer method.
+    (let ((fn (if no-properties
+                  #'buffer-substring-no-properties
+                #'buffer-substring)))
+      (with-current-buffer buffer
+        (unless pos (setq pos (point-min)))
+        (if (>= pos (point-max))
+            (stream-empty))
+        (stream-cons
+         (with-current-buffer buffer
+           (save-excursion
+             (save-restriction
+               (widen)
+               (goto-char pos)
+               (prog1 (funcall fn (point-at-bol) (point-at-eol))
+                 (setf pos (progn
+                             (forward-line 1)
+                             (point)))))))
+         (stream-lines buffer pos no-properties)))))
+
+  (bench-multi-lexical :times 100 :ensure-equal t
+    :forms (("stream-lines/seq-take/seq-into"
+             (let* ((buffer (find-file-noselect "~/org/main.org"))
+                    (stream (stream-lines buffer nil 'no-properties)))
+               (seq-into (seq-take stream 10) 'list)))
+
+            ("cl-loop"
+             (let* ((buffer (find-file-noselect "~/org/main.org"))
+                    (no-properties t))
+               (with-current-buffer buffer
+                 (save-excursion
+                   (save-restriction
+                     (widen)
+                     (goto-char (point-min))
+                     (cl-loop for fn = (if no-properties
+                                           #'buffer-substring-no-properties
+                                         #'buffer-substring)
+                              collect (funcall fn (point-at-bol) (point-at-eol))
+                              do (forward-line 1)
+                              until (eobp)))))))))
+#+END_SRC
+
+*** String lines
+
+The benchmark macros need to be extended to allow definitions that aren't part of the benchmarked code.  I'm not sure how I even got those results because it's not working now...
+
+#+BEGIN_SRC elisp
+  (cl-defmethod stream-lines ((string string) &optional pos no-properties)
+    "Return a stream of the lines of the string STRING.
+  The sequence starts at POS if non-nil, 0 otherwise."
+    ;; Copied from the buffer method.
+    (unless pos (setq pos 0))
+    (let ((fn (if no-properties
+                  #'buffer-substring-no-properties
+                #'buffer-substring))
+          (eol (when (string-match "\n" string pos)
+                 (match-beginning 0))))
+      (stream-cons
+       (seq-subseq string pos eol)
+       (if (not eol)
+           (stream-empty)
+         (stream-lines string (1+ eol) no-properties)))))
+
+  (bench-multi-lexical :times 100 :ensure-equal t
+    :forms (("stream-lines/seq-into"
+             (let* ((string "abcd
+  efgh
+  hijk
+  zz"))
+               (seq-into (stream-lines string nil 'no-properties) 'list)))
+
+            ("s-lines"
+             (let* ((string "abcd
+  efgh
+  hijk
+  zz"))
+               (s-lines string)))))
+#+END_SRC
+
+#+RESULTS:
+| Form            | x faster than next | Total runtime | # of GCs | Total GC runtime |
+|-----------------+--------------------+---------------+----------+------------------|
+| s-lines         | 10.47              |      0.000513 |        0 |                0 |
+| stream/seq-into | slowest            |      0.005370 |        0 |                0 |
+
+
 ** TODO Mention Emacs 27.1 SVG screenshots
 
 e.g. https://www.reddit.com/r/emacs/comments/idz35e/emacs_27_can_take_svg_screenshots_of_itself/
-
 ** TODO Add section about files
 
 e.g. saving files to disk.

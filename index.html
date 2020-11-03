@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-10-28 Wed 11:36 -->
+<!-- 2020-11-03 Tue 16:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -972,6 +972,12 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#Tasks">Tasks</a>
 <ul>
+<li><a href="#stream.el%20benchmarks"><span class="todo TODO">TODO</span> stream.el benchmarks</a>
+<ul>
+<li><a href="#Buffer%20lines">Buffer lines</a></li>
+<li><a href="#String%20lines">String lines</a></li>
+</ul>
+</li>
 <li><a href="#Mention%20Emacs%2027.1%20SVG%20screenshots"><span class="todo TODO">TODO</span> Mention Emacs 27.1 SVG screenshots</a></li>
 <li><a href="#Add%20section%20about%20files"><span class="todo TODO">TODO</span> Add section about files</a>
 <ul>
@@ -2577,7 +2583,7 @@ For example, when used like:
 
 <div class="org-src-container">
 <pre class="src src-elisp"><span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">defun</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">argh</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">var</span><span style="color: #3d85b7;">)</span>
-  <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">debug-warn</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">current-buffer</span><span style="color: #78880e;">)</span> <span style="color: #921da24c26e6;">"This is bad!"</span> <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">point</span><span style="color: #78880e;">)</span> <span style="color: #78880e;">var</span><span style="color: #3d85b7;">)</span>
+  <span style="color: #3d85b7;">(</span><span style="color: #78880e;">debug-warn (</span><span style="color: #3d8b85; text-decoration: underline;">current-buffer</span><span style="color: #78880e;">)</span> <span style="color: #921da24c26e6;">"This is bad!"</span> <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">point</span><span style="color: #78880e;">)</span> <span style="color: #78880e;">var</span><span style="color: #3d85b7;">)</span>
   <span style="color: #3d85b7;">var</span><span style="color: #a17e11;">)</span>
 
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">setq</span><span style="color: #3d85b7;"> warning-minimum-log-level </span><span style="color: #3d85b7; font-weight: bold;">:debug</span><span style="color: #a17e11;">)</span>
@@ -6259,6 +6265,161 @@ These resources should be added to the appropriate sections above.  Since it tak
 </p>
 </div>
 
+<div id="outline-container-stream.el%20benchmarks" class="outline-3">
+<h3 id="stream.el%20benchmarks"><span class="todo TODO">TODO</span> stream.el benchmarks</h3>
+<div class="outline-text-3" id="text-stream.el%20benchmarks">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2020-11-03 Tue 15:27]  </span></span>  It's very surprising that <code>stream</code> seems faster than a plain <code>cl-loop</code>.  I wonder if I'm doing something wrong&#x2026;
+</p>
+
+<p>
+Also see:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://www.reddit.com/r/emacs/comments/jmvzhs/has_anything_of_substance_ever_been_done_in_elisp/">Has anything of substance ever been done in elisp using lazy data structures? : emacs</a></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">bench-multi-lexical</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7; font-weight: bold;">:times</span><span style="color: #3d85b7;"> 100 </span><span style="color: #3d85b7; font-weight: bold;">:ensure-equal</span><span style="color: #3d85b7;"> t</span>
+<span style="color: #3d85b7;">  </span><span style="color: #3d85b7; font-weight: bold;">:forms</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">(</span><span style="color: #65bc957591ca;">"cl-loop"</span>
+           <span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">let*</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7;">(</span><span style="color: #78880e;">buffer (</span><span style="color: #3d8b85; text-decoration: underline;">find-file-noselect</span><span style="color: #3d8b85;"> </span><span style="color: #65bc957591ca;">"~/org/main.org"</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
+                  <span style="color: #3d85b7;">(</span><span style="color: #78880e;">regexp (</span><span style="color: #3d8b85; font-weight: bold;">rx</span><span style="color: #3d8b85;"> bow </span><span style="color: #65bc957591ca;">"Emacs"</span> <span style="color: #3d8b85;">eow</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
+             <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">with-current-buffer</span><span style="color: #3d85b7;"> buffer</span>
+<span style="color: #3d85b7;">               (</span><span style="color: #78880e; text-decoration: underline;">goto-char</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">point-min</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
+               <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">length</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; font-weight: bold;">cl-loop</span><span style="color: #3d8b85;"> while (</span><span style="color: #a38528; text-decoration: underline;">re-search-forward</span><span style="color: #a38528;"> regexp nil t</span><span style="color: #3d8b85;">)</span>
+                                <span style="color: #3d8b85;">collect (</span><span style="color: #a38528; text-decoration: underline;">match-string-no-properties</span><span style="color: #a38528;"> 0</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
+
+          <span style="color: #78880e;">(</span><span style="color: #65bc957591ca;">"stream-regexp/seq-do/push"</span>
+           <span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">let*</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7;">(</span><span style="color: #78880e;">buffer (</span><span style="color: #3d8b85; text-decoration: underline;">find-file-noselect</span><span style="color: #3d8b85;"> </span><span style="color: #65bc957591ca;">"~/org/main.org"</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
+                  <span style="color: #3d85b7;">(</span><span style="color: #78880e;">regexp (</span><span style="color: #3d8b85; font-weight: bold;">rx</span><span style="color: #3d8b85;"> bow </span><span style="color: #65bc957591ca;">"Emacs"</span> <span style="color: #3d8b85;">eow</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
+                  <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">stream</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">stream-regexp</span><span style="color: #3d8b85;"> buffer regexp</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
+                  <span style="color: #3d85b7;">result</span><span style="color: #a17e11;">)</span>
+             <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">with-current-buffer</span><span style="color: #3d85b7;"> buffer</span>
+<span style="color: #3d85b7;">               (</span><span style="color: #78880e; text-decoration: underline;">goto-char</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">point-min</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
+               <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">seq-do</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; font-weight: bold;">lambda</span><span style="color: #3d8b85;"> (</span><span style="color: #a38528;">_match</span><span style="color: #3d8b85;">)</span>
+                         <span style="color: #3d8b85;">(</span><span style="color: #a38528; font-weight: bold;">push</span><span style="color: #a38528;"> (</span><span style="color: #648daa; text-decoration: underline;">match-string-no-properties</span><span style="color: #648daa;"> 0</span><span style="color: #a38528;">)</span> <span style="color: #a38528;">result</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
+                       <span style="color: #78880e;">stream</span><span style="color: #3d85b7;">)</span>
+               <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">length</span><span style="color: #78880e;"> result</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
+
+          <span style="color: #78880e;">(</span><span style="color: #65bc957591ca;">"stream-regexp/cl-loop"</span>
+           <span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">let*</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7;">(</span><span style="color: #78880e;">buffer (</span><span style="color: #3d8b85; text-decoration: underline;">find-file-noselect</span><span style="color: #3d8b85;"> </span><span style="color: #65bc957591ca;">"~/org/main.org"</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
+                  <span style="color: #3d85b7;">(</span><span style="color: #78880e;">regexp (</span><span style="color: #3d8b85; font-weight: bold;">rx</span><span style="color: #3d8b85;"> bow </span><span style="color: #65bc957591ca;">"Emacs"</span> <span style="color: #3d8b85;">eow</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
+                  <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">stream</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">stream-regexp</span><span style="color: #3d8b85;"> buffer regexp</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
+             <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">with-current-buffer</span><span style="color: #3d85b7;"> buffer</span>
+<span style="color: #3d85b7;">               (</span><span style="color: #78880e; text-decoration: underline;">goto-char</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">point-min</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
+               <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">length</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; font-weight: bold;">cl-loop</span><span style="color: #3d8b85;"> while (</span><span style="color: #a38528; font-weight: bold;">stream-pop</span><span style="color: #a38528;"> stream</span><span style="color: #3d8b85;">)</span>
+                                <span style="color: #3d8b85;">collect (</span><span style="color: #a38528; text-decoration: underline;">match-string-no-properties</span><span style="color: #a38528;"> 0</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
+</pre>
+</div>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2020-11-03 Tue 16:57]  </span></span>  Other stream-related tests (these methods are bespoke):
+</p>
+</div>
+
+<div id="outline-container-Buffer%20lines" class="outline-4">
+<h4 id="Buffer%20lines">Buffer lines</h4>
+<div class="outline-text-4" id="text-Buffer%20lines">
+<p>
+The benchmark macros need to be extended to allow definitions that aren't part of the benchmarked code.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">cl-defmethod</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">stream-lines</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">(</span><span style="color: #3d8b85;">buffer buffer</span><span style="color: #78880e;">)</span> <span style="color: #78880e;">&amp;optional</span><span style="color: #78880e;"> pos no-properties</span><span style="color: #3d85b7;">)</span>
+  <span style="color: #73139976b41e;">"Return a stream of the lines of the buffer BUFFER.</span>
+<span style="color: #73139976b41e;">BUFFER may be a buffer or a string (buffer name).</span>
+<span style="color: #73139976b41e;">The sequence starts at POS if non-nil, `</span><span style="color: #73139976b41e; font-weight: bold;">point-min</span><span style="color: #73139976b41e;">' otherwise."</span>
+  <span style="color: #4d1e63e073ad;">;; </span><span style="color: #4d1e63e073ad; font-style: italic;">Copied from the buffer method.</span>
+<span style="color: #4d1e63e073ad;">  </span><span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">let</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85;">(</span><span style="color: #a17e11;">fn (</span><span style="color: #3d85b7; font-weight: bold;">if</span><span style="color: #3d85b7;"> no-properties</span>
+<span style="color: #3d85b7;">                #'buffer-substring-no-properties</span>
+<span style="color: #3d85b7;">              #'buffer-substring</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
+    <span style="color: #78880e;">(</span><span style="color: #3d8b85; font-weight: bold;">with-current-buffer</span><span style="color: #3d8b85;"> buffer</span>
+<span style="color: #3d8b85;">      (</span><span style="color: #a17e11; font-weight: bold;">unless</span><span style="color: #a17e11;"> pos (</span><span style="color: #3d85b7; font-weight: bold;">setq</span><span style="color: #3d85b7;"> pos (</span><span style="color: #78880e; text-decoration: underline;">point-min</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span>
+      <span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">if</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7;">&gt;= pos (</span><span style="color: #78880e; text-decoration: underline;">point-max</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
+          <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">stream-empty</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span>
+      <span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">stream-cons</span>
+<span style="color: #a17e11;">       (</span><span style="color: #3d85b7; font-weight: bold;">with-current-buffer</span><span style="color: #3d85b7;"> buffer</span>
+<span style="color: #3d85b7;">         (</span><span style="color: #78880e; font-weight: bold;">save-excursion</span>
+<span style="color: #78880e;">           (</span><span style="color: #3d8b85; font-weight: bold;">save-restriction</span>
+<span style="color: #3d8b85;">             (</span><span style="color: #a38528; text-decoration: underline;">widen</span><span style="color: #3d8b85;">)</span>
+             <span style="color: #3d8b85;">(</span><span style="color: #a38528; text-decoration: underline;">goto-char</span><span style="color: #a38528;"> pos</span><span style="color: #3d8b85;">)</span>
+             <span style="color: #3d8b85;">(</span><span style="color: #a38528; font-weight: bold;">prog1</span><span style="color: #a38528;"> (</span><span style="color: #648daa; text-decoration: underline;">funcall</span><span style="color: #648daa;"> fn (</span><span style="color: #7f8d22; text-decoration: underline;">point-at-bol</span><span style="color: #648daa;">)</span> <span style="color: #648daa;">(</span><span style="color: #7f8d22; text-decoration: underline;">point-at-eol</span><span style="color: #648daa;">)</span><span style="color: #a38528;">)</span>
+               <span style="color: #a38528;">(</span><span style="color: #648daa; font-weight: bold;">setf</span><span style="color: #648daa;"> pos (</span><span style="color: #7f8d22; font-weight: bold;">progn</span>
+<span style="color: #7f8d22;">                           (</span><span style="color: #5b8682; text-decoration: underline;">forward-line</span><span style="color: #5b8682;"> 1</span><span style="color: #7f8d22;">)</span>
+                           <span style="color: #7f8d22;">(</span><span style="color: #5b8682; text-decoration: underline;">point</span><span style="color: #7f8d22;">)</span><span style="color: #648daa;">)</span><span style="color: #a38528;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
+       <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">stream-lines</span><span style="color: #3d85b7;"> buffer pos no-properties</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
+
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">bench-multi-lexical</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7; font-weight: bold;">:times</span><span style="color: #3d85b7;"> 100 </span><span style="color: #3d85b7; font-weight: bold;">:ensure-equal</span><span style="color: #3d85b7;"> t</span>
+<span style="color: #3d85b7;">  </span><span style="color: #3d85b7; font-weight: bold;">:forms</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">(</span><span style="color: #65bc957591ca;">"stream-lines/seq-take/seq-into"</span>
+           <span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">let*</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7;">(</span><span style="color: #78880e;">buffer (</span><span style="color: #3d8b85; text-decoration: underline;">find-file-noselect</span><span style="color: #3d8b85;"> </span><span style="color: #65bc957591ca;">"~/org/main.org"</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
+                  <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">stream</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">stream-lines</span><span style="color: #3d8b85;"> buffer nil 'no-properties</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
+             <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">seq-into</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">seq-take</span><span style="color: #78880e;"> stream 10</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">'list</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
+
+          <span style="color: #78880e;">(</span><span style="color: #65bc957591ca;">"cl-loop"</span>
+           <span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">let*</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7;">(</span><span style="color: #78880e;">buffer (</span><span style="color: #3d8b85; text-decoration: underline;">find-file-noselect</span><span style="color: #3d8b85;"> </span><span style="color: #65bc957591ca;">"~/org/main.org"</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
+                  <span style="color: #3d85b7;">(</span><span style="color: #78880e;">no-properties t</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
+             <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">with-current-buffer</span><span style="color: #3d85b7;"> buffer</span>
+<span style="color: #3d85b7;">               (</span><span style="color: #78880e; font-weight: bold;">save-excursion</span>
+<span style="color: #78880e;">                 (</span><span style="color: #3d8b85; font-weight: bold;">save-restriction</span>
+<span style="color: #3d8b85;">                   (</span><span style="color: #a38528; text-decoration: underline;">widen</span><span style="color: #3d8b85;">)</span>
+                   <span style="color: #3d8b85;">(</span><span style="color: #a38528; text-decoration: underline;">goto-char</span><span style="color: #a38528;"> (</span><span style="color: #648daa; text-decoration: underline;">point-min</span><span style="color: #a38528;">)</span><span style="color: #3d8b85;">)</span>
+                   <span style="color: #3d8b85;">(</span><span style="color: #a38528; font-weight: bold;">cl-loop</span><span style="color: #a38528;"> for fn = (</span><span style="color: #648daa; font-weight: bold;">if</span><span style="color: #648daa;"> no-properties</span>
+<span style="color: #648daa;">                                         #'buffer-substring-no-properties</span>
+<span style="color: #648daa;">                                       #'buffer-substring</span><span style="color: #a38528;">)</span>
+                            <span style="color: #a38528;">collect (</span><span style="color: #648daa; text-decoration: underline;">funcall</span><span style="color: #648daa;"> fn (</span><span style="color: #7f8d22; text-decoration: underline;">point-at-bol</span><span style="color: #648daa;">)</span> <span style="color: #648daa;">(</span><span style="color: #7f8d22; text-decoration: underline;">point-at-eol</span><span style="color: #648daa;">)</span><span style="color: #a38528;">)</span>
+                            <span style="color: #a38528;">do (</span><span style="color: #648daa; text-decoration: underline;">forward-line</span><span style="color: #648daa;"> 1</span><span style="color: #a38528;">)</span>
+                            <span style="color: #a38528;">until (</span><span style="color: #648daa; text-decoration: underline;">eobp</span><span style="color: #a38528;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-String%20lines" class="outline-4">
+<h4 id="String%20lines">String lines</h4>
+<div class="outline-text-4" id="text-String%20lines">
+<p>
+The benchmark macros need to be extended to allow definitions that aren't part of the benchmarked code.  I'm not sure how I even got those results because it's not working now&#x2026;
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">cl-defmethod</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">stream-lines</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">string</span><span style="color: #3d8b85;"> string</span><span style="color: #78880e;">)</span> <span style="color: #78880e;">&amp;optional</span><span style="color: #78880e;"> pos no-properties</span><span style="color: #3d85b7;">)</span>
+  <span style="color: #73139976b41e;">"Return a stream of the lines of the string STRING.</span>
+<span style="color: #73139976b41e;">The sequence starts at POS if non-nil, 0 otherwise."</span>
+  <span style="color: #4d1e63e073ad;">;; </span><span style="color: #4d1e63e073ad; font-style: italic;">Copied from the buffer method.</span>
+<span style="color: #4d1e63e073ad;">  </span><span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">unless</span><span style="color: #78880e;"> pos (</span><span style="color: #3d8b85; font-weight: bold;">setq</span><span style="color: #3d8b85;"> pos 0</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
+  <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">let</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85;">(</span><span style="color: #a17e11;">fn (</span><span style="color: #3d85b7; font-weight: bold;">if</span><span style="color: #3d85b7;"> no-properties</span>
+<span style="color: #3d85b7;">                #'buffer-substring-no-properties</span>
+<span style="color: #3d85b7;">              #'buffer-substring</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span>
+        <span style="color: #3d8b85;">(</span><span style="color: #a17e11;">eol (</span><span style="color: #3d85b7; font-weight: bold;">when</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">string-match</span><span style="color: #78880e;"> </span><span style="color: #921da24c26e6;">"\n"</span> <span style="color: #78880e;">string pos</span><span style="color: #3d85b7;">)</span>
+               <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">match-beginning</span><span style="color: #78880e;"> 0</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
+    <span style="color: #78880e;">(</span><span style="color: #3d8b85; font-weight: bold;">stream-cons</span>
+<span style="color: #3d8b85;">     (</span><span style="color: #a17e11; text-decoration: underline;">seq-subseq</span><span style="color: #a17e11;"> string pos eol</span><span style="color: #3d8b85;">)</span>
+     <span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">if</span><span style="color: #a17e11;"> (</span><span style="color: #cb4b16; font-weight: bold;">not</span><span style="color: #3d85b7;"> eol</span><span style="color: #a17e11;">)</span>
+         <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">stream-empty</span><span style="color: #a17e11;">)</span>
+       <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">stream-lines</span><span style="color: #3d85b7;"> string (</span><span style="color: #78880e; text-decoration: underline;">1+</span><span style="color: #78880e;"> eol</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">no-properties</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
+
+<span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">bench-multi-lexical</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7; font-weight: bold;">:times</span><span style="color: #3d85b7;"> 100 </span><span style="color: #3d85b7; font-weight: bold;">:ensure-equal</span><span style="color: #3d85b7;"> t</span>
+<span style="color: #3d85b7;">  </span><span style="color: #3d85b7; font-weight: bold;">:forms</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">(</span><span style="color: #65bc957591ca;">"stream-lines/seq-into"</span>
+           <span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">let*</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">string</span><span style="color: #78880e;"> </span><span style="color: #921da24c26e6;">"abcd</span>
+<span style="color: #921da24c26e6;">efgh</span>
+<span style="color: #921da24c26e6;">hijk</span>
+<span style="color: #921da24c26e6;">zz"</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
+             <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">seq-into</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">stream-lines</span><span style="color: #78880e;"> string nil 'no-properties</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">'list</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
+
+          <span style="color: #78880e;">(</span><span style="color: #65bc957591ca;">"</span><span style="color: #65bc957591ca; text-decoration: underline;">s-lines</span><span style="color: #65bc957591ca;">"</span>
+           <span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">let*</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">string</span><span style="color: #78880e;"> </span><span style="color: #921da24c26e6;">"abcd</span>
+<span style="color: #921da24c26e6;">efgh</span>
+<span style="color: #921da24c26e6;">hijk</span>
+<span style="color: #921da24c26e6;">zz"</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
+             <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">s-lines</span><span style="color: #3d85b7;"> string</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
 <div id="outline-container-Mention%20Emacs%2027.1%20SVG%20screenshots" class="outline-3">
 <h3 id="Mention%20Emacs%2027.1%20SVG%20screenshots"><span class="todo TODO">TODO</span> Mention Emacs 27.1 SVG screenshots</h3>
 <div class="outline-text-3" id="text-Mention%20Emacs%2027.1%20SVG%20screenshots">
@@ -6267,7 +6428,6 @@ e.g. <a href="https://www.reddit.com/r/emacs/comments/idz35e/emacs_27_can_take_s
 </p>
 </div>
 </div>
-
 <div id="outline-container-Add%20section%20about%20files" class="outline-3">
 <h3 id="Add%20section%20about%20files"><span class="todo TODO">TODO</span> Add section about files</h3>
 <div class="outline-text-3" id="text-Add%20section%20about%20files">
@@ -6803,7 +6963,7 @@ This section contains code used to add to and update this document.
 
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">defun</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">emacs-package-dev-handbook--archive.is-capture</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">url</span><span style="color: #3d85b7;">)</span>
   <span style="color: #73139976b41e;">"Return archive.is archived URL for URL."</span>
-  <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">when-let*</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85;">(</span><span style="color: #a17e11;">id (</span><span style="color: #3d85b7; text-decoration: underline;">org-web-tools-archive--archive.is-url-id</span><span style="color: #3d85b7;"> url</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
+  <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">when-let*</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85;">(</span><span style="color: #a17e11;">id (</span><span style="color: #3d85b7;">org-web-tools-archive--archive.is-url-id url</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
     <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">format</span><span style="color: #3d8b85;"> </span><span style="color: #65bc957591ca;">"http://%s/%s"</span> <span style="color: #3d8b85;">org-web-tools-archive-hostname id</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
 
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">cl-defun</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">emacs-package-dev-handbook-insert-archive.is-property</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">url</span><span style="color: #3d85b7;">)</span>
@@ -6853,7 +7013,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2020-10-28 Wed 11:36</p>
+<p class="date">Created: 2020-11-03 Tue 16:59</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
