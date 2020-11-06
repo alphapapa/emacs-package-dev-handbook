@@ -53,6 +53,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 - [[#networking][Networking]]
 - [[#packaging][Packaging]]
 - [[#pattern-matching][Pattern matching]]
+- [[#processes-incl-ipc-rpc][Processes (incl. IPC, RPC)]]
 - [[#profiling--optimization][Profiling / Optimization]]
 - [[#refactoring][Refactoring]]
 - [[#regular-expressions][Regular expressions]]
@@ -2209,6 +2210,24 @@ And:
                    (* 2 a))
 #+END_SRC
 
+** Processes (incl. IPC, RPC)                                    :processes:
+
+Including inter-process communication (IPC) and remote procedure calls (RPC).
+
+*** Libraries                                                   :libraries:
+
+**** [[https://github.com/ieure/debase][debase: D-Bus<->EIEIO bridge]]                          :IPC:RPC:Linux:
+
+#+BEGIN_QUOTE
+D-Bus is an IPC system which is ubiquitous on Linux, and (in this author’s opinion) not very good. Emacs has bindings for interfacing with it (see the former point), which are annoying to use (see the latter point).
+
+These days, numerous common system management tasks are implemented as D-Bus services rather than tradidional *nix commands, and many of the command-line tools themselves are now front-ends which communicate via D-Bus. Mounting and unmounting disks, monitoring battery status, controlling display brightness, connecting to wireless networks and more are now handled with D-Bus services.
+
+It makes no sense to shell out to the tools when one could interact with them directly via D-Bus, if only it was less annoying to do so.
+
+Debase frees you from writing repetitive, annoying boilerplate code to drive D-Bus services by throwing another pile of abstraction at the problem, in the form of unreadably dense, macro-heavy, profoundly cursed Lisp.
+#+END_QUOTE
+
 ** Profiling / Optimization                         :profiling:optimization:
 :PROPERTIES:
 :TOC:      :include descendants :depth 3
@@ -2724,7 +2743,6 @@ This gives a table like:
 #+BEGIN_QUOTE
 This package for GNU Emacs allows latency tracing to be performed on Emacs Lisp code and the results output to files using the Chromium Catapult Trace Event Format.  These trace files can then be loaded into trace analysis utilities in order to generate flame graphs and other useful visualisations and analyses.
 #+END_QUOTE
-
 ** Refactoring                                                 :refactoring:
 
 *** Tools                                                           :tools:

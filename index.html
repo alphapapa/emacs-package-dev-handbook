@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-06 Fri 12:58 -->
+<!-- 2020-11-06 Fri 16:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -666,6 +666,15 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#%3Dwith-dict%3D%2C%20%3Dwith-plist-vals%3D"><code>with-dict</code>, <code>with-plist-vals</code>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="macros">macros</span>&#xa0;<span class="plists">plists</span></span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Processes%20%28incl.%20IPC%2C%20RPC%29">Processes (incl. IPC, RPC)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="processes">processes</span></span></a>
+<ul>
+<li><a href="#Processes%20%28incl.%20IPC%2C%20RPC%29--Libraries">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a>
+<ul>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fieure%2Fdebase%5D%5Bdebase%3A%20D-Bus%3C-%3EEIEIO%20bridge%5D%5D">debase: D-Bus&lt;-&gt;EIEIO bridge&#xa0;&#xa0;&#xa0;<span class="tag"><span class="IPC">IPC</span>&#xa0;<span class="RPC">RPC</span>&#xa0;<span class="Linux">Linux</span></span></a></li>
 </ul>
 </li>
 </ul>
@@ -4112,6 +4121,42 @@ And:
 </div>
 </div>
 
+<div id="outline-container-Processes%20%28incl.%20IPC%2C%20RPC%29" class="outline-3">
+<h3 id="Processes%20%28incl.%20IPC%2C%20RPC%29">Processes (incl. IPC, RPC)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="processes">processes</span></span></h3>
+<div class="outline-text-3" id="text-Processes%20%28incl.%20IPC%2C%20RPC%29">
+<p>
+Including inter-process communication (IPC) and remote procedure calls (RPC).
+</p>
+</div>
+
+<div id="outline-container-Processes%20%28incl.%20IPC%2C%20RPC%29--Libraries" class="outline-4">
+<h4 id="Processes%20%28incl.%20IPC%2C%20RPC%29--Libraries">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
+<div class="outline-text-4" id="text-Processes%20%28incl.%20IPC%2C%20RPC%29--Libraries">
+</div><div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fieure%2Fdebase%5D%5Bdebase%3A%20D-Bus%3C-%3EEIEIO%20bridge%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fieure%2Fdebase%5D%5Bdebase%3A%20D-Bus%3C-%3EEIEIO%20bridge%5D%5D"><a href="https://github.com/ieure/debase">debase: D-Bus&lt;-&gt;EIEIO bridge</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="IPC">IPC</span>&#xa0;<span class="RPC">RPC</span>&#xa0;<span class="Linux">Linux</span></span></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fieure%2Fdebase%5D%5Bdebase%3A%20D-Bus%3C-%3EEIEIO%20bridge%5D%5D">
+<blockquote>
+<p>
+D-Bus is an IPC system which is ubiquitous on Linux, and (in this author’s opinion) not very good. Emacs has bindings for interfacing with it (see the former point), which are annoying to use (see the latter point).
+</p>
+
+<p>
+These days, numerous common system management tasks are implemented as D-Bus services rather than tradidional *nix commands, and many of the command-line tools themselves are now front-ends which communicate via D-Bus. Mounting and unmounting disks, monitoring battery status, controlling display brightness, connecting to wireless networks and more are now handled with D-Bus services.
+</p>
+
+<p>
+It makes no sense to shell out to the tools when one could interact with them directly via D-Bus, if only it was less annoying to do so.
+</p>
+
+<p>
+Debase frees you from writing repetitive, annoying boilerplate code to drive D-Bus services by throwing another pile of abstraction at the problem, in the form of unreadably dense, macro-heavy, profoundly cursed Lisp.
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+
 <div id="outline-container-Profiling%20%2F%20Optimization" class="outline-3">
 <h3 id="Profiling%20%2F%20Optimization">Profiling / Optimization&#xa0;&#xa0;&#xa0;<span class="tag"><span class="profiling">profiling</span>&#xa0;<span class="optimization">optimization</span></span></h3>
 <div class="outline-text-3" id="text-Profiling%20%2F%20Optimization">
@@ -5064,7 +5109,6 @@ This package for GNU Emacs allows latency tracing to be performed on Emacs Lisp 
 </div>
 </div>
 </div>
-
 <div id="outline-container-Refactoring" class="outline-3">
 <h3 id="Refactoring">Refactoring&#xa0;&#xa0;&#xa0;<span class="tag"><span class="refactoring">refactoring</span></span></h3>
 <div class="outline-text-3" id="text-Refactoring">
@@ -7045,7 +7089,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2020-11-06 Fri 12:58</p>
+<p class="date">Created: 2020-11-06 Fri 16:55</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
