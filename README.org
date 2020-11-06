@@ -118,14 +118,25 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 :END:
 :CONTENTS:
 - [[#tools][Tools]]
-  - [[#emacs-gif-screencast][emacs-gif-screencast]]
-  - [[#keycast-show-current-command-and-its-key-in-the-mode-line][keycast: Show current command and its key in the mode line]]
-  - [[#bashcaster][Bashcaster]]
+  - [[#demonstration][Demonstration]]
+  - [[#recording][Recording]]
 :END:
 
 *** Tools                                                           :tools:
 
-**** [[https://gitlab.com/ambrevar/emacs-gif-screencast][emacs-gif-screencast]]                                           :GIFs:
+**** Demonstration                                         :demonstration:
+
+Tools to aid demonstrating use of Emacs.
+
+***** [[https://github.com/tarsius/keycast][keycast: Show current command and its key in the mode line]]
+
+***** [[https://github.com/lewang/command-log-mode][command-log-mode: log commands to buffer]]
+
+**** Recording                                                 :recording:
+
+Tools to record screencasts of Emacs.
+
+***** [[https://gitlab.com/ambrevar/emacs-gif-screencast][emacs-gif-screencast]]                                         :GIFs:
 
 #+BEGIN_QUOTE
 Most Emacs screencasts are done by first recording a video, then converting it to a GIF.  It seems like a waste of resources considering the little animation Emacs features.
@@ -137,9 +148,7 @@ Another neat perk of action-based captures is that it produces editable GIF file
 
 The author of this document can vouch for the fact that this package is the easiest, most powerful way to make screencast animations in Emacs!
 
-**** [[https://github.com/tarsius/keycast][keycast: Show current command and its key in the mode line]]
-
-**** [[https://github.com/alphapapa/bashcaster][Bashcaster]]
+***** [[https://github.com/alphapapa/bashcaster][Bashcaster]]
 
 While =emacs-gif-screencast= should usually be your first choice, the way it works, recording one frame per Emacs command, isn't suitable for every case.  For general use, your editor can recommend Bashcaster, which is an easy-to-use script that can record the whole screen or individual windows, to videos or GIFs.
 
@@ -3722,6 +3731,7 @@ The benchmark macros need to be extended to allow definitions that aren't part o
 ** TODO Mention Emacs 27.1 SVG screenshots
 
 e.g. https://www.reddit.com/r/emacs/comments/idz35e/emacs_27_can_take_svg_screenshots_of_itself/
+
 ** TODO Add section about files
 
 e.g. saving files to disk.
