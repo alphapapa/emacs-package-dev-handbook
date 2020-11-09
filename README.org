@@ -3030,6 +3030,7 @@ XTest is a simple set of extensions for ERT.  XTest speeds up the creation of te
 :CONTENTS:
 - [[#libraries][Libraries]]
   - [[#bui-buffer-interface-library][bui: Buffer interface library]]
+  - [[#lister-yet-another-list-printer][lister: Yet another list printer]]
   - [[#calfw-calendar-framework][calfw: Calendar framework]]
   - [[#ctable-table-component][ctable: Table Component]]
   - [[#emacss-widget-for-object-collections-ewoc][Emacs's Widget for Object Collections (ewoc)]]
@@ -3062,6 +3063,12 @@ BUI provides means to display entries in 2 types of buffers:
 -  =info=: it can be used to display more verbose info, like various buttons, text and other stuff related to the displayed entry (or entries).
 
 In short, you define how a =list= / =info= interface looks like (using =bui-define-interface= macro), and then you can make some user commands that will display entries (using =bui-get-display-entries= and similar functions).
+#+END_QUOTE
+
+**** [[https://github.com/publicimageltd/lister][lister: Yet another list printer]]
+
+#+BEGIN_QUOTE
+Lister is a library for creating interactive "lists" of any kind. In contrast to similar packages like hierarchy.el or tablist.el, it aims at not simply mapping a data structure to a navigatable list. Rather, it treats the list like emacs treats buffers: It is an empty space to which you can successively add stuff. So in Emacs lingo, lister should be rather called listed - it is a library for editing lists, instead of displaying them.
 #+END_QUOTE
 
 **** [[https://github.com/kiwanami/emacs-calfw][calfw: Calendar framework]]

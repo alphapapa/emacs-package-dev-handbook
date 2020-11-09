@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-06 Fri 16:55 -->
+<!-- 2020-11-08 Sun 23:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -786,6 +786,7 @@ for the JavaScript code in this tag.
 <li><a href="#User%20interface--Libraries">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></a>
 <ul>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Falezost%2Fbui.el%5D%5Bbui%3A%20Buffer%20interface%20library%5D%5D">bui: Buffer interface library</a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fpublicimageltd%2Flister%5D%5Blister%3A%20Yet%20another%20list%20printer%5D%5D">lister: Yet another list printer</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fkiwanami%2Femacs-calfw%5D%5Bcalfw%3A%20Calendar%20framework%5D%5D">calfw: Calendar framework</a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Fkiwanami%2Femacs-ctable%5D%5Bctable%3A%20Table%20Component%5D%5D">ctable: Table Component</a></li>
 <li><a href="#Emacs%27s%20Widget%20for%20Object%20Collections%20%28%3Dewoc%3D%29">Emacs's Widget for Object Collections (<code>ewoc</code>)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="built_in">built_in</span></span></a></li>
@@ -996,6 +997,7 @@ for the JavaScript code in this tag.
 <li><a href="#String%20lines">String lines</a></li>
 </ul>
 </li>
+<li><a href="#Benchmarking%20%3Dseq-let%3D%20vs%20%3Dpcase-let%2A%3D%20with%20backquoted%20patterns"><span class="todo MAYBE">MAYBE</span> Benchmarking <code>seq-let</code> vs <code>pcase-let*</code> with backquoted patterns</a></li>
 <li><a href="#Mention%20Emacs%2027.1%20SVG%20screenshots"><span class="todo TODO">TODO</span> Mention Emacs 27.1 SVG screenshots</a></li>
 <li><a href="#Add%20section%20about%20files"><span class="todo TODO">TODO</span> Add section about files</a>
 <ul>
@@ -1147,7 +1149,7 @@ You can read this Org file directly on the <a href="https://github.com/alphapapa
 </p>
 
 <div id="outline-container-Emacs%20Lisp" class="outline-2">
-<h2 id="Emacs%20Lisp">Emacs Lisp&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h2>
+<h2 id="Emacs%20Lisp"><a id="ID-50ce456f-4988-4984-9fa3-858089429580"></a>Emacs Lisp&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h2>
 <div class="outline-text-2" id="text-Emacs%20Lisp">
 <p>
 <b>Note:</b> Usable Emacs Lisp code snippets (not examples) are tangled to the file <code>epdh.el</code>, which may be found in the <a href="https://github.com/alphapapa/emacs-package-dev-handbook/blob/master/epdh.el">repository</a>.  You could even install the file as a package with <a href="https://framagit.org/steckerhalter/quelpa-use-package">quelpa-use-package</a>, like this:
@@ -2888,7 +2890,7 @@ Including anonymous functions (lambdas).
 </div>
 
 <div id="outline-container-General" class="outline-3">
-<h3 id="General">General&#xa0;&#xa0;&#xa0;<span class="tag"><span class="general">general</span></span></h3>
+<h3 id="General"><a id="ID-26708ac7-9fa3-4f21-9324-ba0e8c939bd7"></a>General&#xa0;&#xa0;&#xa0;<span class="tag"><span class="general">general</span></span></h3>
 <div class="outline-text-3" id="text-General">
 </div>
 
@@ -3016,7 +3018,7 @@ Byte-compile and load all elisp files in <code>DIRECTORY</code>.  Interactively,
 </div>
 
 <div id="outline-container-%3Demacs-lisp-macroreplace%3D" class="outline-5">
-<h5 id="%3Demacs-lisp-macroreplace%3D"><code>emacs-lisp-macroreplace</code></h5>
+<h5 id="%3Demacs-lisp-macroreplace%3D"><a id="ID-e84a8d0a-f68a-43c5-a499-f27b8ad90457"></a><code>emacs-lisp-macroreplace</code></h5>
 <div class="outline-text-5" id="text-%3Demacs-lisp-macroreplace%3D">
 <p>
 Replace macro form before or after point with its expansion.
@@ -3526,7 +3528,7 @@ You should always include a readme with your project.  Typically it will be incl
 <div class="org-src-container">
 <pre class="src src-org"><span style="color: #586e75;">#+TITLE:</span> <span style="color: #93a1a1; font-size: 130%; font-weight: bold;">package-name</span>
 
-<span style="color: #586e75; background-color: #0c1e24; font-weight: bold; font-style: italic;">#+PROPERTY: LOGGING nil</span>
+<span style="color: #586e75; background-color: #0c1e24;">#+PROPERTY: LOGGING nil</span>
 
 <span style="color: #586e75; font-style: italic;"># Note: This readme works with the org-make-toc <a href="https://github.com/alphapapa/org-make-toc">&lt;https://github.com/alphapapa/org-make-toc&gt;</a> package, which automatically updates the table of contents.</span>
 
@@ -3573,7 +3575,7 @@ If you installed from MELPA, you're done.  Just run one of the commands below.
 
 <span style="color: #586e75; background-color: #0c1e24; text-decoration: underline;">  #+BEGIN_SRC elisp</span>
 <span style="color: #a17e11; background-color: #0e2329;">(</span><span style="color: #3d85b7; background-color: #0e2329; font-weight: bold;">require</span><span style="color: #3d85b7; background-color: #0e2329;"> '</span><span style="color: #3d85b7; background-color: #0e2329; font-weight: bold;">package-name</span><span style="color: #a17e11; background-color: #0e2329;">)</span>
-<span style="color: #586e75; background-color: #0c1e24; font-weight: bold; font-style: italic; text-decoration: overline;">  #+END_SRC</span>
+<span style="color: #586e75; background-color: #0c1e24; text-decoration: overline;">  #+END_SRC</span>
 
 <span style="color: #a94058fc37c0; background-color: #073642; font-weight: bold; text-decoration: overline;">* Usage</span>
 <span style="color: #586e75; font-size: 90%; font-weight: bold;">:PROPERTIES:</span>
@@ -4158,7 +4160,7 @@ Debase frees you from writing repetitive, annoying boilerplate code to drive D-B
 </div>
 
 <div id="outline-container-Profiling%20%2F%20Optimization" class="outline-3">
-<h3 id="Profiling%20%2F%20Optimization">Profiling / Optimization&#xa0;&#xa0;&#xa0;<span class="tag"><span class="profiling">profiling</span>&#xa0;<span class="optimization">optimization</span></span></h3>
+<h3 id="Profiling%20%2F%20Optimization"><a id="ID-12dd12df-eb37-4fd3-89b1-ed23aad705bf"></a>Profiling / Optimization&#xa0;&#xa0;&#xa0;<span class="tag"><span class="profiling">profiling</span>&#xa0;<span class="optimization">optimization</span></span></h3>
 <div class="outline-text-3" id="text-Profiling%20%2F%20Optimization">
 </div>
 
@@ -4264,7 +4266,7 @@ When called from an Org source block, it gives output like this:
 </div>
 
 <div id="outline-container-~bench-multi~%20macros" class="outline-5">
-<h5 id="~bench-multi~%20macros"><code>bench-multi</code> macros</h5>
+<h5 id="~bench-multi~%20macros"><a id="ID-254f9e93-2f3c-4460-8fbd-7de9954d275d"></a><code>bench-multi</code> macros</h5>
 <div class="outline-text-5" id="text-~bench-multi~%20macros">
 <p>
 These macros make comparing multiple forms easy:
@@ -4542,7 +4544,7 @@ So this macro showed which code is faster and helped catch a subtle bug.
 </div>
 
 <div id="outline-container-~bench-multi-lexical~" class="outline-6">
-<h6 id="~bench-multi-lexical~"><code>bench-multi-lexical</code></h6>
+<h6 id="~bench-multi-lexical~"><a id="ID-cf3d7f70-fd84-41f8-b51e-6b3a710cae82"></a><code>bench-multi-lexical</code></h6>
 <div class="outline-text-6" id="text-~bench-multi-lexical~">
 <p>
 To evaluate forms with lexical binding enabled, use this macro:
@@ -4756,7 +4758,7 @@ The <code>buffer-local-value</code> form improved by about 24% when using lexica
 </div>
 
 <div id="outline-container-~bench-dynamic-vs-lexical-binding~" class="outline-6">
-<h6 id="~bench-dynamic-vs-lexical-binding~"><code>bench-dynamic-vs-lexical-binding</code></h6>
+<h6 id="~bench-dynamic-vs-lexical-binding~"><a id="ID-1ec52dea-b9f5-4e71-826f-3ac9d9cc2225"></a><code>bench-dynamic-vs-lexical-binding</code></h6>
 <div class="outline-text-6" id="text-~bench-dynamic-vs-lexical-binding~">
 <p>
 This macro compares dynamic and lexical binding.
@@ -4858,7 +4860,7 @@ Example:
 </div>
 
 <div id="outline-container-~bench-multi-lets~" class="outline-6">
-<h6 id="~bench-multi-lets~"><code>bench-multi-lets</code></h6>
+<h6 id="~bench-multi-lets~"><a id="ID-fefdafc5-2130-4c01-bea5-a85931433589"></a><code>bench-multi-lets</code></h6>
 <div class="outline-text-6" id="text-~bench-multi-lets~">
 <p>
 This macro benchmarks multiple forms in multiple environments, which is helpful for testing code that behaves differently depending on global variables.
@@ -5516,6 +5518,17 @@ In short, you define how a <code>list</code> / <code>info</code> interface looks
 </div>
 </div>
 
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fpublicimageltd%2Flister%5D%5Blister%3A%20Yet%20another%20list%20printer%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fpublicimageltd%2Flister%5D%5Blister%3A%20Yet%20another%20list%20printer%5D%5D"><a href="https://github.com/publicimageltd/lister">lister: Yet another list printer</a></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fpublicimageltd%2Flister%5D%5Blister%3A%20Yet%20another%20list%20printer%5D%5D">
+<blockquote>
+<p>
+Lister is a library for creating interactive "lists" of any kind. In contrast to similar packages like hierarchy.el or tablist.el, it aims at not simply mapping a data structure to a navigatable list. Rather, it treats the list like emacs treats buffers: It is an empty space to which you can successively add stuff. So in Emacs lingo, lister should be rather called listed - it is a library for editing lists, instead of displaying them.
+</p>
+</blockquote>
+</div>
+</div>
+
 <div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fkiwanami%2Femacs-calfw%5D%5Bcalfw%3A%20Calendar%20framework%5D%5D" class="outline-5">
 <h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fkiwanami%2Femacs-calfw%5D%5Bcalfw%3A%20Calendar%20framework%5D%5D"><a href="https://github.com/kiwanami/emacs-calfw">calfw: Calendar framework</a></h5>
 <div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fkiwanami%2Femacs-calfw%5D%5Bcalfw%3A%20Calendar%20framework%5D%5D">
@@ -5858,7 +5871,7 @@ Example:
 </div>
 
 <div id="outline-container-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fbddean%2Fxml-plus%5D%5Bxml-plus%5D%5D" class="outline-5">
-<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fbddean%2Fxml-plus%5D%5Bxml-plus%5D%5D"><a href="https://github.com/bddean/xml-plus">xml-plus</a></h5>
+<h5 id="%5B%5Bhttps%3A%2F%2Fgithub.com%2Fbddean%2Fxml-plus%5D%5Bxml-plus%5D%5D"><a id="ID-b2bf9054-4856-431b-b01c-a96fe82aad31"></a><a href="https://github.com/bddean/xml-plus">xml-plus</a></h5>
 <div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Fgithub.com%2Fbddean%2Fxml-plus%5D%5Bxml-plus%5D%5D">
 <p>
 Mostly undocumented, providing three main functions:
@@ -6368,7 +6381,7 @@ Also see:
           <span style="color: #78880e;">(</span><span style="color: #65bc957591ca;">"stream-regexp/seq-do/push"</span>
            <span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">let*</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7;">(</span><span style="color: #78880e;">buffer (</span><span style="color: #3d8b85; text-decoration: underline;">find-file-noselect</span><span style="color: #3d8b85;"> </span><span style="color: #65bc957591ca;">"~/org/main.org"</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
                   <span style="color: #3d85b7;">(</span><span style="color: #78880e;">regexp (</span><span style="color: #3d8b85; font-weight: bold;">rx</span><span style="color: #3d8b85;"> bow </span><span style="color: #65bc957591ca;">"Emacs"</span> <span style="color: #3d8b85;">eow</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
-                  <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">stream</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">stream-regexp</span><span style="color: #3d8b85;"> buffer regexp</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
+                  <span style="color: #3d85b7;">(</span><span style="color: #78880e;">stream (</span><span style="color: #3d8b85;">stream-regexp buffer regexp</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
                   <span style="color: #3d85b7;">result</span><span style="color: #a17e11;">)</span>
              <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">with-current-buffer</span><span style="color: #3d85b7;"> buffer</span>
 <span style="color: #3d85b7;">               (</span><span style="color: #78880e; text-decoration: underline;">goto-char</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">point-min</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
@@ -6380,10 +6393,10 @@ Also see:
           <span style="color: #78880e;">(</span><span style="color: #65bc957591ca;">"stream-regexp/cl-loop"</span>
            <span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">let*</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7;">(</span><span style="color: #78880e;">buffer (</span><span style="color: #3d8b85; text-decoration: underline;">find-file-noselect</span><span style="color: #3d8b85;"> </span><span style="color: #65bc957591ca;">"~/org/main.org"</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
                   <span style="color: #3d85b7;">(</span><span style="color: #78880e;">regexp (</span><span style="color: #3d8b85; font-weight: bold;">rx</span><span style="color: #3d8b85;"> bow </span><span style="color: #65bc957591ca;">"Emacs"</span> <span style="color: #3d8b85;">eow</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
-                  <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">stream</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">stream-regexp</span><span style="color: #3d8b85;"> buffer regexp</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
+                  <span style="color: #3d85b7;">(</span><span style="color: #78880e;">stream (</span><span style="color: #3d8b85;">stream-regexp buffer regexp</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
              <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">with-current-buffer</span><span style="color: #3d85b7;"> buffer</span>
 <span style="color: #3d85b7;">               (</span><span style="color: #78880e; text-decoration: underline;">goto-char</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">point-min</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
-               <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">length</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; font-weight: bold;">cl-loop</span><span style="color: #3d8b85;"> while (</span><span style="color: #a38528; font-weight: bold;">stream-pop</span><span style="color: #a38528;"> stream</span><span style="color: #3d8b85;">)</span>
+               <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">length</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; font-weight: bold;">cl-loop</span><span style="color: #3d8b85;"> while (</span><span style="color: #a38528;">stream-pop stream</span><span style="color: #3d8b85;">)</span>
                                 <span style="color: #3d8b85;">collect (</span><span style="color: #a38528; text-decoration: underline;">match-string-no-properties</span><span style="color: #a38528;"> 0</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
 </pre>
 </div>
@@ -6412,8 +6425,8 @@ The benchmark macros need to be extended to allow definitions that aren't part o
     <span style="color: #78880e;">(</span><span style="color: #3d8b85; font-weight: bold;">with-current-buffer</span><span style="color: #3d8b85;"> buffer</span>
 <span style="color: #3d8b85;">      (</span><span style="color: #a17e11; font-weight: bold;">unless</span><span style="color: #a17e11;"> pos (</span><span style="color: #3d85b7; font-weight: bold;">setq</span><span style="color: #3d85b7;"> pos (</span><span style="color: #78880e; text-decoration: underline;">point-min</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span>
       <span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">if</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7;">&gt;= pos (</span><span style="color: #78880e; text-decoration: underline;">point-max</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
-          <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">stream-empty</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span>
-      <span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">stream-cons</span>
+          <span style="color: #a17e11;">(</span><span style="color: #3d85b7;">stream-empty</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span>
+      <span style="color: #3d8b85;">(</span><span style="color: #a17e11;">stream-cons</span>
 <span style="color: #a17e11;">       (</span><span style="color: #3d85b7; font-weight: bold;">with-current-buffer</span><span style="color: #3d85b7;"> buffer</span>
 <span style="color: #3d85b7;">         (</span><span style="color: #78880e; font-weight: bold;">save-excursion</span>
 <span style="color: #78880e;">           (</span><span style="color: #3d8b85; font-weight: bold;">save-restriction</span>
@@ -6423,12 +6436,12 @@ The benchmark macros need to be extended to allow definitions that aren't part o
                <span style="color: #a38528;">(</span><span style="color: #648daa; font-weight: bold;">setf</span><span style="color: #648daa;"> pos (</span><span style="color: #7f8d22; font-weight: bold;">progn</span>
 <span style="color: #7f8d22;">                           (</span><span style="color: #5b8682; text-decoration: underline;">forward-line</span><span style="color: #5b8682;"> 1</span><span style="color: #7f8d22;">)</span>
                            <span style="color: #7f8d22;">(</span><span style="color: #5b8682; text-decoration: underline;">point</span><span style="color: #7f8d22;">)</span><span style="color: #648daa;">)</span><span style="color: #a38528;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
-       <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">stream-lines</span><span style="color: #3d85b7;"> buffer pos no-properties</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
+       <span style="color: #a17e11;">(</span><span style="color: #3d85b7;">stream-lines buffer pos no-properties</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
 
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">bench-multi-lexical</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7; font-weight: bold;">:times</span><span style="color: #3d85b7;"> 100 </span><span style="color: #3d85b7; font-weight: bold;">:ensure-equal</span><span style="color: #3d85b7;"> t</span>
 <span style="color: #3d85b7;">  </span><span style="color: #3d85b7; font-weight: bold;">:forms</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">(</span><span style="color: #65bc957591ca;">"stream-lines/seq-take/seq-into"</span>
            <span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">let*</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7;">(</span><span style="color: #78880e;">buffer (</span><span style="color: #3d8b85; text-decoration: underline;">find-file-noselect</span><span style="color: #3d8b85;"> </span><span style="color: #65bc957591ca;">"~/org/main.org"</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
-                  <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">stream</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">stream-lines</span><span style="color: #3d8b85;"> buffer nil 'no-properties</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
+                  <span style="color: #3d85b7;">(</span><span style="color: #78880e;">stream (</span><span style="color: #3d8b85;">stream-lines buffer nil 'no-properties</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
              <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">seq-into</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">seq-take</span><span style="color: #78880e;"> stream 10</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">'list</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
 
           <span style="color: #78880e;">(</span><span style="color: #65bc957591ca;">"cl-loop"</span>
@@ -6468,11 +6481,11 @@ The benchmark macros need to be extended to allow definitions that aren't part o
 <span style="color: #3d85b7;">              #'buffer-substring</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span>
         <span style="color: #3d8b85;">(</span><span style="color: #a17e11;">eol (</span><span style="color: #3d85b7; font-weight: bold;">when</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">string-match</span><span style="color: #78880e;"> </span><span style="color: #921da24c26e6;">"\n"</span> <span style="color: #78880e;">string pos</span><span style="color: #3d85b7;">)</span>
                <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">match-beginning</span><span style="color: #78880e;"> 0</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
-    <span style="color: #78880e;">(</span><span style="color: #3d8b85; font-weight: bold;">stream-cons</span>
+    <span style="color: #78880e;">(</span><span style="color: #3d8b85;">stream-cons</span>
 <span style="color: #3d8b85;">     (</span><span style="color: #a17e11; text-decoration: underline;">seq-subseq</span><span style="color: #a17e11;"> string pos eol</span><span style="color: #3d8b85;">)</span>
      <span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">if</span><span style="color: #a17e11;"> (</span><span style="color: #cb4b16; font-weight: bold;">not</span><span style="color: #3d85b7;"> eol</span><span style="color: #a17e11;">)</span>
-         <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">stream-empty</span><span style="color: #a17e11;">)</span>
-       <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">stream-lines</span><span style="color: #3d85b7;"> string (</span><span style="color: #78880e; text-decoration: underline;">1+</span><span style="color: #78880e;"> eol</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">no-properties</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
+         <span style="color: #a17e11;">(</span><span style="color: #3d85b7;">stream-empty</span><span style="color: #a17e11;">)</span>
+       <span style="color: #a17e11;">(</span><span style="color: #3d85b7;">stream-lines string (</span><span style="color: #78880e; text-decoration: underline;">1+</span><span style="color: #78880e;"> eol</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">no-properties</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
 
 <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">bench-multi-lexical</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7; font-weight: bold;">:times</span><span style="color: #3d85b7;"> 100 </span><span style="color: #3d85b7; font-weight: bold;">:ensure-equal</span><span style="color: #3d85b7;"> t</span>
 <span style="color: #3d85b7;">  </span><span style="color: #3d85b7; font-weight: bold;">:forms</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">(</span><span style="color: #65bc957591ca;">"stream-lines/seq-into"</span>
@@ -6480,7 +6493,7 @@ The benchmark macros need to be extended to allow definitions that aren't part o
 <span style="color: #921da24c26e6;">efgh</span>
 <span style="color: #921da24c26e6;">hijk</span>
 <span style="color: #921da24c26e6;">zz"</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
-             <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">seq-into</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">stream-lines</span><span style="color: #78880e;"> string nil 'no-properties</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">'list</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
+             <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">seq-into</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">stream-lines string nil 'no-properties</span><span style="color: #3d85b7;">)</span> <span style="color: #3d85b7;">'list</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
 
           <span style="color: #78880e;">(</span><span style="color: #65bc957591ca;">"</span><span style="color: #65bc957591ca; text-decoration: underline;">s-lines</span><span style="color: #65bc957591ca;">"</span>
            <span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">let*</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">string</span><span style="color: #78880e;"> </span><span style="color: #921da24c26e6;">"abcd</span>
@@ -6494,6 +6507,22 @@ The benchmark macros need to be extended to allow definitions that aren't part o
 </div>
 </div>
 
+<div id="outline-container-Benchmarking%20%3Dseq-let%3D%20vs%20%3Dpcase-let%2A%3D%20with%20backquoted%20patterns" class="outline-3">
+<h3 id="Benchmarking%20%3Dseq-let%3D%20vs%20%3Dpcase-let%2A%3D%20with%20backquoted%20patterns"><span class="todo MAYBE">MAYBE</span> Benchmarking <code>seq-let</code> vs <code>pcase-let*</code> with backquoted patterns</h3>
+<div class="outline-text-3" id="text-Benchmarking%20%3Dseq-let%3D%20vs%20%3Dpcase-let%2A%3D%20with%20backquoted%20patterns">
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">bench-multi-lexical</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7; font-weight: bold;">:times</span><span style="color: #3d85b7;"> 1000 </span><span style="color: #3d85b7; font-weight: bold;">:ensure-equal</span><span style="color: #3d85b7;"> t</span>
+<span style="color: #3d85b7;">  </span><span style="color: #3d85b7; font-weight: bold;">:forms</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e;">(</span><span style="color: #65bc957591ca;">"pcase-let* backquoted pattern"</span>
+           <span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">pcase-let*</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7;">(</span><span style="color: #78880e;">`(</span><span style="color: #3d8b85;">,name ,argument</span><span style="color: #78880e;">)</span> <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">list</span><span style="color: #3d8b85;"> 'NAME 'ARGUMENT</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
+             <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">list</span><span style="color: #3d85b7;"> name argument</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
+
+          <span style="color: #78880e;">(</span><span style="color: #65bc957591ca;">"seq-let"</span>
+           <span style="color: #3d8b85;">(</span><span style="color: #a17e11; font-weight: bold;">seq-let</span><span style="color: #a17e11;"> (</span><span style="color: #3d85b7;">name argument</span><span style="color: #a17e11;">)</span> <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">list</span><span style="color: #3d85b7;"> 'NAME 'ARGUMENT</span><span style="color: #a17e11;">)</span>
+             <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">list</span><span style="color: #3d85b7;"> name argument</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
+</pre>
+</div>
+</div>
+</div>
 
 <div id="outline-container-Mention%20Emacs%2027.1%20SVG%20screenshots" class="outline-3">
 <h3 id="Mention%20Emacs%2027.1%20SVG%20screenshots"><span class="todo TODO">TODO</span> Mention Emacs 27.1 SVG screenshots</h3>
@@ -7052,7 +7081,7 @@ This section contains code used to add to and update this document.
                        <span style="color: #a17e11;">(</span><span style="color: #3d85b7; text-decoration: underline;">beginning-of-line</span><span style="color: #a17e11;">)</span>
                        <span style="color: #a17e11;">(</span><span style="color: #3d85b7; font-weight: bold;">when</span><span style="color: #3d85b7;"> (</span><span style="color: #78880e; text-decoration: underline;">re-search-forward</span><span style="color: #78880e;"> org-bracket-link-regexp (</span><span style="color: #3d8b85; text-decoration: underline;">line-end-position</span><span style="color: #78880e;">)</span> <span style="color: #78880e;">'noerror</span><span style="color: #3d85b7;">)</span>
                          <span style="color: #3d85b7;">(</span><span style="color: #78880e; text-decoration: underline;">org-link-unescape</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85; text-decoration: underline;">match-string-no-properties</span><span style="color: #3d8b85;"> 1</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span>
-  <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">when-let</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85;">(</span><span style="color: #a17e11;">archive-url (</span><span style="color: #3d85b7;">emacs-package-dev-handbook--archive.is-capture url</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
+  <span style="color: #3d85b7;">(</span><span style="color: #78880e; font-weight: bold;">when-let</span><span style="color: #78880e;"> (</span><span style="color: #3d8b85;">(</span><span style="color: #a17e11;">archive-url (</span><span style="color: #3d85b7; text-decoration: underline;">emacs-package-dev-handbook--archive.is-capture</span><span style="color: #3d85b7;"> url</span><span style="color: #a17e11;">)</span><span style="color: #3d8b85;">)</span><span style="color: #78880e;">)</span>
     <span style="color: #78880e;">(</span><span style="color: #3d8b85; text-decoration: underline;">org-set-property</span><span style="color: #3d8b85;"> </span><span style="color: #65bc957591ca;">"archive.is"</span> <span style="color: #3d8b85;">archive-url</span><span style="color: #78880e;">)</span><span style="color: #3d85b7;">)</span><span style="color: #a17e11;">)</span>
 </pre>
 </div>
@@ -7089,7 +7118,7 @@ The ToC is generated using <a href="https://github.com/alphapapa/org-make-toc">o
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2020-11-06 Fri 16:55</p>
+<p class="date">Created: 2020-11-08 Sun 23:53</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
