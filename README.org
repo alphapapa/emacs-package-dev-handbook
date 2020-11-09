@@ -24,12 +24,12 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 - [[#people][People]]
 - [[#contributions][Contributions]]
 - [[#tasks][Tasks]]
-- [[#code][Code]]
 :END:
 
 * Emacs Lisp                                                          :elisp:
 :PROPERTIES:
 :TOC:      :include descendants :depth 1 :force depth
+:ID:       50ce456f-4988-4984-9fa3-858089429580
 :END:
 :CONTENTS:
 - [[#animations--screencasts][Animations / Screencasts]]
@@ -46,7 +46,6 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 - [[#destructuring][Destructuring]]
 - [[#documentation][Documentation]]
 - [[#editing][Editing]]
-- [[#functions][Functions]]
 - [[#general][General]]
 - [[#highlighting--font-locking][Highlighting / font-locking]]
 - [[#multiprocessing-generators-threads][Multiprocessing (generators, threads)]]
@@ -54,7 +53,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 - [[#packaging][Packaging]]
 - [[#pattern-matching][Pattern matching]]
 - [[#processes-incl-ipc-rpc][Processes (incl. IPC, RPC)]]
-- [[#profiling--optimization][Profiling / Optimization]]
+- [[#optimization][Optimization]]
 - [[#refactoring][Refactoring]]
 - [[#regular-expressions][Regular expressions]]
 - [[#strings][Strings]]
@@ -1165,21 +1164,10 @@ The editor of this handbook uses ~iedit~ with these customizations:
 :ID:       e806d7f3-43e9-4260-aae4-479efbd41653
 :END:
 
-** Functions                                                     :functions:
-
-Including anonymous functions (lambdas).
-
-*** Articles
-
-**** [[https://nullprogram.com/blog/2017/12/14/][What's in an Emacs Lambda « null program]] :lambdas:byte_compilation:lexical_binding:scope:
-:PROPERTIES:
-:archive.today: http://archive.today/ppIuJ
-:ID:       54fa2e85-066f-431e-9db3-8b1627fac4ca
-:END:
-
 ** General                                                         :general:
 :PROPERTIES:
 :TOC:      :include descendants :depth 2
+:ID:       26708ac7-9fa3-4f21-9324-ba0e8c939bd7
 :END:
 :CONTENTS:
 - [[#libraries][Libraries]]
@@ -1286,6 +1274,9 @@ Byte-compile and load all elisp files in ~DIRECTORY~.  Interactively, directory 
 #+END_SRC
 
 **** =emacs-lisp-macroreplace=
+:PROPERTIES:
+:ID:       e84a8d0a-f68a-43c5-a499-f27b8ad90457
+:END:
 
 Replace macro form before or after point with its expansion.
 
@@ -1386,7 +1377,7 @@ Tools for developing highlighting/font-locking packages.
 :TOC:      :depth 0
 :END:
 
-**** [[https://nullprogram.com/blog/2018/05/31/][Emacs 26 Brings Generators and Threads « null program]] :threads:generators:byte_compilation:closures:iterators:
+**** [[https://nullprogram.com/blog/2018/05/31/][Emacs 26 Brings Generators and Threads « null program]] :threads:generators:compilation:closures:iterators:
 :PROPERTIES:
 :archive.today: http://archive.today/Irane
 :END:
@@ -1560,15 +1551,7 @@ Sebastian Wiesner provides a detailed explanation.
 
 A lot of good examples and discussion.
 
-****** [[https://nullprogram.com/blog/2016/12/22/][Some Performance Advantages of Lexical Scope « null program]]
-:PROPERTIES:
-:ID:       3659d32e-3e9e-466f-94ff-33cfed5dc49d
-:archive.today: http://archive.today/xm5zq
-:END:
-
-#+BEGIN_QUOTE
-I recently had a discussion with Xah Lee about lexical scope in Emacs Lisp. The topic was why lexical-binding exists at a file-level when there was already lexical-let (from cl-lib), prompted by my previous article on JIT byte-code compilation. The specific context is Emacs Lisp, but these concepts apply to language design in general.
-#+END_QUOTE
+****** [[id:3659d32e-3e9e-466f-94ff-33cfed5dc49d][Some Performance Advantages of Lexical Scope « null program]]
 
 **** Template
 :PROPERTIES:
@@ -1926,10 +1909,10 @@ The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.
   - [[#makel-a-makefile-to-facilitate-checking-emacs-packages][makel: A makefile to facilitate checking Emacs packages]]
   - [[#makemsh-makefile-like-script-for-building-and-testing-packages][makem.sh: Makefile-like script for building and testing packages]]
 - [[#package-installationmanagement][Package installation/management]]
-  - [[#paradox-modernizing-emacs-package-menu-with-package-ratings-usage-statistics-customizability-and-more][paradox: modernizing Emacs' Package Menu. With package ratings, usage statistics, customizability, and more.]]
-  - [[#el-get-manage-the-external-elisp-bits-and-pieces-upon-which-you-depend][el-get: Manage the external elisp bits and pieces upon which you depend!]]
   - [[#straightel-next-generation-purely-functional-package-manager-for-the-emacs-hacker][straight.el: Next-generation, purely functional package manager for the Emacs hacker]]
   - [[#use-package-a-use-package-declaration-for-simplifying-your-emacs][use-package: A use-package declaration for simplifying your .emacs]]
+  - [[#paradox-modernizing-emacs-package-menu-with-package-ratings-usage-statistics-customizability-and-more][paradox: modernizing Emacs' Package Menu. With package ratings, usage statistics, customizability, and more.]]
+  - [[#el-get-manage-the-external-elisp-bits-and-pieces-upon-which-you-depend][el-get: Manage the external elisp bits and pieces upon which you depend!]]
 :END:
 
 **** Building / Testing                                 :building:testing:
@@ -2006,13 +1989,6 @@ The script can run Emacs with the developer's local Emacs configuration, or with
 
 **** Package installation/management             :installation:management:
 
-***** [[https://github.com/Malabarba/paradox][paradox: modernizing Emacs' Package Menu. With package ratings, usage statistics, customizability, and more.]]
-:PROPERTIES:
-:ID:       2c31eae6-eeba-433f-bc26-9465d5aa8537
-:END:
-
-***** [[https://github.com/dimitri/el-get][el-get: Manage the external elisp bits and pieces upon which you depend!]]
-
 ***** TODO [[https://github.com/raxod502/straight.el][straight.el: Next-generation, purely functional package manager for the Emacs hacker]] :needs_examples:
 :LOGBOOK:
 -  State "TODO"       from              [2018-07-29 Sun 13:11]
@@ -2027,6 +2003,13 @@ The script can run Emacs with the developer's local Emacs configuration, or with
 :END:
 
 Developed by the current maintainer of Emacs, himself, John Wiegley.
+
+***** [[https://github.com/Malabarba/paradox][paradox: modernizing Emacs' Package Menu. With package ratings, usage statistics, customizability, and more.]]
+:PROPERTIES:
+:ID:       2c31eae6-eeba-433f-bc26-9465d5aa8537
+:END:
+
+***** [[https://github.com/dimitri/el-get][el-get: Manage the external elisp bits and pieces upon which you depend!]]
 
 ** Pattern matching                         :destructuring:pattern_matching:
 :PROPERTIES:
@@ -2228,32 +2211,81 @@ It makes no sense to shell out to the tools when one could interact with them di
 Debase frees you from writing repetitive, annoying boilerplate code to drive D-Bus services by throwing another pile of abstraction at the problem, in the form of unreadably dense, macro-heavy, profoundly cursed Lisp.
 #+END_QUOTE
 
-** Profiling / Optimization                         :profiling:optimization:
+** Optimization                                               :optimization:
 :PROPERTIES:
-:TOC:      :include descendants :depth 3
+:TOC:      :include descendants
 :END:
+
+Including benchmarking, byte-compilation, profiling, etc.
+
 :CONTENTS:
 - [[#articles][Articles]]
-- [[#macros][Macros]]
-  - [[#bench][bench]]
-  - [[#bench-multi-macros][bench-multi macros]]
-    - [[#bench-multi-lexical][bench-multi-lexical]]
-    - [[#bench-dynamic-vs-lexical-binding][bench-dynamic-vs-lexical-binding]]
-    - [[#bench-multi-lets][bench-multi-lets]]
-  - [[#elp-profile][elp-profile]]
+  - [[#efficient-alias-of-a-built-in-emacs-lisp-function--null-program][Efficient Alias of a Built-In Emacs Lisp Function « null program]]
+  - [[#emacs-byte-code-internals][Emacs Byte-code Internals]]
+  - [[#faster-elfeed-search-through-jit-byte-code-compilation][Faster Elfeed Search Through JIT Byte-code Compilation]]
+  - [[#how-to-write-faster-emacs-lisp--null-program][How to Write Fast(er) Emacs Lisp « null program]]
+  - [[#some-performance-advantages-of-lexical-scope--null-program][Some Performance Advantages of Lexical Scope « null program]]
+  - [[#whats-in-an-emacs-lambda--null-program][What's in an Emacs Lambda « null program]]
+- [[#reference][Reference]]
+  - [[#elisp-bytecode-lets-document-emacs-lisp-bytecode-lisp-assembly-program-instructions][elisp-bytecode: Let's document Emacs Lisp Bytecode (Lisp Assembly Program) instructions]]
 - [[#tools][Tools]]
-  - [[#etrace-emacs-lisp-latency-tracing-for-the-chromium-catapult-trace-event-format][etrace: Emacs Lisp Latency Tracing for the Chromium Catapult Trace Event Format]]
+  - [[#benchmarking][Benchmarking]]
+    - [[#bench-macro][bench macro]]
+    - [[#bench-multi-macros][bench-multi macros]]
+      - [[#bench-dynamic-vs-lexical-binding][bench-dynamic-vs-lexical-binding]]
+      - [[#bench-multi-lets][bench-multi-lets]]
+      - [[#bench-multi-lexical][bench-multi-lexical]]
+  - [[#profiling][Profiling]]
+    - [[#elp-profile][elp-profile]]
+    - [[#etrace-emacs-lisp-latency-tracing-for-the-chromium-catapult-trace-event-format][etrace: Emacs Lisp Latency Tracing for the Chromium Catapult Trace Event Format]]
 :END:
-
-#+BEGIN_SRC elisp :exports none :eval never :tangle epdh.el
-;;;; Profiling / Optimization
-
-#+END_SRC
 
 *** Articles                                                     :articles:
 :PROPERTIES:
-:TOC:      :depth 0
+:TOC:      :include descendants
 :END:
+:CONTENTS:
+- [[#efficient-alias-of-a-built-in-emacs-lisp-function--null-program][Efficient Alias of a Built-In Emacs Lisp Function « null program]]
+- [[#emacs-byte-code-internals][Emacs Byte-code Internals]]
+- [[#faster-elfeed-search-through-jit-byte-code-compilation][Faster Elfeed Search Through JIT Byte-code Compilation]]
+- [[#how-to-write-faster-emacs-lisp--null-program][How to Write Fast(er) Emacs Lisp « null program]]
+- [[#some-performance-advantages-of-lexical-scope--null-program][Some Performance Advantages of Lexical Scope « null program]]
+- [[#whats-in-an-emacs-lambda--null-program][What's in an Emacs Lambda « null program]]
+:END:
+
+**** [[https://nullprogram.com/blog/2019/12/10/][Efficient Alias of a Built-In Emacs Lisp Function « null program]] :compilation:bytecode:
+:PROPERTIES:
+:archive.is: http://archive.today/wip/pdIQH
+:ID:       26105b53-a344-48bd-a252-596dd838ac3b
+:author:   Chris Wellons
+:published:   [2019-12-10 Tue]
+:END:
+
+Chris Wellons compares the use of =defalias= and =defsubst= and how they are optimized by the byte-compiler.
+
+**** [[https://nullprogram.com/blog/2014/01/04/][Emacs Byte-code Internals]]                      :compilation:bytecode:
+:PROPERTIES:
+:archive.is: http://archive.today/DFx3S
+:author:   Chris Wellons
+:published:   [2014-01-04 Sat]
+:END:
+
+#+BEGIN_QUOTE
+Byte-code compilation is an underdocumented — and in the case of the recent lexical binding updates, undocumented — part of Emacs. Most users know that Elisp is usually compiled into a byte-code saved to =.elc= files, and that byte-code loads and runs faster than uncompiled Elisp. That’s all users really need to know, and the /GNU Emacs Lisp Reference Manual/ specifically discourages poking around too much.
+
+    *People do not write byte-code*; that job is left to the byte compiler. But we provide a disassembler to satisfy a cat-like curiosity.
+
+Screw that! What if I want to handcraft some byte-code myself? :-) The purpose of this article is to introduce the internals of Elisp byte-code interpreter. I will explain how it works, why lexically scoped code is faster, and demonstrate writing some byte-code by hand.
+#+END_QUOTE
+
+**** [[https://nullprogram.com/blog/2016/12/11/][Faster Elfeed Search Through JIT Byte-code Compilation]] :benchmarking:compilation:bytecode:
+:PROPERTIES:
+:author:   Chris Wellons
+:published:   [2016-12-11 Sun]
+:ID:       6e54fe14-d70e-485e-a671-a2600d57595d
+:END:
+
+Chris Wellons shows how he substantially improved Elfeed's search by byte-compiling functions at runtime and avoiding function call overhead.  He also demonstrates some simple benchmarking tools he wrote in the process.
 
 **** [[https://nullprogram.com/blog/2017/01/30/][How to Write Fast(er) Emacs Lisp « null program]]
 :PROPERTIES:
@@ -2262,23 +2294,59 @@ Debase frees you from writing repetitive, annoying boilerplate code to drive D-B
 
 Chris Wellons explains five ways to write faster Emacs Lisp code.
 
-**** [[*%5B%5Bhttps://nullprogram.com/blog/2016/12/22/%5D%5BSome%20Performance%20Advantages%20of%20Lexical%20Scope%20%C2%AB%20null%20program%5D%5D][Some Performance Advantages of Lexical Scope « null program]] :lexical_binding:
-
-**** [[id:54fa2e85-066f-431e-9db3-8b1627fac4ca][What's in an Emacs Lambda « null program]]
-
-**** [[https://nullprogram.com/blog/2019/12/10/][Efficient Alias of a Built-In Emacs Lisp Function « null program]]
+**** [[https://nullprogram.com/blog/2016/12/22/][Some Performance Advantages of Lexical Scope « null program]] :lexical_binding:compilation:bytecode:
 :PROPERTIES:
-:archive.is: http://archive.today/wip/pdIQH
-:ID:       26105b53-a344-48bd-a252-596dd838ac3b
+:ID:       3659d32e-3e9e-466f-94ff-33cfed5dc49d
+:archive.today: http://archive.today/xm5zq
+:author:   Chris Wellons
+:published: [2016-12-22 Thu]
 :END:
 
-Chris Wellons compares the use of =defalias= and =defsubst= and how they are optimized by the byte-compiler.
+#+BEGIN_QUOTE
+I recently had a discussion with Xah Lee about lexical scope in Emacs Lisp. The topic was why lexical-binding exists at a file-level when there was already lexical-let (from cl-lib), prompted by my previous article on JIT byte-code compilation. The specific context is Emacs Lisp, but these concepts apply to language design in general.
+#+END_QUOTE
 
-*** Macros                                                         :macros:
-
-**** =bench=
+**** [[https://nullprogram.com/blog/2017/12/14/][What's in an Emacs Lambda « null program]] :lambdas:compilation:lexical_binding:scope:optimization:
 :PROPERTIES:
-:ID:       89f94efd-fd6b-4fca-9a75-60790d7cafeb
+:archive.today: http://archive.today/ppIuJ
+:ID:       54fa2e85-066f-431e-9db3-8b1627fac4ca
+:author:   Chris Wellons
+:published:   [2017-12-14 Thu]
+:END:
+
+Chris explains how lambdas work with regard to byte-compilation and lexical binding.
+
+*** Reference                                                   :reference:
+
+**** [[https://github.com/rocky/elisp-bytecode][elisp-bytecode: Let's document Emacs Lisp Bytecode (Lisp Assembly Program) instructions]] :bytecode:compilation:
+:PROPERTIES:
+:author:   Rocky Bernstein
+:END:
+
+Rocky Bernstein's project to document the Elisp bytecode format (aka LAP, or Lisp Assembly Program).
+
+*** Tools               
+:CONTENTS:
+
+:END:
+                                            :tools:
+:PROPERTIES:
+:TOC:      :include descendants
+:END:
+
+**** Benchmarking                                           :benchmarking:
+:PROPERTIES:
+:ID:       b369f0c2-a9c3-4f5f-afaf-80cb18e66a6f
+:END:
+
+#+BEGIN_SRC elisp :exports none :eval never :tangle epdh.el
+;;;; Benchmarking
+
+#+END_SRC
+
+***** =bench= macro
+:PROPERTIES:
+:ID:       a9c131e0-9d85-467b-9ac5-c576b7dfc6f8
 :END:
 
 From Phil Lord's [[http://phillord.github.io/m-buffer-el/#sec-5-1-2][m-buffer-el]]:
@@ -2313,7 +2381,10 @@ When called from an Org source block, it gives output like this:
 |---------------+----------+--------------------|
 |   1.657838266 |        3 | 1.4723854609999876 |
 
-**** ~bench-multi~ macros
+***** ~bench-multi~ macros
+:PROPERTIES:
+:ID:       fa6aa630-6970-4bba-83d6-8c271550ecab
+:END:
 
 These macros make comparing multiple forms easy:
 
@@ -2501,7 +2572,110 @@ Fixing the error, by setting ~case-fold-search~ to ~nil~, not only makes the for
 
 So this macro showed which code is faster and helped catch a subtle bug.
 
-***** ~bench-multi-lexical~
+****** ~bench-dynamic-vs-lexical-binding~
+:PROPERTIES:
+:ID:       1ec52dea-b9f5-4e71-826f-3ac9d9cc2225
+:END:
+
+This macro compares dynamic and lexical binding.
+
+#+BEGIN_SRC elisp :exports code :tangle epdh.el
+  ;;;###autoload
+  (cl-defmacro bench-dynamic-vs-lexical-binding (&key (times 1) forms ensure-equal)
+    "Benchmark FORMS with both dynamic and lexical binding.
+  Calls `bench-multi' and `bench-multi-lexical', which see."
+    (declare (indent defun))
+    `(let ((dynamic (bench-multi :times ,times :ensure-equal ,ensure-equal :raw t
+                      :forms ,forms))
+           (lexical (bench-multi-lexical :times ,times :ensure-equal ,ensure-equal :raw t
+                      :forms ,forms))
+           (header '("Form" "x faster than next" "Total runtime" "# of GCs" "Total GC runtime")))
+       (cl-loop for result in-ref dynamic
+                do (setf (car result) (format "Dynamic: %s" (car result))))
+       (cl-loop for result in-ref lexical
+                do (setf (car result) (format "Lexical: %s" (car result))))
+       (append (list header)
+               (list 'hline)
+               (bench-multi-process-results (append dynamic lexical)))))
+#+END_SRC
+
+Example:
+
+#+BEGIN_SRC elisp :exports both :cache yes
+  (bench-dynamic-vs-lexical-binding :times 1000 :ensure-equal t
+    :forms (("buffer-local-value" (--filter (equal 'magit-status-mode (buffer-local-value 'major-mode it))
+                                            (buffer-list)))
+            ("with-current-buffer" (--filter (equal 'magit-status-mode (with-current-buffer it
+                                                                         major-mode))
+                                             (buffer-list)))))
+#+END_SRC
+
+#+RESULTS[73cc92a5949dd2d48f029cab9557eb6132bdf1cf]:
+| Form                         | x faster than next | Total runtime | # of GCs | Total GC runtime |
+|------------------------------+--------------------+---------------+----------+------------------|
+| Lexical: buffer-local-value  |               1.29 |      0.011170 |        0 |                0 |
+| Dynamic: buffer-local-value  |              67.10 |      0.014407 |        0 |                0 |
+| Lexical: with-current-buffer |               1.01 |      0.966651 |        0 |                0 |
+| Dynamic: with-current-buffer |            slowest |      0.974830 |        0 |                0 |
+
+****** ~bench-multi-lets~
+:PROPERTIES:
+:ID:       fefdafc5-2130-4c01-bea5-a85931433589
+:END:
+
+This macro benchmarks multiple forms in multiple environments, which is helpful for testing code that behaves differently depending on global variables.
+
+#+BEGIN_SRC elisp :exports code :results silent :tangle epdh.el
+  ;;;###autoload
+  (cl-defmacro bench-multi-lets (&key (times 1) lets forms ensure-equal)
+    "Benchmark FORMS in each of lexical environments defined in LETS.
+  LETS is a list of (\"NAME\" BINDING-FORM) forms.
+
+  FORMS is a list of (\"NAME\" FORM) forms.
+
+  Calls `bench-multi-lexical', which see."
+    (declare (indent defun))
+    (let ((benchmarks (cl-loop for (let-name let) in lets
+                               collect (list 'list let-name
+                                             `(let ,let
+                                                (bench-multi-lexical :times ,times :ensure-equal ,ensure-equal :raw t
+                                                  :forms ,forms))))))
+      `(let* ((results (list ,@benchmarks))
+              (header '("Form" "x faster than next" "Total runtime" "# of GCs" "Total GC runtime"))
+              (results (cl-loop for (let-name let) in results
+                                append (cl-loop for result in-ref let
+                                                do (setf (car result) (format "%s: %s" let-name (car result)))
+                                                collect result))))
+         (append (list header)
+                 (list 'hline)
+                 (bench-multi-process-results results)))))
+#+END_SRC
+
+Used like:
+
+#+BEGIN_SRC elisp :exports both :cache yes
+  (bench-multi-lets :times 100000 :ensure-equal t
+    :lets (("1" ((var "1")))
+           ("12345" ((var "12345")))
+           ("1234567890" ((var "1234567890"))))
+    :forms (("concat" (concat "VAR: " var))
+            ("format" (format "VAR: %s" var))))
+#+END_SRC
+
+#+RESULTS[1e38aeddf90e38a2d2e1cf00aa77f13e7da51cb3]:
+| Form               | x faster than next | Total runtime | # of GCs | Total GC runtime |
+|--------------------+--------------------+---------------+----------+------------------|
+| 1: concat          |               1.03 |      0.023708 |        0 |                0 |
+| 12345: concat      |               1.07 |      0.024533 |        0 |                0 |
+| 1234567890: concat |               1.28 |      0.026210 |        0 |                0 |
+| 1: format          |               1.31 |      0.033463 |        0 |                0 |
+| 12345: format      |               1.21 |      0.043897 |        0 |                0 |
+| 1234567890: format |            slowest |      0.053263 |        0 |                0 |
+
+****** ~bench-multi-lexical~
+:PROPERTIES:
+:ID:       cf3d7f70-fd84-41f8-b51e-6b3a710cae82
+:END:
 
 To evaluate forms with lexical binding enabled, use this macro:
 
@@ -2592,103 +2766,19 @@ This shows that lexical-binding doesn't make much difference in this example.  B
 
 The ~buffer-local-value~ form improved by about 24% when using lexical binding.
 
-***** ~bench-dynamic-vs-lexical-binding~
-
-This macro compares dynamic and lexical binding.
-
-#+BEGIN_SRC elisp :exports code :tangle epdh.el
-  ;;;###autoload
-  (cl-defmacro bench-dynamic-vs-lexical-binding (&key (times 1) forms ensure-equal)
-    "Benchmark FORMS with both dynamic and lexical binding.
-  Calls `bench-multi' and `bench-multi-lexical', which see."
-    (declare (indent defun))
-    `(let ((dynamic (bench-multi :times ,times :ensure-equal ,ensure-equal :raw t
-                      :forms ,forms))
-           (lexical (bench-multi-lexical :times ,times :ensure-equal ,ensure-equal :raw t
-                      :forms ,forms))
-           (header '("Form" "x faster than next" "Total runtime" "# of GCs" "Total GC runtime")))
-       (cl-loop for result in-ref dynamic
-                do (setf (car result) (format "Dynamic: %s" (car result))))
-       (cl-loop for result in-ref lexical
-                do (setf (car result) (format "Lexical: %s" (car result))))
-       (append (list header)
-               (list 'hline)
-               (bench-multi-process-results (append dynamic lexical)))))
-#+END_SRC
-
-Example:
-
-#+BEGIN_SRC elisp :exports both :cache yes
-  (bench-dynamic-vs-lexical-binding :times 1000 :ensure-equal t
-    :forms (("buffer-local-value" (--filter (equal 'magit-status-mode (buffer-local-value 'major-mode it))
-                                            (buffer-list)))
-            ("with-current-buffer" (--filter (equal 'magit-status-mode (with-current-buffer it
-                                                                         major-mode))
-                                             (buffer-list)))))
-#+END_SRC
-
-#+RESULTS[73cc92a5949dd2d48f029cab9557eb6132bdf1cf]:
-| Form                         | x faster than next | Total runtime | # of GCs | Total GC runtime |
-|------------------------------+--------------------+---------------+----------+------------------|
-| Lexical: buffer-local-value  |               1.29 |      0.011170 |        0 |                0 |
-| Dynamic: buffer-local-value  |              67.10 |      0.014407 |        0 |                0 |
-| Lexical: with-current-buffer |               1.01 |      0.966651 |        0 |                0 |
-| Dynamic: with-current-buffer |            slowest |      0.974830 |        0 |                0 |
-
-***** ~bench-multi-lets~
-
-This macro benchmarks multiple forms in multiple environments, which is helpful for testing code that behaves differently depending on global variables.
-
-#+BEGIN_SRC elisp :exports code :results silent :tangle epdh.el
-  ;;;###autoload
-  (cl-defmacro bench-multi-lets (&key (times 1) lets forms ensure-equal)
-    "Benchmark FORMS in each of lexical environments defined in LETS.
-  LETS is a list of (\"NAME\" BINDING-FORM) forms.
-
-  FORMS is a list of (\"NAME\" FORM) forms.
-
-  Calls `bench-multi-lexical', which see."
-    (declare (indent defun))
-    (let ((benchmarks (cl-loop for (let-name let) in lets
-                               collect (list 'list let-name
-                                             `(let ,let
-                                                (bench-multi-lexical :times ,times :ensure-equal ,ensure-equal :raw t
-                                                  :forms ,forms))))))
-      `(let* ((results (list ,@benchmarks))
-              (header '("Form" "x faster than next" "Total runtime" "# of GCs" "Total GC runtime"))
-              (results (cl-loop for (let-name let) in results
-                                append (cl-loop for result in-ref let
-                                                do (setf (car result) (format "%s: %s" let-name (car result)))
-                                                collect result))))
-         (append (list header)
-                 (list 'hline)
-                 (bench-multi-process-results results)))))
-#+END_SRC
-
-Used like:
-
-#+BEGIN_SRC elisp :exports both :cache yes
-  (bench-multi-lets :times 100000 :ensure-equal t
-    :lets (("1" ((var "1")))
-           ("12345" ((var "12345")))
-           ("1234567890" ((var "1234567890"))))
-    :forms (("concat" (concat "VAR: " var))
-            ("format" (format "VAR: %s" var))))
-#+END_SRC
-
-#+RESULTS[1e38aeddf90e38a2d2e1cf00aa77f13e7da51cb3]:
-| Form               | x faster than next | Total runtime | # of GCs | Total GC runtime |
-|--------------------+--------------------+---------------+----------+------------------|
-| 1: concat          |               1.03 |      0.023708 |        0 |                0 |
-| 12345: concat      |               1.07 |      0.024533 |        0 |                0 |
-| 1234567890: concat |               1.28 |      0.026210 |        0 |                0 |
-| 1: format          |               1.31 |      0.033463 |        0 |                0 |
-| 12345: format      |               1.21 |      0.043897 |        0 |                0 |
-| 1234567890: format |            slowest |      0.053263 |        0 |                0 |
-
-**** =elp-profile=
+**** Profiling                                                 :profiling:
 :PROPERTIES:
-:ID:       fd3fdece-0342-441c-8540-5a5c463890a5
+:ID:       ef37fa2c-879d-4065-936e-81a393510bf7
+:END:
+
+#+BEGIN_SRC elisp :exports none :eval never :tangle epdh.el
+;;;; Profiling
+
+#+END_SRC
+
+***** =elp-profile=                                       :macro:
+:PROPERTIES:
+:ID:       b4b21499-f798-41be-88b7-2dc2fc190ae7
 :END:
 
 Call this macro from an Org source block and you'll get a results block showing which 20 functions were called the most times, how long they took to run, etc.  =prefixes= should be a list of symbols matching the prefixes of the functions you want to instrument.
@@ -2736,13 +2826,12 @@ This gives a table like:
 | append         |            1 |     5.96e-07 |     5.96e-07 |
 | mapatoms       |            1 |            0 |          0.0 |
 
-*** Tools                                                           :tools:
-
-**** [[https://github.com/aspiers/etrace][etrace: Emacs Lisp Latency Tracing for the Chromium Catapult Trace Event Format]]
+***** [[https://github.com/aspiers/etrace][etrace: Emacs Lisp Latency Tracing for the Chromium Catapult Trace Event Format]] :package:
 
 #+BEGIN_QUOTE
 This package for GNU Emacs allows latency tracing to be performed on Emacs Lisp code and the results output to files using the Chromium Catapult Trace Event Format.  These trace files can then be loaded into trace analysis utilities in order to generate flame graphs and other useful visualisations and analyses.
 #+END_QUOTE
+
 ** Refactoring                                                 :refactoring:
 
 *** Tools                                                           :tools:
@@ -2763,8 +2852,8 @@ Emacs Refactor (EMR) is a framework for providing language-specific refactoring 
 :CONTENTS:
 - [[#articles][Articles]]
 - [[#libraries][Libraries]]
-  - [[#lex][lex]]
   - [[#pcre2el-convert-between-pcre-emacs-and-rx-regexp-syntax][pcre2el: Convert between PCRE, Emacs and rx regexp syntax]]
+  - [[#lex][lex]]
 - [[#tools][Tools]]
   - [[#ample-regexpsel-compose-and-reuse-regular-expressions-with-ease][ample-regexps.el: Compose and reuse regular expressions with ease]]
 :END:
@@ -2781,6 +2870,8 @@ Emacs Refactor (EMR) is a framework for providing language-specific refactoring 
 
 *** Libraries                                                   :libraries:
 
+**** TODO [[https://github.com/joddie/pcre2el][pcre2el: Convert between PCRE, Emacs and rx regexp syntax]]
+
 **** [[https://elpa.gnu.org/packages/lex.html][lex]]
 
 =lex= is a regular expression matching engine with syntax similar to =rx=.  It appears to be more implemented in elisp than standard Emacs regexp tools, so it may be slower, but its additional capabilities may be useful.
@@ -2792,8 +2883,6 @@ Format of regexps is the same as used for `rx' and `sregex'.  Additions:
 -  =(inter REs...)= (aka =&=) make a regexp that only matches if all its branches match.  E.g. =(inter (ere ".*a.*") (ere ".*b.*"))= match any string that contain both an =a= and a =b=, in any order.
 -  =(case-fold REs...)= and =(case-sensitive REs...)= make a regexp that is case sensitive or not, regardless of case-fold-search.
 #+END_QUOTE
-
-**** TODO [[https://github.com/joddie/pcre2el][pcre2el: Convert between PCRE, Emacs and rx regexp syntax]]
 
 *** Tools                                                           :tools:
 
@@ -3312,6 +3401,9 @@ Example:
 #+END_SRC
 
 **** [[https://github.com/bddean/xml-plus][xml-plus]]
+:PROPERTIES:
+:ID:       b2bf9054-4856-431b-b01c-a96fe82aad31
+:END:
 
 Mostly undocumented, providing three main functions:
 
@@ -3752,25 +3844,6 @@ The benchmark macros need to be extended to allow definitions that aren't part o
 | s-lines         | 10.47              |      0.000513 |        0 |                0 |
 | stream/seq-into | slowest            |      0.005370 |        0 |                0 |
 
-** MAYBE Benchmarking =seq-let= vs =pcase-let*= with backquoted patterns
-
-#+BEGIN_SRC elisp
-  (bench-multi-lexical :times 1000 :ensure-equal t
-    :forms (("pcase-let* backquoted pattern"
-             (pcase-let* ((`(,name ,argument) (list 'NAME 'ARGUMENT)))
-               (list name argument)))
-
-            ("seq-let"
-             (seq-let (name argument) (list 'NAME 'ARGUMENT)
-               (list name argument)))))
-#+END_SRC
-
-#+RESULTS:
-| Form                          | x faster than next | Total runtime | # of GCs | Total GC runtime |
-|-------------------------------+--------------------+---------------+----------+------------------|
-| pcase-let* backquoted pattern | 2.73               |      0.000188 |        0 |                0 |
-| seq-let                       | slowest            |      0.000515 |        0 |                0 |
-
 ** TODO Mention Emacs 27.1 SVG screenshots
 
 e.g. https://www.reddit.com/r/emacs/comments/idz35e/emacs_27_can_take_svg_screenshots_of_itself/
@@ -3804,13 +3877,6 @@ e.g. saving files to disk.
 ** TODO Add [[https://github.com/vermiculus/package-demo][GitHub - vermiculus/package-demo: Script your Emacs package demos!]]
 
 ** TODO [[https://github.com/vermiculus/stash.el][GitHub - vermiculus/stash.el: Lightweight, Persistent Caching for Elisp]]
-
-** MAYBE [[https://github.com/raxod502/elint][GitHub - raxod502/elint: 💀 DEPRECATED: Small module to deduplicate Elisp build tooling.]]
-:LOGBOOK:
--  State "MAYBE"      from              [2020-01-19 Sun 15:48]
-:END:
-
-He archived the project, so it probably shouldn't be used, but it may have interesting historical significance for developing similar tools.
 
 ** TODO =easy-mmode.el=
 
@@ -3959,16 +4025,6 @@ haskell https://github.com/knupfer/haskell-emacs
 
 Describe things like exporting an Org readme to an Info manual, e.g. like Magit, =org-super-agenda=, etc.
 
-** Testing
-
-*** TODO Everything at [[https://www.emacswiki.org/emacs/UnitTesting][EmacsWiki: Unit Testing]]
-
-*** TODO [[https://github.com/rejeep/el-mock.el][GitHub - rejeep/el-mock.el: Mocking library for Emacs]]
-
-*** TODO [[https://github.com/sigma/mocker.el][GitHub - sigma/mocker.el: a simple mocking framework for Emacs]]
-
-*** TODO [[https://www.emacswiki.org/emacs/EmacsLispExpectations][EmacsWiki: Emacs Lisp Expectations]]
-
 ** TODO Add databases section
 
 *** TODO [[https://github.com/skeeto/emacsql][GitHub - skeeto/emacsql: A high-level Emacs Lisp RDBMS front-end]]
@@ -4103,7 +4159,43 @@ sorted.  FUNCTION must be a function of one argument."
 -  State "TODO"       from              [2019-10-05 Sat 12:20]
 :END:
 
-* Code
+** MAYBE Benchmarking =seq-let= vs =pcase-let*= with backquoted patterns
+
+#+BEGIN_SRC elisp
+  (bench-multi-lexical :times 1000 :ensure-equal t
+    :forms (("pcase-let* backquoted pattern"
+             (pcase-let* ((`(,name ,argument) (list 'NAME 'ARGUMENT)))
+               (list name argument)))
+
+            ("seq-let"
+             (seq-let (name argument) (list 'NAME 'ARGUMENT)
+               (list name argument)))))
+#+END_SRC
+
+#+RESULTS:
+| Form                          | x faster than next | Total runtime | # of GCs | Total GC runtime |
+|-------------------------------+--------------------+---------------+----------+------------------|
+| pcase-let* backquoted pattern | 2.73               |      0.000188 |        0 |                0 |
+| seq-let                       | slowest            |      0.000515 |        0 |                0 |
+
+** MAYBE [[https://github.com/raxod502/elint][GitHub - raxod502/elint: 💀 DEPRECATED: Small module to deduplicate Elisp build tooling.]]
+:LOGBOOK:
+-  State "MAYBE"      from              [2020-01-19 Sun 15:48]
+:END:
+
+He archived the project, so it probably shouldn't be used, but it may have interesting historical significance for developing similar tools.
+
+** Testing
+
+*** TODO Everything at [[https://www.emacswiki.org/emacs/UnitTesting][EmacsWiki: Unit Testing]]
+
+*** TODO [[https://github.com/rejeep/el-mock.el][GitHub - rejeep/el-mock.el: Mocking library for Emacs]]
+
+*** TODO [[https://github.com/sigma/mocker.el][GitHub - sigma/mocker.el: a simple mocking framework for Emacs]]
+
+*** TODO [[https://www.emacswiki.org/emacs/EmacsLispExpectations][EmacsWiki: Emacs Lisp Expectations]]
+
+* COMMENT Code
 :PROPERTIES:
 :TOC:      :depth 0
 :END:
@@ -4116,6 +4208,10 @@ This section contains code used to add to and update this document.
 :END:
 
 *** TODO Get summary of page
+
+*** TODO Insert new entry at point
+
+Maybe use capture templates and refile?
 
 *** DONE Get archive.today link for page
 CLOSED: [2017-08-03 Thu 15:11]
@@ -4150,10 +4246,6 @@ CLOSED: [2017-08-03 Thu 15:11]
       (org-set-property "archive.is" archive-url)))
 #+END_SRC
 
-*** TODO Insert new entry at point
-
-Maybe use capture templates and refile?
-
 ** Table of Contents
 
 The ToC is generated using [[https://github.com/alphapapa/org-make-toc][org-make-toc]].
@@ -4165,6 +4257,9 @@ I love Emacs and Org mode.  This makes it so easy to make the document...alive! 
 *** File-local properties
 
 #+PROPERTY: header-args:elisp :tangle no
+
+# Export the author and published properties.
+#+OPTIONS: prop:("author" "published")
 
 *** File-local variables
 
@@ -4179,3 +4274,4 @@ I love Emacs and Org mode.  This makes it so easy to make the document...alive! 
 # org-id-link-to-org-use-id: nil
 # org-export-initial-scope: buffer
 # End:
+

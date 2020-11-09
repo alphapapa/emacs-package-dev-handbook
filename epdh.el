@@ -70,7 +70,7 @@ for confirmation."
       (setf (buffer-substring beg end) (pp-to-string expansion))
     (user-error "Unable to expand")))
 
-;;;; Profiling / Optimization
+;;;; Benchmarking
 
 ;;;###autoload
 (cl-defmacro bench (&optional (times 100000) &rest body)
@@ -187,29 +187,6 @@ Before each form is run, `garbage-collect' is called."
                                    0)))))
 
 ;;;###autoload
-(cl-defmacro bench-multi-lexical (&key (times 1) forms ensure-equal raw)
-  "Return Org table as a list with benchmark results for FORMS.
-Runs FORMS from a byte-compiled temp file with `lexical-binding'
-enabled, using `bench-multi', which see.
-
-Afterward, the temp file is deleted and the function used to run
-the benchmark is uninterned."
-  (declare (indent defun))
-  `(let* ((temp-file (concat (make-temp-file "bench-multi-lexical-") ".el"))
-          (fn (gensym "bench-multi-lexical-run-")))
-     (with-temp-file temp-file
-       (insert ";; -*- lexical-binding: t; -*-" "\n\n"
-               "(defvar bench-multi-results)" "\n\n"
-               (format "(defun %s () (bench-multi :times %d :ensure-equal %s :raw %s :forms %S))"
-                       fn ,times ,ensure-equal ,raw ',forms)))
-     (unwind-protect
-         (if (byte-compile-file temp-file 'load)
-             (funcall (intern (symbol-name fn)))
-           (user-error "Error byte-compiling and loading temp file"))
-       (delete-file temp-file)
-       (unintern (symbol-name fn) nil))))
-
-;;;###autoload
 (cl-defmacro bench-dynamic-vs-lexical-binding (&key (times 1) forms ensure-equal)
   "Benchmark FORMS with both dynamic and lexical binding.
 Calls `bench-multi' and `bench-multi-lexical', which see."
@@ -250,6 +227,31 @@ Calls `bench-multi-lexical', which see."
        (append (list header)
                (list 'hline)
                (bench-multi-process-results results)))))
+
+;;;###autoload
+(cl-defmacro bench-multi-lexical (&key (times 1) forms ensure-equal raw)
+  "Return Org table as a list with benchmark results for FORMS.
+Runs FORMS from a byte-compiled temp file with `lexical-binding'
+enabled, using `bench-multi', which see.
+
+Afterward, the temp file is deleted and the function used to run
+the benchmark is uninterned."
+  (declare (indent defun))
+  `(let* ((temp-file (concat (make-temp-file "bench-multi-lexical-") ".el"))
+          (fn (gensym "bench-multi-lexical-run-")))
+     (with-temp-file temp-file
+       (insert ";; -*- lexical-binding: t; -*-" "\n\n"
+               "(defvar bench-multi-results)" "\n\n"
+               (format "(defun %s () (bench-multi :times %d :ensure-equal %s :raw %s :forms %S))"
+                       fn ,times ,ensure-equal ,raw ',forms)))
+     (unwind-protect
+         (if (byte-compile-file temp-file 'load)
+             (funcall (intern (symbol-name fn)))
+           (user-error "Error byte-compiling and loading temp file"))
+       (delete-file temp-file)
+       (unintern (symbol-name fn) nil))))
+
+;;;; Profiling
 
 ;;;###autoload
 (defmacro elp-profile (times prefixes &rest body)
