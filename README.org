@@ -3461,6 +3461,7 @@ The Emacs community is so full of brilliant, generous people that I can't keep t
 :CONTENTS:
 - [[#anders-lindgren][Anders Lindgren]]
 - [[#artur-malabarba][Artur Malabarba]]
+- [[#chris-wellons][Chris Wellons]]
 - [[#damien-cassou][Damien Cassou]]
 - [[#henrik-lissner][Henrik Lissner]]
 - [[#john-wiegley][John Wiegley]]
@@ -3520,6 +3521,19 @@ Another prolific Emacs contributor, package developer, and blogger.
 **** [[id:4dc7c607-a116-4c39-b063-fe34bd20cccf][aggressive-indent-mode]]
 
 **** [[id:2c31eae6-eeba-433f-bc26-9465d5aa8537][paradox]]
+
+** Chris Wellons
+
+Chris is the author of packages like [[https://github.com/skeeto/elfeed][Elfeed]], [[https://github.com/skeeto/emacsql][EmacSQL]], and [[https://github.com/skeeto/emacs-aio][aio]].  He also writes about Emacs at his blog, [[*%5B%5Bhttps://nullprogram.com/blog/2019/12/10/%5D%5BEfficient%20Alias%20of%20a%20Built-In%20Emacs%20Lisp%20Function%20%C2%AB%20null%20program%5D%5D][null program]].
+
++  [[https://nullprogram.com/][Blog: /null program/]]
++  [[https://github.com/skeeto][GitHub]]
+
+# These links don't work yet, but they will (in Emacs) after I add them to org-ql.
+
+# +  [[org-ql-search:(property%20:author%20"Chris%20Wellons")][org-ql-search:(property :author "Chris Wellons")]]
+# +  [[org-ql-search:(link%20"nullprogram")][org-ql-search:(link "nullprogram")]]
+# +  [[org-ql-search:link:nullprogram]]
 
 ** Damien Cassou
 
@@ -3914,40 +3928,45 @@ Especially =easy-mmode-defmap=.
 
 *** TODO [[https://www.lunaryorn.com/posts/syntactic-fontification-in-emacs][Syntactic fontification in Emacs]] (10 min read)
 
-** TODO Add people [0/7]
+** TODO Add people [1/8]
 
-*** TODO Add Toby Cubitt
+*** TODO Add more of [[id:518289de-100e-4387-9917-2adaffc28f48][Roland Walker]]'s packages
 
-A variety of packages published, e.g. at http://www.dr-qubit.org/emacs_data-structures.html
-
-*** TODO Add [[http://nic.ferrier.me.uk/][Nic Ferrier]]
-
-**** TODO [[https://github.com/nicferrier/emacs-noflet][GitHub - nicferrier/emacs-noflet: noflet - nic's overriding flet, for fleting functions for the purpose of decorating them]]
+*** TODO [[http://nic.ferrier.me.uk/][Nic Ferrier]]
 
 **** TODO [[https://github.com/nicferrier/emacs-db][GitHub - nicferrier/emacs-db: very simple database for emacslisp, can also wrap other databases.]]
 
-*** TODO Add [[https://github.com/vermiculus][Sean Allred]]
+**** TODO [[https://github.com/nicferrier/emacs-noflet][GitHub - nicferrier/emacs-noflet: noflet - nic's overriding flet, for fleting functions for the purpose of decorating them]]
 
-*** TODO Add [[http://nullprogram.com/][Chris Wellons]]
+*** TODO [[https://github.com/vermiculus][Sean Allred]]
 
-+  http://github.com/skeeto
-+  Elfeed
-+  [[*%5B%5Bhttps://github.com/skeeto/emacs-aio%5D%5Bemacs-aio:%20async/await%20for%20Emacs%20Lisp%5D%5D][emacs-aio: async/await for Emacs Lisp]]
-+  Other Emacs packages
+*** TODO Toby Cubitt
 
-*** TODO Add [[https://github.com/wasamasa?][Vasilij Schneidermann]]
+A variety of packages published, e.g. at http://www.dr-qubit.org/emacs_data-structures.html
+
+*** TODO [[https://github.com/wasamasa?][Vasilij Schneidermann]]
 
 *** TODO [[https://github.com/VincentToups/emacs-utils][Vincent Toups' projects]]
 
 He has a lot of interesting libraries on his repo, and some of them are /extensively/ documented.  An aspiring Emacs Lisp developer could learn a lot from his code.
 
-*** TODO Add more of [[id:518289de-100e-4387-9917-2adaffc28f48][Roland Walker]]'s packages
-
-*** Clemens Radermacher
+*** TODO Clemens Radermacher
 
 +  [[https://www.with-emacs.com/][blog /With Emacs/]]
 +  [[https://github.com/clemera][GitHub]]
      -  [[https://github.com/clemera?utf8=%25E2%259C%2593&tab=repositories&q=&type=source&language=emacs+lisp][Packages]]
+
+*** DONE [[http://nullprogram.com/][Chris Wellons]]
+CLOSED: [2020-11-09 Mon 00:53]
+:LOGBOOK:
+-  State "DONE"       from "UNDERWAY"   [2020-11-09 Mon 00:53]
+-  State "UNDERWAY"   from "TODO"       [2020-11-08 Sun 18:29]
+:END:
+
++  http://github.com/skeeto
++  Elfeed
++  [[*%5B%5Bhttps://github.com/skeeto/emacs-aio%5D%5Bemacs-aio:%20async/await%20for%20Emacs%20Lisp%5D%5D][emacs-aio: async/await for Emacs Lisp]]
++  Other Emacs packages
 
 ** TODO Add tips for new developers
 
