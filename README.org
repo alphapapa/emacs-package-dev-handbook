@@ -3003,6 +3003,8 @@ Since this happens at macro expansion time rather than at runtime, there is no p
 :TOC:      :depth 2 :include descendants
 :END:
 :CONTENTS:
+- [[#articles][Articles]]
+  - [[#continuous-integration-of-emacs-packages-with-circleci][Continuous Integration of Emacs Packages with CircleCI]]
 - [[#frameworks][Frameworks]]
   - [[#buttercup-behavior-driven-emacs-lisp-testing][buttercup: Behavior-Driven Emacs Lisp Testing]]
   - [[#ecukes-cucumber-for-emacs][ecukes: Cucumber for Emacs]]
@@ -3014,6 +3016,17 @@ Since this happens at macro expansion time rather than at runtime, there is no p
   - [[#xtest-extensions-for-ert][xtest: Extensions for ERT]]
 - [[#tools][Tools]]
 :END:
+
+*** Articles                                                     :articles:
+
+**** [[https://blog.abrochard.com/circleci-for-emacs-packages.html][Continuous Integration of Emacs Packages with CircleCI]]
+:PROPERTIES:
+:archive.is: https://archive.vn/uidZr
+:END:
+
+#+BEGIN_QUOTE
+I was very inspired by Damien Cassou's great presentation during EmacsConf 2019 to write this post and I encourage you to check it out if you haven't already. In short, when writing packages for Emacs, it is best practice to run several quality tools on them, like syntax and documentation checkers, or even ERT Tests. But once these packages are public and pull requests start coming in, it is a huge time saver to have these same tools ran automatically and provide feedback to contributors. That's right, we're talking about Continuous Integration for Emacs packages.
+#+END_QUOTE
 
 *** Frameworks                                                 :frameworks:
 
@@ -4213,6 +4226,13 @@ He archived the project, so it probably shouldn't be used, but it may have inter
 *** TODO [[https://github.com/sigma/mocker.el][GitHub - sigma/mocker.el: a simple mocking framework for Emacs]]
 
 *** TODO [[https://www.emacswiki.org/emacs/EmacsLispExpectations][EmacsWiki: Emacs Lisp Expectations]]
+
+** TODO [[https://www.reddit.com/r/emacs/comments/jqsdcr/how_do_you_debug_giant_plists/][How do you debug giant plists? : emacs]]
+:PROPERTIES:
+:ID:       9bb8c851-52bf-495e-b781-b9957c6763e7
+:END:
+
+
 
 * COMMENT Code
 :PROPERTIES:
