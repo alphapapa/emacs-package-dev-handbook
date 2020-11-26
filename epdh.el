@@ -35,6 +35,53 @@
 (require 'dash)
 (require 's)
 
+(cl-defmacro epdh/debug-warn (&rest args)
+  "Display a debug warning showing the runtime value of ARGS.
+The warning automatically includes the name of the containing
+function, and it is only displayed if `warning-minimum-log-level'
+is `:debug' at expansion time (otherwise the macro expands to nil
+and is eliminated by the byte-compiler).  When debugging, the
+expanded form also returns nil so, e.g. it may be used in a
+conditional in place of nil.
+
+Each of ARGS may be a string, which is displayed as-is, or a
+symbol, the value of which is displayed prefixed by its name, or
+a Lisp form, which is displayed prefixed by its first symbol.
+
+Before the actual ARGS arguments, you can write keyword
+arguments, i.e. alternating keywords and values.  The following
+keywords are supported:
+
+  :buffer BUFFER   Name of buffer to pass to `display-warning'.
+  :level  LEVEL    Level passed to `display-warning', which see.
+                   Default is :debug."
+  (pcase-let* ((fn-name (with-current-buffer
+                            (or byte-compile-current-buffer (current-buffer))
+                          ;; This is a hack, but a nifty one.
+                          (save-excursion
+                            (beginning-of-defun)
+                            (cl-second (read (current-buffer))))))
+               (plist-args (cl-loop while (keywordp (car args))
+                                    collect (pop args)
+                                    collect (pop args)))
+               ((map (:buffer buffer) (:level level)) plist-args)
+               (level (or level :debug))
+               (string (cl-loop for arg in args
+                                concat (pcase arg
+                                         ((pred stringp) "%S ")
+                                         ((pred symbolp)
+                                          (concat (upcase (symbol-name arg)) ":%S "))
+                                         ((pred listp)
+                                          (concat "(" (upcase (symbol-name (car arg)))
+                                                  (pcase (length arg)
+                                                    (1 ")")
+                                                    (_ "...)"))
+                                                  ":%S "))))))
+    (when (eq :debug warning-minimum-log-level)
+      `(progn
+         (display-warning ',fn-name (format ,string ,@args) ,level ,buffer)
+         nil))))
+
 ;;;; General tools
 
 ;;;###autoload

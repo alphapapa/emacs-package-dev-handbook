@@ -958,16 +958,18 @@ Probably should first replace the ~:bindings~ part with this, which correctly ma
 
 **** =debug-warn= macro
 
-This macro simplifies print-style debugging by automatically including the names of the containing function and argument forms, rather than requiring the programmer to write =format= strings manually.
+This macro simplifies print-style debugging by automatically including the names of the containing function and argument forms, rather than requiring the programmer to write =format= strings manually.  If ~warning-minimum-log-level~ is not ~:debug~ at expansion time, the macro expands to nil, which the byte-compiler eliminates, therefore the macro has no overhead at runtime when not debugging.  When debugging, the expanded form also returns nil so, e.g. it may be used in a conditional in place of nil.  The macro is tangled to =epdh.el=, but it may also be added directly to source files.
 
 For example, when used like:
 
 #+BEGIN_SRC elisp :exports code
+  (eval-and-compile
+    (setq-local warning-minimum-log-level :debug))
+
   (defun argh (var)
     (debug-warn (current-buffer) "This is bad!" (point) var)
     var)
 
-  (setq warning-minimum-log-level :debug)
   (argh 1)
 #+END_SRC
 
@@ -977,15 +979,38 @@ This warning would be shown in the =*Warnings*= buffer:
   Debug (argh): (CURRENT-BUFFER):*scratch* This is bad! (POINT):491845 VAR:1
 #+END_EXAMPLE
 
-The macro is not tangled to =epdh.el=, so you may add it to your code as necessary.
+But if ~warning-minimum-log-level~ had any other value, and the buffer were recompiled, there would be no output, and none of the arguments to the macro would be evaluated at runtime.
 
-#+BEGIN_SRC elisp :exports code
-  (cl-defmacro debug-warn (&rest args)
+It may even be used in place of comments!  For example, instead of:
+
+#+BEGIN_SRC elisp
+  (if (foo-p thing)
+      ;; It's a foo: frob it.
+      (frob thing)
+    ;; Not a foo: flub it.
+    (flub thing))
+#+END_SRC
+
+You could write:
+
+#+BEGIN_SRC elisp
+  (if (foo-p thing)
+      (progn
+        (debug-warn "It's a foo: frob it." thing)
+        (frob thing))
+    (debug-warn "Not a foo: flub it." thing)
+    (flub thing))
+#+END_SRC
+
+#+BEGIN_SRC elisp :exports code :results silent :tangle epdh.el
+  (cl-defmacro epdh/debug-warn (&rest args)
     "Display a debug warning showing the runtime value of ARGS.
   The warning automatically includes the name of the containing
   function, and it is only displayed if `warning-minimum-log-level'
-  is `:debug' at runtime (which avoids formatting messages that
-  won't be shown).
+  is `:debug' at expansion time (otherwise the macro expands to nil
+  and is eliminated by the byte-compiler).  When debugging, the
+  expanded form also returns nil so, e.g. it may be used in a
+  conditional in place of nil.
 
   Each of ARGS may be a string, which is displayed as-is, or a
   symbol, the value of which is displayed prefixed by its name, or
@@ -995,9 +1020,9 @@ The macro is not tangled to =epdh.el=, so you may add it to your code as necessa
   arguments, i.e. alternating keywords and values.  The following
   keywords are supported:
 
-  :buffer BUFFER   Name of buffer to pass to `display-warning'.
-  :level  LEVEL    Level passed to `display-warning', which see.
-                   Default is :debug."
+    :buffer BUFFER   Name of buffer to pass to `display-warning'.
+    :level  LEVEL    Level passed to `display-warning', which see.
+                     Default is :debug."
     (pcase-let* ((fn-name (with-current-buffer
                               (or byte-compile-current-buffer (current-buffer))
                             ;; This is a hack, but a nifty one.
@@ -1020,8 +1045,10 @@ The macro is not tangled to =epdh.el=, so you may add it to your code as necessa
                                                       (1 ")")
                                                       (_ "...)"))
                                                     ":%S "))))))
-      `(when (eq :debug warning-minimum-log-level)
-         (display-warning ',fn-name (format ,string ,@args) ,level ,buffer))))
+      (when (eq :debug warning-minimum-log-level)
+        `(progn
+           (display-warning ',fn-name (format ,string ,@args) ,level ,buffer)
+           nil))))
 #+END_SRC
 
 ** Destructuring                                             :destructuring:
