@@ -3296,6 +3296,7 @@ One of the "killer apps" for Emacs--and for git!
 - [[#elfeedxml-queryel][elfeed/xml-query.el]]
 - [[#enlive][enlive]]
 - [[#xml-plus][xml-plus]]
+- [[#xmlgen-an-s-expression-to-xml-dsl][xmlgen: An s-expression to XML DSL]]
 :END:
 
 These libraries can all be used for HTML.
@@ -3463,6 +3464,37 @@ Mostly undocumented, providing three main functions:
   (provide 'epdh)
 
   ;;; epdh.el ends here
+#+END_SRC
+
+**** [[https://github.com/philjackson/xmlgen][xmlgen: An s-expression to XML DSL]]
+
+Generate XML using sexps with the function ~xmlgen~:
+
+#+BEGIN_SRC elisp
+  (xmlgen '(html
+            (head
+             (title "hello")
+             (meta :something "hi"))
+            (body
+             (h1 "woohhooo")
+             (p "text")
+             (p "more text"))))
+#+END_SRC
+
+produces this:
+
+#+BEGIN_SRC html
+  <html>
+    <head>
+      <title>hello</title>
+      <meta something="hi" />
+    </head>
+    <body>
+      <h1>woohhooo</h1>
+      <p>text</p>
+      <p>more text</p>
+    </body>
+  </html>
 #+END_SRC
 
 * Blogs                                                               :blogs:
