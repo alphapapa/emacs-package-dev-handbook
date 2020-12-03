@@ -1593,16 +1593,29 @@ When you make a new package, the =auto-insert= command will insert a set of stan
   ;; Copyright (C) 2017 First Last
 
   ;; Author: First Last <name@example.com>
-  ;; URL: http://example.com/package-name.el
+  ;; URL: https://example.com/package-name.el
   ;; Version: 0.1-pre
   ;; Package-Requires: ((emacs "25.2"))
   ;; Keywords: something
 
   ;; This file is not part of GNU Emacs.
 
+  ;; This program is free software; you can redistribute it and/or modify
+  ;; it under the terms of the GNU General Public License as published by
+  ;; the Free Software Foundation, either version 3 of the License, or
+  ;; (at your option) any later version.
+
+  ;; This program is distributed in the hope that it will be useful,
+  ;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ;; GNU General Public License for more details.
+
+  ;; You should have received a copy of the GNU General Public License
+  ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
   ;;; Commentary:
 
-  ;; This is my package.  It is nice.  You should try it.
+  ;; This package allows flanges to be easily frobnicated.
 
   ;;;; Installation
 
@@ -1641,21 +1654,6 @@ When you make a new package, the =auto-insert= command will insert a set of stan
   ;;  [1] https://example.com/foo.el
   ;;  [2] https://example.com/bar.el
 
-  ;;; License:
-
-  ;; This program is free software; you can redistribute it and/or modify
-  ;; it under the terms of the GNU General Public License as published by
-  ;; the Free Software Foundation, either version 3 of the License, or
-  ;; (at your option) any later version.
-
-  ;; This program is distributed in the hope that it will be useful,
-  ;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-  ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  ;; GNU General Public License for more details.
-
-  ;; You should have received a copy of the GNU General Public License
-  ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
   ;;; Code:
 
   ;;;; Requirements
@@ -1667,7 +1665,7 @@ When you make a new package, the =auto-insert= command will insert a set of stan
 
   (defgroup package-name nil
     "Settings for `package-name'."
-    :link '(url-link "http://example.com/package-name.el"))
+    :link '(url-link "https://example.com/package-name.el"))
 
   (defcustom package-name-something nil
     "This setting does something."
@@ -1680,7 +1678,8 @@ When you make a new package, the =auto-insert= command will insert a set of stan
 
   ;;;;; Keymaps
 
-  ;; This technique makes it easier and less verbose to define keymaps.
+  ;; This technique makes it easier and less verbose to define keymaps
+  ;; that have many bindings.
 
   (defvar package-name-map
     ;; This makes it easy and much less verbose to define keys
@@ -1697,22 +1696,28 @@ When you make a new package, the =auto-insert= command will insert a set of stan
                     (define-key map key fn)))
       map))
 
-  ;;;; Functions
-
-  ;;;;; Commands
+  ;;;; Commands
 
   ;;;###autoload
   (defun package-name-command (args)
     "Frobnicate the flange."
     (interactive)
-    (package-name--something)
-    (bar))
+    (package-name-foo
+     (package-name--bar args)))
 
-  ;;;;; Support
+  ;;;; Functions
 
-  (defun package-name--something (args)
-    "This function helps frobnicate the flange."
-    (foo))
+  ;;;;; Public
+
+  (defun package-name-foo (args)
+    "Return foo for ARGS."
+    (foo args))
+
+  ;;;;; Private
+
+  (defun package-name--bar (args)
+    "Return bar for ARGS."
+    (bar args))
 
   ;;;; Footer
 

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-28 Sat 15:14 -->
+<!-- 2020-12-03 Thu 15:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -3392,16 +3392,29 @@ When you make a new package, the <code>auto-insert</code> command will insert a 
 <span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">Copyright (C) 2017 First Last</span>
 
 <span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">Author: First Last <a href="mailto:name%40example.com">&lt;name@example.com&gt;</a></span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">URL: http://example.com/package-name.el</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">URL: https://example.com/package-name.el</span>
 <span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">Version: 0.1-pre</span>
 <span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">Package-Requires: ((emacs "25.2"))</span>
 <span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">Keywords: something</span>
 
 <span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">This file is not part of GNU Emacs.</span>
 
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">This program is free software; you can redistribute it and/or modify</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">it under the terms of the GNU General Public License as published by</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">the Free Software Foundation, either version 3 of the License, or</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">(at your option) any later version.</span>
+
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">This program is distributed in the hope that it will be useful,</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">GNU General Public License for more details.</span>
+
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">You should have received a copy of the GNU General Public License</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">along with this program.  If not, see <a href="http://www.gnu.org/licenses/">&lt;http://www.gnu.org/licenses/&gt;</a>.</span>
+
 <span style="color: #586e75;">;;; </span><span style="color: #a94058fc37c0; background-color: #073642; font-weight: bold; text-decoration: overline;">Commentary:</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">This is my package.  It is nice.  You should try it.</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">This package allows flanges to be easily frobnicated.</span>
 
 <span style="color: #586e75;">;;;; </span><span style="color: #99d97b0c1b26; background-color: #073642; font-weight: bold; text-decoration: overline;">Installation</span>
 
@@ -3440,21 +3453,6 @@ When you make a new package, the <code>auto-insert</code> command will insert a 
 <span style="color: #586e75;">;;  </span><span style="color: #586e75; font-weight: bold; font-style: italic;">[1] https://example.com/foo.el</span>
 <span style="color: #586e75;">;;  </span><span style="color: #586e75; font-weight: bold; font-style: italic;">[2] https://example.com/bar.el</span>
 
-<span style="color: #586e75;">;;; </span><span style="color: #a94058fc37c0; background-color: #073642; font-weight: bold; text-decoration: overline;">License:</span>
-
-<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">This program is free software; you can redistribute it and/or modify</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">it under the terms of the GNU General Public License as published by</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">the Free Software Foundation, either version 3 of the License, or</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">(at your option) any later version.</span>
-
-<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">This program is distributed in the hope that it will be useful,</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">GNU General Public License for more details.</span>
-
-<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">You should have received a copy of the GNU General Public License</span>
-<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">along with this program.  If not, see <a href="http://www.gnu.org/licenses/">&lt;http://www.gnu.org/licenses/&gt;</a>.</span>
-
 <span style="color: #586e75;">;;; </span><span style="color: #a94058fc37c0; background-color: #073642; font-weight: bold; text-decoration: overline;">Code:</span>
 
 <span style="color: #586e75;">;;;; </span><span style="color: #99d97b0c1b26; background-color: #073642; font-weight: bold; text-decoration: overline;">Requirements</span>
@@ -3466,7 +3464,7 @@ When you make a new package, the <code>auto-insert</code> command will insert a 
 
 <span style="color: #f3a35f;">(</span><span style="color: #2c95fb; font-weight: bold;">defgroup</span><span style="color: #2c95fb;"> </span><span style="color: #2c95fb;">package-name</span><span style="color: #2c95fb;"> nil</span>
 <span style="color: #2c95fb;">  </span><span style="color: #95ffca7ffd7f;">"Settings for `</span><span style="color: #95ffca7ffd7f; font-weight: bold;">package-name</span><span style="color: #95ffca7ffd7f;">'."</span>
-  <span style="color: #2c95fb; font-weight: bold;">:link</span><span style="color: #2c95fb;"> '(</span><span style="color: #4cba7d;">url-link </span><span style="color: #a5ffdcffbe7f;">"http://example.com/package-name.el"</span><span style="color: #2c95fb;">)</span><span style="color: #f3a35f;">)</span>
+  <span style="color: #2c95fb; font-weight: bold;">:link</span><span style="color: #2c95fb;"> '(</span><span style="color: #4cba7d;">url-link </span><span style="color: #a5ffdcffbe7f;">"https://example.com/package-name.el"</span><span style="color: #2c95fb;">)</span><span style="color: #f3a35f;">)</span>
 
 <span style="color: #f3a35f;">(</span><span style="color: #2c95fb; font-weight: bold;">defcustom</span><span style="color: #2c95fb;"> </span><span style="color: #2c95fb;">package-name-something</span><span style="color: #2c95fb;"> nil</span>
 <span style="color: #2c95fb;">  </span><span style="color: #95ffca7ffd7f;">"This setting does something."</span>
@@ -3479,7 +3477,8 @@ When you make a new package, the <code>auto-insert</code> command will insert a 
 
 <span style="color: #586e75;">;;;;; </span><span style="color: #740c820c16f3; background-color: #073642; font-weight: bold; text-decoration: overline;">Keymaps</span>
 
-<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">This technique makes it easier and less verbose to define keymaps.</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">This technique makes it easier and less verbose to define keymaps</span>
+<span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">that have many bindings.</span>
 
 <span style="color: #f3a35f;">(</span><span style="color: #2c95fb; font-weight: bold;">defvar</span><span style="color: #2c95fb;"> </span><span style="color: #2c95fb;">package-name-map</span>
 <span style="color: #2c95fb;">  </span><span style="color: #4d0077c09680;">;; </span><span style="color: #4d0077c09680; font-weight: bold; font-style: italic;">This makes it easy and much less verbose to define keys</span>
@@ -3496,22 +3495,28 @@ When you make a new package, the <code>auto-insert</code> command will insert a 
                   <span style="color: #58a8f5;">(</span><span style="color: #6fbd92; text-decoration: underline;">define-key</span><span style="color: #6fbd92;"> map key fn</span><span style="color: #58a8f5;">)</span><span style="color: #f0b787;">)</span><span style="color: #4cba7d;">)</span>
     <span style="color: #4cba7d;">map</span><span style="color: #2c95fb;">)</span><span style="color: #f3a35f;">)</span>
 
-<span style="color: #586e75;">;;;; </span><span style="color: #99d97b0c1b26; background-color: #073642; font-weight: bold; text-decoration: overline;">Functions</span>
-
-<span style="color: #586e75;">;;;;; </span><span style="color: #740c820c16f3; background-color: #073642; font-weight: bold; text-decoration: overline;">Commands</span>
+<span style="color: #586e75;">;;;; </span><span style="color: #99d97b0c1b26; background-color: #073642; font-weight: bold; text-decoration: overline;">Commands</span>
 
 <span style="color: #586e75;">;;;</span><span style="color: #586e75; font-weight: bold; font-style: italic;">###</span><span style="color: #cb4b16; font-weight: bold; font-style: italic;">autoload</span>
 <span style="color: #f3a35f;">(</span><span style="color: #2c95fb; font-weight: bold;">defun</span><span style="color: #2c95fb;"> </span><span style="color: #2c95fb;">package-name-command</span><span style="color: #2c95fb;"> (</span><span style="color: #4cba7d;">args</span><span style="color: #2c95fb;">)</span>
   <span style="color: #95ffca7ffd7f;">"Frobnicate the flange."</span>
   <span style="color: #2c95fb;">(</span><span style="color: #4cba7d; font-weight: bold;">interactive</span><span style="color: #2c95fb;">)</span>
-  <span style="color: #2c95fb;">(</span><span style="color: #4cba7d;">package-name--something</span><span style="color: #2c95fb;">)</span>
-  <span style="color: #2c95fb;">(</span><span style="color: #4cba7d;">bar</span><span style="color: #2c95fb;">)</span><span style="color: #f3a35f;">)</span>
+  <span style="color: #2c95fb;">(</span><span style="color: #4cba7d;">package-name-foo</span>
+<span style="color: #4cba7d;">   (</span><span style="color: #f0b787;">package-name--bar args</span><span style="color: #4cba7d;">)</span><span style="color: #2c95fb;">)</span><span style="color: #f3a35f;">)</span>
 
-<span style="color: #586e75;">;;;;; </span><span style="color: #740c820c16f3; background-color: #073642; font-weight: bold; text-decoration: overline;">Support</span>
+<span style="color: #586e75;">;;;; </span><span style="color: #99d97b0c1b26; background-color: #073642; font-weight: bold; text-decoration: overline;">Functions</span>
 
-<span style="color: #f3a35f;">(</span><span style="color: #2c95fb; font-weight: bold;">defun</span><span style="color: #2c95fb;"> </span><span style="color: #2c95fb;">package-name--something</span><span style="color: #2c95fb;"> (</span><span style="color: #4cba7d;">args</span><span style="color: #2c95fb;">)</span>
-  <span style="color: #95ffca7ffd7f;">"This function helps frobnicate the flange."</span>
-  <span style="color: #2c95fb;">(</span><span style="color: #4cba7d; text-decoration: underline;">foo</span><span style="color: #2c95fb;">)</span><span style="color: #f3a35f;">)</span>
+<span style="color: #586e75;">;;;;; </span><span style="color: #740c820c16f3; background-color: #073642; font-weight: bold; text-decoration: overline;">Public</span>
+
+<span style="color: #f3a35f;">(</span><span style="color: #2c95fb; font-weight: bold;">defun</span><span style="color: #2c95fb;"> </span><span style="color: #2c95fb;">package-name-foo</span><span style="color: #2c95fb;"> (</span><span style="color: #4cba7d;">args</span><span style="color: #2c95fb;">)</span>
+  <span style="color: #95ffca7ffd7f;">"Return foo for ARGS."</span>
+  <span style="color: #2c95fb;">(</span><span style="color: #4cba7d;">foo args</span><span style="color: #2c95fb;">)</span><span style="color: #f3a35f;">)</span>
+
+<span style="color: #586e75;">;;;;; </span><span style="color: #740c820c16f3; background-color: #073642; font-weight: bold; text-decoration: overline;">Private</span>
+
+<span style="color: #f3a35f;">(</span><span style="color: #2c95fb; font-weight: bold;">defun</span><span style="color: #2c95fb;"> </span><span style="color: #2c95fb;">package-name--bar</span><span style="color: #2c95fb;"> (</span><span style="color: #4cba7d;">args</span><span style="color: #2c95fb;">)</span>
+  <span style="color: #95ffca7ffd7f;">"Return bar for ARGS."</span>
+  <span style="color: #2c95fb;">(</span><span style="color: #4cba7d;">bar args</span><span style="color: #2c95fb;">)</span><span style="color: #f3a35f;">)</span>
 
 <span style="color: #586e75;">;;;; </span><span style="color: #99d97b0c1b26; background-color: #073642; font-weight: bold; text-decoration: overline;">Footer</span>
 
@@ -5505,7 +5510,7 @@ Assess aims to be a stateless as possible, leaving Emacs unchanged whether the t
 <pre class="src src-elisp"><span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">With ERT:</span>
 
 <span style="color: #f3a35f;">(</span><span style="color: #2c95fb; font-weight: bold;">ert-deftest</span><span style="color: #2c95fb;"> </span><span style="color: #2c95fb;">erte-test-00001</span><span style="color: #2c95fb;"> ()</span>
-  <span style="color: #2c95fb;">(</span><span style="color: #4cba7d;">should (</span><span style="color: #f0b787; text-decoration: underline;">equal</span><span style="color: #f0b787;"> 10 (</span><span style="color: #58a8f5;">+ 4 6</span><span style="color: #f0b787;">)</span><span style="color: #4cba7d;">)</span><span style="color: #2c95fb;">)</span><span style="color: #f3a35f;">)</span>
+  <span style="color: #2c95fb;">(</span><span style="color: #4cba7d; font-weight: bold;">should</span><span style="color: #4cba7d;"> (</span><span style="color: #f0b787; text-decoration: underline;">equal</span><span style="color: #f0b787;"> 10 (</span><span style="color: #58a8f5;">+ 4 6</span><span style="color: #f0b787;">)</span><span style="color: #4cba7d;">)</span><span style="color: #2c95fb;">)</span><span style="color: #f3a35f;">)</span>
 
 <span style="color: #586e75;">;; </span><span style="color: #586e75; font-weight: bold; font-style: italic;">With Expectations:</span>
 <span style="color: #f3a35f;">(</span><span style="color: #2c95fb;">expect 10 (</span><span style="color: #4cba7d;">+ 4 6</span><span style="color: #2c95fb;">)</span><span style="color: #f3a35f;">)</span>
@@ -7200,7 +7205,7 @@ He archived the project, so it probably shouldn't be used, but it may have inter
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2020-11-28 Sat 15:14</p>
+<p class="date">Created: 2020-12-03 Thu 15:43</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
