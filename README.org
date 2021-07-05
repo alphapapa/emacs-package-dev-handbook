@@ -3935,6 +3935,10 @@ The benchmark macros need to be extended to allow definitions that aren't part o
 | s-lines         | 10.47              |      0.000513 |        0 |                0 |
 | stream/seq-into | slowest            |      0.005370 |        0 |                0 |
 
+** TODO Add[[https://github.com/doublep/datetime][GitHub - doublep/datetime: Library for parsing, formatting, matching and recoding timestamps and date-time format strings.]]
+
+Not to be confused with the =datetime-format= library.
+
 ** TODO Mention Emacs 27.1 SVG screenshots
 
 e.g. https://www.reddit.com/r/emacs/comments/idz35e/emacs_27_can_take_svg_screenshots_of_itself/
