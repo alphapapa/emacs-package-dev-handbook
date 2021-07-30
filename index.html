@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-07-29 Thu 23:08 -->
+<!-- 2021-07-30 Fri 18:37 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -2057,149 +2057,151 @@ There are a few options in Emacs Lisp for looking up values in associative data 
 <tbody>
 <tr>
 <td class="org-left">with 26 pairs: strings/hash-table/equal</td>
-<td class="org-right">1.06</td>
-<td class="org-right">0.040321</td>
+<td class="org-right">1.30</td>
+<td class="org-right">0.039225</td>
 <td class="org-right">0</td>
 <td class="org-right">0</td>
 </tr>
 
 <tr>
 <td class="org-left">with 26 pairs: strings/plist</td>
-<td class="org-right">2.26</td>
-<td class="org-right">0.042848</td>
+<td class="org-right">1.97</td>
+<td class="org-right">0.051002</td>
 <td class="org-right">0</td>
 <td class="org-right">0</td>
 </tr>
 
 <tr>
 <td class="org-left">with 52 pairs: strings/hash-table/equal</td>
-<td class="org-right">1.27</td>
-<td class="org-right">0.096877</td>
+<td class="org-right">1.26</td>
+<td class="org-right">0.100270</td>
 <td class="org-right">0</td>
 <td class="org-right">0</td>
 </tr>
 
 <tr>
 <td class="org-left">with 26 pairs: strings/alist-get/equal</td>
-<td class="org-right">1.04</td>
-<td class="org-right">0.123039</td>
+<td class="org-right">1.00</td>
+<td class="org-right">0.126001</td>
 <td class="org-right">0</td>
 <td class="org-right">0</td>
 </tr>
 
 <tr>
 <td class="org-left">with 26 pairs: strings/alist-get/string=</td>
-<td class="org-right">1.03</td>
-<td class="org-right">0.128221</td>
+<td class="org-right">1.04</td>
+<td class="org-right">0.126137</td>
 <td class="org-right">0</td>
 <td class="org-right">0</td>
 </tr>
 
 <tr>
 <td class="org-left">with 52 pairs: strings/plist</td>
-<td class="org-right">2.62</td>
-<td class="org-right">0.131451</td>
+<td class="org-right">2.86</td>
+<td class="org-right">0.131511</td>
 <td class="org-right">0</td>
 <td class="org-right">0</td>
-</tr>
-
-<tr>
-<td class="org-left">with 26 pairs: symbols/concat/intern/hash-table/eq</td>
-<td class="org-right">1.00</td>
-<td class="org-right">0.344524</td>
-<td class="org-right">1</td>
-<td class="org-right">0.266744</td>
 </tr>
 
 <tr>
 <td class="org-left">with 26 pairs: symbols/concat/intern/hash-table/equal</td>
-<td class="org-right">1.01</td>
-<td class="org-right">0.344951</td>
+<td class="org-right">1.02</td>
+<td class="org-right">0.376246</td>
 <td class="org-right">1</td>
-<td class="org-right">0.267860</td>
+<td class="org-right">0.293361</td>
+</tr>
+
+<tr>
+<td class="org-left">with 26 pairs: symbols/concat/intern/hash-table/eq</td>
+<td class="org-right">1.07</td>
+<td class="org-right">0.382557</td>
+<td class="org-right">1</td>
+<td class="org-right">0.300573</td>
 </tr>
 
 <tr>
 <td class="org-left">with 26 pairs: symbols/concat/intern/plist</td>
-<td class="org-right">1.02</td>
-<td class="org-right">0.349360</td>
+<td class="org-right">1.01</td>
+<td class="org-right">0.407519</td>
 <td class="org-right">1</td>
-<td class="org-right">0.266529</td>
+<td class="org-right">0.317440</td>
 </tr>
 
 <tr>
 <td class="org-left">with 26 pairs: symbols/concat/intern/alist-get</td>
-<td class="org-right">1.19</td>
-<td class="org-right">0.358071</td>
+<td class="org-right">1.10</td>
+<td class="org-right">0.409575</td>
 <td class="org-right">1</td>
-<td class="org-right">0.267457</td>
+<td class="org-right">0.306825</td>
 </tr>
 
 <tr>
 <td class="org-left">with 26 pairs: symbols/concat/intern/alist-get/equal</td>
-<td class="org-right">1.11</td>
-<td class="org-right">0.424895</td>
+<td class="org-right">1.05</td>
+<td class="org-right">0.451129</td>
 <td class="org-right">1</td>
-<td class="org-right">0.271568</td>
+<td class="org-right">0.292235</td>
 </tr>
 
 <tr>
 <td class="org-left">with 52 pairs: strings/alist-get/equal</td>
-<td class="org-right">1.03</td>
-<td class="org-right">0.471979</td>
+<td class="org-right">1.02</td>
+<td class="org-right">0.471754</td>
 <td class="org-right">0</td>
 <td class="org-right">0</td>
 </tr>
 
 <tr>
 <td class="org-left">with 52 pairs: strings/alist-get/string=</td>
-<td class="org-right">1.50</td>
-<td class="org-right">0.485663</td>
+<td class="org-right">1.62</td>
+<td class="org-right">0.481208</td>
 <td class="org-right">0</td>
 <td class="org-right">0</td>
-</tr>
-
-<tr>
-<td class="org-left">with 52 pairs: symbols/concat/intern/hash-table/equal</td>
-<td class="org-right">1.00</td>
-<td class="org-right">0.730628</td>
-<td class="org-right">2</td>
-<td class="org-right">0.547082</td>
 </tr>
 
 <tr>
 <td class="org-left">with 52 pairs: symbols/concat/intern/hash-table/eq</td>
-<td class="org-right">1.05</td>
-<td class="org-right">0.733726</td>
+<td class="org-right">1.00</td>
+<td class="org-right">0.781658</td>
 <td class="org-right">2</td>
-<td class="org-right">0.548910</td>
+<td class="org-right">0.587288</td>
+</tr>
+
+<tr>
+<td class="org-left">with 52 pairs: symbols/concat/intern/hash-table/equal</td>
+<td class="org-right">1.05</td>
+<td class="org-right">0.783576</td>
+<td class="org-right">2</td>
+<td class="org-right">0.586929</td>
 </tr>
 
 <tr>
 <td class="org-left">with 52 pairs: symbols/concat/intern/alist-get</td>
-<td class="org-right">1.00</td>
-<td class="org-right">0.773320</td>
+<td class="org-right">1.04</td>
+<td class="org-right">0.822555</td>
 <td class="org-right">2</td>
-<td class="org-right">0.545707</td>
+<td class="org-right">0.585276</td>
 </tr>
 
 <tr>
 <td class="org-left">with 52 pairs: symbols/concat/intern/plist</td>
-<td class="org-right">1.36</td>
-<td class="org-right">0.774225</td>
+<td class="org-right">1.29</td>
+<td class="org-right">0.856209</td>
 <td class="org-right">2</td>
-<td class="org-right">0.549963</td>
+<td class="org-right">0.624523</td>
 </tr>
 
 <tr>
 <td class="org-left">with 52 pairs: symbols/concat/intern/alist-get/equal</td>
 <td class="org-right">slowest</td>
-<td class="org-right">1.056641</td>
+<td class="org-right">1.105910</td>
 <td class="org-right">2</td>
-<td class="org-right">0.545522</td>
+<td class="org-right">0.588178</td>
 </tr>
 </tbody>
 </table>
+
+
 
 <p>
 We see that hash-tables are generally the fastest solution.
@@ -4624,10 +4626,7 @@ These macros make comparing multiple forms easy:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">;; </span><span style="color: #859900;">TODO</span><span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">: Consider not using `</span><span style="color: #d33682; background-color: #03282F; font-weight: bold; font-style: italic;">-on</span><span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">' here to avoid the extra dependency.</span>
-<span style="color: #f3a35f;">(</span><span style="color: #2c95fb; font-weight: bold;">require</span><span style="color: #2c95fb;"> '</span><span style="color: #2c95fb; font-weight: bold;">dash-functional</span><span style="color: #f3a35f;">)</span>
-
-<span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">;;;</span><span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">###</span><span style="color: #b58900; background-color: #03282F; font-weight: bold; font-style: italic;">autoload</span>
+<pre class="src src-elisp"><span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">;;;</span><span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">###</span><span style="color: #b58900; background-color: #03282F; font-weight: bold; font-style: italic;">autoload</span>
 <span style="color: #f3a35f;">(</span><span style="color: #2c95fb; font-weight: bold;">cl-defmacro</span><span style="color: #2c95fb;"> </span><span style="color: #2c95fb;">bench-multi</span><span style="color: #2c95fb;"> (</span><span style="color: #4cba7d;">&amp;key</span><span style="color: #4cba7d;"> (</span><span style="color: #f0b787;">times 1</span><span style="color: #4cba7d;">)</span> <span style="color: #4cba7d;">forms ensure-equal raw</span><span style="color: #2c95fb;">)</span>
   <span style="color: #95ffca7ffd7f; background-color: #03282F; font-weight: bold; font-style: italic;">"Return Org table as a list with benchmark results for FORMS.</span>
 <span style="color: #95ffca7ffd7f; background-color: #03282F; font-weight: bold; font-style: italic;">Runs FORMS with `</span><span style="color: #95ffca7ffd7f; background-color: #03282F; font-weight: bold; font-style: italic;">benchmark-run-compiled</span><span style="color: #95ffca7ffd7f; background-color: #03282F; font-weight: bold; font-style: italic;">' for TIMES iterations.</span>
@@ -7492,7 +7491,7 @@ He archived the project, so it probably shouldn't be used, but it may have inter
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2021-07-29 Thu 23:08</p>
+<p class="date">Created: 2021-07-30 Fri 18:37</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
