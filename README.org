@@ -375,6 +375,7 @@ Relint scans elisp files for mistakes in regexps, including deprecated syntax an
 - [[#collecting-items-into-a-list][Collecting items into a list]]
 - [[#diffing-two-lists][Diffing two lists]]
 - [[#filtering-a-list][Filtering a list]]
+- [[#looking-up-associations][Looking up associations]]
 :END:
 
 **** Collecting items into a list                                  :lists:
@@ -533,6 +534,115 @@ Using ~-select~ from =dash.el= seems to be the fastest way:
 | (delq nil (--map (when ... |               1.15 |    0.02134727 |        0 |              0.0 |
 | cl-remove-if-not           |               1.18 |    0.02459478 |        0 |              0.0 |
 | (-non-nil (--map (when ... |            slowest |    0.02903999 |        0 |              0.0 |
+
+**** Looking up associations
+
+There are a few options in Emacs Lisp for looking up values in associative data structures: association lists (alists), property lists (plists), and hash tables.  Which one performs best in a situation may depend on several factors.  This benchmark shows what may be a common case: looking up values using a string as the key.  We compare several combinations, including the case of prepending a prefix to the string, interning it, and looking up the resulting symbol (which might be done, e.g. when looking up a function to call based on the value of a string).
+
+#+BEGIN_SRC elisp :exports both :cache yes
+  (bench-multi-lets :times 10000 :ensure-equal t
+    :lets (("with 26 pairs"
+            ((char-range (cons ?A ?Z))
+             (strings (cl-loop for char from (car char-range) to (cdr char-range)
+                               collect (concat "prefix-" (char-to-string char))))
+             (strings-alist (cl-loop for string in strings
+                                     collect (cons string string)))
+             (symbols-alist (cl-loop for string in strings
+                                     collect (cons (intern string) string)))
+             (strings-plist (map-into strings-alist 'plist))
+             (symbols-plist (map-into symbols-alist 'plist))
+             (strings-ht (map-into strings-alist '(hash-table :test equal)))
+             (symbols-ht-equal (map-into symbols-alist '(hash-table :test equal)))
+             (symbols-ht-eq (map-into symbols-alist '(hash-table :test eq)))))
+           ("with 52 pairs"
+            ((char-range (cons ?A ?z))
+             (strings (cl-loop for char from (car char-range) to (cdr char-range)
+                               collect (concat "prefix-" (char-to-string char))))
+             (strings-alist (cl-loop for string in strings
+                                     collect (cons string string)))
+             (symbols-alist (cl-loop for string in strings
+                                     collect (cons (intern string) string)))
+             (strings-plist (map-into strings-alist 'plist))
+             (symbols-plist (map-into symbols-alist 'plist))
+             (strings-ht (map-into strings-alist '(hash-table :test equal)))
+             (symbols-ht-equal (map-into symbols-alist '(hash-table :test equal)))
+             (symbols-ht-eq (map-into symbols-alist '(hash-table :test eq))))))
+    :forms (("strings/alist-get/string=" (sort (cl-loop for string in strings
+                                                        collect (alist-get string strings-alist nil nil #'string=))
+                                               #'string<))
+            ("strings/plist" (sort (cl-loop for string in strings
+                                            collect (plist-get strings-plist string))
+                                   #'string<))
+            ("symbols/concat/intern/plist" (sort (cl-loop for char from (car char-range) to (cdr char-range)
+                                                          for string = (concat "prefix-" (char-to-string char))
+                                                          for symbol = (intern string)
+                                                          collect (plist-get symbols-plist symbol))
+                                                 #'string<))
+            ("strings/alist-get/equal" (sort (cl-loop for string in strings
+                                                      collect (alist-get string strings-alist nil nil #'equal))
+                                             #'string<))
+            ("strings/hash-table/equal" (sort (cl-loop for string in strings
+                                                       collect (gethash string strings-ht))
+                                              #'string<))
+            ("symbols/concat/intern/hash-table/equal" (sort (cl-loop for char from (car char-range) to (cdr char-range)
+                                                                     for string = (concat "prefix-" (char-to-string char))
+                                                                     for symbol = (intern string)
+                                                                     collect (gethash symbol symbols-ht-equal))
+                                                            #'string<))
+            ("symbols/concat/intern/hash-table/eq" (sort (cl-loop for char from (car char-range) to (cdr char-range)
+                                                                  for string = (concat "prefix-" (char-to-string char))
+                                                                  for symbol = (intern string)
+                                                                  collect (gethash symbol symbols-ht-eq))
+                                                         #'string<))
+            ("symbols/concat/intern/alist-get" (sort (cl-loop for char from (car char-range) to (cdr char-range)
+                                                              for string = (concat "prefix-" (char-to-string char))
+                                                              for symbol = (intern string)
+                                                              collect (alist-get symbol symbols-alist))
+                                                     #'string<))
+            ("symbols/concat/intern/alist-get/equal" (sort (cl-loop for char from (car char-range) to (cdr char-range)
+                                                                    for string = (concat "prefix-" (char-to-string char))
+                                                                    for symbol = (intern string)
+                                                                    collect (alist-get symbol symbols-alist nil nil #'equal))
+                                                           #'string<))))
+#+END_SRC
+
+#+RESULTS[041dd7c6644612027379e3558fcf60e61eb4896a]:
+| Form                                                  | x faster than next | Total runtime | # of GCs | Total GC runtime |
+|-------------------------------------------------------+--------------------+---------------+----------+------------------|
+| with 26 pairs: strings/hash-table/equal               |               1.06 |      0.040321 |        0 |                0 |
+| with 26 pairs: strings/plist                          |               2.26 |      0.042848 |        0 |                0 |
+| with 52 pairs: strings/hash-table/equal               |               1.27 |      0.096877 |        0 |                0 |
+| with 26 pairs: strings/alist-get/equal                |               1.04 |      0.123039 |        0 |                0 |
+| with 26 pairs: strings/alist-get/string=              |               1.03 |      0.128221 |        0 |                0 |
+| with 52 pairs: strings/plist                          |               2.62 |      0.131451 |        0 |                0 |
+| with 26 pairs: symbols/concat/intern/hash-table/eq    |               1.00 |      0.344524 |        1 |         0.266744 |
+| with 26 pairs: symbols/concat/intern/hash-table/equal |               1.01 |      0.344951 |        1 |         0.267860 |
+| with 26 pairs: symbols/concat/intern/plist            |               1.02 |      0.349360 |        1 |         0.266529 |
+| with 26 pairs: symbols/concat/intern/alist-get        |               1.19 |      0.358071 |        1 |         0.267457 |
+| with 26 pairs: symbols/concat/intern/alist-get/equal  |               1.11 |      0.424895 |        1 |         0.271568 |
+| with 52 pairs: strings/alist-get/equal                |               1.03 |      0.471979 |        0 |                0 |
+| with 52 pairs: strings/alist-get/string=              |               1.50 |      0.485663 |        0 |                0 |
+| with 52 pairs: symbols/concat/intern/hash-table/equal |               1.00 |      0.730628 |        2 |         0.547082 |
+| with 52 pairs: symbols/concat/intern/hash-table/eq    |               1.05 |      0.733726 |        2 |         0.548910 |
+| with 52 pairs: symbols/concat/intern/alist-get        |               1.00 |      0.773320 |        2 |         0.545707 |
+| with 52 pairs: symbols/concat/intern/plist            |               1.36 |      0.774225 |        2 |         0.549963 |
+| with 52 pairs: symbols/concat/intern/alist-get/equal  |            slowest |      1.056641 |        2 |         0.545522 |
+
+We see that hash-tables are generally the fastest solution.
+
+Comparing alists and plists, we see that, when using string keys, plists are significantly faster than alists, even with 52 pairs.  When using symbol keys, plists are faster with 26 pairs; with 52, plists and alists (using ~alist-get~ with ~eq~ as the test function) are nearly the same in performance.
+
+Also, perhaps surprisingly, when looking up a string in an alist, using ~equal~ as the test function may be faster than using the type-specific ~string=~ function (possibly indicating an optimization to be made in Emacs's C code).
+
+***** TODO Compare looking up interned symbols in obarray instead of hash table
+:PROPERTIES:
+:TOC:      :ignore (this)
+:END:
+
+***** TODO Compare a larger number of pairs
+:PROPERTIES:
+:TOC:      :ignore (this)
+:END:
 
 *** Examples                                                     :examples:
 
