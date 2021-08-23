@@ -5,7 +5,7 @@
 ;; Author: Adam Porter <adam@alphapapa.net>
 ;; Keywords: convenience, development
 ;; URL: https://github.com/alphapapa/emacs-package-dev-handbook
-;; Package-Requires: ((emacs "25.1") (dash "2.13") (s "1.10.0"))
+;; Package-Requires: ((emacs "25.1") (map "2.1") (dash "2.13") (s "1.10.0"))
 
 ;;; License:
 
@@ -35,14 +35,17 @@
 (require 'dash)
 (require 's)
 
+;; To make newer versions of `map' load for the `pcase' pattern.
+(require 'map)
+
 (cl-defmacro epdh/debug-warn (&rest args)
   "Display a debug warning showing the runtime value of ARGS.
 The warning automatically includes the name of the containing
 function, and it is only displayed if `warning-minimum-log-level'
 is `:debug' at expansion time (otherwise the macro expands to nil
 and is eliminated by the byte-compiler).  When debugging, the
-expanded form also returns nil so, e.g. it may be used in a
-conditional in place of nil.
+form also returns nil so, e.g. it may be used in a conditional in
+place of nil.
 
 Each of ARGS may be a string, which is displayed as-is, or a
 symbol, the value of which is displayed prefixed by its name, or
@@ -55,12 +58,13 @@ keywords are supported:
   :buffer BUFFER   Name of buffer to pass to `display-warning'.
   :level  LEVEL    Level passed to `display-warning', which see.
                    Default is :debug."
-  (pcase-let* ((fn-name (with-current-buffer
-                            (or byte-compile-current-buffer (current-buffer))
-                          ;; This is a hack, but a nifty one.
-                          (save-excursion
-                            (beginning-of-defun)
-                            (cl-second (read (current-buffer))))))
+  ;; TODO: Can we use a compiler macro to handle this more elegantly?
+  (pcase-let* ((fn-name (when byte-compile-current-buffer
+                          (with-current-buffer byte-compile-current-buffer
+                            ;; This is a hack, but a nifty one.
+                            (save-excursion
+                              (beginning-of-defun)
+                              (cl-second (read (current-buffer)))))))
                (plist-args (cl-loop while (keywordp (car args))
                                     collect (pop args)
                                     collect (pop args)))
@@ -78,8 +82,18 @@ keywords are supported:
                                                     (_ "...)"))
                                                   ":%S "))))))
     (when (eq :debug warning-minimum-log-level)
-      `(progn
-         (display-warning ',fn-name (format ,string ,@args) ,level ,buffer)
+      `(let ((fn-name ,(if fn-name
+                           `',fn-name
+                         ;; In an interpreted function: use `backtrace-frame' to get the
+                         ;; function name (we have to use a little hackery to figure out
+                         ;; how far up the frame to look, but this seems to work).
+                         `(cl-loop for frame in (backtrace-frames)
+                                   for fn = (cl-second frame)
+                                   when (not (or (subrp fn)
+                                                 (special-form-p fn)
+                                                 (eq 'backtrace-frames fn)))
+                                   return (make-symbol (format "%s [interpreted]" fn))))))
+         (display-warning fn-name (format ,string ,@args) ,level ,buffer)
          nil))))
 
 ;;;; General tools
