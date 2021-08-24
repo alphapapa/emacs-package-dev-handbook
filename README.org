@@ -2388,9 +2388,9 @@ Including benchmarking, byte-compilation, profiling, etc.
   - [[#benchmarking][Benchmarking]]
     - [[#bench-macro][bench macro]]
     - [[#bench-multi-macros][bench-multi macros]]
+      - [[#bench-multi-lexical][bench-multi-lexical]]
       - [[#bench-dynamic-vs-lexical-binding][bench-dynamic-vs-lexical-binding]]
       - [[#bench-multi-lets][bench-multi-lets]]
-      - [[#bench-multi-lexical][bench-multi-lexical]]
   - [[#profiling][Profiling]]
     - [[#elp-profile][elp-profile]]
     - [[#etrace-emacs-lisp-latency-tracing-for-the-chromium-catapult-trace-event-format][etrace: Emacs Lisp Latency Tracing for the Chromium Catapult Trace Event Format]]
@@ -2570,7 +2570,7 @@ These macros make comparing multiple forms easy:
     (declare (indent defun))
     (let*((keys (gensym "keys"))
           (result-times (gensym "result-times"))
-          (header '(("Form" "x faster than next" "Total runtime" "# of GCs" "Total GC runtime")
+          (header '(("Form" "x fastest" "Total runtime" "# of GCs" "Total GC runtime")
                     hline))
           ;; Copy forms so that a subsequent call of the macro will get the original forms.
           (forms (copy-list forms))
@@ -2630,12 +2630,12 @@ These macros make comparing multiple forms easy:
     "Return sorted RESULTS with factors added."
     (setq results (sort results (-on #'< #'second)))
     (cl-loop with length = (length results)
-             for i from 0 to (1- length)
+             for i from 0 below length
              for description = (car (nth i results))
-             for factor = (if (< i (1- length))
-                              (format "%.2f" (/ (second (nth (1+ i) results))
-                                                (second (nth i results))))
-                            "slowest")
+             for factor = (pcase i
+                            (0 "fastest")
+                            (_ (format "%.2f" (/ (second (nth i results))
+                                                 (second (nth 0 results))))))
              collect (append (list description factor)
                              (list (format "%.6f" (second (nth i results)))
                                    (third (nth i results))
@@ -2667,10 +2667,10 @@ Used like:
 #+END_SRC
 
 #+RESULTS[3316dc4375a3b162e32790bb7e72d715d7f756fb]:
-| Form            | x faster than next | Total runtime | # of GCs | Total GC runtime |
-|-----------------+--------------------+---------------+----------+------------------|
-| regexp          | 61.97              |      0.042440 |        0 |                0 |
-| org-map-entries | slowest            |      2.630019 |        0 |                0 |
+| Form            | x fastest | Total runtime | # of GCs | Total GC runtime |
+|-----------------+-----------+---------------+----------+------------------|
+| regexp          | fastest   |      0.022259 |        0 |                0 |
+| org-map-entries | 168.03    |      3.740340 |        0 |                0 |
 
 It can also help catch bugs by ensuring that each form returns the same results.  For example, the benchmark above contains a subtle bug: because ~case-fold-search~ in the =regexp= form is non-nil, the regexp is compared case-insensitively, so it matches Org headings which start with =Maybe= rather than only ones which start with =MAYBE=.  Using the ~:ensure-equal t~ argument to ~bench-multi~ compares the results and raises an error showing the difference between the two sequences the forms evaluate to:
 
@@ -2719,112 +2719,12 @@ Fixing the error, by setting ~case-fold-search~ to ~nil~, not only makes the for
 #+END_SRC
 
 #+RESULTS[773b94ff27f73dcfcb694429054710a581b7bec5]:
-| Form            | x faster than next | Total runtime | # of GCs | Total GC runtime |
-|-----------------+--------------------+---------------+----------+------------------|
-| regexp          | 134.09             |      0.019550 |        0 |                0 |
-| org-map-entries | slowest            |      2.621377 |        0 |                0 |
+| Form            | x fastest | Total runtime | # of GCs | Total GC runtime |
+|-----------------+-----------+---------------+----------+------------------|
+| regexp          | fastest   |      0.011578 |        0 |                0 |
+| org-map-entries | 313.65    |      3.631561 |        0 |                0 |
 
 So this macro showed which code is faster and helped catch a subtle bug.
-
-****** ~bench-dynamic-vs-lexical-binding~
-:PROPERTIES:
-:ID:       1ec52dea-b9f5-4e71-826f-3ac9d9cc2225
-:END:
-
-This macro compares dynamic and lexical binding.
-
-#+BEGIN_SRC elisp :exports code :tangle epdh.el
-  ;;;###autoload
-  (cl-defmacro bench-dynamic-vs-lexical-binding (&key (times 1) forms ensure-equal)
-    "Benchmark FORMS with both dynamic and lexical binding.
-  Calls `bench-multi' and `bench-multi-lexical', which see."
-    (declare (indent defun))
-    `(let ((dynamic (bench-multi :times ,times :ensure-equal ,ensure-equal :raw t
-                      :forms ,forms))
-           (lexical (bench-multi-lexical :times ,times :ensure-equal ,ensure-equal :raw t
-                      :forms ,forms))
-           (header '("Form" "x faster than next" "Total runtime" "# of GCs" "Total GC runtime")))
-       (cl-loop for result in-ref dynamic
-                do (setf (car result) (format "Dynamic: %s" (car result))))
-       (cl-loop for result in-ref lexical
-                do (setf (car result) (format "Lexical: %s" (car result))))
-       (append (list header)
-               (list 'hline)
-               (bench-multi-process-results (append dynamic lexical)))))
-#+END_SRC
-
-Example:
-
-#+BEGIN_SRC elisp :exports both :cache yes
-  (bench-dynamic-vs-lexical-binding :times 1000 :ensure-equal t
-    :forms (("buffer-local-value" (--filter (equal 'magit-status-mode (buffer-local-value 'major-mode it))
-                                            (buffer-list)))
-            ("with-current-buffer" (--filter (equal 'magit-status-mode (with-current-buffer it
-                                                                         major-mode))
-                                             (buffer-list)))))
-#+END_SRC
-
-#+RESULTS[73cc92a5949dd2d48f029cab9557eb6132bdf1cf]:
-| Form                         | x faster than next | Total runtime | # of GCs | Total GC runtime |
-|------------------------------+--------------------+---------------+----------+------------------|
-| Lexical: buffer-local-value  |               1.29 |      0.011170 |        0 |                0 |
-| Dynamic: buffer-local-value  |              67.10 |      0.014407 |        0 |                0 |
-| Lexical: with-current-buffer |               1.01 |      0.966651 |        0 |                0 |
-| Dynamic: with-current-buffer |            slowest |      0.974830 |        0 |                0 |
-
-****** ~bench-multi-lets~
-:PROPERTIES:
-:ID:       fefdafc5-2130-4c01-bea5-a85931433589
-:END:
-
-This macro benchmarks multiple forms in multiple environments, which is helpful for testing code that behaves differently depending on global variables.
-
-#+BEGIN_SRC elisp :exports code :results silent :tangle epdh.el
-  ;;;###autoload
-  (cl-defmacro bench-multi-lets (&key (times 1) lets forms ensure-equal)
-    "Benchmark FORMS in each of lexical environments defined in LETS.
-  LETS is a list of (\"NAME\" BINDING-FORM) forms.
-
-  FORMS is a list of (\"NAME\" FORM) forms.
-
-  Calls `bench-multi-lexical', which see."
-    (declare (indent defun))
-    (let ((benchmarks (cl-loop for (let-name let) in lets
-                               collect (list 'list let-name
-                                             `(let ,let
-                                                (bench-multi-lexical :times ,times :ensure-equal ,ensure-equal :raw t
-                                                  :forms ,forms))))))
-      `(let* ((results (list ,@benchmarks))
-              (header '("Form" "x faster than next" "Total runtime" "# of GCs" "Total GC runtime"))
-              (results (cl-loop for (let-name let) in results
-                                append (cl-loop for result in-ref let
-                                                do (setf (car result) (format "%s: %s" let-name (car result)))
-                                                collect result))))
-         (append (list header)
-                 (list 'hline)
-                 (bench-multi-process-results results)))))
-#+END_SRC
-
-Used like:
-
-#+BEGIN_SRC elisp :exports both :cache yes
-  (bench-multi-lets :times 100000 :ensure-equal t
-    :lets (("1" ((var "1")))
-           ("12345" ((var "12345")))
-           ("1234567890" ((var "1234567890"))))
-    :forms (("concat" (concat "VAR: " var))
-            ("format" (format "VAR: %s" var))))
-#+END_SRC
-
-#+RESULTS[1e38aeddf90e38a2d2e1cf00aa77f13e7da51cb3]:
-| Form               | x faster than next | Total runtime | # of GCs | Total GC runtime |
-|--------------------+--------------------+---------------+----------+------------------|
-| 1: concat          |               1.03 |      0.023708 |        0 |                0 |
-| 12345: concat      |               1.07 |      0.024533 |        0 |                0 |
-| 1234567890: concat |               1.28 |      0.026210 |        0 |                0 |
-| 1: format          |               1.31 |      0.033463 |        0 |                0 |
-| 12345: format      |               1.21 |      0.043897 |        0 |                0 |
-| 1234567890: format |            slowest |      0.053263 |        0 |                0 |
 
 ****** ~bench-multi-lexical~
 :PROPERTIES:
@@ -2881,15 +2781,42 @@ Used just like ~bench-multi~:
 #+END_SRC
 
 #+RESULTS[a8ffc10fa4e21eb632122657312040f139b33204]:
-| Form            | x faster than next | Total runtime | # of GCs | Total GC runtime |
-|-----------------+--------------------+---------------+----------+------------------|
-| regexp          | 134.26             |      0.019640 |        0 |                0 |
-| org-map-entries | slowest            |      2.636943 |        0 |                0 |
+| Form            | x fastest | Total runtime | # of GCs | Total GC runtime |
+|-----------------+-----------+---------------+----------+------------------|
+| regexp          | fastest   |      0.011641 |        0 |                0 |
+| org-map-entries | 312.46    |      3.637256 |        0 |                0 |
 
-This shows that lexical-binding doesn't make much difference in this example.  But in another example, it does:
+****** ~bench-dynamic-vs-lexical-binding~
+:PROPERTIES:
+:ID:       1ec52dea-b9f5-4e71-826f-3ac9d9cc2225
+:END:
+
+This macro compares dynamic and lexical binding.
+
+#+BEGIN_SRC elisp :exports code :results silent :tangle epdh.el
+  ;;;###autoload
+  (cl-defmacro bench-dynamic-vs-lexical-binding (&key (times 1) forms ensure-equal)
+    "Benchmark FORMS with both dynamic and lexical binding.
+  Calls `bench-multi' and `bench-multi-lexical', which see."
+    (declare (indent defun))
+    `(let ((dynamic (bench-multi :times ,times :ensure-equal ,ensure-equal :raw t
+                      :forms ,forms))
+           (lexical (bench-multi-lexical :times ,times :ensure-equal ,ensure-equal :raw t
+                      :forms ,forms))
+           (header '("Form" "x fastest" "Total runtime" "# of GCs" "Total GC runtime")))
+       (cl-loop for result in-ref dynamic
+                do (setf (car result) (format "Dynamic: %s" (car result))))
+       (cl-loop for result in-ref lexical
+                do (setf (car result) (format "Lexical: %s" (car result))))
+       (append (list header)
+               (list 'hline)
+               (bench-multi-process-results (append dynamic lexical)))))
+#+END_SRC
+
+Example:
 
 #+BEGIN_SRC elisp :exports both :cache yes
-  (bench-multi :times 1000 :ensure-equal t
+  (bench-dynamic-vs-lexical-binding :times 1000 :ensure-equal t
     :forms (("buffer-local-value" (--filter (equal 'magit-status-mode (buffer-local-value 'major-mode it))
                                             (buffer-list)))
             ("with-current-buffer" (--filter (equal 'magit-status-mode (with-current-buffer it
@@ -2897,28 +2824,69 @@ This shows that lexical-binding doesn't make much difference in this example.  B
                                              (buffer-list)))))
 #+END_SRC
 
-#+RESULTS[5ef620a1a1ab52900312e3adb52dd2e6a39dd9b2]:
-| Form                | x faster than next | Total runtime | # of GCs | Total GC runtime |
-|---------------------+--------------------+---------------+----------+------------------|
-| buffer-local-value  | 69.64              |      0.013255 |        0 |                0 |
-| with-current-buffer | slowest            |      0.923159 |        0 |                0 |
+#+RESULTS[73cc92a5949dd2d48f029cab9557eb6132bdf1cf]:
+| Form                         | x fastest | Total runtime | # of GCs | Total GC runtime |
+|------------------------------+-----------+---------------+----------+------------------|
+| Lexical: buffer-local-value  |   fastest |      0.039616 |        0 |                0 |
+| Dynamic: buffer-local-value  |      1.18 |      0.046844 |        0 |                0 |
+| Dynamic: with-current-buffer |     82.07 |      3.251161 |        0 |                0 |
+| Lexical: with-current-buffer |     82.30 |      3.260561 |        0 |                0 |
 
-#+BEGIN_SRC elisp :exports both :cache yes
-  (bench-multi-lexical :times 1000 :ensure-equal t
-    :forms (("buffer-local-value" (--filter (equal 'magit-status-mode (buffer-local-value 'major-mode it))
-                                            (buffer-list)))
-            ("with-current-buffer" (--filter (equal 'magit-status-mode (with-current-buffer it
-                                                                         major-mode))
-                                             (buffer-list)))))
+The ~buffer-local-value~ form improved by about 24% when using lexical binding, but the ~with-current-buffer~ form performs the same regardless of using lexical binding.
+
+****** ~bench-multi-lets~
+:PROPERTIES:
+:ID:       fefdafc5-2130-4c01-bea5-a85931433589
+:END:
+
+This macro benchmarks multiple forms in multiple environments, which is helpful for testing code that behaves differently depending on global variables.
+
+#+BEGIN_SRC elisp :exports code :results silent :tangle epdh.el
+  ;;;###autoload
+  (cl-defmacro bench-multi-lets (&key (times 1) lets forms ensure-equal)
+    "Benchmark FORMS in each of lexical environments defined in LETS.
+  LETS is a list of (\"NAME\" BINDING-FORM) forms.
+
+  FORMS is a list of (\"NAME\" FORM) forms.
+
+  Calls `bench-multi-lexical', which see."
+    (declare (indent defun))
+    (let ((benchmarks (cl-loop for (let-name let) in lets
+                               collect (list 'list let-name
+                                             `(let ,let
+                                                (bench-multi-lexical :times ,times :ensure-equal ,ensure-equal :raw t
+                                                  :forms ,forms))))))
+      `(let* ((results (list ,@benchmarks))
+              (header '("Form" "x fastest" "Total runtime" "# of GCs" "Total GC runtime"))
+              (results (cl-loop for (let-name let) in results
+                                append (cl-loop for result in-ref let
+                                                do (setf (car result) (format "%s: %s" let-name (car result)))
+                                                collect result))))
+         (append (list header)
+                 (list 'hline)
+                 (bench-multi-process-results results)))))
 #+END_SRC
 
-#+RESULTS[aa64952f5203400ddb1e700814a460fe81f9d2e6]:
-| Form                | x faster than next | Total runtime | # of GCs | Total GC runtime |
-|---------------------+--------------------+---------------+----------+------------------|
-| buffer-local-value  | 86.98              |      0.010512 |        0 |                0 |
-| with-current-buffer | slowest            |      0.914274 |        0 |                0 |
+Used like:
 
-The ~buffer-local-value~ form improved by about 24% when using lexical binding.
+#+BEGIN_SRC elisp :exports both :cache yes
+  (bench-multi-lets :times 100000 :ensure-equal t
+    :lets (("1" ((var "1")))
+           ("12345" ((var "12345")))
+           ("1234567890" ((var "1234567890"))))
+    :forms (("concat" (concat "VAR: " var))
+            ("format" (format "VAR: %s" var))))
+#+END_SRC
+
+#+RESULTS[1e38aeddf90e38a2d2e1cf00aa77f13e7da51cb3]:
+| Form               | x fastest | Total runtime | # of GCs | Total GC runtime |
+|--------------------+-----------+---------------+----------+------------------|
+| 1: concat          |   fastest |      0.010552 |        0 |                0 |
+| 12345: concat      |      1.02 |      0.010812 |        0 |                0 |
+| 1234567890: concat |      1.05 |      0.011071 |        0 |                0 |
+| 1: format          |      1.51 |      0.015928 |        0 |                0 |
+| 12345: format      |      1.97 |      0.020803 |        0 |                0 |
+| 1234567890: format |      2.42 |      0.025500 |        0 |                0 |
 
 **** Profiling                                                 :profiling:
 :PROPERTIES:

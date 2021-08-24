@@ -171,7 +171,7 @@ Before each form is run, `garbage-collect' is called."
   (declare (indent defun))
   (let*((keys (gensym "keys"))
         (result-times (gensym "result-times"))
-        (header '(("Form" "x faster than next" "Total runtime" "# of GCs" "Total GC runtime")
+        (header '(("Form" "x fastest" "Total runtime" "# of GCs" "Total GC runtime")
                   hline))
         ;; Copy forms so that a subsequent call of the macro will get the original forms.
         (forms (copy-list forms))
@@ -231,60 +231,18 @@ Before each form is run, `garbage-collect' is called."
   "Return sorted RESULTS with factors added."
   (setq results (sort results (-on #'< #'second)))
   (cl-loop with length = (length results)
-           for i from 0 to (1- length)
+           for i from 0 below length
            for description = (car (nth i results))
-           for factor = (if (< i (1- length))
-                            (format "%.2f" (/ (second (nth (1+ i) results))
-                                              (second (nth i results))))
-                          "slowest")
+           for factor = (pcase i
+                          (0 "fastest")
+                          (_ (format "%.2f" (/ (second (nth i results))
+                                               (second (nth 0 results))))))
            collect (append (list description factor)
                            (list (format "%.6f" (second (nth i results)))
                                  (third (nth i results))
                                  (if (> (fourth (nth i results)) 0)
                                      (format "%.6f" (fourth (nth i results)))
                                    0)))))
-
-;;;###autoload
-(cl-defmacro bench-dynamic-vs-lexical-binding (&key (times 1) forms ensure-equal)
-  "Benchmark FORMS with both dynamic and lexical binding.
-Calls `bench-multi' and `bench-multi-lexical', which see."
-  (declare (indent defun))
-  `(let ((dynamic (bench-multi :times ,times :ensure-equal ,ensure-equal :raw t
-                    :forms ,forms))
-         (lexical (bench-multi-lexical :times ,times :ensure-equal ,ensure-equal :raw t
-                    :forms ,forms))
-         (header '("Form" "x faster than next" "Total runtime" "# of GCs" "Total GC runtime")))
-     (cl-loop for result in-ref dynamic
-              do (setf (car result) (format "Dynamic: %s" (car result))))
-     (cl-loop for result in-ref lexical
-              do (setf (car result) (format "Lexical: %s" (car result))))
-     (append (list header)
-             (list 'hline)
-             (bench-multi-process-results (append dynamic lexical)))))
-
-;;;###autoload
-(cl-defmacro bench-multi-lets (&key (times 1) lets forms ensure-equal)
-  "Benchmark FORMS in each of lexical environments defined in LETS.
-LETS is a list of (\"NAME\" BINDING-FORM) forms.
-
-FORMS is a list of (\"NAME\" FORM) forms.
-
-Calls `bench-multi-lexical', which see."
-  (declare (indent defun))
-  (let ((benchmarks (cl-loop for (let-name let) in lets
-                             collect (list 'list let-name
-                                           `(let ,let
-                                              (bench-multi-lexical :times ,times :ensure-equal ,ensure-equal :raw t
-                                                :forms ,forms))))))
-    `(let* ((results (list ,@benchmarks))
-            (header '("Form" "x faster than next" "Total runtime" "# of GCs" "Total GC runtime"))
-            (results (cl-loop for (let-name let) in results
-                              append (cl-loop for result in-ref let
-                                              do (setf (car result) (format "%s: %s" let-name (car result)))
-                                              collect result))))
-       (append (list header)
-               (list 'hline)
-               (bench-multi-process-results results)))))
 
 ;;;###autoload
 (cl-defmacro bench-multi-lexical (&key (times 1) forms ensure-equal raw)
@@ -308,6 +266,48 @@ the benchmark is uninterned."
            (user-error "Error byte-compiling and loading temp file"))
        (delete-file temp-file)
        (unintern (symbol-name fn) nil))))
+
+;;;###autoload
+(cl-defmacro bench-dynamic-vs-lexical-binding (&key (times 1) forms ensure-equal)
+  "Benchmark FORMS with both dynamic and lexical binding.
+Calls `bench-multi' and `bench-multi-lexical', which see."
+  (declare (indent defun))
+  `(let ((dynamic (bench-multi :times ,times :ensure-equal ,ensure-equal :raw t
+                    :forms ,forms))
+         (lexical (bench-multi-lexical :times ,times :ensure-equal ,ensure-equal :raw t
+                    :forms ,forms))
+         (header '("Form" "x fastest" "Total runtime" "# of GCs" "Total GC runtime")))
+     (cl-loop for result in-ref dynamic
+              do (setf (car result) (format "Dynamic: %s" (car result))))
+     (cl-loop for result in-ref lexical
+              do (setf (car result) (format "Lexical: %s" (car result))))
+     (append (list header)
+             (list 'hline)
+             (bench-multi-process-results (append dynamic lexical)))))
+
+;;;###autoload
+(cl-defmacro bench-multi-lets (&key (times 1) lets forms ensure-equal)
+  "Benchmark FORMS in each of lexical environments defined in LETS.
+LETS is a list of (\"NAME\" BINDING-FORM) forms.
+
+FORMS is a list of (\"NAME\" FORM) forms.
+
+Calls `bench-multi-lexical', which see."
+  (declare (indent defun))
+  (let ((benchmarks (cl-loop for (let-name let) in lets
+                             collect (list 'list let-name
+                                           `(let ,let
+                                              (bench-multi-lexical :times ,times :ensure-equal ,ensure-equal :raw t
+                                                :forms ,forms))))))
+    `(let* ((results (list ,@benchmarks))
+            (header '("Form" "x fastest" "Total runtime" "# of GCs" "Total GC runtime"))
+            (results (cl-loop for (let-name let) in results
+                              append (cl-loop for result in-ref let
+                                              do (setf (car result) (format "%s: %s" let-name (car result)))
+                                              collect result))))
+       (append (list header)
+               (list 'hline)
+               (bench-multi-process-results results)))))
 
 ;;;; Profiling
 

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-08-22 Sun 20:13 -->
+<!-- 2021-08-24 Tue 02:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -700,9 +700,9 @@ for the JavaScript code in this tag.
 <li><a href="#%3Dbench%3D%20macro"><code>bench</code> macro</a></li>
 <li><a href="#~bench-multi~%20macros"><code>bench-multi</code> macros</a>
 <ul>
+<li><a href="#~bench-multi-lexical~"><code>bench-multi-lexical</code></a></li>
 <li><a href="#~bench-dynamic-vs-lexical-binding~"><code>bench-dynamic-vs-lexical-binding</code></a></li>
 <li><a href="#~bench-multi-lets~"><code>bench-multi-lets</code></a></li>
-<li><a href="#~bench-multi-lexical~"><code>bench-multi-lexical</code></a></li>
 </ul>
 </li>
 </ul>
@@ -4662,7 +4662,7 @@ These macros make comparing multiple forms easy:
 <span style="color: #4d1e63e073ad;">  </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e; font-weight: bold;">declare</span><span style="color: #78880e;"> </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88;">indent defun</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span>
   <span style="color: #1e8058007680;">(</span><span style="color: #78880e; font-weight: bold;">let*</span><span style="color: #3c0059802200;">(</span><span style="color: #24805c805f00;">(</span><span style="color: #a17e11;">keys </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">gensym</span><span style="color: #3d85b7;"> </span><span style="color: #73139976b41e;">"keys"</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span>
         <span style="color: #24805c805f00;">(</span><span style="color: #a17e11;">result-times </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">gensym</span><span style="color: #3d85b7;"> </span><span style="color: #73139976b41e;">"result-times"</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span>
-        <span style="color: #24805c805f00;">(</span><span style="color: #a17e11;">header '</span><span style="color: #508054802380;">(</span><span style="color: #1e8058007680;">(</span><span style="color: #921da24c26e6;">"Form"</span> <span style="color: #921da24c26e6;">"x faster than next"</span> <span style="color: #921da24c26e6;">"Total runtime"</span> <span style="color: #921da24c26e6;">"# of GCs"</span> <span style="color: #921da24c26e6;">"Total GC runtime"</span><span style="color: #1e8058007680;">)</span>
+        <span style="color: #24805c805f00;">(</span><span style="color: #a17e11;">header '</span><span style="color: #508054802380;">(</span><span style="color: #1e8058007680;">(</span><span style="color: #921da24c26e6;">"Form"</span> <span style="color: #921da24c26e6;">"x fastest"</span> <span style="color: #921da24c26e6;">"Total runtime"</span> <span style="color: #921da24c26e6;">"# of GCs"</span> <span style="color: #921da24c26e6;">"Total GC runtime"</span><span style="color: #1e8058007680;">)</span>
                   <span style="color: #3d85b7;">hline</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span>
         <span style="color: #502f539d5350; background-color: #03282F; font-weight: bold; font-style: italic;">;; </span><span style="color: #502f539d5350; background-color: #03282F; font-weight: bold; font-style: italic;">Copy forms so that a subsequent call of the macro will get the original forms.</span>
 <span style="color: #502f539d5350;">        </span><span style="color: #24805c805f00;">(</span><span style="color: #a17e11;">forms </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">copy-list</span><span style="color: #3d85b7;"> forms</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span>
@@ -4722,12 +4722,12 @@ These macros make comparing multiple forms easy:
   <span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">"Return sorted RESULTS with factors added."</span>
   <span style="color: #1e8058007680;">(</span><span style="color: #78880e; font-weight: bold;">setq</span><span style="color: #78880e;"> results </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88; text-decoration: underline;">sort</span><span style="color: #498e88;"> results </span><span style="color: #24805c805f00;">(</span><span style="color: #a17e11; text-decoration: underline;">-on</span><span style="color: #a17e11;"> #'&lt; #'second</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span>
   <span style="color: #1e8058007680;">(</span><span style="color: #78880e; font-weight: bold;">cl-loop</span><span style="color: #78880e;"> with length = </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88; text-decoration: underline;">length</span><span style="color: #498e88;"> results</span><span style="color: #3c0059802200;">)</span>
-           <span style="color: #78880e;">for i from 0 to </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88; text-decoration: underline;">1-</span><span style="color: #498e88;"> length</span><span style="color: #3c0059802200;">)</span>
-           <span style="color: #78880e;">for description = </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88; text-decoration: underline;">car</span><span style="color: #498e88;"> </span><span style="color: #24805c805f00;">(</span><span style="color: #a17e11; text-decoration: underline;">nth</span><span style="color: #a17e11;"> i results</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span>
-           <span style="color: #78880e;">for factor = </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88; font-weight: bold;">if</span><span style="color: #498e88;"> </span><span style="color: #24805c805f00;">(</span><span style="color: #a17e11;">&lt; i </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">1-</span><span style="color: #3d85b7;"> length</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span>
-                            <span style="color: #24805c805f00;">(</span><span style="color: #a17e11; text-decoration: underline;">format</span><span style="color: #a17e11;"> </span><span style="color: #b86396762cce;">"%.2f"</span> <span style="color: #508054802380;">(</span><span style="color: #3d85b7;">/ </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e; text-decoration: underline;">second</span><span style="color: #78880e;"> </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88; text-decoration: underline;">nth</span><span style="color: #498e88;"> </span><span style="color: #24805c805f00;">(</span><span style="color: #a38528; text-decoration: underline;">1+</span><span style="color: #a38528;"> i</span><span style="color: #24805c805f00;">)</span> <span style="color: #498e88;">results</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span>
-                                              <span style="color: #1e8058007680;">(</span><span style="color: #78880e; text-decoration: underline;">second</span><span style="color: #78880e;"> </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88; text-decoration: underline;">nth</span><span style="color: #498e88;"> i results</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span>
-                          <span style="color: #763b93f69160;">"slowest"</span><span style="color: #3c0059802200;">)</span>
+           <span style="color: #78880e;">for i from 0 below length</span>
+<span style="color: #78880e;">           for description = </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88; text-decoration: underline;">car</span><span style="color: #498e88;"> </span><span style="color: #24805c805f00;">(</span><span style="color: #a17e11; text-decoration: underline;">nth</span><span style="color: #a17e11;"> i results</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span>
+           <span style="color: #78880e;">for factor = </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88; font-weight: bold;">pcase</span><span style="color: #498e88;"> i</span>
+<span style="color: #498e88;">                          </span><span style="color: #24805c805f00;">(</span><span style="color: #a17e11;">0 </span><span style="color: #b86396762cce;">"fastest"</span><span style="color: #24805c805f00;">)</span>
+                          <span style="color: #24805c805f00;">(</span><span style="color: #a17e11;">_ </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">format</span><span style="color: #3d85b7;"> </span><span style="color: #73139976b41e;">"%.2f"</span> <span style="color: #1e8058007680;">(</span><span style="color: #78880e;">/ </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88; text-decoration: underline;">second</span><span style="color: #498e88;"> </span><span style="color: #24805c805f00;">(</span><span style="color: #a38528; text-decoration: underline;">nth</span><span style="color: #a38528;"> i results</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span>
+                                               <span style="color: #3c0059802200;">(</span><span style="color: #498e88; text-decoration: underline;">second</span><span style="color: #498e88;"> </span><span style="color: #24805c805f00;">(</span><span style="color: #a38528; text-decoration: underline;">nth</span><span style="color: #a38528;"> 0 results</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span>
            <span style="color: #78880e;">collect </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88; text-decoration: underline;">append</span><span style="color: #498e88;"> </span><span style="color: #24805c805f00;">(</span><span style="color: #a17e11; text-decoration: underline;">list</span><span style="color: #a17e11;"> description factor</span><span style="color: #24805c805f00;">)</span>
                            <span style="color: #24805c805f00;">(</span><span style="color: #a17e11; text-decoration: underline;">list</span><span style="color: #a17e11;"> </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">format</span><span style="color: #3d85b7;"> </span><span style="color: #73139976b41e;">"%.6f"</span> <span style="color: #1e8058007680;">(</span><span style="color: #78880e; text-decoration: underline;">second</span><span style="color: #78880e;"> </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88; text-decoration: underline;">nth</span><span style="color: #498e88;"> i results</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
                                  <span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">third</span><span style="color: #3d85b7;"> </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e; text-decoration: underline;">nth</span><span style="color: #78880e;"> i results</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
@@ -4779,7 +4779,7 @@ Used like:
 <thead>
 <tr>
 <th scope="col" class="org-left">Form</th>
-<th scope="col" class="org-left">x faster than next</th>
+<th scope="col" class="org-left">x fastest</th>
 <th scope="col" class="org-right">Total runtime</th>
 <th scope="col" class="org-right"># of GCs</th>
 <th scope="col" class="org-right">Total GC runtime</th>
@@ -4788,16 +4788,16 @@ Used like:
 <tbody>
 <tr>
 <td class="org-left">regexp</td>
-<td class="org-left">61.97</td>
-<td class="org-right">0.042440</td>
+<td class="org-left">fastest</td>
+<td class="org-right">0.022259</td>
 <td class="org-right">0</td>
 <td class="org-right">0</td>
 </tr>
 
 <tr>
 <td class="org-left">org-map-entries</td>
-<td class="org-left">slowest</td>
-<td class="org-right">2.630019</td>
+<td class="org-left">168.03</td>
+<td class="org-right">3.740340</td>
 <td class="org-right">0</td>
 <td class="org-right">0</td>
 </tr>
@@ -4875,7 +4875,7 @@ Fixing the error, by setting <code>case-fold-search</code> to <code>nil</code>, 
 <thead>
 <tr>
 <th scope="col" class="org-left">Form</th>
-<th scope="col" class="org-left">x faster than next</th>
+<th scope="col" class="org-left">x fastest</th>
 <th scope="col" class="org-right">Total runtime</th>
 <th scope="col" class="org-right"># of GCs</th>
 <th scope="col" class="org-right">Total GC runtime</th>
@@ -4884,16 +4884,16 @@ Fixing the error, by setting <code>case-fold-search</code> to <code>nil</code>, 
 <tbody>
 <tr>
 <td class="org-left">regexp</td>
-<td class="org-left">134.09</td>
-<td class="org-right">0.019550</td>
+<td class="org-left">fastest</td>
+<td class="org-right">0.011578</td>
 <td class="org-right">0</td>
 <td class="org-right">0</td>
 </tr>
 
 <tr>
 <td class="org-left">org-map-entries</td>
-<td class="org-left">slowest</td>
-<td class="org-right">2.621377</td>
+<td class="org-left">313.65</td>
+<td class="org-right">3.631561</td>
 <td class="org-right">0</td>
 <td class="org-right">0</td>
 </tr>
@@ -4903,232 +4903,6 @@ Fixing the error, by setting <code>case-fold-search</code> to <code>nil</code>, 
 <p>
 So this macro showed which code is faster and helped catch a subtle bug.
 </p>
-</div>
-
-<div id="outline-container-~bench-dynamic-vs-lexical-binding~" class="outline-7">
-<h7 id="~bench-dynamic-vs-lexical-binding~"><a id="ID-1ec52dea-b9f5-4e71-826f-3ac9d9cc2225"></a><code>bench-dynamic-vs-lexical-binding</code></h7>
-<div class="outline-text-7" id="text-~bench-dynamic-vs-lexical-binding~">
-<p>
-This macro compares dynamic and lexical binding.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">;;;</span><span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">###</span><span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">autoload</span>
-<span style="color: #508054802380;">(</span><span style="color: #3d85b7; font-weight: bold;">cl-defmacro</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">bench-dynamic-vs-lexical-binding</span><span style="color: #3d85b7;"> </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e;">&amp;key</span><span style="color: #78880e;"> </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88;">times 1</span><span style="color: #3c0059802200;">)</span> <span style="color: #78880e;">forms ensure-equal</span><span style="color: #1e8058007680;">)</span>
-  <span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">"Benchmark FORMS with both dynamic and lexical binding.</span>
-<span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">Calls `</span><span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">bench-multi</span><span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">' and `</span><span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">bench-multi-lexical</span><span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">', which see."</span>
-  <span style="color: #1e8058007680;">(</span><span style="color: #78880e; font-weight: bold;">declare</span><span style="color: #78880e;"> </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88;">indent defun</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span>
-  <span style="color: #3d85b7;">`</span><span style="color: #1e8058007680;">(</span><span style="color: #78880e; font-weight: bold;">let</span><span style="color: #78880e;"> </span><span style="color: #3c0059802200;">(</span><span style="color: #24805c805f00;">(</span><span style="color: #a17e11;">dynamic </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; font-weight: bold;">bench-multi</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7; font-weight: bold;">:times</span><span style="color: #3d85b7;"> ,times </span><span style="color: #3d85b7; font-weight: bold;">:ensure-equal</span><span style="color: #3d85b7;"> ,ensure-equal </span><span style="color: #3d85b7; font-weight: bold;">:raw</span><span style="color: #3d85b7;"> t</span>
-<span style="color: #3d85b7;">                    </span><span style="color: #3d85b7; font-weight: bold;">:forms</span><span style="color: #3d85b7;"> ,forms</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span>
-         <span style="color: #24805c805f00;">(</span><span style="color: #a17e11;">lexical </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; font-weight: bold;">bench-multi-lexical</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7; font-weight: bold;">:times</span><span style="color: #3d85b7;"> ,times </span><span style="color: #3d85b7; font-weight: bold;">:ensure-equal</span><span style="color: #3d85b7;"> ,ensure-equal </span><span style="color: #3d85b7; font-weight: bold;">:raw</span><span style="color: #3d85b7;"> t</span>
-<span style="color: #3d85b7;">                    </span><span style="color: #3d85b7; font-weight: bold;">:forms</span><span style="color: #3d85b7;"> ,forms</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span>
-         <span style="color: #24805c805f00;">(</span><span style="color: #a17e11;">header '</span><span style="color: #508054802380;">(</span><span style="color: #73139976b41e;">"Form"</span> <span style="color: #73139976b41e;">"x faster than next"</span> <span style="color: #73139976b41e;">"Total runtime"</span> <span style="color: #73139976b41e;">"# of GCs"</span> <span style="color: #73139976b41e;">"Total GC runtime"</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span>
-     <span style="color: #3c0059802200;">(</span><span style="color: #498e88; font-weight: bold;">cl-loop</span><span style="color: #498e88;"> for result in-ref dynamic</span>
-<span style="color: #498e88;">              do </span><span style="color: #24805c805f00;">(</span><span style="color: #a17e11; font-weight: bold;">setf</span><span style="color: #a17e11;"> </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">car</span><span style="color: #3d85b7;"> result</span><span style="color: #508054802380;">)</span> <span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">format</span><span style="color: #3d85b7;"> </span><span style="color: #73139976b41e;">"Dynamic: %s"</span> <span style="color: #1e8058007680;">(</span><span style="color: #78880e; text-decoration: underline;">car</span><span style="color: #78880e;"> result</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span>
-     <span style="color: #3c0059802200;">(</span><span style="color: #498e88; font-weight: bold;">cl-loop</span><span style="color: #498e88;"> for result in-ref lexical</span>
-<span style="color: #498e88;">              do </span><span style="color: #24805c805f00;">(</span><span style="color: #a17e11; font-weight: bold;">setf</span><span style="color: #a17e11;"> </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">car</span><span style="color: #3d85b7;"> result</span><span style="color: #508054802380;">)</span> <span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">format</span><span style="color: #3d85b7;"> </span><span style="color: #73139976b41e;">"Lexical: %s"</span> <span style="color: #1e8058007680;">(</span><span style="color: #78880e; text-decoration: underline;">car</span><span style="color: #78880e;"> result</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span>
-     <span style="color: #3c0059802200;">(</span><span style="color: #498e88; text-decoration: underline;">append</span><span style="color: #498e88;"> </span><span style="color: #24805c805f00;">(</span><span style="color: #a17e11; text-decoration: underline;">list</span><span style="color: #a17e11;"> header</span><span style="color: #24805c805f00;">)</span>
-             <span style="color: #24805c805f00;">(</span><span style="color: #a17e11; text-decoration: underline;">list</span><span style="color: #a17e11;"> 'hline</span><span style="color: #24805c805f00;">)</span>
-             <span style="color: #24805c805f00;">(</span><span style="color: #a17e11; text-decoration: underline;">bench-multi-process-results</span><span style="color: #a17e11;"> </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">append</span><span style="color: #3d85b7;"> dynamic lexical</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
-</pre>
-</div>
-
-<p>
-Example:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #508054802380;">(</span><span style="color: #3d85b7; font-weight: bold;">bench-dynamic-vs-lexical-binding</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7; font-weight: bold;">:times</span><span style="color: #3d85b7;"> 1000 </span><span style="color: #3d85b7; font-weight: bold;">:ensure-equal</span><span style="color: #3d85b7;"> t</span>
-<span style="color: #3d85b7;">  </span><span style="color: #3d85b7; font-weight: bold;">:forms</span><span style="color: #3d85b7;"> </span><span style="color: #1e8058007680;">(</span><span style="color: #3c0059802200;">(</span><span style="color: #763b93f69160;">"</span><span style="color: #763b93f69160; text-decoration: underline;">buffer-local-value</span><span style="color: #763b93f69160;">"</span> <span style="color: #24805c805f00;">(</span><span style="color: #a17e11; font-weight: bold;">--filter</span><span style="color: #a17e11;"> </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">equal</span><span style="color: #3d85b7;"> 'magit-status-mode </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e; text-decoration: underline;">buffer-local-value</span><span style="color: #78880e;"> 'major-mode </span><span style="color: #78880e;">it</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
-                                          <span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">buffer-list</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span>
-          <span style="color: #3c0059802200;">(</span><span style="color: #763b93f69160;">"with-current-buffer"</span> <span style="color: #24805c805f00;">(</span><span style="color: #a17e11; font-weight: bold;">--filter</span><span style="color: #a17e11;"> </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">equal</span><span style="color: #3d85b7;"> 'magit-status-mode </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e; font-weight: bold;">with-current-buffer</span><span style="color: #78880e;"> </span><span style="color: #78880e;">it</span>
-<span style="color: #78880e;">                                                                       major-mode</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
-                                           <span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">buffer-list</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
-</pre>
-</div>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Form</th>
-<th scope="col" class="org-right">x faster than next</th>
-<th scope="col" class="org-right">Total runtime</th>
-<th scope="col" class="org-right"># of GCs</th>
-<th scope="col" class="org-right">Total GC runtime</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left">Lexical: buffer-local-value</td>
-<td class="org-right">1.29</td>
-<td class="org-right">0.011170</td>
-<td class="org-right">0</td>
-<td class="org-right">0</td>
-</tr>
-
-<tr>
-<td class="org-left">Dynamic: buffer-local-value</td>
-<td class="org-right">67.10</td>
-<td class="org-right">0.014407</td>
-<td class="org-right">0</td>
-<td class="org-right">0</td>
-</tr>
-
-<tr>
-<td class="org-left">Lexical: with-current-buffer</td>
-<td class="org-right">1.01</td>
-<td class="org-right">0.966651</td>
-<td class="org-right">0</td>
-<td class="org-right">0</td>
-</tr>
-
-<tr>
-<td class="org-left">Dynamic: with-current-buffer</td>
-<td class="org-right">slowest</td>
-<td class="org-right">0.974830</td>
-<td class="org-right">0</td>
-<td class="org-right">0</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-~bench-multi-lets~" class="outline-7">
-<h7 id="~bench-multi-lets~"><a id="ID-fefdafc5-2130-4c01-bea5-a85931433589"></a><code>bench-multi-lets</code></h7>
-<div class="outline-text-7" id="text-~bench-multi-lets~">
-<p>
-This macro benchmarks multiple forms in multiple environments, which is helpful for testing code that behaves differently depending on global variables.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">;;;</span><span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">###</span><span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">autoload</span>
-<span style="color: #508054802380;">(</span><span style="color: #3d85b7; font-weight: bold;">cl-defmacro</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">bench-multi-lets</span><span style="color: #3d85b7;"> </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e;">&amp;key</span><span style="color: #78880e;"> </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88;">times 1</span><span style="color: #3c0059802200;">)</span> <span style="color: #78880e;">lets forms ensure-equal</span><span style="color: #1e8058007680;">)</span>
-  <span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">"Benchmark FORMS in each of lexical environments defined in LETS.</span>
-<span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">LETS is a list of (\"NAME\" BINDING-FORM) forms.</span>
-
-<span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">FORMS is a list of (\"NAME\" FORM) forms.</span>
-
-<span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">Calls `</span><span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">bench-multi-lexical</span><span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">', which see."</span>
-  <span style="color: #1e8058007680;">(</span><span style="color: #78880e; font-weight: bold;">declare</span><span style="color: #78880e;"> </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88;">indent defun</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span>
-  <span style="color: #1e8058007680;">(</span><span style="color: #78880e; font-weight: bold;">let</span><span style="color: #78880e;"> </span><span style="color: #3c0059802200;">(</span><span style="color: #24805c805f00;">(</span><span style="color: #a17e11;">benchmarks </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; font-weight: bold;">cl-loop</span><span style="color: #3d85b7;"> for </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e;">let-name let</span><span style="color: #1e8058007680;">)</span> <span style="color: #3d85b7;">in lets</span>
-<span style="color: #3d85b7;">                             collect </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e; text-decoration: underline;">list</span><span style="color: #78880e;"> 'list let-name</span>
-<span style="color: #78880e;">                                           `</span><span style="color: #3c0059802200;">(</span><span style="color: #498e88; font-weight: bold;">let</span><span style="color: #498e88;"> ,let</span>
-<span style="color: #498e88;">                                              </span><span style="color: #24805c805f00;">(</span><span style="color: #a38528; font-weight: bold;">bench-multi-lexical</span><span style="color: #a38528;"> </span><span style="color: #a38528; font-weight: bold;">:times</span><span style="color: #a38528;"> ,times </span><span style="color: #a38528; font-weight: bold;">:ensure-equal</span><span style="color: #a38528;"> ,ensure-equal </span><span style="color: #a38528; font-weight: bold;">:raw</span><span style="color: #a38528;"> t</span>
-<span style="color: #a38528;">                                                </span><span style="color: #a38528; font-weight: bold;">:forms</span><span style="color: #a38528;"> ,forms</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span>
-    <span style="color: #78880e;">`</span><span style="color: #3c0059802200;">(</span><span style="color: #498e88; font-weight: bold;">let*</span><span style="color: #498e88;"> </span><span style="color: #24805c805f00;">(</span><span style="color: #508054802380;">(</span><span style="color: #3d85b7;">results </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e; text-decoration: underline;">list</span><span style="color: #78880e;"> ,@benchmarks</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
-            <span style="color: #508054802380;">(</span><span style="color: #3d85b7;">header '</span><span style="color: #1e8058007680;">(</span><span style="color: #921da24c26e6;">"Form"</span> <span style="color: #921da24c26e6;">"x faster than next"</span> <span style="color: #921da24c26e6;">"Total runtime"</span> <span style="color: #921da24c26e6;">"# of GCs"</span> <span style="color: #921da24c26e6;">"Total GC runtime"</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
-            <span style="color: #508054802380;">(</span><span style="color: #3d85b7;">results </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e; font-weight: bold;">cl-loop</span><span style="color: #78880e;"> for </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88;">let-name let</span><span style="color: #3c0059802200;">)</span> <span style="color: #78880e;">in results</span>
-<span style="color: #78880e;">                              append </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88; font-weight: bold;">cl-loop</span><span style="color: #498e88;"> for result in-ref let</span>
-<span style="color: #498e88;">                                              do </span><span style="color: #24805c805f00;">(</span><span style="color: #a38528; font-weight: bold;">setf</span><span style="color: #a38528;"> </span><span style="color: #518058002f00;">(</span><span style="color: #648daa; text-decoration: underline;">car</span><span style="color: #648daa;"> result</span><span style="color: #518058002f00;">)</span> <span style="color: #518058002f00;">(</span><span style="color: #648daa; text-decoration: underline;">format</span><span style="color: #648daa;"> </span><span style="color: #9815a20fa91d;">"%s: %s"</span> <span style="color: #648daa;">let-name </span><span style="color: #32005c007000;">(</span><span style="color: #7f8d22; text-decoration: underline;">car</span><span style="color: #7f8d22;"> result</span><span style="color: #32005c007000;">)</span><span style="color: #518058002f00;">)</span><span style="color: #24805c805f00;">)</span>
-                                              <span style="color: #498e88;">collect result</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span>
-       <span style="color: #24805c805f00;">(</span><span style="color: #a17e11; text-decoration: underline;">append</span><span style="color: #a17e11;"> </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">list</span><span style="color: #3d85b7;"> header</span><span style="color: #508054802380;">)</span>
-               <span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">list</span><span style="color: #3d85b7;"> 'hline</span><span style="color: #508054802380;">)</span>
-               <span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">bench-multi-process-results</span><span style="color: #3d85b7;"> results</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
-</pre>
-</div>
-
-<p>
-Used like:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #508054802380;">(</span><span style="color: #3d85b7; font-weight: bold;">bench-multi-lets</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7; font-weight: bold;">:times</span><span style="color: #3d85b7;"> 100000 </span><span style="color: #3d85b7; font-weight: bold;">:ensure-equal</span><span style="color: #3d85b7;"> t</span>
-<span style="color: #3d85b7;">  </span><span style="color: #3d85b7; font-weight: bold;">:lets</span><span style="color: #3d85b7;"> </span><span style="color: #1e8058007680;">(</span><span style="color: #3c0059802200;">(</span><span style="color: #763b93f69160;">"1"</span> <span style="color: #24805c805f00;">(</span><span style="color: #508054802380;">(</span><span style="color: #3d85b7;">var </span><span style="color: #73139976b41e;">"1"</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span>
-         <span style="color: #3c0059802200;">(</span><span style="color: #763b93f69160;">"12345"</span> <span style="color: #24805c805f00;">(</span><span style="color: #508054802380;">(</span><span style="color: #3d85b7;">var </span><span style="color: #73139976b41e;">"12345"</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span>
-         <span style="color: #3c0059802200;">(</span><span style="color: #763b93f69160;">"1234567890"</span> <span style="color: #24805c805f00;">(</span><span style="color: #508054802380;">(</span><span style="color: #3d85b7;">var </span><span style="color: #73139976b41e;">"1234567890"</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span>
-  <span style="color: #3d85b7; font-weight: bold;">:forms</span><span style="color: #3d85b7;"> </span><span style="color: #1e8058007680;">(</span><span style="color: #3c0059802200;">(</span><span style="color: #763b93f69160;">"</span><span style="color: #763b93f69160; text-decoration: underline;">concat</span><span style="color: #763b93f69160;">"</span> <span style="color: #24805c805f00;">(</span><span style="color: #a17e11; text-decoration: underline;">concat</span><span style="color: #a17e11;"> </span><span style="color: #b86396762cce;">"VAR: "</span> <span style="color: #a17e11;">var</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span>
-          <span style="color: #3c0059802200;">(</span><span style="color: #763b93f69160;">"</span><span style="color: #763b93f69160; text-decoration: underline;">format</span><span style="color: #763b93f69160;">"</span> <span style="color: #24805c805f00;">(</span><span style="color: #a17e11; text-decoration: underline;">format</span><span style="color: #a17e11;"> </span><span style="color: #b86396762cce;">"VAR: %s"</span> <span style="color: #a17e11;">var</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
-</pre>
-</div>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Form</th>
-<th scope="col" class="org-right">x faster than next</th>
-<th scope="col" class="org-right">Total runtime</th>
-<th scope="col" class="org-right"># of GCs</th>
-<th scope="col" class="org-right">Total GC runtime</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left">1: concat</td>
-<td class="org-right">1.03</td>
-<td class="org-right">0.023708</td>
-<td class="org-right">0</td>
-<td class="org-right">0</td>
-</tr>
-
-<tr>
-<td class="org-left">12345: concat</td>
-<td class="org-right">1.07</td>
-<td class="org-right">0.024533</td>
-<td class="org-right">0</td>
-<td class="org-right">0</td>
-</tr>
-
-<tr>
-<td class="org-left">1234567890: concat</td>
-<td class="org-right">1.28</td>
-<td class="org-right">0.026210</td>
-<td class="org-right">0</td>
-<td class="org-right">0</td>
-</tr>
-
-<tr>
-<td class="org-left">1: format</td>
-<td class="org-right">1.31</td>
-<td class="org-right">0.033463</td>
-<td class="org-right">0</td>
-<td class="org-right">0</td>
-</tr>
-
-<tr>
-<td class="org-left">12345: format</td>
-<td class="org-right">1.21</td>
-<td class="org-right">0.043897</td>
-<td class="org-right">0</td>
-<td class="org-right">0</td>
-</tr>
-
-<tr>
-<td class="org-left">1234567890: format</td>
-<td class="org-right">slowest</td>
-<td class="org-right">0.053263</td>
-<td class="org-right">0</td>
-<td class="org-right">0</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 
 <div id="outline-container-~bench-multi-lexical~" class="outline-7">
@@ -5206,7 +4980,7 @@ Used just like <code>bench-multi</code>:
 <thead>
 <tr>
 <th scope="col" class="org-left">Form</th>
-<th scope="col" class="org-left">x faster than next</th>
+<th scope="col" class="org-left">x fastest</th>
 <th scope="col" class="org-right">Total runtime</th>
 <th scope="col" class="org-right"># of GCs</th>
 <th scope="col" class="org-right">Total GC runtime</th>
@@ -5215,28 +4989,58 @@ Used just like <code>bench-multi</code>:
 <tbody>
 <tr>
 <td class="org-left">regexp</td>
-<td class="org-left">134.26</td>
-<td class="org-right">0.019640</td>
+<td class="org-left">fastest</td>
+<td class="org-right">0.011641</td>
 <td class="org-right">0</td>
 <td class="org-right">0</td>
 </tr>
 
 <tr>
 <td class="org-left">org-map-entries</td>
-<td class="org-left">slowest</td>
-<td class="org-right">2.636943</td>
+<td class="org-left">312.46</td>
+<td class="org-right">3.637256</td>
 <td class="org-right">0</td>
 <td class="org-right">0</td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
 
+<div id="outline-container-~bench-dynamic-vs-lexical-binding~" class="outline-7">
+<h7 id="~bench-dynamic-vs-lexical-binding~"><a id="ID-1ec52dea-b9f5-4e71-826f-3ac9d9cc2225"></a><code>bench-dynamic-vs-lexical-binding</code></h7>
+<div class="outline-text-7" id="text-~bench-dynamic-vs-lexical-binding~">
 <p>
-This shows that lexical-binding doesn't make much difference in this example.  But in another example, it does:
+This macro compares dynamic and lexical binding.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #508054802380;">(</span><span style="color: #3d85b7; font-weight: bold;">bench-multi</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7; font-weight: bold;">:times</span><span style="color: #3d85b7;"> 1000 </span><span style="color: #3d85b7; font-weight: bold;">:ensure-equal</span><span style="color: #3d85b7;"> t</span>
+<pre class="src src-elisp"><span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">;;;</span><span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">###</span><span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">autoload</span>
+<span style="color: #508054802380;">(</span><span style="color: #3d85b7; font-weight: bold;">cl-defmacro</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">bench-dynamic-vs-lexical-binding</span><span style="color: #3d85b7;"> </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e;">&amp;key</span><span style="color: #78880e;"> </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88;">times 1</span><span style="color: #3c0059802200;">)</span> <span style="color: #78880e;">forms ensure-equal</span><span style="color: #1e8058007680;">)</span>
+  <span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">"Benchmark FORMS with both dynamic and lexical binding.</span>
+<span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">Calls `</span><span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">bench-multi</span><span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">' and `</span><span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">bench-multi-lexical</span><span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">', which see."</span>
+  <span style="color: #1e8058007680;">(</span><span style="color: #78880e; font-weight: bold;">declare</span><span style="color: #78880e;"> </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88;">indent defun</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span>
+  <span style="color: #3d85b7;">`</span><span style="color: #1e8058007680;">(</span><span style="color: #78880e; font-weight: bold;">let</span><span style="color: #78880e;"> </span><span style="color: #3c0059802200;">(</span><span style="color: #24805c805f00;">(</span><span style="color: #a17e11;">dynamic </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; font-weight: bold;">bench-multi</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7; font-weight: bold;">:times</span><span style="color: #3d85b7;"> ,times </span><span style="color: #3d85b7; font-weight: bold;">:ensure-equal</span><span style="color: #3d85b7;"> ,ensure-equal </span><span style="color: #3d85b7; font-weight: bold;">:raw</span><span style="color: #3d85b7;"> t</span>
+<span style="color: #3d85b7;">                    </span><span style="color: #3d85b7; font-weight: bold;">:forms</span><span style="color: #3d85b7;"> ,forms</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span>
+         <span style="color: #24805c805f00;">(</span><span style="color: #a17e11;">lexical </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; font-weight: bold;">bench-multi-lexical</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7; font-weight: bold;">:times</span><span style="color: #3d85b7;"> ,times </span><span style="color: #3d85b7; font-weight: bold;">:ensure-equal</span><span style="color: #3d85b7;"> ,ensure-equal </span><span style="color: #3d85b7; font-weight: bold;">:raw</span><span style="color: #3d85b7;"> t</span>
+<span style="color: #3d85b7;">                    </span><span style="color: #3d85b7; font-weight: bold;">:forms</span><span style="color: #3d85b7;"> ,forms</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span>
+         <span style="color: #24805c805f00;">(</span><span style="color: #a17e11;">header '</span><span style="color: #508054802380;">(</span><span style="color: #73139976b41e;">"Form"</span> <span style="color: #73139976b41e;">"x fastest"</span> <span style="color: #73139976b41e;">"Total runtime"</span> <span style="color: #73139976b41e;">"# of GCs"</span> <span style="color: #73139976b41e;">"Total GC runtime"</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span>
+     <span style="color: #3c0059802200;">(</span><span style="color: #498e88; font-weight: bold;">cl-loop</span><span style="color: #498e88;"> for result in-ref dynamic</span>
+<span style="color: #498e88;">              do </span><span style="color: #24805c805f00;">(</span><span style="color: #a17e11; font-weight: bold;">setf</span><span style="color: #a17e11;"> </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">car</span><span style="color: #3d85b7;"> result</span><span style="color: #508054802380;">)</span> <span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">format</span><span style="color: #3d85b7;"> </span><span style="color: #73139976b41e;">"Dynamic: %s"</span> <span style="color: #1e8058007680;">(</span><span style="color: #78880e; text-decoration: underline;">car</span><span style="color: #78880e;"> result</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span>
+     <span style="color: #3c0059802200;">(</span><span style="color: #498e88; font-weight: bold;">cl-loop</span><span style="color: #498e88;"> for result in-ref lexical</span>
+<span style="color: #498e88;">              do </span><span style="color: #24805c805f00;">(</span><span style="color: #a17e11; font-weight: bold;">setf</span><span style="color: #a17e11;"> </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">car</span><span style="color: #3d85b7;"> result</span><span style="color: #508054802380;">)</span> <span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">format</span><span style="color: #3d85b7;"> </span><span style="color: #73139976b41e;">"Lexical: %s"</span> <span style="color: #1e8058007680;">(</span><span style="color: #78880e; text-decoration: underline;">car</span><span style="color: #78880e;"> result</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span>
+     <span style="color: #3c0059802200;">(</span><span style="color: #498e88; text-decoration: underline;">append</span><span style="color: #498e88;"> </span><span style="color: #24805c805f00;">(</span><span style="color: #a17e11; text-decoration: underline;">list</span><span style="color: #a17e11;"> header</span><span style="color: #24805c805f00;">)</span>
+             <span style="color: #24805c805f00;">(</span><span style="color: #a17e11; text-decoration: underline;">list</span><span style="color: #a17e11;"> 'hline</span><span style="color: #24805c805f00;">)</span>
+             <span style="color: #24805c805f00;">(</span><span style="color: #a17e11; text-decoration: underline;">bench-multi-process-results</span><span style="color: #a17e11;"> </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">append</span><span style="color: #3d85b7;"> dynamic lexical</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
+</pre>
+</div>
+
+<p>
+Example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #508054802380;">(</span><span style="color: #3d85b7; font-weight: bold;">bench-dynamic-vs-lexical-binding</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7; font-weight: bold;">:times</span><span style="color: #3d85b7;"> 1000 </span><span style="color: #3d85b7; font-weight: bold;">:ensure-equal</span><span style="color: #3d85b7;"> t</span>
 <span style="color: #3d85b7;">  </span><span style="color: #3d85b7; font-weight: bold;">:forms</span><span style="color: #3d85b7;"> </span><span style="color: #1e8058007680;">(</span><span style="color: #3c0059802200;">(</span><span style="color: #763b93f69160;">"</span><span style="color: #763b93f69160; text-decoration: underline;">buffer-local-value</span><span style="color: #763b93f69160;">"</span> <span style="color: #24805c805f00;">(</span><span style="color: #a17e11; font-weight: bold;">--filter</span><span style="color: #a17e11;"> </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">equal</span><span style="color: #3d85b7;"> 'magit-status-mode </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e; text-decoration: underline;">buffer-local-value</span><span style="color: #78880e;"> 'major-mode </span><span style="color: #78880e;">it</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
                                           <span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">buffer-list</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span>
           <span style="color: #3c0059802200;">(</span><span style="color: #763b93f69160;">"with-current-buffer"</span> <span style="color: #24805c805f00;">(</span><span style="color: #a17e11; font-weight: bold;">--filter</span><span style="color: #a17e11;"> </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">equal</span><span style="color: #3d85b7;"> 'magit-status-mode </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e; font-weight: bold;">with-current-buffer</span><span style="color: #78880e;"> </span><span style="color: #78880e;">it</span>
@@ -5251,7 +5055,7 @@ This shows that lexical-binding doesn't make much difference in this example.  B
 <colgroup>
 <col  class="org-left" />
 
-<col  class="org-left" />
+<col  class="org-right" />
 
 <col  class="org-right" />
 
@@ -5262,7 +5066,7 @@ This shows that lexical-binding doesn't make much difference in this example.  B
 <thead>
 <tr>
 <th scope="col" class="org-left">Form</th>
-<th scope="col" class="org-left">x faster than next</th>
+<th scope="col" class="org-right">x fastest</th>
 <th scope="col" class="org-right">Total runtime</th>
 <th scope="col" class="org-right"># of GCs</th>
 <th scope="col" class="org-right">Total GC runtime</th>
@@ -5270,30 +5074,90 @@ This shows that lexical-binding doesn't make much difference in this example.  B
 </thead>
 <tbody>
 <tr>
-<td class="org-left">buffer-local-value</td>
-<td class="org-left">69.64</td>
-<td class="org-right">0.013255</td>
+<td class="org-left">Lexical: buffer-local-value</td>
+<td class="org-right">fastest</td>
+<td class="org-right">0.039616</td>
 <td class="org-right">0</td>
 <td class="org-right">0</td>
 </tr>
 
 <tr>
-<td class="org-left">with-current-buffer</td>
-<td class="org-left">slowest</td>
-<td class="org-right">0.923159</td>
+<td class="org-left">Dynamic: buffer-local-value</td>
+<td class="org-right">1.18</td>
+<td class="org-right">0.046844</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-left">Dynamic: with-current-buffer</td>
+<td class="org-right">82.07</td>
+<td class="org-right">3.251161</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-left">Lexical: with-current-buffer</td>
+<td class="org-right">82.30</td>
+<td class="org-right">3.260561</td>
 <td class="org-right">0</td>
 <td class="org-right">0</td>
 </tr>
 </tbody>
 </table>
 
+<p>
+The <code>buffer-local-value</code> form improved by about 24% when using lexical binding, but the <code>with-current-buffer</code> form performs the same regardless of using lexical binding.
+</p>
+</div>
+</div>
+
+<div id="outline-container-~bench-multi-lets~" class="outline-7">
+<h7 id="~bench-multi-lets~"><a id="ID-fefdafc5-2130-4c01-bea5-a85931433589"></a><code>bench-multi-lets</code></h7>
+<div class="outline-text-7" id="text-~bench-multi-lets~">
+<p>
+This macro benchmarks multiple forms in multiple environments, which is helpful for testing code that behaves differently depending on global variables.
+</p>
+
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #508054802380;">(</span><span style="color: #3d85b7; font-weight: bold;">bench-multi-lexical</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7; font-weight: bold;">:times</span><span style="color: #3d85b7;"> 1000 </span><span style="color: #3d85b7; font-weight: bold;">:ensure-equal</span><span style="color: #3d85b7;"> t</span>
-<span style="color: #3d85b7;">  </span><span style="color: #3d85b7; font-weight: bold;">:forms</span><span style="color: #3d85b7;"> </span><span style="color: #1e8058007680;">(</span><span style="color: #3c0059802200;">(</span><span style="color: #763b93f69160;">"</span><span style="color: #763b93f69160; text-decoration: underline;">buffer-local-value</span><span style="color: #763b93f69160;">"</span> <span style="color: #24805c805f00;">(</span><span style="color: #a17e11; font-weight: bold;">--filter</span><span style="color: #a17e11;"> </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">equal</span><span style="color: #3d85b7;"> 'magit-status-mode </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e; text-decoration: underline;">buffer-local-value</span><span style="color: #78880e;"> 'major-mode </span><span style="color: #78880e;">it</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
-                                          <span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">buffer-list</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span>
-          <span style="color: #3c0059802200;">(</span><span style="color: #763b93f69160;">"with-current-buffer"</span> <span style="color: #24805c805f00;">(</span><span style="color: #a17e11; font-weight: bold;">--filter</span><span style="color: #a17e11;"> </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">equal</span><span style="color: #3d85b7;"> 'magit-status-mode </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e; font-weight: bold;">with-current-buffer</span><span style="color: #78880e;"> </span><span style="color: #78880e;">it</span>
-<span style="color: #78880e;">                                                                       major-mode</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
-                                           <span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">buffer-list</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
+<pre class="src src-elisp"><span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">;;;</span><span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">###</span><span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">autoload</span>
+<span style="color: #508054802380;">(</span><span style="color: #3d85b7; font-weight: bold;">cl-defmacro</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">bench-multi-lets</span><span style="color: #3d85b7;"> </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e;">&amp;key</span><span style="color: #78880e;"> </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88;">times 1</span><span style="color: #3c0059802200;">)</span> <span style="color: #78880e;">lets forms ensure-equal</span><span style="color: #1e8058007680;">)</span>
+  <span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">"Benchmark FORMS in each of lexical environments defined in LETS.</span>
+<span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">LETS is a list of (\"NAME\" BINDING-FORM) forms.</span>
+
+<span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">FORMS is a list of (\"NAME\" FORM) forms.</span>
+
+<span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">Calls `</span><span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">bench-multi-lexical</span><span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">', which see."</span>
+  <span style="color: #1e8058007680;">(</span><span style="color: #78880e; font-weight: bold;">declare</span><span style="color: #78880e;"> </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88;">indent defun</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span>
+  <span style="color: #1e8058007680;">(</span><span style="color: #78880e; font-weight: bold;">let</span><span style="color: #78880e;"> </span><span style="color: #3c0059802200;">(</span><span style="color: #24805c805f00;">(</span><span style="color: #a17e11;">benchmarks </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; font-weight: bold;">cl-loop</span><span style="color: #3d85b7;"> for </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e;">let-name let</span><span style="color: #1e8058007680;">)</span> <span style="color: #3d85b7;">in lets</span>
+<span style="color: #3d85b7;">                             collect </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e; text-decoration: underline;">list</span><span style="color: #78880e;"> 'list let-name</span>
+<span style="color: #78880e;">                                           `</span><span style="color: #3c0059802200;">(</span><span style="color: #498e88; font-weight: bold;">let</span><span style="color: #498e88;"> ,let</span>
+<span style="color: #498e88;">                                              </span><span style="color: #24805c805f00;">(</span><span style="color: #a38528; font-weight: bold;">bench-multi-lexical</span><span style="color: #a38528;"> </span><span style="color: #a38528; font-weight: bold;">:times</span><span style="color: #a38528;"> ,times </span><span style="color: #a38528; font-weight: bold;">:ensure-equal</span><span style="color: #a38528;"> ,ensure-equal </span><span style="color: #a38528; font-weight: bold;">:raw</span><span style="color: #a38528;"> t</span>
+<span style="color: #a38528;">                                                </span><span style="color: #a38528; font-weight: bold;">:forms</span><span style="color: #a38528;"> ,forms</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span>
+    <span style="color: #78880e;">`</span><span style="color: #3c0059802200;">(</span><span style="color: #498e88; font-weight: bold;">let*</span><span style="color: #498e88;"> </span><span style="color: #24805c805f00;">(</span><span style="color: #508054802380;">(</span><span style="color: #3d85b7;">results </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e; text-decoration: underline;">list</span><span style="color: #78880e;"> ,@benchmarks</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
+            <span style="color: #508054802380;">(</span><span style="color: #3d85b7;">header '</span><span style="color: #1e8058007680;">(</span><span style="color: #921da24c26e6;">"Form"</span> <span style="color: #921da24c26e6;">"x fastest"</span> <span style="color: #921da24c26e6;">"Total runtime"</span> <span style="color: #921da24c26e6;">"# of GCs"</span> <span style="color: #921da24c26e6;">"Total GC runtime"</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
+            <span style="color: #508054802380;">(</span><span style="color: #3d85b7;">results </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e; font-weight: bold;">cl-loop</span><span style="color: #78880e;"> for </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88;">let-name let</span><span style="color: #3c0059802200;">)</span> <span style="color: #78880e;">in results</span>
+<span style="color: #78880e;">                              append </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88; font-weight: bold;">cl-loop</span><span style="color: #498e88;"> for result in-ref let</span>
+<span style="color: #498e88;">                                              do </span><span style="color: #24805c805f00;">(</span><span style="color: #a38528; font-weight: bold;">setf</span><span style="color: #a38528;"> </span><span style="color: #518058002f00;">(</span><span style="color: #648daa; text-decoration: underline;">car</span><span style="color: #648daa;"> result</span><span style="color: #518058002f00;">)</span> <span style="color: #518058002f00;">(</span><span style="color: #648daa; text-decoration: underline;">format</span><span style="color: #648daa;"> </span><span style="color: #9815a20fa91d;">"%s: %s"</span> <span style="color: #648daa;">let-name </span><span style="color: #32005c007000;">(</span><span style="color: #7f8d22; text-decoration: underline;">car</span><span style="color: #7f8d22;"> result</span><span style="color: #32005c007000;">)</span><span style="color: #518058002f00;">)</span><span style="color: #24805c805f00;">)</span>
+                                              <span style="color: #498e88;">collect result</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span>
+       <span style="color: #24805c805f00;">(</span><span style="color: #a17e11; text-decoration: underline;">append</span><span style="color: #a17e11;"> </span><span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">list</span><span style="color: #3d85b7;"> header</span><span style="color: #508054802380;">)</span>
+               <span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">list</span><span style="color: #3d85b7;"> 'hline</span><span style="color: #508054802380;">)</span>
+               <span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">bench-multi-process-results</span><span style="color: #3d85b7;"> results</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
+</pre>
+</div>
+
+<p>
+Used like:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #508054802380;">(</span><span style="color: #3d85b7; font-weight: bold;">bench-multi-lets</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7; font-weight: bold;">:times</span><span style="color: #3d85b7;"> 100000 </span><span style="color: #3d85b7; font-weight: bold;">:ensure-equal</span><span style="color: #3d85b7;"> t</span>
+<span style="color: #3d85b7;">  </span><span style="color: #3d85b7; font-weight: bold;">:lets</span><span style="color: #3d85b7;"> </span><span style="color: #1e8058007680;">(</span><span style="color: #3c0059802200;">(</span><span style="color: #763b93f69160;">"1"</span> <span style="color: #24805c805f00;">(</span><span style="color: #508054802380;">(</span><span style="color: #3d85b7;">var </span><span style="color: #73139976b41e;">"1"</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span>
+         <span style="color: #3c0059802200;">(</span><span style="color: #763b93f69160;">"12345"</span> <span style="color: #24805c805f00;">(</span><span style="color: #508054802380;">(</span><span style="color: #3d85b7;">var </span><span style="color: #73139976b41e;">"12345"</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span>
+         <span style="color: #3c0059802200;">(</span><span style="color: #763b93f69160;">"1234567890"</span> <span style="color: #24805c805f00;">(</span><span style="color: #508054802380;">(</span><span style="color: #3d85b7;">var </span><span style="color: #73139976b41e;">"1234567890"</span><span style="color: #508054802380;">)</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span>
+  <span style="color: #3d85b7; font-weight: bold;">:forms</span><span style="color: #3d85b7;"> </span><span style="color: #1e8058007680;">(</span><span style="color: #3c0059802200;">(</span><span style="color: #763b93f69160;">"</span><span style="color: #763b93f69160; text-decoration: underline;">concat</span><span style="color: #763b93f69160;">"</span> <span style="color: #24805c805f00;">(</span><span style="color: #a17e11; text-decoration: underline;">concat</span><span style="color: #a17e11;"> </span><span style="color: #b86396762cce;">"VAR: "</span> <span style="color: #a17e11;">var</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span>
+          <span style="color: #3c0059802200;">(</span><span style="color: #763b93f69160;">"</span><span style="color: #763b93f69160; text-decoration: underline;">format</span><span style="color: #763b93f69160;">"</span> <span style="color: #24805c805f00;">(</span><span style="color: #a17e11; text-decoration: underline;">format</span><span style="color: #a17e11;"> </span><span style="color: #b86396762cce;">"VAR: %s"</span> <span style="color: #a17e11;">var</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
 </pre>
 </div>
 
@@ -5303,7 +5167,7 @@ This shows that lexical-binding doesn't make much difference in this example.  B
 <colgroup>
 <col  class="org-left" />
 
-<col  class="org-left" />
+<col  class="org-right" />
 
 <col  class="org-right" />
 
@@ -5314,7 +5178,7 @@ This shows that lexical-binding doesn't make much difference in this example.  B
 <thead>
 <tr>
 <th scope="col" class="org-left">Form</th>
-<th scope="col" class="org-left">x faster than next</th>
+<th scope="col" class="org-right">x fastest</th>
 <th scope="col" class="org-right">Total runtime</th>
 <th scope="col" class="org-right"># of GCs</th>
 <th scope="col" class="org-right">Total GC runtime</th>
@@ -5322,26 +5186,54 @@ This shows that lexical-binding doesn't make much difference in this example.  B
 </thead>
 <tbody>
 <tr>
-<td class="org-left">buffer-local-value</td>
-<td class="org-left">86.98</td>
-<td class="org-right">0.010512</td>
+<td class="org-left">1: concat</td>
+<td class="org-right">fastest</td>
+<td class="org-right">0.010552</td>
 <td class="org-right">0</td>
 <td class="org-right">0</td>
 </tr>
 
 <tr>
-<td class="org-left">with-current-buffer</td>
-<td class="org-left">slowest</td>
-<td class="org-right">0.914274</td>
+<td class="org-left">12345: concat</td>
+<td class="org-right">1.02</td>
+<td class="org-right">0.010812</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-left">1234567890: concat</td>
+<td class="org-right">1.05</td>
+<td class="org-right">0.011071</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-left">1: format</td>
+<td class="org-right">1.51</td>
+<td class="org-right">0.015928</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-left">12345: format</td>
+<td class="org-right">1.97</td>
+<td class="org-right">0.020803</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-left">1234567890: format</td>
+<td class="org-right">2.42</td>
+<td class="org-right">0.025500</td>
 <td class="org-right">0</td>
 <td class="org-right">0</td>
 </tr>
 </tbody>
 </table>
-
-<p>
-The <code>buffer-local-value</code> form improved by about 24% when using lexical binding.
-</p>
 </div>
 </div>
 </div>
@@ -7503,7 +7395,7 @@ He archived the project, so it probably shouldn't be used, but it may have inter
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2021-08-22 Sun 20:13</p>
+<p class="date">Created: 2021-08-24 Tue 02:35</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
