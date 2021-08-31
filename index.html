@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-08-24 Tue 02:35 -->
+<!-- 2021-08-31 Tue 03:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -368,6 +368,7 @@ for the JavaScript code in this tag.
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2Frolandwalker%2Flist-utils%5D%5Blist-utils%3A%20List-manipulation%20utility%20functions%5D%5D">list-utils: List-manipulation utility functions&#xa0;&#xa0;&#xa0;<span class="tag"><span class="lists">lists</span></span></a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Felpa.gnu.org%2Fpackages%2Fmap.html%5D%5Bmap.el%3A%20Map%20manipulation%20functions%5D%5D">map.el: Map manipulation functions&#xa0;&#xa0;&#xa0;<span class="tag"><span class="maps">maps</span>&#xa0;<span class="hash_tables">hash_tables</span>&#xa0;<span class="alists">alists</span>&#xa0;<span class="arrays">arrays</span></span></a></li>
 <li><a href="#%5B%5Bhttps%3A%2F%2Fgithub.com%2FNicolasPetton%2Fstream%5D%5Bstream%3A%20Lazy%20sequences%5D%5D">stream: Lazy sequences&#xa0;&#xa0;&#xa0;<span class="tag"><span class="streams">streams</span>&#xa0;<span class="sequences">sequences</span>&#xa0;<span class="lazy">lazy</span></span></a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Felpa.gnu.org%2Fpackages%2Fpersist.html%5D%5Bpersist.el%3A%20Persist%20variables%20between%20sessions%5D%5D">persist.el: Persist variables between sessions</a></li>
 </ul>
 </li>
 <li><a href="#Collections%20%28lists%2C%20vectors%2C%20hash-tables%2C%20etc.%29--Tools">Tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tools">tools</span></span></a>
@@ -2535,6 +2536,29 @@ Streams could be created from any sequential input data:
 </blockquote>
 </div>
 </div>
+
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Felpa.gnu.org%2Fpackages%2Fpersist.html%5D%5Bpersist.el%3A%20Persist%20variables%20between%20sessions%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttps%3A%2F%2Felpa.gnu.org%2Fpackages%2Fpersist.html%5D%5Bpersist.el%3A%20Persist%20variables%20between%20sessions%5D%5D"><a href="https://elpa.gnu.org/packages/persist.html">persist.el: Persist variables between sessions</a></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttps%3A%2F%2Felpa.gnu.org%2Fpackages%2Fpersist.html%5D%5Bpersist.el%3A%20Persist%20variables%20between%20sessions%5D%5D">
+<blockquote>
+<p>
+This package provides variables which persist across sessions.
+</p>
+
+<p>
+The main entry point is `persist-defvar' which behaves like `defvar' but which persists the variables between session.  Variables are automatically saved when Emacs exits.
+</p>
+
+<p>
+Other useful functions are `persist-save' which saves the variable immediately, `persist-load' which loads the saved value, `persist-reset' which resets to the default value.
+</p>
+
+<p>
+Values are stored in a directory in `user-emacs-directory', using one file per value.  This makes it easy to delete or remove unused variables.
+</p>
+</blockquote>
+</div>
+</div>
 </div>
 
 <div id="outline-container-Collections%20%28lists%2C%20vectors%2C%20hash-tables%2C%20etc.%29--Tools" class="outline-4">
@@ -2907,7 +2931,7 @@ For example, when used like:
   <span style="color: #1e8058007680;">(</span><span style="color: #78880e;">debug-warn </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88; text-decoration: underline;">current-buffer</span><span style="color: #3c0059802200;">)</span> <span style="color: #921da24c26e6;">"This is bad!"</span> <span style="color: #3c0059802200;">(</span><span style="color: #498e88; text-decoration: underline;">point</span><span style="color: #3c0059802200;">)</span> <span style="color: #78880e;">var</span><span style="color: #1e8058007680;">)</span>
   <span style="color: #3d85b7;">var</span><span style="color: #508054802380;">)</span>
 
-<span style="color: #508054802380;">(</span><span style="color: #3d85b7; text-decoration: underline;">argh</span><span style="color: #3d85b7;"> 1</span><span style="color: #508054802380;">)</span>
+<span style="color: #508054802380;">(</span><span style="color: #3d85b7;">argh 1</span><span style="color: #508054802380;">)</span>
 </pre>
 </div>
 
@@ -3802,7 +3826,7 @@ When you make a new package, the <code>auto-insert</code> command will insert a 
 
 <span style="color: #508054802380;">(</span><span style="color: #3d85b7; font-weight: bold;">defun</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">package-name-foo</span><span style="color: #3d85b7;"> </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e;">args</span><span style="color: #1e8058007680;">)</span>
   <span style="color: #73139976b41e; background-color: #03282F; font-weight: bold; font-style: italic;">"Return foo for ARGS."</span>
-  <span style="color: #1e8058007680;">(</span><span style="color: #78880e; text-decoration: underline;">foo</span><span style="color: #78880e;"> args</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
+  <span style="color: #1e8058007680;">(</span><span style="color: #78880e;">foo args</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
 
 <span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">;;;;; </span><span style="color: #35a69c; font-weight: bold;">Private</span>
 
@@ -3830,7 +3854,7 @@ You should always include a readme with your project.  Typically it will be incl
 <div class="org-src-container">
 <pre class="src src-org"><span style="color: #405A61; font-weight: bold;">#+TITLE:</span> <span style="color: #268bd2; font-weight: bold;">package-name</span>
 
-<span style="color: #405A61; background-color: #00212C;">#+PROPERTY: LOGGING nil</span>
+<span style="color: #405A61; background-color: #00212C; font-weight: bold;">#+PROPERTY: LOGGING nil</span>
 
 <span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;"># Note: This readme works with the org-make-toc <a href="https://github.com/alphapapa/org-make-toc">&lt;https://github.com/alphapapa/org-make-toc&gt;</a> package, which automatically updates the table of contents.</span>
 
@@ -3875,9 +3899,9 @@ If you installed from MELPA, you're done.  Just run one of the commands below.
 
   Then put this file in your load-path, and put this in your init file:
 
-<span style="color: #405A61; background-color: #00212C;">  #+BEGIN_SRC elisp</span>
+<span style="color: #405A61; background-color: #00212C; font-weight: bold;">  #+BEGIN_SRC elisp</span>
 <span style="color: #508054802380; background-color: #073642;">(</span><span style="color: #3d85b7; background-color: #073642; font-weight: bold;">require</span><span style="color: #3d85b7; background-color: #073642;"> '</span><span style="color: #3d85b7; background-color: #073642; font-weight: bold;">package-name</span><span style="color: #508054802380; background-color: #073642;">)</span>
-<span style="color: #405A61; background-color: #00212C;">  #+END_SRC</span>
+<span style="color: #405A61; background-color: #00212C; font-weight: bold;">  #+END_SRC</span>
 
 <span style="color: #a94058fc37c0; background-color: #00212C; font-weight: bold; text-decoration: overline;">* Usage</span>
 <span style="color: #405A61; font-weight: bold;">:PROPERTIES:</span>
@@ -5691,7 +5715,7 @@ Assess aims to be a stateless as possible, leaving Emacs unchanged whether the t
 <pre class="src src-elisp"><span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">;; </span><span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">With ERT:</span>
 
 <span style="color: #508054802380;">(</span><span style="color: #3d85b7; font-weight: bold;">ert-deftest</span><span style="color: #3d85b7;"> </span><span style="color: #3d85b7;">erte-test-00001</span><span style="color: #3d85b7;"> </span><span style="color: #1e8058007680;">()</span>
-  <span style="color: #1e8058007680;">(</span><span style="color: #78880e; font-weight: bold;">should</span><span style="color: #78880e;"> </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88; text-decoration: underline;">equal</span><span style="color: #498e88;"> 10 </span><span style="color: #24805c805f00;">(</span><span style="color: #a17e11;">+ 4 6</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
+  <span style="color: #1e8058007680;">(</span><span style="color: #78880e;">should </span><span style="color: #3c0059802200;">(</span><span style="color: #498e88; text-decoration: underline;">equal</span><span style="color: #498e88;"> 10 </span><span style="color: #24805c805f00;">(</span><span style="color: #a17e11;">+ 4 6</span><span style="color: #24805c805f00;">)</span><span style="color: #3c0059802200;">)</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
 
 <span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">;; </span><span style="color: #405A61; background-color: #03282F; font-weight: bold; font-style: italic;">With Expectations:</span>
 <span style="color: #508054802380;">(</span><span style="color: #3d85b7;">expect 10 </span><span style="color: #1e8058007680;">(</span><span style="color: #78880e;">+ 4 6</span><span style="color: #1e8058007680;">)</span><span style="color: #508054802380;">)</span>
@@ -7395,7 +7419,7 @@ He archived the project, so it probably shouldn't be used, but it may have inter
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2021-08-24 Tue 02:35</p>
+<p class="date">Created: 2021-08-31 Tue 03:15</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
