@@ -1336,6 +1336,7 @@ The editor of this handbook uses ~iedit~ with these customizations:
 - [[#libraries][Libraries]]
   - [[#common-lisp-extensions-cl-lib][Common Lisp Extensions (cl-lib)]]
   - [[#dashel][dash.el]]
+  - [[#loopel-friendly-imperative-loop-structures][loop.el: friendly imperative loop structures]]
   - [[#subr-x][subr-x]]
 - [[#tools][Tools]]
   - [[#chemacs-emacs-profile-switcher][chemacs: Emacs profile switcher]]
@@ -1366,6 +1367,12 @@ This is the built-in =cl-lib= package which implements Common Lisp functions and
 :END:
 
 Dash is a powerful general-purpose library that provides many useful functions and macros.
+
+**** [[https://github.com/Wilfred/loop.el][loop.el: friendly imperative loop structures]]           :flow_control:
+
+#+BEGIN_QUOTE
+Emacs Lisp is missing loop structures familiar to users of newer languages.  This library adds a selection of popular loop structures as well as break and continue.
+#+END_QUOTE
 
 **** [[https://github.com/emacs-mirror/emacs/blob/master/lisp/emacs-lisp/subr-x.el][subr-x]]                                :built_in:strings:flow_control:
 
