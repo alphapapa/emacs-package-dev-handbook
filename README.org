@@ -4081,6 +4081,11 @@ e.g. saving files to disk.
 
 ** TODO [[https://github.com/tarsius/map-regexp][GitHub - tarsius/map-regexp: Map over matches of a regular expression]]
 
+** TODO [[https://github.com/Wilfred/elisp-def][GitHub - Wilfred/elisp-def: Find Emacs Lisp definitions]]
+:LOGBOOK:
+-  State "TODO"       from              [2021-09-06 Mon 04:06]
+:END:
+
 ** TODO [[https://github.com/tarsius/map-progress][GitHub - tarsius/map-progress: Mapping macros that report progress]]
 
 ** TODO [[https://github.com/jasonm23/autothemer][GitHub - jasonm23/autothemer: Conveniently create Emacs themes]]
