@@ -1345,6 +1345,8 @@ The editor of this handbook uses ~iedit~ with these customizations:
   - [[#suggestel-discover-elisp-functions-that-do-what-you-want][suggest.el: discover elisp functions that do what you want]]
   - [[#byte-compile-and-load-directory][Byte-compile and load directory]]
   - [[#emacs-lisp-macroreplace][emacs-lisp-macroreplace]]
+- [[#tutorials][Tutorials]]
+  - [[#wilfred-hughes-walks-through-a-function-from-lispy][Wilfred Hughes walks through a function from Lispy]]
 :END:
 
 #+BEGIN_SRC elisp :exports none :eval never :tangle epdh.el
@@ -1463,6 +1465,17 @@ Replace macro form before or after point with its expansion.
         (setf (buffer-substring beg end) (pp-to-string expansion))
       (user-error "Unable to expand")))
 #+END_SRC
+
+*** Tutorials                                                   :tutorials:
+
+**** [[https://old.reddit.com/r/emacs/comments/60tl6o/tips_on_reading_dense_emacs_lisp_code/dfa92hg/][Wilfred Hughes walks through a function from Lispy]] :ATTACH:
+:PROPERTIES:
+:Attachments: https%3A%2F%2Fold.reddit.com%2Fr%2Femacs%2Fcomments%2F60tl6o%2Ftips_on_reading_dense_emacs_lisp_code%2Fdfa92hg%2F--PA7yQk.tar.xz
+:ID:       57f093b3-c2c9-436a-95d4-244ad9f64778
+:author:   Wilfred Hughes
+:END:
+
+Wilfred's walkthrough is helpful for learning how to study an Elisp function and determine what it does and how.  He also shows the use of ~trace-function~.
 
 ** Highlighting / font-locking                      :highlighting:font_lock:
 :PROPERTIES:
