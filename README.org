@@ -3159,6 +3159,7 @@ Since this happens at macro expansion time rather than at runtime, there is no p
 - [[#libraries][Libraries]]
   - [[#assess-test-support-functions][assess: Test support functions]]
   - [[#ert-expectations][ert-expectations]]
+  - [[#propcheck-quickcheckhypothesis-style-testing][propcheck: Quickcheck/hypothesis style testing]]
   - [[#with-simulated-input-test-interactive-functions-non-interactively][with-simulated-input: Test interactive functions non-interactively]]
   - [[#xtest-extensions-for-ert][xtest: Extensions for ERT]]
 - [[#tools][Tools]]
@@ -3250,6 +3251,12 @@ Assess aims to be a stateless as possible, leaving Emacs unchanged whether the t
    (expect 11 (+ 4 6))
    (expect 6 (length "abcde")))
 #+END_SRC
+
+***** [[https://github.com/Wilfred/propcheck][propcheck: Quickcheck/hypothesis style testing]]
+
+#+BEGIN_QUOTE
+propcheck brings property based testing to Elisp.  It's similar to the excellent Hypothesis library for Python.
+#+END_QUOTE
 
 ***** [[https://github.com/DarwinAwardWinner/with-simulated-input][with-simulated-input: Test interactive functions non-interactively]]
 
