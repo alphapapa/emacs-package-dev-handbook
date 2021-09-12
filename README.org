@@ -877,6 +877,7 @@ Individual libraries from this article are listed below.
 :END:
 :CONTENTS:
 - [[#heapel][heap.el]]
+- [[#myers][myers]]
 - [[#queueel][queue.el]]
 - [[#tagged-non-deterministic-finite-state-automata-tnfael][Tagged Non-deterministic Finite state Automata (tNFA.el)]]
 - [[#trieel][trie.el]]
@@ -888,6 +889,16 @@ Individual libraries from this article are listed below.
 
 #+BEGIN_QUOTE
 A heap is a form of efficient self-sorting tree. In particular, the root node is guaranteed to be the highest-ranked entry in the tree. (The comparison function used for ranking the data can, of course, be freely defined). They are often used as priority queues, for scheduling tasks in order of importance, and for implementing efficient sorting algorithms (such as heap-sort).
+#+END_QUOTE
+
+**** [[https://elpa.gnu.org/packages/myers.html][myers]]                                                          :ELPA:
+
+#+BEGIN_QUOTE
+This package implements Eugene W. Myers's "stacks" which are like standard singly-linked lists, except that they also provide efficient lookup.  More specifically:
+
+cons/car/cdr are O(1), while (nthcdr N L) is O(min (N, log L))
+
+For details, see [[http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.188.9344&rep=rep1&type=pdf]["An applicative random-access stack", Eugene W. Myers, 1983, Information Processing Letters]].
 #+END_QUOTE
 
 **** [[http://www.dr-qubit.org/emacs_data-structures.html][queue.el]]                                                      :queue:
