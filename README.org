@@ -1601,9 +1601,9 @@ Chris Wellons explains the new generators and threads that Emacs 26 provides.  H
 :TOC:      :depth 0
 :END:
 
-**** [[https://www.gnu.org/software/emacs/draft/manual/html_node/elisp/Generators.html][GNU Emacs Lisp Reference Manual: Generators]]              :generators:
+**** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Generators.html][GNU Emacs Lisp Reference Manual: Generators]]              :generators:
 
-**** [[https://www.gnu.org/software/emacs/draft/manual/html_node/elisp/Threads.html][GNU Emacs Lisp Reference Manual: Threads]]                    :threads:
+**** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Threads.html][GNU Emacs Lisp Reference Manual: Threads]]                    :threads:
 
 ** Networking                                                   :networking:
 
