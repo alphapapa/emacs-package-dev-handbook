@@ -4075,6 +4075,17 @@ The benchmark macros need to be extended to allow definitions that aren't part o
 | s-lines         | 10.47              |      0.000513 |        0 |                0 |
 | stream/seq-into | slowest            |      0.005370 |        0 |                0 |
 
+** TODO [[http://dantorop.info/project/emacs-animation/][Emacs Lisp Animations | Digital | Dan Torop]]
+:LOGBOOK:
+-  State "TODO"       from              [2021-10-01 Fri 11:22]
+:END:
+
+#+BEGIN_QUOTE
+Emacs, a programmer's text editor with roots in the 1970s, is a great tool for animation. In Fall, 2010 I taught a digital art class at NYU's interdisciplinary Steinhardt art school. Clearly, the thing to do was to teach how to make animations in Emacs by programming it in Lisp.
+
+These exercises are meant for non-programmers to get a glimpse of what a program and a language can do, by creating "physical" objects, in this case punctuation marks on the screen. ASCII art is the future, yes? At the very least, ASCII art in the '70s was to computer science what post-minimalism was to the contemporary art of the period. Think of a pile of ampersands and exclamation marks as earth art.
+#+END_QUOTE
+
 ** TODO Add[[https://github.com/doublep/datetime][GitHub - doublep/datetime: Library for parsing, formatting, matching and recoding timestamps and date-time format strings.]]
 
 Not to be confused with the =datetime-format= library.
