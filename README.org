@@ -1653,6 +1653,8 @@ A flexible, featureful =curl= wrapper, last updated in 2015.
 :TOC:      :include descendants :depth 2 :force depth
 :END:
 :CONTENTS:
+- [[#articles][Articles]]
+  - [[#good-style-in-modern-emacs-packages][Good Style in modern Emacs Packages]]
 - [[#best-practices][Best practices]]
   - [[#autoloads][Autoloads]]
   - [[#integration-with-other-packages][Integration with other packages]]
@@ -1666,6 +1668,13 @@ A flexible, featureful =curl= wrapper, last updated in 2015.
 - [[#tools][Tools]]
   - [[#building--testing][Building / Testing]]
   - [[#package-installationmanagement][Package installation/management]]
+:END:
+
+*** Articles                                                     :articles:
+
+**** [[http://ruzkuku.com/texts/emacs-style.html][Good Style in modern Emacs Packages]]
+:PROPERTIES:
+:author:   Philip Kaludercic
 :END:
 
 *** Best practices                                         :best_practices:

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-10-02 Sat 03:28 -->
+<!-- 2021-10-07 Thu 11:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -535,8 +535,8 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#Manual">Manual&#xa0;&#xa0;&#xa0;<span class="tag"><span class="manual">manual</span></span></a>
 <ul>
-<li><a href="#%5B%5Bhttps%3A%2F%2Fwww.gnu.org%2Fsoftware%2Femacs%2Fdraft%2Fmanual%2Fhtml_node%2Felisp%2FGenerators.html%5D%5BGNU%20Emacs%20Lisp%20Reference%20Manual%3A%20Generators%5D%5D">GNU Emacs Lisp Reference Manual: Generators&#xa0;&#xa0;&#xa0;<span class="tag"><span class="generators">generators</span></span></a></li>
-<li><a href="#%5B%5Bhttps%3A%2F%2Fwww.gnu.org%2Fsoftware%2Femacs%2Fdraft%2Fmanual%2Fhtml_node%2Felisp%2FThreads.html%5D%5BGNU%20Emacs%20Lisp%20Reference%20Manual%3A%20Threads%5D%5D">GNU Emacs Lisp Reference Manual: Threads&#xa0;&#xa0;&#xa0;<span class="tag"><span class="threads">threads</span></span></a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fwww.gnu.org%2Fsoftware%2Femacs%2Fmanual%2Fhtml_node%2Felisp%2FGenerators.html%5D%5BGNU%20Emacs%20Lisp%20Reference%20Manual%3A%20Generators%5D%5D">GNU Emacs Lisp Reference Manual: Generators&#xa0;&#xa0;&#xa0;<span class="tag"><span class="generators">generators</span></span></a></li>
+<li><a href="#%5B%5Bhttps%3A%2F%2Fwww.gnu.org%2Fsoftware%2Femacs%2Fmanual%2Fhtml_node%2Felisp%2FThreads.html%5D%5BGNU%20Emacs%20Lisp%20Reference%20Manual%3A%20Threads%5D%5D">GNU Emacs Lisp Reference Manual: Threads&#xa0;&#xa0;&#xa0;<span class="tag"><span class="threads">threads</span></span></a></li>
 </ul>
 </li>
 </ul>
@@ -560,6 +560,11 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#Packaging">Packaging&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packaging">packaging</span></span></a>
 <ul>
+<li><a href="#Packaging--Articles">Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span></a>
+<ul>
+<li><a href="#%5B%5Bhttp%3A%2F%2Fruzkuku.com%2Ftexts%2Femacs-style.html%5D%5BGood%20Style%20in%20modern%20Emacs%20Packages%5D%5D">Good Style in modern Emacs Packages</a></li>
+</ul>
+</li>
 <li><a href="#Packaging--Best%20practices">Best practices&#xa0;&#xa0;&#xa0;<span class="tag"><span class="best_practices">best_practices</span></span></a>
 <ul>
 <li><a href="#Autoloads">Autoloads&#xa0;&#xa0;&#xa0;<span class="tag"><span class="autoloads">autoloads</span></span></a>
@@ -3550,12 +3555,12 @@ Chris Wellons explains the new generators and threads that Emacs 26 provides.  H
 <div class="outline-text-4" id="text-Manual">
 </div>
 
-<div id="outline-container-%5B%5Bhttps%3A%2F%2Fwww.gnu.org%2Fsoftware%2Femacs%2Fdraft%2Fmanual%2Fhtml_node%2Felisp%2FGenerators.html%5D%5BGNU%20Emacs%20Lisp%20Reference%20Manual%3A%20Generators%5D%5D" class="outline-5">
-<h5 id="%5B%5Bhttps%3A%2F%2Fwww.gnu.org%2Fsoftware%2Femacs%2Fdraft%2Fmanual%2Fhtml_node%2Felisp%2FGenerators.html%5D%5BGNU%20Emacs%20Lisp%20Reference%20Manual%3A%20Generators%5D%5D"><a href="https://www.gnu.org/software/emacs/draft/manual/html_node/elisp/Generators.html">GNU Emacs Lisp Reference Manual: Generators</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="generators">generators</span></span></h5>
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fwww.gnu.org%2Fsoftware%2Femacs%2Fmanual%2Fhtml_node%2Felisp%2FGenerators.html%5D%5BGNU%20Emacs%20Lisp%20Reference%20Manual%3A%20Generators%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttps%3A%2F%2Fwww.gnu.org%2Fsoftware%2Femacs%2Fmanual%2Fhtml_node%2Felisp%2FGenerators.html%5D%5BGNU%20Emacs%20Lisp%20Reference%20Manual%3A%20Generators%5D%5D"><a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Generators.html">GNU Emacs Lisp Reference Manual: Generators</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="generators">generators</span></span></h5>
 </div>
 
-<div id="outline-container-%5B%5Bhttps%3A%2F%2Fwww.gnu.org%2Fsoftware%2Femacs%2Fdraft%2Fmanual%2Fhtml_node%2Felisp%2FThreads.html%5D%5BGNU%20Emacs%20Lisp%20Reference%20Manual%3A%20Threads%5D%5D" class="outline-5">
-<h5 id="%5B%5Bhttps%3A%2F%2Fwww.gnu.org%2Fsoftware%2Femacs%2Fdraft%2Fmanual%2Fhtml_node%2Felisp%2FThreads.html%5D%5BGNU%20Emacs%20Lisp%20Reference%20Manual%3A%20Threads%5D%5D"><a href="https://www.gnu.org/software/emacs/draft/manual/html_node/elisp/Threads.html">GNU Emacs Lisp Reference Manual: Threads</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="threads">threads</span></span></h5>
+<div id="outline-container-%5B%5Bhttps%3A%2F%2Fwww.gnu.org%2Fsoftware%2Femacs%2Fmanual%2Fhtml_node%2Felisp%2FThreads.html%5D%5BGNU%20Emacs%20Lisp%20Reference%20Manual%3A%20Threads%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttps%3A%2F%2Fwww.gnu.org%2Fsoftware%2Femacs%2Fmanual%2Fhtml_node%2Felisp%2FThreads.html%5D%5BGNU%20Emacs%20Lisp%20Reference%20Manual%3A%20Threads%5D%5D"><a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Threads.html">GNU Emacs Lisp Reference Manual: Threads</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="threads">threads</span></span></h5>
 </div>
 </div>
 </div>
@@ -3625,6 +3630,16 @@ A flexible, featureful <code>curl</code> wrapper, last updated in 2015.
 <div id="outline-container-Packaging" class="outline-3">
 <h3 id="Packaging">Packaging&#xa0;&#xa0;&#xa0;<span class="tag"><span class="packaging">packaging</span></span></h3>
 <div class="outline-text-3" id="text-Packaging">
+</div>
+
+<div id="outline-container-Packaging--Articles" class="outline-4">
+<h4 id="Packaging--Articles">Articles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="articles">articles</span></span></h4>
+<div class="outline-text-4" id="text-Packaging--Articles">
+</div><div id="outline-container-%5B%5Bhttp%3A%2F%2Fruzkuku.com%2Ftexts%2Femacs-style.html%5D%5BGood%20Style%20in%20modern%20Emacs%20Packages%5D%5D" class="outline-5">
+<h5 id="%5B%5Bhttp%3A%2F%2Fruzkuku.com%2Ftexts%2Femacs-style.html%5D%5BGood%20Style%20in%20modern%20Emacs%20Packages%5D%5D"><a href="http://ruzkuku.com/texts/emacs-style.html">Good Style in modern Emacs Packages</a></h5>
+<div class="outline-text-5" id="text-%5B%5Bhttp%3A%2F%2Fruzkuku.com%2Ftexts%2Femacs-style.html%5D%5BGood%20Style%20in%20modern%20Emacs%20Packages%5D%5D">
+</div>
+</div>
 </div>
 
 <div id="outline-container-Packaging--Best%20practices" class="outline-4">
@@ -4065,7 +4080,6 @@ Version String Version as a List of Integers
 </div>
 </div>
 </div>
-
 <div id="outline-container-Packaging--Libraries" class="outline-4">
 <h4 id="Packaging--Libraries">Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="libraries">libraries</span></span></h4>
 <div class="outline-text-4" id="text-Packaging--Libraries">
@@ -7514,7 +7528,7 @@ He archived the project, so it probably shouldn't be used, but it may have inter
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Adam Porter</p>
-<p class="date">Created: 2021-10-02 Sat 03:28</p>
+<p class="date">Created: 2021-10-07 Thu 11:20</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
