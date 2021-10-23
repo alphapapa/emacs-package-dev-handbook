@@ -3941,6 +3941,10 @@ Yes, please!  Send pull requests and file issues on the [[https://github.com/alp
 
 These resources should be added to the appropriate sections above.  Since it takes some work to catalog and organize them, they are dumped here for future reference.  Pull requests for these are welcome!
 
+** TODO Benchmark ~seq-filter~ against ~cl-loop~, et al
+
+See [[https://github.com/tarsius/minions/pull/30][Optimize by minad · Pull Request #30 · tarsius/minions · GitHub]].
+
 ** TODO Add [[https://elpa.gnu.org/packages/index.html][el-search]]
 
 Useful for searching Elisp code, doing query/replace on it in a Lisp-aware way, etc.
