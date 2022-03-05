@@ -1206,22 +1206,6 @@ See [[id:b699e1a1-e34c-4ce8-a5dd-41161d2a1cbf][Pattern matching]].
 
 *** Tools                                                           :tools:
 
-**** [[https://github.com/tarsius/ox-texinfo-plus][ox-texinfo+]]                                            :TeX:Org:info:
-:PROPERTIES:
-:ID:       2aadfb89-3ed2-4cb8-bdea-6775ec6c3e57
-:END:
-
-This is helpful when exporting Org files to Info manuals.
-
-#+BEGIN_QUOTE
-This package provides some extensions for Org's ~texinfo~ exporter defined in ~ox-texinfo~.
-
-1.  Create ~@deffn~ and similar definition items by writing list items in Org that look similar to what they will look like in Info.
-2.  Optionally share a section's node with some or all of its child sections.
-3.  Optionally modify the Org file before exporting it.
-4.  Fully respect the local value of indent-tabs-mode from the Org file when editing source blocks and exporting. This affects all source blocks and all exporters.
-#+END_QUOTE
-
 ** Editing                                                         :editing:
 :PROPERTIES:
 :TOC:      :include descendants :depth 2
@@ -3808,8 +3792,6 @@ Jonas is a prolific Emacs package developer and maintainer.  You could spend hou
 *** Packages
 
 **** [[id:43daf455-caeb-4399-b1bb-15a10603018b][Magit]]
-
-**** [[id:2aadfb89-3ed2-4cb8-bdea-6775ec6c3e57][ox-texinfo+]]
 
 ** Jorgen Schäfer
 
