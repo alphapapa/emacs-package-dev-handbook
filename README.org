@@ -1596,39 +1596,32 @@ Chris Wellons explains the new generators and threads that Emacs 26 provides.  H
 :TOC:      :include descendants :depth 1
 :END:
 
-For simple use cases, and some more complex ones, the built-in [[*=url=][url]] library should be sufficient.  Libraries that use =curl=, such as [[*%5B%5Bhttps://github.com/tkf/emacs-request%5D%5BRequest.el%20--%20Easy%20HTTP%20requests%5D%5D][request]], can provide better performance and more flexibility.  However, in this author's experience, both of those tools, while mostly reliable, tend to have some obscure bugs that can occasionally be problematic.
+For very simple use cases, the built-in [[*=url=][url]] library should be sufficient.  But for more complex cases, and for a simpler API and more reliability, it's generally recommended to use [[*\[\[https://github.com/alphapapa/plz.el\]\[plz.el: HTTP client library\]\]][plz]].
+
+Other libraries, such as [[*%5B%5Bhttps://github.com/tkf/emacs-request%5D%5BRequest.el%20--%20Easy%20HTTP%20requests%5D%5D][request]], can also provide improvements over ~url~.  However, in this author's experience, both ~url~ and ~request~, while mostly reliable, tend to have some obscure bugs that can occasionally be problematic.  ~plz~, while not yet as featureful as ~request~, is intended to be developed into the best all-around client, and is now a mature, reliable library.
 
 :CONTENTS:
-- [[#elfeed-curl][elfeed-curl]]
-- [[#emacs-curl-curl-wrapper][emacs-curl: CURL wrapper]]
-- [[#grapnel-http-request-lib-built-on-curl-with-flexible-callback-dispatch][grapnel: HTTP request lib built on curl with flexible callback dispatch]]
-- [[#requestel----easy-http-requests][Request.el -- Easy HTTP requests]]
+- [[#plzel-http-client-library][plz.el: HTTP client library]]
 - [[#url][url]]
+- [[#requestel----easy-http-requests][Request.el -- Easy HTTP requests]]
+- [[#elfeed-curl][elfeed-curl]]
 :END:
 
-***** [[https://github.com/skeeto/elfeed/blob/master/elfeed-curl.el][elfeed-curl]]                                                  :curl:
+***** [[https://github.com/alphapapa/plz.el][plz.el: HTTP client library]]                         :curl:GNU_ELPA:
 
-Not a standalone package, but part of [[https://github.com/skeeto/elfeed/blob/master/elfeed-curl.el][Elfeed]].  A solid, well-designed library, but purpose-built for Elfeed.  Could easily be adapted to other packages or factored out as a separate package.
-
-***** [[https://github.com/cinsk/emacs-curl][emacs-curl: CURL wrapper]]                                     :curl:
-
-A very simple =curl= wrapper, last updated in 2012.  Not published on MELPA.
-
-****** COMMENT Maybe remove this
-
-It's unlikely to be useful at this point.  Maybe list it in an appendix or something, for completeness's sake.
-
-***** [[https://github.com/leathekd/grapnel][grapnel: HTTP request lib built on curl with flexible callback dispatch]] :curl:
-
-A flexible, featureful =curl= wrapper, last updated in 2015.
-
-***** [[https://github.com/tkf/emacs-request][Request.el -- Easy HTTP requests]]                      :curl:url_el:
-
-=request= is the most commonly used third-party HTTP library.  It has both =curl= and =url.el= backends.
+Inspired by [[*\[\[https://github.com/skeeto/elfeed/blob/master/elfeed-curl.el\]\[elfeed-curl\]\]][elfeed-curl]] and endorsed by its author, ~plz~ supports both synchronous and asynchronous requests.  Its API is intended to be simple, natural, and expressive.  Its code is intended to be simple and well-organized.  Every feature is tested against [[https://httpbin.org/][httpbin]].  Written by this author, ~plz~ is available on GNU ELPA, so it's installable in Emacs by default.
 
 ***** =url=                                               :url_el:built_in:
 
 =url= is included with Emacs and used by a variety of packages.
+
+***** [[https://github.com/tkf/emacs-request][Request.el -- Easy HTTP requests]]    :curl:url_el:NonGNU_ELPA:MELPA:
+
+=request= is the most commonly used third-party HTTP library.  It has both =curl= and =url.el= backends.
+
+***** [[https://github.com/skeeto/elfeed/blob/master/elfeed-curl.el][elfeed-curl]]                                                  :curl:
+
+Not a standalone package, but part of [[https://github.com/skeeto/elfeed/blob/master/elfeed-curl.el][Elfeed]].  A solid, well-designed library, but purpose-built for Elfeed.  Inspired the development of [[*\[\[https://github.com/alphapapa/plz.el\]\[plz.el: HTTP client library\]\]][plz]].
 
 ** Packaging                                                     :packaging:
 :PROPERTIES:
