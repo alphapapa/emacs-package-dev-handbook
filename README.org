@@ -1630,6 +1630,10 @@ A flexible, featureful =curl= wrapper, last updated in 2015.
 
 =url= is included with Emacs and used by a variety of packages.
 
+***** [[https://github.com/alphapapa/plz.el][plz.el: An HTTP library for Emacs]]                       :curl:
+
+Inspired by =elfeed-curl=, =plz= supports both synchronous and asynchronous requests. Its API is intended to be simple, natural, and expressive. Its code is intended to be simple and well-organized. Every feature is tested against [[https://httpbin.org/][httpbin]]. Written by this author, =plz= is available on GNU ELPA.
+
 ** Packaging                                                     :packaging:
 :PROPERTIES:
 :TOC:      :include descendants :depth 2 :force depth
