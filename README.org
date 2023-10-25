@@ -28,6 +28,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 :PROPERTIES:
 :TOC:      :include descendants :depth 1 :force depth
 :ID:       50ce456f-4988-4984-9fa3-858089429580
+:CUSTOM_ID: emacs-lisp
 :END:
 :CONTENTS:
 - [[#animations--screencasts][Animations / Screencasts]]
@@ -113,6 +114,7 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 ** Animations / Screencasts                    :animations:screencasts:video:
 :PROPERTIES:
 :TOC:      :include descendants :depth 2
+:CUSTOM_ID: animations--screencasts
 :END:
 :CONTENTS:
 - [[#tools][Tools]]
@@ -121,8 +123,14 @@ You can read this Org file directly on the [[https://github.com/alphapapa/emacs-
 :END:
 
 *** Tools                                                           :tools:
+:PROPERTIES:
+:CUSTOM_ID: tools
+:END:
 
 **** Demonstration                                         :demonstration:
+:PROPERTIES:
+:CUSTOM_ID: demonstration
+:END:
 
 Tools to aid demonstrating use of Emacs.
 
@@ -131,6 +139,9 @@ Tools to aid demonstrating use of Emacs.
 ***** [[https://github.com/lewang/command-log-mode][command-log-mode: log commands to buffer]]
 
 **** Recording                                                 :recording:
+:PROPERTIES:
+:CUSTOM_ID: recording
+:END:
 
 Tools to record screencasts of Emacs.
 
@@ -151,10 +162,16 @@ The author of this document can vouch for the fact that this package is the easi
 While =emacs-gif-screencast= should usually be your first choice, the way it works, recording one frame per Emacs command, isn't suitable for every case.  For general use, your editor can recommend Bashcaster, which is an easy-to-use script that can record the whole screen or individual windows, to videos or GIFs.
 
 ** Asynchronicity                                                    :async:
+:PROPERTIES:
+:CUSTOM_ID: asynchronicity
+:END:
 
 See [[id:94092c16-061c-45c9-9c66-77c5fdeceee8][Multiprocessing (generators, threads)]].
 
 ** Auditing / Reviewing                                 :auditing:reviewing:
+:PROPERTIES:
+:CUSTOM_ID: auditing--reviewing
+:END:
 
 Auditing, reviewing, and analyzing source code.
 
@@ -170,13 +187,14 @@ Comb is a native Emacs Lisp solution to search, browse and annotate occurrences 
 :PROPERTIES:
 :ID:       50f0cde2-34ca-4131-a688-b434ecde6819
 :TOC:      :include descendants :depth 2
+:CUSTOM_ID: binding
 :END:
 :CONTENTS:
 - [[#articles][Articles]]
 - [[#libraries][Libraries]]
   - [[#dashel][dash.el]]
   - [[#thunk][thunk]]
-- [[#tools][Tools]]
+- [[#tools-0][Tools]]
   - [[#lexical-binding][Lexical binding]]
 :END:
 
@@ -185,6 +203,7 @@ Information related to variable scope and binding in elisp code (e.g. lexical vs
 *** Articles                                                     :articles:
 :PROPERTIES:
 :TOC:      :depth 0
+:CUSTOM_ID: articles
 :END:
 
 **** [[https://nullprogram.com/blog/2017/10/27/][Make Flet Great Again « null program]]      :macros:flet:letf:
@@ -195,12 +214,19 @@ Information related to variable scope and binding in elisp code (e.g. lexical vs
 Chris Wellons explains how the old ~cl~ macro ~flet~ changes in its new ~cl-lib~ version, ~cl-flet~, and how to use ~cl-letf~ to achieve the old functionality.  It's a way to override functions in both lexical and dynamic scope, which is especially useful for unit testing.
 
 *** Libraries                                                   :libraries:
+:PROPERTIES:
+:CUSTOM_ID: libraries
+:END:
 
 **** [[id:e85e4252-ea03-4473-b52f-9393e7527fad][dash.el]]
+:PROPERTIES:
+:CUSTOM_ID: dashel
+:END:
 
 **** [[https://github.com/emacs-mirror/emacs/blob/master/lisp/emacs-lisp/thunk.el][thunk]]                                                      :built_in:
 :PROPERTIES:
 :ID:       2f389382-af81-4f18-b6bc-ef33e39df1eb
+:CUSTOM_ID: thunk
 :END:
 
 #+BEGIN_QUOTE
@@ -221,32 +247,49 @@ This file also defines macros =thunk-let= and =thunk-let*= that are analogous to
 #+END_QUOTE
 
 *** Tools                                                           :tools:
+:PROPERTIES:
+:CUSTOM_ID: tools-0
+:END:
 
 **** [[id:7247be4d-4f66-43ff-bb70-1b4a7458611b][Lexical binding]]                            :built_in:lexical_binding:
+:PROPERTIES:
+:CUSTOM_ID: lexical-binding
+:END:
 
 ** Buffers                                                         :buffers:
 :PROPERTIES:
 :TOC: :include descendants
+:CUSTOM_ID: buffers
 :END:
 :CONTENTS:
-- [[#articles][Articles]]
+- [[#articles-0][Articles]]
   - [[#buffer-passing-style][Buffer-Passing Style]]
 - [[#best-practices][Best practices]]
   - [[#accessing-buffer-local-variables][Accessing buffer-local variables]]
   - [[#inserting-strings][Inserting strings]]
-- [[#libraries][Libraries]]
+- [[#libraries-0][Libraries]]
 :END:
 
 *** Articles
+:PROPERTIES:
+:CUSTOM_ID: articles-0
+:END:
 
 **** [[*%5B%5Bhttps://nullprogram.com/blog/2014/05/27/%5D%5BEmacs%20Lisp%20Buffer%20Passing%20Style%5D%5D][Buffer-Passing Style]]                             :strings:
+:PROPERTIES:
+:CUSTOM_ID: buffer-passing-style
+:END:
 
 *** Best practices                                         :best_practices:
 :PROPERTIES:
 :TOC: :depth 1
+:CUSTOM_ID: best-practices
 :END:
 
 **** Accessing buffer-local variables
+:PROPERTIES:
+:CUSTOM_ID: accessing-buffer-local-variables
+:END:
 
 It's much faster to use ~buffer-local-value~ than ~with-current-buffer~ to access the value of a variable in a buffer.
 
@@ -266,6 +309,9 @@ It's much faster to use ~buffer-local-value~ than ~with-current-buffer~ to acces
 | with-current-buffer | slowest            |   2.399323452 |        0 |              0.0 |
 
 **** Inserting strings                                           :strings:
+:PROPERTIES:
+:CUSTOM_ID: inserting-strings
+:END:
 
 Inserting strings into buffers with ~insert~ is generally fast, but it can slow down in buffers with lots of markers or overlays.  In general, it can be faster to insert one large string (which may include newlines).  For example:
 
@@ -310,6 +356,7 @@ The fastest method here is to call ~insert~ once with the result of calling ~con
 :PROPERTIES:
 :ID:       523aa766-36a3-4827-a114-6babf72edc6b
 :TOC:      :depth 0
+:CUSTOM_ID: libraries-0
 :END:
 
 **** [[https://github.com/phillord/m-buffer-el][m-buffer-el: List Oriented Buffer Operations]]
@@ -328,6 +375,9 @@ users, as it provides familiar and intuitive interfaces with usual keys (for mov
 #+END_QUOTE
 
 ** Checkers / linters                                     :linters:checkers:
+:PROPERTIES:
+:CUSTOM_ID: checkers--linters
+:END:
 
 *** [[https://github.com/gonewest818/elisp-lint][elisp-lint: basic linting for Emacs Lisp]]
 
@@ -357,17 +407,19 @@ Relint scans elisp files for mistakes in regexps, including deprecated syntax an
 ** Collections (lists, vectors, hash-tables, etc.)             :collections:
 :PROPERTIES:
 :TOC:      :include descendants :depth 1
+:CUSTOM_ID: collections-lists-vectors-hash-tables-etc
 :END:
 :CONTENTS:
-- [[#best-practices][Best practices]]
+- [[#best-practices-0][Best practices]]
 - [[#examples][Examples]]
-- [[#libraries][Libraries]]
-- [[#tools][Tools]]
+- [[#libraries-1][Libraries]]
+- [[#tools-1][Tools]]
 :END:
 
 *** Best practices                                         :best_practices:
 :PROPERTIES:
 :TOC: :include descendants
+:CUSTOM_ID: best-practices-0
 :END:
 :CONTENTS:
 - [[#collecting-items-into-a-list][Collecting items into a list]]
@@ -377,6 +429,9 @@ Relint scans elisp files for mistakes in regexps, including deprecated syntax an
 :END:
 
 **** Collecting items into a list                                  :lists:
+:PROPERTIES:
+:CUSTOM_ID: collecting-items-into-a-list
+:END:
 
 Here are some examples of fast ways to collect items into a list.
 
@@ -435,6 +490,9 @@ As is usually the case, the =cl-loop= macro expands to the most efficient code, 
 However, in some cases =cl-loop= may expand to code which uses =nconc=, which, as the benchmark shows, is much slower.  In that case, you may write the loop without =cl-loop= to avoid using =nconc=.
 
 **** Diffing two lists                                             :lists:
+:PROPERTIES:
+:CUSTOM_ID: diffing-two-lists
+:END:
 
 As expected, =seq-difference= is the slowest, because it's a generic function that dispatches based on the types of its arguments, which is relatively slow in Emacs.  And it's not surprising that =cl-nset-difference= is generally slightly faster than =cl-set-difference=, since it's destructive.
 
@@ -503,6 +561,9 @@ Note that since this benchmark compares lists of strings, =cl-nset-difference= r
 | seq-difference string=     |            slowest |      1.293030 |        0 |                0 |
 
 **** Filtering a list                                              :lists:
+:PROPERTIES:
+:CUSTOM_ID: filtering-a-list
+:END:
 
 Using ~-select~ from =dash.el= seems to be the fastest way:
 
@@ -534,6 +595,9 @@ Using ~-select~ from =dash.el= seems to be the fastest way:
 | (-non-nil (--map (when ... |            slowest |    0.02903999 |        0 |              0.0 |
 
 **** Looking up associations
+:PROPERTIES:
+:CUSTOM_ID: looking-up-associations
+:END:
 
 There are a few options in Emacs Lisp for looking up values in associative data structures: association lists (alists), property lists (plists), and hash tables.  Which one performs best in a situation may depend on several factors.  This benchmark shows what may be a common case: looking up values using a string as the key.  We compare several combinations, including the case of prepending a prefix to the string, interning it, and looking up the resulting symbol (which might be done, e.g. when looking up a function to call based on the value of a string).
 
@@ -643,6 +707,9 @@ Also, perhaps surprisingly, when looking up a string in an alist, using ~equal~ 
 :END:
 
 *** Examples                                                     :examples:
+:PROPERTIES:
+:CUSTOM_ID: examples
+:END:
 
 **** Alists                                                       :alists:
 
@@ -742,6 +809,7 @@ If you do need to remove a key and value from a plist, you could use =cl-remf= o
 *** Libraries                                                   :libraries:
 :PROPERTIES:
 :TOC: :depth 0
+:CUSTOM_ID: libraries-1
 :END:
 
 **** [[https://github.com/plexus/a.el][a.el: functions for dealing with association lists and hash tables. Inspired by Clojure.]] :alists:hash_tables:
@@ -822,6 +890,7 @@ Values are stored in a directory in `user-emacs-directory', using one file per v
 *** Tools                                                           :tools:
 :PROPERTIES:
 :TOC: :depth 0
+:CUSTOM_ID: tools-1
 :END:
 
 **** [[id:f8f0755b-c23b-45ad-98da-780d4044676a][let-alist]]
@@ -829,6 +898,9 @@ Values are stored in a directory in `user-emacs-directory', using one file per v
 **** [[id:a58f65dc-d4a4-4a40-a573-a66a28f3619c][=with-dict=, =with-plist-vals=]]
 
 ** Color                                                             :color:
+:PROPERTIES:
+:CUSTOM_ID: color
+:END:
 
 *** Libraries                                                   :libraries:
 
@@ -852,13 +924,17 @@ Includes these functions:
 ** Data structure                                           :data_structure:
 :PROPERTIES:
 :TOC:      :include descendants :depth 1
+:CUSTOM_ID: data-structure
 :END:
 :CONTENTS:
-- [[#articles][Articles]]
-- [[#libraries][Libraries]]
+- [[#articles-1][Articles]]
+- [[#libraries-2][Libraries]]
 :END:
 
 *** Articles                                                     :articles:
+:PROPERTIES:
+:CUSTOM_ID: articles-1
+:END:
 
 **** [[http://nullprogram.com/blog/2018/02/14/][Options for Structured Data in Emacs Lisp « null program]]
 :PROPERTIES:
@@ -872,6 +948,7 @@ Individual libraries from this article are listed below.
 *** Libraries                                                   :libraries:
 :PROPERTIES:
 :TOC:      :include descendants
+:CUSTOM_ID: libraries-2
 :END:
 :CONTENTS:
 - [[#heapel][heap.el]]
@@ -884,12 +961,18 @@ Individual libraries from this article are listed below.
 :END:
 
 **** [[http://www.dr-qubit.org/emacs_data-structures.html][heap.el]]
+:PROPERTIES:
+:CUSTOM_ID: heapel
+:END:
 
 #+BEGIN_QUOTE
 A heap is a form of efficient self-sorting tree. In particular, the root node is guaranteed to be the highest-ranked entry in the tree. (The comparison function used for ranking the data can, of course, be freely defined). They are often used as priority queues, for scheduling tasks in order of importance, and for implementing efficient sorting algorithms (such as heap-sort).
 #+END_QUOTE
 
 **** [[https://elpa.gnu.org/packages/myers.html][myers]]                                                          :ELPA:
+:PROPERTIES:
+:CUSTOM_ID: myers
+:END:
 
 #+BEGIN_QUOTE
 This package implements Eugene W. Myers's "stacks" which are like standard singly-linked lists, except that they also provide efficient lookup.  More specifically:
@@ -900,12 +983,18 @@ For details, see [[http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.188.
 #+END_QUOTE
 
 **** [[http://www.dr-qubit.org/emacs_data-structures.html][queue.el]]                                                      :queue:
+:PROPERTIES:
+:CUSTOM_ID: queueel
+:END:
 
 #+BEGIN_QUOTE
 A queue can be used both as a first-in last-out and as a first-in first-out stack, i.e. elements can be added to and removed from the front or back of the queue. (This library is an updated re-implementation of the old Elib queue library.)
 #+END_QUOTE
 
 **** [[http://www.dr-qubit.org/emacs_data-structures.html][Tagged Non-deterministic Finite state Automata (tNFA.el)]]
+:PROPERTIES:
+:CUSTOM_ID: tagged-non-deterministic-finite-state-automata-tnfael
+:END:
 
 #+BEGIN_QUOTE
 Features of modern regexp implementations, including Emacs', mean they can recognise much more than regular languages. This comes with a big downside: matching certain pathological regexps is very time-consuming. (In fact, it's NP-complete.)
@@ -916,24 +1005,36 @@ Why re-implement regular expression matching when Emacs comes with extensive bui
 #+END_QUOTE
 
 **** [[http://www.dr-qubit.org/emacs_data-structures.html][trie.el]]
+:PROPERTIES:
+:CUSTOM_ID: trieel
+:END:
 
 #+BEGIN_QUOTE
 A trie stores data associated with "strings" (not necessarily the string data type; any ordered sequence of elements can be used). It stores them in such a way that both storage size and data lookup are reasonably space- and time- efficient, respectively. But, more importantly, advanced string queries are also very efficient, such as finding all strings with a given prefix, finding approximate matches, finding all strings matching a regular expression, returning results in alphabetical or any other order, returning only the first few results, etc.
 #+END_QUOTE
 
 **** [[http://www.dr-qubit.org/emacs_data-structures.html][dict-tree.el]]
+:PROPERTIES:
+:CUSTOM_ID: dict-treeel
+:END:
 
 #+BEGIN_QUOTE
 The dictionary tree data structures are a hybrid between tries and hash tables. Data is stored in a trie, but results that take particularly long to retrieve are cached in hash tables, which are automatically synchronised with the trie. The dictionary package provides persistent storage of the data structures in files, and many other convenience features.
 #+END_QUOTE
 
 **** [[https://github.com/doublep/extmap][extmap: Externally-stored constant mapping]]
+:PROPERTIES:
+:CUSTOM_ID: extmap-externally-stored-constant-mapping
+:END:
 
 #+BEGIN_QUOTE
 extmap is a very simple package that lets you build a read-only, constant database that maps Elisp symbols to almost arbitrary Elisp objects. The idea is to avoid preloading all data to memory and only retrieve it when needed.  This package doesn’t use any external programs, making it a suitable dependency for smaller libraries.
 #+END_QUOTE
 
 ** Date / Time                                                 :dates:times:
+:PROPERTIES:
+:CUSTOM_ID: date--time
+:END:
 
 *** Libraries                                                   :libraries:
 
@@ -1049,16 +1150,23 @@ There are several other symbols provided besides ~atom~, such as ~rfc-3339~, whi
 ** Debugging                                                     :debugging:
 :PROPERTIES:
 :TOC:      :depth 2 :include descendants
+:CUSTOM_ID: debugging
 :END:
 :CONTENTS:
-- [[#tools][Tools]]
+- [[#tools-2][Tools]]
   - [[#edebug][Edebug]]
   - [[#debug-warn-macro][debug-warn macro]]
 :END:
 
 *** Tools                                                           :tools:
+:PROPERTIES:
+:CUSTOM_ID: tools-2
+:END:
 
 **** Edebug                                              :Edebug:built_in:
+:PROPERTIES:
+:CUSTOM_ID: edebug
+:END:
 
 Edebug is a built-in stepping debugger in Emacs.  It's [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Edebug.html][thoroughly documented in the =elisp= manual]].
 
@@ -1088,6 +1196,9 @@ Declaring ~debug~ forms for functions and macros that take keyword arguments can
 Probably should first replace the ~:bindings~ part with this, which correctly matches ~let~ bindings: ~(&rest &or symbolp (gate symbolp &optional def-form))~.
 
 **** =debug-warn= macro
+:PROPERTIES:
+:CUSTOM_ID: debug-warn-macro
+:END:
 
 This macro simplifies print-style debugging by automatically including the names of the containing function and argument forms, rather than requiring the programmer to write =format= strings manually.  If ~warning-minimum-log-level~ is not ~:debug~ at expansion time, the macro expands to nil, which the byte-compiler eliminates, so in byte-compiled code, the macro has no overhead at runtime when not debugging.  In interpreted code, the overhead when not debugging is minimal.  When debugging, the expanded form also returns nil so, e.g. it may be used in a conditional in place of nil.  The macro is tangled to =epdh.el=, but it may also be added directly to source files.
 
@@ -1197,19 +1308,26 @@ You could write:
 #+END_SRC
 
 ** Destructuring                                             :destructuring:
+:PROPERTIES:
+:CUSTOM_ID: destructuring
+:END:
 
 See [[id:b699e1a1-e34c-4ce8-a5dd-41161d2a1cbf][Pattern matching]].
 
 ** Documentation                                             :documentation:
+:PROPERTIES:
+:CUSTOM_ID: documentation
+:END:
 
 *** Tools                                                           :tools:
 
 ** Editing                                                         :editing:
 :PROPERTIES:
 :TOC:      :include descendants :depth 2
+:CUSTOM_ID: editing
 :END:
 :CONTENTS:
-- [[#tools][Tools]]
+- [[#tools-3][Tools]]
   - [[#aggressive-indent-mode-minor-mode-that-keeps-your-code-always-indented][aggressive-indent-mode: minor mode that keeps your code always indented]]
   - [[#beginendel][beginend.el]]
   - [[#expand-regionel-increase-selected-region-by-semantic-units][expand-region.el: Increase selected region by semantic units]]
@@ -1222,15 +1340,20 @@ See [[id:b699e1a1-e34c-4ce8-a5dd-41161d2a1cbf][Pattern matching]].
 :END:
 
 *** Tools                                                           :tools:
+:PROPERTIES:
+:CUSTOM_ID: tools-3
+:END:
 
 **** [[https://github.com/Malabarba/aggressive-indent-mode][aggressive-indent-mode: minor mode that keeps your code always indented]] :formatting:indentation:parentheses:
 :PROPERTIES:
 :ID:       4dc7c607-a116-4c39-b063-fe34bd20cccf
+:CUSTOM_ID: aggressive-indent-mode-minor-mode-that-keeps-your-code-always-indented
 :END:
 
 **** [[https://emacs.cafe/emacs/package/2017/08/01/beginend.html][beginend.el]] :navigation:
 :PROPERTIES:
 :ID:       a32ed391-8ce6-46b7-9367-8117829ce2e7
+:CUSTOM_ID: beginendel
 :END:
 
 This package, by Damien Cassou and Matus Goljer, helps navigation by redefining the ~M-<~ and ~M->~ keys do, depending on the major-mode.
@@ -1238,11 +1361,18 @@ This package, by Damien Cassou and Matus Goljer, helps navigation by redefining 
 **** [[https://github.com/magnars/expand-region.el][expand-region.el: Increase selected region by semantic units]] :selection:region:
 :PROPERTIES:
 :ID:       88b496f4-8230-474e-b2ee-d8e4e8ca30d0
+:CUSTOM_ID: expand-regionel-increase-selected-region-by-semantic-units
 :END:
 
 **** [[https://github.com/emacs-helm/helm-navi][helm-navi: Navigate file sections and language keywords using Helm]] :navigation:
+:PROPERTIES:
+:CUSTOM_ID: helm-navi-navigate-file-sections-and-language-keywords-using-helm
+:END:
 
 **** [[https://github.com/victorhge/iedit][iedit: Edit multiple regions simultaneously in a buffer or a region]] :refactoring:
+:PROPERTIES:
+:CUSTOM_ID: iedit-edit-multiple-regions-simultaneously-in-a-buffer-or-a-region
+:END:
 
 =iedit= makes it easy to rename symbols within a function or in a whole buffer.  Simply activate ~iedit-mode~ with point on a symbol, and it will be highlighted in the chosen scope, and any changes you make to the symbol are made in each highlighted occurrence.  It's like a smart, purposeful version of ~multiple-cursors~.
 
@@ -1306,32 +1436,39 @@ The editor of this handbook uses ~iedit~ with these customizations:
 **** [[https://github.com/abo-abo/lispy][lispy: short and sweet LISP editing]]    :elisp:navigation:parentheses:
 :PROPERTIES:
 :ID:       ca3809ba-5900-4dfd-84a1-1ceecc048296
+:CUSTOM_ID: lispy-short-and-sweet-lisp-editing
 :END:
 
 **** [[https://github.com/IvanMalison/multi-line][multi-line: multi-line everything from function invocations and definitions to array and map literals in a wide variety of languages]] :formatting:
+:PROPERTIES:
+:CUSTOM_ID: multi-line-multi-line-everything-from-function-invocations-and-definitions-to-array-and-map-literals-in-a-wide-variety-of-languages
+:END:
 
 **** [[https://github.com/magnars/multiple-cursors.el][multiple-cursors.el: Multiple cursors]]             :selection:editing:
 :PROPERTIES:
 :ID:       deefcbc5-0c37-4936-a820-df99ae31a401
+:CUSTOM_ID: multiple-cursorsel-multiple-cursors
 :END:
 
 **** [[https://github.com/Fuco1/smartparens][smartparens: Minor mode  that deals with parens pairs and tries to be smart about it]] :navigation:editing:parentheses:
 :PROPERTIES:
 :ID:       e806d7f3-43e9-4260-aae4-479efbd41653
+:CUSTOM_ID: smartparens-minor-mode--that-deals-with-parens-pairs-and-tries-to-be-smart-about-it
 :END:
 
 ** General                                                         :general:
 :PROPERTIES:
 :TOC:      :include descendants :depth 2
 :ID:       26708ac7-9fa3-4f21-9324-ba0e8c939bd7
+:CUSTOM_ID: general
 :END:
 :CONTENTS:
-- [[#libraries][Libraries]]
+- [[#libraries-3][Libraries]]
   - [[#common-lisp-extensions-cl-lib][Common Lisp Extensions (cl-lib)]]
-  - [[#dashel][dash.el]]
+  - [[#dashel-0][dash.el]]
   - [[#loopel-friendly-imperative-loop-structures][loop.el: friendly imperative loop structures]]
   - [[#subr-x][subr-x]]
-- [[#tools][Tools]]
+- [[#tools-4][Tools]]
   - [[#chemacs-emacs-profile-switcher][chemacs: Emacs profile switcher]]
   - [[#el2markdown-convert-emacs-lisp-comments-to-markdown][el2markdown: Convert Emacs Lisp comments to MarkDown]]
   - [[#multicolumn-multiple-side-by-side-windows-support][multicolumn: Multiple side-by-side windows support]]
@@ -1349,25 +1486,38 @@ The editor of this handbook uses ~iedit~ with these customizations:
 #+END_SRC
 
 *** Libraries                                                   :libraries:
+:PROPERTIES:
+:CUSTOM_ID: libraries-3
+:END:
 
 **** [[https://www.gnu.org/software/emacs/manual/html_node/cl/index.html][Common Lisp Extensions]] (=cl-lib=)                            :built_in:
+:PROPERTIES:
+:CUSTOM_ID: common-lisp-extensions-cl-lib
+:END:
 
 This is the built-in =cl-lib= package which implements Common Lisp functions and control structures for Emacs Lisp.
 
 **** [[https://github.com/magnars/dash.el][dash.el]]                                                        :dash:
 :PROPERTIES:
 :ID:       e85e4252-ea03-4473-b52f-9393e7527fad
+:CUSTOM_ID: dashel-0
 :END:
 
 Dash is a powerful general-purpose library that provides many useful functions and macros.
 
 **** [[https://github.com/Wilfred/loop.el][loop.el: friendly imperative loop structures]]           :flow_control:
+:PROPERTIES:
+:CUSTOM_ID: loopel-friendly-imperative-loop-structures
+:END:
 
 #+BEGIN_QUOTE
 Emacs Lisp is missing loop structures familiar to users of newer languages.  This library adds a selection of popular loop structures as well as break and continue.
 #+END_QUOTE
 
 **** [[https://github.com/emacs-mirror/emacs/blob/master/lisp/emacs-lisp/subr-x.el][subr-x]]                                :built_in:strings:flow_control:
+:PROPERTIES:
+:CUSTOM_ID: subr-x
+:END:
 
 #+BEGIN_QUOTE
 Less commonly used functions that complement basic APIs, often implemented in C code (like hash-tables and strings), and are not eligible for inclusion in subr.el.
@@ -1380,8 +1530,14 @@ Do not document these functions in the lispref.  http://lists.gnu.org/archive/ht
 #+END_QUOTE
 
 *** Tools                                                           :tools:
+:PROPERTIES:
+:CUSTOM_ID: tools-4
+:END:
 
 **** [[https://github.com/plexus/chemacs][chemacs: Emacs profile switcher]]                             :testing:
+:PROPERTIES:
+:CUSTOM_ID: chemacs-emacs-profile-switcher
+:END:
 
 This package may be especially helpful for developing in one's own environment and testing in another, like default Emacs, Spacemacs, etc.
 
@@ -1398,26 +1554,31 @@ Chemacs tries to implement this idea in a user-friendly way, taking care of the 
 **** [[https://github.com/Lindydancer/el2markdown][el2markdown: Convert Emacs Lisp comments to MarkDown]]
 :PROPERTIES:
 :ID:       9aacf8f3-5244-4b71-8802-1c7876a9d19e
+:CUSTOM_ID: el2markdown-convert-emacs-lisp-comments-to-markdown
 :END:
 
 **** [[https://github.com/Lindydancer/multicolumn][multicolumn: Multiple side-by-side windows support]]
 :PROPERTIES:
 :ID:       267c8c25-53db-4ced-9242-176094e101e3
+:CUSTOM_ID: multicolumn-multiple-side-by-side-windows-support
 :END:
 
 **** [[https://github.com/phillord/lentic][lentic: Create views of the same content in two buffers]]
 :PROPERTIES:
 :ID:       0c220bc9-7173-4b0f-8955-e10ab6db640f
+:CUSTOM_ID: lentic-create-views-of-the-same-content-in-two-buffers
 :END:
 
 **** [[https://github.com/Wilfred/suggest.el][suggest.el: discover elisp functions that do what you want]]
 :PROPERTIES:
 :ID:       57ecc064-7291-4cc5-a545-958e2bca295b
+:CUSTOM_ID: suggestel-discover-elisp-functions-that-do-what-you-want
 :END:
 
 **** Byte-compile and load directory
 :PROPERTIES:
 :ID:       e9b527d5-ae5e-4052-95f3-781ebc1b4ce1
+:CUSTOM_ID: byte-compile-and-load-directory
 :END:
 
 Byte-compile and load all elisp files in ~DIRECTORY~.  Interactively, directory defaults to ~default-directory~ and asks for confirmation.
@@ -1441,6 +1602,7 @@ Byte-compile and load all elisp files in ~DIRECTORY~.  Interactively, directory 
 **** =emacs-lisp-macroreplace=
 :PROPERTIES:
 :ID:       e84a8d0a-f68a-43c5-a499-f27b8ad90457
+:CUSTOM_ID: emacs-lisp-macroreplace
 :END:
 
 Replace macro form before or after point with its expansion.
@@ -1467,12 +1629,16 @@ Replace macro form before or after point with its expansion.
 #+END_SRC
 
 *** Tutorials                                                   :tutorials:
+:PROPERTIES:
+:CUSTOM_ID: tutorials
+:END:
 
 **** [[https://old.reddit.com/r/emacs/comments/60tl6o/tips_on_reading_dense_emacs_lisp_code/dfa92hg/][Wilfred Hughes walks through a function from Lispy]] :ATTACH:
 :PROPERTIES:
 :Attachments: https%3A%2F%2Fold.reddit.com%2Fr%2Femacs%2Fcomments%2F60tl6o%2Ftips_on_reading_dense_emacs_lisp_code%2Fdfa92hg%2F--PA7yQk.tar.xz
 :ID:       57f093b3-c2c9-436a-95d4-244ad9f64778
 :author:   Wilfred Hughes
+:CUSTOM_ID: wilfred-hughes-walks-through-a-function-from-lispy
 :END:
 
 Wilfred's walkthrough is helpful for learning how to study an Elisp function and determine what it does and how.  He also shows the use of ~trace-function~.
@@ -1480,11 +1646,12 @@ Wilfred's walkthrough is helpful for learning how to study an Elisp function and
 ** Highlighting / font-locking                      :highlighting:font_lock:
 :PROPERTIES:
 :TOC:      :include descendants :depth 2
+:CUSTOM_ID: highlighting--font-locking
 :END:
 :CONTENTS:
 - [[#packages][Packages]]
   - [[#lisp-extra-font-lock-highlight-bound-variables-and-quoted-expressions-in-lisp][lisp-extra-font-lock: Highlight bound variables and quoted expressions in lisp]]
-- [[#tools][Tools]]
+- [[#tools-5][Tools]]
   - [[#face-explorer-library-and-tools-for-faces-and-text-properties][face-explorer: Library and tools for faces and text properties]]
   - [[#faceup-regression-test-system-for-font-lock-keywords][faceup: Regression test system for font-lock keywords]]
   - [[#font-lock-profiler-coverage-and-timing-tool-for-font-lock-keywords][font-lock-profiler: Coverage and timing tool for font-lock keywords]]
@@ -1494,56 +1661,70 @@ Wilfred's walkthrough is helpful for learning how to study an Elisp function and
 :END:
 
 *** Packages                                                     :packages:
+:PROPERTIES:
+:CUSTOM_ID: packages
+:END:
 
 Packages that do highlighting/font-locking.
 
 **** [[https://github.com/Lindydancer/lisp-extra-font-lock][lisp-extra-font-lock: Highlight bound variables and quoted expressions in lisp]]
 :PROPERTIES:
 :ID:       5b4a9320-1d3d-441b-8505-7b35a8d323d3
+:CUSTOM_ID: lisp-extra-font-lock-highlight-bound-variables-and-quoted-expressions-in-lisp
 :END:
 
 *** Tools                                                           :tools:
+:PROPERTIES:
+:CUSTOM_ID: tools-5
+:END:
 
 Tools for developing highlighting/font-locking packages.
 
 **** [[https://github.com/Lindydancer/face-explorer][face-explorer: Library and tools for faces and text properties]]
 :PROPERTIES:
 :ID:       66fef80f-0f92-4492-8199-01c24c635914
+:CUSTOM_ID: face-explorer-library-and-tools-for-faces-and-text-properties
 :END:
 
 **** [[https://github.com/Lindydancer/faceup][faceup: Regression test system for font-lock keywords]]
 :PROPERTIES:
 :ID:       5ab6c330-15ae-455a-981c-bf298d9a2788
+:CUSTOM_ID: faceup-regression-test-system-for-font-lock-keywords
 :END:
 
 **** [[https://github.com/Lindydancer/font-lock-profiler][font-lock-profiler: Coverage and timing tool for font-lock keywords]]
 :PROPERTIES:
 :ID:       0f3ba4be-949b-4efe-8301-acf3873ab345
+:CUSTOM_ID: font-lock-profiler-coverage-and-timing-tool-for-font-lock-keywords
 :END:
 
 **** [[https://github.com/Lindydancer/font-lock-regression-suite][font-lock-regression-suite: Regression test suite for font-lock keywords of Emacs standard modes]]
 :PROPERTIES:
 :ID:       e54a2697-8b4a-4b65-a971-f79e0fa22120
+:CUSTOM_ID: font-lock-regression-suite-regression-test-suite-for-font-lock-keywords-of-emacs-standard-modes
 :END:
 
 **** [[https://github.com/Lindydancer/font-lock-studio][font-lock-studio: Debugger for Font Lock keywords]]
 :PROPERTIES:
 :ID:       fb9315d1-111d-4eab-8f99-00710e39b04c
+:CUSTOM_ID: font-lock-studio-debugger-for-font-lock-keywords
 :END:
 
 **** [[https://github.com/Lindydancer/highlight-refontification][highlight-refontification: Visualize how font-lock refontifies a buffer]]
 :PROPERTIES:
 :ID:       85a2421d-6fbd-4c4d-a6f9-587258c8f625
+:CUSTOM_ID: highlight-refontification-visualize-how-font-lock-refontifies-a-buffer
 :END:
 
 ** Multiprocessing (generators, threads)           :multiprocessing:
 :PROPERTIES:
 :ID:       94092c16-061c-45c9-9c66-77c5fdeceee8
 :TOC:      :include descendants :depth 2
+:CUSTOM_ID: multiprocessing-generators-threads
 :END:
 :CONTENTS:
-- [[#articles][Articles]]
-- [[#libraries][Libraries]]
+- [[#articles-2][Articles]]
+- [[#libraries-4][Libraries]]
   - [[#emacs-aio-asyncawait-for-emacs-lisp][emacs-aio: async/await for Emacs Lisp]]
 - [[#manual][Manual]]
 :END:
@@ -1551,6 +1732,7 @@ Tools for developing highlighting/font-locking packages.
 *** Articles                                                     :articles:
 :PROPERTIES:
 :TOC:      :depth 0
+:CUSTOM_ID: articles-2
 :END:
 
 **** [[https://nullprogram.com/blog/2018/05/31/][Emacs 26 Brings Generators and Threads « null program]] :threads:generators:compilation:closures:iterators:
@@ -1571,8 +1753,14 @@ Chris Wellons explains the new generators and threads that Emacs 26 provides.  H
 :END:
 
 *** Libraries                                                   :libraries:
+:PROPERTIES:
+:CUSTOM_ID: libraries-4
+:END:
 
 **** [[https://github.com/skeeto/emacs-aio][emacs-aio: async/await for Emacs Lisp]]
+:PROPERTIES:
+:CUSTOM_ID: emacs-aio-asyncawait-for-emacs-lisp
+:END:
 
 #+BEGIN_QUOTE
 =aio= is to Emacs Lisp as asyncio is to Python. This package builds upon Emacs 25 generators to provide functions that pause while they wait on asynchronous events. They do not block any thread while paused.
@@ -1581,6 +1769,7 @@ Chris Wellons explains the new generators and threads that Emacs 26 provides.  H
 *** Manual                                                         :manual:
 :PROPERTIES:
 :TOC:      :depth 0
+:CUSTOM_ID: manual
 :END:
 
 **** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Generators.html][GNU Emacs Lisp Reference Manual: Generators]]              :generators:
@@ -1588,6 +1777,9 @@ Chris Wellons explains the new generators and threads that Emacs 26 provides.  H
 **** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Threads.html][GNU Emacs Lisp Reference Manual: Threads]]                    :threads:
 
 ** Networking                                                   :networking:
+:PROPERTIES:
+:CUSTOM_ID: networking
+:END:
 
 *** HTTP                                                             :HTTP:
 
@@ -1608,53 +1800,76 @@ Other libraries, such as [[*%5B%5Bhttps://github.com/tkf/emacs-request%5D%5BRequ
 :END:
 
 ***** [[https://github.com/alphapapa/plz.el][plz.el: HTTP client library]]                         :curl:GNU_ELPA:
+:PROPERTIES:
+:CUSTOM_ID: plzel-http-client-library
+:END:
 
 Inspired by [[*\[\[https://github.com/skeeto/elfeed/blob/master/elfeed-curl.el\]\[elfeed-curl\]\]][elfeed-curl]] and endorsed by its author, ~plz~ supports both synchronous and asynchronous requests.  Its API is intended to be simple, natural, and expressive.  Its code is intended to be simple and well-organized.  Every feature is tested against [[https://httpbin.org/][httpbin]].  Written by this author, ~plz~ is available on GNU ELPA, so it's installable in Emacs by default.
 
 ***** =url=                                               :url_el:built_in:
+:PROPERTIES:
+:CUSTOM_ID: url
+:END:
 
 =url= is included with Emacs and used by a variety of packages.
 
 ***** [[https://github.com/tkf/emacs-request][Request.el -- Easy HTTP requests]]    :curl:url_el:NonGNU_ELPA:MELPA:
+:PROPERTIES:
+:CUSTOM_ID: requestel----easy-http-requests
+:END:
 
 =request= is the most commonly used third-party HTTP library.  It has both =curl= and =url.el= backends.
 
 ***** [[https://github.com/skeeto/elfeed/blob/master/elfeed-curl.el][elfeed-curl]]                                                  :curl:
+:PROPERTIES:
+:CUSTOM_ID: elfeed-curl
+:END:
 
 Not a standalone package, but part of [[https://github.com/skeeto/elfeed/blob/master/elfeed-curl.el][Elfeed]].  A solid, well-designed library, but purpose-built for Elfeed.  Inspired the development of [[*\[\[https://github.com/alphapapa/plz.el\]\[plz.el: HTTP client library\]\]][plz]].
 
 ** Packaging                                                     :packaging:
 :PROPERTIES:
 :TOC:      :include descendants :depth 2 :force depth
+:CUSTOM_ID: packaging
 :END:
 :CONTENTS:
-- [[#articles][Articles]]
+- [[#articles-3][Articles]]
   - [[#good-style-in-modern-emacs-packages][Good Style in modern Emacs Packages]]
-- [[#best-practices][Best practices]]
+- [[#best-practices-1][Best practices]]
   - [[#autoloads][Autoloads]]
   - [[#integration-with-other-packages][Integration with other packages]]
-  - [[#lexical-binding][Lexical binding]]
+  - [[#lexical-binding-0][Lexical binding]]
   - [[#template][Template]]
   - [[#readme][Readme]]
   - [[#version-numbers][Version numbers]]
-- [[#libraries][Libraries]]
+- [[#libraries-5][Libraries]]
 - [[#reference][Reference]]
   - [[#package-headers-and-structure][Package headers and structure]]
-- [[#tools][Tools]]
+- [[#tools-6][Tools]]
   - [[#building--testing][Building / Testing]]
   - [[#package-installationmanagement][Package installation/management]]
 :END:
 
 *** Articles                                                     :articles:
+:PROPERTIES:
+:CUSTOM_ID: articles-3
+:END:
 
 **** [[http://ruzkuku.com/texts/emacs-style.html][Good Style in modern Emacs Packages]]
 :PROPERTIES:
 :author:   Philip Kaludercic
+:CUSTOM_ID: good-style-in-modern-emacs-packages
 :END:
 
 *** Best practices                                         :best_practices:
+:PROPERTIES:
+:CUSTOM_ID: best-practices-1
+:END:
 
 **** Autoloads                                                 :autoloads:
+:PROPERTIES:
+:CUSTOM_ID: autoloads
+:END:
 
 ***** TODO Autoloading macro-generated functions
 
@@ -1690,6 +1905,9 @@ Can anyone clear up what the intended behaviour is?
 :END:
 
 **** Integration with other packages
+:PROPERTIES:
+:CUSTOM_ID: integration-with-other-packages
+:END:
 
 ***** Optional support
 
@@ -1700,6 +1918,7 @@ The best way to handle this is with the [[https://www.gnu.org/software/emacs/man
 **** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Lexical-Binding.html][Lexical binding]]                            :lexical_binding:built_in:
 :PROPERTIES:
 :ID:       7247be4d-4f66-43ff-bb70-1b4a7458611b
+:CUSTOM_ID: lexical-binding-0
 :END:
 
 You should always use lexical binding by setting the header in the first line of the file:
@@ -1734,6 +1953,7 @@ A lot of good examples and discussion.
 **** Template
 :PROPERTIES:
 :ID:       aacd55b6-a56f-4064-bf0d-25173ce83ef3
+:CUSTOM_ID: template
 :END:
 
 When you make a new package, the =auto-insert= command will insert a set of standard package headers for you.  However, here is a more comprehensive template you can use:
@@ -1878,6 +2098,9 @@ When you make a new package, the =auto-insert= command will insert a set of stan
 #+END_SRC
 
 **** Readme
+:PROPERTIES:
+:CUSTOM_ID: readme
+:END:
 
 You should always include a readme with your project.  Typically it will be include most of the commentary section.  Here's a template that goes with the package template above:
 
@@ -1903,12 +2126,7 @@ You should always include a readme with your project.  Typically it will be incl
   :TOC:      :include siblings
   :END:
   :CONTENTS:
-    -  [[#installation][Installation]]
-    -  [[#usage][Usage]]
-    -  [[#changelog][Changelog]]
-    -  [[#credits][Credits]]
-    -  [[#development][Development]]
-    -  [[#license][License]]
+
   :END:
 
   ,* Installation
@@ -1994,6 +2212,9 @@ You should always include a readme with your project.  Typically it will be incl
 #+END_SRC
 
 **** Version numbers
+:PROPERTIES:
+:CUSTOM_ID: version-numbers
+:END:
 
 Version numbers which are valid in Emacs are those accepted by the function ~version-to-list~, which uses the variables ~version-separator~ and ~version-regexp-alist~.  See their documentation for specific, up-to-date information.  ~version-to-list~'s documentation (as of Emacs 26.1) is reproduced here for convenience:
 
@@ -2037,6 +2258,7 @@ Version numbers which are valid in Emacs are those accepted by the function ~ver
 *** Libraries                                                   :libraries:
 :PROPERTIES:
 :TOC:      :depth 0
+:CUSTOM_ID: libraries-5
 :END:
 
 **** =lisp-mnt.el= (=lm=)                                           :built_in:
@@ -2047,10 +2269,14 @@ Version numbers which are valid in Emacs are those accepted by the function ~ver
 This library includes functions helpful for working with and verifying the format of Emacs Lisp package files, including headers, commentary, etc.  It's easy to overlook and hard to re-discover this package because of its =lm= symbol prefix.  It's listed here because your editor keeps forgetting what it's called.
 
 *** Reference                                                   :reference:
+:PROPERTIES:
+:CUSTOM_ID: reference
+:END:
 
 **** Package headers and structure
 :PROPERTIES:
 :ID:       036e2a71-f392-4c9a-a524-c5354f291e2f
+:CUSTOM_ID: package-headers-and-structure
 :END:
 
 The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.html][Emacs manual]] gives this example (I've added the lexical-binding part).  Also see [[id:aacd55b6-a56f-4064-bf0d-25173ce83ef3][template]].
@@ -2082,16 +2308,18 @@ The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.
 *** Tools                                                           :tools:
 :PROPERTIES:
 :TOC:      :depth 2 :include descendants
+:CUSTOM_ID: tools-6
 :END:
 :CONTENTS:
-- [[#building--testing][Building / Testing]]
+- [[#building--testing-0][Building / Testing]]
   - [[#cask-project-management-tool-for-emacs][cask: Project management tool for Emacs]]
+  - [[#eask-cli-for-building-running-testing-and-managing-dependencies][Eask: CLI for building, running, testing, and managing dependencies]]
   - [[#eldev-elisp-development-tool][eldev: Elisp Development Tool]]
   - [[#emacs-package-checker-check-emacs-lisp-packages-in-a-clean-environment][emacs-package-checker: Check Emacs Lisp packages in a clean environment]]
   - [[#emakeel-test-elisp-without-the-hoops][emake.el: Test Elisp without the hoops]]
   - [[#makel-a-makefile-to-facilitate-checking-emacs-packages][makel: A makefile to facilitate checking Emacs packages]]
   - [[#makemsh-makefile-like-script-for-building-and-testing-packages][makem.sh: Makefile-like script for building and testing packages]]
-- [[#package-installationmanagement][Package installation/management]]
+- [[#package-installationmanagement-0][Package installation/management]]
   - [[#straightel-next-generation-purely-functional-package-manager-for-the-emacs-hacker][straight.el: Next-generation, purely functional package manager for the Emacs hacker]]
   - [[#use-package-a-use-package-declaration-for-simplifying-your-emacs][use-package: A use-package declaration for simplifying your .emacs]]
   - [[#paradox-modernizing-emacs-package-menu-with-package-ratings-usage-statistics-customizability-and-more][paradox: modernizing Emacs' Package Menu. With package ratings, usage statistics, customizability, and more.]]
@@ -2099,25 +2327,59 @@ The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.
 :END:
 
 **** Building / Testing                                 :building:testing:
+:PROPERTIES:
+:CUSTOM_ID: building--testing-0
+:END:
 
 Tools for building and testing packages, especially from scripts or Makefiles.
 
 ***** [[https://github.com/cask/cask][cask: Project management tool for Emacs]]
 :PROPERTIES:
 :ID:       06ba57cf-464f-473a-9911-4311033bc358
+:CUSTOM_ID: cask-project-management-tool-for-emacs
 :END:
 
 #+BEGIN_QUOTE
 Cask is a project management tool for Emacs that helps automate the package development cycle; development, dependencies, testing, building, packaging and more.
 #+END_QUOTE
 
+***** [[https://github.com/emacs-eask/cli][Eask: CLI for building, running, testing, and managing dependencies]]
+:PROPERTIES:
+:CUSTOM_ID: eask-cli-for-building-running-testing-and-managing-dependencies
+:END:
+
+#+begin_quote
+Eask was built to use as a package development tool in Elisp packages.  It can be used in three major ways:
+
+- Dev tool for Elisp packages
+- Dependency management for your configuration
+- Run Elisp programs for all other purposes
+
+Eask aims to be:
+
+- Consistent enough to sandbox across all systems
+- General enough to have Emacsers' frequently used commands (byte-compile, checkdoc, etc)
+- Robust enough to provide useful results even in the presence of user errors
+- Dependency-free so that the tool can be run on any platform
+
+See [[https://emacs-eask.github.io/Getting-Started/Introduction/#-why-eask][Why Eask?]] for more detailed information.
+#+end_quote
+
+Note that although Eask is implemented in JavaScript and Node.js, it is also distributed as an all-in-one binary that doesn't require Node.js to be installed.
+
 ***** [[https://github.com/doublep/eldev][eldev: Elisp Development Tool]]
+:PROPERTIES:
+:CUSTOM_ID: eldev-elisp-development-tool
+:END:
 
 #+BEGIN_QUOTE
 Eldev (Elisp Development Tool) is an Emacs-based build tool, targeted solely at Elisp projects. It is an alternative to Cask. Unlike Cask, Eldev itself is fully written in Elisp and its configuration files are also Elisp programs. If you are familiar with Java world, Cask can be seen as a parallel to Maven — it uses project description, while Eldev is sort of a parallel to Gradle — its configuration is a program on its own.
 #+END_QUOTE
 
 ***** [[https://github.com/akirak/emacs-package-checker][emacs-package-checker: Check Emacs Lisp packages in a clean environment]]
+:PROPERTIES:
+:CUSTOM_ID: emacs-package-checker-check-emacs-lisp-packages-in-a-clean-environment
+:END:
 
 #+BEGIN_QUOTE
 Emacs Package Checker lets you quickly configure typical linters (i.e. package-lint, byte-compile, and checkdoc) for your Emacs package.
@@ -2128,6 +2390,7 @@ There are existing solutions in this field like emake.el and makel. Emacs Packag
 ***** [[https://github.com/vermiculus/emake.el][emake.el: Test Elisp without the hoops]]
 :PROPERTIES:
 :ID:       2e076cf2-77b5-440c-9832-086739185f6b
+:CUSTOM_ID: emakeel-test-elisp-without-the-hoops
 :END:
 
 #+BEGIN_QUOTE
@@ -2147,6 +2410,7 @@ Things EMake will never do (or ‘reasons you may still need Cask’):
 ***** [[https://gitlab.petton.fr/DamienCassou/makel/][makel: A makefile to facilitate checking Emacs packages]]
 :PROPERTIES:
 :ID:       5bcfdd7f-40a3-40b4-bd0a-586602791161
+:CUSTOM_ID: makel-a-makefile-to-facilitate-checking-emacs-packages
 :END:
 
 #+BEGIN_QUOTE
@@ -2156,6 +2420,7 @@ makel is a project consisting of a Makefile (=makel.mk=) that Emacs package auth
 ***** [[https://github.com/alphapapa/makem.sh][makem.sh: Makefile-like script for building and testing packages]]
 :PROPERTIES:
 :ID:       38e6ee67-0d22-44d2-a2c6-01602e00ee23
+:CUSTOM_ID: makemsh-makefile-like-script-for-building-and-testing-packages
 :END:
 
 #+BEGIN_QUOTE
@@ -2171,8 +2436,14 @@ The script can run Emacs with the developer's local Emacs configuration, or with
 #+END_QUOTE
 
 **** Package installation/management             :installation:management:
+:PROPERTIES:
+:CUSTOM_ID: package-installationmanagement-0
+:END:
 
 ***** TODO [[https://github.com/raxod502/straight.el][straight.el: Next-generation, purely functional package manager for the Emacs hacker]] :needs_examples:
+:PROPERTIES:
+:CUSTOM_ID: straightel-next-generation-purely-functional-package-manager-for-the-emacs-hacker
+:END:
 :LOGBOOK:
 -  State "TODO"       from              [2018-07-29 Sun 13:11]
 :END:
@@ -2180,6 +2451,7 @@ The script can run Emacs with the developer's local Emacs configuration, or with
 ***** TODO [[https://github.com/jwiegley/use-package][use-package: A use-package declaration for simplifying your .emacs]] :needs_examples:
 :PROPERTIES:
 :ID:       540617fd-d4ff-47df-89da-6c48c8f27785
+:CUSTOM_ID: use-package-a-use-package-declaration-for-simplifying-your-emacs
 :END:
 :LOGBOOK:
 -  State "TODO"       from              [2018-07-29 Sun 13:11]
@@ -2190,22 +2462,27 @@ Developed by the current maintainer of Emacs, himself, John Wiegley.
 ***** [[https://github.com/Malabarba/paradox][paradox: modernizing Emacs' Package Menu. With package ratings, usage statistics, customizability, and more.]]
 :PROPERTIES:
 :ID:       2c31eae6-eeba-433f-bc26-9465d5aa8537
+:CUSTOM_ID: paradox-modernizing-emacs-package-menu-with-package-ratings-usage-statistics-customizability-and-more
 :END:
 
 ***** [[https://github.com/dimitri/el-get][el-get: Manage the external elisp bits and pieces upon which you depend!]]
+:PROPERTIES:
+:CUSTOM_ID: el-get-manage-the-external-elisp-bits-and-pieces-upon-which-you-depend
+:END:
 
 ** Pattern matching                         :destructuring:pattern_matching:
 :PROPERTIES:
 :TOC:      :depth 2 :include descendants
 :ID:       b699e1a1-e34c-4ce8-a5dd-41161d2a1cbf
+:CUSTOM_ID: pattern-matching
 :END:
 :CONTENTS:
-- [[#articles][Articles]]
-- [[#libraries][Libraries]]
-  - [[#dashel][dash.el]]
+- [[#articles-4][Articles]]
+- [[#libraries-6][Libraries]]
+  - [[#dashel-1][dash.el]]
   - [[#pcase][pcase]]
   - [[#shadchen-el][shadchen-el]]
-- [[#tools][Tools]]
+- [[#tools-7][Tools]]
   - [[#let-alist][let-alist]]
   - [[#with-dict-with-plist-vals][with-dict, with-plist-vals]]
 :END:
@@ -2213,6 +2490,7 @@ Developed by the current maintainer of Emacs, himself, John Wiegley.
 *** Articles                                                     :articles:
 :PROPERTIES:
 :TOC:      :depth 0
+:CUSTOM_ID: articles-4
 :END:
 
 **** [[http://www.wilfred.me.uk/blog/2017/03/19/pattern-matching-in-emacs-lisp/][Pattern Matching in Emacs Lisp – Wilfred Hughes::Blog]] :pcase:shadchen:cl:dash:
@@ -2237,12 +2515,21 @@ For the sake of this post, we'll consider both pattern matching and destructurin
 John Kitchin demonstrates some [[id:a58f65dc-d4a4-4a40-a573-a66a28f3619c][macros]] that make it easy to access plist values.
 
 *** Libraries                                                   :libraries:
+:PROPERTIES:
+:CUSTOM_ID: libraries-6
+:END:
 
 **** [[https://github.com/magnars/dash.el][dash.el]] :dash:
+:PROPERTIES:
+:CUSTOM_ID: dashel-1
+:END:
 
 Dash is a powerful library, and one of its features is powerful destructuring with its ~-let~ macro, and several others that work the same way.
 
 **** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Pattern-matching-case-statement.html][pcase]]                                                :built_in:pcase:
+:PROPERTIES:
+:CUSTOM_ID: pcase
+:END:
 
 ~pcase~ is built-in to Emacs.  Its syntax can be confusing, but it is very powerful.
 
@@ -2286,14 +2573,21 @@ This example shows the use of =pcase-let*= to destructure and bind a nested alis
 #+END_SRC
 
 **** [[https://github.com/VincentToups/shadchen-el][shadchen-el]]                                             :shadchen:el:
+:PROPERTIES:
+:CUSTOM_ID: shadchen-el
+:END:
 
 A powerful, Racket-style pattern-matching library.
 
 *** Tools                                                           :tools:
+:PROPERTIES:
+:CUSTOM_ID: tools-7
+:END:
 
 **** let-alist                               :alists:macros:destructuring:
 :PROPERTIES:
 :ID:       f8f0755b-c23b-45ad-98da-780d4044676a
+:CUSTOM_ID: let-alist
 :END:
 
 #+BEGIN_QUOTE
@@ -2329,6 +2623,7 @@ Here Artur introduces the macro and gives examples.
 **** =with-dict=, =with-plist-vals=              :macros:plists:
 :PROPERTIES:
 :ID:       a58f65dc-d4a4-4a40-a573-a66a28f3619c
+:CUSTOM_ID: with-dict-with-plist-vals
 :END:
 
 Courtesy of [[id:9391ab92-5d51-4786-a3c5-4822ec500500][John Kitchin]]:[fn:1:Copyright by John Kitchin, licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.]
@@ -2377,6 +2672,9 @@ And:
 #+END_SRC
 
 ** Processes (incl. IPC, RPC)                                    :processes:
+:PROPERTIES:
+:CUSTOM_ID: processes-incl-ipc-rpc
+:END:
 
 Including inter-process communication (IPC) and remote procedure calls (RPC).
 
@@ -2397,21 +2695,22 @@ Debase frees you from writing repetitive, annoying boilerplate code to drive D-B
 ** Optimization                                               :optimization:
 :PROPERTIES:
 :TOC:      :include descendants
+:CUSTOM_ID: optimization
 :END:
 
 Including benchmarking, byte-compilation, profiling, etc.
 
 :CONTENTS:
-- [[#articles][Articles]]
+- [[#articles-5][Articles]]
   - [[#efficient-alias-of-a-built-in-emacs-lisp-function--null-program][Efficient Alias of a Built-In Emacs Lisp Function « null program]]
   - [[#emacs-byte-code-internals][Emacs Byte-code Internals]]
   - [[#faster-elfeed-search-through-jit-byte-code-compilation][Faster Elfeed Search Through JIT Byte-code Compilation]]
   - [[#how-to-write-faster-emacs-lisp--null-program][How to Write Fast(er) Emacs Lisp « null program]]
   - [[#some-performance-advantages-of-lexical-scope--null-program][Some Performance Advantages of Lexical Scope « null program]]
   - [[#whats-in-an-emacs-lambda--null-program][What's in an Emacs Lambda « null program]]
-- [[#reference][Reference]]
+- [[#reference-0][Reference]]
   - [[#elisp-bytecode-lets-document-emacs-lisp-bytecode-lisp-assembly-program-instructions][elisp-bytecode: Let's document Emacs Lisp Bytecode (Lisp Assembly Program) instructions]]
-- [[#tools][Tools]]
+- [[#tools-8][Tools]]
   - [[#benchmarking][Benchmarking]]
     - [[#bench-macro][bench macro]]
     - [[#bench-multi-macros][bench-multi macros]]
@@ -2426,14 +2725,15 @@ Including benchmarking, byte-compilation, profiling, etc.
 *** Articles                                                     :articles:
 :PROPERTIES:
 :TOC:      :include descendants
+:CUSTOM_ID: articles-5
 :END:
 :CONTENTS:
-- [[#efficient-alias-of-a-built-in-emacs-lisp-function--null-program][Efficient Alias of a Built-In Emacs Lisp Function « null program]]
-- [[#emacs-byte-code-internals][Emacs Byte-code Internals]]
-- [[#faster-elfeed-search-through-jit-byte-code-compilation][Faster Elfeed Search Through JIT Byte-code Compilation]]
-- [[#how-to-write-faster-emacs-lisp--null-program][How to Write Fast(er) Emacs Lisp « null program]]
-- [[#some-performance-advantages-of-lexical-scope--null-program][Some Performance Advantages of Lexical Scope « null program]]
-- [[#whats-in-an-emacs-lambda--null-program][What's in an Emacs Lambda « null program]]
+- [[#efficient-alias-of-a-built-in-emacs-lisp-function--null-program-0][Efficient Alias of a Built-In Emacs Lisp Function « null program]]
+- [[#emacs-byte-code-internals-0][Emacs Byte-code Internals]]
+- [[#faster-elfeed-search-through-jit-byte-code-compilation-0][Faster Elfeed Search Through JIT Byte-code Compilation]]
+- [[#how-to-write-faster-emacs-lisp--null-program-0][How to Write Fast(er) Emacs Lisp « null program]]
+- [[#some-performance-advantages-of-lexical-scope--null-program-0][Some Performance Advantages of Lexical Scope « null program]]
+- [[#whats-in-an-emacs-lambda--null-program-0][What's in an Emacs Lambda « null program]]
 :END:
 
 **** [[https://nullprogram.com/blog/2019/12/10/][Efficient Alias of a Built-In Emacs Lisp Function « null program]] :compilation:bytecode:
@@ -2442,6 +2742,7 @@ Including benchmarking, byte-compilation, profiling, etc.
 :ID:       26105b53-a344-48bd-a252-596dd838ac3b
 :author:   Chris Wellons
 :published:   [2019-12-10 Tue]
+:CUSTOM_ID: efficient-alias-of-a-built-in-emacs-lisp-function--null-program-0
 :END:
 
 Chris Wellons compares the use of =defalias= and =defsubst= and how they are optimized by the byte-compiler.
@@ -2451,6 +2752,7 @@ Chris Wellons compares the use of =defalias= and =defsubst= and how they are opt
 :archive.is: http://archive.today/DFx3S
 :author:   Chris Wellons
 :published:   [2014-01-04 Sat]
+:CUSTOM_ID: emacs-byte-code-internals-0
 :END:
 
 #+BEGIN_QUOTE
@@ -2466,6 +2768,7 @@ Screw that! What if I want to handcraft some byte-code myself? :-) The purpose o
 :author:   Chris Wellons
 :published:   [2016-12-11 Sun]
 :ID:       6e54fe14-d70e-485e-a671-a2600d57595d
+:CUSTOM_ID: faster-elfeed-search-through-jit-byte-code-compilation-0
 :END:
 
 Chris Wellons shows how he substantially improved Elfeed's search by byte-compiling functions at runtime and avoiding function call overhead.  He also demonstrates some simple benchmarking tools he wrote in the process.
@@ -2473,6 +2776,7 @@ Chris Wellons shows how he substantially improved Elfeed's search by byte-compil
 **** [[https://nullprogram.com/blog/2017/01/30/][How to Write Fast(er) Emacs Lisp « null program]]
 :PROPERTIES:
 :archive.today: http://archive.today/xe0Js
+:CUSTOM_ID: how-to-write-faster-emacs-lisp--null-program-0
 :END:
 
 Chris Wellons explains five ways to write faster Emacs Lisp code.
@@ -2483,6 +2787,7 @@ Chris Wellons explains five ways to write faster Emacs Lisp code.
 :archive.today: http://archive.today/xm5zq
 :author:   Chris Wellons
 :published: [2016-12-22 Thu]
+:CUSTOM_ID: some-performance-advantages-of-lexical-scope--null-program-0
 :END:
 
 #+BEGIN_QUOTE
@@ -2495,20 +2800,28 @@ I recently had a discussion with Xah Lee about lexical scope in Emacs Lisp. The 
 :ID:       54fa2e85-066f-431e-9db3-8b1627fac4ca
 :author:   Chris Wellons
 :published:   [2017-12-14 Thu]
+:CUSTOM_ID: whats-in-an-emacs-lambda--null-program-0
 :END:
 
 Chris explains how lambdas work with regard to byte-compilation and lexical binding.
 
 *** Reference                                                   :reference:
+:PROPERTIES:
+:CUSTOM_ID: reference-0
+:END:
 
 **** [[https://github.com/rocky/elisp-bytecode][elisp-bytecode: Let's document Emacs Lisp Bytecode (Lisp Assembly Program) instructions]] :bytecode:compilation:
 :PROPERTIES:
 :author:   Rocky Bernstein
+:CUSTOM_ID: elisp-bytecode-lets-document-emacs-lisp-bytecode-lisp-assembly-program-instructions
 :END:
 
 Rocky Bernstein's project to document the Elisp bytecode format (aka LAP, or Lisp Assembly Program).
 
 *** Tools               
+:PROPERTIES:
+:CUSTOM_ID: tools-8
+:END:
 :CONTENTS:
 
 :END:
@@ -2520,6 +2833,7 @@ Rocky Bernstein's project to document the Elisp bytecode format (aka LAP, or Lis
 **** Benchmarking                                           :benchmarking:
 :PROPERTIES:
 :ID:       b369f0c2-a9c3-4f5f-afaf-80cb18e66a6f
+:CUSTOM_ID: benchmarking
 :END:
 
 #+BEGIN_SRC elisp :exports none :eval never :tangle epdh.el
@@ -2530,6 +2844,7 @@ Rocky Bernstein's project to document the Elisp bytecode format (aka LAP, or Lis
 ***** =bench= macro
 :PROPERTIES:
 :ID:       a9c131e0-9d85-467b-9ac5-c576b7dfc6f8
+:CUSTOM_ID: bench-macro
 :END:
 
 From Phil Lord's [[http://phillord.github.io/m-buffer-el/#sec-5-1-2][m-buffer-el]]:
@@ -2567,6 +2882,7 @@ When called from an Org source block, it gives output like this:
 ***** ~bench-multi~ macros
 :PROPERTIES:
 :ID:       fa6aa630-6970-4bba-83d6-8c271550ecab
+:CUSTOM_ID: bench-multi-macros
 :END:
 
 These macros make comparing multiple forms easy:
@@ -2756,6 +3072,7 @@ So this macro showed which code is faster and helped catch a subtle bug.
 ****** ~bench-multi-lexical~
 :PROPERTIES:
 :ID:       cf3d7f70-fd84-41f8-b51e-6b3a710cae82
+:CUSTOM_ID: bench-multi-lexical
 :END:
 
 To evaluate forms with lexical binding enabled, use this macro:
@@ -2816,6 +3133,7 @@ Used just like ~bench-multi~:
 ****** ~bench-dynamic-vs-lexical-binding~
 :PROPERTIES:
 :ID:       1ec52dea-b9f5-4e71-826f-3ac9d9cc2225
+:CUSTOM_ID: bench-dynamic-vs-lexical-binding
 :END:
 
 This macro compares dynamic and lexical binding.
@@ -2864,6 +3182,7 @@ The ~buffer-local-value~ form improved by about 24% when using lexical binding, 
 ****** ~bench-multi-lets~
 :PROPERTIES:
 :ID:       fefdafc5-2130-4c01-bea5-a85931433589
+:CUSTOM_ID: bench-multi-lets
 :END:
 
 This macro benchmarks multiple forms in multiple environments, which is helpful for testing code that behaves differently depending on global variables.
@@ -2918,6 +3237,7 @@ Used like:
 **** Profiling                                                 :profiling:
 :PROPERTIES:
 :ID:       ef37fa2c-879d-4065-936e-81a393510bf7
+:CUSTOM_ID: profiling
 :END:
 
 #+BEGIN_SRC elisp :exports none :eval never :tangle epdh.el
@@ -2928,6 +3248,7 @@ Used like:
 ***** =elp-profile=                                       :macro:
 :PROPERTIES:
 :ID:       b4b21499-f798-41be-88b7-2dc2fc190ae7
+:CUSTOM_ID: elp-profile
 :END:
 
 Call this macro from an Org source block and you'll get a results block showing which 20 functions were called the most times, how long they took to run, etc.  =prefixes= should be a list of symbols matching the prefixes of the functions you want to instrument.
@@ -2976,12 +3297,18 @@ This gives a table like:
 | mapatoms       |            1 |            0 |          0.0 |
 
 ***** [[https://github.com/aspiers/etrace][etrace: Emacs Lisp Latency Tracing for the Chromium Catapult Trace Event Format]] :package:
+:PROPERTIES:
+:CUSTOM_ID: etrace-emacs-lisp-latency-tracing-for-the-chromium-catapult-trace-event-format
+:END:
 
 #+BEGIN_QUOTE
 This package for GNU Emacs allows latency tracing to be performed on Emacs Lisp code and the results output to files using the Chromium Catapult Trace Event Format.  These trace files can then be loaded into trace analysis utilities in order to generate flame graphs and other useful visualisations and analyses.
 #+END_QUOTE
 
 ** Refactoring                                                 :refactoring:
+:PROPERTIES:
+:CUSTOM_ID: refactoring
+:END:
 
 *** Tools                                                           :tools:
 
@@ -2997,19 +3324,21 @@ Emacs Refactor (EMR) is a framework for providing language-specific refactoring 
 ** Regular expressions                                 :regular_expressions:
 :PROPERTIES:
 :TOC:      :include descendants :depth 2
+:CUSTOM_ID: regular-expressions
 :END:
 :CONTENTS:
-- [[#articles][Articles]]
-- [[#libraries][Libraries]]
+- [[#articles-6][Articles]]
+- [[#libraries-7][Libraries]]
   - [[#pcre2el-convert-between-pcre-emacs-and-rx-regexp-syntax][pcre2el: Convert between PCRE, Emacs and rx regexp syntax]]
   - [[#lex][lex]]
-- [[#tools][Tools]]
+- [[#tools-9][Tools]]
   - [[#ample-regexpsel-compose-and-reuse-regular-expressions-with-ease][ample-regexps.el: Compose and reuse regular expressions with ease]]
 :END:
 
 *** Articles                                                     :articles:
 :PROPERTIES:
 :TOC:      :depth 0
+:CUSTOM_ID: articles-6
 :END:
 
 **** TODO [[http://francismurillo.github.io/2017-03-30-Exploring-Emacs-rx-Macro/][Exploring Emacs rx Macro]]                                    :rx:
@@ -3018,10 +3347,19 @@ Emacs Refactor (EMR) is a framework for providing language-specific refactoring 
 :END:
 
 *** Libraries                                                   :libraries:
+:PROPERTIES:
+:CUSTOM_ID: libraries-7
+:END:
 
 **** TODO [[https://github.com/joddie/pcre2el][pcre2el: Convert between PCRE, Emacs and rx regexp syntax]]
+:PROPERTIES:
+:CUSTOM_ID: pcre2el-convert-between-pcre-emacs-and-rx-regexp-syntax
+:END:
 
 **** [[https://elpa.gnu.org/packages/lex.html][lex]]
+:PROPERTIES:
+:CUSTOM_ID: lex
+:END:
 
 =lex= is a regular expression matching engine with syntax similar to =rx=.  It appears to be more implemented in elisp than standard Emacs regexp tools, so it may be slower, but its additional capabilities may be useful.
 
@@ -3034,8 +3372,14 @@ Format of regexps is the same as used for `rx' and `sregex'.  Additions:
 #+END_QUOTE
 
 *** Tools                                                           :tools:
+:PROPERTIES:
+:CUSTOM_ID: tools-9
+:END:
 
 **** [[https://github.com/immerrr/ample-regexps.el][ample-regexps.el: Compose and reuse regular expressions with ease]]
+:PROPERTIES:
+:CUSTOM_ID: ample-regexpsel-compose-and-reuse-regular-expressions-with-ease
+:END:
 
 =ample-regexps= complements the built-in ~rx~ macro by flexibly defining regular expressions with reusable parts.  In the following example, the ~define-arx~ macro defines three things:
 
@@ -3102,36 +3446,51 @@ This example shows the use of a function to expand a list of strings into a sequ
 ** Strings                                                         :strings:
 :PROPERTIES:
 :TOC:      :include descendants :depth 2
+:CUSTOM_ID: strings
 :END:
 :CONTENTS:
-- [[#articles][Articles]]
-  - [[#buffer-passing-style][Buffer-Passing Style]]
-- [[#libraries][Libraries]]
+- [[#articles-7][Articles]]
+  - [[#buffer-passing-style-0][Buffer-Passing Style]]
+- [[#libraries-8][Libraries]]
   - [[#sel-the-long-lost-emacs-string-manipulation-library][s.el: The long lost Emacs string manipulation library]]
-- [[#tools][Tools]]
+- [[#tools-10][Tools]]
   - [[#format-macro][format$ macro]]
 :END:
 
 *** Articles                                                     :articles:
+:PROPERTIES:
+:CUSTOM_ID: articles-7
+:END:
 
 **** [[https://nullprogram.com/blog/2014/05/27/][Buffer-Passing Style]]                             :buffers:
 :PROPERTIES:
 :archive.today: https://archive.ph/Jygil
 :ID:       3040c491-39ba-429e-8af7-e4971170d7eb
+:CUSTOM_ID: buffer-passing-style-0
 :END:
 
 Chris Wellons explains how to build strings in several steps.  This is achieved thanks to the creation of a temporary buffer that is passed to helper methods using the "current" buffer mechanism.  A nice and simple design pattern for Emacs.
 
 *** Libraries                                                   :libraries:
+:PROPERTIES:
+:CUSTOM_ID: libraries-8
+:END:
 
 **** [[https://github.com/magnars/s.el][s.el: The long lost Emacs string manipulation library]]
+:PROPERTIES:
+:CUSTOM_ID: sel-the-long-lost-emacs-string-manipulation-library
+:END:
 
 *** Tools                                                           :tools:
 :PROPERTIES:
 :TOC: :depth 1
+:CUSTOM_ID: tools-10
 :END:
 
 **** ~format$~ macro                                  :macros:interpolation:
+:PROPERTIES:
+:CUSTOM_ID: format-macro
+:END:
 
 The ~format$~ macro (currently hosted [[https://github.com/alphapapa/elexandria/blob/master/elexandria.el][here]]) allows for easy string interpolation, including optional ~%~ sequences as used by ~format~.  For example, this:
 
@@ -3150,15 +3509,16 @@ Since this happens at macro expansion time rather than at runtime, there is no p
 ** Testing                                                         :testing:
 :PROPERTIES:
 :TOC:      :depth 2 :include descendants
+:CUSTOM_ID: testing
 :END:
 :CONTENTS:
-- [[#articles][Articles]]
+- [[#articles-8][Articles]]
   - [[#continuous-integration-of-emacs-packages-with-circleci][Continuous Integration of Emacs Packages with CircleCI]]
 - [[#frameworks][Frameworks]]
   - [[#buttercup-behavior-driven-emacs-lisp-testing][buttercup: Behavior-Driven Emacs Lisp Testing]]
   - [[#ecukes-cucumber-for-emacs][ecukes: Cucumber for Emacs]]
   - [[#emacs-lisp-regression-testing-ert][Emacs Lisp Regression Testing (ERT)]]
-- [[#libraries][Libraries]]
+- [[#libraries-9][Libraries]]
   - [[#assess-test-support-functions][assess: Test support functions]]
   - [[#ert-expectations][ert-expectations]]
   - [[#propcheck-quickcheckhypothesis-style-testing][propcheck: Quickcheck/hypothesis style testing]]
@@ -3166,14 +3526,18 @@ Since this happens at macro expansion time rather than at runtime, there is no p
   - [[#xtest-extensions-for-ert][xtest: Extensions for ERT]]
 - [[#tips][Tips]]
   - [[#error-message-strings-may-not-match-after-substitute-quotes][Error message strings may not match after substitute-quotes]]
-- [[#tools][Tools]]
+- [[#tools-11][Tools]]
 :END:
 
 *** Articles                                                     :articles:
+:PROPERTIES:
+:CUSTOM_ID: articles-8
+:END:
 
 **** [[https://blog.abrochard.com/circleci-for-emacs-packages.html][Continuous Integration of Emacs Packages with CircleCI]]
 :PROPERTIES:
 :archive.is: https://archive.vn/uidZr
+:CUSTOM_ID: continuous-integration-of-emacs-packages-with-circleci
 :END:
 
 #+BEGIN_QUOTE
@@ -3181,12 +3545,16 @@ I was very inspired by Damien Cassou's great presentation during EmacsConf 2019 
 #+END_QUOTE
 
 *** Frameworks                                                 :frameworks:
+:PROPERTIES:
+:CUSTOM_ID: frameworks
+:END:
 
 Frameworks for writing, organizing, and running tests.
 
 **** [[https://github.com/jorgenschaefer/emacs-buttercup][buttercup: Behavior-Driven Emacs Lisp Testing]]
 :PROPERTIES:
 :ID:       108f5eb6-7307-4d4b-aaf1-dd2a8bb65a58
+:CUSTOM_ID: buttercup-behavior-driven-emacs-lisp-testing
 :END:
 
 #+BEGIN_QUOTE
@@ -3198,6 +3566,7 @@ The framework is heavily inspired by Jasmine.
 **** [[https://github.com/ecukes/ecukes][ecukes: Cucumber for Emacs]]
 :PROPERTIES:
 :ID:       f0cdf4dd-38ff-41a1-a4c1-8f7677940863
+:CUSTOM_ID: ecukes-cucumber-for-emacs
 :END:
 
 #+BEGIN_QUOTE
@@ -3209,15 +3578,22 @@ Cucumber is a great integration testing tool, used mostly for testing web applic
 **** [[https://www.gnu.org/software/emacs/manual/html_node/ert/][Emacs Lisp Regression Testing]] (ERT)                    :built_in:ERT:
 :PROPERTIES:
 :ID:       386b23bd-5254-457f-9ba1-ca5cbf87fed3
+:CUSTOM_ID: emacs-lisp-regression-testing-ert
 :END:
 
 This is the standard, built-in Emacs testing library, used by core code and third-party packages alike.
 
 *** Libraries                                                   :libraries:
+:PROPERTIES:
+:CUSTOM_ID: libraries-9
+:END:
 
 Libraries that help with writing tests.
 
 ***** [[https://github.com/phillord/assess][assess: Test support functions]]
+:PROPERTIES:
+:CUSTOM_ID: assess-test-support-functions
+:END:
 
 #+BEGIN_QUOTE
 Assess provides additional support for testing Emacs packages.
@@ -3234,6 +3610,9 @@ Assess aims to be a stateless as possible, leaving Emacs unchanged whether the t
 #+END_QUOTE
 
 ***** [[https://www.emacswiki.org/emacs/ert-expectations.el][ert-expectations]]                                              :ERT:
+:PROPERTIES:
+:CUSTOM_ID: ert-expectations
+:END:
 
 =expectations= allows more concise definitions of ERT tests.  For example:
 
@@ -3257,12 +3636,18 @@ Assess aims to be a stateless as possible, leaving Emacs unchanged whether the t
 #+END_SRC
 
 ***** [[https://github.com/Wilfred/propcheck][propcheck: Quickcheck/hypothesis style testing]]
+:PROPERTIES:
+:CUSTOM_ID: propcheck-quickcheckhypothesis-style-testing
+:END:
 
 #+BEGIN_QUOTE
 propcheck brings property based testing to Elisp.  It's similar to the excellent Hypothesis library for Python.
 #+END_QUOTE
 
 ***** [[https://github.com/DarwinAwardWinner/with-simulated-input][with-simulated-input: Test interactive functions non-interactively]]
+:PROPERTIES:
+:CUSTOM_ID: with-simulated-input-test-interactive-functions-non-interactively
+:END:
 
 #+BEGIN_QUOTE
 This package provides an Emacs Lisp macro, ~with-simulated-input~, which evaluates one or more forms while simulating a sequence of input events for those forms to read. The result is the same as if you had evaluated the forms and then manually typed in the same input. This macro is useful for non-interactive testing of normally interactive commands and functions, such as ~completing-read~.
@@ -3271,14 +3656,23 @@ Some interactive functions rely on idle timers to do their work, so you might ne
 #+END_QUOTE
 
 ***** [[https://github.com/promethial/xtest][xtest: Extensions for ERT]]                              :ERT:
+:PROPERTIES:
+:CUSTOM_ID: xtest-extensions-for-ert
+:END:
 
 #+BEGIN_QUOTE
 XTest is a simple set of extensions for ERT.  XTest speeds up the creation of tests that follow the “one assertion per test” rule of thumb.  It also simplifies testing functions that manipulate buffers.  XTest aims to do a few things well, instead of being a monolithic library that attempts to solve every conceivable testing need.  XTest is designed to be paired with vanilla ERT and other ERT libraries, where the user mixes and matches depending on their needs.
 #+END_QUOTE
 
 *** Tips                                                             :tips:
+:PROPERTIES:
+:CUSTOM_ID: tips
+:END:
 
 **** Error message strings may not match after ~substitute-quotes~
+:PROPERTIES:
+:CUSTOM_ID: error-message-strings-may-not-match-after-substitute-quotes
+:END:
 
 When testing error messages, the message string in the test suite might not match the value captured by the test output, because Emacs may run ~substitute-quotes~ on the message.  This may result in various quotation marks being changed.  It can even be the case that the difference only manifests on other systems (e.g. the tests may pass on the developer's system but fail on a remote CI system due to different locale settings).
 
@@ -3287,6 +3681,7 @@ To work around this, pass a format string to ~error~, like ~(error "%s" "Foo doe
 *** Tools                                                    :tools:
 :PROPERTIES:
 :TOC: :depth 0
+:CUSTOM_ID: tools-11
 :END:
 
 + See [[*Building / Testing][Building / Testing tools]].
@@ -3294,9 +3689,10 @@ To work around this, pass a format string to ~error~, like ~(error "%s" "Foo doe
 ** User interface                                                       :UI:
 :PROPERTIES:
 :TOC:      :include descendants :depth 2
+:CUSTOM_ID: user-interface
 :END:
 :CONTENTS:
-- [[#libraries][Libraries]]
+- [[#libraries-10][Libraries]]
   - [[#bui-buffer-interface-library][bui: Buffer interface library]]
   - [[#lister-yet-another-list-printer][lister: Yet another list printer]]
   - [[#calfw-calendar-framework][calfw: Calendar framework]]
@@ -3312,8 +3708,14 @@ To work around this, pass a format string to ~error~, like ~(error "%s" "Foo doe
 :END:
 
 *** Libraries                                                   :libraries:
+:PROPERTIES:
+:CUSTOM_ID: libraries-10
+:END:
 
 **** [[https://github.com/alezost/bui.el][bui: Buffer interface library]]
+:PROPERTIES:
+:CUSTOM_ID: bui-buffer-interface-library
+:END:
 
 #+BEGIN_QUOTE
 BUI (Buffer User Interface) is an Emacs library that can be used to make user interfaces to display some kind of entries (like packages, buffers, functions, etc.).
@@ -3334,12 +3736,18 @@ In short, you define how a =list= / =info= interface looks like (using =bui-defi
 #+END_QUOTE
 
 **** [[https://github.com/publicimageltd/lister][lister: Yet another list printer]]
+:PROPERTIES:
+:CUSTOM_ID: lister-yet-another-list-printer
+:END:
 
 #+BEGIN_QUOTE
 Lister is a library for creating interactive "lists" of any kind. In contrast to similar packages like hierarchy.el or tablist.el, it aims at not simply mapping a data structure to a navigatable list. Rather, it treats the list like emacs treats buffers: It is an empty space to which you can successively add stuff. So in Emacs lingo, lister should be rather called listed - it is a library for editing lists, instead of displaying them.
 #+END_QUOTE
 
 **** [[https://github.com/kiwanami/emacs-calfw][calfw: Calendar framework]]
+:PROPERTIES:
+:CUSTOM_ID: calfw-calendar-framework
+:END:
 
 #+BEGIN_QUOTE
 This program displays a calendar view in the Emacs buffer.
@@ -3348,12 +3756,18 @@ This program displays a calendar view in the Emacs buffer.
 It is also usable as a library to display items on a calendar.
 
 **** [[https://github.com/kiwanami/emacs-ctable][ctable: Table Component]]
+:PROPERTIES:
+:CUSTOM_ID: ctable-table-component
+:END:
 
 #+BEGIN_QUOTE
 ctable.el is a table component for Emacs Lisp.  Emacs Lisp programs can display a nice table view from an abstract data model.  The many emacs programs have the code for displaying table views, such as dired, list-process, buffer-list and so on.  So, ctable.el would provide functions and a table framework for the table views.
 #+END_QUOTE
 
 **** Emacs's Widget for Object Collections (=ewoc=)               :built_in:
+:PROPERTIES:
+:CUSTOM_ID: emacss-widget-for-object-collections-ewoc
+:END:
 
 #+BEGIN_QUOTE
 The Ewoc package constructs buffer text that represents a structure of Lisp objects, and updates the text to follow changes in that structure. This is like the “view” component in the “model–view–controller” design paradigm. Ewoc means “Emacs's Widget for Object Collections”.
@@ -3364,18 +3778,27 @@ An ewoc is a structure that organizes information required to construct buffer t
 + [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Abstract-Display.html][Manual]]
 
 **** [[https://github.com/abo-abo/hydra][hydra]]                                                   :key_binding:
+:PROPERTIES:
+:CUSTOM_ID: hydra
+:END:
 
 #+BEGIN_QUOTE
 This is a package for GNU Emacs that can be used to tie related commands into a family of short bindings with a common prefix - a Hydra.
 #+END_QUOTE
 
 **** [[https://gitlab.petton.fr/DamienCassou/navigel/][navigel]]
+:PROPERTIES:
+:CUSTOM_ID: navigel
+:END:
 
 #+BEGIN_QUOTE
 The navigel package is a library that makes it simpler for Emacs Lisp developers to define user-interfaces based on tablists (also known as tabulated-lists).  Overriding a few (CL) methods and calling =navigel-open= is all that’s required to get a nice UI to navigate your domain objects (files, music library, database, etc.).
 #+END_QUOTE
 
 **** =tabulated-list-mode=                                        :built_in:
+:PROPERTIES:
+:CUSTOM_ID: tabulated-list-mode
+:END:
 
 #+BEGIN_QUOTE
 Tabulated List mode is a major mode for displaying tabulated data, i.e., data consisting of entries, each entry occupying one row of text with its contents divided into columns. Tabulated List mode provides facilities for pretty-printing rows and columns, and sorting the rows according to the values in each column.
@@ -3384,6 +3807,9 @@ Tabulated List mode is a major mode for displaying tabulated data, i.e., data co
 + [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Tabulated-List-Mode.html][Manual]]
 
 **** [[https://github.com/magit/transient][Transient]]
+:PROPERTIES:
+:CUSTOM_ID: transient
+:END:
 
 The library that powers Magit's command/option UI.
 
@@ -3392,6 +3818,9 @@ Taking inspiration from prefix keys and prefix arguments, Transient implements a
 #+END_QUOTE
 
 **** [[https://github.com/ebpa/tui.el][tui: An experimental text-based UI framework modeled after React]]
+:PROPERTIES:
+:CUSTOM_ID: tui-an-experimental-text-based-ui-framework-modeled-after-react
+:END:
 
 #+BEGIN_QUOTE
 This is an experiment in building purely text-based user interfaces (TUI’s). The ultimate goal is to explore new paradigms for user interface design and development using Emacs. To this end, tui.el implements an API based on the popular React JavaScript framework in order to reduce the demands involved with designing and building complex text-based UI’s.
@@ -3399,6 +3828,9 @@ This is all currently experimental! Expect things to change as I get feedback ab
 #+END_QUOTE
 
 **** =widget=                                                     :built_in:
+:PROPERTIES:
+:CUSTOM_ID: widget
+:END:
 
 #+BEGIN_QUOTE
 Most graphical user interface toolkits provide a number of standard user interface controls (sometimes known as “widgets” or “gadgets”). Emacs doesn't really support anything like this, except for an incredibly powerful text “widget.” On the other hand, Emacs does provide the necessary primitives to implement many other widgets within a text buffer. The =widget= package simplifies this task.
@@ -3407,12 +3839,18 @@ Most graphical user interface toolkits provide a number of standard user interfa
 + [[https://www.gnu.org/software/emacs/manual/html_mono/widget.html][Manual]]
 
 **** [[https://github.com/kiwanami/emacs-widget-mvc][widget-mvc: Web-like MVC framework]]
+:PROPERTIES:
+:CUSTOM_ID: widget-mvc-web-like-mvc-framework
+:END:
 
 #+BEGIN_QUOTE
 This is a GUI framework for Emacs Lisp.  It is designed for programmers who are familiar with conventional Web MVC frameworks.
 #+END_QUOTE
 
 ** Version control                                         :version_control:
+:PROPERTIES:
+:CUSTOM_ID: version-control
+:END:
 
 *** Tools                                                     :tools:
 
@@ -3424,6 +3862,9 @@ This is a GUI framework for Emacs Lisp.  It is designed for programmers who are 
 One of the "killer apps" for Emacs--and for git!
 
 ** XML / HTML                                                     :xml:html:
+:PROPERTIES:
+:CUSTOM_ID: xml--html
+:END:
 
 *** Libraries                                                   :libraries:
 :PROPERTIES:
@@ -3441,6 +3882,9 @@ One of the "killer apps" for Emacs--and for git!
 These libraries can all be used for HTML.
 
 **** [[https://github.com/tali713/esxml][esxml]]
+:PROPERTIES:
+:CUSTOM_ID: esxml
+:END:
 
 Probably the most featureful, usable library at the moment.
 
@@ -3523,6 +3967,9 @@ Example:
 #+END_SRC
 
 **** [[https://github.com/AdamNiederer/elquery][elquery]]
+:PROPERTIES:
+:CUSTOM_ID: elquery
+:END:
 
 #+BEGIN_QUOTE
 It’s like jQuery, but way less useful.
@@ -3556,6 +4003,9 @@ Example:
 #+END_SRC
 
 **** [[https://github.com/skeeto/elfeed/blob/master/xml-query.el][elfeed/xml-query.el]]
+:PROPERTIES:
+:CUSTOM_ID: elfeedxml-queryel
+:END:
 
 Provides lisp-based (rather than string-based) selectors.  This library is primarily aimed at internal =elfeed= use rather than general use, however it may be useful to others.  The author is [[https://github.com/skeeto/elfeed/issues/189][considering]] publishing it separately.
 
@@ -3568,6 +4018,9 @@ Provides lisp-based (rather than string-based) selectors.  This library is prima
 #+END_SRC
 
 **** [[https://github.com/zweifisch/enlive][enlive]]
+:PROPERTIES:
+:CUSTOM_ID: enlive
+:END:
 
 This provides a limited set of lisp-based selectors (rather than string-based selectors).
 
@@ -3583,6 +4036,7 @@ Example:
 **** [[https://github.com/bddean/xml-plus][xml-plus]]
 :PROPERTIES:
 :ID:       b2bf9054-4856-431b-b01c-a96fe82aad31
+:CUSTOM_ID: xml-plus
 :END:
 
 Mostly undocumented, providing three main functions:
@@ -3606,6 +4060,9 @@ Mostly undocumented, providing three main functions:
 #+END_SRC
 
 **** [[https://github.com/philjackson/xmlgen][xmlgen: An s-expression to XML DSL]]
+:PROPERTIES:
+:CUSTOM_ID: xmlgen-an-s-expression-to-xml-dsl
+:END:
 
 Generate XML using sexps with the function ~xmlgen~:
 
@@ -3639,6 +4096,7 @@ produces this:
 * Blogs                                                               :blogs:
 :PROPERTIES:
 :TOC:      :depth 0
+:CUSTOM_ID: blogs
 :END:
 
 ** [[http://planet.emacsen.org/][Planet Emacsen]]
@@ -3665,6 +4123,7 @@ One of the top Emacs blogs, frequently updated, and often highlights other inter
 * People                                                             :people:
 :PROPERTIES:
 :TOC: :depth 1 :include descendants
+:CUSTOM_ID: people
 :END:
 
 The Emacs community is so full of brilliant, generous people that I can't keep track of them all!  I will surely overlook many, and I will add them in no particular order, but merely as I come across them again and again.
@@ -3688,6 +4147,9 @@ The Emacs community is so full of brilliant, generous people that I can't keep t
 :END:
 
 ** Anders Lindgren
+:PROPERTIES:
+:CUSTOM_ID: anders-lindgren
+:END:
 
 Anders, aka Lindydancer, has written numerous packages to help with developing highlighting and font-lock packages, as well as some other useful tools.
 
@@ -3716,6 +4178,7 @@ Anders, aka Lindydancer, has written numerous packages to help with developing h
 ** Artur Malabarba
 :PROPERTIES:
 :ID:       53c0b780-7d67-47a5-ad30-090526e2018f
+:CUSTOM_ID: artur-malabarba
 :END:
 
 Another prolific Emacs contributor, package developer, and blogger.
@@ -3734,6 +4197,9 @@ Another prolific Emacs contributor, package developer, and blogger.
 **** [[id:2c31eae6-eeba-433f-bc26-9465d5aa8537][paradox]]
 
 ** Chris Wellons
+:PROPERTIES:
+:CUSTOM_ID: chris-wellons
+:END:
 
 Chris is the author of packages like [[https://github.com/skeeto/elfeed][Elfeed]], [[https://github.com/skeeto/emacsql][EmacSQL]], and [[https://github.com/skeeto/emacs-aio][aio]].  He also writes about Emacs at his blog, [[*%5B%5Bhttps://nullprogram.com/blog/2019/12/10/%5D%5BEfficient%20Alias%20of%20a%20Built-In%20Emacs%20Lisp%20Function%20%C2%AB%20null%20program%5D%5D][null program]].
 
@@ -3747,6 +4213,9 @@ Chris is the author of packages like [[https://github.com/skeeto/elfeed][Elfeed]
 # +  [[org-ql-search:link:nullprogram]]
 
 ** Damien Cassou
+:PROPERTIES:
+:CUSTOM_ID: damien-cassou
+:END:
 
 +  [[https://github.com/DamienCassou][GitHub]]
 
@@ -3757,6 +4226,9 @@ Chris is the author of packages like [[https://github.com/skeeto/elfeed][Elfeed]
 **** [[*%5B%5Bhttps://gitlab.petton.fr/DamienCassou/navigel/%5D%5Bnavigel%5D%5D][navigel]]
 
 ** Henrik Lissner
+:PROPERTIES:
+:CUSTOM_ID: henrik-lissner
+:END:
 :LOGBOOK:
 -  State "TODO"       from              [2020-01-03 Fri 06:27]
 :END:
@@ -3774,6 +4246,9 @@ Author and maintainer of Doom Emacs, one of the most popular configurations.
 **** [[https://github.com/hlissner/emacs-doom-themer][emacs-doom-themer]]
 
 ** John Wiegley
+:PROPERTIES:
+:CUSTOM_ID: john-wiegley
+:END:
 
 John is the current Emacs maintainer.
 
@@ -3785,6 +4260,9 @@ John is the current Emacs maintainer.
 **** [[id:540617fd-d4ff-47df-89da-6c48c8f27785][use-package]]
 
 ** Jonas Bernoulli
+:PROPERTIES:
+:CUSTOM_ID: jonas-bernoulli
+:END:
 
 Jonas is a prolific Emacs package developer and maintainer.  You could spend hours on his GitHub repo.
 
@@ -3795,6 +4273,9 @@ Jonas is a prolific Emacs package developer and maintainer.  You could spend hou
 **** [[id:43daf455-caeb-4399-b1bb-15a10603018b][Magit]]
 
 ** Jorgen Schäfer
+:PROPERTIES:
+:CUSTOM_ID: jorgen-schäfer
+:END:
 
 *** Packages                                                     :packages:
 
@@ -3807,6 +4288,9 @@ Jonas is a prolific Emacs package developer and maintainer.  You could spend hou
 **** [[https://github.com/jorgenschaefer/pyvenv][pyvenv: Python virtual environment interface]]
 
 ** Magnar Sveen
+:PROPERTIES:
+:CUSTOM_ID: magnar-sveen
+:END:
 
 +  [[https://github.com/magnars][GitHub]]
 
@@ -3822,6 +4306,9 @@ Jonas is a prolific Emacs package developer and maintainer.  You could spend hou
 **** [[*%5B%5Bhttps://github.com/magnars/s.el%5D%5Bs.el:%20The%20long%20lost%20Emacs%20string%20manipulation%20library%5D%5D][s.el]]
 
 ** Matus Goljer
+:PROPERTIES:
+:CUSTOM_ID: matus-goljer
+:END:
 
 + [[https://github.com/Fuco1/][GitHub]]
 
@@ -3838,6 +4325,7 @@ Jonas is a prolific Emacs package developer and maintainer.  You could spend hou
 ** Oleh Krehel
 :PROPERTIES:
 :ID:       a8a8dd9f-4113-4d4c-9882-ac59a4e86c0e
+:CUSTOM_ID: oleh-krehel
 :END:
 
 Oleh is a prolific package author, having contributed many very high-quality packages.  He also writes at [[id:b6e88f95-8c4f-4d18-a7df-de0820d76291][his blog]].
@@ -3853,6 +4341,9 @@ Oleh is a prolific package author, having contributed many very high-quality pac
 **** [[https://github.com/abo-abo/swiper][swiper: Ivy - a generic completion frontend, Swiper - isearch with an overview, and more. Oh, man!]] :navigation:
 
 ** Phil Lord
+:PROPERTIES:
+:CUSTOM_ID: phil-lord
+:END:
 
 + [[https://github.com/phillord][GitHub]]
 
@@ -3865,6 +4356,7 @@ Oleh is a prolific package author, having contributed many very high-quality pac
 ** Roland Walker
 :PROPERTIES:
 :ID:       518289de-100e-4387-9917-2adaffc28f48
+:CUSTOM_ID: roland-walker
 :END:
 
 Roland has published a wide variety of useful Emacs packages.
@@ -3878,6 +4370,7 @@ Roland has published a wide variety of useful Emacs packages.
 ** Sacha Chua
 :PROPERTIES:
 :ID:       12c7b803-9af2-4010-bca4-06304fbb69c7
+:CUSTOM_ID: sacha-chua
 :END:
 
 Sacha could easily be nominated the official Emacs ambassador, were there to be one.  Her contributions to the Emacs and Org-mode communities are innumerable.  One of her greatest recent contributions is her weekly [[http://sachachua.com/blog/category/geek/emacs/emacs-news/][Emacs news]] posts that serve as a digest of everything that happened in the Emacs world over the past week.
@@ -3886,6 +4379,9 @@ Sacha could easily be nominated the official Emacs ambassador, were there to be 
 +  [[http://github.com/sachac/][GitHub]]
 
 ** Wilfred Hughes
+:PROPERTIES:
+:CUSTOM_ID: wilfred-hughes
+:END:
 
 Wilfred has published several useful packages, and he's also leading the [[https://github.com/Wilfred/remacs][Rust Emacs port]].
 
@@ -3903,6 +4399,7 @@ Wilfred has published several useful packages, and he's also leading the [[https
 * Contributions
 :PROPERTIES:
 :TOC:      :depth 0
+:CUSTOM_ID: contributions
 :END:
 
 Yes, please!  Send pull requests and file issues on the [[https://github.com/alphapapa/emacs-package-dev-handbook][GitHub repo]].  This is intended to be a community project.
@@ -3920,6 +4417,7 @@ Yes, please!  Send pull requests and file issues on the [[https://github.com/alp
 * Tasks
 :PROPERTIES:
 :TOC:      :depth 0
+:CUSTOM_ID: tasks
 :END:
 
 These resources should be added to the appropriate sections above.  Since it takes some work to catalog and organize them, they are dumped here for future reference.  Pull requests for these are welcome!
@@ -4536,4 +5034,5 @@ I love Emacs and Org mode.  This makes it so easy to make the document...alive! 
 # org-export-with-broken-links: t
 # org-id-link-to-org-use-id: nil
 # org-export-initial-scope: buffer
+# org-make-toc-insert-custom-ids: t
 # End:
