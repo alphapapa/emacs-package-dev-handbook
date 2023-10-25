@@ -8,7 +8,7 @@ After developing some little Emacs packages for a year or so, I began to notice 
 
 So this is intended to be a place to collect and organize information related to Emacs package development.  Built with Emacs, by Emacs package developers, for Emacs package developers.
 
-You can read this Org file directly on the [[https://github.com/alphapapa/emacs-package-dev-handbook][repository]] rendered by GitHub (which lacks support for some features of the document, such as links between sections), or you can read the [[https://alphapapa.github.io/emacs-package-dev-handbook/][HTML version]].
+You can read this Org file directly on the [[https://github.com/alphapapa/emacs-package-dev-handbook][repository]] rendered by GitHub (which lacks support for some minor features of the document), or you can read the [[https://alphapapa.github.io/emacs-package-dev-handbook/][HTML version]].
 
 *Note:* The primary sections are listed at the top of the page in the horizontal bar.
 

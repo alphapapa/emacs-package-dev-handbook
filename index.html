@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-10-25 Wed 18:23 -->
+<!-- 2023-10-25 Wed 18:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Emacs Package Developer's Handbook</title>
@@ -1130,7 +1130,7 @@ So this is intended to be a place to collect and organize information related to
 </p>
 
 <p>
-You can read this Org file directly on the <a href="https://github.com/alphapapa/emacs-package-dev-handbook">repository</a> rendered by GitHub (which lacks support for some features of the document, such as links between sections), or you can read the <a href="https://alphapapa.github.io/emacs-package-dev-handbook/">HTML version</a>.
+You can read this Org file directly on the <a href="https://github.com/alphapapa/emacs-package-dev-handbook">repository</a> rendered by GitHub (which lacks support for some minor features of the document), or you can read the <a href="https://alphapapa.github.io/emacs-package-dev-handbook/">HTML version</a>.
 </p>
 
 <p>
@@ -2973,7 +2973,7 @@ For example, when used like:
 This warning would be shown in the <code>*Warnings*</code> buffer:
 </p>
 
-<pre class="example" id="org276017c">
+<pre class="example" id="org98fc270">
 Debug (argh): (CURRENT-BUFFER):*scratch* This is bad! (POINT):491845 VAR:1
 </pre>
 
@@ -3661,7 +3661,7 @@ This may actually be a bug, or at least an unanswered question.
 Say I have a macro <code>deffoo</code> that expands to some custom kind of <code>defun</code>, and I want to use an autoload cookie to autoload the result. According to the manual,
 </p>
 
-<pre class="example" id="org54491b9">
+<pre class="example" id="org77856c2">
 ;;;###autoload (deffoo bar   ...)
 </pre>
 
@@ -3669,7 +3669,7 @@ Say I have a macro <code>deffoo</code> that expands to some custom kind of <code
 copies the entire form to <code>autoloads.el</code>, and something like
 </p>
 
-<pre class="example" id="org412a4d8">
+<pre class="example" id="org8697244">
 ;;;###autoload (autoload 'bar "this-file") (deffoo bar   ...)
 </pre>
 
@@ -3726,7 +3726,7 @@ The best way to handle this is with the <a href="https://www.gnu.org/software/em
 You should always use lexical binding by setting the header in the first line of the file:
 </p>
 
-<pre class="example" id="orgab2d9c7">
+<pre class="example" id="orgc8937e3">
 ;;; filename.el --- File description  -*- lexical-binding: t; -*-
 </pre>
 </div>
@@ -4038,7 +4038,7 @@ GPLv3
 Version numbers which are valid in Emacs are those accepted by the function <code>version-to-list</code>, which uses the variables <code>version-separator</code> and <code>version-regexp-alist</code>.  See their documentation for specific, up-to-date information.  <code>version-to-list</code>'s documentation (as of Emacs 26.1) is reproduced here for convenience:
 </p>
 
-<pre class="example" id="orgec89be2">
+<pre class="example" id="org101a401">
 The version syntax is given by the following EBNF:
 
 VERSION ::= NUMBER ( SEPARATOR NUMBER )*.
@@ -4105,7 +4105,7 @@ This library includes functions helpful for working with and verifying the forma
 The <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.html">Emacs manual</a> gives this example (I've added the lexical-binding part).  Also see <a href="#template">template</a>.
 </p>
 
-<pre class="example" id="orgd3c7a71">
+<pre class="example" id="org5a3707c">
 ;;; superfrobnicator.el --- Frobnicate and bifurcate flanges  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2011 Free Software Foundation, Inc.
@@ -7653,7 +7653,7 @@ He archived the project, so it probably shouldn't be used, but it may have inter
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: me</p>
-<p class="date">Created: 2023-10-25 Wed 18:23</p>
+<p class="date">Created: 2023-10-25 Wed 18:31</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
