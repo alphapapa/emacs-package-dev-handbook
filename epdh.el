@@ -174,7 +174,7 @@ Before each form is run, `garbage-collect' is called."
         (header '(("Form" "x fastest" "Total runtime" "# of GCs" "Total GC runtime")
                   hline))
         ;; Copy forms so that a subsequent call of the macro will get the original forms.
-        (forms (copy-list forms))
+        (forms (cl-copy-list forms))
         (descriptions (cl-loop for form in forms
                                for i from 0
                                collect (if (stringp (car form))
