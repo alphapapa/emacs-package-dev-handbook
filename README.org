@@ -1855,7 +1855,7 @@ Not a standalone package, but part of [[https://github.com/skeeto/elfeed/blob/ma
 :CUSTOM_ID: articles-3
 :END:
 
-**** [[http://ruzkuku.com/texts/emacs-style.html][Good Style in modern Emacs Packages]]
+**** [[https://amodernist.com/texts/emacs-style.html][Good Style in modern Emacs Packages]]
 :PROPERTIES:
 :author:   Philip Kaludercic
 :CUSTOM_ID: good-style-in-modern-emacs-packages
@@ -2311,7 +2311,7 @@ The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.
 :CUSTOM_ID: tools-6
 :END:
 :CONTENTS:
-- [[#building--testing-0][Building / Testing]]
+- [[#building--testing][Building / Testing]]
   - [[#cask-project-management-tool-for-emacs][cask: Project management tool for Emacs]]
   - [[#eask-cli-for-building-running-testing-and-managing-dependencies][Eask: CLI for building, running, testing, and managing dependencies]]
   - [[#eldev-elisp-development-tool][eldev: Elisp Development Tool]]
@@ -2319,7 +2319,7 @@ The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.
   - [[#emakeel-test-elisp-without-the-hoops][emake.el: Test Elisp without the hoops]]
   - [[#makel-a-makefile-to-facilitate-checking-emacs-packages][makel: A makefile to facilitate checking Emacs packages]]
   - [[#makemsh-makefile-like-script-for-building-and-testing-packages][makem.sh: Makefile-like script for building and testing packages]]
-- [[#package-installationmanagement-0][Package installation/management]]
+- [[#package-installationmanagement][Package installation/management]]
   - [[#straightel-next-generation-purely-functional-package-manager-for-the-emacs-hacker][straight.el: Next-generation, purely functional package manager for the Emacs hacker]]
   - [[#use-package-a-use-package-declaration-for-simplifying-your-emacs][use-package: A use-package declaration for simplifying your .emacs]]
   - [[#paradox-modernizing-emacs-package-menu-with-package-ratings-usage-statistics-customizability-and-more][paradox: modernizing Emacs' Package Menu. With package ratings, usage statistics, customizability, and more.]]
@@ -2328,7 +2328,7 @@ The [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Simple-Packages.
 
 **** Building / Testing                                 :building:testing:
 :PROPERTIES:
-:CUSTOM_ID: building--testing-0
+:CUSTOM_ID: building--testing
 :END:
 
 Tools for building and testing packages, especially from scripts or Makefiles.
@@ -2437,7 +2437,7 @@ The script can run Emacs with the developer's local Emacs configuration, or with
 
 **** Package installation/management             :installation:management:
 :PROPERTIES:
-:CUSTOM_ID: package-installationmanagement-0
+:CUSTOM_ID: package-installationmanagement
 :END:
 
 ***** TODO [[https://github.com/raxod502/straight.el][straight.el: Next-generation, purely functional package manager for the Emacs hacker]] :needs_examples:
@@ -2728,12 +2728,12 @@ Including benchmarking, byte-compilation, profiling, etc.
 :CUSTOM_ID: articles-5
 :END:
 :CONTENTS:
-- [[#efficient-alias-of-a-built-in-emacs-lisp-function--null-program-0][Efficient Alias of a Built-In Emacs Lisp Function « null program]]
-- [[#emacs-byte-code-internals-0][Emacs Byte-code Internals]]
-- [[#faster-elfeed-search-through-jit-byte-code-compilation-0][Faster Elfeed Search Through JIT Byte-code Compilation]]
-- [[#how-to-write-faster-emacs-lisp--null-program-0][How to Write Fast(er) Emacs Lisp « null program]]
-- [[#some-performance-advantages-of-lexical-scope--null-program-0][Some Performance Advantages of Lexical Scope « null program]]
-- [[#whats-in-an-emacs-lambda--null-program-0][What's in an Emacs Lambda « null program]]
+- [[#efficient-alias-of-a-built-in-emacs-lisp-function--null-program][Efficient Alias of a Built-In Emacs Lisp Function « null program]]
+- [[#emacs-byte-code-internals][Emacs Byte-code Internals]]
+- [[#faster-elfeed-search-through-jit-byte-code-compilation][Faster Elfeed Search Through JIT Byte-code Compilation]]
+- [[#how-to-write-faster-emacs-lisp--null-program][How to Write Fast(er) Emacs Lisp « null program]]
+- [[#some-performance-advantages-of-lexical-scope--null-program][Some Performance Advantages of Lexical Scope « null program]]
+- [[#whats-in-an-emacs-lambda--null-program][What's in an Emacs Lambda « null program]]
 :END:
 
 **** [[https://nullprogram.com/blog/2019/12/10/][Efficient Alias of a Built-In Emacs Lisp Function « null program]] :compilation:bytecode:
@@ -2742,7 +2742,7 @@ Including benchmarking, byte-compilation, profiling, etc.
 :ID:       26105b53-a344-48bd-a252-596dd838ac3b
 :author:   Chris Wellons
 :published:   [2019-12-10 Tue]
-:CUSTOM_ID: efficient-alias-of-a-built-in-emacs-lisp-function--null-program-0
+:CUSTOM_ID: efficient-alias-of-a-built-in-emacs-lisp-function--null-program
 :END:
 
 Chris Wellons compares the use of =defalias= and =defsubst= and how they are optimized by the byte-compiler.
@@ -2752,7 +2752,7 @@ Chris Wellons compares the use of =defalias= and =defsubst= and how they are opt
 :archive.is: http://archive.today/DFx3S
 :author:   Chris Wellons
 :published:   [2014-01-04 Sat]
-:CUSTOM_ID: emacs-byte-code-internals-0
+:CUSTOM_ID: emacs-byte-code-internals
 :END:
 
 #+BEGIN_QUOTE
@@ -2768,7 +2768,7 @@ Screw that! What if I want to handcraft some byte-code myself? :-) The purpose o
 :author:   Chris Wellons
 :published:   [2016-12-11 Sun]
 :ID:       6e54fe14-d70e-485e-a671-a2600d57595d
-:CUSTOM_ID: faster-elfeed-search-through-jit-byte-code-compilation-0
+:CUSTOM_ID: faster-elfeed-search-through-jit-byte-code-compilation
 :END:
 
 Chris Wellons shows how he substantially improved Elfeed's search by byte-compiling functions at runtime and avoiding function call overhead.  He also demonstrates some simple benchmarking tools he wrote in the process.
@@ -2776,7 +2776,7 @@ Chris Wellons shows how he substantially improved Elfeed's search by byte-compil
 **** [[https://nullprogram.com/blog/2017/01/30/][How to Write Fast(er) Emacs Lisp « null program]]
 :PROPERTIES:
 :archive.today: http://archive.today/xe0Js
-:CUSTOM_ID: how-to-write-faster-emacs-lisp--null-program-0
+:CUSTOM_ID: how-to-write-faster-emacs-lisp--null-program
 :END:
 
 Chris Wellons explains five ways to write faster Emacs Lisp code.
@@ -2787,7 +2787,7 @@ Chris Wellons explains five ways to write faster Emacs Lisp code.
 :archive.today: http://archive.today/xm5zq
 :author:   Chris Wellons
 :published: [2016-12-22 Thu]
-:CUSTOM_ID: some-performance-advantages-of-lexical-scope--null-program-0
+:CUSTOM_ID: some-performance-advantages-of-lexical-scope--null-program
 :END:
 
 #+BEGIN_QUOTE
@@ -2800,7 +2800,7 @@ I recently had a discussion with Xah Lee about lexical scope in Emacs Lisp. The 
 :ID:       54fa2e85-066f-431e-9db3-8b1627fac4ca
 :author:   Chris Wellons
 :published:   [2017-12-14 Thu]
-:CUSTOM_ID: whats-in-an-emacs-lambda--null-program-0
+:CUSTOM_ID: whats-in-an-emacs-lambda--null-program
 :END:
 
 Chris explains how lambdas work with regard to byte-compilation and lexical binding.
