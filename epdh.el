@@ -196,7 +196,7 @@ Before each form is run, `garbage-collect' is called."
                                                                                 `(puthash ,description ,form bench-multi-results)
                                                                               form))))))
                                        (lambda (a b)
-                                         (< (second a) (second b))))))
+                                         (< (cl-second a) (cl-second b))))))
              ,(when ensure-equal
                 `(cl-loop with ,keys = (hash-table-keys bench-multi-results)
                           for i from 0 to (- (length ,keys) 2)
@@ -229,19 +229,19 @@ Before each form is run, `garbage-collect' is called."
 
 (defun bench-multi-process-results (results)
   "Return sorted RESULTS with factors added."
-  (setq results (sort results (-on #'< #'second)))
+  (setq results (sort results (-on #'< #'cl-second)))
   (cl-loop with length = (length results)
            for i from 0 below length
            for description = (car (nth i results))
            for factor = (pcase i
                           (0 "fastest")
-                          (_ (format "%.2f" (/ (second (nth i results))
-                                               (second (nth 0 results))))))
+                          (_ (format "%.2f" (/ (cl-second (nth i results))
+                                               (cl-second (nth 0 results))))))
            collect (append (list description factor)
-                           (list (format "%.6f" (second (nth i results)))
-                                 (third (nth i results))
-                                 (if (> (fourth (nth i results)) 0)
-                                     (format "%.6f" (fourth (nth i results)))
+                           (list (format "%.6f" (cl-second (nth i results)))
+                                 (cl-third (nth i results))
+                                 (if (> (cl-fourth (nth i results)) 0)
+                                     (format "%.6f" (cl-fourth (nth i results)))
                                    0)))))
 
 ;;;###autoload
