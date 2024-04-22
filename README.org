@@ -3786,7 +3786,7 @@ An ewoc is a structure that organizes information required to construct buffer t
 This is a package for GNU Emacs that can be used to tie related commands into a family of short bindings with a common prefix - a Hydra.
 #+END_QUOTE
 
-**** [[https://gitlab.petton.fr/DamienCassou/navigel/][navigel]]
+**** [[https://github.com/DamienCassou/navigel][navigel]]
 :PROPERTIES:
 :CUSTOM_ID: navigel
 :END:
