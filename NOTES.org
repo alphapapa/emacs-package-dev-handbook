@@ -1,0 +1,9 @@
+
+* Ideas
+
+** MAYBE Change name
+:LOGBOOK:
+-  State "MAYBE"      from              [2018-06-02 Sat 22:55]
+:END:
+
+Maybe something like =elispedia= or =emacs-lisp-almanac=.
